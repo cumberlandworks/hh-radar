@@ -48,6 +48,21 @@ still fits the viewport with no horizontal scroll after the `.grid-row-group` ch
 pre-existing lint warnings as v1.1 (legitimate long menu parentheticals, unrelated to this
 block).
 
+**Bug found while confirming the live deploy, not in the block:** the first post-push
+check of https://cumberlandworks.github.io/hh-radar/ hit `L.bestSourceUrl is not a
+function` and a fatal-error screen — reproduced in a brand-new browser tab too, so not a
+one-off. Cause (confirmed with `curl -I`): GitHub Pages serves both `index.html` and
+`logic.js` with `cache-control: max-age=600`, and `<script src="logic.js">` had no
+cache-busting query string. A browser that had fetched the old `logic.js` any time in the
+prior 10 minutes kept using it even after fetching the new `index.html`, producing a
+mixed v1.1-logic/v1.2-markup page — worse than the plain staleness the v1.1 footer-version
+change was meant to make visible, because this block's index.html now calls a function
+(`bestSourceUrl`) that only exists in the new `logic.js`, so the mismatch is a hard crash,
+not just an old-looking page. Fixed by versioning the script tag
+(`logic.js?v=1.2`, bumped alongside `APP_VERSION`), which forces a fresh fetch on any
+version bump regardless of the old copy's remaining cache lifetime. Re-verified clean
+after the fix; confirmed on the live site once its own cache window passed.
+
 ## 2026-09-05 — BLOCK-hh-radar-fix1-20260905: v1.1 (grid usability, NOW-view ranking, data hygiene)
 
 Per TJ's first-look feedback ("there needs to be better sorting on the day grid and

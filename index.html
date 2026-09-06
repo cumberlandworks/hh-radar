@@ -165,7 +165,12 @@
 
 <footer id="footer"></footer>
 
-<script src="logic.js"></script>
+<!-- Cache-busted with the app version: index.html and logic.js are deployed together and
+     can add cross-file dependencies (e.g. v1.2's cardActionsHtml calling L.bestSourceUrl),
+     so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
+     stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
+     bump this query string every time APP_VERSION below changes. -->
+<script src="logic.js?v=1.2"></script>
 <script>
 (function () {
   'use strict';
