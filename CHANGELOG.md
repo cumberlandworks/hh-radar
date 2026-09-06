@@ -1,5 +1,73 @@
 # Changelog
 
+## 2026-09-05 — BLOCK-hh-radar-fix1-20260905: v1.1 (grid usability, NOW-view ranking, data hygiene)
+
+Per TJ's first-look feedback ("there needs to be better sorting on the day grid and
+a better way to scroll the day vs going all the way to the bottom") and the
+reviewing thread's own measurements. All seven change groups (C1-C7) implemented;
+see the block for full acceptance criteria. Highlights:
+
+- **Day Grid (C1/C2):** rewritten to fit the viewport width with no horizontal
+  scroll (blocks positioned by CSS %, not fixed px); day tabs + hour header now
+  genuinely sticky while scrolling (see bug note below); rows are pruned to only
+  those with a window on the selected day, with a "N venues have nothing on
+  &lt;DAY&gt;" footer note; added a Time/Distance/Name sort control; tapping a row
+  opens an inline card for that day's window(s).
+- **NOW view (C3):** split into three ranked sections — Live now (soonest-to-end
+  first), Starting soon (soonest-to-start first), All-day specials — and cards
+  collapse to 3 deals + "+N more" by default (the Bar Mar card was ~1300px tall
+  on a phone; now well under 40% of viewport height collapsed). Tap a card to
+  expand the full deal list, links, and research notes.
+- **Semantics (C4):** added `logic.js#isAllDay` — a window with a resolved span
+  ≥5h, or a `kind: special` window starting before 14:00, is "all-day" and no
+  longer allowed to win the NOW-view empty-state "next happy hour" pick or count
+  as "starting soon" (`startsWithin`/`nextStart*` take `{excludeAllDay:true}`).
+  Fixed the reported bug (`?now=...T03:30` no longer names an all-day mimosa
+  deal as "next").
+- **Data hygiene (C5):** rewrote 6 deal descriptions that had research
+  commentary/provenance leaked into the menu text (moved to the window's own
+  `notes`, which in most cases already had the full story); added a WARN-level
+  lint for this pattern to `validateVenues`/`validate.js --strict` (37 residual
+  hits are legitimate long menu-item parentheticals, not commentary — see
+  README). Merged 51 North Taproom's two duplicated TUE/WED/FRI and SAT/SUN
+  window-pairs into one each (9 windows → 7). "Hours conflict" badge now reads
+  "No hours on file" for the two venues (Bar Mar, Butterfly) with no `hours`
+  data at all.
+- **Neighborhood (C6):** replaced the free-text heuristic on the 101
+  auto-added venues with a nearest-centroid lookup over a 19-point Nashville-
+  metro hand table (`logic.js#nearestNeighborhood`), marking those rows
+  `neighborhood_source: "centroid"`. The original 35 inKind venues' hand-set
+  neighborhoods are untouched. Fixes Bar Mar showing as "12 South" (now "The
+  Gulch") and several venues showing as the bare metro name "Nashville".
+- **Small (C7):** footer now shows `v1.1` (`app_version`) so a stale phone
+  install is visible at a glance; still no service worker (confirmed), so this
+  is a plain cache-bust, not a network-first SW change.
+
+**Bug found during implementation, not in the block:** `html, body { overflow-x:
+hidden }` (present since v1, meant to guard against the old grid's forced
+horizontal overflow) silently breaks `position: sticky` for every descendant in
+this WebKit-based environment — the app header and Now/Day-Grid tabs were never
+actually sticking in v1, this just went unnoticed because nothing had scrolled
+far enough to show it. Removed now that C1's rewritten grid no longer forces any
+horizontal overflow. The same issue existed one level deeper (`#grid-wrap`'s
+`overflow: hidden`, added to clip the rounded corners, broke the hour-header's
+stickiness) — fixed by moving the sticky hour-header outside that clipping
+container in the DOM.
+
+**Discrepancy vs. the block's own C2 acceptance example, reported not silently
+"fixed":** the block's accept line assumes the TUE grid tab (Time sort) opens
+with a Blue Sushi 11:00 row first. In the actual data, several venues (Two
+Hands' mimosa carafe, others) have an all-day-flagged window starting at 08:00
+on Tuesdays, which legitimately sorts earlier under the literal C2 rule ("by
+start time ascending") — the C2 spec doesn't say to exclude all-day windows
+from the Day Grid's own row ranking (only C3/C4's NOW-view logic does that).
+Excluding them from the grid ranking isn't a clean fix either: the span-based
+half of `isAllDay` (≥5h) also flags several genuinely time-bound long happy
+hours (Blue Sushi's own 11:00-6:30pm window is 7.5h), so filtering them out of
+the grid's "earliest start" would demote Blue Sushi too, past a 2pm start.
+Implemented C2 literally (no all-day filtering in the grid sort); flagging
+this rather than silently overriding the spec in either direction.
+
 ## 2026-09-05 — STEP 0 interview (verbatim) + build
 
 Per `BLOCK-hh-radar-build-20260905`, asked in one round before any file was written:

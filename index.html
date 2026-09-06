@@ -22,6 +22,8 @@
     --bad: #b3392c;
     --nowline: #d63b2f;
     --special-stripe: rgba(169, 95, 0, 0.18);
+    --header-h: 76px;
+    --gridsticky-h: 88px;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -41,7 +43,7 @@
     }
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
   body { font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding-bottom: 40px; }
   header { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 14px 16px 8px; border-bottom: 1px solid var(--border); }
   h1 { font-size: 17px; margin: 0 0 10px; font-weight: 700; }
@@ -54,8 +56,11 @@
   .toggle button.active { background: var(--amber); color: #1a1200; font-weight: 700; }
   .note { font-size: 12px; color: var(--text-dim); padding: 6px 16px 0; }
   main { padding: 12px 16px 24px; max-width: 640px; margin: 0 auto; }
+  .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
+  .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
   .card.muted { opacity: 0.62; }
+  .card:not(.expanded) { max-height: 40vh; overflow: hidden; }
   .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .card-name { font-weight: 700; font-size: 15px; }
   .card-status { font-size: 12px; font-weight: 700; white-space: nowrap; }
@@ -72,32 +77,54 @@
   .deals { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
   .deal { font-size: 13px; }
   .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
+  .deal-more { font-size: 12px; color: var(--text-dim); font-weight: 600; margin-top: 2px; }
   .links { margin-top: 8px; display: flex; gap: 14px; }
   .links a { font-size: 12px; color: var(--drink); text-decoration: none; font-weight: 600; }
   .disagreements { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; }
+  .disagreements details { display: inline; cursor: pointer; }
+  .disagreements .more-label { color: var(--drink); font-weight: 600; }
   .empty { text-align: center; padding: 60px 20px; color: var(--text-dim); }
   .empty b { color: var(--text); }
-  #grid-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 12px; }
-  .day-select { display: flex; gap: 4px; padding: 10px 16px 0; overflow-x: auto; }
-  .day-select button { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 12px; white-space: nowrap; }
+
+  #grid-sticky { position: sticky; top: var(--header-h); z-index: 4; background: var(--bg); padding-bottom: 4px; }
+  .day-select { display: flex; gap: 3px; padding: 8px 16px 0; }
+  .day-select button { flex: 1; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 11.5px; }
   .day-select button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); font-weight: 700; }
-  .grid-inner { position: relative; min-width: 900px; }
+  .sort-select { display: flex; gap: 4px; padding: 6px 16px 0; }
+  .sort-select button { flex: 1; padding: 6px 4px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); color: var(--text-dim); font-size: 11.5px; font-weight: 600; }
+  .sort-select button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
+  #grid-sort-note { padding: 4px 16px 0; }
+
+  /* NOTE: the sticky hour-header lives OUTSIDE #grid-wrap on purpose. Any
+     `overflow` value (even just `hidden`, used here to clip the rounded
+     corners) on an ancestor turns it into that sticky element's containing
+     block, so a sticky child nested inside an overflow:hidden box sticks to
+     THAT box instead of the page and scrolls away with it. Same reason
+     `html body { overflow-x: hidden }` was removed above. */
+  #grid-wrap { border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; margin: 0 16px 0; }
+  .grid-inner { position: relative; }
   .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 34px; }
   .grid-row:last-child { border-bottom: none; }
-  .grid-rowlabel { position: sticky; left: 0; width: 140px; min-width: 140px; max-width: 140px; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 8px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); z-index: 2; gap: 4px; overflow: hidden; }
+  .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 6px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 4px; overflow: hidden; cursor: pointer; }
+  .grid-rowlabel:active { background: var(--amber-bg); }
   .grid-rowlabel span.icon { flex-shrink: 0; }
   .grid-rowlabel span.name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .grid-track { position: relative; flex: 1; background: linear-gradient(to right, var(--border) 0, var(--border) 1px, transparent 1px); background-size: 60px 100%; }
-  .grid-header { display: flex; position: sticky; top: 0; background: var(--panel); z-index: 3; border-bottom: 1px solid var(--border); }
-  .grid-header .grid-rowlabel { border-right: 1px solid var(--border); }
-  .grid-header-track { flex: 1; position: relative; height: 24px; }
-  .grid-header-tick { position: absolute; top: 0; font-size: 10px; color: var(--text-dim); transform: translateX(-50%); padding-top: 4px; }
+  .grid-track { position: relative; flex: 1; min-width: 0; background: linear-gradient(to right, var(--border) 0, var(--border) 1px, transparent 1px); background-size: 6.66667% 100%; cursor: pointer; }
+  .grid-header { display: flex; position: sticky; top: calc(var(--header-h) + var(--gridsticky-h)); background: var(--panel); z-index: 3; border: 1px solid var(--border); border-bottom: none; border-radius: 12px 12px 0 0; margin: 10px 16px 0; }
+  .grid-header .grid-rowlabel { border-right: 1px solid var(--border); cursor: default; }
+  .grid-header-track { flex: 1; min-width: 0; position: relative; height: 22px; }
+  .grid-header-tick { position: absolute; top: 0; font-size: 9.5px; color: var(--text-dim); transform: translateX(-50%); padding-top: 4px; white-space: nowrap; }
   .block { position: absolute; top: 4px; bottom: 4px; border-radius: 5px; }
   .block.food { background: var(--amber); }
   .block.drink { background: var(--drink); background: var(--drink-bg); border: 1.5px solid var(--drink); }
   .block.food.drinkmode { background: var(--drink-bg); border: 1.5px solid var(--drink); }
   .block.special { background-image: repeating-linear-gradient(45deg, var(--special-stripe), var(--special-stripe) 4px, transparent 4px, transparent 8px); border: 1.5px solid var(--amber); }
+  .block.allday { top: auto; bottom: 3px; height: 6px; border-radius: 3px; opacity: 0.75; }
   .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
+  .grid-expanded { padding: 6px 10px 10px; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .grid-expanded .card { margin: 6px 0 0; }
+  .grid-expanded .card:first-child { margin-top: 0; }
+
   footer { text-align: center; font-size: 11.5px; color: var(--text-dim); padding: 24px 16px 10px; }
   footer a { color: var(--text-dim); }
   #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
@@ -123,10 +150,16 @@
 
 <main id="view-now"></main>
 <main id="view-grid" style="display:none">
-  <div class="day-select" id="day-select"></div>
-  <div id="grid-wrap" style="margin:10px 16px 0;">
+  <div class="grid-sticky" id="grid-sticky">
+    <div class="day-select" id="day-select"></div>
+    <div class="sort-select" id="sort-select"></div>
+    <div class="note" id="grid-sort-note"></div>
+  </div>
+  <div class="grid-header" id="grid-header"></div>
+  <div id="grid-wrap">
     <div class="grid-inner" id="grid-inner"></div>
   </div>
+  <div class="note" id="grid-note"></div>
 </main>
 
 <footer id="footer"></footer>
@@ -136,7 +169,9 @@
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
+  var APP_VERSION = 'v1.1';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
+  var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
   // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
   function getNowInChicago() {
@@ -177,20 +212,19 @@
     geoStatus: 'pending', // pending | granted | denied | unavailable
     day: null,
     now: null,
+    gridSort: 'time', // 'time' | 'distance' | 'name'
+    gridRowOpen: new Set(), // venue.id set: which Day Grid rows show their inline card(s)
+    expandedCards: new Set(), // cardKey set: which cards (NOW or Grid) are expanded
   };
 
   try {
     var savedPriority = localStorage.getItem('hhradar-priority');
     if (savedPriority === 'food' || savedPriority === 'drink') state.priority = savedPriority;
   } catch (e) { /* localStorage unavailable — default stands */ }
-
-  function haversineMiles(lat1, lon1, lat2, lon2) {
-    var R = 3958.8;
-    var toRad = function (d) { return d * Math.PI / 180; };
-    var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
-    var a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
+  try {
+    var savedSort = localStorage.getItem('hhradar-gridsort');
+    if (GRID_SORT_OPTIONS.indexOf(savedSort) !== -1) state.gridSort = savedSort;
+  } catch (e) { /* localStorage unavailable — default stands */ }
 
   function fmtHM(hm) {
     var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
@@ -219,23 +253,16 @@
     if (L.isUnverified(win)) out.push('<span class="badge unverified">Unverified</span>');
     if (L.isStale(win.last_verified, state.now)) out.push('<span class="badge stale">Verify before you go</span>');
     var warns = L.windowWarnings(venue, win);
-    if (warns.indexOf('closed-day-per-hours') !== -1) out.push('<span class="badge warn">Hours conflict</span>');
+    if (warns.indexOf('closed-day-per-hours') !== -1) {
+      out.push('<span class="badge warn">' + (Object.keys(venue.hours || {}).length === 0 ? 'No hours on file' : 'Hours conflict') + '</span>');
+    }
     if (warns.indexOf('missing-hours-fallback-2359') !== -1) out.push('<span class="badge warn">Close time assumed</span>');
     return out.join('');
   }
 
-  function dealsHtml(win) {
-    var deals = win.deals.slice();
-    var firstType = state.priority === 'food' ? 'food' : 'drink';
-    deals.sort(function (a, b) {
-      if (a.type === b.type) return 0;
-      return a.type === firstType ? -1 : 1;
-    });
-    if (deals.length === 0) return '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>';
-    return deals.map(function (d) {
-      var icon = d.type === 'food' ? '🍽' : '🥂';
-      return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) + (d.price ? ' — ' + escapeHtml(d.price) : '') + '</div>';
-    }).join('');
+  function dealLineHtml(d) {
+    var icon = d.type === 'food' ? '🍽' : '🥂';
+    return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) + (d.price ? ' — ' + escapeHtml(d.price) : '') + '</div>';
   }
 
   function escapeHtml(s) {
@@ -244,76 +271,130 @@
     });
   }
 
-  function cardHtml(entry) {
-    var venue = entry.venue, win = entry.window;
-    var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
-    var statusLabel = entry.status === 'active'
-      ? 'Live until ' + fmtHM(resolveDisplayEnd(venue, win, entry.day))
-      : 'Starts in ' + entry.minutesUntil + 'm';
-    var distance = entry.distance != null ? (entry.distance < 0.1 ? '<0.1mi' : entry.distance.toFixed(1) + 'mi') : '';
-    return '' +
-      '<div class="card' + (hasFoodMuted ? ' muted' : '') + '">' +
-        '<div class="card-top">' +
-          '<div class="card-name">' + escapeHtml(venue.name) + '</div>' +
-          '<div class="card-status ' + entry.status + '">' + statusLabel + '</div>' +
-        '</div>' +
-        '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distance ? ' · ' + distance : '') + (win.area ? ' · ' + escapeHtml(win.area) : '') + '</div>' +
-        '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
-        '<div class="deals">' + dealsHtml(win) + '</div>' +
-        '<div class="links">' +
-          (venue.official_site ? '<a href="' + venue.official_site + '" target="_blank" rel="noopener">Official site</a>' : '') +
-          '<a href="' + venue.inkind_url + '" target="_blank" rel="noopener">inKind</a>' +
-        '</div>' +
-        (venue.disagreements && venue.disagreements.length ? '<div class="disagreements">⚠ ' + venue.disagreements.map(escapeHtml).join(' · ') + '</div>' : '') +
-      '</div>';
-  }
-
   function hasDrinkOnly(win) {
     var hasDrink = win.deals.some(function (d) { return d.type === 'drink'; });
     return !hasDrink;
   }
 
-  // ---------- NOW view ----------
-  function buildNowEntries() {
-    var entries = [];
+  function cardKey(venue, win) {
+    return venue.id + '#' + venue.windows.indexOf(win);
+  }
+
+  // Research provenance (disagreements + window notes) — expanded-card only, truncated
+  // to 240 chars with a native <details> "more" disclosure for the rest.
+  function provenanceBlockHtml(venue, win) {
+    var bits = [];
+    if (venue.disagreements && venue.disagreements.length) bits.push(venue.disagreements.join(' · '));
+    if (win.notes) bits.push(win.notes);
+    if (!bits.length) return '';
+    var text = bits.join(' · ');
+    if (text.length <= 240) return '<div class="disagreements">⚠ ' + escapeHtml(text) + '</div>';
+    var head = text.slice(0, 240), tail = text.slice(240);
+    return '<div class="disagreements">⚠ <details><summary>' + escapeHtml(head) + '… <span class="more-label">more</span></summary>' + escapeHtml(tail) + '</details></div>';
+  }
+
+  // Shared card renderer for both the NOW view and a Day-Grid row's tap-to-expand
+  // panel. Collapsed: name/status/meta/badges + up to 3 deals (food-first) + "+N
+  // more". Expanded (state.expandedCards has this card's key): full deal list,
+  // links, and provenance.
+  function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key) {
+    var expanded = state.expandedCards.has(key);
+    var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
+    var deals = win.deals.slice();
+    var firstType = state.priority === 'food' ? 'food' : 'drink';
+    deals.sort(function (a, b) {
+      if (a.type === b.type) return 0;
+      return a.type === firstType ? -1 : 1;
+    });
+    var shown = expanded ? deals : deals.slice(0, 3);
+    var moreCount = expanded ? 0 : Math.max(0, deals.length - 3);
+    var dealsInner = shown.length === 0
+      ? '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>'
+      : shown.map(dealLineHtml).join('');
+    var linksHtml = !expanded ? '' : (
+      '<div class="links">' +
+        (venue.official_site ? '<a href="' + venue.official_site + '" target="_blank" rel="noopener">Official site</a>' : '') +
+        '<a href="' + venue.inkind_url + '" target="_blank" rel="noopener">inKind</a>' +
+      '</div>'
+    );
+    var provenanceHtml = expanded ? provenanceBlockHtml(venue, win) : '';
+    return '' +
+      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '">' +
+        '<div class="card-top">' +
+          '<div class="card-name">' + escapeHtml(venue.name) + '</div>' +
+          '<div class="card-status ' + statusClass + '">' + escapeHtml(statusLabel) + '</div>' +
+        '</div>' +
+        '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distanceLabel ? ' · ' + distanceLabel : '') + (win.area ? ' · ' + escapeHtml(win.area) : '') + '</div>' +
+        '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
+        '<div class="deals">' + dealsInner + (moreCount > 0 ? '<div class="deal-more">+' + moreCount + ' more</div>' : '') + '</div>' +
+        linksHtml +
+        provenanceHtml +
+      '</div>';
+  }
+
+  function distanceLabel(venue) {
+    if (!state.geo) return '';
+    var d = L.haversineMiles(state.geo.lat, state.geo.lon, venue.lat, venue.lon);
+    return d < 0.1 ? '<0.1mi' : d.toFixed(1) + 'mi';
+  }
+
+  function nowEntryCardHtml(entry) {
+    var statusLabel = entry.status === 'active'
+      ? 'Live until ' + fmtHM(resolveDisplayEnd(entry.venue, entry.window, entry.day))
+      : 'Starts in ' + entry.minutesUntil + 'm';
+    return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), cardKey(entry.venue, entry.window));
+  }
+
+  // ---------- NOW view (C3: Live now / Starting soon / All-day specials) ----------
+  function buildNowSections() {
+    var live = [], soon = [], allDay = [];
     state.venues.forEach(function (venue) {
       venue.windows.forEach(function (win) {
+        var allDayWin = L.isAllDay(venue, win);
         if (L.isActive(venue, win, state.now)) {
-          entries.push({ venue: venue, window: win, status: 'active', day: state.now.dayOfWeek });
-        } else if (L.startsWithin(venue, win, state.now, 120)) {
-          var ns = null;
-          var intervals = L.resolveWindow(venue, win);
-          var t = L.minutesSinceWeekStart(state.now);
-          var best = null;
-          intervals.forEach(function (iv) {
-            var diff = iv.startAbs - t; while (diff < 0) diff += 10080;
-            if (best === null || diff < best) best = diff;
-          });
-          entries.push({ venue: venue, window: win, status: 'soon', minutesUntil: best, day: state.now.dayOfWeek });
+          (allDayWin ? allDay : live).push({ venue: venue, window: win, status: 'active', day: state.now.dayOfWeek });
+        } else if (allDayWin) {
+          if (L.startsWithin(venue, win, state.now, 120)) {
+            allDay.push({ venue: venue, window: win, status: 'soon', minutesUntil: L.minutesUntilNextStart(venue, win, state.now), day: state.now.dayOfWeek });
+          }
+        } else if (L.startsWithin(venue, win, state.now, 120, { excludeAllDay: true })) {
+          soon.push({ venue: venue, window: win, status: 'soon', minutesUntil: L.minutesUntilNextStart(venue, win, state.now), day: state.now.dayOfWeek });
         }
       });
     });
-    entries.forEach(function (e) {
+
+    function byNameAsc(a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); }
+
+    live.sort(function (a, b) {
       if (state.geo) {
-        e.distance = haversineMiles(state.geo.lat, state.geo.lon, e.venue.lat, e.venue.lon);
+        var da = L.haversineMiles(state.geo.lat, state.geo.lon, a.venue.lat, a.venue.lon);
+        var db = L.haversineMiles(state.geo.lat, state.geo.lon, b.venue.lat, b.venue.lon);
+        if (da !== db) return da - db;
       } else {
-        e.distance = null;
+        var ea = L.minutesUntilEnd(a.venue, a.window, state.now), eb = L.minutesUntilEnd(b.venue, b.window, state.now);
+        if (ea !== eb) return ea - eb;
       }
+      return byNameAsc(a, b);
     });
-    entries.sort(function (a, b) {
-      if (state.geo) return a.distance - b.distance;
-      var na = a.venue.neighborhood || a.venue.city, nb = b.venue.neighborhood || b.venue.city;
-      if (na !== nb) return na < nb ? -1 : 1;
-      return a.venue.name < b.venue.name ? -1 : 1;
+    soon.sort(function (a, b) { return a.minutesUntil !== b.minutesUntil ? a.minutesUntil - b.minutesUntil : byNameAsc(a, b); });
+    allDay.sort(function (a, b) {
+      if (state.geo) {
+        var da2 = L.haversineMiles(state.geo.lat, state.geo.lon, a.venue.lat, a.venue.lon);
+        var db2 = L.haversineMiles(state.geo.lat, state.geo.lon, b.venue.lat, b.venue.lon);
+        if (da2 !== db2) return da2 - db2;
+      }
+      return byNameAsc(a, b);
     });
-    return entries;
+    return { live: live, soon: soon, allDay: allDay };
   }
 
   function renderNow() {
     var el = document.getElementById('view-now');
-    var entries = buildNowEntries();
-    if (entries.length === 0) {
-      var best = L.nextStartAcrossVenues(state.venues.filter(function (v) { return v.windows.length > 0; }), state.now);
+    var sections = buildNowSections();
+    var total = sections.live.length + sections.soon.length + sections.allDay.length;
+    if (total === 0) {
+      var eligible = state.venues.filter(function (v) { return v.windows.length > 0; });
+      var best = L.nextStartAcrossVenues(eligible, state.now, { excludeAllDay: true });
       var msg;
       if (best) {
         msg = 'No happy hours right now — next: <b>' + escapeHtml(best.venue.name) + '</b> at ' +
@@ -324,12 +405,17 @@
       el.innerHTML = '<div class="empty">' + msg + '</div>';
       return;
     }
-    el.innerHTML = entries.map(cardHtml).join('');
+    var html = '';
+    if (sections.live.length) html += '<div class="section-heading">Live now (' + sections.live.length + ')</div>' + sections.live.map(nowEntryCardHtml).join('');
+    if (sections.soon.length) html += '<div class="section-heading">Starting soon (' + sections.soon.length + ')</div>' + sections.soon.map(nowEntryCardHtml).join('');
+    if (sections.allDay.length) html += '<div class="section-heading">All-day specials (' + sections.allDay.length + ')</div>' + sections.allDay.map(nowEntryCardHtml).join('');
+    el.innerHTML = html;
   }
 
-  // ---------- DAY GRID ----------
+  // ---------- DAY GRID (C1: fit-to-screen; C2: sort + prune) ----------
   var GRID_START = 11 * 60, GRID_END = 26 * 60, GRID_SPAN = GRID_END - GRID_START;
-  var PX_PER_MIN = 2;
+
+  function isNarrowViewport() { return window.innerWidth < 600; }
 
   function renderDaySelect() {
     var el = document.getElementById('day-select');
@@ -345,50 +431,194 @@
     });
   }
 
+  function renderSortSelect() {
+    var el = document.getElementById('sort-select');
+    var labels = { time: 'Time', distance: 'Distance', name: 'Name' };
+    el.innerHTML = GRID_SORT_OPTIONS.map(function (s) {
+      return '<button data-sort="' + s + '" class="' + (s === state.gridSort ? 'active' : '') + '">' + labels[s] + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('button'), function (btn) {
+      btn.addEventListener('click', function () { setGridSort(btn.getAttribute('data-sort')); });
+    });
+  }
+
+  function setGridSort(s) {
+    state.gridSort = s;
+    try { localStorage.setItem('hhradar-gridsort', s); } catch (e) { /* per-viewer convenience only */ }
+    renderSortSelect();
+    renderGrid();
+  }
+
   function gridHeaderHtml() {
+    var narrow = isNarrowViewport();
     var ticks = [];
-    for (var m = GRID_START; m <= GRID_END; m += 60) {
+    var idx = 0;
+    for (var m = GRID_START; m <= GRID_END; m += 60, idx++) {
+      if (narrow && idx % 2 !== 0) continue;
       var hour = Math.floor(m / 60) % 24;
       var label = (hour === 0 ? '12a' : hour === 12 ? '12p' : (hour % 12) + (hour < 12 ? 'a' : 'p'));
-      ticks.push('<div class="grid-header-tick" style="left:' + ((m - GRID_START) * PX_PER_MIN) + 'px">' + label + '</div>');
+      var pct = (m - GRID_START) / GRID_SPAN * 100;
+      ticks.push('<div class="grid-header-tick" style="left:' + pct + '%">' + label + '</div>');
     }
-    return '<div class="grid-header"><div class="grid-rowlabel"></div><div class="grid-header-track" style="min-width:' + (GRID_SPAN * PX_PER_MIN) + 'px">' + ticks.join('') + '</div></div>';
+    return '<div class="grid-rowlabel"></div><div class="grid-header-track">' + ticks.join('') + '</div>';
+  }
+
+  // All of a venue's resolved intervals that fall on `day` (a venue can have more
+  // than one, e.g. a Tue-only special plus a Tue/Wed/Fri happy hour).
+  function dayIntervalsForVenue(venue, day) {
+    var items = [];
+    venue.windows.forEach(function (win) {
+      if (win.days.indexOf(day) === -1) return;
+      var intervals = L.resolveWindow(venue, win);
+      intervals.forEach(function (iv) {
+        if (iv.day !== day) return;
+        items.push({ win: win, startAbs: iv.startAbs, endAbs: iv.endAbs });
+      });
+    });
+    return items;
+  }
+
+  // C2 default "Time" order: windows active now (today's tab only) by soonest
+  // end time, else by earliest start time; happy_hour ranks before a special
+  // that starts at the same time.
+  function gridTimeSortKey(venue, day, items) {
+    if (day === state.now.dayOfWeek) {
+      var activeItems = items.filter(function (it) { return L.isActive(venue, it.win, state.now); });
+      if (activeItems.length) {
+        var minEnd = Math.min.apply(null, activeItems.map(function (it) { return it.endAbs; }));
+        return { group: 0, primary: minEnd, kindRank: 0 };
+      }
+    }
+    var minStart = Math.min.apply(null, items.map(function (it) { return it.startAbs; }));
+    var atMinStart = items.filter(function (it) { return it.startAbs === minStart; });
+    var kindRank = atMinStart.some(function (it) { return it.win.kind === 'happy_hour'; }) ? 0 : 1;
+    return { group: 1, primary: minStart, kindRank: kindRank };
+  }
+
+  function gridDayCardHtml(venue, win, day) {
+    var isToday = day === state.now.dayOfWeek;
+    var activeNow = isToday && L.isActive(venue, win, state.now);
+    var statusLabel, statusClass;
+    if (activeNow) {
+      statusLabel = 'Live until ' + fmtHM(resolveDisplayEnd(venue, win, day));
+      statusClass = 'active';
+    } else {
+      var endLabel = win.end === 'close' ? 'close' : fmtHM(resolveDisplayEnd(venue, win, day));
+      statusLabel = DAY_FULL[day].slice(0, 3) + ' ' + fmtHM(win.start) + '–' + endLabel;
+      statusClass = 'soon';
+    }
+    return cardHtml(venue, win, statusLabel, statusClass, distanceLabel(venue), cardKey(venue, win));
   }
 
   function renderGrid() {
     var el = document.getElementById('grid-inner');
-    var dayBase = L.DAY_INDEX[state.day] * 1440;
+    var day = state.day;
+    var dayBase = L.DAY_INDEX[day] * 1440;
     var nowT = L.minutesSinceWeekStart(state.now);
     var nowPos = nowT - dayBase;
-    var showNowLine = nowPos >= GRID_START && nowPos <= GRID_END;
+    var isToday = day === state.now.dayOfWeek;
+    var showNowLine = isToday && nowPos >= GRID_START && nowPos <= GRID_END;
 
-    var rows = state.venues.map(function (venue) {
-      var blocks = [];
-      venue.windows.forEach(function (win) {
-        if (win.days.indexOf(state.day) === -1) return;
-        var intervals = L.resolveWindow(venue, win);
-        intervals.forEach(function (iv) {
-          if (iv.day !== state.day) return;
-          var startPos = iv.startAbs - dayBase, endPos = iv.endAbs - dayBase;
-          startPos = Math.max(startPos, GRID_START); endPos = Math.min(endPos, GRID_END);
-          if (endPos <= startPos) return;
-          var isFood = L.windowHasFood(win);
-          var cls = 'block ' + (win.kind === 'special' ? 'special' : (state.priority === 'food' ? (isFood ? 'food' : 'drink') : (isFood ? 'food drinkmode' : 'drink')));
-          blocks.push('<div class="' + cls + '" style="left:' + ((startPos - GRID_START) * PX_PER_MIN) + 'px;width:' + ((endPos - startPos) * PX_PER_MIN) + 'px" title="' + escapeHtml(fmtHM(win.start) + '–' + (win.end === 'close' ? 'close' : fmtHM(win.end))) + '"></div>');
-        });
+    var candidates = state.venues.map(function (venue) {
+      return { venue: venue, items: dayIntervalsForVenue(venue, day) };
+    }).filter(function (r) { return r.items.length > 0; });
+
+    var hiddenCount = state.venues.length - candidates.length;
+
+    if (state.gridSort === 'name') {
+      candidates.sort(function (a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); });
+    } else if (state.gridSort === 'distance' && state.geo) {
+      candidates.forEach(function (r) { r.dist = L.haversineMiles(state.geo.lat, state.geo.lon, r.venue.lat, r.venue.lon); });
+      candidates.sort(function (a, b) { return a.dist - b.dist; });
+    } else {
+      // 'time' (default), or 'distance' chosen with no geo yet (falls back to time)
+      candidates.forEach(function (r) { r.key = gridTimeSortKey(r.venue, day, r.items); });
+      candidates.sort(function (a, b) {
+        if (a.key.group !== b.key.group) return a.key.group - b.key.group;
+        if (a.key.primary !== b.key.primary) return a.key.primary - b.key.primary;
+        if (a.key.kindRank !== b.key.kindRank) return a.key.kindRank - b.key.kindRank;
+        if (state.geo) {
+          var da = L.haversineMiles(state.geo.lat, state.geo.lon, a.venue.lat, a.venue.lon);
+          var db = L.haversineMiles(state.geo.lat, state.geo.lon, b.venue.lat, b.venue.lon);
+          if (da !== db) return da - db;
+        }
+        return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0);
       });
-      if (blocks.length === 0 && venue.windows.length === 0) return ''; // verified_no_hh venue never shows a block, still counted below
-      return '<div class="grid-row">' +
-        '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="icon">🍸</span><span class="name">' + escapeHtml(venue.name) + '</span></div>' +
-        '<div class="grid-track" style="min-width:' + (GRID_SPAN * PX_PER_MIN) + 'px">' +
-          blocks.join('') +
-          (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) * PX_PER_MIN) + 'px"></div>' : '') +
-        '</div>' +
-      '</div>';
-    }).filter(function (r) { return r; });
+    }
 
-    el.innerHTML = gridHeaderHtml() + rows.join('');
+    var rowsHtml = candidates.map(function (r) {
+      var venue = r.venue, items = r.items;
+      var blocks = items.map(function (it) {
+        var startPos = Math.max(it.startAbs - dayBase, GRID_START);
+        var endPos = Math.min(it.endAbs - dayBase, GRID_END);
+        if (endPos <= startPos) return '';
+        var isFood = L.windowHasFood(it.win);
+        var cls = 'block ' + (it.win.kind === 'special' ? 'special' : (state.priority === 'food' ? (isFood ? 'food' : 'drink') : (isFood ? 'food drinkmode' : 'drink')));
+        if (L.isAllDay(venue, it.win)) cls += ' allday';
+        var leftPct = (startPos - GRID_START) / GRID_SPAN * 100;
+        var widthPct = (endPos - startPos) / GRID_SPAN * 100;
+        return '<div class="' + cls + '" style="left:' + leftPct + '%;width:' + widthPct + '%" title="' + escapeHtml(fmtHM(it.win.start) + '–' + (it.win.end === 'close' ? 'close' : fmtHM(it.win.end))) + '"></div>';
+      }).join('');
+      var expandedHtml = state.gridRowOpen.has(venue.id)
+        ? '<div class="grid-expanded">' + items.map(function (it) { return gridDayCardHtml(venue, it.win, day); }).join('') + '</div>'
+        : '';
+      return '<div class="grid-row">' +
+        '<div class="grid-rowlabel" data-venue-id="' + escapeHtml(venue.id) + '" title="' + escapeHtml(venue.name) + '"><span class="icon">🍸</span><span class="name">' + escapeHtml(venue.name) + '</span></div>' +
+        '<div class="grid-track">' +
+          blocks +
+          (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
+        '</div>' +
+      '</div>' + expandedHtml;
+    }).join('');
+
+    document.getElementById('grid-header').innerHTML = gridHeaderHtml();
+    el.innerHTML = rowsHtml;
+
+    document.getElementById('grid-note').textContent = hiddenCount > 0
+      ? hiddenCount + ' venue' + (hiddenCount === 1 ? '' : 's') + ' have nothing on ' + DAY_FULL[day] + '.'
+      : '';
+    document.getElementById('grid-sort-note').textContent = (state.gridSort === 'distance' && !state.geo)
+      ? 'Location unavailable — sorted by time instead.'
+      : '';
+
+    updateStickyOffsets();
   }
+
+  // Grid uses a two-level sticky stack (app header, then day/sort tabs) ahead of
+  // the hour header; both offsets are measured (not hardcoded) so header text
+  // reflows or font-size changes never desync the sticky positions.
+  function updateStickyOffsets() {
+    var header = document.querySelector('header');
+    var gridSticky = document.getElementById('grid-sticky');
+    if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    if (gridSticky) document.documentElement.style.setProperty('--gridsticky-h', gridSticky.offsetHeight + 'px');
+  }
+
+  // ---------- delegated click handling (cards expand; grid rows open/close) ----------
+  document.getElementById('view-now').addEventListener('click', function (e) {
+    if (e.target.closest('a') || e.target.closest('details')) return;
+    var cardEl = e.target.closest('.card');
+    if (!cardEl) return;
+    var key = cardEl.getAttribute('data-card-key');
+    if (state.expandedCards.has(key)) state.expandedCards.delete(key); else state.expandedCards.add(key);
+    renderNow();
+  });
+  document.getElementById('grid-inner').addEventListener('click', function (e) {
+    if (e.target.closest('a') || e.target.closest('details')) return;
+    var cardEl = e.target.closest('.card');
+    if (cardEl) {
+      var key = cardEl.getAttribute('data-card-key');
+      if (state.expandedCards.has(key)) state.expandedCards.delete(key); else state.expandedCards.add(key);
+      renderGrid();
+      return;
+    }
+    var rowEl = e.target.closest('.grid-row');
+    if (rowEl) {
+      var vid = rowEl.querySelector('.grid-rowlabel').getAttribute('data-venue-id');
+      if (state.gridRowOpen.has(vid)) state.gridRowOpen.delete(vid); else state.gridRowOpen.add(vid);
+      renderGrid();
+    }
+  });
 
   // ---------- geolocation ----------
   function requestGeo() {
@@ -396,6 +626,7 @@
       state.geoStatus = 'unavailable';
       updateGeoNote();
       renderNow();
+      renderGridIfVisible();
       return;
     }
     navigator.geolocation.getCurrentPosition(
@@ -404,11 +635,13 @@
         state.geoStatus = 'granted';
         updateGeoNote();
         renderNow();
+        renderGridIfVisible();
       },
       function () {
         state.geoStatus = 'denied';
         updateGeoNote();
         renderNow();
+        renderGridIfVisible();
       },
       { timeout: 8000 }
     );
@@ -421,6 +654,9 @@
       el.textContent = '';
     }
   }
+  function renderGridIfVisible() {
+    if (document.getElementById('view-grid').style.display !== 'none') renderGrid();
+  }
 
   // ---------- tabs + toggle wiring ----------
   function showTab(tab) {
@@ -428,9 +664,10 @@
     document.getElementById('tab-grid').classList.toggle('active', tab === 'grid');
     document.getElementById('view-now').style.display = tab === 'now' ? '' : 'none';
     document.getElementById('view-grid').style.display = tab === 'grid' ? '' : 'none';
+    if (tab === 'grid') { updateStickyOffsets(); renderGrid(); }
   }
   document.getElementById('tab-now').addEventListener('click', function () { showTab('now'); });
-  document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); renderGrid(); });
+  document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); });
   document.getElementById('btn-food').addEventListener('click', function () { setPriority('food'); });
   document.getElementById('btn-drink').addEventListener('click', function () { setPriority('drink'); });
   function setPriority(p) {
@@ -439,9 +676,13 @@
     document.getElementById('btn-drink').classList.toggle('active', p === 'drink');
     try { localStorage.setItem('hhradar-priority', p); } catch (e) { /* per-viewer convenience only */ }
     renderNow();
-    if (document.getElementById('view-grid').style.display !== 'none') renderGrid();
+    renderGridIfVisible();
   }
   setPriority(state.priority);
+  window.addEventListener('resize', function () {
+    updateStickyOffsets();
+    renderGridIfVisible();
+  });
 
   // ---------- boot ----------
   function fatal(msg) {
@@ -466,9 +707,10 @@
 
     document.getElementById('footer').innerHTML = 'Data generated ' + escapeHtml(state.generated) + ' · ' +
       state.venues.length + ' venues · ' + state.venues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
-      '<a href="README.md">README</a>';
+      escapeHtml(APP_VERSION) + ' · <a href="README.md">README</a>';
 
     renderDaySelect();
+    renderSortSelect();
     renderNow();
     renderGrid();
     requestGeo();

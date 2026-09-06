@@ -4,9 +4,11 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const { validateVenues } = require('./logic.js');
+const { validateVenues, lintVenues } = require('./logic.js');
 
-const target = process.argv[2] || path.join(__dirname, 'venues.json');
+const args = process.argv.slice(2).filter((a) => a !== '--strict');
+const strict = process.argv.includes('--strict');
+const target = args[0] || path.join(__dirname, 'venues.json');
 
 let raw;
 try {
@@ -25,12 +27,24 @@ try {
 }
 
 const errors = validateVenues(data);
-if (errors.length === 0) {
+const lintWarnings = lintVenues(data);
+
+if (lintWarnings.length > 0) {
+  console.warn('validate.js: ' + lintWarnings.length + ' lint warning(s) (research prose / overlong deal text):');
+  for (const w of lintWarnings) console.warn('  ! ' + w);
+}
+
+if (errors.length === 0 && !(strict && lintWarnings.length > 0)) {
   console.log('validate.js: OK — ' + target + ' (' + data.venues.length + ' venues, ' +
     data.venues.reduce((n, v) => n + v.windows.length, 0) + ' windows)');
   process.exit(0);
 } else {
-  console.error('validate.js: ' + errors.length + ' problem(s) in ' + target + ':');
-  for (const e of errors) console.error('  - ' + e);
+  if (errors.length > 0) {
+    console.error('validate.js: ' + errors.length + ' problem(s) in ' + target + ':');
+    for (const e of errors) console.error('  - ' + e);
+  }
+  if (strict && lintWarnings.length > 0) {
+    console.error('validate.js: --strict set and lint warnings are present — failing.');
+  }
   process.exit(1);
 }

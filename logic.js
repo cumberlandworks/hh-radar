@@ -100,8 +100,11 @@
   }
 
   // True if `win` is not active now but starts within `withinMin` minutes (default 120).
-  function startsWithin(venue, win, dateInTz, withinMin) {
+  // opts.excludeAllDay: treat an all-day window (see isAllDay) as never "starting soon".
+  function startsWithin(venue, win, dateInTz, withinMin, opts) {
     if (withinMin === undefined) withinMin = 120;
+    opts = opts || {};
+    if (opts.excludeAllDay && isAllDay(venue, win)) return false;
     if (isActive(venue, win, dateInTz)) return false;
     var t = minutesSinceWeekStart(dateInTz);
     var intervals = resolveWindow(venue, win);
@@ -114,11 +117,14 @@
 
   // Earliest future start (in minutes-from-now) across all windows of `venue`.
   // Returns {minutesFromNow, day, start} or null if venue has no windows.
-  function nextStart(venue, dateInTz) {
+  // opts.excludeAllDay: skip all-day windows entirely (they shouldn't win "next start").
+  function nextStart(venue, dateInTz, opts) {
+    opts = opts || {};
     var t = minutesSinceWeekStart(dateInTz);
     var best = null;
     for (var w = 0; w < venue.windows.length; w++) {
       var win = venue.windows[w];
+      if (opts.excludeAllDay && isAllDay(venue, win)) continue;
       var intervals = resolveWindow(venue, win);
       for (var i = 0; i < intervals.length; i++) {
         var mins = minutesUntilWrapped(t, intervals[i].startAbs);
@@ -131,15 +137,137 @@
   }
 
   // Earliest future start across ALL venues (for the NOW-view empty state).
-  function nextStartAcrossVenues(venues, dateInTz) {
+  function nextStartAcrossVenues(venues, dateInTz, opts) {
+    opts = opts || {};
     var best = null;
     for (var i = 0; i < venues.length; i++) {
-      var ns = nextStart(venues[i], dateInTz);
+      var ns = nextStart(venues[i], dateInTz, opts);
       if (ns && (best === null || ns.minutesFromNow < best.next.minutesFromNow)) {
         best = { venue: venues[i], next: ns };
       }
     }
     return best;
+  }
+
+  // Minutes remaining until the currently-active interval of `win` ends (null if not active now).
+  function minutesUntilEnd(venue, win, dateInTz) {
+    var t = minutesSinceWeekStart(dateInTz);
+    var intervals = resolveWindow(venue, win);
+    var best = null;
+    for (var i = 0; i < intervals.length; i++) {
+      var iv = intervals[i];
+      var candidates = [t, t + 10080, t - 10080];
+      for (var j = 0; j < candidates.length; j++) {
+        var c = candidates[j];
+        if (c >= iv.startAbs && c < iv.endAbs) {
+          var remaining = iv.endAbs - c;
+          if (best === null || remaining < best) best = remaining;
+        }
+      }
+    }
+    return best;
+  }
+
+  // Minutes until `win`'s next start (regardless of the 120-minute "soon" threshold).
+  function minutesUntilNextStart(venue, win, dateInTz) {
+    var t = minutesSinceWeekStart(dateInTz);
+    var intervals = resolveWindow(venue, win);
+    var best = null;
+    for (var i = 0; i < intervals.length; i++) {
+      var mins = minutesUntilWrapped(t, intervals[i].startAbs);
+      if (best === null || mins < best) best = mins;
+    }
+    return best;
+  }
+
+  // ---- C4: all-day / not-a-real-time-bound "special" detection ----
+  // A window is "all day" if either (a) its resolved span is >= 5 hours on any
+  // day it runs (e.g. an "11:00-close" deal that happens to span most of the
+  // day), regardless of kind, or (b) it is a `kind: special` window starting
+  // before 14:00 (the common "available all day, every day" capture pattern).
+  // Rule (b) is deliberately gated on kind === 'special': a happy_hour-kind
+  // window starting early in the day (e.g. an 08:00 daily HH) is NOT all-day
+  // by the start rule alone — only a long span makes it so.
+  function isAllDay(venue, win) {
+    var intervals = resolveWindow(venue, win);
+    for (var i = 0; i < intervals.length; i++) {
+      if (intervals[i].endAbs - intervals[i].startAbs >= 300) return true;
+    }
+    if (win.kind === 'special' && parseHM(win.start) < 14 * 60) return true;
+    return false;
+  }
+
+  // ---- C6: neighborhood nearest-centroid fallback ----
+  // Small hand table of Nashville-metro neighborhood centroids, used only to
+  // relabel venues whose neighborhood came from the old free-text heuristic
+  // (see build script). Deterministic and testable; not meant to be precise
+  // to the block/parcel level.
+  var NEIGHBORHOOD_CENTROIDS = [
+    { name: '12 South', lat: 36.1189, lon: -86.7902 },
+    { name: 'The Gulch', lat: 36.1533, lon: -86.7853 },
+    { name: 'Midtown', lat: 36.1500, lon: -86.8000 },
+    { name: 'Downtown/SoBro', lat: 36.1627, lon: -86.7816 },
+    { name: 'Germantown', lat: 36.1751, lon: -86.7908 },
+    { name: 'East Nashville', lat: 36.1751, lon: -86.7539 },
+    { name: 'Wedgewood-Houston', lat: 36.1385, lon: -86.7692 },
+    { name: 'Sylvan Park/Charlotte', lat: 36.1500, lon: -86.8300 },
+    { name: 'Berry Hill', lat: 36.1225, lon: -86.7778 },
+    { name: 'Belle Meade/West', lat: 36.0870, lon: -86.8628 },
+    { name: 'Bellevue', lat: 36.0723, lon: -86.9611 },
+    { name: 'Franklin/Cool Springs', lat: 35.9300, lon: -86.8500 },
+    { name: 'Brentwood', lat: 36.0331, lon: -86.7828 },
+    { name: 'Murfreesboro', lat: 35.8456, lon: -86.3903 },
+    { name: 'Hendersonville', lat: 36.3048, lon: -86.6200 },
+    { name: 'Mt. Juliet', lat: 36.2001, lon: -86.5186 },
+    { name: 'Smyrna', lat: 35.9828, lon: -86.5186 },
+    { name: 'Gallatin', lat: 36.3883, lon: -86.4472 },
+    { name: 'Antioch/Hermitage', lat: 36.1000, lon: -86.6300 },
+  ];
+
+  function haversineMiles(lat1, lon1, lat2, lon2) {
+    var R = 3958.8;
+    var toRad = function (d) { return d * Math.PI / 180; };
+    var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function nearestNeighborhood(lat, lon) {
+    var best = null, bestDist = Infinity;
+    for (var i = 0; i < NEIGHBORHOOD_CENTROIDS.length; i++) {
+      var c = NEIGHBORHOOD_CENTROIDS[i];
+      var d = haversineMiles(lat, lon, c.lat, c.lon);
+      if (d < bestDist) { bestDist = d; best = c.name; }
+    }
+    return best;
+  }
+
+  // ---- C5: WARN-level lint for research prose leaking into deal text ----
+  // Not a schema error: validateVenues still returns [] (pass) when only lint
+  // hits are present. Callers that want a hard failure pass strict:true.
+  var LINT_DEAL_DESC_RE = /\b(source|sources|confirm|confirmed|likely|typo|per |verified|appears|re-check)\b/i;
+  function lintDealDesc(desc) {
+    var reasons = [];
+    if (LINT_DEAL_DESC_RE.test(desc)) reasons.push('research-language');
+    var parens = desc.match(/\(([^)]*)\)/g) || [];
+    if (parens.some(function (p) { return p.length > 40; })) reasons.push('long-parenthetical');
+    if (desc.length > 140) reasons.push('too-long');
+    return reasons;
+  }
+  function lintVenues(data) {
+    var warnings = [];
+    (data.venues || []).forEach(function (v) {
+      (v.windows || []).forEach(function (w, wi) {
+        (w.deals || []).forEach(function (d, di) {
+          var reasons = lintDealDesc(d.desc || '');
+          if (reasons.length) {
+            warnings.push(v.name + '.windows[' + wi + '].deals[' + di + ']: ' + reasons.join(',') + ': "' + d.desc + '"');
+          }
+        });
+      });
+    });
+    return warnings;
   }
 
   function daysBetween(a, b) {
@@ -275,5 +403,13 @@
     windowWarnings: windowWarnings,
     validateVenues: validateVenues,
     minutesSinceWeekStart: minutesSinceWeekStart,
+    minutesUntilEnd: minutesUntilEnd,
+    minutesUntilNextStart: minutesUntilNextStart,
+    isAllDay: isAllDay,
+    haversineMiles: haversineMiles,
+    nearestNeighborhood: nearestNeighborhood,
+    NEIGHBORHOOD_CENTROIDS: NEIGHBORHOOD_CENTROIDS,
+    lintDealDesc: lintDealDesc,
+    lintVenues: lintVenues,
   };
 });

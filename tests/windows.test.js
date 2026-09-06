@@ -6,7 +6,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   resolveWindow, isActive, startsWithin, nextStart, nextStartAcrossVenues,
-  isStale, windowWarnings,
+  isStale, windowWarnings, isAllDay, nearestNeighborhood,
 } = require('../logic.js');
 
 function dt(dayOfWeek, hour, minute, ymd) {
@@ -152,4 +152,45 @@ test('nextStartAcrossVenues picks the earliest future start across ALL venues, i
 test('nextStart returns null for a venue with no windows (verified_no_hh venue)', () => {
   const v = venue({}, []);
   assert.equal(nextStart(v, dt('WED', 10, 0)), null);
+});
+
+// ---- C4: isAllDay ----
+test('isAllDay: resolved span 299 minutes is not all-day, 300 is', () => {
+  const short = win(['WED'], '10:00', '14:59'); // 299 min, start >= 14:00 so rule (b) can't fire anyway
+  const long = win(['WED'], '10:00', '15:00'); // 300 min
+  const v = venue({}, [short, long]);
+  assert.equal(isAllDay(v, short), false, '299 minutes: not all-day');
+  assert.equal(isAllDay(v, long), true, '300 minutes: all-day');
+});
+
+test('isAllDay: kind=special start rule fires at 13:59, not at 14:00 (short span both ways)', () => {
+  const before = win(['WED'], '13:59', '15:59', { kind: 'special' }); // 120 min span, start < 14:00
+  const at = win(['WED'], '14:00', '16:00', { kind: 'special' }); // 120 min span, start === 14:00
+  const v = venue({}, [before, at]);
+  assert.equal(isAllDay(v, before), true, '13:59 start: all-day via start rule');
+  assert.equal(isAllDay(v, at), false, '14:00 start: not all-day (rule is strictly <14:00, span too short)');
+});
+
+test('isAllDay: happy_hour kind at 08:00 with a short span is NOT all-day (start rule is kind-gated)', () => {
+  const w = win(['MON'], '08:00', '10:00', { kind: 'happy_hour' }); // 120 min, start < 14:00 but not `special`
+  const v = venue({}, [w]);
+  assert.equal(isAllDay(v, w), false);
+});
+
+test('nextStartAcrossVenues with excludeAllDay skips an 08:00-close all-day special in favour of a real 16:00 happy hour', () => {
+  const hours = { WED: [['08:00', '21:00']] };
+  const allDaySpecial = venue(hours, [win(['WED'], '08:00', 'close', { kind: 'special' })]); // ~13h span: all-day
+  const realHappyHour = venue(hours, [win(['WED'], '16:00', '18:00', { kind: 'happy_hour' })]);
+  const now = dt('WED', 3, 0);
+  const plain = nextStartAcrossVenues([allDaySpecial, realHappyHour], now);
+  assert.equal(plain.venue, allDaySpecial, 'without excludeAllDay, the earlier 08:00 start wins (documents the bug)');
+  const filtered = nextStartAcrossVenues([allDaySpecial, realHappyHour], now, { excludeAllDay: true });
+  assert.equal(filtered.venue, realHappyHour, 'with excludeAllDay, the all-day special is skipped in favor of the real happy hour');
+  assert.equal(filtered.next.window.kind, 'happy_hour');
+});
+
+// ---- C6: neighborhood nearest-centroid ----
+test('nearestNeighborhood pins known coordinates to their neighborhoods', () => {
+  assert.equal(nearestNeighborhood(36.1535, -86.7853), 'The Gulch', 'Bar Mar coordinates -> The Gulch');
+  assert.equal(nearestNeighborhood(36.1189, -86.7902), '12 South', 'exact 12 South centroid -> 12 South');
 });

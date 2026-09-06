@@ -89,7 +89,16 @@ window: {
 ## Development
 
 ```
-node validate.js venues.json   # schema/semantic check, exits non-zero on failure
-node --test                    # window-resolution logic tests
-python3 -m http.server 8000    # serve locally, then open http://localhost:8000/
+node validate.js venues.json            # schema/semantic check, exits non-zero on failure
+node validate.js venues.json --strict   # same, but also fails on lint warnings (see below)
+node --test                             # window-resolution logic tests
+python3 -m http.server 8000              # serve locally, then open http://localhost:8000/
 ```
+
+`validate.js` also runs a WARN-level lint over every `deal.desc` (research prose or
+source-hedging language leaking into menu text, an overlong parenthetical, or a
+description over 140 chars) and prints hits without failing the build — pass
+`--strict` to make lint hits fail too. A hit isn't automatically wrong: most are
+legitimately long menu-item descriptions (an ingredient list in parentheses); only
+rewrite ones that are actually reviewer commentary (moving it to the window's
+`notes` field instead).
