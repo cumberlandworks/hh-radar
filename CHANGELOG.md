@@ -59,3 +59,10 @@ does not affect window logic.
 `tests/windows.test.js`, `manifest.json`, `icon-192.png`, `icon-512.png`,
 `apple-touch-icon.png`, `README.md`, this file, `data-src/` (provenance from the
 thinking thread + this session's unflagged-brand research).
+
+## 2026-09-05 — BLOCK-hh-radar-build-20260905: v1 shipped
+
+Live at https://cumberlandworks.github.io/hh-radar/. All acceptance criteria in the
+block met (validator, tests, premises P1-P6, mobile viewport, console-error-free,
+same-origin-only network). Full report delivered to TJ in the build session's
+closing message.
