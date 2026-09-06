@@ -1,5 +1,120 @@
 # Changelog
 
+## 2026-09-06 — BLOCK-hh-radar-fix3-20260906: v1.3 (zone/neighborhood filter, map, wide layout)
+
+Per TJ's third-round feedback ("I would like to select and deselect neighborhoods. both
+from a map of Nashville that has colored sections and a list at the top I can see it
+having multiple in the space above and the map should be on the side. visible on both now
+and day grid") and his follow-up ZONE MODEL ruling ("29 neighborhoods seems excessive. I
+have a slight suggestion neighborhoods within zones if that's possible east/west/north/
+south/Gulch/Germantown - open to the best way to break it down"). C1-C6 implemented per
+the block's ZONE MODEL as the top-level control (8 zones, 21 hoods one tap deeper).
+
+- **Canonical hood + zone keys (C1):** every venue now carries `hood` (one of 21 canonical
+  keys) and `zone` (one of 8, derived via `logic.js#zoneOf` so the data file and the zone
+  table can never disagree — `validateVenues` checks `zone === zoneOf(hood)`). Migration
+  script: `data-src/assign_hood_zone.js`, run once against `venues.json`. Measured
+  per-zone counts: downtown 25, gulch 27, north 13, east 12, south 11, west 10,
+  franklin 18, outer 20 (136 total) — close to the block's own reviewer-tally estimates
+  (25/27/13/12/11/8/19/21); the small deltas are expected from an eyeballed estimate vs.
+  the precise C1 mapping rule, not a scope disagreement.
+- **Filter model (C2):** `applyHoodFilter`/`ZONES`/`zoneOf`/`hoodKeys` in logic.js;
+  `state.hoodSelected` (default: all) drives NOW, DAY GRID, the empty-state "next:" line,
+  and the "N venues have nothing on `<day>`" footer identically. Persisted to
+  `localStorage` (`hhradar-hoods`) via `serializeHoodSelection`/`deserializeHoodSelection`
+  — an empty selection is a real "None" state, not reset to all; unknown saved keys are
+  dropped silently.
+- **Chips (C3):** one chip per ZONE (8, always visible, wrapping row, no horizontal
+  scroll at 375px), each with a swatch/label/rolled-up count and a caret that reveals
+  that zone's hood sub-chips. A zone chip is filled when all its hoods are selected,
+  "indeterminate"-styled when some are, and toggles all its hoods at once; sub-chips
+  toggle one hood. Counts are contextual (NOW: live-now; GRID: rows on the selected day).
+- **Map (C4):** inline SVG Voronoi partition (`logic.js#voronoiCells`, Sutherland-Hodgman
+  half-plane clipping, ~equirectangular projection) of the 11 "core" hoods (the
+  downtown/gulch/north/east/south/west zones), colored by zone hue with hood tints;
+  venue dots on top, brighter for live-now venues on the NOW tab. The 10 franklin/outer
+  hoods render as a row of suburb tiles below the map instead of a cell — see the note
+  below on why that split is by zone membership, not the stated bbox. Every cell/tile
+  toggles the same `hoodSelected` set as the chips.
+- **Layout (C5):** `.layout` is a flex row ≥900px (320px sticky sidebar holding the map +
+  suburb tiles, then a content column, container capped at 1180px) and a flex column
+  below 900px (chips, then a "Map" button that opens the same map as an inline panel —
+  not a modal — under the chips). Replaces the old flat 640px-centered column and its
+  blank left half at wide viewports.
+- **v1.3 (C6).**
+
+**Premises verified (measured):** live footer read v1.2 (P1); 29 distinct `neighborhood`
+strings, no `hood` key yet (P1); `NEIGHBORHOOD_CENTROIDS` is 19 `{lat,lon,name}` entries
+(P2, confirmed); body/container max-width was 640px at every viewport (P3, confirmed —
+now replaced by `.layout`/`.sidebar`/`.content`); P4 ("reuse the same try/catch helper")
+was half-right — localStorage access is an inline try/catch *pattern* repeated at each
+call site (priority, grid-sort), not an extracted helper function; the new `hhradar-hoods`
+key follows the same inline pattern rather than inventing a helper that didn't exist.
+
+**Adaptations and things the block got wrong, called out rather than silently fixed:**
+- **Dickson/Lewisburg never actually reachable by C1's literal rule.** The two venues at
+  the block's named outlier coordinates ("Just Love Coffee - Dickson", "The Coffee House
+  Lewisburg") already have a `neighborhood` field that exactly equals an *existing*
+  centroid name ("Bellevue" and "Franklin/Cool Springs" respectively — an artifact of the
+  original nearestNeighborhood fallback, which had no better option before these two
+  towns had their own keys). C1's mapping rule checks "neighborhood equals a centroid
+  name" before "anything unmapped → nearestNeighborhood + WARN", so applied literally,
+  hood="Dickson"/"Lewisburg" would never be assigned to any venue at all. Added an
+  explicit override by venue id (`ik-11286`, `ik-19233`) checked first — matching what
+  the block clearly intended (it named these two exact coordinates) — documented in
+  `data-src/assign_hood_zone.js`.
+- **The core/suburb map split is by zone membership, not the stated bbox.** C4's bbox
+  (lat 36.03-36.26) does not actually exclude Brentwood's centroid (36.0331) — it falls
+  ~0.003° inside the box despite "Franklin & Brentwood" being one of the two zones the
+  ZONE MODEL clearly intends as suburbs (paired with Franklin/Cool Springs, itself at lat
+  35.93, well outside). Using raw bbox-containment would have split one zone's hoods
+  across map-cell and suburb-tile treatment, breaking C4's own "every cell/tile toggles
+  the matching chip" parity. Core = the 11 hoods in the downtown/gulch/north/east/south/
+  west zones; suburb = the 10 hoods in franklin/outer. This is a `CORE_ZONE_KEYS`
+  constant in logic.js, not a bbox test.
+- **Thin-hood/thick-zone cell borders were simplified to uniform thin borders.**
+  Computing true zone-boundary strokes needs polygon-union math across each zone's
+  hoods, well beyond `voronoiCells`' ~60-line scope (and its Sutherland-Hodgman output
+  doesn't retain which neighbor bounds which edge). Zone identity is conveyed by hue +
+  per-hood tint alone; the river hint (explicitly optional in C4) is also omitted.
+- **All/None live in the chip toolbar, not only inside the wide sidebar.** C5 describes
+  the sidebar as containing "the map + suburb tiles + All/None"; putting the controls
+  only there would hide them below the chips on narrow layouts unless the map drawer is
+  open. Kept one instance, in the toolbar above the chips, visible at every viewport size.
+- **'Downtown' (bare, no parenthetical) wasn't literally in C1's alias table** (only
+  "Downtown (Fifth + Broadway)", "SoBro", and "SoBro / Pie Town" were). Its one venue
+  (Brugada Kitchen & Bar) went through the nearestNeighborhood+WARN fallback rather than
+  a silent alias addition — it resolves to Downtown/SoBro anyway (see the one lint
+  warning `assign_hood_zone.js` prints).
+- **Empty-state message improved, not in the block:** when the hood filter (not the
+  clock) is why NOW shows nothing, the empty state now says so ("No happy hours match
+  your selected neighborhoods...") instead of the pre-existing "No happy hours found in
+  this dataset" line, which would have been actively misleading once a hood filter could
+  cause a legitimate empty result.
+
+**hood-vs-geometric-cell disagreement list (C4 cross-check, 4 of 98 core-hood venues):**
+Chauhan Ale & Masala House (hand-set The Gulch, geometric cell Downtown/SoBro), City
+Winery - Nashville (hand-set Downtown/SoBro, geometric cell The Gulch), JINYA Ramen Bar -
+Nashville (hand-set The Gulch, geometric cell Downtown/SoBro), The Detroit Cowboy
+(hand-set The Gulch, geometric cell Downtown/SoBro). All four sit exactly on the
+Gulch/Downtown boundary, which real Nashvillians treat as blurry too; hand-set values were
+left unchanged per the block's own instruction. Separately, the geometric cell agreed with
+the existing haversine-based `nearestNeighborhood` for all 98/98 core-hood venues (0
+disagreements) — the equirectangular projection isn't introducing distortion at this scale.
+
+**Verified:** `node --test` 38/38 passing (14 new: hoodKeys/zoneOf/isCoreHood, applyHoodFilter
+toggle/all/none, selection (de)serialize round-trip/unknown-key/empty-is-none/corrupt-input,
+voronoiCells centroid-inside-own-cell/tiles-the-bbox-within-0.1%/every-real-core-venue-inside-
+some-cell). `node validate.js` — 0 errors, same pre-existing lint warnings as v1.2, plus the
+one new "Downtown" hood-fallback WARN from the migration script (expected, see above).
+Verified live in a local static-server preview (375px and 1280px, `?now=` overrides):
+chip/map/tile selection stays in sync in both directions; deselecting The Gulch on the map
+removes JINYA, Chauhan, and Detroit Cowboy (and 7 more Gulch venues) from LIVE NOW and their
+grid rows alike; the day-grid footer note recomputes off the filtered count (106 after
+deselecting West + Outer suburbs, not the full 136); the sidebar stays sticky through a
+2000px scroll at 1280px with no blank left half; no horizontal scroll at 375px with the map
+drawer open; zero console errors in either layout.
+
 ## 2026-09-06 — BLOCK-hh-radar-fix2-20260906: v1.2 (card interaction, source button, isAllDay scope)
 
 Per TJ's second-round feedback ("there should be an easy way to get to the link to the

@@ -7,7 +7,12 @@ const assert = require('node:assert/strict');
 const {
   resolveWindow, isActive, startsWithin, nextStart, nextStartAcrossVenues,
   isStale, windowWarnings, isAllDay, nearestNeighborhood, bestSourceUrl,
+  ZONES, hoodKeys, zoneOf, isCoreHood, applyHoodFilter,
+  serializeHoodSelection, deserializeHoodSelection,
+  projectLatLon, polygonArea, pointInPolygon, voronoiCells,
+  CORE_MAP_BBOX, coreHoodCentroids,
 } = require('../logic.js');
+const path = require('node:path');
 
 function dt(dayOfWeek, hour, minute, ymd) {
   ymd = ymd || { year: 2026, month: 9, day: 8 }; // an arbitrary Tuesday; irrelevant to wall-clock math
@@ -230,4 +235,131 @@ test('bestSourceUrl: falls back to inkind_url when there is no official_site and
 test('nearestNeighborhood pins known coordinates to their neighborhoods', () => {
   assert.equal(nearestNeighborhood(36.1535, -86.7853), 'The Gulch', 'Bar Mar coordinates -> The Gulch');
   assert.equal(nearestNeighborhood(36.1189, -86.7902), '12 South', 'exact 12 South centroid -> 12 South');
+});
+
+// ---- ZONE model (v1.3): hoodKeys / zoneOf / isCoreHood ----
+test('hoodKeys returns exactly 21 keys in the C3-specified chip order', () => {
+  const keys = hoodKeys();
+  assert.equal(keys.length, 21);
+  assert.deepEqual(keys, [
+    'Downtown/SoBro', 'The Gulch', 'Midtown', 'Germantown', 'East Nashville',
+    '12 South', 'Wedgewood-Houston', 'Berry Hill', 'Sylvan Park/Charlotte',
+    'Belle Meade / West Nashville', 'Bellevue',
+    'Brentwood', 'Franklin/Cool Springs', 'Antioch/Hermitage', 'Smyrna',
+    'Murfreesboro', 'Mt. Juliet', 'Hendersonville', 'Gallatin', 'Dickson', 'Lewisburg',
+  ]);
+});
+
+test('ZONES has 8 zones and every hood belongs to exactly one', () => {
+  assert.equal(ZONES.length, 8);
+  const seen = new Set();
+  ZONES.forEach((z) => z.hoods.forEach((h) => {
+    assert.equal(seen.has(h), false, h + ' appears in more than one zone');
+    seen.add(h);
+  }));
+  assert.equal(seen.size, 21);
+});
+
+test('zoneOf maps every hood to its zone and returns null for an unknown key', () => {
+  assert.equal(zoneOf('The Gulch'), 'gulch');
+  assert.equal(zoneOf('Dickson'), 'outer');
+  assert.equal(zoneOf('Belle Meade / West Nashville'), 'west');
+  assert.equal(zoneOf('not-a-real-hood'), null);
+});
+
+test('isCoreHood: downtown/gulch/north/east/south/west hoods are core; franklin/outer are not', () => {
+  assert.equal(isCoreHood('The Gulch'), true);
+  assert.equal(isCoreHood('Bellevue'), true);
+  assert.equal(isCoreHood('Franklin/Cool Springs'), false);
+  assert.equal(isCoreHood('Dickson'), false);
+});
+
+// ---- C2 (v1.3): applyHoodFilter + selection (de)serialization ----
+function venueWithHood(hood) { return { id: 'x', hood: hood }; }
+
+test('applyHoodFilter: toggle a hood out removes only that hood\'s venues', () => {
+  const venues = [venueWithHood('The Gulch'), venueWithHood('12 South'), venueWithHood('The Gulch')];
+  const selected = new Set(hoodKeys());
+  selected.delete('The Gulch');
+  const result = applyHoodFilter(venues, { selected });
+  assert.deepEqual(result, [venueWithHood('12 South')]);
+});
+
+test('applyHoodFilter: "All" (every key selected) returns every venue', () => {
+  const venues = [venueWithHood('The Gulch'), venueWithHood('Dickson')];
+  const result = applyHoodFilter(venues, { selected: new Set(hoodKeys()) });
+  assert.equal(result.length, 2);
+});
+
+test('applyHoodFilter: "None" (empty Set) returns no venues -- an empty selection is not "unset"', () => {
+  const venues = [venueWithHood('The Gulch'), venueWithHood('Dickson')];
+  const result = applyHoodFilter(venues, { selected: new Set() });
+  assert.deepEqual(result, []);
+});
+
+test('deserializeHoodSelection: round-trips a saved selection', () => {
+  const original = new Set(['The Gulch', 'Midtown']);
+  const raw = JSON.parse(JSON.stringify(serializeHoodSelection(original)));
+  const restored = deserializeHoodSelection(raw, hoodKeys());
+  assert.deepEqual(Array.from(restored).sort(), ['Midtown', 'The Gulch']);
+});
+
+test('deserializeHoodSelection: silently drops unknown keys instead of resetting to all', () => {
+  const restored = deserializeHoodSelection(['The Gulch', 'Atlantis', 'Midtown'], hoodKeys());
+  assert.deepEqual(Array.from(restored).sort(), ['Midtown', 'The Gulch']);
+});
+
+test('deserializeHoodSelection: an empty array is a legitimate "none" state, not reset to all', () => {
+  const restored = deserializeHoodSelection([], hoodKeys());
+  assert.deepEqual(Array.from(restored), []);
+});
+
+test('deserializeHoodSelection: missing/corrupt storage (non-array) returns null so the caller defaults to "all"', () => {
+  assert.equal(deserializeHoodSelection(null, hoodKeys()), null);
+  assert.equal(deserializeHoodSelection('The Gulch', hoodKeys()), null);
+});
+
+// ---- C4 (v1.3): voronoiCells geometry ----
+const meanLatRad = (CORE_MAP_BBOX.minLat + CORE_MAP_BBOX.maxLat) / 2 * Math.PI / 180;
+const bboxProjected = {
+  minX: CORE_MAP_BBOX.minLon * Math.cos(meanLatRad), maxX: CORE_MAP_BBOX.maxLon * Math.cos(meanLatRad),
+  minY: CORE_MAP_BBOX.minLat, maxY: CORE_MAP_BBOX.maxLat,
+};
+function projectedCorePoints() {
+  return coreHoodCentroids().map((c) => {
+    const [x, y] = projectLatLon(c.lat, c.lon, meanLatRad);
+    return { key: c.hood, x, y };
+  });
+}
+
+test('voronoiCells: each core centroid lies strictly inside its own cell', () => {
+  const points = projectedCorePoints();
+  const cells = voronoiCells(points, bboxProjected);
+  points.forEach((p) => {
+    const cell = cells.find((c) => c.key === p.key);
+    assert.ok(cell.polygon.length >= 3, p.key + ': cell must be a real polygon');
+    assert.equal(pointInPolygon([p.x, p.y], cell.polygon), true, p.key + ': centroid not inside its own cell');
+  });
+});
+
+test('voronoiCells: cells tile the bbox (sum of areas = bbox area, within 0.1%)', () => {
+  const points = projectedCorePoints();
+  const cells = voronoiCells(points, bboxProjected);
+  const sumArea = cells.reduce((n, c) => n + polygonArea(c.polygon), 0);
+  const bboxArea = (bboxProjected.maxX - bboxProjected.minX) * (bboxProjected.maxY - bboxProjected.minY);
+  const pctDiff = Math.abs(sumArea - bboxArea) / bboxArea * 100;
+  assert.ok(pctDiff < 0.1, 'cells cover ' + sumArea.toFixed(6) + ' vs bbox ' + bboxArea.toFixed(6) + ' (' + pctDiff.toFixed(4) + '% off)');
+});
+
+test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell (no gaps in real data)', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const points = projectedCorePoints();
+  const cells = voronoiCells(points, bboxProjected);
+  const coreVenues = venues.filter((v) => isCoreHood(v.hood));
+  assert.ok(coreVenues.length > 0);
+  coreVenues.forEach((v) => {
+    const [x, y] = projectLatLon(v.lat, v.lon, meanLatRad);
+    const containingCell = cells.find((c) => pointInPolygon([x, y], c.polygon));
+    assert.ok(containingCell, v.name + ' (' + v.hood + ') at ' + v.lat + ',' + v.lon + ' falls outside every Voronoi cell');
+  });
 });

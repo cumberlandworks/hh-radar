@@ -55,7 +55,53 @@
   .toggle button { padding: 6px 12px; background: var(--panel); color: var(--text-dim); border: none; }
   .toggle button.active { background: var(--amber); color: #1a1200; font-weight: 700; }
   .note { font-size: 12px; color: var(--text-dim); padding: 6px 16px 0; }
+
+  /* ---- ZONE/HOOD filter (v1.3): chip row (C3) ---- */
+  .hood-toolbar { padding: 10px 16px 0; }
+  .hood-controls { display: flex; gap: 8px; margin-bottom: 8px; }
+  .hood-controls button { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); color: var(--text-dim); font-size: 11.5px; font-weight: 600; }
+  .hood-controls button.map-toggle-btn { margin-left: auto; }
+  .hood-controls button.map-toggle-btn.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
+  .hood-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .zone-chip-wrap { display: flex; flex-direction: column; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 6px 5px 8px; border-radius: 999px; border: 1.5px solid var(--chip-color, var(--border)); background: var(--panel); font-size: 11.5px; font-weight: 600; color: var(--text); max-width: 100%; }
+  .chip .swatch { width: 9px; height: 9px; border-radius: 50%; background: var(--chip-color, var(--border)); flex-shrink: 0; }
+  .chip .count { color: var(--text-dim); font-weight: 500; }
+  .chip.selected { background: var(--chip-color, var(--amber)); border-color: var(--chip-color, var(--amber)); color: #fff; }
+  .chip.selected .count { color: rgba(255,255,255,0.85); }
+  .chip.indeterminate { background: color-mix(in srgb, var(--chip-color, var(--amber)) 22%, var(--panel)); }
+  .chip .caret { border: none; background: transparent; color: inherit; font-size: 10px; padding: 0 2px; margin-left: 2px; opacity: 0.75; }
+  .hood-subchips { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 2px 14px; }
+  .hood-subchips .chip { font-size: 11px; padding: 4px 8px; }
+
+  /* ---- Layout (v1.3 C5): sidebar on wide screens, drawer on phones ---- */
+  .layout { display: flex; flex-direction: column; max-width: 1180px; margin: 0 auto; }
+  .sidebar { display: none; padding: 10px 16px 4px; }
+  .sidebar.open { display: block; }
+  .content { min-width: 0; }
   main { padding: 12px 16px 24px; max-width: 640px; margin: 0 auto; }
+  @media (min-width: 900px) {
+    .layout { flex-direction: row; align-items: flex-start; gap: 12px; padding: 0 16px; }
+    .sidebar { display: block !important; width: 320px; flex-shrink: 0; position: sticky; top: var(--header-h); padding: 10px 0 4px; }
+    .content { flex: 1 1 auto; }
+    .content main { max-width: 720px; margin: 0; padding-left: 0; padding-right: 0; }
+    .hood-controls .map-toggle-btn { display: none; }
+  }
+
+  /* ---- Map (v1.3 C4): inline SVG Voronoi + suburb tiles ---- */
+  .map-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 10px; }
+  .map-svg { width: 100%; height: auto; display: block; }
+  .map-svg a.cell { cursor: pointer; }
+  .map-svg .cell-fill { stroke: var(--border); stroke-width: 1; }
+  .map-svg .cell-label { font-size: 6.5px; font-weight: 700; fill: var(--text); pointer-events: none; text-anchor: middle; }
+  .map-svg .venue-dot { fill: var(--text-dim); opacity: 0.55; }
+  .map-svg .venue-dot.live { fill: var(--amber-strong); opacity: 0.95; }
+  .suburb-tiles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tile { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 10px; border: 1.5px solid var(--tile-color, var(--border)); background: var(--panel); font-size: 11px; font-weight: 600; color: var(--text); }
+  .tile .swatch { width: 9px; height: 9px; border-radius: 3px; background: var(--tile-color, var(--border)); flex-shrink: 0; }
+  .tile.selected { background: var(--tile-color, var(--amber)); border-color: var(--tile-color, var(--amber)); color: #fff; }
+  .tile .count { color: var(--text-dim); font-weight: 500; }
+  .tile.selected .count { color: rgba(255,255,255,0.85); }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
@@ -145,23 +191,40 @@
     <button id="btn-drink">🍹 Drink-first</button>
   </div>
 </div>
+
+<div class="hood-toolbar">
+  <div class="hood-controls">
+    <button id="hood-all">All</button>
+    <button id="hood-none">None</button>
+    <button id="map-toggle-btn" class="map-toggle-btn" aria-pressed="false" aria-controls="sidebar">Map</button>
+  </div>
+  <div class="hood-chips" id="hood-chips" role="group" aria-label="Filter by neighborhood"></div>
+</div>
+
 <div class="note" id="geo-note"></div>
 
 <div id="fatal"></div>
 
-<main id="view-now"></main>
-<main id="view-grid" style="display:none">
-  <div class="grid-sticky" id="grid-sticky">
-    <div class="day-select" id="day-select"></div>
-    <div class="sort-select" id="sort-select"></div>
-    <div class="note" id="grid-sort-note"></div>
+<div class="layout" id="layout">
+  <aside class="sidebar" id="sidebar">
+    <div id="map-panel"></div>
+  </aside>
+  <div class="content" id="content">
+    <main id="view-now"></main>
+    <main id="view-grid" style="display:none">
+      <div class="grid-sticky" id="grid-sticky">
+        <div class="day-select" id="day-select"></div>
+        <div class="sort-select" id="sort-select"></div>
+        <div class="note" id="grid-sort-note"></div>
+      </div>
+      <div class="grid-header" id="grid-header"></div>
+      <div id="grid-wrap">
+        <div class="grid-inner" id="grid-inner"></div>
+      </div>
+      <div class="note" id="grid-note"></div>
+    </main>
   </div>
-  <div class="grid-header" id="grid-header"></div>
-  <div id="grid-wrap">
-    <div class="grid-inner" id="grid-inner"></div>
-  </div>
-  <div class="note" id="grid-note"></div>
-</main>
+</div>
 
 <footer id="footer"></footer>
 
@@ -170,12 +233,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.2"></script>
+<script src="logic.js?v=1.3"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.2';
+  var APP_VERSION = 'v1.3';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -221,6 +284,9 @@
     gridSort: 'time', // 'time' | 'distance' | 'name'
     gridRowOpen: new Set(), // venue.id set: which Day Grid rows show their inline card(s)
     expandedCards: new Set(), // cardKey set: which cards (NOW or Grid) are expanded
+    hoodSelected: new Set(L.hoodKeys()), // ZONE/HOOD filter (v1.3 C2): default = all
+    expandedZones: new Set(), // zone keys whose hood sub-chips are shown
+    currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
   };
 
   try {
@@ -231,6 +297,11 @@
     var savedSort = localStorage.getItem('hhradar-gridsort');
     if (GRID_SORT_OPTIONS.indexOf(savedSort) !== -1) state.gridSort = savedSort;
   } catch (e) { /* localStorage unavailable — default stands */ }
+  try {
+    var savedHoods = JSON.parse(localStorage.getItem('hhradar-hoods'));
+    var restoredHoods = L.deserializeHoodSelection(savedHoods, L.hoodKeys());
+    if (restoredHoods) state.hoodSelected = restoredHoods;
+  } catch (e) { /* localStorage unavailable or corrupt — default (all) stands */ }
 
   function fmtHM(hm) {
     var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
@@ -354,6 +425,15 @@
       '</div>';
   }
 
+  // ---------- ZONE/HOOD filter (v1.3 C2): applies to NOW, GRID, empty-state, footer ----------
+  function filteredVenues() {
+    return L.applyHoodFilter(state.venues, { selected: state.hoodSelected });
+  }
+
+  function isVenueLiveNow(venue) {
+    return venue.windows.some(function (w) { return L.isActive(venue, w, state.now); });
+  }
+
   function distanceLabel(venue) {
     if (!state.geo) return '';
     var d = L.haversineMiles(state.geo.lat, state.geo.lon, venue.lat, venue.lon);
@@ -371,7 +451,7 @@
   // ---------- NOW view (C3: Live now / Starting soon / All-day specials) ----------
   function buildNowSections() {
     var live = [], soon = [], allDay = [];
-    state.venues.forEach(function (venue) {
+    filteredVenues().forEach(function (venue) {
       venue.windows.forEach(function (win) {
         var allDayWin = L.isAllDay(venue, win);
         if (L.isActive(venue, win, state.now)) {
@@ -416,12 +496,14 @@
     var sections = buildNowSections();
     var total = sections.live.length + sections.soon.length + sections.allDay.length;
     if (total === 0) {
-      var eligible = state.venues.filter(function (v) { return v.windows.length > 0; });
+      var eligible = filteredVenues().filter(function (v) { return v.windows.length > 0; });
       var best = L.nextStartAcrossVenues(eligible, state.now, { excludeAllDay: true });
       var msg;
       if (best) {
         msg = 'No happy hours right now — next: <b>' + escapeHtml(best.venue.name) + '</b> at ' +
           fmtHM(best.next.start) + ' (' + DAY_FULL[best.next.day] + ')';
+      } else if (state.hoodSelected.size < L.hoodKeys().length) {
+        msg = 'No happy hours match your selected neighborhoods. Try selecting more on the map or chip list.';
       } else {
         msg = 'No happy hours found in this dataset.';
       }
@@ -450,6 +532,8 @@
         state.day = btn.getAttribute('data-day');
         renderDaySelect();
         renderGrid();
+        renderHoodChips();
+        renderMap();
       });
     });
   }
@@ -544,11 +628,12 @@
     var isToday = day === state.now.dayOfWeek;
     var showNowLine = isToday && nowPos >= GRID_START && nowPos <= GRID_END;
 
-    var candidates = state.venues.map(function (venue) {
+    var visibleVenues = filteredVenues();
+    var candidates = visibleVenues.map(function (venue) {
       return { venue: venue, items: dayIntervalsForVenue(venue, day) };
     }).filter(function (r) { return r.items.length > 0; });
 
-    var hiddenCount = state.venues.length - candidates.length;
+    var hiddenCount = visibleVenues.length - candidates.length;
 
     if (state.gridSort === 'name') {
       candidates.sort(function (a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); });
@@ -624,6 +709,226 @@
     if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
     if (gridSticky) document.documentElement.style.setProperty('--gridsticky-h', gridSticky.offsetHeight + 'px');
   }
+
+  // ---------- ZONE/HOOD chips + map (v1.3 C3/C4/C5) ----------
+  // One hue per zone; hoods within a multi-hood zone get lighter/darker tints of
+  // that same hue (C4: "hoods as lighter/darker tints" of the zone's hue).
+  function zoneForHood(hood) {
+    for (var i = 0; i < L.ZONES.length; i++) {
+      if (L.ZONES[i].hoods.indexOf(hood) !== -1) return L.ZONES[i];
+    }
+    return null;
+  }
+  function hoodColor(hood) {
+    var zone = zoneForHood(hood);
+    if (!zone) return 'hsl(0,0%,60%)';
+    var idx = zone.hoods.indexOf(hood);
+    return 'hsl(' + zone.hue + ',58%,' + (46 + (idx % 3) * 10) + '%)';
+  }
+  var HOOD_SHORT_LABELS = {
+    'Downtown/SoBro': 'Downtown', 'Sylvan Park/Charlotte': 'Sylvan Park',
+    'Belle Meade / West Nashville': 'Belle Meade', 'Wedgewood-Houston': 'WeHo', 'East Nashville': 'East Nash.',
+  };
+  function shortHoodLabel(hood) { return HOOD_SHORT_LABELS[hood] || hood; }
+
+  var HOOD_TOTALS = null; // per-hood venue count across the WHOLE dataset (C3: hoods with 0 aren't rendered)
+  function computeHoodTotals() {
+    HOOD_TOTALS = {};
+    L.hoodKeys().forEach(function (h) { HOOD_TOTALS[h] = 0; });
+    state.venues.forEach(function (v) { HOOD_TOTALS[v.hood] = (HOOD_TOTALS[v.hood] || 0) + 1; });
+  }
+
+  // NOW: live-now count per hood. GRID: rows-on-selected-day count per hood.
+  // Always computed against ALL venues (not hood-filtered) so deselecting one
+  // hood doesn't change the numbers shown on every OTHER chip.
+  function hoodCounts() {
+    var counts = {};
+    L.hoodKeys().forEach(function (h) { counts[h] = 0; });
+    state.venues.forEach(function (v) {
+      var counts_here = state.currentTab === 'grid'
+        ? dayIntervalsForVenue(v, state.day).length > 0
+        : isVenueLiveNow(v);
+      if (counts_here) counts[v.hood] = (counts[v.hood] || 0) + 1;
+    });
+    return counts;
+  }
+
+  function renderHoodChips() {
+    var el = document.getElementById('hood-chips');
+    var counts = hoodCounts();
+    var html = '';
+    L.ZONES.forEach(function (zone) {
+      var visibleHoods = zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
+      if (!visibleHoods.length) return;
+      var selectedCount = visibleHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
+      var allSel = selectedCount === visibleHoods.length;
+      var noneSel = selectedCount === 0;
+      var zoneCount = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
+      var cls = 'chip' + (allSel ? ' selected' : (noneSel ? '' : ' indeterminate'));
+      var expanded = state.expandedZones.has(zone.key);
+      html += '<div class="zone-chip-wrap">' +
+        '<div class="' + cls + '" style="--chip-color:hsl(' + zone.hue + ',58%,46%)" role="button" tabindex="0" aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
+          '<span class="swatch"></span>' + escapeHtml(zone.label) + ' <span class="count">' + zoneCount + '</span>' +
+          (visibleHoods.length > 1
+            ? '<button type="button" class="caret" data-caret-zone="' + escapeHtml(zone.key) + '" aria-label="Show ' + escapeHtml(zone.label) + ' neighborhoods" aria-expanded="' + expanded + '">' + (expanded ? '▾' : '▸') + '</button>'
+            : '') +
+        '</div>' +
+        (expanded && visibleHoods.length > 1
+          ? '<div class="hood-subchips">' + visibleHoods.map(function (h) {
+              var sel = state.hoodSelected.has(h);
+              return '<button type="button" class="chip' + (sel ? ' selected' : '') + '" style="--chip-color:' + hoodColor(h) + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(h) + '">' +
+                '<span class="swatch"></span>' + escapeHtml(h) + ' <span class="count">' + (counts[h] || 0) + '</span></button>';
+            }).join('') + '</div>'
+          : '') +
+        '</div>';
+    });
+    el.innerHTML = html;
+  }
+
+  // ---- map geometry (static; computed once) ----
+  var MAP_MEAN_LAT_RAD = (L.CORE_MAP_BBOX.minLat + L.CORE_MAP_BBOX.maxLat) / 2 * Math.PI / 180;
+  var MAP_BBOX_PROJECTED = {
+    minX: L.CORE_MAP_BBOX.minLon * Math.cos(MAP_MEAN_LAT_RAD), maxX: L.CORE_MAP_BBOX.maxLon * Math.cos(MAP_MEAN_LAT_RAD),
+    minY: L.CORE_MAP_BBOX.minLat, maxY: L.CORE_MAP_BBOX.maxLat,
+  };
+  var MAP_W = 320;
+  var MAP_H = MAP_W / ((MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY));
+
+  function svgPoint(lat, lon) {
+    var xy = L.projectLatLon(lat, lon, MAP_MEAN_LAT_RAD);
+    return [
+      (xy[0] - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) * MAP_W,
+      (MAP_BBOX_PROJECTED.maxY - xy[1]) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY) * MAP_H, // flip: SVG y grows downward
+    ];
+  }
+
+  var CORE_CELLS = null; // static geometry; computed once venues are loaded
+  function buildCoreCells() {
+    var points = L.coreHoodCentroids().map(function (c) {
+      var xy = L.projectLatLon(c.lat, c.lon, MAP_MEAN_LAT_RAD);
+      return { key: c.hood, x: xy[0], y: xy[1], lat: c.lat, lon: c.lon };
+    });
+    var cells = L.voronoiCells(points, MAP_BBOX_PROJECTED);
+    return cells.map(function (c) {
+      var centroid = points.filter(function (p) { return p.key === c.key; })[0];
+      var svgPoly = c.polygon.map(function (pt) {
+        return [
+          (pt[0] - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) * MAP_W,
+          (MAP_BBOX_PROJECTED.maxY - pt[1]) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY) * MAP_H,
+        ];
+      });
+      var labelXy = svgPoint(centroid.lat, centroid.lon);
+      return { hood: c.key, points: svgPoly, labelX: labelXy[0], labelY: labelXy[1] };
+    });
+  }
+
+  // C4: map renders as inline SVG Voronoi cells (core zones) + a row of suburb
+  // tiles (franklin/outer zones -- true exurbs, not given a cell; see logic.js
+  // CORE_ZONE_KEYS comment for why this is a zone-membership choice, not a raw
+  // bbox-containment test). Every cell/tile toggles the same `state.hoodSelected`
+  // as the chips (C2) -- map, tiles, and chips are three views onto one Set.
+  function renderMap() {
+    if (!CORE_CELLS) CORE_CELLS = buildCoreCells();
+    var counts = hoodCounts();
+    var cellsHtml = CORE_CELLS.map(function (cell) {
+      var sel = state.hoodSelected.has(cell.hood);
+      var d = 'M' + cell.points.map(function (p) { return p[0].toFixed(2) + ',' + p[1].toFixed(2); }).join('L') + 'Z';
+      return '<a class="cell" tabindex="0" role="button" aria-pressed="' + sel + '" aria-label="' + escapeHtml(cell.hood) + ' (' + (counts[cell.hood] || 0) + ')" data-hood="' + escapeHtml(cell.hood) + '">' +
+          '<path class="cell-fill" d="' + d + '" fill="' + hoodColor(cell.hood) + '" fill-opacity="' + (sel ? 0.35 : 0.08) + '"></path>' +
+          '<text class="cell-label" x="' + cell.labelX.toFixed(1) + '" y="' + cell.labelY.toFixed(1) + '">' + escapeHtml(shortHoodLabel(cell.hood)) + '</text>' +
+        '</a>';
+    }).join('');
+
+    var dotsHtml = filteredVenues().filter(function (v) { return L.isCoreHood(v.hood); }).map(function (v) {
+      var xy = svgPoint(v.lat, v.lon);
+      var live = state.currentTab === 'now' && isVenueLiveNow(v);
+      return '<circle class="venue-dot' + (live ? ' live' : '') + '" cx="' + xy[0].toFixed(1) + '" cy="' + xy[1].toFixed(1) + '" r="' + (live ? 2.6 : 1.5) + '"></circle>';
+    }).join('');
+
+    var svg = '<svg class="map-svg" viewBox="0 0 ' + MAP_W.toFixed(1) + ' ' + MAP_H.toFixed(1) + '" role="group" aria-label="Nashville core neighborhood map">' + cellsHtml + dotsHtml + '</svg>';
+
+    var suburbHoods = [];
+    L.ZONES.forEach(function (z) {
+      if (L.CORE_ZONE_KEYS.indexOf(z.key) === -1) {
+        z.hoods.forEach(function (h) { if (HOOD_TOTALS[h] > 0) suburbHoods.push(h); });
+      }
+    });
+    var tilesHtml = suburbHoods.map(function (h) {
+      var sel = state.hoodSelected.has(h);
+      return '<button type="button" class="tile' + (sel ? ' selected' : '') + '" style="--tile-color:' + hoodColor(h) + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(h) + '">' +
+        '<span class="swatch"></span>' + escapeHtml(h) + ' <span class="count">' + (counts[h] || 0) + '</span></button>';
+    }).join('');
+
+    document.getElementById('map-panel').innerHTML = '<div class="map-wrap">' + svg + '<div class="suburb-tiles">' + tilesHtml + '</div></div>';
+  }
+
+  function onHoodSelectionChanged() {
+    try { localStorage.setItem('hhradar-hoods', JSON.stringify(L.serializeHoodSelection(state.hoodSelected))); } catch (e) { /* per-viewer convenience only */ }
+    renderHoodChips();
+    renderMap();
+    renderNow();
+    renderGridIfVisible();
+  }
+
+  document.getElementById('hood-all').addEventListener('click', function () {
+    state.hoodSelected = new Set(L.hoodKeys());
+    onHoodSelectionChanged();
+  });
+  document.getElementById('hood-none').addEventListener('click', function () {
+    state.hoodSelected = new Set();
+    onHoodSelectionChanged();
+  });
+  document.getElementById('map-toggle-btn').addEventListener('click', function () {
+    var open = document.getElementById('sidebar').classList.toggle('open');
+    this.classList.toggle('active', open);
+    this.setAttribute('aria-pressed', open ? 'true' : 'false');
+  });
+
+  document.getElementById('hood-chips').addEventListener('click', function (e) {
+    var caret = e.target.closest('[data-caret-zone]');
+    if (caret) {
+      toggleSetMember(state.expandedZones, caret.getAttribute('data-caret-zone'));
+      renderHoodChips();
+      return;
+    }
+    var hoodChip = e.target.closest('[data-hood]');
+    if (hoodChip) {
+      toggleSetMember(state.hoodSelected, hoodChip.getAttribute('data-hood'));
+      onHoodSelectionChanged();
+      return;
+    }
+    var zoneChip = e.target.closest('[data-zone]');
+    if (zoneChip) {
+      var zone = L.ZONES.filter(function (z) { return z.key === zoneChip.getAttribute('data-zone'); })[0];
+      var visibleHoods = zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
+      var allSel = visibleHoods.every(function (h) { return state.hoodSelected.has(h); });
+      visibleHoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
+      onHoodSelectionChanged();
+    }
+  });
+  document.getElementById('hood-chips').addEventListener('keydown', function (e) {
+    if (!isEnterOrSpace(e)) return;
+    var zoneChip = e.target.closest('.chip[data-zone]');
+    if (!zoneChip || e.target !== zoneChip) return; // caret + hood sub-chips are real <button>s (native Enter/Space)
+    e.preventDefault();
+    zoneChip.click();
+  });
+
+  document.getElementById('map-panel').addEventListener('click', function (e) {
+    var target = e.target.closest('[data-hood]');
+    if (!target) return;
+    e.preventDefault();
+    toggleSetMember(state.hoodSelected, target.getAttribute('data-hood'));
+    onHoodSelectionChanged();
+  });
+  document.getElementById('map-panel').addEventListener('keydown', function (e) {
+    if (!isEnterOrSpace(e)) return;
+    var target = e.target.closest('[data-hood]');
+    if (!target) return;
+    e.preventDefault();
+    toggleSetMember(state.hoodSelected, target.getAttribute('data-hood'));
+    onHoodSelectionChanged();
+  });
 
   // ---------- C3: whole-card toggle (click or Enter/Space); grid rows open/close ----------
   // Interactive descendants (the C1 action buttons, the provenance "more" <details>)
@@ -706,11 +1011,14 @@
 
   // ---------- tabs + toggle wiring ----------
   function showTab(tab) {
+    state.currentTab = tab;
     document.getElementById('tab-now').classList.toggle('active', tab === 'now');
     document.getElementById('tab-grid').classList.toggle('active', tab === 'grid');
     document.getElementById('view-now').style.display = tab === 'now' ? '' : 'none';
     document.getElementById('view-grid').style.display = tab === 'grid' ? '' : 'none';
     if (tab === 'grid') { updateStickyOffsets(); renderGrid(); }
+    renderHoodChips();
+    renderMap();
   }
   document.getElementById('tab-now').addEventListener('click', function () { showTab('now'); });
   document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); });
@@ -755,10 +1063,13 @@
       state.venues.length + ' venues · ' + state.venues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
       escapeHtml(APP_VERSION) + ' · <a href="README.md">README</a>';
 
+    computeHoodTotals();
     renderDaySelect();
     renderSortSelect();
     renderNow();
     renderGrid();
+    renderHoodChips();
+    renderMap();
     requestGeo();
   }).catch(function (e) {
     fatal(e.message);

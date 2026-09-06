@@ -266,6 +266,170 @@
     return best;
   }
 
+  // ---- ZONE model (v1.3): 8 zones grouping the 21 canonical hood keys ----
+  // Two tiers per TJ's ruling: ZONE is the default filter/map-color granularity,
+  // HOOD is the finer chip revealed on demand. Every venue's `hood` (see
+  // data-src/assign_hood_zone.js) is one of the 21 keys below; `zone` is derived
+  // from it via zoneOf so the data file and this table can never disagree
+  // (validateVenues checks venue.zone === zoneOf(venue.hood)).
+  var ZONES = [
+    { key: 'downtown', label: 'Downtown', hue: 205, hoods: ['Downtown/SoBro'] },
+    { key: 'gulch', label: 'Gulch & Midtown', hue: 275, hoods: ['The Gulch', 'Midtown'] },
+    { key: 'north', label: 'Germantown & North', hue: 150, hoods: ['Germantown'] },
+    { key: 'east', label: 'East', hue: 340, hoods: ['East Nashville'] },
+    { key: 'south', label: 'South', hue: 95, hoods: ['12 South', 'Wedgewood-Houston', 'Berry Hill'] },
+    { key: 'west', label: 'West', hue: 190, hoods: ['Sylvan Park/Charlotte', 'Belle Meade / West Nashville', 'Bellevue'] },
+    { key: 'franklin', label: 'Franklin & Brentwood', hue: 235, hoods: ['Brentwood', 'Franklin/Cool Springs'] },
+    { key: 'outer', label: 'Outer suburbs', hue: 35, hoods: ['Antioch/Hermitage', 'Smyrna', 'Murfreesboro', 'Mt. Juliet', 'Hendersonville', 'Gallatin', 'Dickson', 'Lewisburg'] },
+  ];
+  // The 6 "core" zones get a Voronoi cell on the map; "franklin" and "outer" render
+  // as suburb tiles instead (C4). This is a zone-membership choice, not a raw
+  // bbox-containment test -- see CHANGELOG for why (Brentwood's centroid falls
+  // just inside the stated bbox despite being a suburb by design).
+  var CORE_ZONE_KEYS = ['downtown', 'gulch', 'north', 'east', 'south', 'west'];
+
+  function hoodKeys() {
+    var out = [];
+    ZONES.forEach(function (z) { z.hoods.forEach(function (h) { out.push(h); }); });
+    return out;
+  }
+
+  function zoneOf(hood) {
+    for (var i = 0; i < ZONES.length; i++) {
+      if (ZONES[i].hoods.indexOf(hood) !== -1) return ZONES[i].key;
+    }
+    return null;
+  }
+
+  function isCoreHood(hood) {
+    return CORE_ZONE_KEYS.indexOf(zoneOf(hood)) !== -1;
+  }
+
+  // Core-metro bbox for the map (C4): chosen to hold every core hood's centroid
+  // with margin. Shared by index.html (rendering) and the tests (geometry checks)
+  // so the two can never drift apart.
+  var CORE_MAP_BBOX = { minLat: 36.03, maxLat: 36.26, minLon: -86.97, maxLon: -86.63 };
+
+  // One lat/lon centroid per core hood, for the Voronoi map. Reuses
+  // NEIGHBORHOOD_CENTROIDS (11 of its 19 entries are core hoods; the name differs
+  // for exactly one -- the hood key is "Belle Meade / West Nashville" per C1,
+  // the centroid is named "Belle Meade/West") plus that one rename.
+  var CENTROID_RENAME = { 'Belle Meade/West': 'Belle Meade / West Nashville' };
+  function coreHoodCentroids() {
+    var out = [];
+    NEIGHBORHOOD_CENTROIDS.forEach(function (c) {
+      var hood = CENTROID_RENAME[c.name] || c.name;
+      if (isCoreHood(hood)) out.push({ hood: hood, lat: c.lat, lon: c.lon });
+    });
+    return out;
+  }
+
+  // ---- C2 (v1.3): pure hood-filter model ----
+  // filterState = { selected: Set<hoodKey> }. An empty Set is a legitimate "none
+  // selected" state -- callers must not treat it as "unset".
+  function applyHoodFilter(venues, filterState) {
+    var selected = filterState && filterState.selected;
+    if (!selected) return venues.slice();
+    return venues.filter(function (v) { return selected.has(v.hood); });
+  }
+
+  // localStorage round-trip helpers (kept pure/testable; the try/catch around the
+  // actual localStorage calls lives in index.html, matching the existing
+  // hhradar-priority/hhradar-gridsort pattern -- see P4).
+  function serializeHoodSelection(selected) {
+    return Array.from(selected);
+  }
+  // Unknown keys are dropped silently. An empty array is a legitimate "none
+  // selected" result (returns an empty Set, not null) -- only a non-array input
+  // (missing/corrupt storage) returns null so the caller can fall back to "all".
+  function deserializeHoodSelection(raw, knownKeys) {
+    if (!Array.isArray(raw)) return null;
+    var known = {};
+    knownKeys.forEach(function (k) { known[k] = true; });
+    var out = new Set();
+    raw.forEach(function (k) { if (known[k]) out.add(k); });
+    return out;
+  }
+
+  // ---- C4 (v1.3): Voronoi partition of the core-metro bbox, for the map ----
+  // Pure 2D computational geometry -- no notion of the globe. Callers project
+  // lat/lon to this plane first with projectLatLon (equirectangular: cos of mean
+  // latitude scales x) so distances in this space approximate ground distance
+  // closely enough, over a bbox this small, for a Voronoi diagram to be a sane
+  // visual approximation of "nearest neighborhood."
+  function projectLatLon(lat, lon, meanLatRad) {
+    return [lon * Math.cos(meanLatRad), lat];
+  }
+
+  function polygonArea(poly) {
+    var sum = 0;
+    for (var i = 0; i < poly.length; i++) {
+      var a = poly[i], b = poly[(i + 1) % poly.length];
+      sum += a[0] * b[1] - b[0] * a[1];
+    }
+    return Math.abs(sum) / 2;
+  }
+
+  function pointInPolygon(pt, poly) {
+    var x = pt[0], y = pt[1], inside = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      var hit = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (hit) inside = !inside;
+    }
+    return inside;
+  }
+
+  // Clips convex polygon `poly` to the half-plane {p : dot(p, n) <= c}
+  // (Sutherland-Hodgman, one half-plane at a time).
+  function clipHalfPlane(poly, n, c) {
+    if (poly.length === 0) return poly;
+    var out = [];
+    for (var i = 0; i < poly.length; i++) {
+      var curr = poly[i], prev = poly[(i - 1 + poly.length) % poly.length];
+      var currDot = curr[0] * n[0] + curr[1] * n[1];
+      var prevDot = prev[0] * n[0] + prev[1] * n[1];
+      var currIn = currDot <= c + 1e-9;
+      var prevIn = prevDot <= c + 1e-9;
+      if (currIn) {
+        if (!prevIn) out.push(intersectEdge(prev, curr, n, c));
+        out.push(curr);
+      } else if (prevIn) {
+        out.push(intersectEdge(prev, curr, n, c));
+      }
+    }
+    return out;
+  }
+
+  function intersectEdge(a, b, n, c) {
+    var da = a[0] * n[0] + a[1] * n[1];
+    var db = b[0] * n[0] + b[1] * n[1];
+    var t = (c - da) / (db - da);
+    return [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])];
+  }
+
+  // points: [{key, x, y}, ...] already projected. bbox: {minX, minY, maxX, maxY}
+  // in the same projected plane. Returns [{key, polygon: [[x,y], ...]}, ...] --
+  // one convex polygon per point, clipped to the bbox and to every other point's
+  // perpendicular-bisector half-plane (the point's Voronoi cell inside the bbox).
+  function voronoiCells(points, bbox) {
+    var boxPoly = [
+      [bbox.minX, bbox.minY], [bbox.maxX, bbox.minY],
+      [bbox.maxX, bbox.maxY], [bbox.minX, bbox.maxY],
+    ];
+    return points.map(function (p) {
+      var cell = boxPoly;
+      points.forEach(function (q) {
+        if (q === p) return;
+        var n = [q.x - p.x, q.y - p.y];
+        var mid = [(p.x + q.x) / 2, (p.y + q.y) / 2];
+        var c = n[0] * mid[0] + n[1] * mid[1];
+        cell = clipHalfPlane(cell, n, c);
+      });
+      return { key: p.key, polygon: cell };
+    });
+  }
+
   // ---- C5: WARN-level lint for research prose leaking into deal text ----
   // Not a schema error: validateVenues still returns [] (pass) when only lint
   // hits are present. Callers that want a hard failure pass strict:true.
@@ -339,6 +503,7 @@
 
     var seenIds = {};
     var seenTz = {};
+    var knownHoods = hoodKeys();
 
     for (var vi = 0; vi < data.venues.length; vi++) {
       var v = data.venues[vi];
@@ -351,6 +516,8 @@
       if (typeof v.name !== 'string' || !v.name) fail(p + ': name required');
       if (typeof v.lat !== 'number') fail(p + ': lat must be a number');
       if (typeof v.lon !== 'number') fail(p + ': lon must be a number');
+      if (typeof v.hood !== 'string' || knownHoods.indexOf(v.hood) === -1) fail(p + ': hood must be a known hood key');
+      else if (typeof v.zone !== 'string' || v.zone !== zoneOf(v.hood)) fail(p + ': zone must equal zoneOf(hood)');
       if (v.tz !== 'America/Chicago') fail(p + ': tz must be America/Chicago');
       seenTz[v.tz] = true;
       if (v.inkind !== true) fail(p + ': inkind must be true in v1');
@@ -435,5 +602,19 @@
     NEIGHBORHOOD_CENTROIDS: NEIGHBORHOOD_CENTROIDS,
     lintDealDesc: lintDealDesc,
     lintVenues: lintVenues,
+    ZONES: ZONES,
+    CORE_ZONE_KEYS: CORE_ZONE_KEYS,
+    hoodKeys: hoodKeys,
+    zoneOf: zoneOf,
+    isCoreHood: isCoreHood,
+    CORE_MAP_BBOX: CORE_MAP_BBOX,
+    coreHoodCentroids: coreHoodCentroids,
+    applyHoodFilter: applyHoodFilter,
+    serializeHoodSelection: serializeHoodSelection,
+    deserializeHoodSelection: deserializeHoodSelection,
+    projectLatLon: projectLatLon,
+    polygonArea: polygonArea,
+    pointInPolygon: pointInPolygon,
+    voronoiCells: voronoiCells,
   };
 });
