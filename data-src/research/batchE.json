@@ -1,0 +1,274 @@
+{
+  "batch": "batchE",
+  "researched_at": "2026-09-05",
+  "venues": [
+    {
+      "id": 17673,
+      "name": "Two Ten Jack",
+      "official_site": "https://www.twotenjack.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "deals": [
+            {"type": "drink", "desc": "2-for-1 Asahi, Kirin, and PBR", "price": null},
+            {"type": "drink", "desc": "House red and white wine", "price": "$5"},
+            {"type": "drink", "desc": "Jack Juice (sake punch)", "price": "$5"},
+            {"type": "drink", "desc": "Infused shochu (rotating selection)", "price": "$5"},
+            {"type": "food", "desc": "Steamed edamame", "price": "$3"},
+            {"type": "food", "desc": "Crispy rice spicy tuna", "price": "$5"}
+          ],
+          "sources": [
+            "https://www.twotenjack.com/menu/happy-hour",
+            "https://do615.com/events/weekly/wed/happy-hour-at-two-ten-jack-1572637049"
+          ],
+          "last_verified": null,
+          "corroborated": true,
+          "confidence": "low",
+          "notes": "Time window (4-6pm) is consistent everywhere, but exact days disagree across sources (see disagreements). Official site's dedicated happy hour URL is a generic ordering-marketing page with no verbatim day/time/deal text; deal list above comes from aggregator checkle.com (fetch of that page returned blank/JS-rendered, so treat deal specifics as med-confidence)."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.twotenjack.com/menu/happy-hour", "ok": true, "quote": "Find the Best Happy Hour in Nashville at Two Ten Jack (no explicit times/deals text present on page)", "confirmed_on": null},
+        {"url": "https://do615.com/events/weekly/wed/happy-hour-at-two-ten-jack-1572637049", "ok": true, "quote": "Happy Hour Monday – Thursday from 4:00pm – 6:00[pm]", "confirmed_on": "2026-09-05"},
+        {"url": "https://calendar.lightning100.com/events/weekly/tue/happy-hour-at-two-ten-jack-1572637006", "ok": true, "quote": "recurring Tuesday happy hour listing (title only, no deal text captured)", "confirmed_on": null},
+        {"url": "https://www.checkle.com/biz/two-ten-jack-nashville/happy_hours", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/two-ten-jack-2", "ok": true, "quote": "Listing has no Happy Hours & Specials section (guru shows only address/phone/menu link, no HH text)", "confirmed_on": null},
+        {"url": "https://www.yelp.com/biz/two-ten-jack-nashville", "ok": false, "quote": null, "confirmed_on": null}
+      ],
+      "disagreements": [
+        "do615.com event page text says 'Happy Hour Monday – Thursday from 4:00pm – 6:00[pm]' while a separate aggregator summary (checkle.com, not independently fetchable) and general web search consensus describe Monday–Friday 4-6pm. Could not resolve which is current."
+      ],
+      "notes": "Nashville location at 1900 Eastland Ave #105. Two Ten Jack also has a Chattanooga location; sources sometimes conflate the two."
+    },
+    {
+      "id": 13246,
+      "name": "Germantown Cafe",
+      "official_site": "https://germantowncafe.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "15:30",
+          "end": "18:30",
+          "area": "bar",
+          "deals": [
+            {"type": "drink", "desc": "Cocktails", "price": "$7"},
+            {"type": "drink", "desc": "Wines by the glass", "price": "$7"},
+            {"type": "drink", "desc": "Beer", "price": "$4"},
+            {"type": "food", "desc": "Food specials (bar area only)", "price": "$7-$25"}
+          ],
+          "sources": [
+            "https://germantowncafe.com/",
+            "https://www.totalhappyhour.com/happy-hour-for-germantown-cafe-in-nashville-tn-37208/"
+          ],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Bar area only per aggregator; official site does not specify area but confirms same days/times."
+        },
+        {
+          "days": ["SAT"],
+          "start": "19:30",
+          "end": "21:00",
+          "area": "bar",
+          "deals": [],
+          "sources": ["https://germantowncafe.com/"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Saturday happy hour window listed on official site footer; no deal specifics given and no second source found for this specific window."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://germantowncafe.com/", "ok": true, "quote": "Happy Hour: Mon-Fri 3:30-6:30pm in bar | Sat 7:30-9pm", "confirmed_on": "2026-09-05"},
+        {"url": "https://nashvilleguru.com/businesses/germantown-cafe", "ok": true, "quote": "If this is your business, please send us your latest happy hours. We have some on file, but they may be out-of-date now. (no HH data currently listed)", "confirmed_on": null},
+        {"url": "https://www.totalhappyhour.com/happy-hour-for-germantown-cafe-in-nashville-tn-37208/", "ok": true, "quote": "$7 cocktails, $7 wines by the glass, $4 beer, and $7-$25 food specials (bar area only)", "confirmed_on": null}
+      ],
+      "disagreements": [
+        "A general web-search summary claimed Monday features an extended happy hour from 3:30pm to 9:00pm in the bar, but the official site's own footer text only lists Mon-Fri 3:30-6:30pm and a separate Sat 7:30-9pm window, with no Monday extension mentioned. Treating the extended-Monday claim as unconfirmed/likely erroneous aggregation."
+      ],
+      "notes": "Google reviews (visible on official site) reference happy hour positively but give no specifics beyond 'love their happy hour deals'."
+    },
+    {
+      "id": 13244,
+      "name": "Karrington Rowe",
+      "official_site": "https://karringtonrowe.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "bar",
+          "deals": [
+            {"type": "drink", "desc": "Espresso Martini", "price": "$5"},
+            {"type": "drink", "desc": "Hot & Dirty (pepperoncini + olive juice + vodka)", "price": "$5"},
+            {"type": "drink", "desc": "Aperol Spritz", "price": "$5"},
+            {"type": "drink", "desc": "KR Old Fashioned", "price": "$5"},
+            {"type": "drink", "desc": "KR Margarita", "price": "$5"},
+            {"type": "drink", "desc": "Wine (red, white, rose, bubbles, sangria)", "price": "$5"},
+            {"type": "drink", "desc": "Beer (Jackalope, Little Harpeth, Hippies and Cowboys, New Heights, Tailgate)", "price": "$5"}
+          ],
+          "sources": ["https://karringtonrowe.com/brentwood-brentwood-karrington-rowe-happy-hour"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "No food deals appear on the official happy hour menu page at all -- drinks-only happy hour (oddity). Could not find an independent aggregator/Guru/Yelp confirmation of the exact window; treat as single-sourced despite being a live, first-party page."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://karringtonrowe.com/brentwood-brentwood-karrington-rowe-happy-hour", "ok": true, "quote": "Happy Hour / Monday - Saturday | 3 - 6 pm | Bar Area", "confirmed_on": "2026-09-05"},
+        {"url": "https://nashvilleguru.com/businesses/karrington-rowe", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://www.tripadvisor.com/Restaurant_Review-g54914-d32887803-Reviews-Karrington_Rowe-Brentwood_Tennessee.html", "ok": false, "quote": null, "confirmed_on": null}
+      ],
+      "disagreements": [],
+      "notes": "New restaurant in Brentwood (from the Germantown Cafe/Park Cafe restaurant group per Nashville Lifestyles). No Nashville Guru listing found (fetch of guessed slug returned no content; likely not yet listed)."
+    },
+    {
+      "id": 13245,
+      "name": "Park Cafe",
+      "official_site": "https://parkcafenashville.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": "bar",
+          "deals": [
+            {"type": "food", "desc": "Elote Hush Puppies", "price": "$8"},
+            {"type": "food", "desc": "Loaded Potato Chips", "price": "$8"},
+            {"type": "food", "desc": "Chicken Lettuce Wraps", "price": "$10"},
+            {"type": "food", "desc": "Mortadella & Ricotta Toast", "price": "$10"},
+            {"type": "food", "desc": "Hummus", "price": "$10"},
+            {"type": "food", "desc": "Goat Cheese Pizza", "price": "$12"},
+            {"type": "food", "desc": "French Dip", "price": "$12"},
+            {"type": "drink", "desc": "Wildflower Martini, HH Hot & Dirty, HH Duke of Cuke, HH Manhattan, HH Sunset Margarita", "price": "$7"},
+            {"type": "drink", "desc": "HH Bubbles/Rose/White/Red wine", "price": "$6"},
+            {"type": "drink", "desc": "Local Lager / HH Rotating Local Beer", "price": "$5"}
+          ],
+          "sources": [
+            "https://parkcafenashville.com/nashville-park-cafe-park-cafe-happy-hour",
+            "https://nashvilleguru.com/businesses/park-cafe"
+          ],
+          "last_verified": "2026-06-16",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Official page verbatim: 'Happy Hour / Monday - Friday | 4-6pm / Bar Area Seating'. Guru corroborates with same days/time/area, last confirmed 06/16/26, citing $8 cocktails/$6 wine/$4-5 beer/$8-18 food (slightly rounded vs. official itemized prices, but consistent window)."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://parkcafenashville.com/nashville-park-cafe-park-cafe-happy-hour", "ok": true, "quote": "Happy Hour / Monday - Friday | 4-6pm / Bar Area Seating", "confirmed_on": "2026-09-05"},
+        {"url": "https://nashvilleguru.com/businesses/park-cafe", "ok": true, "quote": "Happy hour from 4:00pm to 6:00pm (bar area only) includes $8 select cocktails, $6 select wine, $4-$5 beer, and $8-$18 food specials.", "confirmed_on": "2026-06-16"},
+        {"url": "https://www.tripadvisor.com/ShowUserReviews-g55229-d470462-r101490111-Park_Cafe-Nashville_Davidson_County_Tennessee.html", "ok": false, "quote": "Review titled 'Very good Happy Hour' (not fetched for detail)", "confirmed_on": null}
+      ],
+      "disagreements": [
+        "A general web-search summary cited an alternate schedule of 'Monday-Thursday 4:30pm-6:30pm and Friday & Saturday 4:30pm-6pm' from an unspecified/unclear source (possibly outdated aggregator), which conflicts with both the current official page and Nashville Guru's Mon-Fri 4-6pm bar-area window. The official + Guru version is treated as authoritative given the recent confirmation date."
+      ],
+      "notes": "Also part of the Germantown Cafe / Karrington Rowe restaurant family."
+    },
+    {
+      "id": 11237,
+      "name": "Connie's Upscale Dive",
+      "official_site": "https://www.vernanashville.com/connies",
+      "windows": [
+        {
+          "days": ["THU", "FRI", "SAT", "SUN"],
+          "start": "17:00",
+          "end": "19:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "Happy hour cocktails", "price": "$9"}
+          ],
+          "sources": ["https://www.instagram.com/conniesnashville/"],
+          "last_verified": null,
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Only source is an aggregated web-search summary (likely drawing on Instagram/mindtrip); direct fetches of vernanashville.com/connies, Yelp, nashville.com, and mindtrip.ai all failed to return usable HH content (blank/JS-rendered or redirected to a different Verna page). Days shown reflect Connie's general operating days (Thu-Sun per that aggregate); treat with caution."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.vernanashville.com/connies", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://www.yelp.com/biz/connies-nashville", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://www.nashville.com/venue/connies-upscale-dive/", "ok": true, "quote": "No events/HH content listed (venue directory page only, no happy hour info)", "confirmed_on": null},
+        {"url": "https://mindtrip.ai/restaurant/nashville-tennessee/connies/re-FFmuSotf", "ok": false, "quote": "URL redirected to a different page ('The Backbar at Verna') with no body content returned", "confirmed_on": null}
+      ],
+      "disagreements": [],
+      "notes": "Connie's shares the address 210 Louise Ave with Verna Café & Bar (sibling concept from Verna Hospitality); it's a dive bar/venue space in the back of Verna. Given the address overlap, its happy hour may in practice follow Verna's bar program, but no source explicitly confirms that link with a time/price match."
+    },
+    {
+      "id": 11236,
+      "name": "Verna Café & Bar",
+      "official_site": "https://www.vernanashville.com/",
+      "windows": [
+        {
+          "days": ["THU", "FRI", "SAT", "SUN", "MON"],
+          "start": "17:00",
+          "end": "19:00",
+          "area": "bar",
+          "deals": [
+            {"type": "drink", "desc": "Classics (house cocktails)", "price": "$10"},
+            {"type": "drink", "desc": "N/A Cocktails", "price": "$7"},
+            {"type": "drink", "desc": "Montucky Cold Snack (beer)", "price": "$3"}
+          ],
+          "sources": ["https://www.vernanashville.com/pm-menu"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official evening-menu page verbatim: 'Happy Hour Daily 5–7pm | $10 Classics | $7 N/A Cocktails | $3 Montucky Cold Snacks'. Site says 'Daily' but the bar itself is only open Thu-Mon 5pm-12am per the same page's footer, so days above reflect the bar's actual operating days rather than literal 'every day of the week'. No food items appear in the happy hour deal list (drinks-only)."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.vernanashville.com/pm-menu", "ok": true, "quote": "Happy Hour Daily 5–7pm | $10 Classics | $7 N/A Cocktails | $3 Montucky Cold Snacks", "confirmed_on": "2026-09-05"},
+        {"url": "https://nashvilleguru.com/businesses/verna-cafe-bar", "ok": true, "quote": "Verna Café & Bar...is hosting a soft opening from Thursday, July 31, 2025, through Saturday, August 2, 2025 (stale pre-opening listing, no current happy hour info)", "confirmed_on": null},
+        {"url": "https://www.nashvillescene.com/food_drink/bites/verna-caf-and-connies-open-midtown-nashville/article_175beaa1-d43c-4635-95f4-b46a55130bc9.html", "ok": false, "quote": null, "confirmed_on": null}
+      ],
+      "disagreements": [],
+      "notes": "All-day cafe/bar concept from Verna Hospitality; The Backbar at Verna is a related late-night bar space at the same address, also listing 'Happy Hour 5pm-7pm' per the site footer."
+    },
+    {
+      "id": 13745,
+      "name": "Vintage Vine 100",
+      "official_site": "https://www.vintagevine100.com/",
+      "windows": [
+        {
+          "days": ["TUE", "WED", "THU", "FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "House wines", "price": "$7"},
+            {"type": "drink", "desc": "Cocktails", "price": "$8"},
+            {"type": "drink", "desc": "Wine flights (discounted)", "price": null},
+            {"type": "food", "desc": "Discounted small plates", "price": null}
+          ],
+          "sources": [
+            "https://www.vintagevine100.com/happy-hour-franklin-tn",
+            "https://www.vintagevine100.com/menu"
+          ],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "Official happy-hour page footer explicitly lists 'Happy Hour: Tuesday-Friday 3-6pm', matching the /menu page's meta description. No independent third-party (Guru/Yelp) confirmation of hours was found -- treating as med confidence since two official pages on the same site agree but no outside source corroborates."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.vintagevine100.com/happy-hour-franklin-tn", "ok": true, "quote": "Happy Hour: Tuesday-Friday 3-6pm (footer); meta: 'Tuesday-Friday 3-6pm with $7 house wines, $8 cocktails, discounted small plates, and wine flights'", "confirmed_on": "2026-09-05"},
+        {"url": "https://www.vintagevine100.com/menu", "ok": true, "quote": "happy hour specials Tuesday-Friday 3-6pm", "confirmed_on": "2026-09-05"},
+        {"url": "https://nashvilleguru.com/businesses/vintage-vine-100", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://www.yelp.com/biz/vintage-vine-100-franklin", "ok": false, "quote": null, "confirmed_on": null}
+      ],
+      "disagreements": [
+        "An earlier general web-search summary described happy hour as 'Monday-Friday 3-6pm' with a specific Tuesday-Thursday $3-off-flight/$5-off-bottle deal, which conflicts with the official site's own current footer text of 'Tuesday-Friday 3-6pm' (no Monday). Treating the official site text as authoritative; Guru/Yelp listings could not be fetched to break the tie."
+      ],
+      "notes": "Wine bar in Franklin, TN with a dedicated (currently sparse/placeholder) Happy Hour Menu page noting prices may not reflect current specials."
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Nashville inKind Happy Hour Radar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f1420">
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --panel: #ffffff;
+    --text: #16181d;
+    --text-dim: #6b7078;
+    --border: #e4e2dc;
+    --amber: #c97a12;
+    --amber-bg: #fdf1de;
+    --amber-strong: #a85f00;
+    --drink: #4a6fa5;
+    --drink-bg: #eaf0fa;
+    --bad: #b3392c;
+    --nowline: #d63b2f;
+    --special-stripe: rgba(169, 95, 0, 0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1420;
+      --panel: #171d2b;
+      --text: #eef0f4;
+      --text-dim: #9aa2b1;
+      --border: #2a3346;
+      --amber: #f5a623;
+      --amber-bg: #2c2110;
+      --amber-strong: #ffc35c;
+      --drink: #7fa8e8;
+      --drink-bg: #16203a;
+      --bad: #ff6b5e;
+      --nowline: #ff6b5e;
+      --special-stripe: rgba(245, 166, 35, 0.14);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  body { font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding-bottom: 40px; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 14px 16px 8px; border-bottom: 1px solid var(--border); }
+  h1 { font-size: 17px; margin: 0 0 10px; font-weight: 700; }
+  nav.tabs { display: flex; gap: 8px; }
+  nav.tabs button { flex: 1; padding: 9px 6px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 13px; font-weight: 600; }
+  nav.tabs button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 0; gap: 10px; }
+  .toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; font-size: 12px; }
+  .toggle button { padding: 6px 12px; background: var(--panel); color: var(--text-dim); border: none; }
+  .toggle button.active { background: var(--amber); color: #1a1200; font-weight: 700; }
+  .note { font-size: 12px; color: var(--text-dim); padding: 6px 16px 0; }
+  main { padding: 12px 16px 24px; max-width: 640px; margin: 0 auto; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .card.muted { opacity: 0.62; }
+  .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .card-name { font-weight: 700; font-size: 15px; }
+  .card-status { font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .card-status.active { color: var(--amber-strong); }
+  .card-status.soon { color: var(--drink); }
+  .card-meta { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .badges { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-dim); }
+  .badge.stale { color: var(--bad); border-color: var(--bad); }
+  .badge.unverified { color: var(--text-dim); }
+  .badge.special { color: var(--amber-strong); border-color: var(--amber); }
+  .badge.inkind { color: var(--amber-strong); border-color: var(--amber); }
+  .badge.warn { color: var(--bad); border-color: var(--bad); }
+  .deals { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
+  .deal { font-size: 13px; }
+  .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
+  .links { margin-top: 8px; display: flex; gap: 14px; }
+  .links a { font-size: 12px; color: var(--drink); text-decoration: none; font-weight: 600; }
+  .disagreements { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; }
+  .empty { text-align: center; padding: 60px 20px; color: var(--text-dim); }
+  .empty b { color: var(--text); }
+  #grid-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 12px; }
+  .day-select { display: flex; gap: 4px; padding: 10px 16px 0; overflow-x: auto; }
+  .day-select button { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 12px; white-space: nowrap; }
+  .day-select button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); font-weight: 700; }
+  .grid-inner { position: relative; min-width: 900px; }
+  .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 34px; }
+  .grid-row:last-child { border-bottom: none; }
+  .grid-rowlabel { position: sticky; left: 0; width: 140px; min-width: 140px; background: var(--panel); display: flex; align-items: center; padding: 0 8px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); z-index: 2; gap: 4px; }
+  .grid-track { position: relative; flex: 1; background: linear-gradient(to right, var(--border) 0, var(--border) 1px, transparent 1px); background-size: 60px 100%; }
+  .grid-header { display: flex; position: sticky; top: 0; background: var(--panel); z-index: 3; border-bottom: 1px solid var(--border); }
+  .grid-header .grid-rowlabel { border-right: 1px solid var(--border); }
+  .grid-header-track { flex: 1; position: relative; height: 24px; }
+  .grid-header-tick { position: absolute; top: 0; font-size: 10px; color: var(--text-dim); transform: translateX(-50%); padding-top: 4px; }
+  .block { position: absolute; top: 4px; bottom: 4px; border-radius: 5px; }
+  .block.food { background: var(--amber); }
+  .block.drink { background: var(--drink); background: var(--drink-bg); border: 1.5px solid var(--drink); }
+  .block.food.drinkmode { background: var(--drink-bg); border: 1.5px solid var(--drink); }
+  .block.special { background-image: repeating-linear-gradient(45deg, var(--special-stripe), var(--special-stripe) 4px, transparent 4px, transparent 8px); border: 1.5px solid var(--amber); }
+  .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
+  footer { text-align: center; font-size: 11.5px; color: var(--text-dim); padding: 24px 16px 10px; }
+  footer a { color: var(--text-dim); }
+  #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
+</style>
+
+<header>
+  <h1>🍸 Happy Hour Radar <span style="color:var(--text-dim); font-weight:400;">— Nashville inKind</span></h1>
+  <nav class="tabs">
+    <button id="tab-now" class="active">Now</button>
+    <button id="tab-grid">Day Grid</button>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <div class="toggle" id="food-toggle" role="group" aria-label="Food or drink first">
+    <button id="btn-food" class="active">🍽 Food-first</button>
+    <button id="btn-drink">🍹 Drink-first</button>
+  </div>
+</div>
+<div class="note" id="geo-note"></div>
+
+<div id="fatal"></div>
+
+<main id="view-now"></main>
+<main id="view-grid" style="display:none">
+  <div class="day-select" id="day-select"></div>
+  <div id="grid-wrap" style="margin:10px 16px 0;">
+    <div class="grid-inner" id="grid-inner"></div>
+  </div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="logic.js"></script>
+<script>
+(function () {
+  'use strict';
+  var L = window.hhRadarLogic;
+  var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
+
+  // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
+  function getNowInChicago() {
+    var params = new URLSearchParams(location.search);
+    var override = params.get('now');
+    var d;
+    if (override) {
+      // Interpreted as literal America/Chicago wall-clock time (all venues share this tz).
+      var m = override.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+      if (m) {
+        d = { year: +m[1], month: +m[2], day: +m[3], hour: +m[4], minute: +m[5] };
+        d.dayOfWeek = dayOfWeekFromYMD(d.year, d.month, d.day);
+        return d;
+      }
+    }
+    var now = new Date();
+    var parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short',
+    }).formatToParts(now);
+    var map = {};
+    parts.forEach(function (p) { map[p.type] = p.value; });
+    var wd = { Mon: 'MON', Tue: 'TUE', Wed: 'WED', Thu: 'THU', Fri: 'FRI', Sat: 'SAT', Sun: 'SUN' }[map.weekday];
+    var hour = map.hour === '24' ? 0 : parseInt(map.hour, 10);
+    return { year: +map.year, month: +map.month, day: +map.day, hour: hour, minute: parseInt(map.minute, 10), dayOfWeek: wd };
+  }
+  function dayOfWeekFromYMD(y, mo, day) {
+    var js = new Date(Date.UTC(y, mo - 1, day)).getUTCDay(); // 0=Sun..6=Sat
+    return ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][js];
+  }
+
+  // ---------- state ----------
+  var state = {
+    venues: [],
+    generated: '',
+    priority: 'food', // 'food' | 'drink'
+    geo: null, // {lat, lon} once granted
+    geoStatus: 'pending', // pending | granted | denied | unavailable
+    day: null,
+    now: null,
+  };
+
+  try {
+    var savedPriority = localStorage.getItem('hhradar-priority');
+    if (savedPriority === 'food' || savedPriority === 'drink') state.priority = savedPriority;
+  } catch (e) { /* localStorage unavailable — default stands */ }
+
+  function haversineMiles(lat1, lon1, lat2, lon2) {
+    var R = 3958.8;
+    var toRad = function (d) { return d * Math.PI / 180; };
+    var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function fmtHM(hm) {
+    var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
+    var ap = h >= 12 ? 'pm' : 'am';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    return h12 + (m === '00' ? '' : ':' + m) + ap;
+  }
+
+  function resolveDisplayEnd(venue, win, day) {
+    var intervals = L.resolveWindow(venue, win);
+    for (var i = 0; i < intervals.length; i++) {
+      if (intervals[i].day === day) {
+        var endAbs = intervals[i].endAbs;
+        var dayBase = L.DAY_INDEX[day] * 1440;
+        var mins = endAbs - dayBase;
+        var h = Math.floor((mins % 1440) / 60), m = mins % 60;
+        return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+      }
+    }
+    return win.end === 'close' ? 'close' : win.end;
+  }
+
+  function renderBadges(venue, win) {
+    var out = [];
+    if (win.kind === 'special') out.push('<span class="badge special">Special</span>');
+    if (L.isUnverified(win)) out.push('<span class="badge unverified">Unverified</span>');
+    if (L.isStale(win.last_verified, state.now)) out.push('<span class="badge stale">Verify before you go</span>');
+    var warns = L.windowWarnings(venue, win);
+    if (warns.indexOf('closed-day-per-hours') !== -1) out.push('<span class="badge warn">Hours conflict</span>');
+    if (warns.indexOf('missing-hours-fallback-2359') !== -1) out.push('<span class="badge warn">Close time assumed</span>');
+    return out.join('');
+  }
+
+  function dealsHtml(win) {
+    var deals = win.deals.slice();
+    var firstType = state.priority === 'food' ? 'food' : 'drink';
+    deals.sort(function (a, b) {
+      if (a.type === b.type) return 0;
+      return a.type === firstType ? -1 : 1;
+    });
+    if (deals.length === 0) return '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>';
+    return deals.map(function (d) {
+      var icon = d.type === 'food' ? '🍽' : '🥂';
+      return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) + (d.price ? ' — ' + escapeHtml(d.price) : '') + '</div>';
+    }).join('');
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function cardHtml(entry) {
+    var venue = entry.venue, win = entry.window;
+    var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
+    var statusLabel = entry.status === 'active'
+      ? 'Live until ' + fmtHM(resolveDisplayEnd(venue, win, entry.day))
+      : 'Starts in ' + entry.minutesUntil + 'm';
+    var distance = entry.distance != null ? (entry.distance < 0.1 ? '<0.1mi' : entry.distance.toFixed(1) + 'mi') : '';
+    return '' +
+      '<div class="card' + (hasFoodMuted ? ' muted' : '') + '">' +
+        '<div class="card-top">' +
+          '<div class="card-name">' + escapeHtml(venue.name) + '</div>' +
+          '<div class="card-status ' + entry.status + '">' + statusLabel + '</div>' +
+        '</div>' +
+        '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distance ? ' · ' + distance : '') + (win.area ? ' · ' + escapeHtml(win.area) : '') + '</div>' +
+        '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
+        '<div class="deals">' + dealsHtml(win) + '</div>' +
+        '<div class="links">' +
+          (venue.official_site ? '<a href="' + venue.official_site + '" target="_blank" rel="noopener">Official site</a>' : '') +
+          '<a href="' + venue.inkind_url + '" target="_blank" rel="noopener">inKind</a>' +
+        '</div>' +
+        (venue.disagreements && venue.disagreements.length ? '<div class="disagreements">⚠ ' + venue.disagreements.map(escapeHtml).join(' · ') + '</div>' : '') +
+      '</div>';
+  }
+
+  function hasDrinkOnly(win) {
+    var hasDrink = win.deals.some(function (d) { return d.type === 'drink'; });
+    return !hasDrink;
+  }
+
+  // ---------- NOW view ----------
+  function buildNowEntries() {
+    var entries = [];
+    state.venues.forEach(function (venue) {
+      venue.windows.forEach(function (win) {
+        if (L.isActive(venue, win, state.now)) {
+          entries.push({ venue: venue, window: win, status: 'active', day: state.now.dayOfWeek });
+        } else if (L.startsWithin(venue, win, state.now, 120)) {
+          var ns = null;
+          var intervals = L.resolveWindow(venue, win);
+          var t = L.minutesSinceWeekStart(state.now);
+          var best = null;
+          intervals.forEach(function (iv) {
+            var diff = iv.startAbs - t; while (diff < 0) diff += 10080;
+            if (best === null || diff < best) best = diff;
+          });
+          entries.push({ venue: venue, window: win, status: 'soon', minutesUntil: best, day: state.now.dayOfWeek });
+        }
+      });
+    });
+    entries.forEach(function (e) {
+      if (state.geo) {
+        e.distance = haversineMiles(state.geo.lat, state.geo.lon, e.venue.lat, e.venue.lon);
+      } else {
+        e.distance = null;
+      }
+    });
+    entries.sort(function (a, b) {
+      if (state.geo) return a.distance - b.distance;
+      var na = a.venue.neighborhood || a.venue.city, nb = b.venue.neighborhood || b.venue.city;
+      if (na !== nb) return na < nb ? -1 : 1;
+      return a.venue.name < b.venue.name ? -1 : 1;
+    });
+    return entries;
+  }
+
+  function renderNow() {
+    var el = document.getElementById('view-now');
+    var entries = buildNowEntries();
+    if (entries.length === 0) {
+      var best = L.nextStartAcrossVenues(state.venues.filter(function (v) { return v.windows.length > 0; }), state.now);
+      var msg;
+      if (best) {
+        msg = 'No happy hours right now — next: <b>' + escapeHtml(best.venue.name) + '</b> at ' +
+          fmtHM(best.next.start) + ' (' + DAY_FULL[best.next.day] + ')';
+      } else {
+        msg = 'No happy hours found in this dataset.';
+      }
+      el.innerHTML = '<div class="empty">' + msg + '</div>';
+      return;
+    }
+    el.innerHTML = entries.map(cardHtml).join('');
+  }
+
+  // ---------- DAY GRID ----------
+  var GRID_START = 11 * 60, GRID_END = 26 * 60, GRID_SPAN = GRID_END - GRID_START;
+  var PX_PER_MIN = 2;
+
+  function renderDaySelect() {
+    var el = document.getElementById('day-select');
+    el.innerHTML = L.DAYS.map(function (d) {
+      return '<button data-day="' + d + '" class="' + (d === state.day ? 'active' : '') + '">' + d + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('button'), function (btn) {
+      btn.addEventListener('click', function () {
+        state.day = btn.getAttribute('data-day');
+        renderDaySelect();
+        renderGrid();
+      });
+    });
+  }
+
+  function gridHeaderHtml() {
+    var ticks = [];
+    for (var m = GRID_START; m <= GRID_END; m += 60) {
+      var hour = Math.floor(m / 60) % 24;
+      var label = (hour === 0 ? '12a' : hour === 12 ? '12p' : (hour % 12) + (hour < 12 ? 'a' : 'p'));
+      ticks.push('<div class="grid-header-tick" style="left:' + ((m - GRID_START) * PX_PER_MIN) + 'px">' + label + '</div>');
+    }
+    return '<div class="grid-header"><div class="grid-rowlabel"></div><div class="grid-header-track" style="min-width:' + (GRID_SPAN * PX_PER_MIN) + 'px">' + ticks.join('') + '</div></div>';
+  }
+
+  function renderGrid() {
+    var el = document.getElementById('grid-inner');
+    var dayBase = L.DAY_INDEX[state.day] * 1440;
+    var nowT = L.minutesSinceWeekStart(state.now);
+    var nowPos = nowT - dayBase;
+    var showNowLine = nowPos >= GRID_START && nowPos <= GRID_END;
+
+    var rows = state.venues.map(function (venue) {
+      var blocks = [];
+      venue.windows.forEach(function (win) {
+        if (win.days.indexOf(state.day) === -1) return;
+        var intervals = L.resolveWindow(venue, win);
+        intervals.forEach(function (iv) {
+          if (iv.day !== state.day) return;
+          var startPos = iv.startAbs - dayBase, endPos = iv.endAbs - dayBase;
+          startPos = Math.max(startPos, GRID_START); endPos = Math.min(endPos, GRID_END);
+          if (endPos <= startPos) return;
+          var isFood = L.windowHasFood(win);
+          var cls = 'block ' + (win.kind === 'special' ? 'special' : (state.priority === 'food' ? (isFood ? 'food' : 'drink') : (isFood ? 'food drinkmode' : 'drink')));
+          blocks.push('<div class="' + cls + '" style="left:' + ((startPos - GRID_START) * PX_PER_MIN) + 'px;width:' + ((endPos - startPos) * PX_PER_MIN) + 'px" title="' + escapeHtml(fmtHM(win.start) + '–' + (win.end === 'close' ? 'close' : fmtHM(win.end))) + '"></div>');
+        });
+      });
+      if (blocks.length === 0 && venue.windows.length === 0) return ''; // verified_no_hh venue never shows a block, still counted below
+      return '<div class="grid-row">' +
+        '<div class="grid-rowlabel"><span>🍸</span>' + escapeHtml(venue.name) + '</div>' +
+        '<div class="grid-track" style="min-width:' + (GRID_SPAN * PX_PER_MIN) + 'px">' +
+          blocks.join('') +
+          (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) * PX_PER_MIN) + 'px"></div>' : '') +
+        '</div>' +
+      '</div>';
+    }).filter(function (r) { return r; });
+
+    el.innerHTML = gridHeaderHtml() + rows.join('');
+  }
+
+  // ---------- geolocation ----------
+  function requestGeo() {
+    if (!('geolocation' in navigator)) {
+      state.geoStatus = 'unavailable';
+      updateGeoNote();
+      renderNow();
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        state.geo = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+        state.geoStatus = 'granted';
+        updateGeoNote();
+        renderNow();
+      },
+      function () {
+        state.geoStatus = 'denied';
+        updateGeoNote();
+        renderNow();
+      },
+      { timeout: 8000 }
+    );
+  }
+  function updateGeoNote() {
+    var el = document.getElementById('geo-note');
+    if (state.geoStatus === 'denied' || state.geoStatus === 'unavailable') {
+      el.textContent = 'Location unavailable — sorted by neighborhood instead of distance.';
+    } else {
+      el.textContent = '';
+    }
+  }
+
+  // ---------- tabs + toggle wiring ----------
+  function showTab(tab) {
+    document.getElementById('tab-now').classList.toggle('active', tab === 'now');
+    document.getElementById('tab-grid').classList.toggle('active', tab === 'grid');
+    document.getElementById('view-now').style.display = tab === 'now' ? '' : 'none';
+    document.getElementById('view-grid').style.display = tab === 'grid' ? '' : 'none';
+  }
+  document.getElementById('tab-now').addEventListener('click', function () { showTab('now'); });
+  document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); renderGrid(); });
+  document.getElementById('btn-food').addEventListener('click', function () { setPriority('food'); });
+  document.getElementById('btn-drink').addEventListener('click', function () { setPriority('drink'); });
+  function setPriority(p) {
+    state.priority = p;
+    document.getElementById('btn-food').classList.toggle('active', p === 'food');
+    document.getElementById('btn-drink').classList.toggle('active', p === 'drink');
+    try { localStorage.setItem('hhradar-priority', p); } catch (e) { /* per-viewer convenience only */ }
+    renderNow();
+    if (document.getElementById('view-grid').style.display !== 'none') renderGrid();
+  }
+  setPriority(state.priority);
+
+  // ---------- boot ----------
+  function fatal(msg) {
+    var el = document.getElementById('fatal');
+    el.style.display = 'block';
+    el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
+  }
+
+  fetch('venues.json').then(function (r) {
+    if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
+    return r.json();
+  }).then(function (data) {
+    var errors = L.validateVenues(data);
+    if (errors.length > 0) {
+      fatal(errors.length + ' problem(s) in venues.json:\n' + errors.slice(0, 8).join('\n'));
+      return;
+    }
+    state.venues = data.venues;
+    state.generated = data.generated;
+    state.now = getNowInChicago();
+    state.day = state.now.dayOfWeek;
+
+    document.getElementById('footer').innerHTML = 'Data generated ' + escapeHtml(state.generated) + ' · ' +
+      state.venues.length + ' venues · ' + state.venues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
+      '<a href="README.md">README</a>';
+
+    renderDaySelect();
+    renderNow();
+    renderGrid();
+    requestGeo();
+  }).catch(function (e) {
+    fatal(e.message);
+  });
+})();
+</script>

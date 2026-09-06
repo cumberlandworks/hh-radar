@@ -1,0 +1,315 @@
+{
+  "batch": "batchC",
+  "researched_at": "2026-09-05",
+  "venues": [
+    {
+      "id": 11135,
+      "name": "Grandpa Bar",
+      "official_site": "https://www.grandpabar.com/",
+      "windows": [
+        {
+          "days": ["WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "The Candy Dish (espresso martini)", "price": "$9"}
+          ],
+          "sources": ["https://nashvillelifestyles.com/dining/food-and-drink/15-happy-hour-s-in-town/"],
+          "last_verified": "2025-07-28",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official site has a 'HAPPY HOUR' menu section at grandpabar.com/menus but it is an image-only scan (no extractable text), so exact hours/prices could not be confirmed directly from the venue. Nashville Guru has no listing at the guessed slug (grandpa-bar returned an empty/404 page). Only one independent textual source found; food deals not identified anywhere."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.grandpabar.com/menus", "ok": true, "quote": "HAPPY HOUR (image-only menu, no extractable text)", "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/grandpa-bar", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://nashvillelifestyles.com/dining/food-and-drink/15-happy-hour-s-in-town/", "ok": true, "quote": "Wednesday–Sunday, 3–6 p.m. | Order The Candy Dish—an espresso martini—for just $9.", "confirmed_on": "2025-07-28"}
+      ],
+      "disagreements": [],
+      "notes": "No food happy-hour deals located from any source; only the one drink special (espresso martini) is documented. Official site's happy hour menu image could not be OCR'd/read as text."
+    },
+    {
+      "id": 14442,
+      "name": "Playdate",
+      "official_site": "https://www.playdatenash.com/",
+      "windows": [
+        {
+          "days": ["THU", "FRI", "SAT", "SUN"],
+          "start": "11:00",
+          "end": "20:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "Select cocktails $8 all day (restaurant only open Thu-Sun)", "price": "$8"}
+          ],
+          "sources": ["https://www.playdatenash.com/specialsandevents", "https://nashvilleguru.com/businesses/playdate"],
+          "last_verified": "2026-06-24",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Reverse/all-day happy hour: $8 cocktails run all day, but venue is only open Thu-Sun (closed Mon-Wed)."
+        },
+        {
+          "days": ["THU", "FRI", "SAT", "SUN"],
+          "start": "14:30",
+          "end": "19:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "Buy-one-get-one beer and wine", "price": null}
+          ],
+          "sources": ["https://www.playdatenash.com/specialsandevents", "https://nashvilleguru.com/businesses/playdate"],
+          "last_verified": "2026-06-24",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Thursday's window overlaps with Ballistic Bingo Night 6:00-8:00pm; Saturday's overlaps with the 'Press Play' DJ party 4:00-8:00pm. No food deals found."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.playdatenash.com/specialsandevents", "ok": true, "quote": "Playdate is the home of all day Happy Hour with all drinks $8 all day and BOGO beer and wine 2:30-7 Thursday-Sunday.", "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/playdate", "ok": true, "quote": "Happy hour from 2:30pm to 7:00pm includes buy-one-get-one beer and wine plus select $8 drinks all day.", "confirmed_on": "2026-06-24"}
+      ],
+      "disagreements": [],
+      "notes": "No food happy-hour deals identified; Playdate's specials are drink-only (pizza is on the regular menu but not called out as a happy-hour deal)."
+    },
+    {
+      "id": 15614,
+      "name": "JINYA Ramen Bar Nashville",
+      "official_site": "https://www.jinyaramenbar.com/locations/nashville/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "food", "desc": "Edamame", "price": "$3"},
+            {"type": "food", "desc": "French Fries", "price": "$3"},
+            {"type": "food", "desc": "Nikuman (1 pc.)", "price": "$3"},
+            {"type": "food", "desc": "JINYA Bun (1 pc.)", "price": "$3"},
+            {"type": "food", "desc": "Crispy Chicken (5 pcs.)", "price": "$6"},
+            {"type": "food", "desc": "Brussels Sprouts Tempura", "price": "$6"},
+            {"type": "food", "desc": "Salmon Poke Tacos (2 pcs.)", "price": "$6"},
+            {"type": "food", "desc": "Pork Gyoza (6 pcs.)", "price": "$9"},
+            {"type": "food", "desc": "Takoyaki (Octopus Balls)", "price": "$9"},
+            {"type": "food", "desc": "Chicken Chashu Bowl (Reg.)", "price": "$9"},
+            {"type": "drink", "desc": "Sapporo Draft Beer", "price": "$6"},
+            {"type": "drink", "desc": "Daily Featured Wine (Red, White, Sparkling)", "price": "$6"},
+            {"type": "drink", "desc": "J.Girl mocktail", "price": "$6"},
+            {"type": "drink", "desc": "Lycheetini cocktail", "price": "$9"},
+            {"type": "drink", "desc": "Ramune soda", "price": "$3"}
+          ],
+          "sources": ["https://www.jinyaramenbar.com/menu/tn/nashville/happy_hour", "https://nashvilleguru.com/businesses/jinya-ramen-bar"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Official site's happy hour menu is organized by $3/$6/$9 price tiers rather than by item category; itemized here from that live page. Nashville Guru confirms Mon-Sun 3:00pm-5:00pm with the same overview (bites $3-$9, beer/wine $6, cocktails $6-$9), last confirmed 06/24/26."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.jinyaramenbar.com/locations/nashville/", "ok": true, "quote": "Happy Hour Mon - Sun 3:00pm - 5:00pm", "confirmed_on": null},
+        {"url": "https://www.jinyaramenbar.com/menu/tn/nashville/happy_hour", "ok": true, "quote": "Happy Hour $3 / $6 / $9 tiered menu (Edamame $3, Sapporo Draft Beer $6, Lycheetini $9, etc.)", "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/jinya-ramen-bar", "ok": true, "quote": "Happy Hour from 3:00pm to 5:00pm includes $3-$9 bites, $6 select beer, $6 featured wine, and $6-$9 cocktails.", "confirmed_on": "2026-06-24"}
+      ],
+      "disagreements": [],
+      "notes": "Strong food selection at happy hour; corroborated by two independent sources with matching hours and pricing structure."
+    },
+    {
+      "id": 13100,
+      "name": "The Detroit Cowboy",
+      "official_site": "https://thedetroitcowboy.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "50% off liquor, beer, and wine under $25", "price": null},
+            {"type": "food", "desc": "Golden Hour food menu (Rhode Island Fried Calamari, Buffalo Cauliflower, Signature Oysters on Half Shell, Born Free Burger Sliders, 'Detroit Style' Cheesesteak Tacos, Charcuterie Board, Chargrilled Tenderloin Tips & Portabella Mushrooms, Cowboy Poutine, Truffle Parmesan Pommes Frites)", "price": null}
+          ],
+          "sources": ["https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu", "https://nashvilleguru.com/businesses/the-detroit-cowboy"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Called 'Golden Hour' on the official menu. Exact discounted prices for the food items are not listed on the site (only the 50% liquor/beer/wine-under-$25 discount is quantified)."
+        },
+        {
+          "days": ["SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "50% off liquor, beer, and wine under $25", "price": null},
+            {"type": "food", "desc": "Golden Hour food menu (same items as weekday window)", "price": null}
+          ],
+          "sources": ["https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu", "https://nashvilleguru.com/businesses/the-detroit-cowboy"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Sunday's Golden Hour starts an hour earlier (3pm) than the rest of the week."
+        },
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "close",
+          "area": "patio",
+          "deals": [
+            {"type": "drink", "desc": "Draft beer (Tony Joe White Cowboy Singer Lager, Marble Fox Southern Blonde Ale, Tailgate Orange Wheat)", "price": "$4.00-$5.00"},
+            {"type": "drink", "desc": "Bottled beer (American Rebel, Coors Light, Modelo Especial, Stella Artois, Yuengling)", "price": "$3.00-$4.00"},
+            {"type": "drink", "desc": "Wine by the glass (sparkling, rose, white, red)", "price": "$6.00-$9.00"},
+            {"type": "drink", "desc": "Signature cocktails (Signature Old Fashioned, White Lotus Martini, Ancho Mama's Margarita)", "price": "$8.00"},
+            {"type": "food", "desc": "Patio 'Golden Hour' bites: Rhode Island Fried Calamari, Buffalo Cauliflower, Truffle Parmesan Pommes Frites, Signature Oysters on Half Shell, Colossal Shrimp Cocktail, Born Free Burger Sliders, Detroit Style Cheesesteak Tacos, Charcuterie Board, Cowboy Poutine, Chargrilled Tenderloin Tips & Portobello Mushrooms", "price": null}
+          ],
+          "sources": ["https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official menu states: 'Patio Season just got an upgrade... bringing your favorite Happy Hour bites outside all night, plus a curated lineup of cocktails, beer, and wine at special pricing. Served nightly on the Patio from 3pm until the party is over!' This is a separate, longer, patio-only offering distinct from the indoor Golden Hour window; only found on the official site, not corroborated by a second source."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu", "ok": true, "quote": "Available Monday through Saturday from 4pm-6pm and Sunday from 3pm-6pm. Enjoy 50% off liquor, beer, and wine under $25.", "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/the-detroit-cowboy", "ok": true, "quote": "Happy hour from 4:00pm to 6:00pm includes half off beer, half off wine under $25, half off liquor, and a special food menu.", "confirmed_on": null},
+        {"url": "https://www.aol.com/lifestyle/12-nashville-oyster-happy-hours-160057008.html", "ok": true, "quote": "12 Nashville Oyster Happy Hours You've Gotta Try (lists Detroit Cowboy's oyster happy hour)", "confirmed_on": null}
+      ],
+      "disagreements": [],
+      "notes": "Two distinct happy-hour-style offerings: an indoor 'Golden Hour' (Mon-Sat 4-6pm / Sun 3-6pm, 50% off liquor/beer/wine<$25 + food menu) and a separate nightly Patio Menu (3pm-close, specifically priced beer/wine/cocktails + food bites), which TJ should note as two different deals depending on where he sits."
+    },
+    {
+      "id": 14947,
+      "name": "JoJo's Fish House",
+      "official_site": "https://jojosfishhouse.com/",
+      "windows": [
+        {
+          "days": ["WED", "THU", "FRI", "SAT"],
+          "start": "14:00",
+          "end": "19:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "2-for-1 (BOGO) beers", "price": null},
+            {"type": "drink", "desc": "$2 off daiquiris", "price": "$2 off"}
+          ],
+          "sources": ["https://jojosfishhouse.com/murfreesboro-jojo-s-fish-house-happy-hours-specials"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Per the venue's own weekly specials calendar, 'Happy Hour 2 to 7pm 2 4 1 Beers and $2 off Daiquiris' is listed on Wed, Thu, Fri, Sat but is NOT listed on Sun, Mon, or Tue (those days show other specials instead: Kids Eat Free Monday, 50% Tenders + Poker Night Tuesday). No food deals are described as part of Happy Hour itself; the same page lists separate 'Midday Munchies' (2-5pm) and 'Late Night Munchies' (7-9pm/8-11pm) blocks daily with no deal details given."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://jojosfishhouse.com/murfreesboro-jojo-s-fish-house-happy-hours-specials", "ok": true, "quote": "Happy Hour 2 to 7pm 2 4 1 Beers and $2 off Daiquiris", "confirmed_on": null},
+        {"url": "https://www.yelp.com/biz/jojos-fish-house-murfreesboro-3", "ok": false, "quote": null, "confirmed_on": null},
+        {"url": "https://www.tripadvisor.com/Restaurant_Review-g60970-d4398712-Reviews-Jojos_Fish_House-Murfreesboro_Tennessee.html", "ok": false, "quote": null, "confirmed_on": null}
+      ],
+      "disagreements": [],
+      "notes": "Could not corroborate with an independent second source (Yelp fetch returned empty; Tripadvisor not fetched due to fetch-budget limits) — treat as single-source, medium confidence. 'Midday Munchies' and 'Late Night Munchies' blocks may include food specials but the specials page does not spell out their contents."
+    },
+    {
+      "id": 12246,
+      "name": "Love & Exile (wine bar)",
+      "official_site": "https://www.loveandexile.bar/",
+      "windows": [
+        {
+          "days": ["TUE", "WED", "THU", "FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "½ off wine by the glass", "price": null},
+            {"type": "drink", "desc": "½ off draft beer", "price": null}
+          ],
+          "sources": ["https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"],
+          "last_verified": "2025-12-24",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Text pulled from an embedded venue-sourced quote on Do615's recurring Wednesday event listing (event instance dated 12/24/25). The official site's own menu page (loveandexile.bar/menu) is image-only with no extractable happy-hour text, so this could not be independently confirmed directly against the venue's own site."
+        },
+        {
+          "days": ["MON"],
+          "start": "16:00",
+          "end": "22:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "2-for-1 mimosas", "price": null}
+          ],
+          "sources": ["https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"],
+          "last_verified": "2025-12-24",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Described on the source as 'monday / all night'; end time set to Love & Exile's posted Monday closing time (10pm) since 'all night' isn't a literal 24h window. Note: a separate, older (dated 2018) Do615 listing for a recurring 'ALL DAY HAPPY HOUR' event on Mondays describes a completely different deal — see disagreements."
+        },
+        {
+          "days": ["SAT", "SUN"],
+          "start": "12:00",
+          "end": "close",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "Campo Bravo margarita or paloma (blanco)", "price": "$7"},
+            {"type": "drink", "desc": "Campo Bravo margarita or paloma (reposado)", "price": "$8"},
+            {"type": "drink", "desc": "Select beers (Montucky, Busch Light, Bud Light)", "price": "$3"},
+            {"type": "drink", "desc": "Well drinks", "price": "$5"},
+            {"type": "drink", "desc": "Wines", "price": "$5"},
+            {"type": "drink", "desc": "Vermouths", "price": "$6"},
+            {"type": "food", "desc": "Bruschetta", "price": "$7"},
+            {"type": "food", "desc": "Chips & queso", "price": "$5"},
+            {"type": "food", "desc": "Chips & French onion dip", "price": "$5"},
+            {"type": "food", "desc": "Chips & salsa", "price": "$5"},
+            {"type": "food", "desc": "Trio (chips & queso/onion dip/salsa)", "price": "$14"}
+          ],
+          "sources": ["https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"],
+          "last_verified": "2025-12-24",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Labeled 'ALL WEEKEND (saturday & sunday)' on the source with no explicit start/end clock time, so mapped to the venue's posted weekend open hours through close."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.loveandexile.bar/", "ok": true, "quote": "(no happy hour text found; homepage lists only general hours)", "confirmed_on": null},
+        {"url": "https://www.loveandexile.bar/menu", "ok": true, "quote": "(menu is image-only; no extractable happy hour text)", "confirmed_on": null},
+        {"url": "https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204", "ok": true, "quote": "tuesday – friday / 4–6pm ½ off wine by the glass ½ off draft beer / monday / all night 2 for 1 mimosas ALL WEEKEND (saturday & sunday) campo bravo margarita or paloma blanco - 7 reposado - 8 select beers montucky | busch light | bud light - 3 wells - 5 wines - 5 vermouths - 6 bruschetta - 7 chips & queso - 5 chips & french onion dip - 5 chips & salsa - 5 trio - 14", "confirmed_on": "2025-12-24"}
+      ],
+      "disagreements": [
+        "An older Do615 recurring-event listing for Love & Exile (do615.com/events/weekly/mon/all-day-happy-hour, event instance dated June 2018) describes Monday happy hour as '$2 off wine pours, $5 drafts, $10 Indecent canned wine (12oz), $5 well pours, and $5 select appetizers' running 4:00pm-12:00am — this conflicts with the newer (Dec 2025) source's Monday deal of '2 for 1 mimosas.' The 2018 listing is likely outdated; the 2025 listing was used as primary."
+      ],
+      "notes": "Official venue website (loveandexile.bar) has no text-based happy hour info anywhere findable — both its homepage and menu page present only image content. All happy hour data here comes from a single Do615 event-listing source (which itself appears to reproduce venue-provided copy), so overall confidence is capped at medium/low despite internal consistency between the Tue-Fri and weekend blocks."
+    },
+    {
+      "id": 9316,
+      "name": "Moto (M Street)",
+      "official_site": "https://www.motonashville.com/",
+      "windows": [
+        {
+          "days": ["MON", "WED", "THU", "FRI"],
+          "start": "17:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type": "drink", "desc": "Select wines", "price": "$9"},
+            {"type": "drink", "desc": "Select cocktails", "price": "$9"},
+            {"type": "drink", "desc": "40% off all bottles under $100", "price": null}
+          ],
+          "sources": ["https://www.motonashville.com/events/happy-hour", "https://nashvilleguru.com/businesses/moto"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "low",
+          "notes": "Official event page literally states 'Weekly Monday/Wednesday/Thursday/Friday at 5:00 pm - 6:00 pm' — but that same official page's own restaurant-hours footer lists 'Sunday - Monday: Closed', which directly contradicts having a Monday happy hour. See disagreements. No food deals were found for Moto's happy hour."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url": "https://www.motonashville.com/events/happy-hour", "ok": true, "quote": "Weekly Monday/Wednesday/Thursday/Friday at 5:00 pm - 6:00 pm. $9 Select Wines & Cocktails. 40% Off ALL Bottles Under $100.", "confirmed_on": null},
+        {"url": "https://nashvilleguru.com/businesses/moto", "ok": true, "quote": "Happy hour from 5:00pm to 6:00pm includes $9 select wines, $9 select cocktails, and 40% off all bottles under $100. Happy hour from 5:00pm to 10:00pm", "confirmed_on": null}
+      ],
+      "disagreements": [
+        "Official motonashville.com happy-hour event page lists the offer as running Mon/Wed/Thu/Fri, but the same page's footer restaurant-hours block says 'Sunday - Monday: Closed' and 'Tuesday - Thursday: 5:00 pm - 10:00 pm' — meaning Moto appears to be closed on Mondays entirely, contradicting a Monday happy hour. Additionally, Nashville Guru's page metadata references a second, unexplained window ('Happy hour from 5:00pm to 10:00pm') that does not match the 5-6pm window described everywhere else and could not be verified against a rendered day-by-day breakdown on Guru's page."
+      ],
+      "notes": "Given the internal contradiction on official site hours vs. happy hour days, treat the exact days with low confidence; the 5-6pm timeframe and $9 wine/cocktail + 40%-off-bottles deal itself is consistent across both sources."
+    }
+  ]
+}

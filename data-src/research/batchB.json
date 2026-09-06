@@ -1,0 +1,304 @@
+{
+  "batch": "batchB",
+  "researched_at": "2026-09-05",
+  "venues": [
+    {
+      "id": 3389,
+      "name": "City Winery Nashville",
+      "official_site": "https://citywinery.com/pages/nashville-restaurant-and-winery",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"food","desc":"Happy Hour food specials (specific items not itemized on site)","price":null},
+            {"type":"drink","desc":"Happy Hour drink specials (specific items not itemized on site)","price":null}
+          ],
+          "sources": ["https://citywinery.com/pages/nashville-restaurant-and-winery"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Official live page (fetched today) reads: 'Join us Monday through Thursdays 4-6 PM for our Happy Hour food and drink specials, or get the weekend started early with Summer Fridays from 1-5 PM!' Friday is a SEPARATE 'Summer Fridays' promo (1-5pm), not labeled Happy Hour, so not included as a HH window here. No exact deal pricing given on-site."
+        },
+        {
+          "days": ["FRI"],
+          "start": "13:00",
+          "end": "17:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"'Summer Fridays' promo — get the weekend started early (details not itemized on site)","price":null}
+          ],
+          "sources": ["https://citywinery.com/pages/nashville-restaurant-and-winery"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Labeled 'Summer Fridays', not 'Happy Hour' — included since it's a discount window a reader would want to know about; oddity noted. May be seasonal (summer-only) and could lapse outside that season."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://citywinery.com/pages/nashville-restaurant-and-winery","ok":true,"quote":"Join us Monday through Thursdays 4-6 PM for our Happy Hour food and drink specials, or get the weekend started early with Summer Fridays from 1-5 PM!","confirmed_on":"2026-09-05"},
+        {"url":"https://nashvilleguru.com/businesses/city-winery-nashville","ok":false,"quote":null,"confirmed_on":null},
+        {"url":"https://www.visitmusiccity.com/coupon/happy-hour-city-winery-nashville","ok":true,"quote":"Happy hour Monday through Friday from 4-6 PM with 50% off wine on tap","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Official site (fetched live 2026-09-05) states Happy Hour is Mon-Thu 4-6pm only, with Friday covered by a separate 'Summer Fridays' 1-5pm promo (no % discount stated). Third-party aggregator (visitmusiccity.com, undated) states Happy Hour runs Monday-Friday 4-6pm with '50% off wine on tap' — this both extends the window to Friday and states a specific discount not shown on the current official page. Could not resolve which is current; recorded both."
+      ],
+      "notes": "Nashville Guru has no listing page for 'city-winery-nashville' slug (tried businesses/city-winery-nashville, 404/no content returned) and site search did not surface an alternate slug. Venue is primarily a live-music/dining venue in Wedgewood-Houston; happy hour is a secondary offering to full dinner/wine service."
+    },
+    {
+      "id": 9590,
+      "name": "Common Ground (Berry Hill)",
+      "official_site": "https://www.cgnashville.com/menus/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"Select cocktails (Hugo Spritz, Margarita, Daiquiri, Paloma, Mule, Bee's Knees, French 75, Martini, Negroni, Old Fashioned, Cosmo, Mai Tai)","price":"$10"},
+            {"type":"drink","desc":"Zero-proof 'This Side Up' mocktail","price":"$5"},
+            {"type":"drink","desc":"Select wines by the glass (white/rosé/red)","price":"$7"},
+            {"type":"drink","desc":"Beer: Dales Light Lager, Montucky Cold Snack","price":"$5"},
+            {"type":"drink","desc":"Brooklyn Hoppy Amber Beer (non-alc)","price":"$5"},
+            {"type":"food","desc":"Shrimp Taco (crispy shrimp, napa slaw, WAM BAM sauce, lime, avocado crema, flour tortilla)","price":"$5"},
+            {"type":"food","desc":"Crudités (hummus, whipped boursin, seasoned veggies)","price":"$5"},
+            {"type":"food","desc":"Crispy smashed fingerling potatoes, garlic, oil, herbs, sea salt, queso fresco","price":"$7"},
+            {"type":"food","desc":"Avocado toast (citrus avocado smash, salsa macha, queso fresco, radish)","price":"$7"}
+          ],
+          "sources": ["https://www.cgnashville.com/menus/", "https://nashvilleguru.com/businesses/common-ground-berry-hill"],
+          "last_verified": "2026-06-15",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Called 'Common Hour' on the menu. Official menu page (live, fetched 2026-09-05) lists the exact same cocktail/wine/beer/bites items and prices under a 'Common Hour' heading but does not itemize days/times on that page; Nashville Guru (sourcing the same official menu page) explicitly states MON-FRI 3:00pm-6:00pm and was last confirmed 06/15/26 — treated as corroborating the official menu content."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.cgnashville.com/menus/","ok":true,"quote":"Common Ground Bar and Eatery serves lunch, brunch, dinner, and happy hour. ... Common Hour ... Hugo Spritz $10 ... Wines White/Rosé/Red $7 ... Shrimp Taco $5","confirmed_on":"2026-09-05"},
+        {"url":"https://nashvilleguru.com/businesses/common-ground-berry-hill","ok":true,"quote":"\"Common Hour\" from 3:00pm to 6:00pm includes $10 select cocktails, $5 mocktails, $7 select wines by the glass, $5 beer, and $5-$7 bites.","confirmed_on":"2026-06-15"},
+        {"url":"https://www.yelp.com/biz/common-ground-bar-and-eatery-berry-hill-nashville-2","ok":true,"quote":"The $4 Happy Hour Crispy Smashed Fingerling Potatoes with queso fresco and CG Sauce were super tasty; the $4 Shrimp Taco had a lot of flavor","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Yelp reviewer(s) cite $4 prices for smashed potatoes and shrimp taco vs. $7/$5 currently listed on the official menu and Guru — likely reflects an older/since-changed price point rather than a live disagreement; noted for awareness, not treated as a corroboration conflict since review is undated."
+      ],
+      "notes": "One aggregator snippet claimed 'Happy Hour 6 days a week (Tuesday-Sunday)' in addition to the MON-FRI Common Hour, but no primary source for that second window could be located; not included as a separate window due to lack of corroboration."
+    },
+    {
+      "id": 12498,
+      "name": "Dog Haus Biergarten East Nashville",
+      "official_site": "https://locations.doghaus.com/locations/tn/nashville/908-main-st",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT"],
+          "start": "15:00",
+          "end": "19:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"food","desc":"$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)","price":"-$1"},
+            {"type":"drink","desc":"$2 off draft beer & wine","price":"-$2"},
+            {"type":"food","desc":"$2 off shareables","price":"-$2"},
+            {"type":"drink","desc":"$3 off Haus cocktails","price":"-$3"},
+            {"type":"food","desc":"$3 off wings","price":"-$3"}
+          ],
+          "sources": ["https://locations.doghaus.com/locations/tn/nashville/908-main-st"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Location page (live, fetched today) has a dedicated 'Happy Hour' block: '$1 OFF Any 3-Pack of Sliders / $2 OFF Draft Beer & Wine / $2 OFF Shareables / $3 OFF Haus Cocktails / $3 OFF Wings' with 'Monday - Saturday: 3PM - 7PM'."
+        },
+        {
+          "days": ["SUN"],
+          "start": "12:00",
+          "end": "19:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"food","desc":"$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)","price":"-$1"},
+            {"type":"drink","desc":"$2 off draft beer & wine","price":"-$2"},
+            {"type":"food","desc":"$2 off shareables","price":"-$2"},
+            {"type":"drink","desc":"$3 off Haus cocktails","price":"-$3"},
+            {"type":"food","desc":"$3 off wings","price":"-$3"}
+          ],
+          "sources": ["https://locations.doghaus.com/locations/tn/nashville/908-main-st"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Same location page: 'Sunday: 12PM - 7PM'."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://locations.doghaus.com/locations/tn/nashville/908-main-st","ok":true,"quote":"$1 OFF Any 3-Pack of Sliders / $2 OFF Draft Beer & Wine / $2 OFF Shareables / $3 OFF Haus Cocktails / $3 OFF Wings — Monday - Saturday: 3PM - 7PM / Sunday: 12PM - 7PM","confirmed_on":"2026-09-05"},
+        {"url":"https://nashvilleguru.com/businesses/dog-haus","ok":true,"quote":null,"confirmed_on":null},
+        {"url":"https://www.instagram.com/doghaus_eastnashville/","ok":false,"quote":"Profile references \"Happy Hour!\" but specific times/deals not retrievable via search snippet","confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "Nashville Guru's listing page for 'Dog Haus Biergarten' exists but currently carries no Happy Hours & Specials section (page has only address/directions), so it could not corroborate; not counted as a disagreement, just missing data. Corroborated is false because only one dated/quotable source (the official page) was available; Guru and Instagram could not confirm specifics."
+    },
+    {
+      "id": 15988,
+      "name": "Dog Haus Biergarten Franklin",
+      "official_site": "https://locations.doghaus.com/locations/tn/franklin/755-crescent-centre-dr-ste-104",
+      "windows": null,
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://locations.doghaus.com/locations/tn/franklin/755-crescent-centre-dr-ste-104","ok":true,"quote":"Features: ... Happy Hour Specials ... (no times or deal specifics shown on this location's page)","confirmed_on":"2026-09-05"},
+        {"url":"https://doghaus.com/happy-hour/","ok":true,"quote":"CHEERS TO HAPPY HOUR — TASTY BREWS & DELICIOUS BITES TO WIN THE DAY ... $1 OFF Sliders, $2 OFF Draft Beer & Wine, $2 OFF Shareables, $3 OFF Haus Cocktails, $3 OFF Wings","confirmed_on":null},
+        {"url":"https://www.instagram.com/doghaus_franklin/","ok":false,"quote":null,"confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "This is a distinct Dog Haus chain location from the Wisconsin 'Dog Haus Biergarten Franklin' that dominates search results — confirmed correct address (755 Crescent Centre Dr, Franklin, TN 37067) via locations.doghaus.com. The location's own page lists 'Happy Hour Specials' as a feature tag (so it does have one) but does NOT publish a specific time window or itemized deals the way the East Nashville sister location does. The chain-wide generic Happy Hour page (doghaus.com/happy-hour) describes typical deal categories ($1 off sliders, $2 off draft beer & wine/shareables, $3 off cocktails/wings) but explicitly says offerings 'differ' by location and does not name Franklin, TN's hours. Per brief rules, this is a fetch/verification gap rather than a confirmed absence, so windows is null with confidence unknown rather than []/verified_no_hh."
+    },
+    {
+      "id": 8588,
+      "name": "Blue Sushi Sake Grill (5th & Broadway)",
+      "official_site": "https://www.bluesushisakegrill.com/locations/fifth-broadway",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT"],
+          "start": "11:00",
+          "end": "18:30",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"Select beers","price":"$4.25-$11.00"},
+            {"type":"drink","desc":"House wines","price":"$6.75"},
+            {"type":"drink","desc":"Select cocktails","price":"$8.00-$10.50"},
+            {"type":"drink","desc":"Sake","price":"$5.50-$8.00"},
+            {"type":"food","desc":"Select shared plates","price":"$5.25-$15.50"},
+            {"type":"food","desc":"Specialty nigiri","price":"$6.75-$8.50"},
+            {"type":"food","desc":"Specialty sashimi","price":"$10.25-$12.50"},
+            {"type":"food","desc":"Maki and vegan maki","price":"$4.00-$11.00"}
+          ],
+          "sources": ["https://www.bluesushisakegrill.com/locations/fifth-broadway", "https://nashvilleguru.com/businesses/blue-sushi-sake-grill"],
+          "last_verified": "2026-06-23",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Official location page (live, fetched today) states 'Happy Hours: Monday-Saturday 11am-6:30pm, Sunday all day.' Nashville Guru sources the same official page and itemizes identical deal pricing, last confirmed 06/23/26. Also noted: 'Vegan + Sake Tuesdays' and 'Little Bento Bonanza Mondays' as recurring specials layered on top of standard happy hour (oddity)."
+        },
+        {
+          "days": ["SUN"],
+          "start": "12:00",
+          "end": "21:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"Select beers","price":"$4.25-$11.00"},
+            {"type":"drink","desc":"House wines","price":"$6.75"},
+            {"type":"drink","desc":"Select cocktails","price":"$8.00-$10.50"},
+            {"type":"drink","desc":"Sake","price":"$5.50-$8.00"},
+            {"type":"food","desc":"Select shared plates","price":"$5.25-$15.50"},
+            {"type":"food","desc":"Specialty nigiri","price":"$6.75-$8.50"},
+            {"type":"food","desc":"Specialty sashimi","price":"$10.25-$12.50"},
+            {"type":"food","desc":"Maki and vegan maki","price":"$4.00-$11.00"}
+          ],
+          "sources": ["https://www.bluesushisakegrill.com/locations/fifth-broadway", "https://nashvilleguru.com/businesses/blue-sushi-sake-grill"],
+          "last_verified": "2026-06-23",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "'Sunday: all day' per official site; restaurant's Sunday hours are 12pm-9pm, so happy hour runs the full 12:00-21:00 Sunday service window (reverse/all-day happy hour oddity)."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.bluesushisakegrill.com/locations/fifth-broadway","ok":true,"quote":"Happy Hours — Monday-Saturday: 11am-6:30pm — Sunday: all day","confirmed_on":"2026-09-05"},
+        {"url":"https://nashvilleguru.com/businesses/blue-sushi-sake-grill","ok":true,"quote":"Happy hour from 11:00am to 6:30pm includes $4.25-$11.00 select beers, $6.75 house wines... Happy hour all-day [Sunday]","confirmed_on":"2026-06-23"},
+        {"url":"https://nashvilledowntown.com/go/blue-sushi-sake-grill","ok":false,"quote":null,"confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "A search snippet paraphrased the window as '2pm-6pm Mon-Sat' but this conflicts with both the official page and Guru (both say 11am-6:30pm); treating the two directly-fetched, itemized sources as authoritative and disregarding the paraphrase, which appears to be a summarizer error rather than an independent source."
+    },
+    {
+      "id": 8589,
+      "name": "Blue Sushi Sake Grill (McEwen Northside)",
+      "official_site": "https://www.bluesushisakegrill.com/locations/mcewen-northside",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT"],
+          "start": "11:00",
+          "end": "18:30",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"Select beers, house wines, select cocktails, sake (same structure as sister Nashville location's Happy Hour menu)","price":null},
+            {"type":"food","desc":"Select shared plates, specialty nigiri/sashimi, maki and vegan maki (same structure as sister Nashville location's Happy Hour menu)","price":null}
+          ],
+          "sources": ["https://www.bluesushisakegrill.com/locations/mcewen-northside"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official location page (live, fetched today): 'Happy Hours — Monday-Thursday: 11am-6:30pm' [sic, page groups it as Monday-Saturday elsewhere] — exact text: 'Happy Hours Monday-Saturday: 11am-6:30pm / Sunday: all day.' Page links the same chain-wide Happy Hour PDF menu used at Fifth+Broadway but does not re-itemize prices on the page itself, so exact deal pricing not independently re-confirmed for this specific location (assumed identical to 5th & Broadway's itemized happy hour menu since both link the same 'Happy Hour' PDF asset, but not treated as fully verified — hence 'med' confidence and null pricing)."
+        },
+        {
+          "days": ["SUN"],
+          "start": "12:00",
+          "end": "21:00",
+          "area": "whole restaurant",
+          "deals": [
+            {"type":"drink","desc":"All-day Sunday happy hour drink specials (same chain HH menu)","price":null},
+            {"type":"food","desc":"All-day Sunday happy hour food specials (same chain HH menu)","price":null}
+          ],
+          "sources": ["https://www.bluesushisakegrill.com/locations/mcewen-northside"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "Meta-description on the official page explicitly brags: 'have we mentioned our Happy Hour is available all day on Sundays?' Corroborated by third-party summary (ConcertHotels.com) noting 'Sunday is a standout... all-day Sunday happy hour.'"
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.bluesushisakegrill.com/locations/mcewen-northside","ok":true,"quote":"join us for a chill Sunday happy hour on our patio (have we mentioned our Happy Hour is available all day on Sundays?) ... Happy Hours: Monday-Saturday: 11am-6:30pm, Sunday: all day","confirmed_on":"2026-09-05"},
+        {"url":"https://www.concerthotels.com/restaurant/blue-sushi-sake-grill-mcewen-northside/100586","ok":true,"quote":"Sunday is a standout, as guests note an all-day Sunday happy hour, making it a great day to visit for deals.","confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/blue-sushi-sake-grill","ok":false,"quote":"No Nashville Guru listing found specifically for the Franklin/McEwen Northside location (only the Downtown Nashville location has a Guru page)","confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "No dedicated Nashville Guru page exists for the Franklin location as far as could be found; substituted a review-aggregator (ConcertHotels.com) as the second/third source."
+    },
+    {
+      "id": 18627,
+      "name": "Fortuna Italian Steakhouse",
+      "official_site": "https://www.fortunanashville.com/happyhour",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:30",
+          "end": "18:30",
+          "area": "bar only",
+          "deals": [
+            {"type":"food","desc":"Half price all oysters (All Raw, Fortuna, & Rockefeller)","price":"50% off"},
+            {"type":"food","desc":"Half price all pizzas (Margherita, Meatball, Veggie)","price":"50% off"},
+            {"type":"food","desc":"Fried Calamari","price":"$8"},
+            {"type":"food","desc":"Meatballs","price":"$8"},
+            {"type":"food","desc":"Knife & Fork Burger","price":"$15"},
+            {"type":"food","desc":"Spaghetti & Meatballs","price":"$15"},
+            {"type":"food","desc":"Steak Frites","price":"$25"},
+            {"type":"drink","desc":"Wine by the glass","price":"2-for-1"},
+            {"type":"drink","desc":"Draft beer","price":"2-for-1"},
+            {"type":"drink","desc":"Well drinks","price":"$5"},
+            {"type":"drink","desc":"House martinis","price":"$6"},
+            {"type":"drink","desc":"Specialty martinis","price":"$8"},
+            {"type":"drink","desc":"4 Roses Old Fashioned","price":"$6"},
+            {"type":"drink","desc":"House Margarita","price":"$6"},
+            {"type":"drink","desc":"Aperol Spritz","price":"$6"},
+            {"type":"drink","desc":"House Sangria","price":"$6"}
+          ],
+          "sources": ["https://www.fortunanashville.com/happyhour"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official page (live, fetched today) header reads: 'Happy Hour — Every day from 4:30 pm - 6:30 pm — Only available at the bar and lounge. Dine-in only.' Full itemized drink and food specials list captured verbatim from the page. Third-party sources corroborate the daily 4:30-6:30pm window but do not itemize pricing, so treated as med confidence pending a second fully-itemized source."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.fortunanashville.com/happyhour","ok":true,"quote":"Happy Hour — Every day from 4:30 pm - 6:30 pm — Only available at the bar and lounge. Dine-in only.","confirmed_on":"2026-09-05"},
+        {"url":"https://nashvilleguru.com/businesses/fortuna-italian-steakhouse","ok":false,"quote":null,"confirmed_on":null},
+        {"url":"https://www.yelp.com/biz/fortuna-italian-steakhouse-nashville","ok":true,"quote":"Fortuna offers daily happy hour from 4:30 pm - 6:30 pm, and it's only available at the bar and lounge.","confirmed_on":null}
+      ],
+      "disagreements": [
+        "One aggregated web-search summary mentioned 'happy hour on weekdays from 4pm-8pm' as an alternate reading from an unspecified source, which conflicts with the official site's 4:30-6:30pm daily window. Could not identify or verify the primary source for the 4pm-8pm claim, so it is recorded here but the official 4:30-6:30pm window is treated as more reliable given it is the live, dated venue page."
+      ],
+      "notes": "No dedicated Nashville Guru business listing could be found for Fortuna (only appears in a Guru roundup article on Bellevue dining, without happy hour specifics). Restricted to bar/lounge seating and dine-in only — noted as an oddity/restriction."
+    }
+  ]
+}

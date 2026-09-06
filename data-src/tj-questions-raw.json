@@ -1,0 +1,86 @@
+[
+ [
+  "Bad Idea",
+  "One WebSearch summary (no locatable source page) asserted 'Arrive before 6pm to enjoy happy hour specials, including the fried bologna sandwich' but this could not be traced to any actual fetched page (official menu page, Nashville Guru listing, and the Nashville Scene feature review all lack any happy-hour mention), so it is flagged as unverified rather than recorded as a window."
+ ],
+ [
+  "Boqueria - Nashville",
+  "An initial general WebSearch summary claimed 'Monday-Thursday happy hour is 2:30PM-5:30PM, and Friday-Sunday happy hour is 11AM-3PM,' which directly conflicts with the official location page's stated 'Monday-Friday 3pm-6pm, Saturday-Sunday 4pm-6pm.' The official site's hours section is treated as authoritative; the earlier conflicting reading is not used."
+ ],
+ [
+  "Cajun Steamer - Franklin",
+  "Yelp summary claims 'happy hour every day 3-6pm, $3.50 margaritas, $5 apps'; the venue's own bar-menu PDF says Mon-Fri 3-6 + all day Tuesday with different items. PDF used."
+ ],
+ [
+  "City Winery - Nashville",
+  "Official site (fetched live 2026-09-05) states Happy Hour is Mon-Thu 4-6pm only, with Friday covered by a separate 'Summer Fridays' 1-5pm promo (no % discount stated). Third-party aggregator (visitmusiccity.com, undated) states Happy Hour runs Monday-Friday 4-6pm with '50% off wine on tap' — this both extends the window to Friday and states a specific discount not shown on the current official page. Could not resolve which is current; recorded both."
+ ],
+ [
+  "Common Ground - Berry Hill",
+  "Yelp reviewer(s) cite $4 prices for smashed potatoes and shrimp taco vs. $7/$5 currently listed on the official menu and Guru — likely reflects an older/since-changed price point rather than a live disagreement; noted for awareness, not treated as a corroboration conflict since review is undated."
+ ],
+ [
+  "Dog Haus - Franklin (Biergarten)",
+  "Franklin HH times not published anywhere found; assumed = East Nashville's. TJ to confirm."
+ ],
+ [
+  "Fortuna Italian Steakhouse",
+  "One aggregated web-search summary mentioned 'happy hour on weekdays from 4pm-8pm' as an alternate reading from an unspecified source, which conflicts with the official site's 4:30-6:30pm daily window. Could not identify or verify the primary source for the 4pm-8pm claim, so it is recorded here but the official 4:30-6:30pm window is treated as more reliable given it is the live, dated venue page."
+ ],
+ [
+  "Love & Exile",
+  "An older Do615 recurring-event listing for Love & Exile (do615.com/events/weekly/mon/all-day-happy-hour, event instance dated June 2018) describes Monday happy hour as '$2 off wine pours, $5 drafts, $10 Indecent canned wine (12oz), $5 well pours, and $5 select appetizers' running 4:00pm-12:00am — this conflicts with the newer (Dec 2025) source's Monday deal of '2 for 1 mimosas.' The 2018 listing is likely outdated; the 2025 listing was used as primary."
+ ],
+ [
+  "Moto",
+  "Official page lists Monday HH while the restaurant is closed Mondays; Tuesday not listed. Recorded Wed-Fri; TJ may want to ask whether Tuesday counts."
+ ],
+ [
+  "Nacho Daddy - Nashville",
+  "Day range for the afternoon happy hour: do615 (event listing) says Mon-Thu 3-6pm; a Yelp Q&A answer says Mon-Fri 3-6pm. Could not confirm which is current."
+ ],
+ [
+  "Present Tense",
+  "inKind hours include Wednesday; venue site lists Thu-Sun only."
+ ],
+ [
+  "Punk Wok",
+  "Domestic beer price: official site says $2.50; aggregator summaries (Yelp-derived) say $2. Minor, likely a rounding/update discrepancy."
+ ],
+ [
+  "The Amsterdamian",
+  "Same official menu page rendered 'Tuesday - Friday' in one fetch and 'Mo-Fri' in another on 09-05 — Monday HH uncertain."
+ ],
+ [
+  "Two Hands - Nashville",
+  "Pricing mechanic: official site's current 'Snacky Hour' menu uses FLAT prices ($10 cocktails/$8 wine/$5 beer/$10 burger), while Nashville Guru's listing meta-description describes a DISCOUNT structure ($3 off cocktails, $2 off beer, $2 off wine) with no food item mentioned. These appear to be different versions of the promotion (Guru's copy may be stale) and could not be reconciled."
+ ],
+ [
+  "Two Hands - Nashville",
+  "Days: a general web-search summary claimed happy hour runs 'Tuesday through Saturday' 4-6pm, while the official site explicitly says 'every day'. Official site treated as authoritative for days, but the conflict is noted."
+ ],
+ [
+  "Two Ten Jack",
+  "do615.com event page text says 'Happy Hour Monday – Thursday from 4:00pm – 6:00[pm]' while a separate aggregator summary (checkle.com, not independently fetchable) and general web search consensus describe Monday–Friday 4-6pm. Could not resolve which is current."
+ ],
+ [
+  "Germantown Cafe",
+  "A general web-search summary claimed Monday features an extended happy hour from 3:30pm to 9:00pm in the bar, but the official site's own footer text only lists Mon-Fri 3:30-6:30pm and a separate Sat 7:30-9pm window, with no Monday extension mentioned. Treating the extended-Monday claim as unconfirmed/likely erroneous aggregation."
+ ],
+ [
+  "Park Cafe",
+  "A general web-search summary cited an alternate schedule of 'Monday-Thursday 4:30pm-6:30pm and Friday & Saturday 4:30pm-6pm' from an unspecified/unclear source (possibly outdated aggregator), which conflicts with both the current official page and Nashville Guru's Mon-Fri 4-6pm bar-area window. The official + Guru version is treated as authoritative given the recent confirmation date."
+ ],
+ [
+  "Connie's Upscale Dive",
+  "Whether inKind credit on the 'Connie's Upscale Dive' row is honored at The Backbar at Verna — same operator/address, rename not reflected on inKind. TJ to confirm at first visit."
+ ],
+ [
+  "Verna Café & Bar",
+  "Site footer says Verna HH Thu-Mon 3-6pm; the evening-menu page says 'Happy Hour Daily 5-7pm' with different prices. Both recorded as separate windows (café vs evening bar)."
+ ],
+ [
+  "Vintage Vine 100",
+  "An earlier general web-search summary described happy hour as 'Monday-Friday 3-6pm' with a specific Tuesday-Thursday $3-off-flight/$5-off-bottle deal, which conflicts with the official site's own current footer text of 'Tuesday-Friday 3-6pm' (no Monday). Treating the official site text as authoritative; Guru/Yelp listings could not be fetched to break the tie."
+ ]
+]

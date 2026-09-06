@@ -1,0 +1,247 @@
+{
+  "batch": "batchD",
+  "researched_at": "2026-09-05",
+  "venues": [
+    {
+      "id": 15771,
+      "name": "Nacho Daddy Nashville",
+      "official_site": "https://nachodaddy.com/menu/nacho-daddy-nashville-800-19th-avenue-south",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "bar & patio",
+          "deals": [
+            {"type":"food","desc":"select mini nachos, tacos and other items $8 and under","price":"$8 and under"},
+            {"type":"drink","desc":"house margaritas and other drinks $8 and under","price":"$8 and under"}
+          ],
+          "sources": ["https://do615.com/events/2025/2/10/nacho-daddy-must-try-happy-hour-specials-tickets","https://www.yelp.com/questions/nacho-daddy-when-is-happy-hour/FwsEylJ2i2bMTdfkVxXFcQ"],
+          "last_verified": "2025-02-10",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "do615 event listing describes Mon-Thu 3-6pm; a Yelp Q&A independently describes 3-6pm Mon-Fri at the bar and patio. Day-range disagreement noted below."
+        },
+        {
+          "days": ["FRI","SAT"],
+          "start": "22:00",
+          "end": "02:00",
+          "area": "bar only",
+          "deals": [
+            {"type":"food","desc":"mini nachos, tacos $8 and under","price":"$8 and under"},
+            {"type":"drink","desc":"house margaritas $8 and under","price":"$8 and under"}
+          ],
+          "sources": ["https://do615.com/events/weekly/sat/late-night-happy-hour-at-nacho-daddy-tickets","https://www.instagram.com/p/DISAI7_TW7e/?hl=en"],
+          "last_verified": null,
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "Branded 'Late Night Happy Hour', Fri/Sat 10pm-2am, matches restaurant's late closing hours."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://nachodaddy.com/menu/nacho-daddy-nashville-800-19th-avenue-south","ok":true,"quote":null,"confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/nacho-daddy-nashville","ok":true,"quote":"Gourmet Nachos, Margaritas, and the Original Scorpion Shot (no HH-specific text on listing)","confirmed_on":null},
+        {"url":"https://do615.com/events/2025/2/10/nacho-daddy-must-try-happy-hour-specials-tickets","ok":true,"quote":"Mondays through Thursdays, from 3-6 p.m., guests can enjoy a variety of items priced at $8 and under at the bar.","confirmed_on":null},
+        {"url":"https://www.yelp.com/questions/nacho-daddy-when-is-happy-hour/FwsEylJ2i2bMTdfkVxXFcQ","ok":true,"quote":"Happy hour is 3pm-6pm Mon-Fri in the bar and patio areas","confirmed_on":null},
+        {"url":"https://do615.com/events/weekly/sat/late-night-happy-hour-at-nacho-daddy-tickets","ok":true,"quote":"Late Night Happy Hour ... Friday & Saturday from 10PM-2AM, with all your favorites for $8 & under","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Day range for the afternoon happy hour: do615 (event listing) says Mon-Thu 3-6pm; a Yelp Q&A answer says Mon-Fri 3-6pm. Could not confirm which is current."
+      ],
+      "notes": "Official nachodaddy.com/locations page 404'd; used the Toast-hosted location/menu page instead. Chain-wide brand, Nashville-specific HH page not separately published."
+    },
+    {
+      "id": 10507,
+      "name": "Present Tense",
+      "official_site": "https://www.liveinthepresenttense.com/eat",
+      "windows": [
+        {
+          "days": ["THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "17:30",
+          "area": "whole restaurant",
+          "deals": [],
+          "sources": ["https://www.liveinthepresenttense.com/eat"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official site's Hours block reads verbatim: 'Happy Hour 4-530 / Dinner Thu-Sat 5-11 / Dinner Sun 5-9' — implies the restaurant (and thus happy hour) only operates Thu-Sun. No itemized HH menu/pricing found on official site."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.liveinthepresenttense.com/eat","ok":true,"quote":"Hours / Happy Hour 4-530 / Dinner Thu-Sat 5-11 / Dinner Sun 5-9","confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/present-tense","ok":true,"quote":"Business listing page only; no happy hour text or confirmed-on date present on the page.","confirmed_on":null},
+        {"url":"https://www.yelp.com/biz/present-tense-nashville","ok":false,"quote":null,"confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "Yelp page was found via search but not independently fetched (time budget); Nashville Guru business listing carries no HH-specific copy or confirmed date for this venue. Izakaya/sake bar & natural wine list; no bar-only vs whole-restaurant distinction stated."
+    },
+    {
+      "id": 12065,
+      "name": "Punk Wok",
+      "official_site": "https://www.punkwok.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "whole restaurant (dine-in only)",
+          "deals": [
+            {"type":"food","desc":"half-priced sushi","price":"50% off"},
+            {"type":"drink","desc":"$2.50 domestic beers (some sources say $2)","price":"$2.50"}
+          ],
+          "sources": ["https://www.punkwok.com/","https://www.nashvillescene.com/bon/2025/food-and-drink/writers-choice/punk-wok/article_ddb0bd3b-e2c1-4b1a-bd5e-509ca29a86ef.html","https://www.yelp.com/biz/punk-wok-nashville"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Called out by Nashville Scene as 'Best Happy Hour' (Writers' Choice). Dine-in only, both bars open for walk-ins; patio uncovered/unheated."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.punkwok.com/","ok":true,"quote":"3-6pm every day. Half-priced sushi & $2.50 domestics. dine in only.","confirmed_on":null},
+        {"url":"https://www.nashvillescene.com/bon/2025/food-and-drink/writers-choice/punk-wok/article_ddb0bd3b-e2c1-4b1a-bd5e-509ca29a86ef.html","ok":true,"quote":"Best Happy Hour: Punk Wok; daily happy hour has become legendary for locals","confirmed_on":null},
+        {"url":"https://www.yelp.com/biz/punk-wok-nashville","ok":true,"quote":"Half-priced sushi and $2 domestics daily from 3-6pm, dine-in only","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Domestic beer price: official site says $2.50; aggregator summaries (Yelp-derived) say $2. Minor, likely a rounding/update discrepancy."
+      ],
+      "notes": "Very consistently reported across all three source types; one of Nashville's most well-known happy hours."
+    },
+    {
+      "id": 17961,
+      "name": "Tantisimo",
+      "official_site": "https://www.tantisimo.com/menus",
+      "windows": [
+        {
+          "days": ["TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "deals": [
+            {"type":"food","desc":"Bolillo bread","price":"$8"},
+            {"type":"food","desc":"Empanadas de Pollo","price":"$12"},
+            {"type":"food","desc":"Fish Tacos","price":"$7"},
+            {"type":"drink","desc":"Sol de Cuba cocktail","price":"$10"},
+            {"type":"drink","desc":"SOS cocktail","price":"$10"},
+            {"type":"drink","desc":"cocktail pitchers (serves 2-4)","price":"$40"},
+            {"type":"drink","desc":"grilled piña colada","price":"$8"}
+          ],
+          "sources": ["https://www.tantisimo.com/menus","https://nashvilleguru.com/businesses/tantisimo"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Official site's Menus page links a PDF explicitly labeled 'HAPPY HOUR 4PM-6PM' (PDF itself not opened - only the label was fetched). Restaurant closed Mondays; dinner service (and presumably HH) runs Tue-Sun. Itemized deals/prices above are drawn from a web-search aggregate summary that could not be independently re-verified against the PDF menu in this pass."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.tantisimo.com/menus","ok":true,"quote":"HAPPY HOUR 4PM-6PM (menu PDF link); Hours: MON CLOSED, DINNER: TUE-THUR, SUN 4pm-9pm FRI & SAT 4pm-10pm","confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/tantisimo","ok":true,"quote":"Business listing only; no HH-specific text or confirmed date on page.","confirmed_on":null},
+        {"url":"https://www.tantisimo.com/menu","ok":false,"quote":null,"confirmed_on":null}
+      ],
+      "disagreements": [
+        "Start time: official site's PDF menu is labeled 'HAPPY HOUR 4PM-6PM'; a separate web aggregate summary (sourced from OpenTable/social-style listings) claimed happy hour runs 5:00-6:00pm Tuesday-Sunday. Could not resolve which is current without opening the PDF directly."
+      ],
+      "notes": "https://www.tantisimo.com/menu (singular) returned an empty fetch; the correct official page is /menus (plural)."
+    },
+    {
+      "id": 10968,
+      "name": "The Amsterdamian",
+      "official_site": "https://theamsterdamian.com/",
+      "windows": [
+        {
+          "days": ["TUE","WED","THU","FRI"],
+          "start": "17:00",
+          "end": "19:00",
+          "area": "bar",
+          "deals": [
+            {"type":"drink","desc":"seasonal cocktails, beer & wine at happy hour menu/pricing (specific prices not published online)","price":null},
+            {"type":"food","desc":"bites/small plates included on the happy hour menu (specific prices not published online)","price":null}
+          ],
+          "sources": ["https://theamsterdamian.com/menu"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official menu page explicitly lists '★ Happy Hour / Tuesday – Friday · 5pm – 7pm' as a menu section header, but the actual priced items under that section were not rendered in the fetched text (page appears to be JS-driven with hidden content). Lounge closed Sundays per homepage ('Tuesday through Sunday' doors-open note actually conflicts slightly - see disagreements)."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://theamsterdamian.com/menu","ok":true,"quote":"★ Happy Hour / Tuesday – Friday · 5pm – 7pm","confirmed_on":null},
+        {"url":"https://theamsterdamian.com/","ok":true,"quote":"5pm / Doors open every evening, Tuesday through Sunday","confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/the-amsterdamian","ok":true,"quote":"Business listing only; no HH-specific text or confirmed date on page.","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Homepage says doors open 'Tuesday through Sunday' (implying open Sun) while the Menu page's Happy Hour header lists only 'Tuesday-Friday'; not a direct contradiction (Sunday could simply lack HH) but worth flagging since some third-party aggregators describe the bar as closed Sundays and open 'Mon-Sat' - these three descriptions of the weekly schedule don't fully agree."
+      ],
+      "notes": "No independent third-party (Yelp/Eater/Reddit) source with explicit HH hours was found within the fetch budget; Yelp/Tripadvisor listings surfaced in search did not include specific happy hour times in the snippets returned."
+    },
+    {
+      "id": 16089,
+      "name": "The Southern Steak & Oyster",
+      "official_site": "https://www.thesouthernnashville.com/drinks",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": "bar",
+          "deals": [
+            {"type":"food","desc":"Shucker's Choice Dozen oysters","price":"$25/dozen"},
+            {"type":"drink","desc":"rotating select of beer and zero-proof brews","price":null},
+            {"type":"drink","desc":"wine","price":"$7"}
+          ],
+          "sources": ["https://www.thesouthernnashville.com/drinks","https://www.facebook.com/TheSouthernNashville/posts/our-daily-oyster-happy-hour-is-serving-up-25-shuckers-choice-oysters-from-3-pm-5/940267601480761/"],
+          "last_verified": "2026-09-05",
+          "corroborated": true,
+          "confidence": "high",
+          "notes": "Branded 'Daily Oyster Happy Hour'; official drinks-menu page and the restaurant's own Facebook post independently agree on 3-5pm daily, $25/dozen oysters. Also confirmed via footer hours block: 'Oyster Happy Hour Daily: 3 pm — 5 pm'."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.thesouthernnashville.com/drinks","ok":true,"quote":"DAILY OYSTER HAPPY HOUR 3 PM - 5 PM / Rotating Select of Beer, Zero Proof Brews, and $7 Wine / $25 a Dozen Shucker's Choice Oysters","confirmed_on":null},
+        {"url":"https://www.facebook.com/TheSouthernNashville/posts/our-daily-oyster-happy-hour-is-serving-up-25-shuckers-choice-oysters-from-3-pm-5/940267601480761/","ok":true,"quote":"our daily oyster happy hour is serving up $25 shucker's choice oysters from 3 pm-5 pm","confirmed_on":null}
+      ],
+      "disagreements": [],
+      "notes": "Note: this is specifically an OYSTER happy hour (raw bar focus), not a broad food/drink discount menu; general bar beverage list is full-price outside beer/zero-proof/$7 wine noted."
+    },
+    {
+      "id": 4949,
+      "name": "Two Hands Nashville",
+      "official_site": "https://www.twohandshospitality.com/location/two-hands-nashville/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "deals": [
+            {"type":"food","desc":"Snacky Smash Burger","price":"$10"},
+            {"type":"drink","desc":"Classic cocktails (Martini, Espresso Martini, Margarita, Aperol Spritz, Old Fashioned, Negroni, Bloody Mary)","price":"$10 flat"},
+            {"type":"drink","desc":"Snacky Hour wine (sparkling/white/red)","price":"$8"},
+            {"type":"drink","desc":"Snacky Hour beer","price":"$5"}
+          ],
+          "sources": ["https://www.twohandshospitality.com/location/two-hands-nashville/"],
+          "last_verified": "2026-09-05",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Official site labels this 'Snacky Hour', 4-6pm every day, with FLAT prices ($10 cocktails, $8 wine, $5 beer, $10 burger) rather than percentage/dollar-off discounts. See disagreements - this conflicts with an older/aggregator description of the same happy hour."
+        }
+      ],
+      "verified_no_hh": false,
+      "checked_sources": [
+        {"url":"https://www.twohandshospitality.com/location/two-hands-nashville/","ok":true,"quote":"Snacky Hour / 4 - 6 pm, every day / Snacky Smash Burger $10, Classic cocktails $10, Wine selections $8, Beer $5","confirmed_on":null},
+        {"url":"https://nashvilleguru.com/businesses/two-hands","ok":true,"quote":"Happy hour from 4:00pm to 6:00pm includes $3 off signature cocktails, $2 off beer, and $2 off wine. Tuesday specials during dinner hours include $19 Two...","confirmed_on":null}
+      ],
+      "disagreements": [
+        "Pricing mechanic: official site's current 'Snacky Hour' menu uses FLAT prices ($10 cocktails/$8 wine/$5 beer/$10 burger), while Nashville Guru's listing meta-description describes a DISCOUNT structure ($3 off cocktails, $2 off beer, $2 off wine) with no food item mentioned. These appear to be different versions of the promotion (Guru's copy may be stale) and could not be reconciled.",
+        "Days: a general web-search summary claimed happy hour runs 'Tuesday through Saturday' 4-6pm, while the official site explicitly says 'every day'. Official site treated as authoritative for days, but the conflict is noted."
+      ],
+      "notes": "Two Hands also runs other week-long specials shown on the same page: all-day $39 mimosa carafe, Wine Down Wednesday (50% off bottles), and $25pp bottomless bloody mary Sat/Sun brunch — these are NOT the 4-6pm happy hour but are adjacent recurring drink deals worth flagging."
+    }
+  ]
+}

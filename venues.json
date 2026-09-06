@@ -1,0 +1,4792 @@
+{
+ "schema_version": 1,
+ "generated": "2026-09-05",
+ "generator": "build_venues_20260905.py (core thread, from research/batch*.json + inkind-recon)",
+ "coverage": "v1: the 35 inKind partners in the Nashville metro with happy_hour=true on 2026-09-05",
+ "venues": [
+  {
+   "id": "ik-7491",
+   "inkind_id": 7491,
+   "name": "312 Pizza Company",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "371 Monroe Street",
+   "zip": "37208",
+   "lat": 36.1770247,
+   "lon": -86.7877993,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://312pizzacompany.inkind.com/",
+   "official_site": "https://312pizzaco.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 off menu cocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off wine by the glass",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://312pizzaco.com/nashville-germantown-312-pizza-co-happy-hours-specials"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Verbatim from official site's live specials calendar for week of Sep 5-11, 2026 (Mon, Thu, Fri all show identical 'Happy hour 2pm-6pm' block).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "14:00",
+     "end": "close",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 off menu cocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off wine by the glass",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://312pizzaco.com/nashville-germantown-312-pizza-co-happy-hours-specials"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Site literally says 'Happy hour 2pm-close' for Wednesday (vs 2pm-6pm other days); also Trivia at 7PM on Wed.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "16:00",
+     "end": "21:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "25% off pizza, dine-in or carryout",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://312pizzaco.com/nashville-germantown-312-pizza-co-happy-hours-specials"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Site states 'Every Monday starting at 4pm get 25% off pizza' - a separate weekly food promo from the 2-6pm drink happy hour.",
+     "kind": "special"
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "21:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$10 12\" cheese pizzas and $19 deep dish cheese pizzas (toppings extra)",
+       "price": "$10/$19"
+      }
+     ],
+     "sources": [
+      "https://312pizzaco.com/nashville-germantown-312-pizza-co-happy-hours-specials"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Site states 'Every Thursday' - recurring all-day (not a happy-hour-window) food deal.",
+     "kind": "special"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Nashville Guru listing for this venue is a bare, non-upgraded profile with no happy hour or specials content (no confirmed-on date present). Third-party corroboration (Yelp) confirms happy hour exists but without independent times/prices."
+  },
+  {
+   "id": "ik-13114",
+   "inkind_id": 13114,
+   "name": "360 Bistro",
+   "city": "Nashville",
+   "neighborhood": "Belle Meade / West Nashville",
+   "address": "6000 Tennessee 100, Suite 100",
+   "zip": "37205",
+   "lat": 36.0974041,
+   "lon": -86.8736183,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://360bistroqxiam.inkind.com/",
+   "official_site": "https://www.360bistro.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:30",
+     "end": "17:30",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 wines by the glass",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://www.360bistro.com/menus/happy-hour",
+      "https://www.checkle.com/biz/360-wine-bar-bistro-nashville/happy_hours"
+     ],
+     "last_verified": null,
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Official site's Happy Hour menu page rendered via JavaScript and only exposed one line item ('$8 Wines-by-the-Glass') to the fetch tool, with additional items likely hidden behind a 'Load More Content' control that did not execute. Time window (Mon-Fri 3:30-5:30pm) is consistently reported across multiple secondary/aggregator sources (WebSearch results referencing OpenTable/checkle/Nashville Lifestyles) but could not be independently confirmed by directly reading the official page's full content, hence medium confidence.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "No Nashville Guru business page exists under slug '360-bistro' or 'three-sixty-bistro' (both returned empty/404). Could not fetch full happy hour menu content because the page relies on client-side JS rendering not executed by the fetch tool; only the visible '$8 Wines-by-the-Glass' item and no food deals were captured directly from the official site."
+  },
+  {
+   "id": "ik-12961",
+   "inkind_id": 12961,
+   "name": "Bad Idea",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1021 Russell Street, STE 101",
+   "zip": "37206",
+   "lat": 36.1758733,
+   "lon": -86.7503858,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://badideakeiat.inkind.com/",
+   "official_site": "https://www.badideanashville.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [],
+   "verified_no_hh": true,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "One WebSearch summary (no locatable source page) asserted 'Arrive before 6pm to enjoy happy hour specials, including the fried bologna sandwich' but this could not be traced to any actual fetched page (official menu page, Nashville Guru listing, and the Nashville Scene feature review all lack any happy-hour mention), so it is flagged as unverified rather than recorded as a window."
+   ],
+   "notes": "Bad Idea is a wine-bar-forward restaurant/church-conversion in East Nashville open 5:00pm-10:30pm (per search aggregation) with a late-night menu 10pm-12:30am; no happy hour program is advertised on its own site, Nashville Guru, or in Scene's in-depth 2024 feature. Treated as checked-and-absent."
+  },
+  {
+   "id": "ik-8588",
+   "inkind_id": 8588,
+   "name": "Blue Sushi - 5th & Broadway",
+   "city": "Nashville",
+   "neighborhood": "Downtown (Fifth + Broadway)",
+   "address": "5036 Broadway PL STE 220",
+   "zip": "37203",
+   "lat": 36.1607763,
+   "lon": -86.7794063,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://flagshiprestaurantgroup.inkind.com/",
+   "official_site": "https://www.bluesushisakegrill.com/locations/fifth-broadway",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "18:30",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select beers",
+       "price": "$4.25-$11.00"
+      },
+      {
+       "type": "drink",
+       "desc": "House wines",
+       "price": "$6.75"
+      },
+      {
+       "type": "drink",
+       "desc": "Select cocktails",
+       "price": "$8.00-$10.50"
+      },
+      {
+       "type": "drink",
+       "desc": "Sake",
+       "price": "$5.50-$8.00"
+      },
+      {
+       "type": "food",
+       "desc": "Select shared plates",
+       "price": "$5.25-$15.50"
+      },
+      {
+       "type": "food",
+       "desc": "Specialty nigiri",
+       "price": "$6.75-$8.50"
+      },
+      {
+       "type": "food",
+       "desc": "Specialty sashimi",
+       "price": "$10.25-$12.50"
+      },
+      {
+       "type": "food",
+       "desc": "Maki and vegan maki",
+       "price": "$4.00-$11.00"
+      }
+     ],
+     "sources": [
+      "https://www.bluesushisakegrill.com/locations/fifth-broadway",
+      "https://nashvilleguru.com/businesses/blue-sushi-sake-grill"
+     ],
+     "last_verified": "2026-06-23",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Official location page (live, fetched today) states 'Happy Hours: Monday-Saturday 11am-6:30pm, Sunday all day.' Nashville Guru sources the same official page and itemizes identical deal pricing, last confirmed 06/23/26. Also noted: 'Vegan + Sake Tuesdays' and 'Little Bento Bonanza Mondays' as recurring specials layered on top of standard happy hour (oddity).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "21:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select beers",
+       "price": "$4.25-$11.00"
+      },
+      {
+       "type": "drink",
+       "desc": "House wines",
+       "price": "$6.75"
+      },
+      {
+       "type": "drink",
+       "desc": "Select cocktails",
+       "price": "$8.00-$10.50"
+      },
+      {
+       "type": "drink",
+       "desc": "Sake",
+       "price": "$5.50-$8.00"
+      },
+      {
+       "type": "food",
+       "desc": "Select shared plates",
+       "price": "$5.25-$15.50"
+      },
+      {
+       "type": "food",
+       "desc": "Specialty nigiri",
+       "price": "$6.75-$8.50"
+      },
+      {
+       "type": "food",
+       "desc": "Specialty sashimi",
+       "price": "$10.25-$12.50"
+      },
+      {
+       "type": "food",
+       "desc": "Maki and vegan maki",
+       "price": "$4.00-$11.00"
+      }
+     ],
+     "sources": [
+      "https://www.bluesushisakegrill.com/locations/fifth-broadway",
+      "https://nashvilleguru.com/businesses/blue-sushi-sake-grill"
+     ],
+     "last_verified": "2026-06-23",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "'Sunday: all day' per official site; restaurant's Sunday hours are 12pm-9pm, so happy hour runs the full 12:00-21:00 Sunday service window (reverse/all-day happy hour oddity).",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "A search snippet paraphrased the window as '2pm-6pm Mon-Sat' but this conflicts with both the official page and Guru (both say 11am-6:30pm); treating the two directly-fetched, itemized sources as authoritative and disregarding the paraphrase, which appears to be a summarizer error rather than an independent source."
+  },
+  {
+   "id": "ik-8589",
+   "inkind_id": 8589,
+   "name": "Blue Sushi - McEwen Northside",
+   "city": "Franklin",
+   "neighborhood": "Franklin (McEwen)",
+   "address": "5001 Aspen Grove Dr STE 142",
+   "zip": "37067",
+   "lat": 35.9372485,
+   "lon": -86.8264858,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://flagshiprestaurantgroup.inkind.com/",
+   "official_site": "https://www.bluesushisakegrill.com/locations/mcewen-northside",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "18:30",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select beers, house wines, select cocktails, sake (same structure as sister Nashville location's Happy Hour menu)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Select shared plates, specialty nigiri/sashimi, maki and vegan maki (same structure as sister Nashville location's Happy Hour menu)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.bluesushisakegrill.com/locations/mcewen-northside"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Official location page (live, fetched today): 'Happy Hours — Monday-Thursday: 11am-6:30pm' [sic, page groups it as Monday-Saturday elsewhere] — exact text: 'Happy Hours Monday-Saturday: 11am-6:30pm / Sunday: all day.' Page links the same chain-wide Happy Hour PDF menu used at Fifth+Broadway but does not re-itemize prices on the page itself, so exact deal pricing not independently re-confirmed for this specific location (assumed identical to 5th & Broadway's itemized happy hour menu since both link the same 'Happy Hour' PDF asset, but not treated as fully verified — hence 'med' confidence and null pricing).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "21:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "All-day Sunday happy hour drink specials (same chain HH menu)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "All-day Sunday happy hour food specials (same chain HH menu)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.bluesushisakegrill.com/locations/mcewen-northside"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Meta-description on the official page explicitly brags: 'have we mentioned our Happy Hour is available all day on Sundays?' Corroborated by third-party summary (ConcertHotels.com) noting 'Sunday is a standout... all-day Sunday happy hour.'",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "No dedicated Nashville Guru page exists for the Franklin location as far as could be found; substituted a review-aggregator (ConcertHotels.com) as the second/third source."
+  },
+  {
+   "id": "ik-5822",
+   "inkind_id": 5822,
+   "name": "Boqueria - Nashville",
+   "city": "Nashville",
+   "neighborhood": "Downtown (Fifth + Broadway)",
+   "address": "5005 Broadway",
+   "zip": "37203",
+   "lat": 36.1610367,
+   "lon": -86.7791034,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://boqueria.inkind.com/",
+   "official_site": "https://boqueriarestaurant.com/location/nsh-fifth-broadway/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Sangría (Red, White, or Rosé)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Shishito Margarita (shishito pepper infused tequila, fresh lime)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Cerveza (select seasonal or Spanish beer)",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Forget-Me-Not (zero proof: butterfly pea flower, thyme, honey, lime, ginger beer)",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Classic Martini (vodka or gin, dry vermouth)",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Dirty Martini (vodka or gin, dry vermouth, olive brine)",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Espresso Martini (Prairie vodka, Torres 10 brandy, Licor 43, espresso, demerara)",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "White wine (Verdejo, Manchuela)",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Rosé (Tempranillo, Castilla y León)",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Red (Tempranillo, Castilla y León)",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Pan con Tomate (toasted bread rubbed with tomato, garlic, olive oil, by the piece)",
+       "price": "$2"
+      },
+      {
+       "type": "food",
+       "desc": "Croquetas de Jamón (3 ham croquettes, quince purée)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Croquetas de Setas (3 mushroom croquettes, truffle allioli)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Patatas Bravas (crispy potatoes, salsa brava, pimentón, garlic allioli)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Patatinas (house-made potato chips, whipped miti crema)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Bocadito de Jamón (crispy baguette half, Serrano ham, Manchego, tomaquet)",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Mini Hamburguesa (2 sliders, sobrasada-bacon jam, Manchego, garlic allioli)",
+       "price": "$12"
+      },
+      {
+       "type": "food",
+       "desc": "Bikini (Jamón Serrano and burrata grilled cheese, truffle allioli)",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Churros Clásicos (5 pieces, cinnamon sugar, choice of dulce de leche/hot chocolate/nutella)",
+       "price": "$6"
+      }
+     ],
+     "sources": [
+      "https://boqueriarestaurant.com/location/nsh-fifth-broadway/",
+      "https://boqueriarestaurant.com/wp-content/uploads/2024/07/BOQUERIA_HappyHour_8.5X5.5_NSH.pdf",
+      "https://nashvilleguru.com/businesses/boqueria"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Official location page's HOURS section literally lists 'HAPPY HOUR - Monday-Friday 3pm-6pm - Saturday-Sunday 4pm-6pm'. Guru's meta description corroborates a 3:00pm-6:00pm window and roughly matching item list ($8 sangria glass, $32 pitcher, $9 select wine, $22 wine carafes, $8-$9 mini martinis) though exact prices vary slightly from the branded HH menu PDF pulled from the official site (used here) - likely reflecting a menu update; treated as corroborated on the time window.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Same happy hour drink menu as weekdays (sangría, shishito margarita, mini martinis, cerveza, wine)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Same happy hour bites menu as weekdays (croquetas, patatas bravas, bocadito de jamón, mini hamburguesa, bikini, churros)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://boqueriarestaurant.com/location/nsh-fifth-broadway/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Official site: 'Saturday-Sunday 4pm-6pm'. This narrower weekend window was not independently corroborated by a second source (Guru's description only mentions a single 3-6pm window, likely referring to weekdays); an earlier WebSearch snippet incorrectly suggested Fri-Sun 11am-3pm, which conflicts with the official site and is not used.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "An initial general WebSearch summary claimed 'Monday-Thursday happy hour is 2:30PM-5:30PM, and Friday-Sunday happy hour is 11AM-3PM,' which directly conflicts with the official location page's stated 'Monday-Friday 3pm-6pm, Saturday-Sunday 4pm-6pm.' The official site's hours section is treated as authoritative; the earlier conflicting reading is not used."
+   ],
+   "notes": "Downtown Fifth + Broadway location. HH menu PDF is undated but hosted on the official site's own domain."
+  },
+  {
+   "id": "ik-9475",
+   "inkind_id": 9475,
+   "name": "Brugada Kitchen & Bar",
+   "city": "Nashville",
+   "neighborhood": "Downtown",
+   "address": "204 Commerce St",
+   "zip": "37201",
+   "lat": 36.1633086,
+   "lon": -86.7764636,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://brugadakitchenandbar.inkind.com/",
+   "official_site": "https://brugadabar.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "select appetizers",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "select cocktails",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "select wines",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "domestic beers",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
+     ],
+     "last_verified": null,
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Time window is consistent with the restaurant's own posted Tue-Thu hours (4:30pm-9pm) captured directly from brugadabar.com footer, but the happy hour claim itself (days/times/prices) comes only from aggregator/WebSearch summaries (e.g. Tripadvisor-referencing search results) - the official site's own Drinks and home pages, which were fetched directly, contain no happy hour mention at all. Confidence kept low pending a source with an explicit happy hour statement.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:30",
+     "end": "16:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "select appetizers",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "select cocktails",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "select wines",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "domestic beers",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
+     ],
+     "last_verified": null,
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Fri-Sun 2:30-4pm window fits before/around brunch service (site states brunch Fri-Sun 10am-2:30pm per WebSearch) but again only sourced from aggregator search summaries, not a directly fetched page with an explicit happy hour statement.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Could not find an explicit 'happy hour' statement on any directly-fetched Brugada page (home, drinks menu, or Nashville Guru listing all omit it, and the site shows no Monday hours at all, implying closed Mondays). The Tue-Thu 4-6pm / Fri-Sun 2:30-4pm times and $5-$10 pricing are repeated consistently across WebSearch results referencing Tripadvisor/aggregator listings, so they are recorded here at low confidence rather than treated as verified_no_hh, since a real (if unconfirmed) happy hour program is plausible given the restaurant's own hours line up with those windows."
+  },
+  {
+   "id": "ik-13452",
+   "inkind_id": 13452,
+   "name": "Cajun Steamer - Franklin",
+   "city": "Franklin",
+   "neighborhood": "Franklin (Cool Springs)",
+   "address": "1175 Meridian Blvd #108",
+   "zip": "37067",
+   "lat": 35.9500876,
+   "lon": -86.8078279,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://cajunsteamers4iag.inkind.com/",
+   "official_site": "https://cajunsteamer.com/location/franklin-tn/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off all beer and wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Fried pickles",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Tuna dip",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Spinach dip",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Sliders",
+       "price": "$9"
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf",
+      "https://cajunsteamer.com/location/franklin-tn/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Venue bar-menu PDF: 'HAPPY HOUR 3PM-6PM MON-FRI, ALL DAY ON TUESDAYS'. PDF file is dated 2025-06 but is what the live site links today. Also all-day every day: $7 house marg, $9 frozen drinks, $5 wells, $7 N/A daiquiris."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off all beer and wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Fried pickles",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Tuna dip",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Spinach dip",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Sliders",
+       "price": "$9"
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "'Fat Tuesday — happy hour all day' per the same PDF."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "11:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Whiskey Wednesday: $2 off Maker's Mule & NOLA Fashioned, $5 Jack Daniel's",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf",
+      "https://cajunsteamer.com/location/franklin-tn/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Daily specials run 11am-9pm per PDF; corroborated by an Instagram post embedded on the location page."
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "11:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Margarita Monday: $2 off all margaritas (house, skinny, frozen)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Tito's Thursday: $2 off Bayou Bellini & Bourbon St. Bloody Mary, $5 Tito's",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "11:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "French Quarter Friday: $2 off Hurricane & CS French 75",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://csbarandgrill.wpenginepowered.com/wp-content/uploads/2025/06/CS-Bar-Menu.pdf"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": ""
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Yelp summary claims 'happy hour every day 3-6pm, $3.50 margaritas, $5 apps'; the venue's own bar-menu PDF says Mon-Fri 3-6 + all day Tuesday with different items. PDF used."
+   ],
+   "notes": "This Franklin, TN location is outside Nashville Guru's coverage area (no Nashville Guru listing exists for it - confirmed via site search). Official site linked directly to a Happy Hour PDF menu (evidence a program exists) but the PDF's content could not be extracted by the fetch tool."
+  },
+  {
+   "id": "ik-14558",
+   "inkind_id": 14558,
+   "name": "Chauhan Ale & Masala House",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "123 12th Avenue North",
+   "zip": "37203",
+   "lat": 36.1604497,
+   "lon": -86.7910645,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://chauhanaleandmasalahousegtiaq.inkind.com/",
+   "official_site": "https://www.chauhannashville.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:30",
+     "end": "17:30",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Happy hour drinks",
+       "price": "$6"
+      }
+     ],
+     "sources": [
+      "https://www.yelp.com/biz/chauhan-ale-and-masala-house-nashville"
+     ],
+     "last_verified": null,
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Official site's happy-hour menu URL (chauhannashville.com/menus/happy-hour) redirected to the Brunch page instead, and the homepage is JS-rendered with no static happy-hour content visible to the fetch tool, so the 4:30-5:30pm / $6 drinks claim could only be sourced from WebSearch aggregation (not independently confirmed by directly reading an official or Guru page). Days of week for the window are assumed to match overall opening hours, not explicitly confirmed.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Both directly-fetched official pages (home and the happy-hour URL, which redirects elsewhere) are JavaScript-rendered and yielded no static happy hour text; Nashville Guru's listing is a bare unupgraded profile with no specials content either. The 4:30-5:30pm/$6 drinks detail is a WebSearch-only finding and should be treated as unverified until confirmed by phone or an in-person/dated source."
+  },
+  {
+   "id": "ik-3389",
+   "inkind_id": 3389,
+   "name": "City Winery - Nashville",
+   "city": "Nashville",
+   "neighborhood": "SoBro / Pie Town",
+   "address": "609 Lafayette St",
+   "zip": "37203",
+   "lat": 36.1522011,
+   "lon": -86.7763561,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://citywinery.inkind.com/",
+   "official_site": "https://citywinery.com/pages/nashville-restaurant-and-winery",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "13:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Happy Hour food specials (specific items not itemized on site)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Happy Hour drink specials (specific items not itemized on site)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://citywinery.com/pages/nashville-restaurant-and-winery"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Official live page (fetched today) reads: 'Join us Monday through Thursdays 4-6 PM for our Happy Hour food and drink specials, or get the weekend started early with Summer Fridays from 1-5 PM!' Friday is a SEPARATE 'Summer Fridays' promo (1-5pm), not labeled Happy Hour, so not included as a HH window here. No exact deal pricing given on-site.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "13:00",
+     "end": "17:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "'Summer Fridays' promo — get the weekend started early (details not itemized on site)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://citywinery.com/pages/nashville-restaurant-and-winery"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Labeled 'Summer Fridays', not 'Happy Hour' — included since it's a discount window a reader would want to know about; oddity noted. May be seasonal (summer-only) and could lapse outside that season.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Official site (fetched live 2026-09-05) states Happy Hour is Mon-Thu 4-6pm only, with Friday covered by a separate 'Summer Fridays' 1-5pm promo (no % discount stated). Third-party aggregator (visitmusiccity.com, undated) states Happy Hour runs Monday-Friday 4-6pm with '50% off wine on tap' — this both extends the window to Friday and states a specific discount not shown on the current official page. Could not resolve which is current; recorded both."
+   ],
+   "notes": "Nashville Guru has no listing page for 'city-winery-nashville' slug (tried businesses/city-winery-nashville, 404/no content returned) and site search did not surface an alternate slug. Venue is primarily a live-music/dining venue in Wedgewood-Houston; happy hour is a secondary offering to full dinner/wine service."
+  },
+  {
+   "id": "ik-9590",
+   "inkind_id": 9590,
+   "name": "Common Ground - Berry Hill",
+   "city": "Nashville",
+   "neighborhood": "Berry Hill",
+   "address": "734 Thompson Lane",
+   "zip": "37204",
+   "lat": 36.112784,
+   "lon": -86.7674951,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://commonground.inkind.com/",
+   "official_site": "https://www.cgnashville.com/menus/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "14:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select cocktails (Hugo Spritz, Margarita, Daiquiri, Paloma, Mule, Bee's Knees, French 75, Martini, Negroni, Old Fashioned, Cosmo, Mai Tai)",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Zero-proof 'This Side Up' mocktail",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Select wines by the glass (white/rosé/red)",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Beer: Dales Light Lager, Montucky Cold Snack",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Brooklyn Hoppy Amber Beer (non-alc)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Shrimp Taco (crispy shrimp, napa slaw, WAM BAM sauce, lime, avocado crema, flour tortilla)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Crudités (hummus, whipped boursin, seasoned veggies)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Crispy smashed fingerling potatoes, garlic, oil, herbs, sea salt, queso fresco",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Avocado toast (citrus avocado smash, salsa macha, queso fresco, radish)",
+       "price": "$7"
+      }
+     ],
+     "sources": [
+      "https://www.cgnashville.com/menus/",
+      "https://nashvilleguru.com/businesses/common-ground-berry-hill"
+     ],
+     "last_verified": "2026-06-15",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Called 'Common Hour' on the menu. Official menu page (live, fetched 2026-09-05) lists the exact same cocktail/wine/beer/bites items and prices under a 'Common Hour' heading but does not itemize days/times on that page; Nashville Guru (sourcing the same official menu page) explicitly states MON-FRI 3:00pm-6:00pm and was last confirmed 06/15/26 — treated as corroborating the official menu content.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Yelp reviewer(s) cite $4 prices for smashed potatoes and shrimp taco vs. $7/$5 currently listed on the official menu and Guru — likely reflects an older/since-changed price point rather than a live disagreement; noted for awareness, not treated as a corroboration conflict since review is undated."
+   ],
+   "notes": "One aggregator snippet claimed 'Happy Hour 6 days a week (Tuesday-Sunday)' in addition to the MON-FRI Common Hour, but no primary source for that second window could be located; not included as a separate window due to lack of corroboration."
+  },
+  {
+   "id": "ik-11237",
+   "inkind_id": 11237,
+   "name": "Connie's Upscale Dive",
+   "city": "Nashville",
+   "neighborhood": "Midtown",
+   "address": "210 Louise Avenue",
+   "zip": "37203",
+   "lat": 36.1519148,
+   "lon": -86.8049132,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://vernaconnies.inkind.com/",
+   "official_site": "https://www.vernanashville.com/connies",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Classic cocktails",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Montucky Cold Snack",
+       "price": "$3"
+      }
+     ],
+     "sources": [
+      "https://www.vernanashville.com/backbar"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "'DAILY HAPPY HOUR 5-7PM'; Backbar open Thu-Mon 5pm-12am. Kitchen (late-night food) open til 11:30pm but no HH food deal listed."
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "17:00",
+     "end": "close",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Classic cocktails",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Montucky Cold Snack",
+       "price": "$3"
+      }
+     ],
+     "sources": [
+      "https://www.vernanashville.com/backbar"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "'MONDAYS: Adult Coloring Night & All-Day Happy Hour'."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Whether inKind credit on the 'Connie's Upscale Dive' row is honored at The Backbar at Verna — same operator/address, rename not reflected on inKind. TJ to confirm at first visit."
+   ],
+   "notes": "inKind still lists 'Connie's Upscale Dive'; the operator now brands this room 'The Backbar at Verna' (same address, vernanashville.com/backbar). Connie's shares the address 210 Louise Ave with Verna Café & Bar (sibling concept from Verna Hospitality); it's a dive bar/venue space in the back of Verna. Given the address overlap, its happy hour may in practice follow Verna's bar program, but no source explicitly confirms that link with a time/price match."
+  },
+  {
+   "id": "ik-12498",
+   "inkind_id": 12498,
+   "name": "Dog Haus - East Nashville (Biergarten)",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "908 Main St.",
+   "zip": "37206",
+   "lat": 36.175842,
+   "lon": -86.756294,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://doghaus.inkind.com/",
+   "official_site": "https://locations.doghaus.com/locations/tn/nashville/908-main-st",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)",
+       "price": "-$1"
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": "-$2"
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": "-$2"
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": "-$3"
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": "-$3"
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/nashville/908-main-st"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Location page (live, fetched today) has a dedicated 'Happy Hour' block: '$1 OFF Any 3-Pack of Sliders / $2 OFF Draft Beer & Wine / $2 OFF Shareables / $3 OFF Haus Cocktails / $3 OFF Wings' with 'Monday - Saturday: 3PM - 7PM'.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)",
+       "price": "-$1"
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": "-$2"
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": "-$2"
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": "-$3"
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": "-$3"
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/nashville/908-main-st"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Same location page: 'Sunday: 12PM - 7PM'.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Nashville Guru's listing page for 'Dog Haus Biergarten' exists but currently carries no Happy Hours & Specials section (page has only address/directions), so it could not corroborate; not counted as a disagreement, just missing data. Corroborated is false because only one dated/quotable source (the official page) was available; Guru and Instagram could not confirm specifics."
+  },
+  {
+   "id": "ik-15988",
+   "inkind_id": 15988,
+   "name": "Dog Haus - Franklin (Biergarten)",
+   "city": "Franklin",
+   "neighborhood": "Franklin (Cool Springs)",
+   "address": "755 Crescent Centre Dr. Ste 104",
+   "zip": "37067",
+   "lat": 35.9443445,
+   "lon": -86.8126756,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://doghaus.inkind.com/",
+   "official_site": "https://locations.doghaus.com/locations/tn/franklin/755-crescent-centre-dr-ste-104",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/franklin/755-crescent-centre-dr-ste-104",
+      "https://doghaus.com/happy-hour/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "TIMES UNVERIFIED for Franklin: location page only tags 'Happy Hour Specials'; window copied from the East Nashville location (Mon-Sat 3-7, Sun 12-7). Deals are the chain-wide list. Verify on first visit."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/franklin/755-crescent-centre-dr-ste-104",
+      "https://doghaus.com/happy-hour/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Assumed from sister location — see weekday note."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Franklin HH times not published anywhere found; assumed = East Nashville's. TJ to confirm."
+   ],
+   "notes": "This is a distinct Dog Haus chain location from the Wisconsin 'Dog Haus Biergarten Franklin' that dominates search results — confirmed correct address (755 Crescent Centre Dr, Franklin, TN 37067) via locations.doghaus.com. The location's own page lists 'Happy Hour Specials' as a feature tag (so it does have one) but does NOT publish a specific time window or itemized deals the way the East Nashville sister location does. The chain-wide generic Happy Hour page (doghaus.com/happy-hour) describes typical deal categories ($1 off sliders, $2 off draft beer & wine/shareables, $3 off cocktails/wings) but explicitly says offerings 'differ' by location and does not name Franklin, TN's hours. Per brief rules, this is a fetch/verification gap rather than a confirmed absence, so windows is null with confidence unknown rather than []/verified_no_hh."
+  },
+  {
+   "id": "ik-18627",
+   "inkind_id": 18627,
+   "name": "Fortuna Italian Steakhouse",
+   "city": "Nashville",
+   "neighborhood": "Bellevue",
+   "address": "8100 Tn-100",
+   "zip": "37221",
+   "lat": 36.0452885,
+   "lon": -86.9545238,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://fortuna-italian-steakhouse-2.inkind.com/",
+   "official_site": "https://www.fortunanashville.com/happyhour",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:30",
+     "end": "18:30",
+     "area": "bar only",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Half price all oysters (All Raw, Fortuna, & Rockefeller)",
+       "price": "50% off"
+      },
+      {
+       "type": "food",
+       "desc": "Half price all pizzas (Margherita, Meatball, Veggie)",
+       "price": "50% off"
+      },
+      {
+       "type": "food",
+       "desc": "Fried Calamari",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Meatballs",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Knife & Fork Burger",
+       "price": "$15"
+      },
+      {
+       "type": "food",
+       "desc": "Spaghetti & Meatballs",
+       "price": "$15"
+      },
+      {
+       "type": "food",
+       "desc": "Steak Frites",
+       "price": "$25"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass",
+       "price": "2-for-1"
+      },
+      {
+       "type": "drink",
+       "desc": "Draft beer",
+       "price": "2-for-1"
+      },
+      {
+       "type": "drink",
+       "desc": "Well drinks",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "House martinis",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Specialty martinis",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "4 Roses Old Fashioned",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "House Margarita",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Aperol Spritz",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "House Sangria",
+       "price": "$6"
+      }
+     ],
+     "sources": [
+      "https://www.fortunanashville.com/happyhour"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Official page (live, fetched today) header reads: 'Happy Hour — Every day from 4:30 pm - 6:30 pm — Only available at the bar and lounge. Dine-in only.' Full itemized drink and food specials list captured verbatim from the page. Third-party sources corroborate the daily 4:30-6:30pm window but do not itemize pricing, so treated as med confidence pending a second fully-itemized source.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "One aggregated web-search summary mentioned 'happy hour on weekdays from 4pm-8pm' as an alternate reading from an unspecified source, which conflicts with the official site's 4:30-6:30pm daily window. Could not identify or verify the primary source for the 4pm-8pm claim, so it is recorded here but the official 4:30-6:30pm window is treated as more reliable given it is the live, dated venue page."
+   ],
+   "notes": "No dedicated Nashville Guru business listing could be found for Fortuna (only appears in a Guru roundup article on Bellevue dining, without happy hour specifics). Restricted to bar/lounge seating and dine-in only — noted as an oddity/restriction."
+  },
+  {
+   "id": "ik-13246",
+   "inkind_id": 13246,
+   "name": "Germantown Cafe",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1200 5th Avenue North",
+   "zip": "37208",
+   "lat": 36.1755075,
+   "lon": -86.7878885,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://uphospitalitypartnersxuia1.inkind.com/",
+   "official_site": "https://germantowncafe.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "09:00",
+      "15:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "15:00"
+     ],
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:30",
+     "end": "18:30",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Cocktails",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Wines by the glass",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Beer",
+       "price": "$4"
+      },
+      {
+       "type": "food",
+       "desc": "Food specials (bar area only)",
+       "price": "$7-$25"
+      }
+     ],
+     "sources": [
+      "https://germantowncafe.com/",
+      "https://www.totalhappyhour.com/happy-hour-for-germantown-cafe-in-nashville-tn-37208/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Bar area only per aggregator; official site does not specify area but confirms same days/times.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "19:30",
+     "end": "21:00",
+     "area": "bar",
+     "deals": [],
+     "sources": [
+      "https://germantowncafe.com/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Saturday happy hour window listed on official site footer; no deal specifics given and no second source found for this specific window.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "A general web-search summary claimed Monday features an extended happy hour from 3:30pm to 9:00pm in the bar, but the official site's own footer text only lists Mon-Fri 3:30-6:30pm and a separate Sat 7:30-9pm window, with no Monday extension mentioned. Treating the extended-Monday claim as unconfirmed/likely erroneous aggregation."
+   ],
+   "notes": "Google reviews (visible on official site) reference happy hour positively but give no specifics beyond 'love their happy hour deals'."
+  },
+  {
+   "id": "ik-11135",
+   "inkind_id": 11135,
+   "name": "Grandpa Bar",
+   "city": "Nashville",
+   "neighborhood": "Marathon Village",
+   "address": "1501 Herman Street, Suite 123",
+   "zip": "37208",
+   "lat": 36.1660165,
+   "lon": -86.7986805,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://grandpabar.inkind.com/",
+   "official_site": "https://www.grandpabar.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Cocktails: The Candy Dish (espresso martini), Boozy Berry, Plastic Furniture Cover (marg), Socks & Sandals (highball)",
+       "price": "$9 each"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine — red, white, rosé or bubbles",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Coors Banquet 'Stubbies'",
+       "price": "$4"
+      }
+     ],
+     "sources": [
+      "https://www.grandpabar.com/menus",
+      "https://nashvillelifestyles.com/dining/food-and-drink/15-happy-hour-s-in-town/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Venue image gives 3-6PM but no days; days from Nashville Lifestyles (Wed-Sun, 2025-07). Bar is open Wed-Sun per inKind hours, so Wed-Sun is the only possible set. Bar, not a restaurant — no food program."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "No food happy-hour deals located from any source; only the one drink special (espresso martini) is documented. Official site's happy hour menu image could not be OCR'd/read as text."
+  },
+  {
+   "id": "ik-15614",
+   "inkind_id": 15614,
+   "name": "JINYA Ramen Bar - Nashville",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "415 11th Avenue N",
+   "zip": "37203",
+   "lat": 36.1628039,
+   "lon": -86.7911079,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://jinyasoutheastdsiam.inkind.com/",
+   "official_site": "https://www.jinyaramenbar.com/locations/nashville/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Edamame",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "French Fries",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "Nikuman (1 pc.)",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "JINYA Bun (1 pc.)",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "Crispy Chicken (5 pcs.)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Brussels Sprouts Tempura",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Salmon Poke Tacos (2 pcs.)",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Pork Gyoza (6 pcs.)",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Takoyaki (Octopus Balls)",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Chicken Chashu Bowl (Reg.)",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Sapporo Draft Beer",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Daily Featured Wine (Red, White, Sparkling)",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "J.Girl mocktail",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Lycheetini cocktail",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Ramune soda",
+       "price": "$3"
+      }
+     ],
+     "sources": [
+      "https://www.jinyaramenbar.com/menu/tn/nashville/happy_hour",
+      "https://nashvilleguru.com/businesses/jinya-ramen-bar"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Official site's happy hour menu is organized by $3/$6/$9 price tiers rather than by item category; itemized here from that live page. Nashville Guru confirms Mon-Sun 3:00pm-5:00pm with the same overview (bites $3-$9, beer/wine $6, cocktails $6-$9), last confirmed 06/24/26.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Strong food selection at happy hour; corroborated by two independent sources with matching hours and pricing structure."
+  },
+  {
+   "id": "ik-14947",
+   "inkind_id": 14947,
+   "name": "JoJo's Fish House",
+   "city": "Murfreesboro",
+   "neighborhood": "Murfreesboro",
+   "address": "1626 Middle Tennessee Boulevard",
+   "zip": "37130",
+   "lat": 35.8310493,
+   "lon": -86.3755126,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://jojosfishhouserdiao.inkind.com/",
+   "official_site": "https://jojosfishhouse.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "14:00",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 (BOGO) beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off daiquiris",
+       "price": "$2 off"
+      }
+     ],
+     "sources": [
+      "https://jojosfishhouse.com/murfreesboro-jojo-s-fish-house-happy-hours-specials"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Per the venue's own weekly specials calendar, 'Happy Hour 2 to 7pm 2 4 1 Beers and $2 off Daiquiris' is listed on Wed, Thu, Fri, Sat but is NOT listed on Sun, Mon, or Tue (those days show other specials instead: Kids Eat Free Monday, 50% Tenders + Poker Night Tuesday). No food deals are described as part of Happy Hour itself; the same page lists separate 'Midday Munchies' (2-5pm) and 'Late Night Munchies' (7-9pm/8-11pm) blocks daily with no deal details given.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Could not corroborate with an independent second source (Yelp fetch returned empty; Tripadvisor not fetched due to fetch-budget limits) — treat as single-source, medium confidence. 'Midday Munchies' and 'Late Night Munchies' blocks may include food specials but the specials page does not spell out their contents."
+  },
+  {
+   "id": "ik-13244",
+   "inkind_id": 13244,
+   "name": "Karrington Rowe",
+   "city": "Brentwood",
+   "neighborhood": "Brentwood",
+   "address": "330 Franklin Road, #913D",
+   "zip": "37027",
+   "lat": 36.0271484,
+   "lon": -86.7908412,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://uphospitalitypartnersxuia1.inkind.com/",
+   "official_site": "https://karringtonrowe.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "15:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Espresso Martini",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Hot & Dirty (pepperoncini + olive juice + vodka)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Aperol Spritz",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "KR Old Fashioned",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "KR Margarita",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine (red, white, rose, bubbles, sangria)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Beer (Jackalope, Little Harpeth, Hippies and Cowboys, New Heights, Tailgate)",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://karringtonrowe.com/brentwood-brentwood-karrington-rowe-happy-hour"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "No food deals appear on the official happy hour menu page at all -- drinks-only happy hour (oddity). Could not find an independent aggregator/Guru/Yelp confirmation of the exact window; treat as single-sourced despite being a live, first-party page.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "New restaurant in Brentwood (from the Germantown Cafe/Park Cafe restaurant group per Nashville Lifestyles). No Nashville Guru listing found (fetch of guessed slug returned no content; likely not yet listed)."
+  },
+  {
+   "id": "ik-12246",
+   "inkind_id": 12246,
+   "name": "Love & Exile",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "715 Main St A",
+   "zip": "37206",
+   "lat": 36.175404,
+   "lon": -86.759785,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://loveandexile.inkind.com/",
+   "official_site": "https://www.loveandexile.bar/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "½ off wine by the glass",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "½ off draft beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"
+     ],
+     "last_verified": "2025-12-24",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Text pulled from an embedded venue-sourced quote on Do615's recurring Wednesday event listing (event instance dated 12/24/25). The official site's own menu page (loveandexile.bar/menu) is image-only with no extractable happy-hour text, so this could not be independently confirmed directly against the venue's own site.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "16:00",
+     "end": "22:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 mimosas",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"
+     ],
+     "last_verified": "2025-12-24",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Described on the source as 'monday / all night'; end time set to Love & Exile's posted Monday closing time (10pm) since 'all night' isn't a literal 24h window. Note: a separate, older (dated 2018) Do615 listing for a recurring 'ALL DAY HAPPY HOUR' event on Mondays describes a completely different deal — see disagreements.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "close",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Campo Bravo margarita or paloma (blanco)",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Campo Bravo margarita or paloma (reposado)",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Select beers (Montucky, Busch Light, Bud Light)",
+       "price": "$3"
+      },
+      {
+       "type": "drink",
+       "desc": "Well drinks",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Wines",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Vermouths",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Bruschetta",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Chips & queso",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Chips & French onion dip",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Chips & salsa",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Trio (chips & queso/onion dip/salsa)",
+       "price": "$14"
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/wed/happy-hour-at-love-and-exile-1753390204"
+     ],
+     "last_verified": "2025-12-24",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Labeled 'ALL WEEKEND (saturday & sunday)' on the source with no explicit start/end clock time, so mapped to the venue's posted weekend open hours through close.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "An older Do615 recurring-event listing for Love & Exile (do615.com/events/weekly/mon/all-day-happy-hour, event instance dated June 2018) describes Monday happy hour as '$2 off wine pours, $5 drafts, $10 Indecent canned wine (12oz), $5 well pours, and $5 select appetizers' running 4:00pm-12:00am — this conflicts with the newer (Dec 2025) source's Monday deal of '2 for 1 mimosas.' The 2018 listing is likely outdated; the 2025 listing was used as primary."
+   ],
+   "notes": "Official venue website (loveandexile.bar) has no text-based happy hour info anywhere findable — both its homepage and menu page present only image content. All happy hour data here comes from a single Do615 event-listing source (which itself appears to reproduce venue-provided copy), so overall confidence is capped at medium/low despite internal consistency between the Tue-Fri and weekend blocks."
+  },
+  {
+   "id": "ik-9316",
+   "inkind_id": 9316,
+   "name": "Moto",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "1120 McGavock Street",
+   "zip": "37203",
+   "lat": 36.1560838,
+   "lon": -86.7863707,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://mstreet.inkind.com/",
+   "official_site": "https://www.motonashville.com/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "17:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select wines",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Select cocktails",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "40% off all bottles under $100",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.motonashville.com/events/happy-hour",
+      "https://nashvilleguru.com/businesses/moto"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Official page lists Mon/Wed/Thu/Fri, but Moto is closed Sun-Mon (same page's hours + inKind hours Tue-Sat) — Monday is impossible and Tuesday is oddly absent. No food deals."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Official page lists Monday HH while the restaurant is closed Mondays; Tuesday not listed. Recorded Wed-Fri; TJ may want to ask whether Tuesday counts."
+   ],
+   "notes": "Given the internal contradiction on official site hours vs. happy hour days, treat the exact days with low confidence; the 5-6pm timeframe and $9 wine/cocktail + 40%-off-bottles deal itself is consistent across both sources."
+  },
+  {
+   "id": "ik-15771",
+   "inkind_id": 15771,
+   "name": "Nacho Daddy - Nashville",
+   "city": "Nashville",
+   "neighborhood": "Midtown",
+   "address": "800 19th Ave S #104",
+   "zip": "37203",
+   "lat": 36.1502232,
+   "lon": -86.7955412,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://nachodaddyifiau.inkind.com/",
+   "official_site": "https://nachodaddy.com/menu/nacho-daddy-nashville-800-19th-avenue-south",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar & patio",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "select mini nachos, tacos and other items $8 and under",
+       "price": "$8 and under"
+      },
+      {
+       "type": "drink",
+       "desc": "house margaritas and other drinks $8 and under",
+       "price": "$8 and under"
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/2025/2/10/nacho-daddy-must-try-happy-hour-specials-tickets",
+      "https://www.yelp.com/questions/nacho-daddy-when-is-happy-hour/FwsEylJ2i2bMTdfkVxXFcQ"
+     ],
+     "last_verified": "2025-02-10",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "do615 event listing describes Mon-Thu 3-6pm; a Yelp Q&A independently describes 3-6pm Mon-Fri at the bar and patio. Day-range disagreement noted below.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "FRI",
+      "SAT"
+     ],
+     "start": "22:00",
+     "end": "02:00",
+     "area": "bar only",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "mini nachos, tacos $8 and under",
+       "price": "$8 and under"
+      },
+      {
+       "type": "drink",
+       "desc": "house margaritas $8 and under",
+       "price": "$8 and under"
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/sat/late-night-happy-hour-at-nacho-daddy-tickets",
+      "https://www.instagram.com/p/DISAI7_TW7e/?hl=en"
+     ],
+     "last_verified": null,
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Branded 'Late Night Happy Hour', Fri/Sat 10pm-2am, matches restaurant's late closing hours.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Day range for the afternoon happy hour: do615 (event listing) says Mon-Thu 3-6pm; a Yelp Q&A answer says Mon-Fri 3-6pm. Could not confirm which is current."
+   ],
+   "notes": "Official nachodaddy.com/locations page 404'd; used the Toast-hosted location/menu page instead. Chain-wide brand, Nashville-specific HH page not separately published."
+  },
+  {
+   "id": "ik-13245",
+   "inkind_id": 13245,
+   "name": "Park Cafe",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "4403 Murphy Road",
+   "zip": "37209",
+   "lat": 36.1407283,
+   "lon": -86.8394666,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://uphospitalitypartnersxuia1.inkind.com/",
+   "official_site": "https://parkcafenashville.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "15:00"
+     ],
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Elote Hush Puppies",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Loaded Potato Chips",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Chicken Lettuce Wraps",
+       "price": "$10"
+      },
+      {
+       "type": "food",
+       "desc": "Mortadella & Ricotta Toast",
+       "price": "$10"
+      },
+      {
+       "type": "food",
+       "desc": "Hummus",
+       "price": "$10"
+      },
+      {
+       "type": "food",
+       "desc": "Goat Cheese Pizza",
+       "price": "$12"
+      },
+      {
+       "type": "food",
+       "desc": "French Dip",
+       "price": "$12"
+      },
+      {
+       "type": "drink",
+       "desc": "Wildflower Martini, HH Hot & Dirty, HH Duke of Cuke, HH Manhattan, HH Sunset Margarita",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "HH Bubbles/Rose/White/Red wine",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Local Lager / HH Rotating Local Beer",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://parkcafenashville.com/nashville-park-cafe-park-cafe-happy-hour",
+      "https://nashvilleguru.com/businesses/park-cafe"
+     ],
+     "last_verified": "2026-06-16",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Official page verbatim: 'Happy Hour / Monday - Friday | 4-6pm / Bar Area Seating'. Guru corroborates with same days/time/area, last confirmed 06/16/26, citing $8 cocktails/$6 wine/$4-5 beer/$8-18 food (slightly rounded vs. official itemized prices, but consistent window).",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "A general web-search summary cited an alternate schedule of 'Monday-Thursday 4:30pm-6:30pm and Friday & Saturday 4:30pm-6pm' from an unspecified/unclear source (possibly outdated aggregator), which conflicts with both the current official page and Nashville Guru's Mon-Fri 4-6pm bar-area window. The official + Guru version is treated as authoritative given the recent confirmation date."
+   ],
+   "notes": "Also part of the Germantown Cafe / Karrington Rowe restaurant family."
+  },
+  {
+   "id": "ik-14442",
+   "inkind_id": 14442,
+   "name": "Playdate",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2405 12th Avenue South",
+   "zip": "37204",
+   "lat": 36.1259265,
+   "lon": -86.7895062,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://jbjsnashville9xiag.inkind.com/",
+   "official_site": "https://www.playdatenash.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "20:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select cocktails $8 all day (restaurant only open Thu-Sun)",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://www.playdatenash.com/specialsandevents",
+      "https://nashvilleguru.com/businesses/playdate"
+     ],
+     "last_verified": "2026-06-24",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Reverse/all-day happy hour: $8 cocktails run all day, but venue is only open Thu-Sun (closed Mon-Wed).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:30",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Buy-one-get-one beer and wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.playdatenash.com/specialsandevents",
+      "https://nashvilleguru.com/businesses/playdate"
+     ],
+     "last_verified": "2026-06-24",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Thursday's window overlaps with Ballistic Bingo Night 6:00-8:00pm; Saturday's overlaps with the 'Press Play' DJ party 4:00-8:00pm. No food deals found.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "No food happy-hour deals identified; Playdate's specials are drink-only (pizza is on the regular menu but not called out as a happy-hour deal)."
+  },
+  {
+   "id": "ik-10507",
+   "inkind_id": 10507,
+   "name": "Present Tense",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "509 Houston St",
+   "zip": "37203",
+   "lat": 36.1427018,
+   "lon": -86.7683511,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://presenttense.inkind.com/",
+   "official_site": "https://www.liveinthepresenttense.com/eat",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "23:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "23:30"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "17:30",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      "https://www.liveinthepresenttense.com/eat"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Window published, deals not. Site copyright 2023 — may be stale; inKind lists Wed hours too (Wed 17-21) which the site does not. Ask on arrival."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "inKind hours include Wednesday; venue site lists Thu-Sun only."
+   ],
+   "notes": "Yelp page was found via search but not independently fetched (time budget); Nashville Guru business listing carries no HH-specific copy or confirmed date for this venue. Izakaya/sake bar & natural wine list; no bar-only vs whole-restaurant distinction stated."
+  },
+  {
+   "id": "ik-12065",
+   "inkind_id": 12065,
+   "name": "Punk Wok",
+   "city": "Nashville",
+   "neighborhood": "Charlotte / Sylvan Park",
+   "address": "4101 Charlotte Ave",
+   "zip": "37209",
+   "lat": 36.1524451,
+   "lon": -86.8355829,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://punkwok.inkind.com/",
+   "official_site": "https://www.punkwok.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "whole restaurant (dine-in only)",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "half-priced sushi",
+       "price": "50% off"
+      },
+      {
+       "type": "drink",
+       "desc": "$2.50 domestic beers (some sources say $2)",
+       "price": "$2.50"
+      }
+     ],
+     "sources": [
+      "https://www.punkwok.com/",
+      "https://www.nashvillescene.com/bon/2025/food-and-drink/writers-choice/punk-wok/article_ddb0bd3b-e2c1-4b1a-bd5e-509ca29a86ef.html",
+      "https://www.yelp.com/biz/punk-wok-nashville"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Called out by Nashville Scene as 'Best Happy Hour' (Writers' Choice). Dine-in only, both bars open for walk-ins; patio uncovered/unheated.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Domestic beer price: official site says $2.50; aggregator summaries (Yelp-derived) say $2. Minor, likely a rounding/update discrepancy."
+   ],
+   "notes": "Very consistently reported across all three source types; one of Nashville's most well-known happy hours."
+  },
+  {
+   "id": "ik-17961",
+   "inkind_id": 17961,
+   "name": "Tantisimo",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "306 46th Avenue North",
+   "zip": "37209",
+   "lat": 36.1494481,
+   "lon": -86.8418623,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://tantisimo9biad.inkind.com/",
+   "official_site": "https://www.tantisimo.com/menus",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Chips y salsa (lard-fried tortilla chips, salsa mesa)",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Churrasco skewers (picanha, charred onion glaze)",
+       "price": "$7"
+      },
+      {
+       "type": "food",
+       "desc": "Empanadas de pollo",
+       "price": "$10"
+      },
+      {
+       "type": "food",
+       "desc": "Dos tacos (daily selection)",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "House white / red wine",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Barena or Quilmes lager",
+       "price": "$3"
+      },
+      {
+       "type": "drink",
+       "desc": "Margaret / Rested Pomelo / Much Fashioned cocktails",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Pitchers: Margaret $30, Margarita del día $38",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Grilled piña colada (HH only; N/A $7)",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://static1.squarespace.com/static/6508ca797db40562b8b4ddee/t/6a97325f1c91876b08f08131/1788293727865/Bev9.26.pdf",
+      "https://www.tantisimo.com/menus"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "PDF header 'daily from 4pm-6pm' (menu file named Bev9.26 = Sept 2026 revision); menus page label 'HAPPY HOUR 4PM-6PM'. Restaurant closed Mondays. The 5-6pm aggregator claim is refuted by the venue PDF."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "https://www.tantisimo.com/menu (singular) returned an empty fetch; the correct official page is /menus (plural)."
+  },
+  {
+   "id": "ik-10968",
+   "inkind_id": 10968,
+   "name": "The Amsterdamian",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "925 Gallatin Avenue, Ste 102",
+   "zip": "37206",
+   "lat": 36.1877138,
+   "lon": -86.7462603,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://theamsterdamian.inkind.com/",
+   "official_site": "https://theamsterdamian.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Espresso Martini / Old Fashioned / Margarita",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Cabernet or Sauvignon Blanc",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Heineken",
+       "price": "$4"
+      },
+      {
+       "type": "food",
+       "desc": "Ham & cheese toastie",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Apricot, goat cheese & thyme toastie",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://theamsterdamian.com/menu"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Menu header 'Mo-Fri 5pm-7pm' (live 09-05). An earlier read of the same page showed 'Tuesday - Friday'; Monday is within posted hours (Mon-Sat 5pm-12am). Lounge/bar; toasties are the food."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Same official menu page rendered 'Tuesday - Friday' in one fetch and 'Mo-Fri' in another on 09-05 — Monday HH uncertain."
+   ],
+   "notes": "No independent third-party (Yelp/Eater/Reddit) source with explicit HH hours was found within the fetch budget; Yelp/Tripadvisor listings surfaced in search did not include specific happy hour times in the snippets returned."
+  },
+  {
+   "id": "ik-13100",
+   "inkind_id": 13100,
+   "name": "The Detroit Cowboy",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "500 11th Avenue North",
+   "zip": "37203",
+   "lat": 36.1637987,
+   "lon": -86.7912215,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://joevicarirestaurantgrouplwia0.inkind.com/",
+   "official_site": "https://thedetroitcowboy.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "50% off liquor, beer, and wine under $25",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Golden Hour food menu (Rhode Island Fried Calamari, Buffalo Cauliflower, Signature Oysters on Half Shell, Born Free Burger Sliders, 'Detroit Style' Cheesesteak Tacos, Charcuterie Board, Chargrilled Tenderloin Tips & Portabella Mushrooms, Cowboy Poutine, Truffle Parmesan Pommes Frites)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu",
+      "https://nashvilleguru.com/businesses/the-detroit-cowboy"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Called 'Golden Hour' on the official menu. Exact discounted prices for the food items are not listed on the site (only the 50% liquor/beer/wine-under-$25 discount is quantified).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "50% off liquor, beer, and wine under $25",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Golden Hour food menu (same items as weekday window)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu",
+      "https://nashvilleguru.com/businesses/the-detroit-cowboy"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Sunday's Golden Hour starts an hour earlier (3pm) than the rest of the week.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "close",
+     "area": "patio",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Draft beer (Tony Joe White Cowboy Singer Lager, Marble Fox Southern Blonde Ale, Tailgate Orange Wheat)",
+       "price": "$4.00-$5.00"
+      },
+      {
+       "type": "drink",
+       "desc": "Bottled beer (American Rebel, Coors Light, Modelo Especial, Stella Artois, Yuengling)",
+       "price": "$3.00-$4.00"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass (sparkling, rose, white, red)",
+       "price": "$6.00-$9.00"
+      },
+      {
+       "type": "drink",
+       "desc": "Signature cocktails (Signature Old Fashioned, White Lotus Martini, Ancho Mama's Margarita)",
+       "price": "$8.00"
+      },
+      {
+       "type": "food",
+       "desc": "Patio 'Golden Hour' bites: Rhode Island Fried Calamari, Buffalo Cauliflower, Truffle Parmesan Pommes Frites, Signature Oysters on Half Shell, Colossal Shrimp Cocktail, Born Free Burger Sliders, Detroit Style Cheesesteak Tacos, Charcuterie Board, Cowboy Poutine, Chargrilled Tenderloin Tips & Portobello Mushrooms",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Official menu states: 'Patio Season just got an upgrade... bringing your favorite Happy Hour bites outside all night, plus a curated lineup of cocktails, beer, and wine at special pricing. Served nightly on the Patio from 3pm until the party is over!' This is a separate, longer, patio-only offering distinct from the indoor Golden Hour window; only found on the official site, not corroborated by a second source.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Two distinct happy-hour-style offerings: an indoor 'Golden Hour' (Mon-Sat 4-6pm / Sun 3-6pm, 50% off liquor/beer/wine<$25 + food menu) and a separate nightly Patio Menu (3pm-close, specifically priced beer/wine/cocktails + food bites), which TJ should note as two different deals depending on where he sits."
+  },
+  {
+   "id": "ik-16089",
+   "inkind_id": 16089,
+   "name": "The Southern Steak & Oyster",
+   "city": "Nashville",
+   "neighborhood": "SoBro",
+   "address": "150 3rd Avenue South",
+   "zip": "37201",
+   "lat": 36.1600382,
+   "lon": -86.7743902,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://tomkatshospitalityqiiay.inkind.com/",
+   "official_site": "https://www.thesouthernnashville.com/drinks",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Shucker's Choice Dozen oysters",
+       "price": "$25/dozen"
+      },
+      {
+       "type": "drink",
+       "desc": "rotating select of beer and zero-proof brews",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "wine",
+       "price": "$7"
+      }
+     ],
+     "sources": [
+      "https://www.thesouthernnashville.com/drinks",
+      "https://www.facebook.com/TheSouthernNashville/posts/our-daily-oyster-happy-hour-is-serving-up-25-shuckers-choice-oysters-from-3-pm-5/940267601480761/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Branded 'Daily Oyster Happy Hour'; official drinks-menu page and the restaurant's own Facebook post independently agree on 3-5pm daily, $25/dozen oysters. Also confirmed via footer hours block: 'Oyster Happy Hour Daily: 3 pm — 5 pm'.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [],
+   "notes": "Note: this is specifically an OYSTER happy hour (raw bar focus), not a broad food/drink discount menu; general bar beverage list is full-price outside beer/zero-proof/$7 wine noted."
+  },
+  {
+   "id": "ik-4949",
+   "inkind_id": 4949,
+   "name": "Two Hands - Nashville",
+   "city": "Nashville",
+   "neighborhood": "The Gulch / 8th Ave S",
+   "address": "606 8th Ave. Store 400",
+   "zip": "37203",
+   "lat": 36.1514681,
+   "lon": -86.779126,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://twohands.inkind.com/",
+   "official_site": "https://www.twohandshospitality.com/location/two-hands-nashville/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Snacky Smash Burger",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Classic cocktails (Martini, Espresso Martini, Margarita, Aperol Spritz, Old Fashioned, Negroni, Bloody Mary)",
+       "price": "$10 flat"
+      },
+      {
+       "type": "drink",
+       "desc": "Snacky Hour wine (sparkling/white/red)",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Snacky Hour beer",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.twohandshospitality.com/location/two-hands-nashville/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Official site labels this 'Snacky Hour', 4-6pm every day, with FLAT prices ($10 cocktails, $8 wine, $5 beer, $10 burger) rather than percentage/dollar-off discounts. See disagreements - this conflicts with an older/aggregator description of the same happy hour.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Pricing mechanic: official site's current 'Snacky Hour' menu uses FLAT prices ($10 cocktails/$8 wine/$5 beer/$10 burger), while Nashville Guru's listing meta-description describes a DISCOUNT structure ($3 off cocktails, $2 off beer, $2 off wine) with no food item mentioned. These appear to be different versions of the promotion (Guru's copy may be stale) and could not be reconciled.",
+    "Days: a general web-search summary claimed happy hour runs 'Tuesday through Saturday' 4-6pm, while the official site explicitly says 'every day'. Official site treated as authoritative for days, but the conflict is noted."
+   ],
+   "notes": "Two Hands also runs other week-long specials shown on the same page: all-day $39 mimosa carafe, Wine Down Wednesday (50% off bottles), and $25pp bottomless bloody mary Sat/Sun brunch — these are NOT the 4-6pm happy hour but are adjacent recurring drink deals worth flagging."
+  },
+  {
+   "id": "ik-17673",
+   "inkind_id": 17673,
+   "name": "Two Ten Jack",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1900 Eastland Avenue #105",
+   "zip": "37206",
+   "lat": 36.18159,
+   "lon": -86.7355774,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://twotenjackhliax.inkind.com/",
+   "official_site": "https://www.twotenjack.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 Asahi, Kirin, and PBR",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "House red and white wine",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Jack Juice (sake punch)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Infused shochu (rotating selection)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Steamed edamame",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "Crispy rice spicy tuna",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.twotenjack.com/menu/happy-hour",
+      "https://do615.com/events/weekly/wed/happy-hour-at-two-ten-jack-1572637049"
+     ],
+     "last_verified": null,
+     "corroborated": true,
+     "confidence": "low",
+     "notes": "do615 listing: 'Happy Hour Monday - Thursday 4:00pm - 6:00pm'. Deal list from checkle.com (not directly fetchable). Official site's happy-hour page is an ordering page with no times. Friday unconfirmed.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "do615.com event page text says 'Happy Hour Monday – Thursday from 4:00pm – 6:00[pm]' while a separate aggregator summary (checkle.com, not independently fetchable) and general web search consensus describe Monday–Friday 4-6pm. Could not resolve which is current."
+   ],
+   "notes": "Nashville location at 1900 Eastland Ave #105. Two Ten Jack also has a Chattanooga location; sources sometimes conflate the two."
+  },
+  {
+   "id": "ik-11236",
+   "inkind_id": 11236,
+   "name": "Verna Café & Bar",
+   "city": "Nashville",
+   "neighborhood": "Midtown",
+   "address": "210 Louise Avenue",
+   "zip": "37203",
+   "lat": 36.1519148,
+   "lon": -86.8049132,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://vernaconnies.inkind.com/",
+   "official_site": "https://www.vernanashville.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "08:00",
+      "00:00"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "15:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "15:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "café/bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Tiny Tinis (classic, dirty, espresso)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Cocktails: espresso old-fashioned, negroni frappe, spritzes",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Montucky Cold Snack",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "Select food options",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://www.vernanashville.com/",
+      "https://nashvilleguru.com/businesses/verna-cafe-bar"
+     ],
+     "last_verified": "2026-08-07",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Café happy hour. Site footer: 'Happy Hour Thu-Mon 3pm-6pm'; Guru itemization confirmed 08/07/26. Verna is closed evenings Tue-Wed."
+    },
+    {
+     "days": [
+      "MON",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": "evening bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Classic cocktails",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "N/A cocktails",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Montucky Cold Snack",
+       "price": "$3"
+      }
+     ],
+     "sources": [
+      "https://www.vernanashville.com/evening-menu"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "'Bar Verna' evening menu: 'Happy Hour Daily 5-7pm' — evening bar runs Thu-Mon 5pm-12am, so 'daily' = Thu-Mon. Overlaps the 3-6 café window 5-6pm; TJ to confirm which applies where."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "Site footer says Verna HH Thu-Mon 3-6pm; the evening-menu page says 'Happy Hour Daily 5-7pm' with different prices. Both recorded as separate windows (café vs evening bar)."
+   ],
+   "notes": "All-day cafe/bar concept from Verna Hospitality; The Backbar at Verna is a related late-night bar space at the same address, also listing 'Happy Hour 5pm-7pm' per the site footer."
+  },
+  {
+   "id": "ik-13745",
+   "inkind_id": 13745,
+   "name": "Vintage Vine 100",
+   "city": "Franklin",
+   "neighborhood": "Franklin (Cool Springs)",
+   "address": "4051 Aspen Grove Drive",
+   "zip": "37067",
+   "lat": 35.9378452,
+   "lon": -86.8260606,
+   "tz": "America/Chicago",
+   "inkind": true,
+   "inkind_url": "https://vintagevine100.inkind.com/",
+   "official_site": "https://www.vintagevine100.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "12:00",
+      "20:00"
+     ]
+    ],
+    "MON": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "inKind map API 2026-09-05",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "House wines",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Cocktails",
+       "price": "$8"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine flights (discounted)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Discounted small plates",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.vintagevine100.com/happy-hour-franklin-tn",
+      "https://www.vintagevine100.com/menu"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Official happy-hour page footer explicitly lists 'Happy Hour: Tuesday-Friday 3-6pm', matching the /menu page's meta description. No independent third-party (Guru/Yelp) confirmation of hours was found -- treating as med confidence since two official pages on the same site agree but no outside source corroborates.",
+     "kind": "happy_hour"
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-09-05",
+   "disagreements": [
+    "An earlier general web-search summary described happy hour as 'Monday-Friday 3-6pm' with a specific Tuesday-Thursday $3-off-flight/$5-off-bottle deal, which conflicts with the official site's own current footer text of 'Tuesday-Friday 3-6pm' (no Monday). Treating the official site text as authoritative; Guru/Yelp listings could not be fetched to break the tie."
+   ],
+   "notes": "Wine bar in Franklin, TN with a dedicated (currently sparse/placeholder) Happy Hour Menu page noting prices may not reflect current specials."
+  }
+ ]
+}
