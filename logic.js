@@ -324,6 +324,249 @@
     return out;
   }
 
+  // ---- v1.4 C3: hand-authored zone map ----
+  // v1.3 drew the map as a Voronoi partition of the 11 core-hood centroids. Those
+  // centroids sit within ~1.5 mi of each other while the bbox spanned ~20 mi, so
+  // the labels piled onto one spot and Belle Meade/Bellevue owned two-thirds of the
+  // canvas: shards, not a city. v1.4 replaces the RENDERING with six hand-authored
+  // polygons, one per core zone, drawn to enclose that zone's own venues and to
+  // follow the obvious edges (the Cumberland, I-40, I-65/I-440, Charlotte Ave).
+  // voronoiCells + its tests are deliberately kept: they remain the geometric
+  // cross-check that the hood centroids partition sanely.
+  //
+  // EXTENT: the block specified lat 36.09-36.22 / lon -86.90..-86.70. Measured
+  // against venues.json that is too small on the north-east: East Nashville's
+  // "E+ROSE - East Nashville" is at 36.2311 and "Gregorys Coffee - Opry Mills" at
+  // -86.6947, both outside it, so no East polygon inside the stated extent could
+  // contain its own venues. Widened to 36.09..36.24 / -86.90..-86.69, which leaves
+  // exactly the two Bellevue venues outside — the two the block already expected to
+  // be off-map (represented by the West polygon's western edge + a caption).
+  var MAP_EXTENT = { minLat: 36.09, maxLat: 36.24, minLon: -86.90, maxLon: -86.69 };
+  var MAP_EXEMPT_HOODS = ['Bellevue'];
+  var MAP_VIEW_W = 320;
+  var MAP_MEAN_LAT_RAD = (MAP_EXTENT.minLat + MAP_EXTENT.maxLat) / 2 * Math.PI / 180;
+  var MAP_X_SCALE = Math.cos(MAP_MEAN_LAT_RAD);
+  var MAP_VIEW_H = MAP_VIEW_W *
+    ((MAP_EXTENT.maxLat - MAP_EXTENT.minLat) / ((MAP_EXTENT.maxLon - MAP_EXTENT.minLon) * MAP_X_SCALE));
+
+  // Equirectangular projection into the SVG viewBox. Shared by the renderer and by
+  // the label-overlap test so the two can never measure different geometry.
+  function projectToView(lat, lon) {
+    var minX = MAP_EXTENT.minLon * MAP_X_SCALE, maxX = MAP_EXTENT.maxLon * MAP_X_SCALE;
+    return [
+      (lon * MAP_X_SCALE - minX) / (maxX - minX) * MAP_VIEW_W,
+      (MAP_EXTENT.maxLat - lat) / (MAP_EXTENT.maxLat - MAP_EXTENT.minLat) * MAP_VIEW_H,
+    ];
+  }
+
+  // Containment runs on raw (lon, lat). Projecting only scales x by a positive
+  // constant, and that affine map preserves inside/outside, so a point is in the
+  // projected polygon exactly when it is in the lat/lon one.
+  function zoneContains(zoneKey, lat, lon) {
+    var poly = ZONE_POLYGONS[zoneKey];
+    if (!poly) return false;
+    var xy = [];
+    for (var i = 0; i < poly.length; i++) xy.push([poly[i][1], poly[i][0]]);
+    return pointInPolygon([lon, lat], xy);
+  }
+
+  // Short names on the map: the full zone labels ("Germantown & North") are ~108px
+  // wide at 6px/char on a 320-wide viewBox — a third of the map. The pills keep the
+  // full label; the map gets the short one.
+  var ZONE_MAP_LABELS = {
+    downtown: 'Downtown', gulch: 'Gulch', north: 'Germantown',
+    east: 'East', south: 'South', west: 'West',
+  };
+  // Approximate advance widths used by both the renderer's layout assumptions and
+  // the label-overlap test (the block's "approximate 6px/char").
+  var ZONE_LABEL_FONT_PX = 11, ZONE_LABEL_CHAR_W = 6;
+  var ZONE_SUB_FONT_PX = 9, ZONE_SUB_LINE_GAP = 10;
+
+  // The rendered label block for one zone, in view space: the name line plus the
+  // count line beneath it. The name is always the wider of the two, so the box is
+  // sized from the name.
+  function zoneLabelBox(zoneKey) {
+    var a = ZONE_LABEL_ANCHORS[zoneKey];
+    if (!a) return null;
+    var xy = projectToView(a[0], a[1]);
+    var w = (ZONE_MAP_LABELS[zoneKey] || zoneKey).length * ZONE_LABEL_CHAR_W;
+    return {
+      zone: zoneKey,
+      x: xy[0] - w / 2, y: xy[1] - ZONE_LABEL_FONT_PX,
+      w: w, h: ZONE_LABEL_FONT_PX + ZONE_SUB_LINE_GAP,
+    };
+  }
+  function zoneLabelBoxes() {
+    var out = [];
+    for (var i = 0; i < CORE_ZONE_KEYS.length; i++) {
+      var b = zoneLabelBox(CORE_ZONE_KEYS[i]);
+      if (b) out.push(b);
+    }
+    return out;
+  }
+  function rectsIntersect(a, b) {
+    return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+  }
+
+  // ==== BEGIN ZONE MAP DATA (v1.4 C3) ====
+  // Vertices are [lat, lon]. Source: the venue coordinates in venues.json (every
+  // core venue outside the two Bellevue ones must fall inside its own zone's
+  // polygon — see tests/windows.test.js), snapped outward to the obvious edges:
+  // the Cumberland River (downtown/north vs east), I-40 (gulch/midtown vs
+  // germantown), I-65 and I-440 (the southern edge of the core), and Charlotte
+  // Ave / Richland Creek (the west divide). See CHANGELOG v1.4 for the derivation.
+  var ZONE_POLYGONS = {
+    // Downtown/SoBro. The west edge carries the notch that keeps koshō and The
+    // Herban Perk & Pantry in the Gulch while City Winery (south-west of both) and
+    // Legendary Wings (north-east of both) stay Downtown — the data's own hood
+    // labels interleave along this seam, so no straight boundary can split them.
+    downtown: [
+      [36.1735, -86.7830],
+      [36.1735, -86.7737],
+      [36.1620, -86.7700],
+      [36.1560, -86.7640],
+      [36.1490, -86.7600],
+      [36.1465, -86.7680],
+      [36.1465, -86.7790],
+      [36.1531, -86.7778],
+      [36.1537, -86.7724],
+      [36.1573, -86.7757],
+      [36.1600, -86.7815],
+      [36.1655, -86.7860],
+    ],
+    // The Gulch & Midtown. Shares Downtown's notched edge vertex-for-vertex (in
+    // reverse) so the two regions abut exactly, with no sliver between them.
+    gulch: [
+      [36.1655, -86.7860],
+      [36.1600, -86.7815],
+      [36.1573, -86.7757],
+      [36.1537, -86.7724],
+      [36.1531, -86.7778],
+      [36.1465, -86.7790],
+      [36.1450, -86.7860],
+      [36.1330, -86.8000],
+      [36.1500, -86.8150],
+      [36.1645, -86.8150],
+    ],
+    // Germantown & North: I-40 at the south, the river at the east, Charlotte Ave /
+    // Richland Creek (lon -86.815) at the west.
+    north: [
+      [36.2400, -86.8150],
+      [36.2400, -86.7550],
+      [36.2150, -86.7620],
+      [36.1900, -86.7620],
+      [36.1800, -86.7690],
+      [36.1735, -86.7737],
+      [36.1735, -86.7830],
+      [36.1655, -86.7860],
+      [36.1645, -86.8150],
+    ],
+    // East Nashville: everything east of the Cumberland, out to Opry Mills.
+    east: [
+      [36.2400, -86.7550],
+      [36.2150, -86.7620],
+      [36.1900, -86.7620],
+      [36.1800, -86.7690],
+      [36.1735, -86.7737],
+      [36.1620, -86.7700],
+      [36.1560, -86.7640],
+      [36.1490, -86.7600],
+      [36.1300, -86.7560],
+      [36.0900, -86.7430],
+      [36.0900, -86.6900],
+      [36.2400, -86.6900],
+    ],
+    // 12South, Wedgewood-Houston and Berry Hill, down past I-440 to the county line.
+    south: [
+      [36.1465, -86.7680],
+      [36.1490, -86.7600],
+      [36.1300, -86.7560],
+      [36.0900, -86.7430],
+      [36.0900, -86.8320],
+      [36.1150, -86.8150],
+      [36.1330, -86.8000],
+      [36.1450, -86.7860],
+      [36.1465, -86.7790],
+    ],
+    // Sylvan Park, Charlotte Ave and Belle Meade. Its western edge stands in for
+    // Bellevue, which is off the map (see the '\u2190 Bellevue' caption).
+    west: [
+      [36.2400, -86.9000],
+      [36.2400, -86.8150],
+      [36.1645, -86.8150],
+      [36.1500, -86.8150],
+      [36.1330, -86.8000],
+      [36.1150, -86.8150],
+      [36.0900, -86.8320],
+      [36.0900, -86.9000],
+    ],
+  };
+
+  // Hand-set, not centroids: every one of these zones is L-shaped or wedge-shaped
+  // enough that its centroid lands somewhere unhelpful.
+  var ZONE_LABEL_ANCHORS = {
+    downtown: [36.1610, -86.7745],
+    gulch: [36.1440, -86.8060],
+    north: [36.1950, -86.7900],
+    east: [36.1750, -86.7150],
+    south: [36.1150, -86.7800],
+    west: [36.1300, -86.8600],
+  };
+
+  // The Cumberland, south -> north (the order the bank test relies on). Drawn as
+  // the Downtown/Germantown vs East divider the block asked for, which puts it
+  // within ~450 m of the true channel through downtown — close enough to orient
+  // by, and it keeps the line and the zone seam as one edge instead of two.
+  var RIVER = [
+    [36.0900, -86.7420],
+    [36.1180, -86.7460],
+    [36.1300, -86.7570],
+    [36.1490, -86.7610],
+    [36.1560, -86.7650],
+    [36.1620, -86.7710],
+    [36.1735, -86.7745],
+    [36.1800, -86.7698],
+    [36.1900, -86.7628],
+    [36.2150, -86.7628],
+    [36.2400, -86.7558],
+  ];
+
+  // Thin grey hints only — recognisable, not surveyed.
+  var INTERSTATES = {
+    'I-40': [
+      [36.1400, -86.9000],
+      [36.1480, -86.8600],
+      [36.1530, -86.8200],
+      [36.1580, -86.7960],
+      [36.1660, -86.7840],
+      [36.1720, -86.7700],
+      [36.1745, -86.7500],
+      [36.1760, -86.7100],
+      [36.1740, -86.6900],
+    ],
+    'I-65': [
+      [36.0900, -86.7900],
+      [36.1150, -86.7830],
+      [36.1400, -86.7800],
+      [36.1560, -86.7880],
+      [36.1680, -86.7940],
+      [36.1900, -86.7980],
+      [36.2150, -86.8020],
+      [36.2400, -86.8060],
+    ],
+    'I-24': [
+      [36.2100, -86.8300],
+      [36.1900, -86.8080],
+      [36.1740, -86.7900],
+      [36.1640, -86.7760],
+      [36.1500, -86.7580],
+      [36.1300, -86.7320],
+      [36.1100, -86.7060],
+      [36.0950, -86.6900],
+    ],
+  };
+  // ==== END ZONE MAP DATA ====
+
   // ---- C2 (v1.3): pure hood-filter model ----
   // filterState = { selected: Set<hoodKey> }. An empty Set is a legitimate "none
   // selected" state -- callers must not treat it as "unset".
@@ -616,5 +859,19 @@
     polygonArea: polygonArea,
     pointInPolygon: pointInPolygon,
     voronoiCells: voronoiCells,
+    MAP_EXTENT: MAP_EXTENT,
+    MAP_EXEMPT_HOODS: MAP_EXEMPT_HOODS,
+    MAP_VIEW_W: MAP_VIEW_W,
+    MAP_VIEW_H: MAP_VIEW_H,
+    projectToView: projectToView,
+    zoneContains: zoneContains,
+    ZONE_POLYGONS: ZONE_POLYGONS,
+    ZONE_LABEL_ANCHORS: ZONE_LABEL_ANCHORS,
+    ZONE_MAP_LABELS: ZONE_MAP_LABELS,
+    RIVER: RIVER,
+    INTERSTATES: INTERSTATES,
+    zoneLabelBox: zoneLabelBox,
+    zoneLabelBoxes: zoneLabelBoxes,
+    rectsIntersect: rectsIntersect,
   };
 });

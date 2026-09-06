@@ -22,6 +22,13 @@
     --bad: #b3392c;
     --nowline: #d63b2f;
     --special-stripe: rgba(169, 95, 0, 0.18);
+    /* v1.4 C3: the zone map has its own ground/ink tokens so it reads in both themes. */
+    --map-bg: #eceee9;
+    --map-dot: rgba(22, 24, 29, 0.55);
+    --map-river: #6f9fc4;
+    --map-road: rgba(22, 24, 29, 0.3);
+    --map-label: #16181d;
+    --map-label-dim: rgba(22, 24, 29, 0.62);
     --header-h: 76px;
     --gridsticky-h: 88px;
   }
@@ -40,6 +47,12 @@
       --bad: #ff6b5e;
       --nowline: #ff6b5e;
       --special-stripe: rgba(245, 166, 35, 0.14);
+      --map-bg: #0b1020;
+      --map-dot: rgba(255, 255, 255, 0.6);
+      --map-river: #4d7ea8;
+      --map-road: rgba(255, 255, 255, 0.28);
+      --map-label: #ffffff;
+      --map-label-dim: rgba(255, 255, 255, 0.72);
     }
   }
   * { box-sizing: border-box; }
@@ -51,28 +64,44 @@
   nav.tabs button { flex: 1; padding: 9px 6px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 13px; font-weight: 600; }
   nav.tabs button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
   .toolbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 0; gap: 10px; }
-  .toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; font-size: 12px; }
-  .toggle button { padding: 6px 12px; background: var(--panel); color: var(--text-dim); border: none; }
-  .toggle button.active { background: var(--amber); color: #1a1200; font-weight: 700; }
+  .toggle { display: inline-flex; gap: 6px; }
   .note { font-size: 12px; color: var(--text-dim); padding: 6px 16px 0; }
 
-  /* ---- ZONE/HOOD filter (v1.3): chip row (C3) ---- */
-  .hood-toolbar { padding: 10px 16px 0; }
-  .hood-controls { display: flex; gap: 8px; margin-bottom: 8px; }
-  .hood-controls button { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); color: var(--text-dim); font-size: 11.5px; font-weight: 600; }
-  .hood-controls button.map-toggle-btn { margin-left: auto; }
-  .hood-controls button.map-toggle-btn.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
-  .hood-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .zone-chip-wrap { display: flex; flex-direction: column; }
-  .chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 6px 5px 8px; border-radius: 999px; border: 1.5px solid var(--chip-color, var(--border)); background: var(--panel); font-size: 11.5px; font-weight: 600; color: var(--text); max-width: 100%; }
-  .chip .swatch { width: 9px; height: 9px; border-radius: 50%; background: var(--chip-color, var(--border)); flex-shrink: 0; }
-  .chip .count { color: var(--text-dim); font-weight: 500; }
-  .chip.selected { background: var(--chip-color, var(--amber)); border-color: var(--chip-color, var(--amber)); color: #fff; }
-  .chip.selected .count { color: rgba(255,255,255,0.85); }
-  .chip.indeterminate { background: color-mix(in srgb, var(--chip-color, var(--amber)) 22%, var(--panel)); }
-  .chip .caret { border: none; background: transparent; color: inherit; font-size: 10px; padding: 0 2px; margin-left: 2px; opacity: 0.75; }
-  .hood-subchips { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 2px 14px; }
-  .hood-subchips .chip { font-size: 11px; padding: 4px 8px; }
+  /* ---- v1.4 C5: ONE pill component ----
+     Zone pills, hood chips, day tabs, the Time/Distance/Name sort and the
+     Food/Drink toggle are all `.pill`: same radius, height, font. `--pill-hue`
+     (a bare hsl hue number) tints the selected state; with no hue set a pill
+     falls back to the amber accent, so non-zone pills need no extra rules. */
+  .pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    height: 30px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--panel); color: var(--text-dim); font-family: inherit; font-size: 12px;
+    font-weight: 600; line-height: 1; white-space: nowrap; cursor: pointer; -webkit-appearance: none; }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: hsl(var(--pill-hue, 35), 58%, 46%); }
+  .pill .count { font-size: 11px; font-weight: 700; color: var(--text); opacity: 0.8; }
+  .pill.on { background: hsla(var(--pill-hue, 35), 58%, 46%, 0.25); border-color: hsl(var(--pill-hue, 35), 58%, 46%); color: var(--text); }
+  .pill.partial { border-style: dashed; border-color: hsl(var(--pill-hue, 35), 58%, 46%); color: var(--text); }
+  /* C2: a zone with nothing live/on-the-day dims instead of showing a "0" badge. */
+  .pill.zero { opacity: 0.5; }
+  .pill:focus-visible { outline: 2px solid hsl(var(--pill-hue, 35), 58%, 46%); outline-offset: 2px; }
+  .pill .caret { border: none; background: transparent; color: inherit; font-family: inherit;
+    font-size: 10px; line-height: 1; padding: 0 0 0 3px; margin-right: -3px; cursor: pointer; }
+
+  /* ---- v1.4 C2: zone row is ONE line; the hood strip is its SIBLING ----
+     Nothing is ever appended inside a pill, so expanding a zone can never
+     change any other pill's width or position (the v1.3 bug: the hood chips
+     rendered inside the zone's flex-column wrapper, stretching that zone's
+     pill from 89px to 466px and pushing two pills onto a second row). */
+  .zone-toolbar { padding: 10px 16px 0; }
+  .zone-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; }
+  .zone-row .pill { flex: 0 0 auto; }
+  .zone-row .row-actions { display: flex; gap: 6px; margin-left: auto; flex: 0 0 auto; }
+  .hood-strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .hood-strip:empty { display: none; }
+  .hood-strip .pill { height: 27px; font-size: 11.5px; padding: 0 9px; }
+  .hood-strip .strip-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--text-dim); align-self: center; margin-right: 2px; }
+  @media (max-width: 899px) { .zone-row { flex-wrap: wrap; } }
+  @media (min-width: 900px) { .zone-row .map-toggle-btn { display: none; } }
 
   /* ---- Layout (v1.3 C5): sidebar on wide screens, drawer on phones ---- */
   .layout { display: flex; flex-direction: column; max-width: 1180px; margin: 0 auto; }
@@ -85,23 +114,42 @@
     .sidebar { display: block !important; width: 320px; flex-shrink: 0; position: sticky; top: var(--header-h); padding: 10px 0 4px; }
     .content { flex: 1 1 auto; }
     .content main { max-width: 720px; margin: 0; padding-left: 0; padding-right: 0; }
-    .hood-controls .map-toggle-btn { display: none; }
+  }
+  /* C5: give the Day Grid's hour columns room to breathe on a real desktop.
+     .layout's cap has to grow with it (320 sidebar + 12 gap + 840 main + 32 padding). */
+  @media (min-width: 1200px) {
+    .layout { max-width: 1240px; }
+    .content main { max-width: 840px; }
   }
 
-  /* ---- Map (v1.3 C4): inline SVG Voronoi + suburb tiles ---- */
+  /* ---- Map (v1.4 C3): hand-authored zone polygons + river/interstate hints ---- */
   .map-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 10px; }
-  .map-svg { width: 100%; height: auto; display: block; }
-  .map-svg a.cell { cursor: pointer; }
-  .map-svg .cell-fill { stroke: var(--border); stroke-width: 1; }
-  .map-svg .cell-label { font-size: 6.5px; font-weight: 700; fill: var(--text); pointer-events: none; text-anchor: middle; }
-  .map-svg .venue-dot { fill: var(--text-dim); opacity: 0.55; }
-  .map-svg .venue-dot.live { fill: var(--amber-strong); opacity: 0.95; }
-  .suburb-tiles { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .tile { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 10px; border: 1.5px solid var(--tile-color, var(--border)); background: var(--panel); font-size: 11px; font-weight: 600; color: var(--text); }
-  .tile .swatch { width: 9px; height: 9px; border-radius: 3px; background: var(--tile-color, var(--border)); flex-shrink: 0; }
-  .tile.selected { background: var(--tile-color, var(--amber)); border-color: var(--tile-color, var(--amber)); color: #fff; }
-  .tile .count { color: var(--text-dim); font-weight: 500; }
-  .tile.selected .count { color: rgba(255,255,255,0.85); }
+  .map-svg { width: 100%; height: auto; display: block; border-radius: 10px; background: var(--map-bg); }
+  .map-svg .zone { cursor: pointer; }
+  .map-svg .zone-fill { stroke-width: 1.5; }
+  .map-svg .zone:hover .zone-fill { fill-opacity: 0.72; }
+  .map-svg .zone:focus-visible { outline: none; }
+  .map-svg .zone:focus-visible .zone-fill { stroke: var(--map-label); stroke-width: 2.5; }
+  /* paint-order:stroke draws the halo behind the glyphs, so labels stay legible
+     wherever they land on a saturated fill. */
+  .map-svg .zone-label, .map-svg .zone-sub { text-anchor: middle; pointer-events: none;
+    paint-order: stroke; stroke: var(--map-bg); stroke-width: 2.6px; stroke-linejoin: round; }
+  .map-svg .zone-label { font-size: 11px; font-weight: 700; fill: var(--map-label); }
+  .map-svg .zone-sub { font-size: 9px; font-weight: 600; fill: var(--map-label-dim); }
+  .map-svg .river { fill: none; stroke: var(--map-river); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .map-svg .road { fill: none; stroke: var(--map-road); stroke-width: 1; stroke-dasharray: 3.5 2.5; }
+  .map-svg .road-label { font-size: 6.5px; font-weight: 700; fill: var(--map-road); pointer-events: none; }
+  .map-svg .venue-dot { fill: var(--map-dot); }
+  .map-svg .venue-dot.live { fill: var(--amber); stroke: var(--map-bg); stroke-width: 1; }
+  .map-svg .me-dot { fill: #2f7ff0; stroke: #ffffff; stroke-width: 1.2; }
+  .map-svg .edge-caption { font-size: 7.5px; font-weight: 700; fill: var(--map-label-dim);
+    pointer-events: none; paint-order: stroke; stroke: var(--map-bg); stroke-width: 2.4px; }
+  /* C4: suburbs are chips, not map regions and not solid tiles. */
+  .suburb-strips { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .suburb-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .suburb-row .strip-label { font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--text-dim); width: 100%; margin-bottom: -1px; }
+  .suburb-row .pill { height: 26px; font-size: 11px; padding: 0 9px; }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
@@ -134,12 +182,10 @@
   .empty b { color: var(--text); }
 
   #grid-sticky { position: sticky; top: var(--header-h); z-index: 4; background: var(--bg); padding-bottom: 4px; }
-  .day-select { display: flex; gap: 3px; padding: 8px 16px 0; }
-  .day-select button { flex: 1; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 11.5px; }
-  .day-select button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); font-weight: 700; }
+  .day-select { display: flex; gap: 4px; padding: 8px 16px 0; }
+  .day-select .pill { flex: 1 1 0; min-width: 0; padding: 0 2px; }
   .sort-select { display: flex; gap: 4px; padding: 6px 16px 0; }
-  .sort-select button { flex: 1; padding: 6px 4px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); color: var(--text-dim); font-size: 11.5px; font-weight: 600; }
-  .sort-select button.active { background: var(--amber); color: #1a1200; border-color: var(--amber); }
+  .sort-select .pill { flex: 1 1 0; min-width: 0; }
   #grid-sort-note { padding: 4px 16px 0; }
 
   /* NOTE: the sticky hour-header lives OUTSIDE #grid-wrap on purpose. Any
@@ -150,12 +196,21 @@
      `html body { overflow-x: hidden }` was removed above. */
   #grid-wrap { border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; margin: 0 16px 0; }
   .grid-inner { position: relative; }
-  .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 34px; }
+  .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 36px; }
   .grid-row-group:last-child .grid-row { border-bottom: none; }
-  .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 6px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 4px; overflow: hidden; cursor: pointer; }
+  .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 0 0 8px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 2px; overflow: hidden; cursor: pointer; }
   .grid-rowlabel:active { background: var(--amber-bg); }
-  .grid-rowlabel span.icon { flex-shrink: 0; }
   .grid-rowlabel span.name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* C1: the row's own links, so a venue's HH info / inKind page is one tap from
+     the grid — no drill-in. 36px wide, full row height, never allowed to wrap or
+     shrink; the name ellipsizes into whatever is left. */
+  .grid-rowlabel a.rowlink { flex: 0 0 36px; width: 36px; align-self: stretch; display: flex;
+    align-items: center; justify-content: center; text-decoration: none; color: var(--drink);
+    font-size: 12px; font-weight: 700; border-left: 1px solid var(--border); }
+  .grid-rowlabel a.rowlink:active { background: var(--drink-bg); }
+  .grid-rowlabel a.rowlink.ink { color: var(--amber-strong); }
+  /* Below 600px the label needs more room to hold two 36px targets + a readable name. */
+  @media (max-width: 599px) { .grid-rowlabel { width: 46%; min-width: 46%; max-width: 46%; } }
   .grid-track { position: relative; flex: 1; min-width: 0; background: linear-gradient(to right, var(--border) 0, var(--border) 1px, transparent 1px); background-size: 6.66667% 100%; cursor: pointer; }
   .grid-header { display: flex; position: sticky; top: calc(var(--header-h) + var(--gridsticky-h)); background: var(--panel); z-index: 3; border: 1px solid var(--border); border-bottom: none; border-radius: 12px 12px 0 0; margin: 10px 16px 0; }
   .grid-header .grid-rowlabel { border-right: 1px solid var(--border); cursor: default; }
@@ -187,21 +242,15 @@
 
 <div class="toolbar">
   <div class="toggle" id="food-toggle" role="group" aria-label="Food or drink first">
-    <button id="btn-food" class="active">🍽 Food-first</button>
-    <button id="btn-drink">🍹 Drink-first</button>
+    <button type="button" class="pill on" id="btn-food">🍽 Food-first</button>
+    <button type="button" class="pill" id="btn-drink">🍹 Drink-first</button>
   </div>
 </div>
 
-<div class="hood-toolbar">
-  <div class="hood-controls">
-    <button id="hood-all">All</button>
-    <button id="hood-none">None</button>
-    <button id="map-toggle-btn" class="map-toggle-btn" aria-pressed="false" aria-controls="sidebar">Map</button>
-  </div>
-  <div class="hood-chips" id="hood-chips" role="group" aria-label="Filter by neighborhood"></div>
+<div class="zone-toolbar">
+  <div class="zone-row" id="zone-row" role="group" aria-label="Filter by zone"></div>
+  <div class="hood-strip" id="hood-strip" role="group" aria-label="Filter by neighborhood"></div>
 </div>
-
-<div class="note" id="geo-note"></div>
 
 <div id="fatal"></div>
 
@@ -233,12 +282,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.3"></script>
+<script src="logic.js?v=1.4"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.3';
+  var APP_VERSION = 'v1.4';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -285,7 +334,7 @@
     gridRowOpen: new Set(), // venue.id set: which Day Grid rows show their inline card(s)
     expandedCards: new Set(), // cardKey set: which cards (NOW or Grid) are expanded
     hoodSelected: new Set(L.hoodKeys()), // ZONE/HOOD filter (v1.3 C2): default = all
-    expandedZones: new Set(), // zone keys whose hood sub-chips are shown
+    expandedZone: null, // v1.4 C2: at most ONE zone's hoods are shown, in the sibling strip
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
   };
 
@@ -507,10 +556,10 @@
       } else {
         msg = 'No happy hours found in this dataset.';
       }
-      el.innerHTML = '<div class="empty">' + msg + '</div>';
+      el.innerHTML = geoNoteHtml() + '<div class="empty">' + msg + '</div>';
       return;
     }
-    var html = '';
+    var html = geoNoteHtml();
     if (sections.live.length) html += '<div class="section-heading">Live now (' + sections.live.length + ')</div>' + sections.live.map(nowEntryCardHtml).join('');
     if (sections.soon.length) html += '<div class="section-heading">Starting soon (' + sections.soon.length + ')</div>' + sections.soon.map(nowEntryCardHtml).join('');
     if (sections.allDay.length) html += '<div class="section-heading">All-day specials (' + sections.allDay.length + ')</div>' + sections.allDay.map(nowEntryCardHtml).join('');
@@ -525,7 +574,7 @@
   function renderDaySelect() {
     var el = document.getElementById('day-select');
     el.innerHTML = L.DAYS.map(function (d) {
-      return '<button data-day="' + d + '" class="' + (d === state.day ? 'active' : '') + '">' + d + '</button>';
+      return '<button type="button" data-day="' + d + '" class="pill' + (d === state.day ? ' on' : '') + '">' + d + '</button>';
     }).join('');
     Array.prototype.forEach.call(el.querySelectorAll('button'), function (btn) {
       btn.addEventListener('click', function () {
@@ -542,7 +591,7 @@
     var el = document.getElementById('sort-select');
     var labels = { time: 'Time', distance: 'Distance', name: 'Name' };
     el.innerHTML = GRID_SORT_OPTIONS.map(function (s) {
-      return '<button data-sort="' + s + '" class="' + (s === state.gridSort ? 'active' : '') + '">' + labels[s] + '</button>';
+      return '<button type="button" data-sort="' + s + '" class="pill' + (s === state.gridSort ? ' on' : '') + '">' + labels[s] + '</button>';
     }).join('');
     Array.prototype.forEach.call(el.querySelectorAll('button'), function (btn) {
       btn.addEventListener('click', function () { setGridSort(btn.getAttribute('data-sort')); });
@@ -619,6 +668,27 @@
     return cardHtml(venue, win, statusLabel, statusClass, distanceLabel(venue), cardKey(venue, win), true);
   }
 
+  // C1 (v1.4): the two per-row links, icon-only so they fit a 34%-wide row label.
+  // Same targets as the card's text buttons (bestSourceUrl + inkind_url). Each
+  // stops propagation so tapping one never opens/closes the row. A row can cover
+  // more than one window on the day; the HH-info link uses the first, which is
+  // the earliest-starting one (dayIntervalsForVenue preserves window order).
+  function rowLinksHtml(venue, win) {
+    var out = '';
+    var source = L.bestSourceUrl(venue, win);
+    if (source) {
+      out += '<a class="rowlink" href="' + escapeHtml(source) + '" target="_blank" rel="noopener"' +
+        ' title="Happy hour info — ' + escapeHtml(venue.name) + '" aria-label="Happy hour info for ' + escapeHtml(venue.name) + '"' +
+        ' onclick="event.stopPropagation()">\u2139\uFE0E</a>';
+    }
+    if (venue.inkind_url) {
+      out += '<a class="rowlink ink" href="' + escapeHtml(venue.inkind_url) + '" target="_blank" rel="noopener"' +
+        ' title="inKind listing — ' + escapeHtml(venue.name) + '" aria-label="inKind listing for ' + escapeHtml(venue.name) + '"' +
+        ' onclick="event.stopPropagation()">K</a>';
+    }
+    return out;
+  }
+
   function renderGrid() {
     var el = document.getElementById('grid-inner');
     var day = state.day;
@@ -678,7 +748,7 @@
       // via closest('.grid-row-group') in the delegated handler (C3).
       return '<div class="grid-row-group" data-venue-id="' + escapeHtml(venue.id) + '">' +
         '<div class="grid-row">' +
-          '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="icon">🍸</span><span class="name">' + escapeHtml(venue.name) + '</span></div>' +
+          '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="name">' + escapeHtml(venue.name) + '</span>' + rowLinksHtml(venue, items[0].win) + '</div>' +
           '<div class="grid-track">' +
             blocks +
             (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
@@ -753,113 +823,183 @@
     return counts;
   }
 
-  function renderHoodChips() {
-    var el = document.getElementById('hood-chips');
-    var counts = hoodCounts();
-    var html = '';
-    L.ZONES.forEach(function (zone) {
-      var visibleHoods = zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
-      if (!visibleHoods.length) return;
-      var selectedCount = visibleHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
-      var allSel = selectedCount === visibleHoods.length;
-      var noneSel = selectedCount === 0;
-      var zoneCount = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
-      var cls = 'chip' + (allSel ? ' selected' : (noneSel ? '' : ' indeterminate'));
-      var expanded = state.expandedZones.has(zone.key);
-      html += '<div class="zone-chip-wrap">' +
-        '<div class="' + cls + '" style="--chip-color:hsl(' + zone.hue + ',58%,46%)" role="button" tabindex="0" aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
-          '<span class="swatch"></span>' + escapeHtml(zone.label) + ' <span class="count">' + zoneCount + '</span>' +
-          (visibleHoods.length > 1
-            ? '<button type="button" class="caret" data-caret-zone="' + escapeHtml(zone.key) + '" aria-label="Show ' + escapeHtml(zone.label) + ' neighborhoods" aria-expanded="' + expanded + '">' + (expanded ? '▾' : '▸') + '</button>'
-            : '') +
-        '</div>' +
-        (expanded && visibleHoods.length > 1
-          ? '<div class="hood-subchips">' + visibleHoods.map(function (h) {
-              var sel = state.hoodSelected.has(h);
-              return '<button type="button" class="chip' + (sel ? ' selected' : '') + '" style="--chip-color:' + hoodColor(h) + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(h) + '">' +
-                '<span class="swatch"></span>' + escapeHtml(h) + ' <span class="count">' + (counts[h] || 0) + '</span></button>';
-            }).join('') + '</div>'
+  // ---- v1.4 C2: the zone row (one steady line) + the sibling hood strip ----
+  // A zone pill is: dot · label · count. The count badge is dropped entirely when
+  // the zone has nothing live/on-the-day and the pill dims instead (`.zero`), so a
+  // row of zeros stops shouting. Selected = the zone hue at 0.25 alpha with a 1px
+  // hue border; deselected = a muted 1px border; some-but-not-all hoods = dashed.
+  // The caret only appears on zones with more than one hood.
+  function zonePillHtml(zone, visibleHoods, counts) {
+    var selectedCount = visibleHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
+    var allSel = selectedCount === visibleHoods.length;
+    var noneSel = selectedCount === 0;
+    var count = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
+    var cls = 'pill' + (allSel ? ' on' : (noneSel ? '' : ' partial')) + (count === 0 ? ' zero' : '');
+    var expanded = state.expandedZone === zone.key;
+    return '<div class="' + cls + '" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
+      ' aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
+        '<span class="dot"></span>' + escapeHtml(zone.label) +
+        (count > 0 ? '<span class="count">' + count + '</span>' : '') +
+        (visibleHoods.length > 1
+          ? '<button type="button" class="caret" data-caret-zone="' + escapeHtml(zone.key) + '"' +
+            ' aria-label="Show ' + escapeHtml(zone.label) + ' neighborhoods" aria-expanded="' + expanded + '">' +
+            (expanded ? '▾' : '▸') + '</button>'
           : '') +
-        '</div>';
-    });
-    el.innerHTML = html;
+      '</div>';
   }
 
-  // ---- map geometry (static; computed once) ----
-  var MAP_MEAN_LAT_RAD = (L.CORE_MAP_BBOX.minLat + L.CORE_MAP_BBOX.maxLat) / 2 * Math.PI / 180;
-  var MAP_BBOX_PROJECTED = {
-    minX: L.CORE_MAP_BBOX.minLon * Math.cos(MAP_MEAN_LAT_RAD), maxX: L.CORE_MAP_BBOX.maxLon * Math.cos(MAP_MEAN_LAT_RAD),
-    minY: L.CORE_MAP_BBOX.minLat, maxY: L.CORE_MAP_BBOX.maxLat,
-  };
-  var MAP_W = 320;
-  var MAP_H = MAP_W / ((MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY));
-
-  function svgPoint(lat, lon) {
-    var xy = L.projectLatLon(lat, lon, MAP_MEAN_LAT_RAD);
-    return [
-      (xy[0] - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) * MAP_W,
-      (MAP_BBOX_PROJECTED.maxY - xy[1]) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY) * MAP_H, // flip: SVG y grows downward
-    ];
+  function visibleHoodsOf(zone) {
+    return zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
   }
 
-  var CORE_CELLS = null; // static geometry; computed once venues are loaded
-  function buildCoreCells() {
-    var points = L.coreHoodCentroids().map(function (c) {
-      var xy = L.projectLatLon(c.lat, c.lon, MAP_MEAN_LAT_RAD);
-      return { key: c.hood, x: xy[0], y: xy[1], lat: c.lat, lon: c.lon };
-    });
-    var cells = L.voronoiCells(points, MAP_BBOX_PROJECTED);
-    return cells.map(function (c) {
-      var centroid = points.filter(function (p) { return p.key === c.key; })[0];
-      var svgPoly = c.polygon.map(function (pt) {
-        return [
-          (pt[0] - MAP_BBOX_PROJECTED.minX) / (MAP_BBOX_PROJECTED.maxX - MAP_BBOX_PROJECTED.minX) * MAP_W,
-          (MAP_BBOX_PROJECTED.maxY - pt[1]) / (MAP_BBOX_PROJECTED.maxY - MAP_BBOX_PROJECTED.minY) * MAP_H,
-        ];
-      });
-      var labelXy = svgPoint(centroid.lat, centroid.lon);
-      return { hood: c.key, points: svgPoly, labelX: labelXy[0], labelY: labelXy[1] };
-    });
-  }
-
-  // C4: map renders as inline SVG Voronoi cells (core zones) + a row of suburb
-  // tiles (franklin/outer zones -- true exurbs, not given a cell; see logic.js
-  // CORE_ZONE_KEYS comment for why this is a zone-membership choice, not a raw
-  // bbox-containment test). Every cell/tile toggles the same `state.hoodSelected`
-  // as the chips (C2) -- map, tiles, and chips are three views onto one Set.
-  function renderMap() {
-    if (!CORE_CELLS) CORE_CELLS = buildCoreCells();
+  function renderZoneRow() {
     var counts = hoodCounts();
-    var cellsHtml = CORE_CELLS.map(function (cell) {
-      var sel = state.hoodSelected.has(cell.hood);
-      var d = 'M' + cell.points.map(function (p) { return p[0].toFixed(2) + ',' + p[1].toFixed(2); }).join('L') + 'Z';
-      return '<a class="cell" tabindex="0" role="button" aria-pressed="' + sel + '" aria-label="' + escapeHtml(cell.hood) + ' (' + (counts[cell.hood] || 0) + ')" data-hood="' + escapeHtml(cell.hood) + '">' +
-          '<path class="cell-fill" d="' + d + '" fill="' + hoodColor(cell.hood) + '" fill-opacity="' + (sel ? 0.35 : 0.08) + '"></path>' +
-          '<text class="cell-label" x="' + cell.labelX.toFixed(1) + '" y="' + cell.labelY.toFixed(1) + '">' + escapeHtml(shortHoodLabel(cell.hood)) + '</text>' +
-        '</a>';
+    var html = L.ZONES.map(function (zone) {
+      var visibleHoods = visibleHoodsOf(zone);
+      return visibleHoods.length ? zonePillHtml(zone, visibleHoods, counts) : '';
     }).join('');
+    // C2: All / None live in the same row, at the right end, as text pills.
+    html += '<div class="row-actions">' +
+      '<button type="button" class="pill" id="hood-all">All</button>' +
+      '<button type="button" class="pill" id="hood-none">None</button>' +
+      '<button type="button" class="pill map-toggle-btn" id="map-toggle-btn" aria-pressed="' +
+        (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') +
+        '" aria-controls="sidebar">Map</button>' +
+      '</div>';
+    document.getElementById('zone-row').innerHTML = html;
+  }
 
-    var dotsHtml = filteredVenues().filter(function (v) { return L.isCoreHood(v.hood); }).map(function (v) {
+  // The hood strip is a SIBLING of the zone row, never a child of a pill — that is
+  // the whole point of C2. At most one zone is expanded, so opening another simply
+  // replaces the strip's contents and no pill above it ever moves.
+  function renderHoodStrip() {
+    var el = document.getElementById('hood-strip');
+    var zone = state.expandedZone && L.ZONES.filter(function (z) { return z.key === state.expandedZone; })[0];
+    if (!zone) { el.innerHTML = ''; return; }
+    var counts = hoodCounts();
+    var visibleHoods = visibleHoodsOf(zone);
+    el.innerHTML = '<span class="strip-label">' + escapeHtml(zone.label) + '</span>' +
+      visibleHoods.map(function (h) { return hoodPillHtml(h, zone, counts); }).join('');
+  }
+
+  function hoodPillHtml(hood, zone, counts) {
+    var sel = state.hoodSelected.has(hood);
+    var count = counts[hood] || 0;
+    return '<button type="button" class="pill' + (sel ? ' on' : '') + (count === 0 ? ' zero' : '') +
+      '" style="--pill-hue:' + zone.hue + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(hood) + '">' +
+      '<span class="dot"></span>' + escapeHtml(shortHoodLabel(hood)) +
+      (count > 0 ? '<span class="count">' + count + '</span>' : '') + '</button>';
+  }
+
+  function renderHoodChips() { renderZoneRow(); renderHoodStrip(); }
+
+  // ---- v1.4 C3/C4: the map ----
+  // Six hand-authored zone polygons (logic.js ZONE_POLYGONS) over a river line and
+  // three interstate hints. Suburbs are NOT drawn — franklin/outer are chips under
+  // the map (C4). Every polygon toggles the same `state.hoodSelected` Set as its
+  // pill, so map / pills / hood strip stay three views onto one Set.
+  var MAP_W = L.MAP_VIEW_W, MAP_H = L.MAP_VIEW_H;
+
+  function svgPoint(lat, lon) { return L.projectToView(lat, lon); }
+  function pathD(points, close) {
+    return 'M' + points.map(function (p) {
+      var xy = svgPoint(p[0], p[1]);
+      return xy[0].toFixed(2) + ',' + xy[1].toFixed(2);
+    }).join('L') + (close ? 'Z' : '');
+  }
+  function zoneByKey(key) {
+    return L.ZONES.filter(function (z) { return z.key === key; })[0];
+  }
+  // NOW: live-now venues in the zone. GRID: venues with something on the day.
+  function zoneCount(zoneKey, counts) {
+    var zone = zoneByKey(zoneKey);
+    return zone.hoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
+  }
+  function zoneSelected(zoneKey) {
+    var zone = zoneByKey(zoneKey);
+    return zone.hoods.some(function (h) { return state.hoodSelected.has(h); });
+  }
+
+  function renderMap() {
+    var counts = hoodCounts();
+    var parts = [];
+
+    // Zone regions. 0.55 alpha selected / 0.12 deselected (C3) — real saturation,
+    // so the coloured sections read at a glance.
+    parts.push(L.CORE_ZONE_KEYS.map(function (key) {
+      var zone = zoneByKey(key);
+      var sel = zoneSelected(key);
+      var n = zoneCount(key, counts);
+      return '<a class="zone" tabindex="0" role="button" aria-pressed="' + sel + '"' +
+        ' aria-label="' + escapeHtml(zone.label) + ' — ' + n + (state.currentTab === 'grid' ? ' on ' + DAY_FULL[state.day] : ' live now') + '"' +
+        ' data-zone="' + escapeHtml(key) + '">' +
+        '<path class="zone-fill" d="' + pathD(L.ZONE_POLYGONS[key], true) + '"' +
+          ' fill="hsl(' + zone.hue + ',58%,46%)" fill-opacity="' + (sel ? 0.55 : 0.12) + '"' +
+          ' stroke="hsl(' + zone.hue + ',58%,' + (sel ? 40 : 52) + '%)"></path>' +
+        '</a>';
+    }).join(''));
+
+    // Interstates first, then the river on top — the river is the stronger edge.
+    Object.keys(L.INTERSTATES).forEach(function (name) {
+      parts.push('<path class="road" d="' + pathD(L.INTERSTATES[name], false) + '"></path>');
+    });
+    if (L.RIVER.length) parts.push('<path class="river" d="' + pathD(L.RIVER, false) + '"></path>');
+
+    // Venue dots: 3px across, LIVE ones 4.5px in the warm accent with a dark halo.
+    parts.push(filteredVenues().filter(function (v) {
+      return L.isCoreHood(v.hood) && L.MAP_EXEMPT_HOODS.indexOf(v.hood) === -1;
+    }).map(function (v) {
       var xy = svgPoint(v.lat, v.lon);
       var live = state.currentTab === 'now' && isVenueLiveNow(v);
-      return '<circle class="venue-dot' + (live ? ' live' : '') + '" cx="' + xy[0].toFixed(1) + '" cy="' + xy[1].toFixed(1) + '" r="' + (live ? 2.6 : 1.5) + '"></circle>';
+      return '<circle class="venue-dot' + (live ? ' live' : '') + '" cx="' + xy[0].toFixed(1) +
+        '" cy="' + xy[1].toFixed(1) + '" r="' + (live ? 2.25 : 1.5) + '"></circle>';
+    }).join(''));
+
+    // The user's own position, when granted and on-map.
+    if (state.geo &&
+        state.geo.lat >= L.MAP_EXTENT.minLat && state.geo.lat <= L.MAP_EXTENT.maxLat &&
+        state.geo.lon >= L.MAP_EXTENT.minLon && state.geo.lon <= L.MAP_EXTENT.maxLon) {
+      var me = svgPoint(state.geo.lat, state.geo.lon);
+      parts.push('<circle class="me-dot" cx="' + me[0].toFixed(1) + '" cy="' + me[1].toFixed(1) + '" r="3.2"><title>You are here</title></circle>');
+    }
+
+    // Labels last so nothing paints over them. Anchors are hand-set per zone
+    // (logic.js ZONE_LABEL_ANCHORS), not centroids — a centroid lands in the wrong
+    // place on every L-shaped zone here.
+    parts.push(L.CORE_ZONE_KEYS.map(function (key) {
+      var a = L.ZONE_LABEL_ANCHORS[key];
+      var xy = svgPoint(a[0], a[1]);
+      var n = zoneCount(key, counts);
+      var sub = state.currentTab === 'grid'
+        ? (n > 0 ? n + ' today' : '')
+        : (n > 0 ? n + ' live' : '');
+      return '<text class="zone-label" x="' + xy[0].toFixed(1) + '" y="' + xy[1].toFixed(1) + '">' +
+          escapeHtml(L.ZONE_MAP_LABELS[key]) + '</text>' +
+        (sub ? '<text class="zone-sub" x="' + xy[0].toFixed(1) + '" y="' + (xy[1] + 10).toFixed(1) + '">' + sub + '</text>' : '');
+    }).join(''));
+
+    // Bellevue is off the west edge of the extent (C3) — say so rather than
+    // stretching West across two-thirds of the canvas to reach it.
+    var bellevueEdge = svgPoint(36.108, L.MAP_EXTENT.minLon + 0.004);
+    parts.push('<text class="edge-caption" text-anchor="start" x="' + bellevueEdge[0].toFixed(1) +
+      '" y="' + bellevueEdge[1].toFixed(1) + '">\u2190 Bellevue</text>');
+
+    var svg = '<svg class="map-svg" viewBox="0 0 ' + MAP_W.toFixed(1) + ' ' + MAP_H.toFixed(1) + '"' +
+      ' preserveAspectRatio="xMidYMid meet" role="group" aria-label="Nashville core zone map">' +
+      parts.join('') + '</svg>';
+
+    // C4: the suburbs, as two rows of the same pill component — no solid tiles.
+    var stripHtml = L.ZONES.filter(function (z) {
+      return L.CORE_ZONE_KEYS.indexOf(z.key) === -1;
+    }).map(function (z) {
+      var hoods = visibleHoodsOf(z);
+      if (!hoods.length) return '';
+      return '<div class="suburb-row"><span class="strip-label">' + escapeHtml(z.label) + '</span>' +
+        hoods.map(function (h) { return hoodPillHtml(h, z, counts); }).join('') + '</div>';
     }).join('');
 
-    var svg = '<svg class="map-svg" viewBox="0 0 ' + MAP_W.toFixed(1) + ' ' + MAP_H.toFixed(1) + '" role="group" aria-label="Nashville core neighborhood map">' + cellsHtml + dotsHtml + '</svg>';
-
-    var suburbHoods = [];
-    L.ZONES.forEach(function (z) {
-      if (L.CORE_ZONE_KEYS.indexOf(z.key) === -1) {
-        z.hoods.forEach(function (h) { if (HOOD_TOTALS[h] > 0) suburbHoods.push(h); });
-      }
-    });
-    var tilesHtml = suburbHoods.map(function (h) {
-      var sel = state.hoodSelected.has(h);
-      return '<button type="button" class="tile' + (sel ? ' selected' : '') + '" style="--tile-color:' + hoodColor(h) + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(h) + '">' +
-        '<span class="swatch"></span>' + escapeHtml(h) + ' <span class="count">' + (counts[h] || 0) + '</span></button>';
-    }).join('');
-
-    document.getElementById('map-panel').innerHTML = '<div class="map-wrap">' + svg + '<div class="suburb-tiles">' + tilesHtml + '</div></div>';
+    document.getElementById('map-panel').innerHTML =
+      '<div class="map-wrap">' + svg + '<div class="suburb-strips">' + stripHtml + '</div></div>';
   }
 
   function onHoodSelectionChanged() {
@@ -870,64 +1010,80 @@
     renderGridIfVisible();
   }
 
-  document.getElementById('hood-all').addEventListener('click', function () {
-    state.hoodSelected = new Set(L.hoodKeys());
-    onHoodSelectionChanged();
-  });
-  document.getElementById('hood-none').addEventListener('click', function () {
-    state.hoodSelected = new Set();
-    onHoodSelectionChanged();
-  });
-  document.getElementById('map-toggle-btn').addEventListener('click', function () {
-    var open = document.getElementById('sidebar').classList.toggle('open');
-    this.classList.toggle('active', open);
-    this.setAttribute('aria-pressed', open ? 'true' : 'false');
-  });
-
-  document.getElementById('hood-chips').addEventListener('click', function (e) {
+  // v1.4 C2: the zone row is re-rendered on every state change, so every control
+  // inside it (pills, carets, All/None/Map) is handled by delegation on the two
+  // stable containers rather than by per-element listeners.
+  document.getElementById('zone-row').addEventListener('click', function (e) {
+    if (e.target.closest('#hood-all')) {
+      state.hoodSelected = new Set(L.hoodKeys());
+      onHoodSelectionChanged();
+      return;
+    }
+    if (e.target.closest('#hood-none')) {
+      state.hoodSelected = new Set();
+      onHoodSelectionChanged();
+      return;
+    }
+    var mapBtn = e.target.closest('#map-toggle-btn');
+    if (mapBtn) {
+      var open = document.getElementById('sidebar').classList.toggle('open');
+      mapBtn.classList.toggle('on', open);
+      mapBtn.setAttribute('aria-pressed', open ? 'true' : 'false');
+      return;
+    }
     var caret = e.target.closest('[data-caret-zone]');
     if (caret) {
-      toggleSetMember(state.expandedZones, caret.getAttribute('data-caret-zone'));
+      var ck = caret.getAttribute('data-caret-zone');
+      // Only one zone expanded at a time — expanding another replaces it (C2).
+      state.expandedZone = state.expandedZone === ck ? null : ck;
       renderHoodChips();
       return;
     }
-    var hoodChip = e.target.closest('[data-hood]');
-    if (hoodChip) {
-      toggleSetMember(state.hoodSelected, hoodChip.getAttribute('data-hood'));
-      onHoodSelectionChanged();
-      return;
-    }
     var zoneChip = e.target.closest('[data-zone]');
-    if (zoneChip) {
-      var zone = L.ZONES.filter(function (z) { return z.key === zoneChip.getAttribute('data-zone'); })[0];
-      var visibleHoods = zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
-      var allSel = visibleHoods.every(function (h) { return state.hoodSelected.has(h); });
-      visibleHoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
-      onHoodSelectionChanged();
-    }
+    if (zoneChip) toggleZone(zoneChip.getAttribute('data-zone'));
   });
-  document.getElementById('hood-chips').addEventListener('keydown', function (e) {
+  document.getElementById('zone-row').addEventListener('keydown', function (e) {
     if (!isEnterOrSpace(e)) return;
-    var zoneChip = e.target.closest('.chip[data-zone]');
-    if (!zoneChip || e.target !== zoneChip) return; // caret + hood sub-chips are real <button>s (native Enter/Space)
+    var zoneChip = e.target.closest('.pill[data-zone]');
+    if (!zoneChip || e.target !== zoneChip) return; // caret + All/None/Map are real <button>s
     e.preventDefault();
-    zoneChip.click();
+    toggleZone(zoneChip.getAttribute('data-zone'));
+  });
+  function toggleZone(key) {
+    var zone = L.ZONES.filter(function (z) { return z.key === key; })[0];
+    if (!zone) return;
+    var visibleHoods = visibleHoodsOf(zone);
+    var allSel = visibleHoods.every(function (h) { return state.hoodSelected.has(h); });
+    visibleHoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
+    onHoodSelectionChanged();
+  }
+
+  document.getElementById('hood-strip').addEventListener('click', function (e) {
+    var hoodChip = e.target.closest('[data-hood]');
+    if (!hoodChip) return;
+    toggleSetMember(state.hoodSelected, hoodChip.getAttribute('data-hood'));
+    onHoodSelectionChanged();
   });
 
-  document.getElementById('map-panel').addEventListener('click', function (e) {
-    var target = e.target.closest('[data-hood]');
-    if (!target) return;
+  // The map carries two kinds of target: a zone polygon (toggles the whole zone,
+  // exactly like its pill) and a suburb hood chip (toggles that one hood).
+  function handleMapActivate(e) {
+    var zoneEl = e.target.closest('[data-zone]');
+    if (zoneEl) {
+      e.preventDefault();
+      toggleZone(zoneEl.getAttribute('data-zone'));
+      return;
+    }
+    var hoodEl = e.target.closest('[data-hood]');
+    if (!hoodEl) return;
     e.preventDefault();
-    toggleSetMember(state.hoodSelected, target.getAttribute('data-hood'));
+    toggleSetMember(state.hoodSelected, hoodEl.getAttribute('data-hood'));
     onHoodSelectionChanged();
-  });
+  }
+  document.getElementById('map-panel').addEventListener('click', handleMapActivate);
   document.getElementById('map-panel').addEventListener('keydown', function (e) {
     if (!isEnterOrSpace(e)) return;
-    var target = e.target.closest('[data-hood]');
-    if (!target) return;
-    e.preventDefault();
-    toggleSetMember(state.hoodSelected, target.getAttribute('data-hood'));
-    onHoodSelectionChanged();
+    handleMapActivate(e);
   });
 
   // ---------- C3: whole-card toggle (click or Enter/Space); grid rows open/close ----------
@@ -975,7 +1131,6 @@
   function requestGeo() {
     if (!('geolocation' in navigator)) {
       state.geoStatus = 'unavailable';
-      updateGeoNote();
       renderNow();
       renderGridIfVisible();
       return;
@@ -984,26 +1139,23 @@
       function (pos) {
         state.geo = { lat: pos.coords.latitude, lon: pos.coords.longitude };
         state.geoStatus = 'granted';
-        updateGeoNote();
         renderNow();
         renderGridIfVisible();
       },
       function () {
         state.geoStatus = 'denied';
-        updateGeoNote();
         renderNow();
         renderGridIfVisible();
       },
       { timeout: 8000 }
     );
   }
-  function updateGeoNote() {
-    var el = document.getElementById('geo-note');
-    if (state.geoStatus === 'denied' || state.geoStatus === 'unavailable') {
-      el.textContent = 'Location unavailable — sorted by neighborhood instead of distance.';
-    } else {
-      el.textContent = '';
-    }
+  // C2 (v1.4): one home for this message — the top of the NOW view. The grid keeps
+  // its own, narrower note (#grid-sort-note), which only fires when Distance sort is
+  // chosen without a location, so the two are never on screen together.
+  function geoNoteHtml() {
+    if (state.geoStatus !== 'denied' && state.geoStatus !== 'unavailable') return '';
+    return '<div class="note" style="padding:0 0 8px">Location unavailable — sorted by neighborhood instead of distance.</div>';
   }
   function renderGridIfVisible() {
     if (document.getElementById('view-grid').style.display !== 'none') renderGrid();
@@ -1026,8 +1178,8 @@
   document.getElementById('btn-drink').addEventListener('click', function () { setPriority('drink'); });
   function setPriority(p) {
     state.priority = p;
-    document.getElementById('btn-food').classList.toggle('active', p === 'food');
-    document.getElementById('btn-drink').classList.toggle('active', p === 'drink');
+    document.getElementById('btn-food').classList.toggle('on', p === 'food');
+    document.getElementById('btn-drink').classList.toggle('on', p === 'drink');
     try { localStorage.setItem('hhradar-priority', p); } catch (e) { /* per-viewer convenience only */ }
     renderNow();
     renderGridIfVisible();

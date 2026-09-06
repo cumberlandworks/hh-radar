@@ -1,5 +1,123 @@
 # Changelog
 
+## 2026-09-06 — BLOCK-hh-radar-fix4-20260906: v1.4 (map redone, zone controls tidied, links on grid rows)
+
+Per TJ's fourth-round feedback, verbatim:
+
+> "feedback not great on the map and functionality and just general on how the additions
+> look. Also the Links never landed for the restaurants so you don't need to drill into the
+> item. to get it."
+
+- **Links on every grid row (C1).** Each `.grid-rowlabel` now carries the same two targets
+  the NOW card has — "ℹ︎" → `bestSourceUrl(venue, win)` and "K" → `venue.inkind_url` — as
+  36px-wide, full-row-height anchors that `stopPropagation()`, so tapping one opens the link
+  and never toggles the row. The venue name ellipsizes into whatever is left; the decorative
+  🍸 that was repeated on every row was dropped to buy that space, and rows grew 34px → 36px
+  to make the tap targets square. Below 600px the row label widens 34% → 46% so two 36px
+  targets and a readable name still fit. Measured: 34 rows / 68 anchors on the SUN grid at
+  1280 (`.grid-inner a` = 2 × rows), tapping a link leaves the row closed, tapping the name
+  still opens it. All 136 venues have an `inkind_url` and every window resolves a source, so
+  the 2-per-row ratio holds for the whole dataset, not just the sampled day.
+- **Zone row is one steady line (C2).** The v1.3 bug was structural: hood sub-chips rendered
+  inside the zone's own flex-column wrapper, so expanding a zone stretched that zone's pill
+  and shoved its neighbours onto a second row. The hood strip is now a **sibling** of the
+  zone row, never a descendant of a pill, and only one zone is expanded at a time
+  (`state.expandedZone`, replacing `state.expandedZones`). Pills are `flex: 0 0 auto`; the
+  row is `nowrap` at ≥900px and wraps below. All / None / Map moved into the same row at the
+  right end. Measured at 1280: eight pills + All/None on one line (all tops = 142px), and
+  expanding West leaves every other pill's x and width **byte-identical**. At 375: pills wrap
+  to four lines with the same widths as at 1280 (no stretch) and `scrollWidth` stays 375.
+- **The map, redone (C3).** `voronoiCells` no longer renders anything — it and its three
+  tests stay as the geometric cross-check on the hood centroids — and the map is now six
+  hand-authored `ZONE_POLYGONS`, one per core zone, over a `RIVER` polyline and three
+  `INTERSTATES` hints. Zone fill 0.55 alpha selected / 0.12 deselected with a 1.5px border in
+  the zone hue; labels are short names ("Germantown", not "Germantown & North" — 108px of an
+  320px canvas) with a live/today count beneath, at hand-set anchors rather than centroids;
+  venue dots 3px, live dots 4.5px in the warm accent with a dark halo; the user's position as
+  a blue dot when granted. Tapping a polygon toggles that zone exactly like its pill.
+- **Suburbs off the map (C4).** The ten solid-orange tiles are gone. Franklin & Brentwood and
+  the eight outer hoods are two labelled rows of the same pill component under the map,
+  hue-tinted only when selected, with the count badge dropped (and the pill dimmed) at 0.
+- **One pill component (C5).** Zone pills, hood chips, day tabs, Time/Distance/Name and
+  Food/Drink now share `.pill` — same radius, height (30px), font and selected treatment —
+  replacing the three separate styles v1.3 had. Content column 720 → 840px at ≥1200px (with
+  `.layout` raised to 1240px to match), so the grid's hour columns breathe. The duplicated
+  "Location unavailable…" line above the map is gone; it renders once, at the top of the NOW
+  view. Section headings are untouched (no zone-dot legend had been added).
+- **v1.4 (C6).**
+
+**Polygon vertex source.** Vertices are `[lat, lon]`, authored from the venue coordinates in
+`venues.json` (see `data-src/` and the per-zone extents below) and snapped outward to the
+obvious edges: the **Cumberland River** for Downtown/Germantown vs East, **I-40** for the
+Gulch/Midtown vs Germantown line (lat ≈ 36.165), **I-65/I-440** for the southern edge of the
+core, and **Charlotte Ave / Richland Creek** (lon ≈ -86.815) for the west divide. Measured
+per-zone venue extents used to place them: downtown lat 36.1522–36.1642 / lon -86.7813–
+-86.7675; gulch 36.1370–36.1638 / -86.8049–-86.7745; north 36.1660–36.2016 / -86.8084–
+-86.7730; east 36.1521–36.2311 / -86.7598–-86.6947; south 36.1045–36.1429 / -86.8145–
+-86.7675; west (excluding Bellevue) 36.0974–36.1625 / -86.8880–-86.8195. The six polygons
+tile the extent with **zero overlap and zero gap** (sampled at 900×900: 315.14 km² covered of
+a 315.13 km² extent) and the `RIVER` is drawn as the Downtown/East seam itself rather than as
+a second line beside it — which puts it within ~450 m of the true channel through downtown,
+close enough to orient by and one edge instead of two.
+
+**The Downtown/Gulch seam, and why it is notched.** The hood labels in `venues.json` came
+from a nearest-centroid heuristic, and along this seam they interleave: going south-west,
+Legendary Wings/The Urban Perk (36.1559,-86.7736, *Downtown*), The Herban Perk & Pantry
+(36.1551,-86.7745, *Gulch*), koshō (36.1539,-86.7758, *Gulch*), City Winery
+(36.1522,-86.7764, *Downtown*) — D, G, G, D along one diagonal, with Legendary Wings and
+Herban Perk only ~110 m apart. **No straight boundary can separate them.** The Downtown
+polygon therefore carries a notch (vertices `[36.1531,-86.7778] → [36.1537,-86.7724] →
+[36.1573,-86.7757]`) that the Gulch polygon mirrors vertex-for-vertex, keeping koshō and
+Herban Perk in the Gulch while City Winery and Legendary Wings stay Downtown. Margins at the
+tightest points are ~0.0008° (~70 m), which the containment test pins.
+
+**Premises verified (measured).**
+- **P1 — two-thirds right, and the headline number is wrong.** Live footer read
+  `v1.3 · 136 venues · 115 windows` ✓ and `.grid-inner a` = **0** ✓. But the West zone chip
+  measured **466px** when expanded, not 1233px — 1233px is the width of the `.hood-chips`
+  *container*, not the chip. And the mechanism is stated wrong: `.hood-chips` does **not**
+  render inside the chip (`document.querySelector('.chip .hood-subchips')` → null). What
+  actually happens is that `.hood-subchips` renders inside `.zone-chip-wrap`, a
+  `flex-direction: column` **sibling** wrapper, whose default `align-items: stretch` widens
+  the chip to the wrapper. The symptom the block describes is real — the expanded West pill
+  pushed "Franklin & Brentwood" and "Outer suburbs" to a second row (pill tops 177 → 242) —
+  the diagnosis just names the wrong element.
+- **P2 — fully confirmed.** 11 `path.cell-fill`, every one at `fill-opacity` 0.35; no
+  river/road lines (0 `polyline`/`line`); 98 venue dots; 11 labels; 10 suburb tiles;
+  viewBox `0 0 320.0 268.1`.
+- **P3 — confirmed.** `voronoiCells` (3 tests) and `nearestNeighborhood` (1 test) were green
+  on main, 38/38 passing, and are still green: 47/47 after this block's 9 new tests.
+- **P4 — false as stated.** The block expected only Bellevue outside lat 36.09–36.22 /
+  lon -86.90–-86.70. **Four** core venues fall outside it: the two Bellevue ones (615chuTNey
+  36.0732,-86.9187; Fortuna Italian Steakhouse 36.0453,-86.9545) **and two East Nashville
+  ones the block did not anticipate** — E+ROSE - East Nashville at **36.2311** (north of
+  maxLat) and Gregorys Coffee - Opry Mills at **-86.6947** (east of maxLon). That makes the
+  stated extent self-contradictory: C3 demands every core venue sit inside its own zone
+  polygon *and* every vertex sit inside the extent, which no East polygon could satisfy. The
+  extent was widened to **lat 36.09–36.24 / lon -86.90–-86.69**, which leaves exactly the two
+  Bellevue venues outside — the two the block already expected to be off-map. A test
+  (`MAP_EXEMPT_HOODS`) pins that exemption at exactly two so it cannot silently grow.
+
+**Adaptations and things the block got wrong, called out rather than silently fixed.**
+- **The viewBox is 320×283, not "~320×260".** That is just the arithmetic of the widened
+  extent: 0.15° of latitude over 0.21° × cos(36.165°) of longitude. `projectToView` derives it
+  rather than hardcoding it, and a test asserts the extent corners map to the viewBox corners.
+- **"Venue dots 3px / LIVE dots 4.5px" read as diameters**, so `r` is 1.5 and 2.25. Read as
+  radii they would be 6px and 9px wide on a 320px canvas — with 96 dots inside a ~2km cluster
+  that is a blob, not a map.
+- **The map needed its own theme tokens.** The block describes the map over "a bare dark
+  rectangle" and dots "white at 0.6", which is a dark-mode description of a page that also
+  ships a light theme. Added `--map-bg` / `--map-dot` / `--map-river` / `--map-road` /
+  `--map-label` / `--map-label-dim` in both schemes, honouring the intent (a low-contrast
+  neutral dot on its own ground) rather than the literal white.
+- **`.grid-inner a` = 2 × rows holds with rows collapsed**, which is how the criterion was
+  measured. Opening a row adds that inline card's own two text buttons, so an open row makes
+  it 2 × rows + 2 — expected, not a regression.
+- **Six regions cannot be equal-weight at true scale.** Downtown holds 25 of 136 venues in
+  ~1.5 km² while West holds 8 across a third of the canvas. The design intent asks for true
+  scale, so the polygons keep it and the count sits under each label instead; the alternative
+  was distorting the geography to equalise the tap targets.
+
 ## 2026-09-06 — BLOCK-hh-radar-fix3-20260906: v1.3 (zone/neighborhood filter, map, wide layout)
 
 Per TJ's third-round feedback ("I would like to select and deselect neighborhoods. both

@@ -11,6 +11,9 @@ const {
   serializeHoodSelection, deserializeHoodSelection,
   projectLatLon, polygonArea, pointInPolygon, voronoiCells,
   CORE_MAP_BBOX, coreHoodCentroids,
+  CORE_ZONE_KEYS, MAP_EXTENT, MAP_EXEMPT_HOODS, MAP_VIEW_W, MAP_VIEW_H,
+  ZONE_POLYGONS, ZONE_LABEL_ANCHORS, ZONE_MAP_LABELS, RIVER, INTERSTATES,
+  zoneContains, zoneLabelBoxes, rectsIntersect, projectToView,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -362,4 +365,146 @@ test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell 
     const containingCell = cells.find((c) => pointInPolygon([x, y], c.polygon));
     assert.ok(containingCell, v.name + ' (' + v.hood + ') at ' + v.lat + ',' + v.lon + ' falls outside every Voronoi cell');
   });
+});
+
+
+// ---- C3 (v1.4): the hand-authored zone map ----
+// The v1.3 Voronoi tests above stay green on purpose: voronoiCells is no longer
+// what the map renders, but it remains the geometric cross-check on the hood
+// centroids. These tests cover what IS rendered.
+
+function coreVenuesForMap() {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood));
+}
+
+test('ZONE_POLYGONS: one simple polygon per core zone, 6-12 vertices, inside the map extent', () => {
+  assert.deepEqual(Object.keys(ZONE_POLYGONS).sort(), CORE_ZONE_KEYS.slice().sort());
+  CORE_ZONE_KEYS.forEach((z) => {
+    const poly = ZONE_POLYGONS[z];
+    assert.ok(Array.isArray(poly), z + ': missing polygon');
+    assert.ok(poly.length >= 6 && poly.length <= 12, z + ': ' + poly.length + ' vertices, want 6..12');
+    poly.forEach(([lat, lon]) => {
+      assert.ok(lat >= MAP_EXTENT.minLat && lat <= MAP_EXTENT.maxLat, z + ': vertex lat ' + lat + ' outside extent');
+      assert.ok(lon >= MAP_EXTENT.minLon && lon <= MAP_EXTENT.maxLon, z + ': vertex lon ' + lon + ' outside extent');
+    });
+    // no self-intersection: no pair of non-adjacent edges may cross
+    const n = poly.length;
+    const orient = (p, q, r) => Math.sign((q[1] - p[1]) * (r[0] - p[0]) - (q[0] - p[0]) * (r[1] - p[1]));
+    for (let i = 0; i < n; i++) {
+      for (let j = i + 1; j < n; j++) {
+        if (j === i + 1 || (i === 0 && j === n - 1)) continue;
+        const a = poly[i], b = poly[(i + 1) % n], c = poly[j], d = poly[(j + 1) % n];
+        const cross = orient(a, b, c) !== orient(a, b, d) && orient(c, d, a) !== orient(c, d, b);
+        assert.equal(cross, false, z + ': edges ' + i + ' and ' + j + ' self-intersect');
+      }
+    }
+  });
+});
+
+test('ZONE_POLYGONS: every core venue falls inside its OWN zone polygon (the two Bellevue venues excepted)', () => {
+  const coreVenues = coreVenuesForMap();
+  assert.ok(coreVenues.length > 50, 'expected the real dataset, got ' + coreVenues.length);
+  const misses = coreVenues.filter((v) => !zoneContains(zoneOf(v.hood), v.lat, v.lon));
+  assert.deepEqual(
+    misses.map((v) => v.name + ' (' + v.hood + ' @ ' + v.lat + ',' + v.lon + ')'),
+    [],
+    'venues outside their own zone polygon'
+  );
+});
+
+test('ZONE_POLYGONS: no venue falls inside a FOREIGN zone polygon (the six regions do not overlap on any venue)', () => {
+  const strays = [];
+  coreVenuesForMap().forEach((v) => {
+    CORE_ZONE_KEYS.forEach((z) => {
+      if (z === zoneOf(v.hood)) return;
+      if (zoneContains(z, v.lat, v.lon)) strays.push(v.name + ' (' + v.hood + ') also inside ' + z);
+    });
+  });
+  assert.deepEqual(strays, []);
+});
+
+test('MAP_EXEMPT_HOODS: exactly the two Bellevue venues sit outside the map extent', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const outside = venues.filter((v) => isCoreHood(v.hood) && (
+    v.lat < MAP_EXTENT.minLat || v.lat > MAP_EXTENT.maxLat ||
+    v.lon < MAP_EXTENT.minLon || v.lon > MAP_EXTENT.maxLon));
+  assert.deepEqual(outside.map((v) => v.hood), ['Bellevue', 'Bellevue'],
+    'the exemption must not silently grow: ' + outside.map((v) => v.name + '/' + v.hood).join(', '));
+});
+
+test('zone labels do not overlap at the 320px render (approx 6px/char boxes)', () => {
+  const boxes = zoneLabelBoxes();
+  assert.equal(boxes.length, CORE_ZONE_KEYS.length);
+  const hits = [];
+  for (let i = 0; i < boxes.length; i++) {
+    for (let j = i + 1; j < boxes.length; j++) {
+      if (rectsIntersect(boxes[i], boxes[j])) {
+        hits.push(boxes[i].zone + ' x ' + boxes[j].zone);
+      }
+    }
+  }
+  assert.deepEqual(hits, [], 'overlapping label boxes');
+  // and every label must actually be on the canvas
+  boxes.forEach((b) => {
+    assert.ok(b.x >= 0 && b.x + b.w <= MAP_VIEW_W, b.zone + ': label box runs off the map horizontally (' + b.x.toFixed(1) + '..' + (b.x + b.w).toFixed(1) + ')');
+    assert.ok(b.y >= 0 && b.y + b.h <= MAP_VIEW_H, b.zone + ': label box runs off the map vertically');
+  });
+});
+
+test('every zone label anchor lies inside its own polygon', () => {
+  CORE_ZONE_KEYS.forEach((z) => {
+    const a = ZONE_LABEL_ANCHORS[z];
+    assert.ok(Array.isArray(a), z + ': missing label anchor');
+    assert.equal(zoneContains(z, a[0], a[1]), true, z + ': label anchor is not inside its own polygon');
+    assert.ok(ZONE_MAP_LABELS[z], z + ': missing short map label');
+  });
+});
+
+test('RIVER separates the west bank (downtown + Germantown) from the east bank (East Nashville)', () => {
+  assert.ok(RIVER.length >= 8, 'river needs enough points to read as a river, got ' + RIVER.length);
+  const asc = RIVER.slice().sort((a, b) => a[0] - b[0]);
+  assert.deepEqual(RIVER.map((p) => p[0]), asc.map((p) => p[0]),
+    'RIVER points must be ordered south -> north so the bank test can interpolate');
+  const lonAt = (lat) => {
+    if (lat <= asc[0][0]) return asc[0][1];
+    if (lat >= asc[asc.length - 1][0]) return asc[asc.length - 1][1];
+    for (let i = 1; i < asc.length; i++) {
+      if (lat <= asc[i][0]) {
+        const t = (lat - asc[i - 1][0]) / (asc[i][0] - asc[i - 1][0]);
+        return asc[i - 1][1] + t * (asc[i][1] - asc[i - 1][1]);
+      }
+    }
+    return asc[asc.length - 1][1];
+  };
+  const wrong = [];
+  coreVenuesForMap().forEach((v) => {
+    const z = zoneOf(v.hood);
+    if (z !== 'downtown' && z !== 'north' && z !== 'east') return;
+    if (v.lat < asc[0][0] || v.lat > asc[asc.length - 1][0]) return;
+    const shouldBeWest = z !== 'east';
+    if ((v.lon < lonAt(v.lat)) !== shouldBeWest) wrong.push(v.name + ' (' + z + ')');
+  });
+  assert.deepEqual(wrong, [], 'venues on the wrong bank of the river');
+});
+
+test('INTERSTATES: three named hints, each a polyline inside the extent', () => {
+  const names = Object.keys(INTERSTATES);
+  assert.equal(names.length, 3, 'want I-40, I-65 and I-24, got ' + names.join(', '));
+  names.forEach((n) => {
+    const line = INTERSTATES[n];
+    assert.ok(Array.isArray(line) && line.length >= 2, n + ': needs at least 2 points');
+    line.forEach(([lat, lon]) => {
+      assert.ok(lat >= MAP_EXTENT.minLat && lat <= MAP_EXTENT.maxLat, n + ': lat ' + lat + ' outside extent');
+      assert.ok(lon >= MAP_EXTENT.minLon && lon <= MAP_EXTENT.maxLon, n + ': lon ' + lon + ' outside extent');
+    });
+  });
+});
+
+test('projectToView maps the extent corners onto the viewBox corners', () => {
+  const tl = projectToView(MAP_EXTENT.maxLat, MAP_EXTENT.minLon);
+  const br = projectToView(MAP_EXTENT.minLat, MAP_EXTENT.maxLon);
+  assert.ok(Math.abs(tl[0]) < 1e-9 && Math.abs(tl[1]) < 1e-9, 'top-left should be 0,0');
+  assert.ok(Math.abs(br[0] - MAP_VIEW_W) < 1e-9, 'right edge should be MAP_VIEW_W');
+  assert.ok(Math.abs(br[1] - MAP_VIEW_H) < 1e-9, 'bottom edge should be MAP_VIEW_H');
 });
