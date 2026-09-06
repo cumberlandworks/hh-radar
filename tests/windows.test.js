@@ -6,7 +6,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   resolveWindow, isActive, startsWithin, nextStart, nextStartAcrossVenues,
-  isStale, windowWarnings, isAllDay, nearestNeighborhood,
+  isStale, windowWarnings, isAllDay, nearestNeighborhood, bestSourceUrl,
 } = require('../logic.js');
 
 function dt(dayOfWeek, hour, minute, ymd) {
@@ -154,10 +154,22 @@ test('nextStart returns null for a venue with no windows (verified_no_hh venue)'
   assert.equal(nextStart(v, dt('WED', 10, 0)), null);
 });
 
-// ---- C4: isAllDay ----
-test('isAllDay: resolved span 299 minutes is not all-day, 300 is', () => {
-  const short = win(['WED'], '10:00', '14:59'); // 299 min, start >= 14:00 so rule (b) can't fire anyway
-  const long = win(['WED'], '10:00', '15:00'); // 300 min
+// ---- C4 (v1.2): isAllDay is gated on kind === 'special' for BOTH rules ----
+test('isAllDay: a long-span happy_hour window (Blue Sushi 11:00-18:30) is NOT all-day', () => {
+  const w = win(['TUE'], '11:00', '18:30', { kind: 'happy_hour' }); // 450 min span
+  const v = venue({}, [w]);
+  assert.equal(isAllDay(v, w), false, 'happy_hour kind is never all-day, however long its span');
+});
+
+test('isAllDay: the same long span on a special window IS all-day', () => {
+  const w = win(['TUE'], '11:00', '18:30', { kind: 'special' }); // 450 min span
+  const v = venue({}, [w]);
+  assert.equal(isAllDay(v, w), true, 'special kind with span >= 300 min is all-day');
+});
+
+test('isAllDay: resolved span 299 minutes is not all-day, 300 is (special kind, start >= 14:00 so rule (b) cannot fire)', () => {
+  const short = win(['WED'], '14:00', '18:59', { kind: 'special' }); // 299 min
+  const long = win(['WED'], '14:00', '19:00', { kind: 'special' }); // 300 min
   const v = venue({}, [short, long]);
   assert.equal(isAllDay(v, short), false, '299 minutes: not all-day');
   assert.equal(isAllDay(v, long), true, '300 minutes: all-day');
@@ -187,6 +199,31 @@ test('nextStartAcrossVenues with excludeAllDay skips an 08:00-close all-day spec
   const filtered = nextStartAcrossVenues([allDaySpecial, realHappyHour], now, { excludeAllDay: true });
   assert.equal(filtered.venue, realHappyHour, 'with excludeAllDay, the all-day special is skipped in favor of the real happy hour');
   assert.equal(filtered.next.window.kind, 'happy_hour');
+});
+
+// ---- C1 (v1.2): bestSourceUrl — one test per branch ----
+test('bestSourceUrl: prefers the source whose hostname matches official_site (JINYA case)', () => {
+  const v = { official_site: 'https://www.jinyaramenbar.com/locations/nashville/', inkind_url: 'https://jinyasoutheastdsiam.inkind.com/' };
+  const w = { sources: ['https://www.jinyaramenbar.com/menu/tn/nashville/happy_hour', 'https://nashvilleguru.com/businesses/jinya-ramen-bar'] };
+  assert.equal(bestSourceUrl(v, w), 'https://www.jinyaramenbar.com/menu/tn/nashville/happy_hour');
+});
+
+test('bestSourceUrl: falls back to sources[0] when no source matches official_site', () => {
+  const v = { official_site: 'https://www.example.com/', inkind_url: 'https://x.inkind.com/' };
+  const w = { sources: ['https://do615.com/events/weekly/tue/happy-ho', 'https://nashvilleguru.com/x'] };
+  assert.equal(bestSourceUrl(v, w), 'https://do615.com/events/weekly/tue/happy-ho');
+});
+
+test('bestSourceUrl: falls back to official_site when the window has no sources', () => {
+  const v = { official_site: 'https://www.example.com/', inkind_url: 'https://x.inkind.com/' };
+  const w = { sources: [] };
+  assert.equal(bestSourceUrl(v, w), 'https://www.example.com/');
+});
+
+test('bestSourceUrl: falls back to inkind_url when there is no official_site and no sources', () => {
+  const v = { official_site: null, inkind_url: 'https://x.inkind.com/' };
+  const w = { sources: [] };
+  assert.equal(bestSourceUrl(v, w), 'https://x.inkind.com/');
 });
 
 // ---- C6: neighborhood nearest-centroid ----

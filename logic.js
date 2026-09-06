@@ -181,20 +181,43 @@
   }
 
   // ---- C4: all-day / not-a-real-time-bound "special" detection ----
-  // A window is "all day" if either (a) its resolved span is >= 5 hours on any
-  // day it runs (e.g. an "11:00-close" deal that happens to span most of the
-  // day), regardless of kind, or (b) it is a `kind: special` window starting
-  // before 14:00 (the common "available all day, every day" capture pattern).
-  // Rule (b) is deliberately gated on kind === 'special': a happy_hour-kind
-  // window starting early in the day (e.g. an 08:00 daily HH) is NOT all-day
-  // by the start rule alone — only a long span makes it so.
+  // v1.2 fix: BOTH rules are gated on kind === 'special'. A `happy_hour`-kind
+  // window is never all-day for ranking purposes, however long its span (Blue
+  // Sushi 11:00-18:30, Playdate 11:00-20:00 are real, time-bound happy hours).
+  // Only a `special` window — (a) with a resolved span >= 5 hours on any day
+  // it runs, or (b) starting before 14:00 (the common "available all day,
+  // every day" capture pattern) — counts as all-day.
   function isAllDay(venue, win) {
+    if (win.kind !== 'special') return false;
     var intervals = resolveWindow(venue, win);
     for (var i = 0; i < intervals.length; i++) {
       if (intervals[i].endAbs - intervals[i].startAbs >= 300) return true;
     }
-    if (win.kind === 'special' && parseHM(win.start) < 14 * 60) return true;
+    if (parseHM(win.start) < 14 * 60) return true;
     return false;
+  }
+
+  // ---- C1 (v1.2): pick the best link for "see the happy hour info" ----
+  // Preference order: (1) the window's own source whose hostname matches the
+  // venue's official_site hostname (the source most likely to BE the official
+  // happy-hour page, not a third-party aggregator); (2) otherwise the first
+  // listed source; (3) otherwise the venue's official site; (4) otherwise the
+  // inKind listing. Hostname compare ignores a leading "www." so
+  // "https://x.com" and "https://www.x.com/menu" still match.
+  function hostnameOf(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return null; }
+  }
+  function bestSourceUrl(venue, win) {
+    var sources = (win && win.sources) || [];
+    var officialHost = venue && venue.official_site ? hostnameOf(venue.official_site) : null;
+    if (officialHost) {
+      for (var i = 0; i < sources.length; i++) {
+        if (hostnameOf(sources[i]) === officialHost) return sources[i];
+      }
+    }
+    if (sources.length) return sources[0];
+    if (venue && venue.official_site) return venue.official_site;
+    return venue && venue.inkind_url;
   }
 
   // ---- C6: neighborhood nearest-centroid fallback ----
@@ -406,6 +429,7 @@
     minutesUntilEnd: minutesUntilEnd,
     minutesUntilNextStart: minutesUntilNextStart,
     isAllDay: isAllDay,
+    bestSourceUrl: bestSourceUrl,
     haversineMiles: haversineMiles,
     nearestNeighborhood: nearestNeighborhood,
     NEIGHBORHOOD_CENTROIDS: NEIGHBORHOOD_CENTROIDS,

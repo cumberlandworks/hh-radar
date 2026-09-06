@@ -1,5 +1,53 @@
 # Changelog
 
+## 2026-09-06 — BLOCK-hh-radar-fix2-20260906: v1.2 (card interaction, source button, isAllDay scope)
+
+Per TJ's second-round feedback ("there should be an easy way to get to the link to the
+happy hour info directly with another like an addional button next to the resturant -
+instead of more it should just display the full thing. also if you click on the box
+anywhere it should minimize it instead of clicking on the header.") and the reviewing
+thread's own live measurements. C1-C5 implemented; see the block for full acceptance
+criteria. Highlights:
+
+- **Source button (C1):** every card now shows two always-visible action buttons beside
+  the venue name — "HH info ↗" and "inKind ↗" — each a real `<a target="_blank">` with a
+  ≥40×40px tap target. `logic.js#bestSourceUrl(venue, win)` picks the window's own source
+  whose hostname matches the venue's official site (falling back to the first source, then
+  the official site, then the inKind listing) so "HH info" opens the actual happy-hour page,
+  not just the homepage. Both buttons (and the provenance "more" `<details>`) stop click
+  propagation so tapping them never toggles the card.
+- **Deals always in full (C2):** removed the "+N more" truncation entirely — every card
+  lists its complete deal set, food-first, whether collapsed or expanded. Collapsed now
+  means header + badges + the full deal list; expanded adds the window's area/schedule
+  (`logic.js`-driven day/time line) and research provenance. Removed the now-redundant
+  bottom "Official site / inKind" links (superseded by the always-visible C1 buttons) and
+  the `max-height: 40vh` collapse cap (obsolete once collapsed cards show every deal — a
+  15-deal card is simply as tall as it needs to be).
+- **Whole card toggles (C3):** the entire card is the toggle — click/tap anywhere, plus
+  keyboard Enter/Space (`role="button"`, `aria-expanded`, `tabindex="0"`). In the Day Grid,
+  the inline card always renders expanded (no separate per-card collapse there); tapping it
+  anywhere closes the whole inline panel, tapping the row again reopens it. Fixed a real bug
+  found while wiring this up: `.grid-expanded` was a DOM *sibling* of `.grid-row`, not a
+  descendant (`.grid-row` is a fixed-height flex timeline row that can't contain it), so
+  `closest('.grid-row')` from inside an open grid card silently failed to find its venue.
+  Wrapped both in a `.grid-row-group` so the click delegation resolves correctly.
+- **isAllDay scope fix (C4), the reported regression:** `isAllDay` now gates BOTH of its
+  rules (span ≥ 5h, or start < 14:00) on `kind === 'special'`. Previously the span rule
+  applied to any window regardless of kind, so a long but perfectly real `happy_hour`
+  window (Blue Sushi 11:00-18:30, 7.5h) was misclassified as "all-day" and excluded from
+  "starting soon" / the NOW-view empty state's "next" pick. `?now=...T03:30` now correctly
+  names "Blue Sushi - 5th & Broadway at 11am (Tuesday)" instead of Saint Anejo's later
+  2pm slot.
+- **v1.2 (C5):** footer bumped from `v1.1`.
+
+**Verified live in a local static-server preview** (375px viewport, `?now=` overrides):
+JINYA's card renders all 15 deals with no "+N more" anywhere in the DOM; clicking deal
+text toggles `aria-expanded` and clicking either action button does not; the Day Grid
+still fits the viewport with no horizontal scroll after the `.grid-row-group` change;
+`node --test tests/windows.test.js` — 24/24 passing; `node validate.js` — 0 errors, same
+pre-existing lint warnings as v1.1 (legitimate long menu parentheticals, unrelated to this
+block).
+
 ## 2026-09-05 — BLOCK-hh-radar-fix1-20260905: v1.1 (grid usability, NOW-view ranking, data hygiene)
 
 Per TJ's first-look feedback ("there needs to be better sorting on the day grid and

@@ -58,12 +58,15 @@
   main { padding: 12px 16px 24px; max-width: 640px; margin: 0 auto; }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   .section-heading:first-child { margin-top: 0; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
   .card.muted { opacity: 0.62; }
-  .card:not(.expanded) { max-height: 40vh; overflow: hidden; }
-  .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+  .card-title { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; flex: 1 1 140px; min-width: 0; }
   .card-name { font-weight: 700; font-size: 15px; }
-  .card-status { font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .card-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .icon-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; padding: 4px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--drink); font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .icon-btn:active { background: var(--drink-bg); }
+  .card-status { font-size: 12px; font-weight: 700; white-space: nowrap; flex-shrink: 0; margin-left: auto; }
   .card-status.active { color: var(--amber-strong); }
   .card-status.soon { color: var(--drink); }
   .card-meta { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
@@ -77,9 +80,7 @@
   .deals { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
   .deal { font-size: 13px; }
   .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
-  .deal-more { font-size: 12px; color: var(--text-dim); font-weight: 600; margin-top: 2px; }
-  .links { margin-top: 8px; display: flex; gap: 14px; }
-  .links a { font-size: 12px; color: var(--drink); text-decoration: none; font-weight: 600; }
+  .card-schedule { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); }
   .disagreements { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; }
   .disagreements details { display: inline; cursor: pointer; }
   .disagreements .more-label { color: var(--drink); font-weight: 600; }
@@ -104,7 +105,7 @@
   #grid-wrap { border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; margin: 0 16px 0; }
   .grid-inner { position: relative; }
   .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 34px; }
-  .grid-row:last-child { border-bottom: none; }
+  .grid-row-group:last-child .grid-row { border-bottom: none; }
   .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 6px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 4px; overflow: hidden; cursor: pointer; }
   .grid-rowlabel:active { background: var(--amber-bg); }
   .grid-rowlabel span.icon { flex-shrink: 0; }
@@ -169,7 +170,7 @@
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.1';
+  var APP_VERSION = 'v1.2';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -281,7 +282,8 @@
   }
 
   // Research provenance (disagreements + window notes) — expanded-card only, truncated
-  // to 240 chars with a native <details> "more" disclosure for the rest.
+  // to 240 chars with a native <details> "more" disclosure for the rest. The <details>
+  // stops click propagation so opening "more" never also toggles the card (C3).
   function provenanceBlockHtml(venue, win) {
     var bits = [];
     if (venue.disagreements && venue.disagreements.length) bits.push(venue.disagreements.join(' · '));
@@ -290,15 +292,36 @@
     var text = bits.join(' · ');
     if (text.length <= 240) return '<div class="disagreements">⚠ ' + escapeHtml(text) + '</div>';
     var head = text.slice(0, 240), tail = text.slice(240);
-    return '<div class="disagreements">⚠ <details><summary>' + escapeHtml(head) + '… <span class="more-label">more</span></summary>' + escapeHtml(tail) + '</details></div>';
+    return '<div class="disagreements" onclick="event.stopPropagation()">⚠ <details><summary>' + escapeHtml(head) + '… <span class="more-label">more</span></summary>' + escapeHtml(tail) + '</details></div>';
+  }
+
+  // C1: the two per-window action buttons (HH info + inKind), shown in every card
+  // in both collapsed and expanded states. Both stop click propagation so tapping
+  // them never toggles the card (C3).
+  function cardActionsHtml(venue, win) {
+    var source = L.bestSourceUrl(venue, win);
+    var out = '<div class="card-actions">';
+    if (source) out += '<a class="icon-btn" href="' + escapeHtml(source) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">HH info ↗</a>';
+    if (venue.inkind_url) out += '<a class="icon-btn" href="' + escapeHtml(venue.inkind_url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">inKind ↗</a>';
+    return out + '</div>';
+  }
+
+  // C2: area + the window's day/time schedule, expanded-card only.
+  function scheduleBlockHtml(venue, win) {
+    var bits = [];
+    if (win.area) bits.push(win.area);
+    var dayLabels = win.days.map(function (d) { return DAY_FULL[d].slice(0, 3); }).join('/');
+    var endLabel = win.end === 'close' ? 'close' : fmtHM(win.end);
+    bits.push(dayLabels + ' ' + fmtHM(win.start) + '–' + endLabel);
+    return '<div class="card-schedule">' + escapeHtml(bits.join(' · ')) + '</div>';
   }
 
   // Shared card renderer for both the NOW view and a Day-Grid row's tap-to-expand
-  // panel. Collapsed: name/status/meta/badges + up to 3 deals (food-first) + "+N
-  // more". Expanded (state.expandedCards has this card's key): full deal list,
-  // links, and provenance.
-  function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key) {
-    var expanded = state.expandedCards.has(key);
+  // panel. `expanded` is passed in by the caller (NOW: state.expandedCards
+  // membership, default collapsed; Grid: always true — C2). Collapsed: header +
+  // badges + the COMPLETE deal list (food-first), no "+N more" truncation (C2).
+  // Expanded adds: area/schedule and research provenance (C2).
+  function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key, expanded) {
     var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
     var deals = win.deals.slice();
     var firstType = state.priority === 'food' ? 'food' : 'drink';
@@ -306,29 +329,23 @@
       if (a.type === b.type) return 0;
       return a.type === firstType ? -1 : 1;
     });
-    var shown = expanded ? deals : deals.slice(0, 3);
-    var moreCount = expanded ? 0 : Math.max(0, deals.length - 3);
-    var dealsInner = shown.length === 0
+    var dealsInner = deals.length === 0
       ? '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>'
-      : shown.map(dealLineHtml).join('');
-    var linksHtml = !expanded ? '' : (
-      '<div class="links">' +
-        (venue.official_site ? '<a href="' + venue.official_site + '" target="_blank" rel="noopener">Official site</a>' : '') +
-        '<a href="' + venue.inkind_url + '" target="_blank" rel="noopener">inKind</a>' +
-      '</div>'
-    );
-    var provenanceHtml = expanded ? provenanceBlockHtml(venue, win) : '';
+      : deals.map(dealLineHtml).join('');
+    var extrasHtml = expanded ? scheduleBlockHtml(venue, win) + provenanceBlockHtml(venue, win) : '';
     return '' +
-      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '">' +
+      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
         '<div class="card-top">' +
-          '<div class="card-name">' + escapeHtml(venue.name) + '</div>' +
+          '<div class="card-title">' +
+            '<span class="card-name">' + escapeHtml(venue.name) + '</span>' +
+            cardActionsHtml(venue, win) +
+          '</div>' +
           '<div class="card-status ' + statusClass + '">' + escapeHtml(statusLabel) + '</div>' +
         '</div>' +
-        '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distanceLabel ? ' · ' + distanceLabel : '') + (win.area ? ' · ' + escapeHtml(win.area) : '') + '</div>' +
+        '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distanceLabel ? ' · ' + distanceLabel : '') + '</div>' +
         '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
-        '<div class="deals">' + dealsInner + (moreCount > 0 ? '<div class="deal-more">+' + moreCount + ' more</div>' : '') + '</div>' +
-        linksHtml +
-        provenanceHtml +
+        '<div class="deals">' + dealsInner + '</div>' +
+        extrasHtml +
       '</div>';
   }
 
@@ -342,7 +359,8 @@
     var statusLabel = entry.status === 'active'
       ? 'Live until ' + fmtHM(resolveDisplayEnd(entry.venue, entry.window, entry.day))
       : 'Starts in ' + entry.minutesUntil + 'm';
-    return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), cardKey(entry.venue, entry.window));
+    var key = cardKey(entry.venue, entry.window);
+    return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), key, state.expandedCards.has(key));
   }
 
   // ---------- NOW view (C3: Live now / Starting soon / All-day specials) ----------
@@ -507,7 +525,9 @@
       statusLabel = DAY_FULL[day].slice(0, 3) + ' ' + fmtHM(win.start) + '–' + endLabel;
       statusClass = 'soon';
     }
-    return cardHtml(venue, win, statusLabel, statusClass, distanceLabel(venue), cardKey(venue, win));
+    // C2: the grid's inline card always opens expanded (no separate collapse state —
+    // tapping it closes the whole inline card via the grid-row toggle below, C3).
+    return cardHtml(venue, win, statusLabel, statusClass, distanceLabel(venue), cardKey(venue, win), true);
   }
 
   function renderGrid() {
@@ -562,13 +582,19 @@
       var expandedHtml = state.gridRowOpen.has(venue.id)
         ? '<div class="grid-expanded">' + items.map(function (it) { return gridDayCardHtml(venue, it.win, day); }).join('') + '</div>'
         : '';
-      return '<div class="grid-row">' +
-        '<div class="grid-rowlabel" data-venue-id="' + escapeHtml(venue.id) + '" title="' + escapeHtml(venue.name) + '"><span class="icon">🍸</span><span class="name">' + escapeHtml(venue.name) + '</span></div>' +
-        '<div class="grid-track">' +
-          blocks +
-          (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
-        '</div>' +
-      '</div>' + expandedHtml;
+      // Wrapped in one group so a click anywhere in the open inline card (a
+      // sibling of .grid-row, not a descendant — .grid-row is a fixed-height
+      // flex timeline row and can't contain it) still resolves to this venue
+      // via closest('.grid-row-group') in the delegated handler (C3).
+      return '<div class="grid-row-group" data-venue-id="' + escapeHtml(venue.id) + '">' +
+        '<div class="grid-row">' +
+          '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="icon">🍸</span><span class="name">' + escapeHtml(venue.name) + '</span></div>' +
+          '<div class="grid-track">' +
+            blocks +
+            (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
+          '</div>' +
+        '</div>' + expandedHtml +
+      '</div>';
     }).join('');
 
     document.getElementById('grid-header').innerHTML = gridHeaderHtml();
@@ -594,30 +620,45 @@
     if (gridSticky) document.documentElement.style.setProperty('--gridsticky-h', gridSticky.offsetHeight + 'px');
   }
 
-  // ---------- delegated click handling (cards expand; grid rows open/close) ----------
+  // ---------- C3: whole-card toggle (click or Enter/Space); grid rows open/close ----------
+  // Interactive descendants (the C1 action buttons, the provenance "more" <details>)
+  // call event.stopPropagation() themselves (see cardActionsHtml/provenanceBlockHtml),
+  // so any click/keydown that reaches these delegated handlers is a genuine toggle.
+  function toggleSetMember(set, key) {
+    if (set.has(key)) set.delete(key); else set.add(key);
+  }
+  function isEnterOrSpace(e) {
+    return e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar';
+  }
+
   document.getElementById('view-now').addEventListener('click', function (e) {
-    if (e.target.closest('a') || e.target.closest('details')) return;
     var cardEl = e.target.closest('.card');
     if (!cardEl) return;
-    var key = cardEl.getAttribute('data-card-key');
-    if (state.expandedCards.has(key)) state.expandedCards.delete(key); else state.expandedCards.add(key);
+    toggleSetMember(state.expandedCards, cardEl.getAttribute('data-card-key'));
     renderNow();
   });
-  document.getElementById('grid-inner').addEventListener('click', function (e) {
-    if (e.target.closest('a') || e.target.closest('details')) return;
-    var cardEl = e.target.closest('.card');
-    if (cardEl) {
-      var key = cardEl.getAttribute('data-card-key');
-      if (state.expandedCards.has(key)) state.expandedCards.delete(key); else state.expandedCards.add(key);
-      renderGrid();
-      return;
-    }
-    var rowEl = e.target.closest('.grid-row');
-    if (rowEl) {
-      var vid = rowEl.querySelector('.grid-rowlabel').getAttribute('data-venue-id');
-      if (state.gridRowOpen.has(vid)) state.gridRowOpen.delete(vid); else state.gridRowOpen.add(vid);
-      renderGrid();
-    }
+  document.getElementById('view-now').addEventListener('keydown', function (e) {
+    if (!isEnterOrSpace(e) || !e.target.classList || !e.target.classList.contains('card')) return;
+    e.preventDefault();
+    toggleSetMember(state.expandedCards, e.target.getAttribute('data-card-key'));
+    renderNow();
+  });
+
+  // Grid: tapping ANYWHERE in a venue's row — the row label, the track, or (once
+  // open) the inline card itself — toggles that whole row's open/closed state.
+  // There is no separate per-card collapse in the grid (C2/C3): tapping the open
+  // card closes the inline card; tapping the (now collapsed) row re-opens it.
+  function toggleGridRow(e) {
+    var groupEl = e.target.closest('.grid-row-group');
+    if (!groupEl) return;
+    toggleSetMember(state.gridRowOpen, groupEl.getAttribute('data-venue-id'));
+    renderGrid();
+  }
+  document.getElementById('grid-inner').addEventListener('click', toggleGridRow);
+  document.getElementById('grid-inner').addEventListener('keydown', function (e) {
+    if (!isEnterOrSpace(e) || !e.target.classList || !e.target.classList.contains('card')) return;
+    e.preventDefault();
+    toggleGridRow(e);
   });
 
   // ---------- geolocation ----------
