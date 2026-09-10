@@ -1,5 +1,115 @@
 # Changelog
 
+## 2026-09-10 — BLOCK-hh-radar-fix5-20260910: v1.5 (feedback for anyone, mobile pass, "Surprise me", grid footer wording)
+
+Two sources this round. TJ's asks are PRIMARY; the friend's are SECONDARY and rank second
+wherever they conflict (nothing did).
+
+PRIMARY — TJ, 2026-09-10, verbatim:
+
+> "I had thought of a couple of things while I was using it, but I forgot before I got back
+> here - so I think it would be helpful to have a feedback at the bottom of the page if
+> that's possible that you can read."
+
+> "I think it would be nice to be able to optimize for mobile as well- I ran into a couple of
+> issues viewing my self from my phone. - also should figure out the absolute best way to
+> provide feedback for me and anyone that uses it."
+
+SECONDARY — a friend of TJ's, relayed by text 2026-09-10, verbatim (the first outside user):
+
+> "I like the github pages haha. I like the amount of filtering and selection available. And
+> the links to the official page. You could add a feature that "randomly selects" a place
+> and a recommendation. Could target people that can't make decisions. There's a "xx have
+> nothing available on X-day", but I wasn't able to get it to change to say that something
+> was available? Might just be I'm on mobile and would get a different view in full screen"
+
+- **Feedback box, for anyone, no account (C1).** A `<details>` at the bottom of the page
+  (plus a "Feedback" link in the header) holding a textarea, a remembered `From` field, a
+  me / someone-told-me toggle for relayed notes, **Add note** and **Send all**. Every
+  keystroke goes to `localStorage`, so a note typed on a phone survives closing the tab;
+  Add note stamps it with local time and an auto context line. Send all POSTs each pending
+  note to a published Google Form's `formResponse` endpoint —
+  `fetch(url, {method:'POST', mode:'no-cors', body: FormData})` — and rows land in a private
+  Sheet the thinking thread reads through the Drive connector. **This is the one runtime
+  call the page makes to anything but its own files, and only on the user's tap** — recorded
+  in the README as a deliberate exception to "bake, don't fetch". The response is opaque
+  (status 0) by design, so the confirmation says "sent (probably — the page cannot see
+  Google's answer)"; a throw (offline) keeps the notes and says "kept on this phone". A
+  secondary "Open the form instead" button carries the same note as a prefilled Form URL for
+  the case where the POST is blocked. No GitHub anywhere in the user path.
+  The context line carries: version · view (NOW or GRID + day) · zone filter · sort ·
+  Food/Drink · any `?now=` · last expanded card · viewport width · standalone yes/no ·
+  browser family. **Never location** — the feedback code does not read `state.geo`.
+  The three `entry.*` field ids were re-read from the live viewform's `FB_PUBLIC_LOAD_DATA_`
+  before being hard-coded, and matched the ids the block supplied exactly.
+- **Mobile pass (C2).** Measured at 375/390/430 portrait and 844×390 landscape, before →
+  after (full table in the fix5 report):
+  - Sticky chrome at 390×844: **316.3px / 37.5% → 205.4px / 24.3%.** The v1.4 zone row wrapped
+    to five lines on a phone (184px on its own); below 600px it is now a single
+    "Zones: All · edit" line with the Map button, expanding on tap into the full pill row.
+    375 → 25.3%, 430 → 22.0%.
+  - Landscape 844×390: **208.3px / 53.4% → 107px / 27.4%.** The title and the tabs share one
+    line, and a new `display: contents` `.controls` wrapper puts the Food/Drink row and the
+    zone line side by side — two rows of chrome instead of four. `display: contents` means
+    the wrapper changes nothing at any other width.
+  - Tap targets < 44×44 CSS px at 390: **146 → 0** (and 0 at 375, 430 and landscape). The
+    chip carets were 7.8×10; grid row links were 36×35; day tabs, sort pills, the tabs and
+    the Food/Drink pills were all 30–35px tall. Grid rows are 45px on phones, not 44: the
+    1px bottom border is inside the box, so a 44px row makes its full-height links 43 tall.
+  - Grid row label: **9 → 15 characters** before the ellipsis at 390 (12 at 375, 19 at 430).
+    Needed 55% of the row, 11px type, 6px of left padding and no inter-item gap; the binding
+    case is 375, not 390. Hour ticks every 2 hours, 0 overlapping pairs at every width;
+    blocks stay ≥ 6px; the now-line still renders.
+  - Safe-area insets (`env(safe-area-inset-*)`) on the header, both control rows, `main`,
+    the feedback wrapper and the footer, on top of the `viewport-fit=cover` v1.4 already had.
+  - `100dvh` on `body` with a `100vh` fallback. Nothing in the page assumed full height
+    before, so there was no iOS-100vh bug to fix — this is a guard, not a repair.
+  - Every field is 16px so iOS does not zoom the page on focus; `touch-action: manipulation`
+    on every control; user scaling left ON (accessibility).
+  - Cache: `<meta http-equiv="Cache-Control" content="no-cache">` plus `?v=1.5` on BOTH
+    `logic.js` and `venues.json`, so a home-screen launch picks up an update instead of
+    re-using the shell iOS is holding. Bump both whenever `APP_VERSION` changes.
+  - No horizontal scroll at 375, 390, 430 or landscape (`scrollWidth === clientWidth`, and
+    zero elements outside the viewport box).
+- **"Surprise me" (C3, the friend's idea).** A dice button in the NOW toolbar rolls one hero
+  card: uniform random among windows LIVE NOW inside the current zone filter, with the food
+  pool taking the whole draw whenever it is non-empty (drink-first mirrors it). Falls back to
+  STARTING SOON, then to the single earliest start still to come — labelled "tonight's
+  earliest". `pickSurprise(candidates, rng, opts)` is pure with an injected rng; nine tests
+  cover food preference across the whole rng range, both fallbacks, the earliest-start
+  narrowing, determinism, and rng values of 1/NaN/undefined. Measured: at
+  `?now=2026-09-08T16:30`, ten rolls returned ten food deals out of 39 candidates; at
+  `?now=2026-09-09T03:30` the card reads "nothing live or starting soon — tonight's earliest".
+- **Grid footer wording (C4, the friend's confusion, reproduced).** "N venues have nothing on
+  DAY" folded the 67 venues that have NO happy hour on any day into the same number as the
+  ones that simply have theirs on another day — so on every day the number looked enormous
+  and the app read as if nothing was ever on. It now reads
+  "**58 venues** with happy hours on Tuesday · 11 have them other days · 67 have no happy
+  hour at all", computed inside the zone filter (prefixed "In N zones:" when filtered), with
+  "have them other days" opening a list of those venues and the next day each one is on. The
+  three numbers partition the filtered roster — asserted for all seven days, with SUN
+  (34/35/67) and TUE (58/11/67) pinned to measured values — and the footer prints a warning
+  badge if its own count ever disagrees with the rows drawn.
+- **Small (C5).** The Gulch map label moved from 36.1440,-86.8060 to 36.1415,-86.8075:
+  clearance from the Downtown block **11.1 → 15.8 view units** by the model, 2.5 → 4.7 units
+  horizontally and 9.7 → 14.4 vertically as rendered. `zoneLabelBox` had a real modelling
+  bug behind that — it sized each block from the NAME line alone, but the count line is often
+  wider ("Gulch" 32.2 units vs "15 today" 39.0), so the v1.4 overlap test could not see the
+  crowding at all; it now takes the wider of the two, and a new test enforces ≥ 12 units of
+  clearance on every pair. North of Downtown the East/Germantown seam now sits on the RIVER
+  polyline vertex-for-vertex instead of ~0.0008 lon east of it (1.22 view units, ~1.3 CSS px
+  at the 390 render), so the river stroke is the boundary rather than a line drawn just
+  inside Germantown; `downtown` carries the moved triple point too, no venue changes zone,
+  and a test pins all three polygons to the river vertices.
+  Outer-suburb count badges needed no change — v1.4 already renders `hoodPillHtml` for the
+  suburb rows, so those chips have shown their count whenever it is > 0 since v1.4
+  (measured on the Day Grid: Smyrna 1, Murfreesboro 2, Mt. Juliet 1, Hendersonville 1).
+- **localStorage helper (P5).** fix1 established the try/catch-per-call-site idiom but never
+  named a helper; by v1.4 it was copied at six sites and the feedback box writes on every
+  keystroke. `lsGet` / `lsSet` / `lsGetJson` now carry it, guarding reads as well as writes
+  (Safari private mode throws on `getItem`, not just `setItem`), and all six old sites use them.
+- Tests: 47 → 64. `node validate.js venues.json` unchanged (136 venues, 115 windows).
+
 ## 2026-09-06 — BLOCK-hh-radar-fix4-20260906: v1.4 (map redone, zone controls tidied, links on grid rows)
 
 Per TJ's fourth-round feedback, verbatim:

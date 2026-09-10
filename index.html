@@ -2,10 +2,17 @@
 <meta charset="utf-8">
 <title>Nashville inKind Happy Hour Radar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- v1.5 C2: iOS holds on to a home-screen app's index.html for days. Pages serves
+     it with max-age=600, but the standalone web-app shell re-uses whatever it has
+     until something forces a revalidate; no-cache makes it ask every launch, and the
+     ?v= query on logic.js/venues.json makes the two files it pulls miss the old
+     entries outright. Bump BOTH query strings whenever APP_VERSION changes. -->
+<meta http-equiv="Cache-Control" content="no-cache">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HH Radar">
 <meta name="theme-color" content="#0f1420">
 <style>
   :root {
@@ -230,26 +237,199 @@
   footer { text-align: center; font-size: 11.5px; color: var(--text-dim); padding: 24px 16px 10px; }
   footer a { color: var(--text-dim); }
   #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
+
+  /* ==================== v1.5 C4: grid coverage footer ==================== */
+  #grid-note b { color: var(--text); }
+  details.cov-pop { display: inline; }
+  /* Inline inside a sentence, so it gets its 44px hit box from vertical padding
+     that negative margin cancels visually — the footer line keeps its height. */
+  details.cov-pop > summary { display: inline-block; cursor: pointer; color: var(--drink); font-weight: 600;
+    text-decoration: underline dotted; text-underline-offset: 2px; list-style: none;
+    min-height: 44px; padding: 13px 2px; margin: -13px 0; }
+  details.cov-pop > summary::-webkit-details-marker { display: none; }
+  ul.cov-list { list-style: none; margin: 8px 0 2px; padding: 8px 10px; max-height: 44vh; overflow-y: auto;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
+  ul.cov-list li { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; font-size: 12px; }
+  ul.cov-list .cov-when { color: var(--text-dim); flex: 0 0 auto; }
+
+  /* ==================== v1.5 C3: "Surprise me" hero card ==================== */
+  .surprise { background: var(--panel); border: 1.5px solid var(--amber); border-radius: 14px;
+    padding: 12px 14px; margin-bottom: 14px; }
+  .surprise-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; font-size: 11px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-strong); }
+  .surprise-head .tier { white-space: nowrap; }
+  .surprise-head .why { text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--text-dim);
+    font-size: 11px; flex: 1 1 140px; min-width: 0; }
+  .surprise-line { font-size: 15px; font-weight: 700; margin-top: 7px; line-height: 1.35; }
+  .surprise-sub { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+  .surprise-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .surprise-dismiss { margin-left: auto; border: none; background: transparent; color: var(--text-dim);
+    font: inherit; font-size: 18px; line-height: 1; cursor: pointer; min-width: 44px; min-height: 44px;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: -12px; margin-right: -10px; }
+
+  /* ==================== v1.5 C1: feedback box ==================== */
+  h1 { display: flex; align-items: center; gap: 10px; }
+  .h1-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hdr-fb { margin-left: auto; flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--drink);
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; min-width: 44px; padding: 0 4px; margin: -12px 0; }
+  .fb-wrap { max-width: 640px; margin: 0 auto; padding: 8px 16px 4px; }
+  details.feedback { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; }
+  details.feedback > summary { list-style: none; cursor: pointer; padding: 0 14px; min-height: 52px;
+    display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
+  details.feedback > summary::-webkit-details-marker { display: none; }
+  details.feedback > summary::after { content: '\25B8'; margin-left: auto; color: var(--text-dim); }
+  details.feedback[open] > summary::after { content: '\25BE'; }
+  .fb-count { font-size: 11px; font-weight: 700; color: var(--amber-strong);
+    border: 1px solid var(--amber); border-radius: 999px; padding: 2px 8px; }
+  .fb-body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .fb-intro { margin: 0; font-size: 12px; color: var(--text-dim); }
+  /* 16px minimum on every field: iOS Safari zooms the whole page on focus below it. */
+  .fb-body textarea, .fb-body input[type=text] { width: 100%; font-family: inherit; font-size: 16px;
+    line-height: 1.35; color: var(--text); background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px; }
+  .fb-body textarea { min-height: 92px; resize: vertical; }
+  .fb-body input[type=text] { flex: 1 1 140px; min-width: 0; width: auto; height: 44px; }
+  .fb-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .fb-who { display: inline-flex; gap: 6px; flex: 0 0 auto; }
+  .fb-who .pill { height: 44px; min-width: 44px; }
+  .fb-btn { height: 44px; min-width: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--panel); color: var(--text); font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+  .fb-btn.primary { background: var(--amber); color: #1a1200; border-color: var(--amber); }
+  .fb-btn[disabled] { opacity: 0.45; cursor: default; }
+  .fb-pending { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .fb-pending li { display: flex; gap: 6px; align-items: center; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 10px; padding: 4px 4px 4px 10px; font-size: 13px; }
+  .fb-pending li.sent { opacity: 0.6; border-style: dashed; }
+  .fb-pending .fb-text { flex: 1 1 auto; min-width: 0; padding: 6px 0; overflow-wrap: anywhere; }
+  .fb-pending .fb-when { display: block; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .fb-del { flex: 0 0 44px; width: 44px; height: 44px; border: none; background: transparent;
+    color: var(--text-dim); font-size: 20px; line-height: 1; cursor: pointer; border-radius: 8px; }
+  .fb-status { font-size: 12px; color: var(--text-dim); min-height: 16px; }
+  .fb-ctxwrap > summary { font-size: 11.5px; color: var(--text-dim); cursor: pointer; min-height: 44px;
+    display: flex; align-items: center; }
+  .fb-ctx { font-size: 11px; color: var(--text-dim); overflow-wrap: anywhere; }
+
+  /* ==================== v1.5 C2: mobile pass ====================
+     Everything below is measured against a 390x844 iPhone in portrait and
+     844x390 in landscape; the numbers are in CHANGELOG v1.5. Two rules apply at
+     every width (safe area + no accidental zoom); the rest is phones only. */
+  button, .pill, .fb-btn, .icon-btn, a.rowlink, summary, .zone { touch-action: manipulation; }
+  body { min-height: 100vh; min-height: 100dvh; padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
+  header { padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    padding-left: calc(16px + env(safe-area-inset-left, 0px));
+    padding-right: calc(16px + env(safe-area-inset-right, 0px)); }
+  .toolbar, .zone-toolbar { padding-left: calc(16px + env(safe-area-inset-left, 0px));
+    padding-right: calc(16px + env(safe-area-inset-right, 0px)); }
+  main, .fb-wrap { padding-left: calc(16px + env(safe-area-inset-left, 0px));
+    padding-right: calc(16px + env(safe-area-inset-right, 0px)); }
+  footer { padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+
+  .controls { display: contents; }
+  .zone-summary { display: none; gap: 6px; align-items: center; }
+  .zone-summary .pill { flex: 0 1 auto; min-width: 0; }
+  .zone-summary .zone-summary-btn { overflow: hidden; }
+  .zone-summary .zone-summary-btn .zs-names { overflow: hidden; text-overflow: ellipsis; }
+
+  @media (max-width: 599px) {
+    h1 { font-size: 16px; margin-bottom: 8px; }
+    nav.tabs button { min-height: 44px; }
+    .toolbar { flex-wrap: wrap; }
+    .toolbar .pill { height: 44px; font-size: 13px; }
+    /* Collapsed by default: one line instead of five. Tapping "edit" adds .open. */
+    .zone-summary { display: flex; }
+    .zone-summary .pill { height: 44px; font-size: 13px; }
+    .zone-toolbar:not(.open) .zone-row,
+    .zone-toolbar:not(.open) .hood-strip { display: none; }
+    .zone-toolbar.open .zone-row { margin-top: 8px; }
+    .zone-row .map-toggle-btn { display: none; }
+    .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
+    /* The caret was a 7.8x10 target inside a 30px pill. It now fills the pill's
+       full height and 44px of width, eating the pill's right padding to do it. */
+    .zone-row .pill .caret, .hood-strip .pill .caret { display: inline-flex; align-items: center;
+      justify-content: center; min-width: 44px; align-self: stretch; margin: 0 -11px 0 2px;
+      padding: 0; font-size: 14px; }
+    /* 16px of side padding here plus main's 8px left only 43.3px per day pill at
+       375; 8px puts all seven back over 44. */
+    .day-select, .sort-select { padding-left: 8px; padding-right: 8px; }
+    .day-select .pill, .sort-select .pill { height: 44px; font-size: 12px; }
+    /* Reclaim the doubled horizontal padding (main 16 + grid-wrap 16) so the row
+       label can hold two 44px targets AND a readable name. */
+    main { padding-left: calc(8px + env(safe-area-inset-left, 0px));
+      padding-right: calc(8px + env(safe-area-inset-right, 0px)); }
+    .fb-wrap { padding-left: calc(8px + env(safe-area-inset-left, 0px));
+      padding-right: calc(8px + env(safe-area-inset-right, 0px)); }
+    #grid-wrap { margin-left: 8px; margin-right: 8px; }
+    .grid-header { margin-left: 8px; margin-right: 8px; }
+    /* 45, not 44: the 1px bottom border is inside the box, so a 44px row makes
+       its full-height links 43 tall. */
+    .grid-row { height: 45px; }
+    /* 55%, 11px type, 6px of left padding and no inter-item gap: two 44px tap
+       targets plus >= 12 characters of venue name do not both fit inside the v1.4
+       46% at 11.5px — the binding case is 375px wide, not 390. */
+    .grid-rowlabel { width: 55%; min-width: 55%; max-width: 55%; padding-left: 6px; gap: 0; font-size: 11px; }
+    .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
+    .grid-header-tick { font-size: 10px; }
+    .icon-btn { min-height: 44px; }
+    .card-actions .icon-btn { min-width: 44px; }
+  }
+  /* Landscape phones: 390px of HEIGHT, so the chrome is the scarce resource. The
+     title and the tabs share one line, and .controls collapses the Food/Drink row
+     and the zone line into a second one — two rows of chrome instead of four. */
+  @media (max-width: 926px) and (max-height: 480px) and (orientation: landscape) {
+    header { padding-top: calc(6px + env(safe-area-inset-top, 0px)); padding-bottom: 6px;
+      display: flex; align-items: center; gap: 12px; }
+    h1 { font-size: 14px; margin: 0; flex: 0 1 auto; }
+    .hdr-fb { margin-left: 0; }
+    nav.tabs { flex: 1 1 auto; }
+    nav.tabs button { min-height: 44px; }
+    .controls { display: flex; align-items: flex-start; flex-wrap: wrap; }
+    .controls .toolbar { flex: 0 0 auto; padding-right: 8px; }
+    .controls .zone-toolbar { flex: 1 1 260px; padding-left: 0; }
+    .toolbar, .zone-toolbar { padding-top: 6px; }
+    .toolbar .pill, .zone-summary .pill { height: 44px; font-size: 13px; }
+    .zone-summary { display: flex; }
+    .zone-toolbar:not(.open) .zone-row,
+    .zone-toolbar:not(.open) .hood-strip { display: none; }
+    .zone-row .map-toggle-btn { display: none; }
+    .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
+    .zone-row .pill .caret, .hood-strip .pill .caret { display: inline-flex; align-items: center;
+      justify-content: center; min-width: 44px; align-self: stretch; margin: 0 -11px 0 2px;
+      padding: 0; font-size: 14px; }
+    .day-select .pill, .sort-select .pill { height: 44px; }
+    .grid-row { height: 45px; }
+    .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
+    .icon-btn { min-height: 44px; }
+  }
 </style>
 
 <header>
-  <h1>🍸 Happy Hour Radar <span style="color:var(--text-dim); font-weight:400;">— Nashville inKind</span></h1>
+  <h1><span class="h1-name">🍸 Happy Hour Radar <span style="color:var(--text-dim); font-weight:400;">— Nashville inKind</span></span><a class="hdr-fb" href="#feedback" id="hdr-fb">Feedback</a></h1>
   <nav class="tabs">
     <button id="tab-now" class="active">Now</button>
     <button id="tab-grid">Day Grid</button>
   </nav>
 </header>
 
+<!-- display:contents at every width except landscape phones, where the two control
+     rows share one line (v1.5 C2) — so this wrapper changes nothing anywhere else. -->
+<div class="controls">
 <div class="toolbar">
   <div class="toggle" id="food-toggle" role="group" aria-label="Food or drink first">
     <button type="button" class="pill on" id="btn-food">🍽 Food-first</button>
     <button type="button" class="pill" id="btn-drink">🍹 Drink-first</button>
   </div>
+  <button type="button" class="pill" id="btn-surprise" aria-label="Surprise me — pick one at random">🎲 Surprise me</button>
 </div>
 
-<div class="zone-toolbar">
+<div class="zone-toolbar" id="zone-toolbar">
+  <!-- v1.5 C2: on phones the eight zone pills wrapped to five lines (184px of a
+       844px viewport). This one-line summary stands in for them until tapped. -->
+  <div class="zone-summary" id="zone-summary"></div>
   <div class="zone-row" id="zone-row" role="group" aria-label="Filter by zone"></div>
   <div class="hood-strip" id="hood-strip" role="group" aria-label="Filter by neighborhood"></div>
+</div>
 </div>
 
 <div id="fatal"></div>
@@ -275,6 +455,37 @@
   </div>
 </div>
 
+<!-- v1.5 C1: the feedback inbox. One Google Form POST, only on the user's tap —
+     the single deliberate exception to "bake, don't fetch" (see README). -->
+<div class="fb-wrap">
+  <details class="feedback" id="feedback">
+    <summary id="fb-summary">Feedback / ideas <span class="fb-count" id="fb-count" hidden></span></summary>
+    <div class="fb-body">
+      <p class="fb-intro">Anything odd, missing or wrong? No account needed — it lands in a
+        private inbox we read. Notes are kept on this phone until you send them.</p>
+      <ul class="fb-pending" id="fb-pending"></ul>
+      <textarea id="fb-note" rows="3" placeholder="What would make this better?" aria-label="Your note"></textarea>
+      <div class="fb-row">
+        <input type="text" id="fb-from" placeholder="From (optional)" aria-label="Your name, optional" autocomplete="off">
+        <div class="fb-who" role="group" aria-label="Whose feedback is this">
+          <button type="button" class="pill on" data-who="me">me</button>
+          <button type="button" class="pill" data-who="relayed">someone told me</button>
+        </div>
+      </div>
+      <div class="fb-row">
+        <button type="button" class="fb-btn primary" id="fb-add">Add note</button>
+        <button type="button" class="fb-btn" id="fb-send">Send all</button>
+        <a class="fb-btn" id="fb-open" href="#" target="_blank" rel="noopener">Open the form instead</a>
+      </div>
+      <div class="fb-status" id="fb-status" role="status" aria-live="polite"></div>
+      <details class="fb-ctxwrap"><summary>What gets sent with a note</summary>
+        <div class="fb-ctx" id="fb-ctx"></div>
+        <div class="fb-ctx" style="margin-top:6px">Never your location.</div>
+      </details>
+    </div>
+  </details>
+</div>
+
 <footer id="footer"></footer>
 
 <!-- Cache-busted with the app version: index.html and logic.js are deployed together and
@@ -282,14 +493,33 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.4"></script>
+<script src="logic.js?v=1.5"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.4';
+  var APP_VERSION = 'v1.5';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
+
+  // ---------- v1.5 C1: the feedback inbox ----------
+  // A published Google Form used as a dumb inbox: anyone can submit with no
+  // account, responses land in a private Sheet, and a static page can POST
+  // straight at /formResponse. That POST is the ONLY runtime call this page ever
+  // makes to anything but its own files, and only on the user's tap — the
+  // deliberate exception to "bake, don't fetch" recorded in the README.
+  // The three entry ids were re-read from the live viewform's FB_PUBLIC_LOAD_DATA_
+  // on 2026-09-10 before being hard-coded here; if the form is ever edited they
+  // change and Send all silently stops landing rows, so re-read them on any change.
+  var FORM_ID = '1FAIpQLSd8agMFwn3sKsTHR3q5jn9oUyn72UTeHBBZDFWd9zmTlBe83Q';
+  var FORM_POST_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+  var FORM_VIEW_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/viewform';
+  var FIELD_NOTE = 'entry.1197018871';   // "Note" (paragraph)
+  var FIELD_FROM = 'entry.1201373577';   // "From" (short answer)
+  var FIELD_CONTEXT = 'entry.432176984'; // "Context" (paragraph)
+  var LS_NOTES = 'hhradar-fb-notes', LS_DRAFT = 'hhradar-fb-draft';
+  var LS_FROM = 'hhradar-fb-from', LS_WHO = 'hhradar-fb-who';
+  var UNDO_MS = 3000;
 
   // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
   function getNowInChicago() {
@@ -336,21 +566,41 @@
     hoodSelected: new Set(L.hoodKeys()), // ZONE/HOOD filter (v1.3 C2): default = all
     expandedZone: null, // v1.4 C2: at most ONE zone's hoods are shown, in the sibling strip
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
+    zonesOpen: false, // v1.5 C2: phones collapse the zone row behind a one-line summary
+    surprise: null, // v1.5 C3: the current pickSurprise result, or null when dismissed
+    lastExpanded: null, // v1.5 C1: last card the user opened — goes in the feedback context
+    fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
+    fbSent: [], // notes inside the 3-second undo window after a send
+    fbWho: 'me', // 'me' | 'relayed'
   };
 
-  try {
-    var savedPriority = localStorage.getItem('hhradar-priority');
-    if (savedPriority === 'food' || savedPriority === 'drink') state.priority = savedPriority;
-  } catch (e) { /* localStorage unavailable — default stands */ }
-  try {
-    var savedSort = localStorage.getItem('hhradar-gridsort');
-    if (GRID_SORT_OPTIONS.indexOf(savedSort) !== -1) state.gridSort = savedSort;
-  } catch (e) { /* localStorage unavailable — default stands */ }
-  try {
-    var savedHoods = JSON.parse(localStorage.getItem('hhradar-hoods'));
-    var restoredHoods = L.deserializeHoodSelection(savedHoods, L.hoodKeys());
-    if (restoredHoods) state.hoodSelected = restoredHoods;
-  } catch (e) { /* localStorage unavailable or corrupt — default (all) stands */ }
+  // ---------- localStorage (v1.5 P5) ----------
+  // fix1 established the try/catch-per-call-site idiom but never named a helper;
+  // by v1.4 it was copied at six sites, and the feedback box writes on every
+  // keystroke. Reads are guarded too: Safari private mode and "block all cookies"
+  // throw on getItem, not just setItem.
+  function lsGet(key, fallback) {
+    try { var v = localStorage.getItem(key); return v === null ? fallback : v; }
+    catch (e) { return fallback; }
+  }
+  function lsSet(key, value) {
+    try { localStorage.setItem(key, value); return true; } catch (e) { return false; }
+  }
+  function lsGetJson(key, fallback) {
+    try {
+      var v = JSON.parse(localStorage.getItem(key));
+      return (v === null || v === undefined) ? fallback : v;
+    } catch (e) { return fallback; }
+  }
+
+  var savedPriority = lsGet('hhradar-priority', null);
+  if (savedPriority === 'food' || savedPriority === 'drink') state.priority = savedPriority;
+  var savedSort = lsGet('hhradar-gridsort', null);
+  if (GRID_SORT_OPTIONS.indexOf(savedSort) !== -1) state.gridSort = savedSort;
+  var restoredHoods = L.deserializeHoodSelection(lsGetJson('hhradar-hoods', null), L.hoodKeys());
+  if (restoredHoods) state.hoodSelected = restoredHoods;
+  state.fbNotes = sanitizeNotes(lsGetJson(LS_NOTES, []));
+  state.fbWho = lsGet(LS_WHO, 'me') === 'relayed' ? 'relayed' : 'me';
 
   function fmtHM(hm) {
     var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
@@ -556,10 +806,10 @@
       } else {
         msg = 'No happy hours found in this dataset.';
       }
-      el.innerHTML = geoNoteHtml() + '<div class="empty">' + msg + '</div>';
+      el.innerHTML = surpriseHtml() + geoNoteHtml() + '<div class="empty">' + msg + '</div>';
       return;
     }
-    var html = geoNoteHtml();
+    var html = surpriseHtml() + geoNoteHtml();
     if (sections.live.length) html += '<div class="section-heading">Live now (' + sections.live.length + ')</div>' + sections.live.map(nowEntryCardHtml).join('');
     if (sections.soon.length) html += '<div class="section-heading">Starting soon (' + sections.soon.length + ')</div>' + sections.soon.map(nowEntryCardHtml).join('');
     if (sections.allDay.length) html += '<div class="section-heading">All-day specials (' + sections.allDay.length + ')</div>' + sections.allDay.map(nowEntryCardHtml).join('');
@@ -600,7 +850,7 @@
 
   function setGridSort(s) {
     state.gridSort = s;
-    try { localStorage.setItem('hhradar-gridsort', s); } catch (e) { /* per-viewer convenience only */ }
+    lsSet('hhradar-gridsort', s);
     renderSortSelect();
     renderGrid();
   }
@@ -703,8 +953,6 @@
       return { venue: venue, items: dayIntervalsForVenue(venue, day) };
     }).filter(function (r) { return r.items.length > 0; });
 
-    var hiddenCount = visibleVenues.length - candidates.length;
-
     if (state.gridSort === 'name') {
       candidates.sort(function (a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); });
     } else if (state.gridSort === 'distance' && state.geo) {
@@ -760,14 +1008,39 @@
     document.getElementById('grid-header').innerHTML = gridHeaderHtml();
     el.innerHTML = rowsHtml;
 
-    document.getElementById('grid-note').textContent = hiddenCount > 0
-      ? hiddenCount + ' venue' + (hiddenCount === 1 ? '' : 's') + ' have nothing on ' + DAY_FULL[day] + '.'
-      : '';
+    // v1.5 C4: three numbers that partition the filtered roster, replacing the
+    // single "N venues have nothing on DAY" that an outside reader read as "this
+    // app never has anything" — it folded the 67 venues with NO happy hour on any
+    // day into the same number as the ones that simply have theirs on other days.
+    document.getElementById('grid-note').innerHTML = gridCoverageHtml(visibleVenues, day, candidates.length);
     document.getElementById('grid-sort-note').textContent = (state.gridSort === 'distance' && !state.geo)
       ? 'Location unavailable — sorted by time instead.'
       : '';
 
     updateStickyOffsets();
+  }
+
+  function gridCoverageHtml(visibleVenues, day, rowsDrawn) {
+    var cov = L.dayCoverageCounts(visibleVenues, day);
+    // The grid draws a row for exactly the onDay group; if these ever disagree the
+    // footer is lying about what is on screen, so say so rather than print a number.
+    var mismatch = cov.onDay !== rowsDrawn ? ' <span class="badge warn">count/rows mismatch</span>' : '';
+    var sum = zoneFilterSummary();
+    var prefix = sum.filtered
+      ? 'In ' + sum.zoneCount + ' zone' + (sum.zoneCount === 1 ? '' : 's') + ': '
+      : '';
+    var others = cov.otherList.slice().sort(function (a, b) {
+      return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0);
+    }).map(function (o) {
+      return '<li>' + escapeHtml(o.venue.name) + '<span class="cov-when">' +
+        escapeHtml(o.nextDay ? DAY_FULL[o.nextDay] : 'no day resolves') + '</span></li>';
+    }).join('');
+    var otherPart = cov.otherDays > 0
+      ? '<details class="cov-pop"><summary>' + cov.otherDays + ' have them other days</summary>' +
+        '<ul class="cov-list">' + others + '</ul></details>'
+      : '0 have them other days';
+    return prefix + '<b>' + cov.onDay + ' venue' + (cov.onDay === 1 ? '' : 's') + '</b> with happy hours on ' +
+      DAY_FULL[day] + ' \u00b7 ' + otherPart + ' \u00b7 ' + cov.none + ' have no happy hour at all.' + mismatch;
   }
 
   // Grid uses a two-level sticky stack (app header, then day/sort tabs) ahead of
@@ -891,7 +1164,7 @@
       (count > 0 ? '<span class="count">' + count + '</span>' : '') + '</button>';
   }
 
-  function renderHoodChips() { renderZoneRow(); renderHoodStrip(); }
+  function renderHoodChips() { renderZoneRow(); renderHoodStrip(); renderZoneSummary(); }
 
   // ---- v1.4 C3/C4: the map ----
   // Six hand-authored zone polygons (logic.js ZONE_POLYGONS) over a river line and
@@ -1003,7 +1276,7 @@
   }
 
   function onHoodSelectionChanged() {
-    try { localStorage.setItem('hhradar-hoods', JSON.stringify(L.serializeHoodSelection(state.hoodSelected))); } catch (e) { /* per-viewer convenience only */ }
+    lsSet('hhradar-hoods', JSON.stringify(L.serializeHoodSelection(state.hoodSelected)));
     renderHoodChips();
     renderMap();
     renderNow();
@@ -1100,7 +1373,8 @@
   document.getElementById('view-now').addEventListener('click', function (e) {
     var cardEl = e.target.closest('.card');
     if (!cardEl) return;
-    toggleSetMember(state.expandedCards, cardEl.getAttribute('data-card-key'));
+    state.lastExpanded = cardEl.getAttribute('data-card-key');
+    toggleSetMember(state.expandedCards, state.lastExpanded);
     renderNow();
   });
   document.getElementById('view-now').addEventListener('keydown', function (e) {
@@ -1117,7 +1391,9 @@
   function toggleGridRow(e) {
     var groupEl = e.target.closest('.grid-row-group');
     if (!groupEl) return;
-    toggleSetMember(state.gridRowOpen, groupEl.getAttribute('data-venue-id'));
+    var vid = groupEl.getAttribute('data-venue-id');
+    state.lastExpanded = vid + '#row';
+    toggleSetMember(state.gridRowOpen, vid);
     renderGrid();
   }
   document.getElementById('grid-inner').addEventListener('click', toggleGridRow);
@@ -1126,6 +1402,343 @@
     e.preventDefault();
     toggleGridRow(e);
   });
+
+  // ---------- v1.5 C1: feedback box ----------
+  function sanitizeNotes(raw) {
+    if (!Array.isArray(raw)) return [];
+    return raw.filter(function (n) {
+      return n && typeof n.text === 'string' && n.text.length > 0;
+    }).map(function (n) {
+      return {
+        id: String(n.id || Date.now()),
+        text: String(n.text).slice(0, 4000),
+        from: String(n.from || ''),
+        who: n.who === 'relayed' ? 'relayed' : 'me',
+        when: String(n.when || ''),
+        context: String(n.context || ''),
+      };
+    }).slice(-30);
+  }
+  function saveNotes() { lsSet(LS_NOTES, JSON.stringify(state.fbNotes)); }
+
+  function localStamp() {
+    var d = new Date();
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
+      ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' local';
+  }
+  function uaFamily() {
+    var ua = navigator.userAgent || '';
+    if (/CriOS/.test(ua)) return 'Chrome iOS';
+    if (/FxiOS/.test(ua)) return 'Firefox iOS';
+    if (/iPhone|iPad|iPod/.test(ua)) return 'Safari iOS';
+    if (/Android/.test(ua)) return /Chrome/.test(ua) ? 'Chrome Android' : 'Android browser';
+    if (/Edg\//.test(ua)) return 'Edge';
+    if (/Chrome\//.test(ua)) return 'Chrome';
+    if (/Firefox\//.test(ua)) return 'Firefox';
+    if (/Safari\//.test(ua)) return 'Safari';
+    return 'other';
+  }
+  function isStandalone() {
+    try {
+      if (window.navigator.standalone === true) return true;
+      return !!(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    } catch (e) { return false; }
+  }
+  // Everything the note carries about WHERE the user was when they wrote it.
+  // Deliberately excludes state.geo and anything derived from it — no location, ever.
+  function feedbackContext() {
+    var bits = [APP_VERSION];
+    bits.push(state.currentTab === 'grid' ? 'GRID ' + (state.day || '?') : 'NOW');
+    bits.push('zones: ' + zoneFilterSummary().plain);
+    if (state.currentTab === 'grid') bits.push('sort: ' + state.gridSort);
+    bits.push(state.priority === 'food' ? 'Food-first' : 'Drink-first');
+    var override = new URLSearchParams(location.search).get('now');
+    if (override) bits.push('?now=' + override);
+    bits.push('card: ' + (state.lastExpanded || 'none'));
+    bits.push('vw ' + window.innerWidth + 'px');
+    bits.push('standalone: ' + (isStandalone() ? 'yes' : 'no'));
+    bits.push(uaFamily());
+    if (state.fbWho === 'relayed') bits.push('relayed: someone told me');
+    return bits.join(' \u00b7 ');
+  }
+  function currentFrom() {
+    var el = document.getElementById('fb-from');
+    return ((el && el.value) || '').trim();
+  }
+  function setFbStatus(msg) { document.getElementById('fb-status').textContent = msg; }
+
+  function prefillUrl(note) {
+    var text = note ? note.text : ((document.getElementById('fb-note') || {}).value || '');
+    var ctx = note ? note.context : feedbackContext();
+    return FORM_VIEW_URL + '?usp=pp_url' +
+      '&' + FIELD_NOTE + '=' + encodeURIComponent(text) +
+      '&' + FIELD_FROM + '=' + encodeURIComponent((note ? note.from : currentFrom()) || 'anonymous') +
+      '&' + FIELD_CONTEXT + '=' + encodeURIComponent(ctx);
+  }
+
+  function renderFeedback() {
+    var pendingEl = document.getElementById('fb-pending');
+    var rows = state.fbSent.map(function (n) { return noteRowHtml(n, true); })
+      .concat(state.fbNotes.map(function (n) { return noteRowHtml(n, false); }));
+    pendingEl.innerHTML = rows.join('');
+    var countEl = document.getElementById('fb-count');
+    countEl.textContent = 'Notes: ' + state.fbNotes.length;
+    countEl.hidden = state.fbNotes.length === 0;
+    document.getElementById('fb-send').disabled = state.fbNotes.length === 0;
+    document.getElementById('fb-open').href = prefillUrl(state.fbNotes[0] || null);
+    document.getElementById('fb-ctx').textContent = feedbackContext();
+    Array.prototype.forEach.call(document.querySelectorAll('.fb-who .pill'), function (b) {
+      var on = b.getAttribute('data-who') === state.fbWho;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function noteRowHtml(n, sent) {
+    return '<li' + (sent ? ' class="sent"' : '') + '>' +
+      '<span class="fb-text">' + escapeHtml(n.text) +
+        '<span class="fb-when">' + escapeHtml(n.when + (n.who === 'relayed' ? ' \u00b7 someone told me' : '') +
+          (n.from ? ' \u00b7 ' + n.from : '')) + (sent ? ' \u00b7 sent' : '') + '</span>' +
+      '</span>' +
+      (sent ? '' : '<button type="button" class="fb-del" data-del="' + escapeHtml(n.id) +
+        '" aria-label="Delete this note">\u00d7</button>') +
+      '</li>';
+  }
+
+  function addNote() {
+    var ta = document.getElementById('fb-note');
+    var text = (ta.value || '').trim();
+    if (!text) { setFbStatus('Type something first.'); ta.focus(); return; }
+    var when = localStamp();
+    state.fbNotes.push({
+      id: String(Date.now()) + '-' + state.fbNotes.length,
+      text: text, from: currentFrom(), who: state.fbWho, when: when,
+      context: feedbackContext() + ' \u00b7 noted ' + when,
+    });
+    ta.value = '';
+    lsSet(LS_DRAFT, '');
+    saveNotes();
+    renderFeedback();
+    setFbStatus(state.fbNotes.length + ' note' + (state.fbNotes.length === 1 ? '' : 's') + ' ready \u2014 tap Send all.');
+  }
+
+  function postNote(note) {
+    var fd = new FormData();
+    fd.append(FIELD_NOTE, note.text);
+    fd.append(FIELD_FROM, note.from || 'anonymous');
+    fd.append(FIELD_CONTEXT, note.context);
+    // no-cors: the response is opaque (status 0) by design. A resolved promise
+    // means the request left the device, NOT that Google accepted it — which is
+    // why the confirmation below says "probably".
+    return fetch(FORM_POST_URL, { method: 'POST', mode: 'no-cors', body: fd });
+  }
+
+  var undoTimer = null;
+  function sendAll() {
+    if (!state.fbNotes.length) { setFbStatus('Nothing to send yet.'); return; }
+    var btn = document.getElementById('fb-send');
+    var notes = state.fbNotes.slice();
+    btn.disabled = true;
+    setFbStatus('Sending\u2026');
+    var attempt;
+    try { attempt = Promise.all(notes.map(postNote)); }
+    catch (e) { attempt = Promise.reject(e); }
+    attempt.then(function () {
+      state.fbSent = notes;
+      state.fbNotes = [];
+      saveNotes();
+      renderFeedback();
+      setFbStatus('Sent (probably \u2014 the page cannot see Google\u2019s answer). Clearing in 3s.');
+      showUndo();
+    }).catch(function () {
+      btn.disabled = false;
+      setFbStatus('Kept on this phone \u2014 try again later.');
+    });
+  }
+  function showUndo() {
+    var row = document.createElement('button');
+    row.type = 'button';
+    row.className = 'fb-btn';
+    row.id = 'fb-undo';
+    row.textContent = 'Undo';
+    document.getElementById('fb-status').appendChild(document.createTextNode(' '));
+    document.getElementById('fb-status').appendChild(row);
+    row.addEventListener('click', function () {
+      if (undoTimer) { clearTimeout(undoTimer); undoTimer = null; }
+      state.fbNotes = state.fbSent.concat(state.fbNotes);
+      state.fbSent = [];
+      saveNotes();
+      renderFeedback();
+      setFbStatus('Kept in the list here \u2014 the rows were already sent, so Send all would send them twice.');
+    });
+    undoTimer = setTimeout(function () {
+      undoTimer = null;
+      state.fbSent = [];
+      renderFeedback();
+      setFbStatus('Sent (probably \u2014 the page cannot see Google\u2019s answer). Thank you.');
+    }, UNDO_MS);
+  }
+
+  function wireFeedback() {
+    var ta = document.getElementById('fb-note');
+    var from = document.getElementById('fb-from');
+    ta.value = lsGet(LS_DRAFT, '');
+    from.value = lsGet(LS_FROM, '');
+    ta.addEventListener('input', function () { lsSet(LS_DRAFT, ta.value); });
+    from.addEventListener('input', function () { lsSet(LS_FROM, from.value); renderFeedback(); });
+    document.getElementById('fb-add').addEventListener('click', addNote);
+    document.getElementById('fb-send').addEventListener('click', sendAll);
+    document.getElementById('fb-open').addEventListener('click', function () {
+      this.href = prefillUrl(state.fbNotes[0] || null);
+    });
+    document.getElementById('fb-pending').addEventListener('click', function (e) {
+      var id = e.target.getAttribute && e.target.getAttribute('data-del');
+      if (!id) return;
+      state.fbNotes = state.fbNotes.filter(function (n) { return n.id !== id; });
+      saveNotes();
+      renderFeedback();
+      setFbStatus('Note deleted.');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.fb-who .pill'), function (b) {
+      b.addEventListener('click', function () {
+        state.fbWho = b.getAttribute('data-who') === 'relayed' ? 'relayed' : 'me';
+        lsSet(LS_WHO, state.fbWho);
+        renderFeedback();
+      });
+    });
+    document.getElementById('feedback').addEventListener('toggle', function () {
+      if (this.open) renderFeedback();
+    });
+    document.getElementById('hdr-fb').addEventListener('click', function (e) {
+      e.preventDefault();
+      var d = document.getElementById('feedback');
+      d.open = true;
+      renderFeedback();
+      d.scrollIntoView({ block: 'center' });
+      document.getElementById('fb-note').focus();
+    });
+    renderFeedback();
+  }
+
+  // ---------- v1.5 C3: "Surprise me" ----------
+  function buildSurpriseCandidates() {
+    var out = [];
+    filteredVenues().forEach(function (venue) {
+      venue.windows.forEach(function (win) {
+        if (L.isActive(venue, win, state.now)) {
+          out.push({ venue: venue, win: win, tier: 'live', startAbs: 0, day: state.now.dayOfWeek });
+        } else if (L.startsWithin(venue, win, state.now, 120, { excludeAllDay: true })) {
+          out.push({ venue: venue, win: win, tier: 'soon', day: state.now.dayOfWeek,
+            startAbs: L.minutesUntilNextStart(venue, win, state.now) });
+        }
+      });
+      // The last-resort tier: this venue's own next real happy hour, whenever it is.
+      // pickSurprise only reaches it when nothing is live or starting soon, and then
+      // narrows to the single earliest start across the whole filtered set.
+      var best = L.nextStart(venue, state.now, { excludeAllDay: true });
+      if (best) out.push({ venue: venue, win: best.window, tier: 'later',
+        startAbs: best.minutesFromNow, day: best.day });
+    });
+    return out;
+  }
+  function rollSurprise() {
+    var res = L.pickSurprise(buildSurpriseCandidates(), Math.random, { prefer: state.priority });
+    state.surprise = res;
+    renderNow();
+    if (state.currentTab !== 'now') showTab('now');
+    var el = document.querySelector('.surprise');
+    if (el) el.scrollIntoView({ block: 'nearest' });
+  }
+  function surpriseDealLabel(win) {
+    var want = state.priority === 'food' ? 'food' : 'drink';
+    var deals = win.deals || [];
+    var chosen = null;
+    for (var i = 0; i < deals.length; i++) { if (deals[i].type === want) { chosen = deals[i]; break; } }
+    if (!chosen && deals.length) chosen = deals[0];
+    if (!chosen) return '';
+    // One LINE, per C3 — several deal descriptions in the data are whole paragraphs
+    // (Saffire's runs 253 characters). The full text is one tap away on the card below.
+    var desc = clipToOneLine(chosen.desc, 58);
+    // Some descs already carry the price ("...all $9"); don't print it twice.
+    var showPrice = chosen.price && chosen.desc.indexOf(chosen.price) === -1;
+    return desc + (showPrice ? ' ' + chosen.price : '');
+  }
+  function clipToOneLine(text, max) {
+    text = String(text).replace(/\s+/g, ' ').trim();
+    if (text.length <= max) return text;
+    var cut = text.slice(0, max);
+    var space = cut.lastIndexOf(' ');
+    if (space > max * 0.6) cut = cut.slice(0, space);
+    return cut.replace(/[\s,;:(\-]+$/, '') + '\u2026';
+  }
+  function surpriseHtml() {
+    var res = state.surprise;
+    if (!res) return '';
+    if (!res.pick) {
+      return '<div class="surprise"><div class="surprise-head">\ud83c\udfb2 Surprise me</div>' +
+        '<div class="surprise-line">Nothing to roll in this filter.</div>' +
+        '<div class="surprise-sub">Select more zones and try again.</div>' +
+        '<div class="surprise-actions"><button type="button" class="fb-btn" id="surprise-close">Close</button></div></div>';
+    }
+    var v = res.pick.venue, w = res.pick.win;
+    var why, status;
+    if (res.tier === 'live') {
+      why = 'live now';
+      status = 'live until ' + fmtHM(resolveDisplayEnd(v, w, state.now.dayOfWeek));
+    } else if (res.tier === 'soon') {
+      why = 'nothing live \u2014 starting soon';
+      status = 'starts in ' + res.pick.startAbs + 'm';
+    } else {
+      var today = res.pick.day === state.now.dayOfWeek;
+      why = today ? 'nothing live or starting soon \u2014 tonight\u2019s earliest'
+                  : 'nothing left today \u2014 next up ' + DAY_FULL[res.pick.day];
+      status = (today ? 'tonight\u2019s earliest, starts ' : DAY_FULL[res.pick.day] + ', starts ') + fmtHM(w.start);
+    }
+    var deal = surpriseDealLabel(w);
+    var line = escapeHtml(v.name) + (deal ? ' \u2014 ' + escapeHtml(deal) : '') +
+      ', ' + escapeHtml(status) + ', ' + escapeHtml(v.neighborhood || v.city);
+    return '<div class="surprise">' +
+      '<div class="surprise-head"><span class="tier">\ud83c\udfb2 Surprise me</span><span class="why">' + escapeHtml(why) + '</span>' +
+        '<button type="button" class="surprise-dismiss" id="surprise-close" aria-label="Dismiss">\u00d7</button></div>' +
+      '<div class="surprise-line">' + line + '</div>' +
+      '<div class="surprise-sub">' + escapeHtml(res.poolSize === 1 ? 'the only candidate in this filter'
+        : 'one of ' + res.poolSize + ' candidates') + '</div>' +
+      '<div class="surprise-actions">' + cardActionsHtml(v, w) +
+        '<button type="button" class="fb-btn" id="surprise-roll">Roll again</button></div>' +
+      '</div>';
+  }
+
+  // ---------- v1.5 C2: the collapsed zone summary ----------
+  // Shared by the phone summary line and the feedback context line, so the two can
+  // never describe the filter differently.
+  function zoneFilterSummary() {
+    var allKeys = L.hoodKeys();
+    var selectedZones = L.ZONES.filter(function (z) {
+      return z.hoods.some(function (h) { return state.hoodSelected.has(h); });
+    });
+    var filtered = state.hoodSelected.size !== allKeys.length;
+    var labels = selectedZones.map(function (z) { return L.ZONE_MAP_LABELS[z.key] || z.label; });
+    var plain;
+    if (!filtered) plain = 'all';
+    else if (!labels.length) plain = 'none';
+    else plain = labels.slice(0, 2).join(', ') + (labels.length > 2 ? ' +' + (labels.length - 2) : '');
+    return { filtered: filtered, zoneCount: selectedZones.length, labels: labels, plain: plain };
+  }
+  function renderZoneSummary() {
+    var sum = zoneFilterSummary();
+    document.getElementById('zone-summary').innerHTML =
+      '<div class="pill zone-summary-btn" id="zone-summary-btn" role="button" tabindex="0"' +
+        ' aria-expanded="' + (state.zonesOpen ? 'true' : 'false') + '" aria-controls="zone-row">' +
+        'Zones: <span class="zs-names">' + escapeHtml(sum.plain === 'all' ? 'All' : (sum.plain === 'none' ? 'None' : sum.plain)) + '</span>' +
+        ' \u00b7 ' + (state.zonesOpen ? 'done' : 'edit') + '</div>' +
+      '<button type="button" class="pill" id="map-toggle-sm" aria-controls="sidebar">Map</button>';
+    document.getElementById('zone-toolbar').classList.toggle('open', state.zonesOpen);
+  }
+  function toggleZonesOpen() {
+    state.zonesOpen = !state.zonesOpen;
+    renderZoneSummary();
+    updateStickyOffsets();
+  }
 
   // ---------- geolocation ----------
   function requestGeo() {
@@ -1168,19 +1781,43 @@
     document.getElementById('tab-grid').classList.toggle('active', tab === 'grid');
     document.getElementById('view-now').style.display = tab === 'now' ? '' : 'none';
     document.getElementById('view-grid').style.display = tab === 'grid' ? '' : 'none';
+    document.getElementById('btn-surprise').style.display = tab === 'now' ? '' : 'none';
     if (tab === 'grid') { updateStickyOffsets(); renderGrid(); }
     renderHoodChips();
     renderMap();
   }
   document.getElementById('tab-now').addEventListener('click', function () { showTab('now'); });
   document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); });
+  document.getElementById('btn-surprise').addEventListener('click', rollSurprise);
+  // The hero card is re-rendered on every roll, so its two buttons are delegated
+  // off the stable NOW container. Capture phase, because the NOW container's own
+  // card-toggle handler would otherwise see the click first.
+  document.getElementById('view-now').addEventListener('click', function (e) {
+    if (e.target.closest('#surprise-roll')) { e.stopPropagation(); rollSurprise(); return; }
+    if (e.target.closest('#surprise-close')) { e.stopPropagation(); state.surprise = null; renderNow(); }
+  }, true);
+  document.getElementById('zone-summary').addEventListener('click', function (e) {
+    var mapBtn = e.target.closest('#map-toggle-sm');
+    if (mapBtn) {
+      var open = document.getElementById('sidebar').classList.toggle('open');
+      mapBtn.classList.toggle('on', open);
+      mapBtn.setAttribute('aria-pressed', open ? 'true' : 'false');
+      return;
+    }
+    if (e.target.closest('#zone-summary-btn')) toggleZonesOpen();
+  });
+  document.getElementById('zone-summary').addEventListener('keydown', function (e) {
+    if (!isEnterOrSpace(e) || !e.target.closest('#zone-summary-btn')) return;
+    e.preventDefault();
+    toggleZonesOpen();
+  });
   document.getElementById('btn-food').addEventListener('click', function () { setPriority('food'); });
   document.getElementById('btn-drink').addEventListener('click', function () { setPriority('drink'); });
   function setPriority(p) {
     state.priority = p;
     document.getElementById('btn-food').classList.toggle('on', p === 'food');
     document.getElementById('btn-drink').classList.toggle('on', p === 'drink');
-    try { localStorage.setItem('hhradar-priority', p); } catch (e) { /* per-viewer convenience only */ }
+    lsSet('hhradar-priority', p);
     renderNow();
     renderGridIfVisible();
   }
@@ -1197,7 +1834,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json').then(function (r) {
+  fetch('venues.json?v=1.5').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
@@ -1216,6 +1853,8 @@
       escapeHtml(APP_VERSION) + ' · <a href="README.md">README</a>';
 
     computeHoodTotals();
+    renderZoneSummary();
+    wireFeedback();
     renderDaySelect();
     renderSortSelect();
     renderNow();

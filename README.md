@@ -9,6 +9,10 @@ Data is pulled from inKind and researched by hand, then **baked into venues.json
 committed** — the published page never calls inKind or any other site at runtime.
 Your phone's clock and GPS are the only inputs; GPS coordinates never leave the device.
 
+One deliberate exception since v1.5: tapping **Send all** in the feedback box POSTs your
+note to a Google Form (see *Feedback inbox* below). Nothing else on the page ever makes a
+network call beyond its own three files.
+
 v1 covers: the 35 inKind partners in the Nashville metro that inKind's own map API
 flags `happy_hour: true`, plus a researched sweep of the other ~101 unflagged inKind
 metro rows (inKind's flag is discovery, not ground truth — see `CHANGELOG.md` for the
@@ -26,6 +30,31 @@ count actually added). v2 (parked) would fold in non-inKind aggregator listings.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
   generator script. Read-only history, not used at runtime.
+
+## Feedback inbox (v1.5)
+
+The page's "Feedback / ideas" box (bottom of the page, plus a link in the header) is a
+published Google Form used as a dumb inbox. Anyone can send a note — no Google account, no
+GitHub account, no sign-in of any kind. Notes are held in `localStorage` until the user taps
+**Send all**, which POSTs each one to the Form's `formResponse` endpoint with
+`fetch(url, { method: 'POST', mode: 'no-cors', body: FormData })`.
+
+- Form (public, no sign-in, no email collection):
+  `https://docs.google.com/forms/d/e/1FAIpQLSd8agMFwn3sKsTHR3q5jn9oUyn72UTeHBBZDFWd9zmTlBe83Q/viewform`
+- Fields, hard-coded in `index.html`: `entry.1197018871` Note · `entry.1201373577` From ·
+  `entry.432176984` Context. **These ids change if the Form is edited** — re-read them from
+  the live viewform's `FB_PUBLIC_LOAD_DATA_` after any edit, or Send all quietly stops
+  landing rows (the `no-cors` response is opaque, so the page cannot detect the failure).
+- Responses land in the private Sheet **"hh-radar feedback inbox"**
+  `https://docs.google.com/spreadsheets/d/1k1sabNdi95VKwQoLj8E6VAEoqeALABE3CgblgnpsykQ/edit`
+  (tab "Form Responses 1"; columns Timestamp · Note · From · Context; Central time).
+  The Sheet stays **private — no link-sharing**. The read path is the Drive connector, from
+  the thinking thread; there is deliberately no CSV-export tooling in this repo. A Code
+  session that needs the notes gets them pasted in.
+- Each note carries an auto-generated context line: app version, view (NOW, or GRID + day),
+  zone filter, sort, Food/Drink mode, any `?now=` override, the last card the user expanded,
+  viewport width, standalone (home-screen) yes/no and a coarse browser family. **Never a
+  location** — `state.geo` is not read by the feedback code at all.
 
 ## Schema (frozen for v1)
 

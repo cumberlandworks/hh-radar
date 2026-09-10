@@ -380,21 +380,40 @@
   // Approximate advance widths used by both the renderer's layout assumptions and
   // the label-overlap test (the block's "approximate 6px/char").
   var ZONE_LABEL_FONT_PX = 11, ZONE_LABEL_CHAR_W = 6;
-  var ZONE_SUB_FONT_PX = 9, ZONE_SUB_LINE_GAP = 10;
+  var ZONE_SUB_FONT_PX = 9, ZONE_SUB_LINE_GAP = 10, ZONE_SUB_CHAR_W = 5;
+  // Worst case second line: "NN today" / "NN live" -> 8 characters.
+  var ZONE_SUB_MAX_CHARS = 8;
 
   // The rendered label block for one zone, in view space: the name line plus the
-  // count line beneath it. The name is always the wider of the two, so the box is
-  // sized from the name.
+  // count line beneath it. v1.5 C5 fixes a modelling bug here — the box used to be
+  // sized from the NAME alone, but the count line is often the wider of the two
+  // ("Gulch" measures 32.2 units, "15 today" measures 39.0), so the old box
+  // understated the footprint of every short-named zone and the overlap test could
+  // not see the Gulch/Downtown crowding at all.
   function zoneLabelBox(zoneKey) {
     var a = ZONE_LABEL_ANCHORS[zoneKey];
     if (!a) return null;
     var xy = projectToView(a[0], a[1]);
-    var w = (ZONE_MAP_LABELS[zoneKey] || zoneKey).length * ZONE_LABEL_CHAR_W;
+    var nameW = (ZONE_MAP_LABELS[zoneKey] || zoneKey).length * ZONE_LABEL_CHAR_W;
+    var subW = ZONE_SUB_MAX_CHARS * ZONE_SUB_CHAR_W;
+    var w = Math.max(nameW, subW);
     return {
       zone: zoneKey,
       x: xy[0] - w / 2, y: xy[1] - ZONE_LABEL_FONT_PX,
       w: w, h: ZONE_LABEL_FONT_PX + ZONE_SUB_LINE_GAP,
+      nameW: nameW, subW: subW,
     };
+  }
+
+  // Signed clearance between two label blocks: positive = the gap between them on
+  // whichever axis separates them; negative = they genuinely overlap (the depth of
+  // the smaller overlap). Overlapping on one axis alone is fine — that is what the
+  // Gulch/Downtown pair does, 0.9 units of horizontal overlap 9.7 units apart.
+  function labelBlockClearance(a, b) {
+    var dx = Math.max(b.x - (a.x + a.w), a.x - (b.x + b.w));
+    var dy = Math.max(b.y - (a.y + a.h), a.y - (b.y + b.h));
+    if (dx >= 0 || dy >= 0) return Math.max(dx, dy);
+    return Math.max(dx, dy); // both negative -> real overlap, closest to 0 is the depth
   }
   function zoneLabelBoxes() {
     var out = [];
@@ -422,7 +441,7 @@
     // labels interleave along this seam, so no straight boundary can split them.
     downtown: [
       [36.1735, -86.7830],
-      [36.1735, -86.7737],
+      [36.1735, -86.7745],
       [36.1620, -86.7700],
       [36.1560, -86.7640],
       [36.1490, -86.7600],
@@ -452,22 +471,28 @@
     // Richland Creek (lon -86.815) at the west.
     north: [
       [36.2400, -86.8150],
-      [36.2400, -86.7550],
-      [36.2150, -86.7620],
-      [36.1900, -86.7620],
-      [36.1800, -86.7690],
-      [36.1735, -86.7737],
+      [36.2400, -86.7558],
+      [36.2150, -86.7628],
+      [36.1900, -86.7628],
+      [36.1800, -86.7698],
+      [36.1735, -86.7745],
       [36.1735, -86.7830],
       [36.1655, -86.7860],
       [36.1645, -86.8150],
     ],
     // East Nashville: everything east of the Cumberland, out to Opry Mills.
+    // v1.5 C5: north of Downtown (lat >= 36.1735) the western edge is now the
+    // RIVER polyline vertex-for-vertex, not a line ~0.0008 lon east of it. The
+    // old offset left the river stroke drawn just inside Germantown instead of
+    // on the seam (measured 1.22 view units on the 320-unit canvas, ~1.3 CSS px
+    // at the 390px render). `north` and `downtown` carry the same five vertices
+    // so all three regions still abut exactly, with no sliver between them.
     east: [
-      [36.2400, -86.7550],
-      [36.2150, -86.7620],
-      [36.1900, -86.7620],
-      [36.1800, -86.7690],
-      [36.1735, -86.7737],
+      [36.2400, -86.7558],
+      [36.2150, -86.7628],
+      [36.1900, -86.7628],
+      [36.1800, -86.7698],
+      [36.1735, -86.7745],
       [36.1620, -86.7700],
       [36.1560, -86.7640],
       [36.1490, -86.7600],
@@ -506,7 +531,11 @@
   // enough that its centroid lands somewhere unhelpful.
   var ZONE_LABEL_ANCHORS = {
     downtown: [36.1610, -86.7745],
-    gulch: [36.1440, -86.8060],
+    // v1.5 C5: the Gulch block sat 2.5 view units from Downtown's name line and
+    // its wider second line ("15 today") ran 0.9 units under Downtown's box.
+    // Pulled west/south into the wide part of the Gulch polygon; the clearance
+    // test below (labelBlockClearance) now enforces >= 4 units on every pair.
+    gulch: [36.1415, -86.8075],
     north: [36.1950, -86.7900],
     east: [36.1750, -86.7150],
     south: [36.1150, -86.7800],
@@ -734,6 +763,93 @@
     return false;
   }
 
+  function windowHasDrink(win) {
+    for (var i = 0; i < win.deals.length; i++) {
+      if (win.deals[i].type === 'drink') return true;
+    }
+    return false;
+  }
+
+  // ---- v1.5 C4: day coverage, the three numbers under the Day Grid ----
+  // A venue "has something on DAY" iff at least one of its windows resolves to an
+  // interval that STARTS on DAY (the same rule the grid itself uses to decide
+  // whether to draw a row — see index.html#dayIntervalsForVenue), so the count and
+  // the rows on screen can never disagree.
+  function hasIntervalOn(venue, day) {
+    for (var i = 0; i < venue.windows.length; i++) {
+      var win = venue.windows[i];
+      if (win.days.indexOf(day) === -1) continue;
+      var ivs = resolveWindow(venue, win);
+      for (var j = 0; j < ivs.length; j++) {
+        if (ivs[j].day === day) return true;
+      }
+    }
+    return false;
+  }
+
+  // Splits `venues` (already zone-filtered by the caller) into the three groups the
+  // v1.5 grid footer names. They partition the list exactly: onDay + otherDays +
+  // none === venues.length, for every day. The old footer collapsed the last two
+  // into one "N venues have nothing on DAY" number, which is what made the outside
+  // reader read it as "nothing is ever available" (see CHANGELOG v1.5).
+  function dayCoverageCounts(venues, day) {
+    var onDay = 0, none = 0, otherList = [];
+    for (var i = 0; i < venues.length; i++) {
+      var v = venues[i];
+      if (!v.windows || v.windows.length === 0) { none++; continue; }
+      if (hasIntervalOn(v, day)) { onDay++; continue; }
+      var nextDay = null;
+      for (var k = 1; k <= 7; k++) {
+        var d = DAYS[(DAY_INDEX[day] + k) % 7];
+        if (hasIntervalOn(v, d)) { nextDay = d; break; }
+      }
+      otherList.push({ venue: v, nextDay: nextDay });
+    }
+    return {
+      total: venues.length,
+      onDay: onDay,
+      otherDays: otherList.length,
+      none: none,
+      otherList: otherList,
+    };
+  }
+
+  // ---- v1.5 C3: "Surprise me" ----
+  // candidates: [{ venue, win, tier, startAbs }] with tier 'live' | 'soon' | 'later'.
+  // The caller builds them from the CURRENT zone filter and clock; this function does
+  // no time math and no I/O — `rng` is injected so a fixed rng makes the pick
+  // deterministic and the tests do not depend on Math.random.
+  // Order: live now, else starting soon, else the earliest still to come today
+  // ('later', narrowed to the ties at the single earliest start — "tonight's
+  // earliest"). Inside the chosen tier, if `prefer` ('food' by default) matches any
+  // candidate, the pool narrows to those before the uniform draw, so a drink-only
+  // venue can never win while a food one is available.
+  function pickSurprise(candidates, rng, opts) {
+    opts = opts || {};
+    var prefer = opts.prefer === 'drink' ? 'drink' : 'food';
+    var tiers = ['live', 'soon', 'later'];
+    for (var i = 0; i < tiers.length; i++) {
+      var tier = tiers[i];
+      var pool = candidates.filter(function (c) { return c.tier === tier; });
+      if (!pool.length) continue;
+      if (tier === 'later') {
+        var min = Infinity;
+        pool.forEach(function (c) { if (c.startAbs < min) min = c.startAbs; });
+        pool = pool.filter(function (c) { return c.startAbs === min; });
+      }
+      var matching = pool.filter(function (c) {
+        return prefer === 'food' ? windowHasFood(c.win) : windowHasDrink(c.win);
+      });
+      if (matching.length) pool = matching;
+      var draw = typeof rng === 'function' ? rng() : 0;
+      var idx = Math.floor(draw * pool.length);
+      if (!(idx >= 0)) idx = 0;
+      if (idx >= pool.length) idx = pool.length - 1;
+      return { pick: pool[idx], tier: tier, poolSize: pool.length };
+    }
+    return null;
+  }
+
   // ---- Schema + semantic validation (shared by validate.js and in-page load guard) ----
   function validateVenues(data) {
     var errors = [];
@@ -873,5 +989,10 @@
     zoneLabelBox: zoneLabelBox,
     zoneLabelBoxes: zoneLabelBoxes,
     rectsIntersect: rectsIntersect,
+    labelBlockClearance: labelBlockClearance,
+    windowHasDrink: windowHasDrink,
+    hasIntervalOn: hasIntervalOn,
+    dayCoverageCounts: dayCoverageCounts,
+    pickSurprise: pickSurprise,
   };
 });

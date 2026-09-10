@@ -14,6 +14,8 @@ const {
   CORE_ZONE_KEYS, MAP_EXTENT, MAP_EXEMPT_HOODS, MAP_VIEW_W, MAP_VIEW_H,
   ZONE_POLYGONS, ZONE_LABEL_ANCHORS, ZONE_MAP_LABELS, RIVER, INTERSTATES,
   zoneContains, zoneLabelBoxes, rectsIntersect, projectToView,
+  labelBlockClearance, dayCoverageCounts, hasIntervalOn, pickSurprise,
+  windowHasFood, windowHasDrink,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -507,4 +509,171 @@ test('projectToView maps the extent corners onto the viewBox corners', () => {
   assert.ok(Math.abs(tl[0]) < 1e-9 && Math.abs(tl[1]) < 1e-9, 'top-left should be 0,0');
   assert.ok(Math.abs(br[0] - MAP_VIEW_W) < 1e-9, 'right edge should be MAP_VIEW_W');
   assert.ok(Math.abs(br[1] - MAP_VIEW_H) < 1e-9, 'bottom edge should be MAP_VIEW_H');
+});
+
+// ==================== v1.5 C3: pickSurprise ====================
+// A fixed rng makes every pick deterministic; nothing here touches Math.random.
+const fixedRng = (v) => () => v;
+function cand(name, tier, deals, startAbs) {
+  return {
+    venue: { id: 'ik-' + name, name: name },
+    win: win(['TUE'], '15:00', '18:00', { deals: deals }),
+    tier: tier,
+    startAbs: startAbs === undefined ? 0 : startAbs,
+  };
+}
+const FOOD = [{ type: 'food', desc: 'Gyoza', price: '$9' }];
+const DRINK = [{ type: 'drink', desc: 'Well pours', price: '$5' }];
+
+test('pickSurprise: food candidates shut drink-only ones out of the pool entirely', () => {
+  const candidates = [
+    cand('DrinkA', 'live', DRINK), cand('DrinkB', 'live', DRINK),
+    cand('FoodA', 'live', FOOD), cand('DrinkC', 'live', DRINK),
+  ];
+  // Sweep the whole rng range: every draw must land on the one food candidate.
+  for (let i = 0; i < 20; i++) {
+    const res = pickSurprise(candidates, fixedRng(i / 20), { prefer: 'food' });
+    assert.equal(res.pick.venue.name, 'FoodA', 'rng ' + (i / 20) + ' picked a drink-only venue');
+    assert.equal(res.poolSize, 1);
+  }
+});
+
+test('pickSurprise: with no food in the tier the drink-only pool is used rather than nothing', () => {
+  const res = pickSurprise([cand('DrinkA', 'live', DRINK)], fixedRng(0.5), { prefer: 'food' });
+  assert.equal(res.pick.venue.name, 'DrinkA');
+  assert.equal(res.tier, 'live');
+});
+
+test('pickSurprise: prefer:drink mirrors the rule (drink pool wins over food)', () => {
+  const res = pickSurprise([cand('FoodA', 'live', FOOD), cand('DrinkA', 'live', DRINK)],
+    fixedRng(0.9), { prefer: 'drink' });
+  assert.equal(res.pick.venue.name, 'DrinkA');
+});
+
+test('pickSurprise: falls back live -> soon when nothing is live', () => {
+  const res = pickSurprise([cand('SoonA', 'soon', FOOD, 30), cand('LaterA', 'later', FOOD, 900)],
+    fixedRng(0), { prefer: 'food' });
+  assert.equal(res.tier, 'soon');
+  assert.equal(res.pick.venue.name, 'SoonA');
+});
+
+test('pickSurprise: falls back soon -> later, and "later" narrows to the earliest start only', () => {
+  const res = pickSurprise([
+    cand('Late9am', 'later', FOOD, 600),
+    cand('Earliest', 'later', FOOD, 300),
+    cand('AlsoEarliest', 'later', FOOD, 300),
+  ], fixedRng(0), { prefer: 'food' });
+  assert.equal(res.tier, 'later');
+  assert.equal(res.poolSize, 2, 'only the ties at the single earliest start are eligible');
+  assert.ok(['Earliest', 'AlsoEarliest'].includes(res.pick.venue.name));
+});
+
+test('pickSurprise: deterministic under a fixed rng, and the draw actually spreads', () => {
+  const pool = [cand('A', 'live', FOOD), cand('B', 'live', FOOD), cand('C', 'live', FOOD), cand('D', 'live', FOOD)];
+  assert.equal(pickSurprise(pool, fixedRng(0.3), {}).pick.venue.name,
+    pickSurprise(pool, fixedRng(0.3), {}).pick.venue.name);
+  assert.deepEqual(
+    [0, 0.26, 0.51, 0.76, 0.999].map((r) => pickSurprise(pool, fixedRng(r), {}).pick.venue.name),
+    ['A', 'B', 'C', 'D', 'D']);
+});
+
+test('pickSurprise: rng returning exactly 1 (or nonsense) clamps instead of returning undefined', () => {
+  const pool = [cand('A', 'live', FOOD), cand('B', 'live', FOOD)];
+  assert.equal(pickSurprise(pool, fixedRng(1), {}).pick.venue.name, 'B');
+  assert.equal(pickSurprise(pool, fixedRng(NaN), {}).pick.venue.name, 'A');
+  assert.equal(pickSurprise(pool, undefined, {}).pick.venue.name, 'A');
+});
+
+test('pickSurprise: an empty candidate list is null, not a crash', () => {
+  assert.equal(pickSurprise([], fixedRng(0.5), {}), null);
+});
+
+// ==================== v1.5 C4: the grid coverage footer ====================
+test('dayCoverageCounts: the three groups partition the roster on EVERY day', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].forEach((d) => {
+    const c = dayCoverageCounts(venues, d);
+    assert.equal(c.onDay + c.otherDays + c.none, venues.length,
+      d + ': ' + c.onDay + ' + ' + c.otherDays + ' + ' + c.none + ' != ' + venues.length);
+    assert.equal(c.otherList.length, c.otherDays);
+  });
+});
+
+test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const sun = dayCoverageCounts(venues, 'SUN');
+  assert.deepEqual({ onDay: sun.onDay, otherDays: sun.otherDays, none: sun.none },
+    { onDay: 34, otherDays: 35, none: 67 });
+  const tue = dayCoverageCounts(venues, 'TUE');
+  assert.deepEqual({ onDay: tue.onDay, otherDays: tue.otherDays, none: tue.none },
+    { onDay: 58, otherDays: 11, none: 67 });
+});
+
+test('dayCoverageCounts: "none" is exactly the verified_no_hh roster, not a day artefact', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const noWindows = venues.filter((v) => v.windows.length === 0).length;
+  ['MON', 'SUN'].forEach((d) => assert.equal(dayCoverageCounts(venues, d).none, noWindows));
+});
+
+test('dayCoverageCounts: it filters, so a zone selection changes onDay but never breaks the sum', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const east = venues.filter((v) => v.zone === 'east');
+  const c = dayCoverageCounts(east, 'SUN');
+  assert.equal(c.onDay + c.otherDays + c.none, east.length);
+  assert.ok(c.onDay < dayCoverageCounts(venues, 'SUN').onDay);
+});
+
+test('dayCoverageCounts: every venue in the otherDays list really has nothing that day and something later', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const c = dayCoverageCounts(venues, 'SUN');
+  c.otherList.forEach((o) => {
+    assert.equal(hasIntervalOn(o.venue, 'SUN'), false, o.venue.name + ' is in otherDays but has a SUN interval');
+    assert.ok(o.nextDay, o.venue.name + ': no next day resolved');
+    assert.equal(hasIntervalOn(o.venue, o.nextDay), true, o.venue.name + ': nextDay ' + o.nextDay + ' has no interval');
+  });
+});
+
+test('windowHasFood / windowHasDrink read the deal types independently', () => {
+  assert.equal(windowHasFood(win(['TUE'], '15:00', '18:00', { deals: FOOD })), true);
+  assert.equal(windowHasDrink(win(['TUE'], '15:00', '18:00', { deals: FOOD })), false);
+  assert.equal(windowHasDrink(win(['TUE'], '15:00', '18:00', { deals: DRINK })), true);
+  assert.equal(windowHasFood(win(['TUE'], '15:00', '18:00', { deals: [] })), false);
+});
+
+// ==================== v1.5 C5: map label clearance + the river seam ====================
+test('zone label blocks clear each other by >= 12 view units (sub line included)', () => {
+  const boxes = zoneLabelBoxes();
+  const pairs = [];
+  for (let i = 0; i < boxes.length; i++) {
+    for (let j = i + 1; j < boxes.length; j++) {
+      pairs.push({ p: boxes[i].zone + ' x ' + boxes[j].zone, c: labelBlockClearance(boxes[i], boxes[j]) });
+    }
+  }
+  const tight = pairs.filter((x) => x.c < 12);
+  assert.deepEqual(tight, [], 'label blocks closer than 12 units');
+});
+
+test('zoneLabelBox is sized from the WIDER of the name and count lines', () => {
+  // "Gulch" is 5 chars (30 units) but "NN today" is 8 (40) — the v1.4 model used
+  // the name alone and so under-measured every short-named zone.
+  const g = zoneLabelBoxes().find((b) => b.zone === 'gulch');
+  assert.equal(g.nameW, 30);
+  assert.equal(g.subW, 40);
+  assert.equal(g.w, 40);
+});
+
+test('north/east seam north of Downtown sits ON the river polyline, vertex for vertex', () => {
+  const riverNorth = RIVER.filter(([lat]) => lat >= 36.1735);
+  riverNorth.forEach(([lat, lon]) => {
+    const onEast = ZONE_POLYGONS.east.some((p) => p[0] === lat && p[1] === lon);
+    const onNorth = ZONE_POLYGONS.north.some((p) => p[0] === lat && p[1] === lon);
+    assert.ok(onEast, 'east polygon is missing river vertex ' + lat + ',' + lon);
+    assert.ok(onNorth, 'north polygon is missing river vertex ' + lat + ',' + lon);
+  });
+  // and the three regions still meet at one point, so no sliver opens up
+  const triple = [36.1735, -86.7745];
+  ['east', 'north', 'downtown'].forEach((z) => {
+    assert.ok(ZONE_POLYGONS[z].some((p) => p[0] === triple[0] && p[1] === triple[1]),
+      z + ' lost the Downtown/North/East triple point');
+  });
 });
