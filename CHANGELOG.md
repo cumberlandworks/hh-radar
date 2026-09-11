@@ -1,5 +1,77 @@
 # Changelog
 
+## 2026-09-11 — BLOCK-hh-radar-fix6-20260911: v1.6 (feedback box rewritten for strangers, fix5 loose ends)
+
+TJ, 2026-09-11, verbatim:
+
+> "me / someone told me doesn't make sense for someone else to read - lets button this up and
+> get any other fixes in that are needed."
+
+And, ~04:14 CDT, on the wording:
+
+> "they may want to give feedback that they liked something"
+
+- **Feedback box, written for a stranger (C1).** The reader is now a friend of TJ's who has
+  never heard of this project, so every word had to make sense cold.
+  - The **"me / someone told me" toggle is gone.** It encoded the maintainer's relay case —
+    friends submit directly — and with it goes the `relayed:` flag on the context line.
+  - Copy: summary is **"Feedback"** (was "Feedback / ideas"); the lead line is
+    "Like something? Want something? Found something broken? Tell us — no account needed.
+    Notes stay on this phone until you send them." The textarea placeholder is
+    "What did you like, wish for, or run into?" and the name field is
+    "Your name (optional)" (was "From (optional)"). Praise, ideas and problems are invited
+    equally — the v1.5 copy ("Anything odd, missing or wrong?") only asked for complaints.
+  - **One obvious action.** **Send** is primary and does the whole job: anything typed is
+    added as a note first, then every pending note goes. **Save for later** is the secondary
+    (adds without sending). "Prefer a form? Open it" is a small text link, not a third
+    button. v1.5's separate, permanently-disabled-looking **Send all** is gone — in a
+    screenshot it read as broken, which is exactly what TJ saw.
+  - **Optional mood chips** — 👍 Liked it · 💡 Idea · 🐛 Problem — single-select, not
+    required, tapping the chosen one clears it. They prefix the note with
+    `[liked]`/`[idea]`/`[problem]` so the inbox sorts itself with no Form schema change.
+    They fit one 44px row at 375/390/430 (measured), so they stayed. The tagging rule is
+    `composeNote()` in `logic.js` — pure, and there so the tests can reach it (3 new tests).
+  - After Send: **"Sent — thank you."** with a 3-second **Undo** that cancels the clear, not
+    the POST ("Put back in the list — but they were already sent, so Send would file them
+    twice"). Offline: **"Kept on this phone — try again when you're online."**
+  - **"What gets sent with a note"** is a real disclosure sitting directly under the buttons
+    (`.fb-status:empty` collapses the row and its flex gap, so nothing floats at the bottom
+    any more), and it now says it in plain words: "the app version, which screen and day you
+    were on, your zone filter, the last place you tapped, and your screen size. **Never your
+    location.**" The live context line is shown underneath it.
+  - Textarea and name field stay at 16px (iOS zoom floor); every target in the box measures
+    >= 44px.
+- **Grid footer punctuation (C2).** The separator really was disappearing, but not for the
+  reason the block assumed — there was no missing space in the source. Two things together:
+  `details.cov-pop > summary` was `display: inline-block`, an atomic box too wide to break at
+  390px, **and** Chrome wraps a `<details>`'s children in a `::details-content` **box that
+  exists even when closed**. A block box inside an inline element splits the line, so the
+  sentence was force-broken after "…other days" and the following space collapsed at the
+  start of the new line — rendering as `other days· 67`. Fixed by making the summary
+  `display: inline` (its 44px hit box now comes from 15px of vertical padding, which on an
+  inline box grows the target without growing the line) and dropping `::details-content`
+  when closed. The two separators also carry an NBSP before the `·` so neither can orphan.
+  The footer is one flowing sentence again: 3 lines → 2 at 390px.
+- **"In n zones:" prefix (C2).** Already shipped in v1.5 and rendering correctly —
+  re-measured live before touching anything. No change. See the fix6 report.
+- **Sheet timestamps are UTC (C2).** Code cannot change a Sheet's time zone. README now says
+  so, points at the local time carried in every note's context line, and gives the manual
+  fix (File → Settings → Time zone → Central → Save).
+- **Header "Feedback" link (C2).** Already existed in v1.5 (`#hdr-fb`, top right) and already
+  opened the box, scrolled it into view and focused the textarea. Verified, not rebuilt.
+- **Mobile, measured again at 375/390/430 (C3).** Sub-44px targets: **7 → 0.** The zone-row
+  "All"/"None" pills were 40px wide (no count badge to pad them), the zone-summary pill was
+  42px tall so its stretched caret measured 44×42, and the footer's README link was a 48×14
+  target. Footer type 11.5px → 12px. Inside the feedback box, 11/11.5px text → 12px.
+  No horizontal overflow at any of the three widths (`scrollWidth` == viewport).
+  **Still under 12px, deliberately, and listed rather than changed:** the grid hour ticks
+  (10px), the grid row venue name (11px), the zone pill count badge (11px) and the hood-strip
+  zone label (11px). Each is a measured v1.5 decision — the row label comment records that
+  two 44px targets plus >= 12 characters of venue name do not fit at 375px above 11px — and
+  raising them would undo that trade, which is a redesign C3 did not ask for.
+- **v1.6** in the footer, `APP_VERSION`, and the `?v=` cache-bust on both `logic.js` and
+  `venues.json`. Tests 64 → 67; validator unchanged at 136 venues / 115 windows.
+
 ## 2026-09-10 — BLOCK-hh-radar-fix5-20260910: v1.5 (feedback for anyone, mobile pass, "Surprise me", grid footer wording)
 
 Two sources this round. TJ's asks are PRIMARY; the friend's are SECONDARY and rank second

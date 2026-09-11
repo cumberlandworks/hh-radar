@@ -937,6 +937,18 @@
     return errors;
   }
 
+  // ---------- v1.6 C1: feedback note composition ----------
+  // The optional mood chip is not a separate field on the form; it is a tag on the
+  // front of the note text, so a plain-text inbox sorts itself with no schema change.
+  // Pure and here (not in index.html) purely so it can be tested.
+  var NOTE_MOODS = ['liked', 'idea', 'problem'];
+  function composeNote(mood, text) {
+    var body = String(text == null ? '' : text).trim();
+    if (!body) return '';
+    if (NOTE_MOODS.indexOf(mood) < 0) return body;
+    return '[' + mood + '] ' + body;
+  }
+
   return {
     DAYS: DAYS,
     DAY_INDEX: DAY_INDEX,
@@ -994,5 +1006,6 @@
     hasIntervalOn: hasIntervalOn,
     dayCoverageCounts: dayCoverageCounts,
     pickSurprise: pickSurprise,
+    composeNote: composeNote,
   };
 });

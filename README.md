@@ -9,7 +9,7 @@ Data is pulled from inKind and researched by hand, then **baked into venues.json
 committed** — the published page never calls inKind or any other site at runtime.
 Your phone's clock and GPS are the only inputs; GPS coordinates never leave the device.
 
-One deliberate exception since v1.5: tapping **Send all** in the feedback box POSTs your
+One deliberate exception since v1.5: tapping **Send** in the feedback box POSTs your
 note to a Google Form (see *Feedback inbox* below). Nothing else on the page ever makes a
 network call beyond its own three files.
 
@@ -31,30 +31,47 @@ count actually added). v2 (parked) would fold in non-inKind aggregator listings.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
   generator script. Read-only history, not used at runtime.
 
-## Feedback inbox (v1.5)
+## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 
-The page's "Feedback / ideas" box (bottom of the page, plus a link in the header) is a
-published Google Form used as a dumb inbox. Anyone can send a note — no Google account, no
-GitHub account, no sign-in of any kind. Notes are held in `localStorage` until the user taps
-**Send all**, which POSTs each one to the Form's `formResponse` endpoint with
+The page's "Feedback" box (bottom of the page, plus a link in the header) is a published
+Google Form used as a dumb inbox. Anyone can send a note — no Google account, no GitHub
+account, no sign-in of any kind. Notes are held in `localStorage` until the user taps
+**Send**, which POSTs each one to the Form's `formResponse` endpoint with
 `fetch(url, { method: 'POST', mode: 'no-cors', body: FormData })`.
+
+v1.6 rewrote the box for a reader who has never heard of this project: **Send** is the one
+obvious action (it adds whatever is typed and then sends, so there is no separate "add"
+step), **Save for later** is the secondary, and "Prefer a form? Open it" is a text link
+rather than a third button. The v1.5 "me / someone told me" toggle is gone — it encoded the
+maintainer's relay case and meant nothing to anyone else — and with it the `relayed:` flag
+on the context line. Three optional chips (👍 Liked it · 💡 Idea · 🐛 Problem) prefix the
+note with `[liked]` / `[idea]` / `[problem]` so the inbox sorts itself; the tagging rule is
+`composeNote()` in `logic.js`, which is where the tests can reach it.
 
 - Form (public, no sign-in, no email collection):
   `https://docs.google.com/forms/d/e/1FAIpQLSd8agMFwn3sKsTHR3q5jn9oUyn72UTeHBBZDFWd9zmTlBe83Q/viewform`
 - Fields, hard-coded in `index.html`: `entry.1197018871` Note · `entry.1201373577` From ·
   `entry.432176984` Context. **These ids change if the Form is edited** — re-read them from
-  the live viewform's `FB_PUBLIC_LOAD_DATA_` after any edit, or Send all quietly stops
-  landing rows (the `no-cors` response is opaque, so the page cannot detect the failure).
+  the live viewform's `FB_PUBLIC_LOAD_DATA_` after any edit, or Send quietly stops landing
+  rows (the `no-cors` response is opaque, so the page cannot detect the failure — which is
+  also why "Sent — thank you." is a statement about the request leaving the device, not
+  about Google accepting it).
 - Responses land in the private Sheet **"hh-radar feedback inbox"**
   `https://docs.google.com/spreadsheets/d/1k1sabNdi95VKwQoLj8E6VAEoqeALABE3CgblgnpsykQ/edit`
-  (tab "Form Responses 1"; columns Timestamp · Note · From · Context; Central time).
+  (tab "Form Responses 1"; columns Timestamp · Note · From · Context).
+  **The Sheet's Timestamp column is UTC, not Central** — it reads about five hours ahead of
+  the note's own clock. Every note's Context line carries the local time it was written
+  (`... · noted YYYY-MM-DD HH:MM local`), so use that when the two disagree. Code cannot
+  change a Sheet's time zone; the fix is manual and belongs to the Sheet's owner:
+  File → Settings → Time zone → (GMT-06:00) Central Time → Save.
   The Sheet stays **private — no link-sharing**. The read path is the Drive connector, from
   the thinking thread; there is deliberately no CSV-export tooling in this repo. A Code
   session that needs the notes gets them pasted in.
 - Each note carries an auto-generated context line: app version, view (NOW, or GRID + day),
   zone filter, sort, Food/Drink mode, any `?now=` override, the last card the user expanded,
   viewport width, standalone (home-screen) yes/no and a coarse browser family. **Never a
-  location** — `state.geo` is not read by the feedback code at all.
+  location** — `state.geo` is not read by the feedback code at all. The box says all of this
+  in plain words under "What gets sent with a note", and shows the live line underneath it.
 
 ## Schema (frozen for v1)
 

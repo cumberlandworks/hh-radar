@@ -234,19 +234,36 @@
   .grid-expanded .card { margin: 6px 0 0; }
   .grid-expanded .card:first-child { margin-top: 0; }
 
-  footer { text-align: center; font-size: 11.5px; color: var(--text-dim); padding: 24px 16px 10px; }
-  footer a { color: var(--text-dim); }
+  /* v1.6 C3: 11.5px type and a 48x14 README link — both measured too small in the
+     mobile pass. 12px is the floor for anything a reader has to read. */
+  footer { text-align: center; font-size: 12px; color: var(--text-dim); padding: 24px 16px 10px; }
+  footer a { color: var(--text-dim); display: inline-flex; align-items: center;
+    justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; }
   #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
 
   /* ==================== v1.5 C4: grid coverage footer ==================== */
   #grid-note b { color: var(--text); }
   details.cov-pop { display: inline; }
-  /* Inline inside a sentence, so it gets its 44px hit box from vertical padding
-     that negative margin cancels visually — the footer line keeps its height. */
-  details.cov-pop > summary { display: inline-block; cursor: pointer; color: var(--drink); font-weight: 600;
+  /* v1.6 C2: this was display:inline-block, which made the summary an atomic box.
+     At 390px it could not break, so it took a whole line of its own and the two
+     "\00B7" separators orphaned at the end of one line and the start of the next
+     ("...other days" / "\00B7 67 have no...") — read as the missing space the fix6
+     block reported. display:inline lets it wrap as ordinary words; vertical padding
+     on an inline box still grows the hit target (44px) without growing the line box,
+     so no negative margin is needed to keep the footer's height. */
+  details.cov-pop > summary { display: inline; cursor: pointer; color: var(--drink); font-weight: 600;
     text-decoration: underline dotted; text-underline-offset: 2px; list-style: none;
-    min-height: 44px; padding: 13px 2px; margin: -13px 0; }
+    padding: 15px 2px; } /* 15 + 14px line box + 15 = 44px, measured at 390px */
   details.cov-pop > summary::-webkit-details-marker { display: none; }
+  /* v1.6 C2, the other half of the orphaned-separator bug: Chrome wraps a details'
+     children in a ::details-content BOX that exists even when closed. A block box
+     inside an inline element splits the line, so the closed popup was forcing a line
+     break after "...other days" no matter what the markup said — which is what ate
+     the space before the next separator. Removing the box when closed lets the whole
+     sentence flow as one paragraph. Engines without ::details-content generate no
+     such box and are unaffected; the second rule is their belt-and-braces. */
+  details.cov-pop:not([open])::details-content { display: none; }
+  details.cov-pop:not([open]) > ul.cov-list { display: none; }
   ul.cov-list { list-style: none; margin: 8px 0 2px; padding: 8px 10px; max-height: 44vh; overflow-y: auto;
     background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
   ul.cov-list li { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; font-size: 12px; }
@@ -280,7 +297,7 @@
   details.feedback > summary::-webkit-details-marker { display: none; }
   details.feedback > summary::after { content: '\25B8'; margin-left: auto; color: var(--text-dim); }
   details.feedback[open] > summary::after { content: '\25BE'; }
-  .fb-count { font-size: 11px; font-weight: 700; color: var(--amber-strong);
+  .fb-count { font-size: 12px; font-weight: 700; color: var(--amber-strong);
     border: 1px solid var(--amber); border-radius: 999px; padding: 2px 8px; }
   .fb-body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
   .fb-intro { margin: 0; font-size: 12px; color: var(--text-dim); }
@@ -289,27 +306,46 @@
     line-height: 1.35; color: var(--text); background: var(--bg); border: 1px solid var(--border);
     border-radius: 10px; padding: 10px; }
   .fb-body textarea { min-height: 92px; resize: vertical; }
-  .fb-body input[type=text] { flex: 1 1 140px; min-width: 0; width: auto; height: 44px; }
+  .fb-body input[type=text] { height: 44px; }
   .fb-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .fb-who { display: inline-flex; gap: 6px; flex: 0 0 auto; }
-  .fb-who .pill { height: 44px; min-width: 44px; }
-  .fb-btn { height: 44px; min-width: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border);
-    background: var(--panel); color: var(--text); font-family: inherit; font-size: 14px; font-weight: 700;
+  /* v1.6 C1: three optional mood chips. Single-select; they only prefix the note
+     text with [liked]/[idea]/[problem] so the inbox sorts itself. */
+  .fb-mood { display: flex; flex-wrap: wrap; gap: 6px; }
+  .fb-mood .mood { flex: 1 1 auto; min-height: 44px; padding: 0 10px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--text-dim);
+    font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+  .fb-mood .mood .mood-e { font-size: 15px; line-height: 1; }
+  .fb-mood .mood[aria-pressed=true] { background: var(--amber-bg); border-color: var(--amber);
+    color: var(--text); }
+  .fb-btn { height: 44px; min-width: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--panel); color: var(--text); font-family: inherit; font-size: 15px; font-weight: 700;
     cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
   .fb-btn.primary { background: var(--amber); color: #1a1200; border-color: var(--amber); }
   .fb-btn[disabled] { opacity: 0.45; cursor: default; }
+  /* The escape hatch is a text link, not a third button: as a button it competed
+     with Send, and a disabled-looking button is what made v1.5 read as broken. */
+  .fb-formlink { font-size: 13px; color: var(--drink); display: inline-flex; align-items: center;
+    min-height: 44px; padding: 0 2px; }
   .fb-pending { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
   .fb-pending li { display: flex; gap: 6px; align-items: center; background: var(--bg);
     border: 1px solid var(--border); border-radius: 10px; padding: 4px 4px 4px 10px; font-size: 13px; }
   .fb-pending li.sent { opacity: 0.6; border-style: dashed; }
   .fb-pending .fb-text { flex: 1 1 auto; min-width: 0; padding: 6px 0; overflow-wrap: anywhere; }
-  .fb-pending .fb-when { display: block; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .fb-pending .fb-when { display: block; font-size: 12px; color: var(--text-dim); margin-top: 2px; }
   .fb-del { flex: 0 0 44px; width: 44px; height: 44px; border: none; background: transparent;
     color: var(--text-dim); font-size: 20px; line-height: 1; cursor: pointer; border-radius: 8px; }
-  .fb-status { font-size: 12px; color: var(--text-dim); min-height: 16px; }
-  .fb-ctxwrap > summary { font-size: 11.5px; color: var(--text-dim); cursor: pointer; min-height: 44px;
+  /* :empty collapses the row AND the flex gap around it, so the "What gets sent"
+     disclosure sits directly under the buttons until there is something to say. */
+  .fb-status { font-size: 13px; color: var(--text); display: flex; flex-wrap: wrap;
+    align-items: center; gap: 8px; }
+  .fb-status:empty { display: none; }
+  .fb-status .fb-btn { height: 36px; font-size: 13px; padding: 0 12px; }
+  /* v1.6 C3: was 11.5px / 11px. Nothing a stranger has to read is under 12px now. */
+  .fb-ctxwrap > summary { font-size: 12px; color: var(--text-dim); cursor: pointer; min-height: 44px;
     display: flex; align-items: center; }
-  .fb-ctx { font-size: 11px; color: var(--text-dim); overflow-wrap: anywhere; }
+  .fb-ctx { font-size: 12px; color: var(--text-dim); overflow-wrap: anywhere; line-height: 1.45; }
+  .fb-ctx-live { margin-top: 6px; opacity: 0.85; }
 
   /* ==================== v1.5 C2: mobile pass ====================
      Everything below is measured against a 390x844 iPhone in portrait and
@@ -345,11 +381,17 @@
     .zone-toolbar.open .zone-row { margin-top: 8px; }
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
+    /* v1.6 C3: "All" and "None" carry no count badge, so 11px of padding left them
+       40px wide — measured at 390px. Everything in this row is a real target now. */
+    .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
+    .zone-summary .pill { min-height: 44px; }
     /* The caret was a 7.8x10 target inside a 30px pill. It now fills the pill's
        full height and 44px of width, eating the pill's right padding to do it. */
-    .zone-row .pill .caret, .hood-strip .pill .caret { display: inline-flex; align-items: center;
-      justify-content: center; min-width: 44px; align-self: stretch; margin: 0 -11px 0 2px;
-      padding: 0; font-size: 14px; }
+    /* v1.6 C3: the zone-summary pill was 42px tall, so its stretched caret measured
+       44x42 — the last sub-44 target in the chrome at 390px. */
+    .zone-row .pill .caret, .hood-strip .pill .caret, .zone-summary .pill .caret {
+      display: inline-flex; align-items: center; justify-content: center; min-width: 44px;
+      min-height: 44px; align-self: stretch; margin: 0 -11px 0 2px; padding: 0; font-size: 14px; }
     /* 16px of side padding here plus main's 8px left only 43.3px per day pill at
        375; 8px puts all seven back over 44. */
     .day-select, .sort-select { padding-left: 8px; padding-right: 8px; }
@@ -394,6 +436,7 @@
     .zone-toolbar:not(.open) .hood-strip { display: none; }
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
+    .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
     .zone-row .pill .caret, .hood-strip .pill .caret { display: inline-flex; align-items: center;
       justify-content: center; min-width: 44px; align-self: stretch; margin: 0 -11px 0 2px;
       padding: 0; font-size: 14px; }
@@ -455,32 +498,37 @@
   </div>
 </div>
 
-<!-- v1.5 C1: the feedback inbox. One Google Form POST, only on the user's tap —
-     the single deliberate exception to "bake, don't fetch" (see README). -->
+<!-- v1.5 C1 / v1.6 C1: the feedback inbox. One Google Form POST, only on the
+     user's tap — the single deliberate exception to "bake, don't fetch" (see README).
+     v1.6 rewrites every word of this box for a stranger: the reader is a friend of
+     TJ's who has never heard of this project, so "me / someone told me" (which
+     encoded the maintainer's relay case) is gone, there is ONE obvious action, and
+     the disclosure says in plain words what a note carries. -->
 <div class="fb-wrap">
   <details class="feedback" id="feedback">
-    <summary id="fb-summary">Feedback / ideas <span class="fb-count" id="fb-count" hidden></span></summary>
+    <summary id="fb-summary">Feedback <span class="fb-count" id="fb-count" hidden></span></summary>
     <div class="fb-body">
-      <p class="fb-intro">Anything odd, missing or wrong? No account needed — it lands in a
-        private inbox we read. Notes are kept on this phone until you send them.</p>
+      <p class="fb-intro">Like something? Want something? Found something broken? Tell us —
+        no account needed. Notes stay on this phone until you send them.</p>
       <ul class="fb-pending" id="fb-pending"></ul>
-      <textarea id="fb-note" rows="3" placeholder="What would make this better?" aria-label="Your note"></textarea>
-      <div class="fb-row">
-        <input type="text" id="fb-from" placeholder="From (optional)" aria-label="Your name, optional" autocomplete="off">
-        <div class="fb-who" role="group" aria-label="Whose feedback is this">
-          <button type="button" class="pill on" data-who="me">me</button>
-          <button type="button" class="pill" data-who="relayed">someone told me</button>
-        </div>
+      <div class="fb-mood" role="group" aria-label="What kind of note is this (optional)">
+        <button type="button" class="mood" data-mood="liked" aria-pressed="false"><span class="mood-e" aria-hidden="true">&#x1F44D;</span>Liked it</button>
+        <button type="button" class="mood" data-mood="idea" aria-pressed="false"><span class="mood-e" aria-hidden="true">&#x1F4A1;</span>Idea</button>
+        <button type="button" class="mood" data-mood="problem" aria-pressed="false"><span class="mood-e" aria-hidden="true">&#x1F41B;</span>Problem</button>
       </div>
+      <textarea id="fb-note" rows="3" placeholder="What did you like, wish for, or run into?" aria-label="Your note"></textarea>
+      <input type="text" id="fb-from" placeholder="Your name (optional)" aria-label="Your name (optional)" autocomplete="off">
       <div class="fb-row">
-        <button type="button" class="fb-btn primary" id="fb-add">Add note</button>
-        <button type="button" class="fb-btn" id="fb-send">Send all</button>
-        <a class="fb-btn" id="fb-open" href="#" target="_blank" rel="noopener">Open the form instead</a>
+        <button type="button" class="fb-btn primary" id="fb-send">Send</button>
+        <button type="button" class="fb-btn" id="fb-save">Save for later</button>
+        <a class="fb-formlink" id="fb-open" href="#" target="_blank" rel="noopener">Prefer a form? Open it</a>
       </div>
       <div class="fb-status" id="fb-status" role="status" aria-live="polite"></div>
       <details class="fb-ctxwrap"><summary>What gets sent with a note</summary>
-        <div class="fb-ctx" id="fb-ctx"></div>
-        <div class="fb-ctx" style="margin-top:6px">Never your location.</div>
+        <div class="fb-ctx">Your note, your name if you typed one, and a short line about where
+          you were: the app version, which screen and day you were on, your zone filter, the last
+          place you tapped, and your screen size. <b>Never your location.</b></div>
+        <div class="fb-ctx fb-ctx-live">Right now that line reads: <span id="fb-ctx"></span></div>
       </details>
     </div>
   </details>
@@ -493,12 +541,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.5"></script>
+<script src="logic.js?v=1.6"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.5';
+  var APP_VERSION = 'v1.6';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -510,7 +558,7 @@
   // deliberate exception to "bake, don't fetch" recorded in the README.
   // The three entry ids were re-read from the live viewform's FB_PUBLIC_LOAD_DATA_
   // on 2026-09-10 before being hard-coded here; if the form is ever edited they
-  // change and Send all silently stops landing rows, so re-read them on any change.
+  // change and Send silently stops landing rows, so re-read them on any change.
   var FORM_ID = '1FAIpQLSd8agMFwn3sKsTHR3q5jn9oUyn72UTeHBBZDFWd9zmTlBe83Q';
   var FORM_POST_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
   var FORM_VIEW_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/viewform';
@@ -518,7 +566,8 @@
   var FIELD_FROM = 'entry.1201373577';   // "From" (short answer)
   var FIELD_CONTEXT = 'entry.432176984'; // "Context" (paragraph)
   var LS_NOTES = 'hhradar-fb-notes', LS_DRAFT = 'hhradar-fb-draft';
-  var LS_FROM = 'hhradar-fb-from', LS_WHO = 'hhradar-fb-who';
+  var LS_FROM = 'hhradar-fb-from';
+  var LS_WHO_LEGACY = 'hhradar-fb-who'; // v1.5's me/relayed toggle — removed in v1.6
   var UNDO_MS = 3000;
 
   // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
@@ -571,7 +620,7 @@
     lastExpanded: null, // v1.5 C1: last card the user opened — goes in the feedback context
     fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
     fbSent: [], // notes inside the 3-second undo window after a send
-    fbWho: 'me', // 'me' | 'relayed'
+    fbMood: '', // v1.6 C1: '' | 'liked' | 'idea' | 'problem' — optional, single-select
   };
 
   // ---------- localStorage (v1.5 P5) ----------
@@ -600,7 +649,7 @@
   var restoredHoods = L.deserializeHoodSelection(lsGetJson('hhradar-hoods', null), L.hoodKeys());
   if (restoredHoods) state.hoodSelected = restoredHoods;
   state.fbNotes = sanitizeNotes(lsGetJson(LS_NOTES, []));
-  state.fbWho = lsGet(LS_WHO, 'me') === 'relayed' ? 'relayed' : 'me';
+  try { localStorage.removeItem(LS_WHO_LEGACY); } catch (e) {} // v1.6: toggle is gone
 
   function fmtHM(hm) {
     var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
@@ -1039,8 +1088,13 @@
       ? '<details class="cov-pop"><summary>' + cov.otherDays + ' have them other days</summary>' +
         '<ul class="cov-list">' + others + '</ul></details>'
       : '0 have them other days';
+    // v1.6 C2: NBSP before each "\u00b7" (regular space after it). A plain space
+    // before a separator collapses away whenever the line breaks there, which is how
+    // the middle separator ended up reading as "other days\u00b7 67". The wrap
+    // opportunity after the "\u00b7" is kept, so the line still reflows at 375px.
+    var SEP = '\u00a0\u00b7 ';
     return prefix + '<b>' + cov.onDay + ' venue' + (cov.onDay === 1 ? '' : 's') + '</b> with happy hours on ' +
-      DAY_FULL[day] + ' \u00b7 ' + otherPart + ' \u00b7 ' + cov.none + ' have no happy hour at all.' + mismatch;
+      DAY_FULL[day] + SEP + otherPart + SEP + cov.none + ' have no happy hour at all.' + mismatch;
   }
 
   // Grid uses a two-level sticky stack (app header, then day/sort tabs) ahead of
@@ -1413,7 +1467,7 @@
         id: String(n.id || Date.now()),
         text: String(n.text).slice(0, 4000),
         from: String(n.from || ''),
-        who: n.who === 'relayed' ? 'relayed' : 'me',
+        mood: ['liked', 'idea', 'problem'].indexOf(n.mood) >= 0 ? n.mood : '',
         when: String(n.when || ''),
         context: String(n.context || ''),
       };
@@ -1459,7 +1513,6 @@
     bits.push('vw ' + window.innerWidth + 'px');
     bits.push('standalone: ' + (isStandalone() ? 'yes' : 'no'));
     bits.push(uaFamily());
-    if (state.fbWho === 'relayed') bits.push('relayed: someone told me');
     return bits.join(' \u00b7 ');
   }
   function currentFrom() {
@@ -1485,41 +1538,51 @@
     var countEl = document.getElementById('fb-count');
     countEl.textContent = 'Notes: ' + state.fbNotes.length;
     countEl.hidden = state.fbNotes.length === 0;
-    document.getElementById('fb-send').disabled = state.fbNotes.length === 0;
+    // v1.6 C1: Send is never disabled. In v1.5 it sat greyed out next to "Add note"
+    // and read, in a screenshot, as a broken button; now it adds whatever is typed
+    // and sends in one tap, so there is exactly one obvious action.
     document.getElementById('fb-open').href = prefillUrl(state.fbNotes[0] || null);
     document.getElementById('fb-ctx').textContent = feedbackContext();
-    Array.prototype.forEach.call(document.querySelectorAll('.fb-who .pill'), function (b) {
-      var on = b.getAttribute('data-who') === state.fbWho;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    Array.prototype.forEach.call(document.querySelectorAll('.fb-mood .mood'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-mood') === state.fbMood ? 'true' : 'false');
     });
   }
   function noteRowHtml(n, sent) {
     return '<li' + (sent ? ' class="sent"' : '') + '>' +
       '<span class="fb-text">' + escapeHtml(n.text) +
-        '<span class="fb-when">' + escapeHtml(n.when + (n.who === 'relayed' ? ' \u00b7 someone told me' : '') +
-          (n.from ? ' \u00b7 ' + n.from : '')) + (sent ? ' \u00b7 sent' : '') + '</span>' +
+        '<span class="fb-when">' + escapeHtml(n.when + (n.from ? ' \u00b7 ' + n.from : '')) +
+          (sent ? ' \u00b7 sent' : '') + '</span>' +
       '</span>' +
       (sent ? '' : '<button type="button" class="fb-del" data-del="' + escapeHtml(n.id) +
         '" aria-label="Delete this note">\u00d7</button>') +
       '</li>';
   }
 
-  function addNote() {
+  // Returns true when a note was actually added. `quiet` is Send's path: it adds
+  // the typed text on the way through and lets sendAll own the status line.
+  function addNote(quiet) {
     var ta = document.getElementById('fb-note');
-    var text = (ta.value || '').trim();
-    if (!text) { setFbStatus('Type something first.'); ta.focus(); return; }
+    var text = L.composeNote(state.fbMood, ta.value);
+    if (!text) {
+      if (!quiet) { setFbStatus('Type something first.'); ta.focus(); }
+      return false;
+    }
     var when = localStamp();
     state.fbNotes.push({
       id: String(Date.now()) + '-' + state.fbNotes.length,
-      text: text, from: currentFrom(), who: state.fbWho, when: when,
+      text: text, from: currentFrom(), mood: state.fbMood, when: when,
       context: feedbackContext() + ' \u00b7 noted ' + when,
     });
     ta.value = '';
+    state.fbMood = '';
     lsSet(LS_DRAFT, '');
     saveNotes();
     renderFeedback();
-    setFbStatus(state.fbNotes.length + ' note' + (state.fbNotes.length === 1 ? '' : 's') + ' ready \u2014 tap Send all.');
+    if (!quiet) {
+      setFbStatus('Saved on this phone \u2014 ' + state.fbNotes.length + ' note' +
+        (state.fbNotes.length === 1 ? '' : 's') + ' waiting. Tap Send when you\u2019re ready.');
+    }
+    return true;
   }
 
   function postNote(note) {
@@ -1534,8 +1597,15 @@
   }
 
   var undoTimer = null;
+  // One tap does the whole job: anything typed becomes a note, then everything
+  // pending goes. There is no separate "add" step to discover.
   function sendAll() {
-    if (!state.fbNotes.length) { setFbStatus('Nothing to send yet.'); return; }
+    addNote(true);
+    if (!state.fbNotes.length) {
+      setFbStatus('Type something first.');
+      document.getElementById('fb-note').focus();
+      return;
+    }
     var btn = document.getElementById('fb-send');
     var notes = state.fbNotes.slice();
     btn.disabled = true;
@@ -1548,20 +1618,23 @@
       state.fbNotes = [];
       saveNotes();
       renderFeedback();
-      setFbStatus('Sent (probably \u2014 the page cannot see Google\u2019s answer). Clearing in 3s.');
+      btn.disabled = false;
+      setFbStatus('Sent \u2014 thank you.');
       showUndo();
     }).catch(function () {
       btn.disabled = false;
-      setFbStatus('Kept on this phone \u2014 try again later.');
+      setFbStatus('Kept on this phone \u2014 try again when you\u2019re online.');
     });
   }
+  // The Undo only cancels the 3-second CLEAR of the just-sent list. The POST has
+  // already left the device by the time this button exists, which is why taking it
+  // says "already sent" rather than pretending anything was recalled.
   function showUndo() {
     var row = document.createElement('button');
     row.type = 'button';
     row.className = 'fb-btn';
     row.id = 'fb-undo';
     row.textContent = 'Undo';
-    document.getElementById('fb-status').appendChild(document.createTextNode(' '));
     document.getElementById('fb-status').appendChild(row);
     row.addEventListener('click', function () {
       if (undoTimer) { clearTimeout(undoTimer); undoTimer = null; }
@@ -1569,13 +1642,13 @@
       state.fbSent = [];
       saveNotes();
       renderFeedback();
-      setFbStatus('Kept in the list here \u2014 the rows were already sent, so Send all would send them twice.');
+      setFbStatus('Put back in the list \u2014 but they were already sent, so Send would file them twice.');
     });
     undoTimer = setTimeout(function () {
       undoTimer = null;
       state.fbSent = [];
       renderFeedback();
-      setFbStatus('Sent (probably \u2014 the page cannot see Google\u2019s answer). Thank you.');
+      setFbStatus('Sent \u2014 thank you.');
     }, UNDO_MS);
   }
 
@@ -1586,7 +1659,7 @@
     from.value = lsGet(LS_FROM, '');
     ta.addEventListener('input', function () { lsSet(LS_DRAFT, ta.value); });
     from.addEventListener('input', function () { lsSet(LS_FROM, from.value); renderFeedback(); });
-    document.getElementById('fb-add').addEventListener('click', addNote);
+    document.getElementById('fb-save').addEventListener('click', function () { addNote(false); });
     document.getElementById('fb-send').addEventListener('click', sendAll);
     document.getElementById('fb-open').addEventListener('click', function () {
       this.href = prefillUrl(state.fbNotes[0] || null);
@@ -1599,10 +1672,10 @@
       renderFeedback();
       setFbStatus('Note deleted.');
     });
-    Array.prototype.forEach.call(document.querySelectorAll('.fb-who .pill'), function (b) {
+    Array.prototype.forEach.call(document.querySelectorAll('.fb-mood .mood'), function (b) {
       b.addEventListener('click', function () {
-        state.fbWho = b.getAttribute('data-who') === 'relayed' ? 'relayed' : 'me';
-        lsSet(LS_WHO, state.fbWho);
+        var m = b.getAttribute('data-mood');
+        state.fbMood = state.fbMood === m ? '' : m; // tapping the chosen chip clears it
         renderFeedback();
       });
     });
@@ -1834,7 +1907,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.5').then(function (r) {
+  fetch('venues.json?v=1.6').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

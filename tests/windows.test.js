@@ -15,7 +15,7 @@ const {
   ZONE_POLYGONS, ZONE_LABEL_ANCHORS, ZONE_MAP_LABELS, RIVER, INTERSTATES,
   zoneContains, zoneLabelBoxes, rectsIntersect, projectToView,
   labelBlockClearance, dayCoverageCounts, hasIntervalOn, pickSurprise,
-  windowHasFood, windowHasDrink,
+  windowHasFood, windowHasDrink, composeNote,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -676,4 +676,25 @@ test('north/east seam north of Downtown sits ON the river polyline, vertex for v
     assert.ok(ZONE_POLYGONS[z].some((p) => p[0] === triple[0] && p[1] === triple[1]),
       z + ' lost the Downtown/North/East triple point');
   });
+});
+
+// ---------- v1.6 C1: feedback note composition ----------
+test('composeNote tags the note with the chosen mood', () => {
+  assert.equal(composeNote('liked', 'the map is great'), '[liked] the map is great');
+  assert.equal(composeNote('idea', 'add brunch'), '[idea] add brunch');
+  assert.equal(composeNote('problem', 'East is empty'), '[problem] East is empty');
+});
+
+test('composeNote leaves the note alone when no chip is chosen', () => {
+  assert.equal(composeNote('', 'just a note'), 'just a note');
+  assert.equal(composeNote(null, 'just a note'), 'just a note');
+  // An unknown value must never reach the inbox as a tag.
+  assert.equal(composeNote('urgent', 'just a note'), 'just a note');
+});
+
+test('composeNote trims, and empty text stays empty so Send has nothing to post', () => {
+  assert.equal(composeNote('idea', '   padded   '), '[idea] padded');
+  assert.equal(composeNote('idea', '   '), '');
+  assert.equal(composeNote('idea', ''), '');
+  assert.equal(composeNote('idea', undefined), '');
 });
