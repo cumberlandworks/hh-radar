@@ -129,10 +129,24 @@ window: {
   reader's own maps app, where the real ETA lives. Walk mode is 3 mph over a 1.25 detour.
   The band table is floored so the estimate can never *fall* as the distance grows (see
   `driveEstimateMin` in logic.js).
-- The address on a card opens **Waze, Apple Maps or Google Maps** — chosen once per phone.
-  The first tap on any Directions link asks; the answer is stored in `hhradar-navapp` and
-  changed later under Settings at the foot of the page. Before a choice is made the link
-  points at Apple Maps on Apple platforms and Google Maps elsewhere.
+- The address on a card opens a maps app — chosen once per phone. The first tap on any
+  Directions control asks; the answer is stored in `hhradar-navapp` and changed later under
+  Settings at the foot of the page. Before a choice is made it points at Apple Maps on Apple
+  platforms and Google Maps elsewhere. The options are per-platform (v1.9): Android offers
+  Waze / Google Maps / Default maps app, iOS offers Waze / Apple Maps / Google Maps, and a
+  desktop browser offers Apple Maps / Google Maps / Waze web.
+- **The Directions control launches the app directly, never through its web page (v1.9).**
+  On a phone it is a `<button>` with no `href` and no `target`, and the tap calls
+  `location.assign()` on an Android `intent://` url or an iOS `scheme://` url from the same
+  page. This is not a style preference: an `https://waze.com/ul` "universal link" is a web
+  page first and a hand-off second, so v1.8 opened a tab, loaded waze.com, then switched to
+  the app — and backing out of that tab closed it and dropped the reader out of the radar.
+  An intent that resolves brings the app forward *without unloading the page*, so the radar
+  is still there, same scroll, same open card, on return. Android `intent://` carries its own
+  `S.browser_fallback_url`; `geo:` and the iOS schemes do not and fail silently, so those arm
+  a 1.2s timer (`NAV_FALLBACK_MS`) that offers a "Didn't open? Open in browser ↗" line if the
+  page is still visible — i.e. if nothing ever came forward. Desktop keeps a plain `<a>`,
+  because there is no app to launch.
 
 ## Refresh runbook (do manually twice before ever automating)
 

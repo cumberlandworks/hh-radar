@@ -1203,30 +1203,189 @@
   // ---- navigation links ----
   // TJ, 2026-09-11: "I use waze on my phone no google maps" — and a friend handed the
   // link may use either of the others, so the app asks once and remembers.
+  //
+  // v1.9 (fix9): TJ, ~05:05 CDT, verbatim — "it navigates to the waze web page before
+  // opening up the app so when I try to go back it closes the page completely and I have
+  // to reopen from the link." An HTTPS universal/app link is a WEB PAGE first: Chrome (and
+  // Safari) open a tab, load waze.com, and only then hand off, so "back" lands on a tab
+  // whose history is one entry deep and closing it drops the reader out of the radar.
+  // The fix is to launch the app DIRECTLY from the same page and never use a browser page
+  // as the vehicle. TJ, ~05:10 CDT: "i have an android, but this should work on either."
+  //
+  // navUrl therefore returns BOTH urls for a choice:
+  //   .app  — the direct launch (Android intent:// , iOS scheme://, Android geo:)
+  //   .web  — the honest https fallback, for desktop and for "didn't open?"
+  //   .builtinFallback — true when the .app url ITSELF falls back to .web without help
+  //                      (Android intent:// does, via S.browser_fallback_url). When false
+  //                      the caller must run the visibility timer to offer .web.
+  var NAV_PLATFORMS = ['android', 'ios', 'other'];
+  function detectPlatform(ua) {
+    var s = String(ua || '');
+    if (/android/i.test(s)) return 'android';
+    if (/iphone|ipad|ipod/i.test(s)) return 'ios';
+    return 'other';
+  }
+  // The canonical key registry — what may be stored in hhradar-navapp. 'geo' is
+  // Android-only ("Default maps app"): it hands the coordinates to Android's system
+  // chooser, which opens whatever the user actually has. A preference saved before
+  // v1.9 ('waze'|'apple'|'google') stays valid on every platform.
   var NAV_APPS = [
     { key: 'waze', label: 'Waze' },
     { key: 'apple', label: 'Apple Maps' },
     { key: 'google', label: 'Google Maps' },
+    { key: 'geo', label: 'Default maps app' },
   ];
+  // What the chooser offers, per platform. Apple Maps is not a thing on Android and
+  // Waze-as-an-app is not a thing on a desktop, so neither is offered where it lies.
+  var NAV_APPS_BY_PLATFORM = {
+    android: [
+      { key: 'waze', label: 'Waze' },
+      { key: 'google', label: 'Google Maps' },
+      { key: 'geo', label: 'Default maps app' },
+    ],
+    ios: [
+      { key: 'waze', label: 'Waze' },
+      { key: 'apple', label: 'Apple Maps' },
+      { key: 'google', label: 'Google Maps' },
+    ],
+    other: [
+      { key: 'apple', label: 'Apple Maps' },
+      { key: 'google', label: 'Google Maps' },
+      { key: 'waze', label: 'Waze web' },
+    ],
+  };
+  function navApps(platform) {
+    return NAV_APPS_BY_PLATFORM[platform] || NAV_APPS_BY_PLATFORM.other;
+  }
   function isNavApp(key) {
     for (var i = 0; i < NAV_APPS.length; i++) if (NAV_APPS[i].key === key) return true;
     return false;
   }
   // Six decimals is ~11cm — past any meaning for a bar's front door, but it is what
   // the data carries and truncating it would be a second, invisible rounding.
-  function navUrl(app, venue) {
-    if (!venue || venue.lat === null || venue.lat === undefined ||
-        venue.lon === null || venue.lon === undefined) return '';
-    var ll = Number(venue.lat).toFixed(6) + ',' + Number(venue.lon).toFixed(6);
+  function navWebUrl(app, ll, name) {
     if (app === 'waze') return 'https://waze.com/ul?ll=' + ll + '&navigate=yes';
-    if (app === 'google') return 'https://www.google.com/maps/dir/?api=1&destination=' + ll;
-    return 'https://maps.apple.com/?daddr=' + ll + '&q=' + encodeURIComponent(venue.name || '');
+    if (app === 'google' || app === 'geo') {
+      return 'https://www.google.com/maps/dir/?api=1&destination=' + ll;
+    }
+    return 'https://maps.apple.com/?daddr=' + ll + '&q=' + encodeURIComponent(name || '');
+  }
+  function navUrl(app, venue, platform) {
+    if (!venue || venue.lat === null || venue.lat === undefined ||
+        venue.lon === null || venue.lon === undefined) {
+      return { app: '', web: '', builtinFallback: false };
+    }
+    var ll = Number(venue.lat).toFixed(6) + ',' + Number(venue.lon).toFixed(6);
+    var name = venue.name || '';
+    var web = navWebUrl(app, ll, name);
+    // Desktop has no app to launch: the https link IS the destination.
+    if (platform !== 'android' && platform !== 'ios') {
+      return { app: web, web: web, builtinFallback: true };
+    }
+    if (platform === 'android') {
+      // Chrome's intent: syntax. An intent that resolves opens the app WITHOUT
+      // unloading this page; one that doesn't resolve goes straight to
+      // S.browser_fallback_url — no intermediate page either way, and no orphan tab.
+      if (app === 'waze') {
+        return {
+          app: 'intent://?ll=' + ll + '&navigate=yes#Intent;scheme=waze;package=com.waze' +
+            ';S.browser_fallback_url=' + encodeURIComponent(web) + ';end',
+          web: web,
+          builtinFallback: true,
+        };
+      }
+      if (app === 'google') {
+        return {
+          app: 'intent://maps.google.com/maps?daddr=' + ll + '&directionsmode=driving' +
+            '#Intent;scheme=https;package=com.google.android.apps.maps' +
+            ';S.browser_fallback_url=' + encodeURIComponent(web) + ';end',
+          web: web,
+          builtinFallback: true,
+        };
+      }
+      // 'geo:' (and any pre-v1.9 'apple' preference, which has no meaning here) goes to
+      // Android's system chooser. geo: has NO fallback parameter — if nothing handles it
+      // the tap does nothing — so the caller must run the visibility timer.
+      return {
+        app: 'geo:' + ll + '?q=' + ll + '(' + encodeURIComponent(name) + ')',
+        web: web,
+        builtinFallback: false,
+      };
+    }
+    // iOS: plain schemes from the same page. Safari shows no page and no new tab; if the
+    // app is absent nothing happens at all, hence builtinFallback:false everywhere here.
+    if (app === 'waze') return { app: 'waze://?ll=' + ll + '&navigate=yes', web: web, builtinFallback: false };
+    if (app === 'google') {
+      return { app: 'comgooglemaps://?daddr=' + ll + '&directionsmode=driving', web: web, builtinFallback: false };
+    }
+    return {
+      app: 'maps://?daddr=' + ll + '&q=' + encodeURIComponent(name),
+      web: web,
+      builtinFallback: false,
+    };
   }
   // Only the pre-choice default: the first tap on a Directions link asks outright and
   // the answer sticks, so this is what a chooser-less fallback would open.
   function defaultNavApp(ua, platform) {
     return /iPhone|iPad|iPod|Mac/i.test(String(ua || '') + ' ' + String(platform || ''))
       ? 'apple' : 'google';
+  }
+
+  // ---- v1.9 C1: the Directions control's markup ----
+  // Built here, not in index.html, so the tests can assert the thing that actually ships:
+  // on a phone it is a <button> with NO href and NO target (a target is exactly how v1.8
+  // spawned the orphan tab); on a desktop, where there is no app to launch, it stays a
+  // plain link.
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var NAV_FALLBACK_MS = 1200;
+  // The page is still visible this long after the tap => the app never came forward, so
+  // offer the browser link rather than leaving the reader with a dead button.
+  function shouldShowNavFallback(visibilityState) {
+    return visibilityState === 'visible';
+  }
+  // The timer itself, as a pure state machine over an injected environment, so the
+  // behaviour the reader actually gets is tested rather than a proxy for it (this repo
+  // has no DOM in tests, by design). Returns a cancel function; the page calls it from
+  // visibilitychange and pagehide, which is how "the app opened" reaches us.
+  function armNavFallbackTimer(env) {
+    var delay = env.delayMs == null ? NAV_FALLBACK_MS : env.delayMs;
+    var id = env.setTimeout(function () {
+      id = null;
+      if (shouldShowNavFallback(env.visibility())) env.show();
+    }, delay);
+    return function cancel() {
+      if (id !== null && id !== undefined) { env.clearTimeout(id); id = null; }
+    };
+  }
+  function navControlHtml(venue, cls, app, platform) {
+    if (!venue || !venue.address) return '';
+    var urls = navUrl(app, venue, platform);
+    if (!urls.app) return '';
+    var label = venue.address + (venue.city ? ', ' + venue.city : '');
+    var common = ' class="' + escapeHtml(cls) + '"' +
+      ' data-nav-venue="' + escapeHtml(String(venue.id)) + '"' +
+      ' aria-label="Directions to ' + escapeHtml(venue.name) + ', ' + escapeHtml(label) + '"' +
+      ' onclick="event.stopPropagation()">' +
+      '<span class="addr-text">' + escapeHtml(label) + '</span>' +
+      '<span class="addr-go">Directions ↗</span>';
+    if (platform === 'android' || platform === 'ios') {
+      return '<button type="button"' + common + '</button>';
+    }
+    return '<a href="' + escapeHtml(urls.web) + '" target="_blank" rel="noopener"' +
+      common + '</a>';
+  }
+  function navPickHtml(app, venue, platform) {
+    var urls = navUrl(app.key, venue, platform);
+    var attrs = ' class="nav-pick" data-nav-pick="' + escapeHtml(app.key) + '"';
+    if (platform === 'android' || platform === 'ios') {
+      return '<button type="button"' + attrs + '>' + escapeHtml(app.label) + '</button>';
+    }
+    return '<a' + attrs + ' href="' + escapeHtml(urls.web) + '" target="_blank" rel="noopener">' +
+      escapeHtml(app.label) + '</a>';
   }
 
   // ---------- v1.6 C1: feedback note composition ----------
@@ -1313,6 +1472,15 @@
     arrivalVerdict: arrivalVerdict,
     MAKE_MARGIN_MIN: MAKE_MARGIN_MIN,
     NAV_APPS: NAV_APPS,
+    NAV_PLATFORMS: NAV_PLATFORMS,
+    NAV_FALLBACK_MS: NAV_FALLBACK_MS,
+    navApps: navApps,
+    detectPlatform: detectPlatform,
+    shouldShowNavFallback: shouldShowNavFallback,
+    armNavFallbackTimer: armNavFallbackTimer,
+    navControlHtml: navControlHtml,
+    navPickHtml: navPickHtml,
+    escapeHtml: escapeHtml,
     isNavApp: isNavApp,
     navUrl: navUrl,
     defaultNavApp: defaultNavApp,

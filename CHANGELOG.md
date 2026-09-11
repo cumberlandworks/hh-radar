@@ -1,5 +1,96 @@
 # Changelog
 
+## 2026-09-11 — BLOCK-hh-radar-fix9-20260911: v1.9 (open the nav app directly, never via its web page)
+
+TJ, 2026-09-11 ~05:05 CDT, verbatim:
+
+> "it navigates to the waze web page before opening up the app so when I try to go back it
+> closes the page completely and I have to reopen from the link."
+
+And ~05:10 CDT, verbatim:
+
+> "i have an android, but this should work on either."
+
+**Correction of record: TJ's phone is Android (Chrome), not an iPhone.** Every earlier block
+that said "TJ's iPhone" was an author's assumption TJ never made. Both platforms are handled
+here; Android is the one that was actually measured.
+
+### The bug
+v1.8's Directions control was an `<a target="_blank">` pointing at an HTTPS universal/app
+link (`https://waze.com/ul?...`). A universal link is a **web page first and a hand-off
+second**. Chrome opens a new tab (a Custom Tab from the home-screen shell), loads waze.com,
+and only then switches to the app — so the tab TJ backs out of has one entry of history,
+closes, and takes the radar with it. iOS Safari does the same thing. The vehicle was the
+problem, not the destination.
+
+### The fix (C1)
+- **`navUrl(app, venue, platform)` now returns `{app, web, builtinFallback}`** instead of one
+  string, and the platform is detected once from the UA (`detectPlatform` → `android` | `ios`
+  | `other`).
+- **Android — Chrome `intent://` urls**, which open the app if it is installed and otherwise
+  go straight to the fallback, with no intermediate page and no orphan tab:
+  `intent://?ll=…&navigate=yes#Intent;scheme=waze;package=com.waze;S.browser_fallback_url=…;end`
+  for Waze, the equivalent against `com.google.android.apps.maps` for Google Maps, and
+  `geo:lat,lon?q=lat,lon(Name)` for "Default maps app", which hands Android's own chooser the
+  point.
+- **iOS — bare schemes** from the same page: `waze://`, `maps://`, `comgooglemaps://`.
+- **Launched with `location.assign()` from the tap handler, not a link.** An intent that
+  resolves brings the app forward *without unloading the page*: the radar is still there,
+  same scroll, same open card, when the reader comes back.
+- **The Directions control is a `<button>` on phones** — no `href`, no `target`. The `target`
+  was the orphan tab. Desktop keeps an `<a target="_blank">`, because there is no app to
+  launch there.
+- **An honest fallback where the platform gives none.** `intent://` carries its own
+  `S.browser_fallback_url`; `geo:` and the iOS schemes do not — they fail *silently*. Those
+  arm a 1.2s timer and, if the page is still visible (i.e. nothing came forward), insert a
+  "Didn't open? Open in browser ↗" line to the https url. Cleared on `visibilitychange` and
+  `pagehide`.
+- **Per-platform chooser**: Android `Waze · Google Maps · Default maps app`, iOS
+  `Waze · Apple Maps · Google Maps`, desktop `Apple Maps · Google Maps · Waze web`. The note
+  gains "Opens the app directly. If it isn't installed you'll get a browser link instead."
+  The Settings pills follow the same per-platform list. A preference saved under v1.8
+  (`waze` in TJ's case) stays valid on every platform.
+
+### One thing the block missed, found by reading the code it was changing
+The block specified the Directions control only. But the **chooser's own buttons had exactly
+the same bug**: they were `<a target="_blank">` to the HTTPS link, with the comment "this
+anchor IS the navigation". So the *first* tap — the one that answers "which app?" — would
+still have gone through waze.com and still stranded the reader in an orphan tab. Fixing the
+Directions control alone would have left the bug live for every new reader and for TJ
+himself the moment he changed apps in Settings. The chooser picks are now buttons on phones
+too, and answering the question launches the app directly (`openNav` on the answering tap).
+
+### Two smaller corrections to the block
+- The block puts the fallback timer on **iOS only**. But Android's `geo:` — which the block
+  itself introduces as "Default maps app" — has **no** `S.browser_fallback_url` and fails
+  silently, so an Android reader on that option would get a dead button. The timer is keyed
+  off `builtinFallback`, not off the platform.
+- The block's `/iphone|ipad|ipod/i` detection misses **iPadOS 13+**, which reports a desktop
+  "Macintosh" UA by default. Such an iPad is classified `other` and gets the desktop `<a>` —
+  which still works (maps.apple.com hands off), just without the direct launch. Left as the
+  block specified rather than sniffing touch points; noted rather than silently "fixed".
+
+### Verified
+- `node --test` — **107/107 passing** (95 before; 12 new covering `detectPlatform`, exact
+  intent/scheme strings per platform, the encoded `S.browser_fallback_url` round-tripping back
+  to the web url, `navApps()` per platform, the phone control carrying no `target` and no
+  `href`, the desktop control still being an `<a>`, and the fallback timer showing the line
+  when the page stays visible and not when cancelled first — fake timers, no DOM).
+- `node validate.js` — OK, 136 venues / 115 windows, 0 errors (2 pre-existing lint warnings,
+  unchanged).
+- **Measured in Android Chrome emulation** (Pixel 8 UA, 375x812): platform detected
+  `android`; all **51** Directions controls render as `<button>`, **0** carry `target`, **0**
+  carry `href`. A tap with Waze saved calls `navUrl('waze', venue, 'android')` →
+  `intent://?ll=36.161037,-86.779103&navigate=yes#Intent;scheme=waze;package=com.waze;S.browser_fallback_url=https%3A%2F%2Fwaze.com%2Ful%3Fll%3D36.161037%2C-86.779103%26navigate%3Dyes;end`
+  and then `location.assign()` — **no new tab, no waze.com page, page never left the radar**.
+  The answering tap on the chooser both stores `waze` and launches. Desktop UA still renders
+  `<a target="_blank" href="https://waze.com/ul?...">`. No console errors.
+- **What could not be measured here:** emulation cannot install Waze, so the app actually
+  coming forward — and the "back" behaviour that is the whole point — is for TJ to confirm on
+  the phone. The Browser pane also reports `visibilityState: 'hidden'` at all times, so the
+  fallback line's screenshot was taken with that one value stubbed to `'visible'` (what a real
+  phone reports when nothing opened); the code path is otherwise untouched.
+
 ## 2026-09-11 — BLOCK-hh-radar-fix8-20260911: v1.8 ("will I make it?" + tap-to-navigate)
 
 TJ, 2026-09-11 ~04:35 CDT, verbatim:

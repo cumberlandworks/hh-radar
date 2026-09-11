@@ -192,9 +192,14 @@
   .verdict .est { font-weight: 400; }
   /* The address is the one control on a card that leaves the app, so it gets the
      44px touch target the icon buttons get, at full card width. */
+  /* v1.9 C1: on a phone this is a <button>, not an <a> — a button's UA styling has to
+     be stripped back to the link it looks like, and it must fill the card width so the
+     44px target is the whole row rather than a shrink-wrapped label. */
   .card-addr, .surprise-addr { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     margin-top: 6px; min-height: 44px; padding: 4px 0; font-size: 12px;
-    color: var(--text-dim); text-decoration: none; }
+    color: var(--text-dim); text-decoration: none;
+    width: 100%; text-align: left; background: none; border: 0;
+    font-family: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; }
   .card-addr .addr-go, .surprise-addr .addr-go { color: var(--drink); font-weight: 700;
     font-size: 11px; white-space: nowrap; }
   .card-addr:active .addr-go, .surprise-addr:active .addr-go { text-decoration: underline; }
@@ -202,10 +207,15 @@
     margin: 2px 0 6px; padding: 8px; border: 1px dashed var(--border); border-radius: 10px; }
   .nav-chooser-q { font-size: 11.5px; color: var(--text-dim); width: 100%; }
   .nav-chooser-note { width: 100%; font-size: 10.5px; color: var(--text-dim); }
-  a.nav-pick { display: inline-flex; align-items: center; min-height: 44px; padding: 4px 12px;
+  /* .nav-pick, not a.nav-pick: on a phone these are buttons too (v1.9 C1). */
+  .nav-pick { display: inline-flex; align-items: center; min-height: 44px; padding: 4px 12px;
     border-radius: 999px; border: 1px solid var(--border); background: var(--panel);
-    color: var(--drink); font-size: 12px; font-weight: 700; text-decoration: none; }
-  a.nav-pick:active { background: var(--drink-bg); }
+    color: var(--drink); font-size: 12px; font-weight: 700; text-decoration: none;
+    font-family: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .nav-pick:active { background: var(--drink-bg); }
+  /* Shown only when a scheme:// launch left us on screen — see armNavFallback. */
+  .nav-fallback { margin: 2px 0 6px; font-size: 11.5px; }
+  .nav-fallback a { color: var(--drink); font-weight: 700; text-decoration: underline; }
   .settings-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
   .settings-note { font-size: 11.5px; color: var(--text-dim); margin-top: 8px; }
   .geo-relink { background: none; border: none; padding: 0; font: inherit;
@@ -611,12 +621,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.8"></script>
+<script src="logic.js?v=1.9"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.8';
+  var APP_VERSION = 'v1.9';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -639,6 +649,9 @@
   var LS_FROM = 'hhradar-fb-from';
   var LS_WHO_LEGACY = 'hhradar-fb-who'; // v1.5's me/relayed toggle — removed in v1.6
   var LS_TRAVEL = 'hhradar-travel', LS_NAVAPP = 'hhradar-navapp'; // v1.8
+  // v1.9 C1: detected once. 'android' | 'ios' | 'other' — decides whether a
+  // Directions tap launches an app directly or just opens a web map in a tab.
+  var NAV_PLATFORM = L.detectPlatform(navigator.userAgent);
   var UNDO_MS = 3000;
 
   // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
@@ -785,11 +798,9 @@
     return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) + (d.price ? ' — ' + escapeHtml(d.price) : '') + '</div>';
   }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
+  // One implementation, in logic.js, because v1.9's navControlHtml builds escaped
+  // markup there and two copies of an escaper is how one of them rots.
+  var escapeHtml = L.escapeHtml;
 
   function hasDrinkOnly(win) {
     var hasDrink = win.deals.some(function (d) { return d.type === 'drink'; });
@@ -886,18 +897,10 @@
 
   // Present on every card in every view (NOW, grid inline, Surprise). The first tap
   // is intercepted by the capture-phase chooser below when no app has been picked;
-  // stopPropagation keeps the tap from also toggling the card (fix2 C3).
+  // stopPropagation keeps the tap from also toggling the card (fix2 C3). On a phone
+  // this is a <button>, not a link — see openNav (v1.9 C1).
   function addressLinkHtml(venue, cls) {
-    if (!venue || !venue.address) return '';
-    var href = L.navUrl(navAppInUse(), venue);
-    if (!href) return '';
-    var label = venue.address + (venue.city ? ', ' + venue.city : '');
-    return '<a class="' + cls + '" href="' + escapeHtml(href) + '" target="_blank" rel="noopener"' +
-      ' data-nav-venue="' + escapeHtml(String(venue.id)) + '"' +
-      ' aria-label="Directions to ' + escapeHtml(venue.name) + ', ' + escapeHtml(label) + '"' +
-      ' onclick="event.stopPropagation()">' +
-      '<span class="addr-text">' + escapeHtml(label) + '</span>' +
-      '<span class="addr-go">Directions ↗</span></a>';
+    return L.navControlHtml(venue, cls, navAppInUse(), NAV_PLATFORM);
   }
 
   // Shared card renderer for both the NOW view and a Day-Grid row's tap-to-expand
@@ -2200,12 +2203,82 @@
     box.setAttribute('role', 'group');
     box.setAttribute('aria-label', 'Open directions in');
     box.innerHTML = '<span class="nav-chooser-q">Open directions in:</span>' +
-      L.NAV_APPS.map(function (a) {
-        return '<a class="nav-pick" data-nav-pick="' + a.key + '" href="' + escapeHtml(L.navUrl(a.key, venue)) +
-          '" target="_blank" rel="noopener">' + escapeHtml(a.label) + '</a>';
+      L.navApps(NAV_PLATFORM).map(function (a) {
+        return L.navPickHtml(a, venue, NAV_PLATFORM);
       }).join('') +
-      '<span class="nav-chooser-note">Remembered on this phone — change it under Settings.</span>';
+      '<span class="nav-chooser-note">' +
+      (NAV_PLATFORM === 'other'
+        ? 'Remembered in this browser — change it under Settings.'
+        : 'Opens the app directly. If it isn\'t installed you\'ll get a browser link ' +
+          'instead. Remembered on this phone — change it under Settings.') +
+      '</span>';
     link.parentNode.insertBefore(box, link.nextSibling);
+  }
+
+  // ==================== v1.9 C1: launch the app, never a web page ====================
+  // TJ, 2026-09-11: "it navigates to the waze web page before opening up the app so when
+  // I try to go back it closes the page completely and I have to reopen from the link."
+  // An https://waze.com/ul link is a page first and a hand-off second. Chrome opens a tab
+  // (a Custom Tab from the home-screen shell), loads waze.com, then switches to the app —
+  // and "back" out of that tab closes it, taking the radar with it. So: no target, no new
+  // tab, no page. location.assign() an intent:// (Android) or a scheme:// (iOS) from THIS
+  // page. An intent that resolves brings the app forward without unloading us; the radar
+  // is still here, same scroll, same open card, when the reader comes back.
+  var cancelNavFallback = null;
+  function clearNavFallback() {
+    if (cancelNavFallback) { cancelNavFallback(); cancelNavFallback = null; }
+  }
+  function removeNavFallbackLine() {
+    var old = document.querySelector('.nav-fallback');
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+  }
+  // Found by venue id, not by a held node reference: answering the chooser re-renders
+  // the cards, so the element that was tapped is gone by the time the timer fires.
+  function liveNavControl(venueId) {
+    var all = document.querySelectorAll('[data-nav-venue]');
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].getAttribute('data-nav-venue') === String(venueId)) return all[i];
+    }
+    return null;
+  }
+  function showNavFallbackLine(venueId, webUrl) {
+    removeNavFallbackLine();
+    var control = liveNavControl(venueId);
+    if (!control || !control.parentNode || !webUrl) return;
+    var line = document.createElement('div');
+    line.className = 'nav-fallback';
+    line.setAttribute('role', 'status');
+    line.innerHTML = '<a href="' + escapeHtml(webUrl) + '" target="_blank" rel="noopener" ' +
+      'onclick="event.stopPropagation()">Didn\'t open? Open in browser ↗</a>';
+    control.parentNode.insertBefore(line, control.nextSibling);
+  }
+  // The app coming forward hides this page; that is the only signal a scheme:// launch
+  // gives us. Still visible after NAV_FALLBACK_MS => nothing opened => offer the link.
+  function armNavFallback(venueId, webUrl) {
+    clearNavFallback();
+    cancelNavFallback = L.armNavFallbackTimer({
+      setTimeout: function (fn, ms) { return setTimeout(fn, ms); },
+      clearTimeout: function (id) { clearTimeout(id); },
+      visibility: function () { return document.visibilityState; },
+      show: function () { showNavFallbackLine(venueId, webUrl); },
+    });
+  }
+  document.addEventListener('visibilitychange', clearNavFallback);
+  window.addEventListener('pagehide', clearNavFallback);
+
+  function openNav(venue, app) {
+    var urls = L.navUrl(app, venue, NAV_PLATFORM);
+    if (!urls.app) return;
+    removeNavFallbackLine();
+    if (NAV_PLATFORM === 'other') {
+      // Desktop: there is no app to launch, so the web map in a new tab IS the answer.
+      window.open(urls.web, '_blank', 'noopener');
+      return;
+    }
+    // Android intent:// carries its own S.browser_fallback_url; iOS schemes and geo: do
+    // not, and fail silently, so those get the visibility timer.
+    if (!urls.builtinFallback) armNavFallback(venue.id, urls.web);
+    window.location.assign(urls.app);
   }
   function setNavApp(key) {
     if (!L.isNavApp(key)) return;
@@ -2215,38 +2288,63 @@
   }
   document.addEventListener('click', function (e) {
     if (!e.target.closest) return;
-    var pick = e.target.closest('a.nav-pick');
+    var pick = e.target.closest('.nav-pick');
     if (pick) {
-      // No preventDefault: this anchor IS the navigation, so the tap that answers
-      // the question also opens the app. The chooser is torn down after the click
-      // has been dispatched, never during it.
+      // The tap that answers the question also opens the app. On desktop the anchor
+      // still IS the navigation (no preventDefault); on a phone it is a button and
+      // openNav does the launching. Either way the chooser is torn down after the
+      // click has been dispatched, never during it.
       e.stopPropagation();
-      setNavApp(pick.getAttribute('data-nav-pick'));
+      var key = pick.getAttribute('data-nav-pick');
+      setNavApp(key);
+      if (NAV_PLATFORM !== 'other') {
+        var box = pick.closest('.nav-chooser');
+        var owner = box && box.previousElementSibling;
+        var v = owner && owner.getAttribute ? venueById(owner.getAttribute('data-nav-venue')) : null;
+        if (v) openNav(v, key);
+      }
       setTimeout(function () { closeNavChooser(); renderNow(); renderGridIfVisible(); }, 0);
       return;
     }
-    var link = e.target.closest('a.card-addr, a.surprise-addr');
-    if (link) {
-      if (state.navApp) return; // already answered — the href is already the right app
+    var control = e.target.closest('.card-addr, .surprise-addr');
+    if (control) {
+      if (!state.navApp) {
+        e.preventDefault();
+        e.stopPropagation();
+        openNavChooser(control);
+        return;
+      }
+      if (NAV_PLATFORM === 'other') return; // the anchor's href is already the right map
+      // Phone: a <button>, so nothing happens unless we launch it ourselves.
       e.preventDefault();
       e.stopPropagation();
-      openNavChooser(link);
+      var venue = venueById(control.getAttribute('data-nav-venue'));
+      if (venue) openNav(venue, navAppInUse());
       return;
     }
-    if (!e.target.closest('.nav-chooser')) closeNavChooser();
+    if (!e.target.closest('.nav-chooser') && !e.target.closest('.nav-fallback')) {
+      closeNavChooser();
+      removeNavFallbackLine();
+    }
   }, true);
 
   // ---------- Settings: change the navigation app after the fact ----------
   function renderNavAppSetting() {
     var row = document.getElementById('nav-app-row');
     if (!row) return;
-    row.innerHTML = L.NAV_APPS.map(function (a) {
+    // v1.9 C1: the platform's apps, not all four — Apple Maps is not installable on
+    // Android and "Default maps app" means nothing anywhere else.
+    var apps = L.navApps(NAV_PLATFORM);
+    row.innerHTML = apps.map(function (a) {
       return '<button type="button" class="pill' + (state.navApp === a.key ? ' on' : '') +
         '" data-nav-set="' + a.key + '" aria-pressed="' + (state.navApp === a.key ? 'true' : 'false') + '">' +
         escapeHtml(a.label) + '</button>';
     }).join('');
-    document.getElementById('nav-app-note').textContent = state.navApp
-      ? 'Addresses open in ' + L.NAV_APPS.filter(function (a) { return a.key === state.navApp; })[0].label + '.'
+    // A preference saved on another platform (or before v1.9) may not be in this list;
+    // name it from the full registry rather than crashing on an empty filter.
+    var chosen = L.NAV_APPS.filter(function (a) { return a.key === state.navApp; })[0];
+    document.getElementById('nav-app-note').textContent = state.navApp && chosen
+      ? 'Addresses open in ' + chosen.label + '.'
       : 'Not set yet — the first time you tap an address, this app will ask.';
   }
   document.getElementById('nav-app-row').addEventListener('click', function (e) {

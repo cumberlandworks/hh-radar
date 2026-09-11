@@ -20,6 +20,8 @@ const {
   driveEstimateMin, walkEstimateMin, travelEstimateMin, formatEtaMin,
   activeOrNextInterval, arrivalVerdict, MAKE_MARGIN_MIN,
   NAV_APPS, isNavApp, navUrl, defaultNavApp,
+  NAV_PLATFORMS, NAV_FALLBACK_MS, navApps, detectPlatform,
+  shouldShowNavFallback, armNavFallbackTimer, navControlHtml, navPickHtml,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -932,42 +934,207 @@ test('activeOrNextInterval returns the live interval, else the soonest start', (
 });
 
 // ---- navigation URLs: exact strings, 6 decimals, name URL-encoded ----
-const NAV_VENUE = { lat: 36.1770247, lon: -86.7877993, name: '312 Pizza Company' };
+// v1.9 (fix9): navUrl returns {app, web, builtinFallback} and takes a platform. The .web
+// half is what v1.8 shipped as the ONLY url — and shipping it as an <a target="_blank">
+// is the bug TJ hit: "it navigates to the waze web page before opening up the app".
+const NAV_VENUE = { id: 'v1', lat: 36.1770247, lon: -86.7877993, name: '312 Pizza Company',
+  address: '371 Monroe St', city: 'Nashville' };
 
-test('navUrl(waze) is the universal link that opens the Waze app when installed', () => {
-  assert.equal(navUrl('waze', NAV_VENUE),
-    'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes');
+test('detectPlatform: android / ios / other from the user agent', () => {
+  assert.equal(detectPlatform('Mozilla/5.0 (Linux; Android 14; Pixel 8) Chrome/128'), 'android');
+  assert.equal(detectPlatform('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)'), 'ios');
+  assert.equal(detectPlatform('Mozilla/5.0 (iPad; CPU OS 18_0 like Mac OS X)'), 'ios');
+  assert.equal(detectPlatform('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'), 'other');
+  assert.equal(detectPlatform('Mozilla/5.0 (Windows NT 10.0; Win64; x64)'), 'other');
+  assert.equal(detectPlatform(null), 'other');
+  assert.deepEqual(NAV_PLATFORMS, ['android', 'ios', 'other']);
 });
 
-test('navUrl(apple) carries the destination and the URL-encoded venue name', () => {
-  assert.equal(navUrl('apple', NAV_VENUE),
+test('navUrl(*, other): no app to launch, so .app IS the https link', () => {
+  assert.deepEqual(navUrl('waze', NAV_VENUE, 'other'), {
+    app: 'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes',
+    web: 'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes',
+    builtinFallback: true,
+  });
+  assert.equal(navUrl('apple', NAV_VENUE, 'other').web,
     'https://maps.apple.com/?daddr=36.177025,-86.787799&q=312%20Pizza%20Company');
+  assert.equal(navUrl('google', NAV_VENUE, 'other').web,
+    'https://www.google.com/maps/dir/?api=1&destination=36.177025,-86.787799');
 });
 
-test('navUrl(google) uses the documented api=1 directions form', () => {
-  assert.equal(navUrl('google', NAV_VENUE),
-    'https://www.google.com/maps/dir/?api=1&destination=36.177025,-86.787799');
+// TJ's phone. The intent: form is the whole fix — Chrome opens the app with no
+// intermediate page, and falls back without one either.
+test('navUrl(waze, android) is an intent: url with package= and an encoded fallback', () => {
+  const u = navUrl('waze', NAV_VENUE, 'android');
+  assert.equal(u.app,
+    'intent://?ll=36.177025,-86.787799&navigate=yes#Intent;scheme=waze;package=com.waze' +
+    ';S.browser_fallback_url=https%3A%2F%2Fwaze.com%2Ful%3Fll%3D36.177025%2C-86.787799%26navigate%3Dyes;end');
+  assert.equal(u.web, 'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes');
+  assert.equal(u.builtinFallback, true, 'intent: carries its own fallback');
+  assert.match(u.app, /package=com\.waze/);
+  // The fallback must be fully encoded: a raw ';' would terminate the intent block early
+  // and a raw '&' would split it, so Chrome would parse a truncated fallback url.
+  const fb = u.app.split('S.browser_fallback_url=')[1].replace(/;end$/, '');
+  assert.ok(!/[;&?]/.test(fb), 'no unencoded ; & or ? survives inside the fallback url');
+  assert.equal(decodeURIComponent(fb), u.web, 'and it decodes back to exactly the web url');
+});
+
+test('navUrl(google, android) targets the Maps package and encodes its fallback', () => {
+  const u = navUrl('google', NAV_VENUE, 'android');
+  assert.equal(u.app,
+    'intent://maps.google.com/maps?daddr=36.177025,-86.787799&directionsmode=driving' +
+    '#Intent;scheme=https;package=com.google.android.apps.maps' +
+    ';S.browser_fallback_url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D36.177025%2C-86.787799;end');
+  assert.equal(u.builtinFallback, true);
+  assert.match(u.app, /package=com\.google\.android\.apps\.maps/);
+});
+
+test('navUrl(geo, android) hands the system chooser the point — and has NO builtin fallback', () => {
+  const u = navUrl('geo', NAV_VENUE, 'android');
+  assert.equal(u.app, 'geo:36.177025,-86.787799?q=36.177025,-86.787799(312%20Pizza%20Company)');
+  assert.equal(u.web, 'https://www.google.com/maps/dir/?api=1&destination=36.177025,-86.787799');
+  assert.equal(u.builtinFallback, false, 'geo: fails silently, so the caller must time it');
+});
+
+test('navUrl(apple, android) degrades to geo: — Apple Maps is not installable there', () => {
+  assert.equal(navUrl('apple', NAV_VENUE, 'android').app, navUrl('geo', NAV_VENUE, 'android').app);
+});
+
+test('navUrl(*, ios) uses bare schemes, none of which fall back on their own', () => {
+  const waze = navUrl('waze', NAV_VENUE, 'ios');
+  assert.equal(waze.app, 'waze://?ll=36.177025,-86.787799&navigate=yes');
+  assert.equal(waze.web, 'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes');
+  assert.equal(waze.builtinFallback, false);
+  assert.equal(navUrl('apple', NAV_VENUE, 'ios').app,
+    'maps://?daddr=36.177025,-86.787799&q=312%20Pizza%20Company');
+  assert.equal(navUrl('google', NAV_VENUE, 'ios').app,
+    'comgooglemaps://?daddr=36.177025,-86.787799&directionsmode=driving');
+  assert.equal(navUrl('google', NAV_VENUE, 'ios').builtinFallback, false);
 });
 
 test('navUrl encodes names with ampersands and slashes, and falls back to Apple', () => {
   const v = { lat: 36.1, lon: -86.8, name: 'Fish & Chips / Bar' };
-  assert.equal(navUrl('apple', v),
+  assert.equal(navUrl('apple', v, 'other').web,
     'https://maps.apple.com/?daddr=36.100000,-86.800000&q=Fish%20%26%20Chips%20%2F%20Bar');
-  assert.equal(navUrl('nonsense', v), navUrl('apple', v), 'unknown key falls back to Apple Maps');
+  assert.deepEqual(navUrl('nonsense', v, 'other'), navUrl('apple', v, 'other'),
+    'unknown key falls back to Apple Maps');
+  assert.equal(navUrl('geo', v, 'android').app,
+    'geo:36.100000,-86.800000?q=36.100000,-86.800000(Fish%20%26%20Chips%20%2F%20Bar)',
+    'the name inside geo:(...) is encoded, so a & cannot split the query');
 });
 
-test('navUrl returns empty for a venue with no coordinates', () => {
-  assert.equal(navUrl('waze', { name: 'nowhere' }), '');
-  assert.equal(navUrl('waze', null), '');
-  assert.equal(navUrl('waze', { lat: 36.1, lon: null, name: 'half' }), '');
+test('navUrl returns empty urls for a venue with no coordinates, on every platform', () => {
+  for (const p of NAV_PLATFORMS) {
+    assert.deepEqual(navUrl('waze', { name: 'nowhere' }, p), { app: '', web: '', builtinFallback: false });
+    assert.deepEqual(navUrl('waze', null, p), { app: '', web: '', builtinFallback: false });
+    assert.deepEqual(navUrl('waze', { lat: 36.1, lon: null, name: 'half' }, p),
+      { app: '', web: '', builtinFallback: false });
+  }
 });
 
-test('NAV_APPS lists exactly the three offered apps, and isNavApp gates storage', () => {
-  assert.deepEqual(NAV_APPS.map((a) => a.key), ['waze', 'apple', 'google']);
-  assert.deepEqual(NAV_APPS.map((a) => a.label), ['Waze', 'Apple Maps', 'Google Maps']);
-  assert.ok(isNavApp('waze') && isNavApp('apple') && isNavApp('google'));
+test('NAV_APPS is the key registry; navApps() is what each platform offers', () => {
+  assert.deepEqual(NAV_APPS.map((a) => a.key), ['waze', 'apple', 'google', 'geo']);
+  assert.ok(isNavApp('waze') && isNavApp('apple') && isNavApp('google') && isNavApp('geo'));
   assert.equal(isNavApp('bing'), false);
   assert.equal(isNavApp(null), false);
+  assert.deepEqual(navApps('android').map((a) => a.key), ['waze', 'google', 'geo']);
+  assert.deepEqual(navApps('android').map((a) => a.label), ['Waze', 'Google Maps', 'Default maps app']);
+  assert.deepEqual(navApps('ios').map((a) => a.label), ['Waze', 'Apple Maps', 'Google Maps']);
+  assert.deepEqual(navApps('other').map((a) => a.label), ['Apple Maps', 'Google Maps', 'Waze web']);
+  assert.deepEqual(navApps('nonsense'), navApps('other'), 'unknown platform is treated as desktop');
+  // TJ already picked Waze on v1.8; that stored value must stay legal everywhere.
+  for (const p of NAV_PLATFORMS) {
+    assert.ok(navApps(p).some((a) => a.key === 'waze'), 'waze offered on ' + p);
+  }
+});
+
+// ---- v1.9 C1: the control's markup. A `target` is exactly how v1.8 spawned the tab
+// TJ could not get back out of, so the phone control must not carry one.
+test('the Directions control is a <button> on phones, with no target and no href', () => {
+  for (const p of ['android', 'ios']) {
+    const html = navControlHtml(NAV_VENUE, 'card-addr', 'waze', p);
+    assert.match(html, /^<button type="button" class="card-addr"/, p + ': is a button');
+    assert.ok(!/target=/.test(html), p + ': carries no target');
+    assert.ok(!/href=/.test(html), p + ': carries no href');
+    assert.match(html, /data-nav-venue="v1"/);
+    assert.match(html, /aria-label="Directions to 312 Pizza Company, 371 Monroe St, Nashville"/);
+    assert.match(html, /<span class="addr-go">Directions ↗<\/span><\/button>$/);
+  }
+});
+
+test('on desktop the Directions control stays an <a> to the https map', () => {
+  const html = navControlHtml(NAV_VENUE, 'surprise-addr', 'google', 'other');
+  assert.match(html, /^<a href="https:\/\/www\.google\.com\/maps\/dir\/\?api=1&amp;destination=36\.177025,-86\.787799" target="_blank" rel="noopener" class="surprise-addr"/);
+  assert.match(html, /<\/a>$/);
+});
+
+test('the Directions control is empty without an address or coordinates', () => {
+  assert.equal(navControlHtml({ id: 'x', lat: 1, lon: 2, name: 'n' }, 'card-addr', 'waze', 'android'), '');
+  assert.equal(navControlHtml({ id: 'x', address: 'somewhere', name: 'n' }, 'card-addr', 'waze', 'android'), '');
+  assert.equal(navControlHtml(null, 'card-addr', 'waze', 'android'), '');
+});
+
+test('chooser picks are buttons on phones and links on desktop', () => {
+  const waze = { key: 'waze', label: 'Waze' };
+  for (const p of ['android', 'ios']) {
+    const html = navPickHtml(waze, NAV_VENUE, p);
+    assert.equal(html, '<button type="button" class="nav-pick" data-nav-pick="waze">Waze</button>');
+    assert.ok(!/target=/.test(html), p + ': chooser pick carries no target either');
+  }
+  assert.equal(navPickHtml(waze, NAV_VENUE, 'other'),
+    '<a class="nav-pick" data-nav-pick="waze" href="https://waze.com/ul?ll=36.177025,-86.787799&amp;navigate=yes"' +
+    ' target="_blank" rel="noopener">Waze</a>');
+});
+
+// ---- v1.9 C1: the "didn't open?" fallback line ----
+test('shouldShowNavFallback: only while the page is still on screen', () => {
+  assert.equal(shouldShowNavFallback('visible'), true);
+  assert.equal(shouldShowNavFallback('hidden'), false);
+  assert.equal(shouldShowNavFallback('prerender'), false);
+  assert.equal(NAV_FALLBACK_MS, 1200);
+});
+
+test('fallback line appears when the page stays visible past the timer', (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let shown = 0;
+  armNavFallbackTimer({
+    setTimeout: (fn, ms) => setTimeout(fn, ms),
+    clearTimeout: (id) => clearTimeout(id),
+    visibility: () => 'visible',
+    show: () => { shown++; },
+  });
+  t.mock.timers.tick(NAV_FALLBACK_MS - 1);
+  assert.equal(shown, 0, 'not before 1.2s');
+  t.mock.timers.tick(1);
+  assert.equal(shown, 1, 'shown at 1.2s — nothing ever came forward');
+});
+
+test('fallback line does NOT appear when visibilitychange to hidden fires first', (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let shown = 0;
+  const cancel = armNavFallbackTimer({
+    setTimeout: (fn, ms) => setTimeout(fn, ms),
+    clearTimeout: (id) => clearTimeout(id),
+    visibility: () => 'hidden',
+    show: () => { shown++; },
+  });
+  cancel(); // what document.addEventListener('visibilitychange', clearNavFallback) does
+  t.mock.timers.tick(NAV_FALLBACK_MS * 2);
+  assert.equal(shown, 0, 'the app opened, so no dead-button line');
+  cancel(); // cancelling twice must not throw
+});
+
+test('a fallback timer that fires while hidden still shows nothing', (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let shown = 0;
+  armNavFallbackTimer({
+    setTimeout: (fn, ms) => setTimeout(fn, ms),
+    clearTimeout: (id) => clearTimeout(id),
+    visibility: () => 'hidden', // the event was missed, but the state is still the truth
+    show: () => { shown++; },
+  });
+  t.mock.timers.tick(NAV_FALLBACK_MS);
+  assert.equal(shown, 0);
 });
 
 test('defaultNavApp: Apple on Apple platforms, Google everywhere else', () => {
