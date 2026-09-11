@@ -325,8 +325,12 @@
   .fb-btn[disabled] { opacity: 0.45; cursor: default; }
   /* The escape hatch is a text link, not a third button: as a button it competed
      with Send, and a disabled-looking button is what made v1.5 read as broken. */
+  /* The 44px tap box is taller than the text, which left ~60px of dead air between
+     the link and the disclosure below it — the same "floating at the bottom" look
+     this box was rewritten to get rid of. Negative margin closes the gap without
+     shrinking the target. */
   .fb-formlink { font-size: 13px; color: var(--drink); display: inline-flex; align-items: center;
-    min-height: 44px; padding: 0 2px; }
+    min-height: 44px; padding: 0 2px; margin: -9px 0; }
   .fb-pending { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
   .fb-pending li { display: flex; gap: 6px; align-items: center; background: var(--bg);
     border: 1px solid var(--border); border-radius: 10px; padding: 4px 4px 4px 10px; font-size: 13px; }
