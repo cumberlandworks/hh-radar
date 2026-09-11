@@ -1,5 +1,78 @@
 # Changelog
 
+## 2026-09-11 — BLOCK-hh-radar-fix7-20260911: v1.7 (Surprise me = Now | Later)
+
+TJ, 2026-09-11 ~04:18 CDT, verbatim:
+
+> "I tested the roll again feature - doesn't change anything."
+
+And the design, ~04:25 CDT, verbatim:
+
+> "I'm thinking surprise me could be a now or a later option. If its pushing the next live
+> event that's not really a surprise."
+
+**He was right and the spec was the bug.** v1.5's `pickSurprise` walked a tier ladder — live
+now, else starting within 2h, else "tonight's earliest" — and the last tier was defined as the
+ties at the *single* earliest start. Measured at the hour TJ tested (04:20, nothing live,
+nothing starting for six hours) that tier held **two** candidates, the two Blue Sushi rows at
+11:00, so Roll again flipped between two near-identical cards or appeared to do nothing at all.
+A fallback with one candidate cannot roll. v1.5 was built exactly to spec; the spec was wrong.
+
+- **The ladder is gone. The card has a Now | Later switch (C1).**
+  - **Now** = live this minute, or starting within 2h. **Later** = a uniform draw across
+    *everything else still to come in the service day* — not the next one up, which is the
+    part TJ called out as "not really a surprise."
+  - The switch opens on **Now** when anything is on, otherwise on **Later**, and says why:
+    "nothing on right now — here's a later pick." The empty half is disabled but still
+    rendered, with its count in the aria-label — a control that vanishes is how v1.5 read as
+    broken in the first place.
+  - **Service day = bar time, not calendar time**: it runs to 03:00 the next calendar day, so
+    01:00 Saturday still belongs to Friday night. Every horizon is measured in
+    minutes-from-now, which sidesteps the week-boundary wrap that `inIntervalWrapped` exists
+    to paper over.
+  - **Two fallbacks.** On the **Day Grid**, Later is the *selected day's* full set
+    ("Sunday — 12pm–9pm") — how a friend plans Saturday from a Tuesday couch; selecting today
+    is not an override and falls back to the clock. When the service day is past its last
+    start, Later rolls over to **tomorrow's** full set ("tomorrow — Sat 3pm–6pm").
+  - **Rollover drops venues that are open as you read the card.** Not in the block, added
+    after measuring: this dataset has no happy hour starting after 18:30 except Fri/Sat, so
+    *any weekday afternoon* lands on the rollover, and at 16:30 Tuesday **41 of the 53**
+    tomorrow candidates were live at that moment. Offering "come back tomorrow" for a bar
+    that is open right now is the same non-surprise TJ complained about wearing a different
+    hat. If the drop empties the pool the unfiltered set is kept — a repeat beats a blank card.
+  - **Roll again always moves**: `pickSurprise` takes `exclude` (the current pick's key) and
+    draws from the pool minus that one. At a pool of exactly one the button is replaced by
+    "That's the only option in this pool" — the honest version of a button that does nothing.
+    `poolSize` stays the count *before* the exclusion, so "one of N candidates" keeps meaning
+    what it says.
+  - **Specials no longer enter either pool.** "Surprise me" promises a happy hour, and an
+    all-day special is not an event. This is a small narrowing from v1.5, which let a live
+    special win the top tier (7 of its 48 live candidates at 16:30 Tuesday).
+  - Food-first still applies *within* whichever pool is armed, unchanged.
+  - New pure logic: `surprisePools(venues, now, {day})` → `{now, later, laterLabel,
+    laterScope, laterDay, serviceDay, horizonMinutes}`, plus `candidateKey`, `serviceDayOf`
+    and `minutesUntilServiceEnd`. 17 tests, including the block's (a)–(f) measured against
+    the real `venues.json`.
+
+- **The card now lives in whichever view is on screen**, the Day Grid included — the day
+  override is unreachable otherwise. `surpriseHtml(host)` returns '' for the inactive view and
+  `showTab` drops the stale copy, so exactly one card is ever in the DOM and its controls moved
+  from ids to classes.
+
+- **The when-label is derived from the pick's own day, not the pool that produced it.** Caught
+  in the browser: a Sunday pick made on the grid relabelled itself "tomorrow — Wed" after a tab
+  switch, because the pools move underneath a pick that stays put.
+
+- **Cache-bust `?v=` → 1.7** on `logic.js` and `venues.json`. index.html gained a call into
+  `L.surprisePools`, so a stale cached `logic.js` beside a fresh `index.html` is the v1.2
+  hard crash, not a stale-looking page.
+
+**Measured, live, at the dead hour TJ tested** (`?now=2026-09-11T04:20`, all zones): the card
+opens on Later, Now disabled, "one of 36 candidates" — six rolls, six venues, five distinct
+start times: Dog Haus East Nashville (3pm), The Detroit Cowboy (4pm), Saint Anejo (2pm),
+Common Ground Berry Hill (3pm), Blue Sushi McEwen (11am), Virago (5pm). Where v1.5 alternated
+between two Blue Sushi rows forever.
+
 ## 2026-09-11 — BLOCK-hh-radar-fix6-20260911: v1.6 (feedback box rewritten for strangers, fix5 loose ends)
 
 TJ, 2026-09-11, verbatim:

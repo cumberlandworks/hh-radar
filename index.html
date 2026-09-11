@@ -284,6 +284,25 @@
     font: inherit; font-size: 18px; line-height: 1; cursor: pointer; min-width: 44px; min-height: 44px;
     display: inline-flex; align-items: center; justify-content: center; margin-top: -12px; margin-right: -10px; }
 
+  /* v1.7 C1: the Now | Later switch. A segmented control rather than two pills —
+     the two positions are one choice, and the reader has to see which half is
+     armed before the venue name underneath means anything. 44px tall so a thumb
+     can hit it; the disabled half still renders (and still says why) because a
+     vanishing control is how v1.5's Roll again read as broken. */
+  .surprise-switch { display: inline-flex; margin: 9px 0 2px; border: 1px solid var(--border);
+    border-radius: 999px; overflow: hidden; background: var(--panel); }
+  .surprise-switch button { min-height: 40px; min-width: 76px; padding: 0 16px; border: none;
+    background: transparent; color: var(--text-dim); font-family: inherit; font-size: 13px;
+    font-weight: 700; cursor: pointer; -webkit-appearance: none; }
+  .surprise-switch button + button { border-left: 1px solid var(--border); }
+  .surprise-switch button[aria-pressed="true"] { background: var(--amber); color: #1a1200; }
+  .surprise-switch button[disabled] { opacity: 0.4; cursor: default; }
+  .surprise-switch button:focus-visible { outline: 2px solid var(--amber-strong); outline-offset: -2px; }
+  /* When a pool holds exactly one venue there is nothing to roll to. Saying so in
+     place of the button is the honest move — TJ pressed a live button five times
+     and watched it do nothing. */
+  .surprise-only { align-self: center; font-size: 12px; color: var(--text-dim); font-weight: 600; }
+
   /* ==================== v1.5 C1: feedback box ==================== */
   h1 { display: flex; align-items: center; gap: 10px; }
   .h1-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -545,12 +564,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.6"></script>
+<script src="logic.js?v=1.7"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.6';
+  var APP_VERSION = 'v1.7';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -620,7 +639,7 @@
     expandedZone: null, // v1.4 C2: at most ONE zone's hoods are shown, in the sibling strip
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
     zonesOpen: false, // v1.5 C2: phones collapse the zone row behind a one-line summary
-    surprise: null, // v1.5 C3: the current pickSurprise result, or null when dismissed
+    surprise: null, // v1.7 C1: {mode:'now'|'later', pick, poolSize, canRoll}, or null when dismissed
     lastExpanded: null, // v1.5 C1: last card the user opened — goes in the feedback context
     fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
     fbSent: [], // notes inside the 3-second undo window after a send
@@ -859,10 +878,10 @@
       } else {
         msg = 'No happy hours found in this dataset.';
       }
-      el.innerHTML = surpriseHtml() + geoNoteHtml() + '<div class="empty">' + msg + '</div>';
+      el.innerHTML = surpriseHtml('now') + geoNoteHtml() + '<div class="empty">' + msg + '</div>';
       return;
     }
-    var html = surpriseHtml() + geoNoteHtml();
+    var html = surpriseHtml('now') + geoNoteHtml();
     if (sections.live.length) html += '<div class="section-heading">Live now (' + sections.live.length + ')</div>' + sections.live.map(nowEntryCardHtml).join('');
     if (sections.soon.length) html += '<div class="section-heading">Starting soon (' + sections.soon.length + ')</div>' + sections.soon.map(nowEntryCardHtml).join('');
     if (sections.allDay.length) html += '<div class="section-heading">All-day specials (' + sections.allDay.length + ')</div>' + sections.allDay.map(nowEntryCardHtml).join('');
@@ -1059,7 +1078,9 @@
     }).join('');
 
     document.getElementById('grid-header').innerHTML = gridHeaderHtml();
-    el.innerHTML = rowsHtml;
+    // v1.7 C1: the Surprise card lives above the timeline here too — planning
+    // Saturday from a Tuesday couch is the whole reason Later takes a day.
+    el.innerHTML = surpriseHtml('grid') + rowsHtml;
 
     // v1.5 C4: three numbers that partition the filtered roster, replacing the
     // single "N venues have nothing on DAY" that an outside reader read as "this
@@ -1697,35 +1718,58 @@
     renderFeedback();
   }
 
-  // ---------- v1.5 C3: "Surprise me" ----------
-  function buildSurpriseCandidates() {
-    var out = [];
-    filteredVenues().forEach(function (venue) {
-      venue.windows.forEach(function (win) {
-        if (L.isActive(venue, win, state.now)) {
-          out.push({ venue: venue, win: win, tier: 'live', startAbs: 0, day: state.now.dayOfWeek });
-        } else if (L.startsWithin(venue, win, state.now, 120, { excludeAllDay: true })) {
-          out.push({ venue: venue, win: win, tier: 'soon', day: state.now.dayOfWeek,
-            startAbs: L.minutesUntilNextStart(venue, win, state.now) });
-        }
-      });
-      // The last-resort tier: this venue's own next real happy hour, whenever it is.
-      // pickSurprise only reaches it when nothing is live or starting soon, and then
-      // narrows to the single earliest start across the whole filtered set.
-      var best = L.nextStart(venue, state.now, { excludeAllDay: true });
-      if (best) out.push({ venue: venue, win: best.window, tier: 'later',
-        startAbs: best.minutesFromNow, day: best.day });
-    });
-    return out;
+  // ---------- v1.7 C1: "Surprise me" = Now | Later ----------
+  // v1.5 rolled down a tier ladder and TJ found its floor: "I tested the roll again
+  // feature - doesn't change anything." At a dead hour the last tier was the ties at
+  // the single earliest start — two Blue Sushi rows — so the button was live and
+  // inert. TJ's design replaces the ladder with a choice: "surprise me could be a now
+  // or a later option. If its pushing the next live event that's not really a
+  // surprise." The pools come from L.surprisePools; this file only draws them.
+  //
+  // The card renders into whichever view is on screen (the Day Grid included, where
+  // Later means the selected day). surpriseHtml() returns '' for the inactive view so
+  // there is never a second copy holding duplicate control ids.
+  function surprisePoolsFor() {
+    return L.surprisePools(filteredVenues(), state.now,
+      { day: state.currentTab === 'grid' ? state.day : null });
   }
+
+  function surpriseListFor(pools, mode) { return mode === 'now' ? pools.now : pools.later; }
+
+  // The 🎲 button. Opens on Now when anything is on, otherwise on Later — and the
+  // card says why rather than leaving the reader to work out that Now was empty.
+  function openSurprise() {
+    var pools = surprisePoolsFor();
+    drawSurprise(pools, pools.now.length ? 'now' : 'later', null);
+  }
+
+  function drawSurprise(pools, mode, exclude) {
+    var res = L.pickSurprise(surpriseListFor(pools, mode), Math.random,
+      { prefer: state.priority, exclude: exclude });
+    state.surprise = res
+      ? { mode: mode, pick: res.pick, poolSize: res.poolSize, canRoll: res.canRoll }
+      : { mode: mode, pick: null, poolSize: 0, canRoll: false };
+    renderSurpriseHost();
+  }
+
+  // Roll again draws from the pool MINUS the current pick, so it always moves.
   function rollSurprise() {
-    var res = L.pickSurprise(buildSurpriseCandidates(), Math.random, { prefer: state.priority });
-    state.surprise = res;
-    renderNow();
-    if (state.currentTab !== 'now') showTab('now');
-    var el = document.querySelector('.surprise');
+    if (!state.surprise) return openSurprise();
+    var s = state.surprise;
+    drawSurprise(surprisePoolsFor(), s.mode, s.pick ? L.candidateKey(s.pick) : null);
+  }
+
+  function setSurpriseMode(mode) {
+    if (!state.surprise || state.surprise.mode === mode) return;
+    drawSurprise(surprisePoolsFor(), mode, null);
+  }
+
+  function renderSurpriseHost() {
+    if (state.currentTab === 'grid') renderGrid(); else renderNow();
+    var el = document.querySelector('#view-' + (state.currentTab === 'grid' ? 'grid' : 'now') + ' .surprise');
     if (el) el.scrollIntoView({ block: 'nearest' });
   }
+
   function surpriseDealLabel(win) {
     var want = state.priority === 'food' ? 'food' : 'drink';
     var deals = win.deals || [];
@@ -1746,42 +1790,96 @@
     var cut = text.slice(0, max);
     var space = cut.lastIndexOf(' ');
     if (space > max * 0.6) cut = cut.slice(0, space);
-    return cut.replace(/[\s,;:(\-]+$/, '') + '\u2026';
+    return cut.replace(/[\s,;:(\-]+$/, '') + '…';
   }
-  function surpriseHtml() {
-    var res = state.surprise;
-    if (!res) return '';
-    if (!res.pick) {
-      return '<div class="surprise"><div class="surprise-head">\ud83c\udfb2 Surprise me</div>' +
-        '<div class="surprise-line">Nothing to roll in this filter.</div>' +
-        '<div class="surprise-sub">Select more zones and try again.</div>' +
-        '<div class="surprise-actions"><button type="button" class="fb-btn" id="surprise-close">Close</button></div></div>';
+
+  // resolveDisplayEnd returns HH:MM for any day the window actually runs; the guard
+  // is for the "close" case with no hours on record, where it hands back a word.
+  function surpriseEndLabel(venue, win, day) {
+    var end = resolveDisplayEnd(venue, win, day);
+    return /^\d{2}:\d{2}$/.test(end) ? fmtHM(end) : end;
+  }
+
+  // The when-label is derived from the PICK's own day rather than from the pool that
+  // produced it. The reader can switch tabs with a pick on screen, and the pools move
+  // underneath it (the grid's Later is a chosen day, NOW's is tonight) — a Sunday pick
+  // must not start calling itself Wednesday. pools.laterLabel still describes the POOL,
+  // which is what the switch and the tests are about.
+  function nextDayKey(day) {
+    return ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'][(L.DAY_INDEX[day] + 1) % 7];
+  }
+  function surpriseStatus(pools, mode, pick) {
+    if (mode === 'now') {
+      if (pick.tier === 'live') return 'live until ' + surpriseEndLabel(pick.venue, pick.win, pick.day);
+      return 'starts in ' + pick.startAbs + 'm';
     }
-    var v = res.pick.venue, w = res.pick.win;
-    var why, status;
-    if (res.tier === 'live') {
-      why = 'live now';
-      status = 'live until ' + fmtHM(resolveDisplayEnd(v, w, state.now.dayOfWeek));
-    } else if (res.tier === 'soon') {
-      why = 'nothing live \u2014 starting soon';
-      status = 'starts in ' + res.pick.startAbs + 'm';
-    } else {
-      var today = res.pick.day === state.now.dayOfWeek;
-      why = today ? 'nothing live or starting soon \u2014 tonight\u2019s earliest'
-                  : 'nothing left today \u2014 next up ' + DAY_FULL[res.pick.day];
-      status = (today ? 'tonight\u2019s earliest, starts ' : DAY_FULL[res.pick.day] + ', starts ') + fmtHM(w.start);
+    var times = fmtHM(pick.win.start) + '–' + surpriseEndLabel(pick.venue, pick.win, pick.day);
+    var when;
+    if (pick.day === pools.serviceDay) when = 'later today — ';
+    else if (pick.day === nextDayKey(pools.serviceDay)) when = 'tomorrow — ' + L.DAY_SHORT[pick.day] + ' ';
+    else when = L.DAY_LONG[pick.day] + ' — ';
+    return when + times;
+  }
+
+  function surpriseWhy(pools, mode, pick) {
+    if (mode === 'later') {
+      if (!pools.now.length) return 'nothing on right now — here’s a later pick';
+      return 'a later pick, not the next one up';
     }
+    if (pick && pick.tier === 'soon') return 'nothing live — starting soon';
+    return 'live now';
+  }
+
+  function surpriseSwitchHtml(pools, mode) {
+    function half(which, label) {
+      var n = surpriseListFor(pools, which).length;
+      return '<button type="button" class="surprise-mode" data-surprise-mode="' + which + '"' +
+        ' aria-pressed="' + (mode === which ? 'true' : 'false') + '"' + (n ? '' : ' disabled') +
+        ' aria-label="' + escapeHtml(label + ' — ' + n + ' to choose from') + '">' +
+        escapeHtml(label) + '</button>';
+    }
+    return '<div class="surprise-switch" role="group" aria-label="Now or later">' +
+      half('now', 'Now') + half('later', 'Later') + '</div>';
+  }
+
+  function surpriseHtml(host) {
+    if (!state.surprise) return '';
+    // One card in the DOM, in the view the reader is looking at.
+    if (host !== (state.currentTab === 'grid' ? 'grid' : 'now')) return '';
+    var s = state.surprise;
+    var pools = surprisePoolsFor();
+    var head = '<div class="surprise-head"><span class="tier">🎲 Surprise me</span>' +
+      '<span class="why">' + escapeHtml(surpriseWhy(pools, s.mode, s.pick)) + '</span>' +
+      '<button type="button" class="surprise-dismiss" aria-label="Dismiss">×</button></div>';
+    var sw = surpriseSwitchHtml(pools, s.mode);
+
+    if (!s.pick) {
+      var otherMode = s.mode === 'now' ? 'later' : 'now';
+      var otherN = surpriseListFor(pools, otherMode).length;
+      return '<div class="surprise">' + head + sw +
+        '<div class="surprise-line">' + escapeHtml(s.mode === 'now'
+          ? 'Nothing is on right now in this filter.'
+          : 'Nothing later in this filter.') + '</div>' +
+        '<div class="surprise-sub">' + escapeHtml(otherN
+          ? 'Try ' + (otherMode === 'now' ? 'Now' : 'Later') + ' — ' + otherN + ' to choose from.'
+          : 'Select more zones and try again.') + '</div></div>';
+    }
+
+    var v = s.pick.venue, w = s.pick.win;
     var deal = surpriseDealLabel(w);
-    var line = escapeHtml(v.name) + (deal ? ' \u2014 ' + escapeHtml(deal) : '') +
-      ', ' + escapeHtml(status) + ', ' + escapeHtml(v.neighborhood || v.city);
-    return '<div class="surprise">' +
-      '<div class="surprise-head"><span class="tier">\ud83c\udfb2 Surprise me</span><span class="why">' + escapeHtml(why) + '</span>' +
-        '<button type="button" class="surprise-dismiss" id="surprise-close" aria-label="Dismiss">\u00d7</button></div>' +
-      '<div class="surprise-line">' + line + '</div>' +
-      '<div class="surprise-sub">' + escapeHtml(res.poolSize === 1 ? 'the only candidate in this filter'
-        : 'one of ' + res.poolSize + ' candidates') + '</div>' +
-      '<div class="surprise-actions">' + cardActionsHtml(v, w) +
-        '<button type="button" class="fb-btn" id="surprise-roll">Roll again</button></div>' +
+    var line = escapeHtml(v.name) + (deal ? ' — ' + escapeHtml(deal) : '') +
+      ', ' + escapeHtml(surpriseStatus(pools, s.mode, s.pick)) +
+      ', ' + escapeHtml(v.neighborhood || v.city);
+    // "one of N" is the honesty that makes the switch legible. At N = 1 the actions
+    // row says it instead, in place of a button that could not do anything.
+    var sub = s.poolSize > 1
+      ? '<div class="surprise-sub">one of ' + s.poolSize + ' candidates</div>' : '';
+    var roll = s.canRoll
+      ? '<button type="button" class="fb-btn surprise-roll">Roll again</button>'
+      : '<span class="surprise-only">That’s the only option in this pool.</span>';
+    return '<div class="surprise">' + head + sw +
+      '<div class="surprise-line">' + line + '</div>' + sub +
+      '<div class="surprise-actions">' + cardActionsHtml(v, w) + roll + '</div>' +
       '</div>';
   }
 
@@ -1858,21 +1956,35 @@
     document.getElementById('tab-grid').classList.toggle('active', tab === 'grid');
     document.getElementById('view-now').style.display = tab === 'now' ? '' : 'none';
     document.getElementById('view-grid').style.display = tab === 'grid' ? '' : 'none';
-    document.getElementById('btn-surprise').style.display = tab === 'now' ? '' : 'none';
-    if (tab === 'grid') { updateStickyOffsets(); renderGrid(); }
+    if (tab === 'grid') { updateStickyOffsets(); renderGrid(); } else { renderNow(); }
+    // v1.7 C1: the Surprise card belongs to the view on screen — on the grid its
+    // Later means the selected day, on NOW it means tonight. The view we just left
+    // still holds the HTML from its last render, so drop its copy instead of
+    // leaving two cards in the DOM for the reader to switch back into.
+    var staleCard = document.querySelector('#view-' + (tab === 'grid' ? 'now' : 'grid') + ' .surprise');
+    if (staleCard) staleCard.remove();
     renderHoodChips();
     renderMap();
   }
   document.getElementById('tab-now').addEventListener('click', function () { showTab('now'); });
   document.getElementById('tab-grid').addEventListener('click', function () { showTab('grid'); });
-  document.getElementById('btn-surprise').addEventListener('click', rollSurprise);
-  // The hero card is re-rendered on every roll, so its two buttons are delegated
-  // off the stable NOW container. Capture phase, because the NOW container's own
-  // card-toggle handler would otherwise see the click first.
-  document.getElementById('view-now').addEventListener('click', function (e) {
-    if (e.target.closest('#surprise-roll')) { e.stopPropagation(); rollSurprise(); return; }
-    if (e.target.closest('#surprise-close')) { e.stopPropagation(); state.surprise = null; renderNow(); }
-  }, true);
+  document.getElementById('btn-surprise').addEventListener('click', openSurprise);
+  // The hero card is re-rendered on every roll, so its controls are delegated off the
+  // stable view containers. Capture phase, because each container's own card-toggle
+  // handler would otherwise see the click first. Selectors are classes, not ids: the
+  // card can render in either view and v1.7 added a third control to it.
+  function surpriseDelegate(e) {
+    var mode = e.target.closest('.surprise-mode');
+    if (mode) { e.stopPropagation(); setSurpriseMode(mode.getAttribute('data-surprise-mode')); return; }
+    if (e.target.closest('.surprise-roll')) { e.stopPropagation(); rollSurprise(); return; }
+    if (e.target.closest('.surprise-dismiss')) {
+      e.stopPropagation();
+      state.surprise = null;
+      if (state.currentTab === 'grid') renderGrid(); else renderNow();
+    }
+  }
+  document.getElementById('view-now').addEventListener('click', surpriseDelegate, true);
+  document.getElementById('view-grid').addEventListener('click', surpriseDelegate, true);
   document.getElementById('zone-summary').addEventListener('click', function (e) {
     var mapBtn = e.target.closest('#map-toggle-sm');
     if (mapBtn) {
@@ -1911,7 +2023,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.6').then(function (r) {
+  fetch('venues.json?v=1.7').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

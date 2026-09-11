@@ -15,6 +15,11 @@
   var DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
   var DAY_INDEX = { MON: 0, TUE: 1, WED: 2, THU: 3, FRI: 4, SAT: 5, SUN: 6 };
   var HHMM_RE = /^([01][0-9]|2[0-3]):[0-5][0-9]$/;
+  // Display names, here rather than in index.html because surprisePools composes
+  // the Later label ("tomorrow — Sat", "Sunday") and the label is part of what the
+  // pool means — the tests assert it.
+  var DAY_SHORT = { MON: 'Mon', TUE: 'Tue', WED: 'Wed', THU: 'Thu', FRI: 'Fri', SAT: 'Sat', SUN: 'Sun' };
+  var DAY_LONG = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
 
   function parseHM(hm) {
     var parts = hm.split(':');
@@ -814,40 +819,192 @@
     };
   }
 
-  // ---- v1.5 C3: "Surprise me" ----
-  // candidates: [{ venue, win, tier, startAbs }] with tier 'live' | 'soon' | 'later'.
-  // The caller builds them from the CURRENT zone filter and clock; this function does
-  // no time math and no I/O — `rng` is injected so a fixed rng makes the pick
-  // deterministic and the tests do not depend on Math.random.
-  // Order: live now, else starting soon, else the earliest still to come today
-  // ('later', narrowed to the ties at the single earliest start — "tonight's
-  // earliest"). Inside the chosen tier, if `prefer` ('food' by default) matches any
-  // candidate, the pool narrows to those before the uniform draw, so a drink-only
-  // venue can never win while a food one is available.
+  // ---- v1.7 C1: "Surprise me" = Now | Later ----
+  // v1.5 built a tier ladder: live, else starting soon, else "tonight's earliest".
+  // TJ, 2026-09-11: "I tested the roll again feature - doesn't change anything."
+  // He was right, and the ladder was the reason. At a dead hour the third tier
+  // narrowed to the ties at the SINGLE earliest start — live that is two Blue Sushi
+  // rows at 11:00 — so Roll again flipped between two identical-looking cards. A
+  // fallback with one candidate cannot roll.
+  //
+  // TJ's replacement design: "surprise me could be a now or a later option. If its
+  // pushing the next live event that's not really a surprise." So there are two
+  // pools and the reader picks which one to roll, and LATER is a uniform draw over
+  // the whole remaining evening rather than the next thing up.
+  //
+  // Service day = bar time, not calendar time: it runs to 03:00 the next calendar
+  // day, so 01:00 Saturday still belongs to Friday night. Every horizon below is
+  // measured in minutes-from-now, which sidesteps the week-boundary wrap entirely.
+  var SERVICE_DAY_END_HOUR = 3;
+
+  function minutesUntilServiceEnd(dateInTz) {
+    var t = dateInTz.hour * 60 + dateInTz.minute;
+    var end = SERVICE_DAY_END_HOUR * 60;
+    return t < end ? end - t : (1440 - t) + end;
+  }
+
+  // The day key the current service day is filed under (00:00-02:59 belongs to the
+  // day before). Everything the card calls "today" means this, not the calendar day.
+  function serviceDayOf(dateInTz) {
+    var idx = DAY_INDEX[dateInTz.dayOfWeek];
+    if (dateInTz.hour < SERVICE_DAY_END_HOUR) idx = (idx + 6) % 7;
+    return DAYS[idx];
+  }
+
+  // Identity of one (venue, window, day) occurrence. Roll again excludes the current
+  // pick by this key, so the same venue's OTHER night is still a legal draw.
+  function candidateKey(c) {
+    if (c && c.key) return c.key;
+    var v = c.venue || {};
+    return (v.id || v.name) + '|' + c.win.start + '-' + c.win.end + '|' + c.day;
+  }
+
+  function surpriseCandidate(venue, win, day, tier, startAbs) {
+    return {
+      key: (venue.id || venue.name) + '|' + win.start + '-' + win.end + '|' + day,
+      venue: venue, win: win, day: day, tier: tier, startAbs: startAbs,
+    };
+  }
+
+  // Every happy_hour occurrence on `day`, regardless of the clock. Used for the two
+  // pools that are not bounded by "the rest of tonight": the rollover into tomorrow
+  // and the Day Grid's selected day.
+  function fullDayPool(venues, day, taken) {
+    var out = [];
+    for (var i = 0; i < venues.length; i++) {
+      var venue = venues[i];
+      var windows = venue.windows || [];
+      for (var w = 0; w < windows.length; w++) {
+        var win = windows[w];
+        if (win.kind !== 'happy_hour') continue;
+        if (win.days.indexOf(day) === -1) continue;
+        var c = surpriseCandidate(venue, win, day, 'later', null);
+        if (!taken || !taken[c.key]) out.push(c);
+      }
+    }
+    return out;
+  }
+
+  // surprisePools(venues, now, {day}) -> {now, later, laterLabel, laterScope, laterDay}
+  //
+  //   now   = live this minute, or starting within 2h. Specials are out: "Surprise
+  //           me" promises a happy hour, and an all-day special is not an event.
+  //   later = everything else that still starts inside this service day. Not the
+  //           earliest — the whole evening, so the roll has somewhere to go.
+  //
+  // Two fallbacks, in order:
+  //   * `opts.day` (the Day Grid's selected day, when it is not today) replaces
+  //     later with that day's full set — how a friend plans Saturday from a Tuesday
+  //     couch.
+  //   * an empty later (the service day is past its last start) rolls over to
+  //     tomorrow's full set. Venues that are live RIGHT NOW are dropped from that
+  //     rollover: being told to come back tomorrow to a bar that is open as you read
+  //     it is the same non-surprise TJ complained about. This dataset makes that the
+  //     common case, not a corner — nothing but Fri/Sat starts a happy hour after
+  //     18:30, so any weekday afternoon lands here, and at 16:30 Tuesday 41 of the 53
+  //     rollover candidates are open at that moment. If the drop empties the pool we
+  //     keep the unfiltered set; a repeat beats an empty card.
+  function surprisePools(venues, dateInTz, opts) {
+    opts = opts || {};
+    venues = venues || [];
+    var t = minutesSinceWeekStart(dateInTz);
+    var horizon = minutesUntilServiceEnd(dateInTz);
+    var today = serviceDayOf(dateInTz);
+    var gridDay = (opts.day && opts.day !== today) ? opts.day : null;
+
+    var nowPool = [], laterPool = [], taken = {}, liveVenues = {};
+
+    for (var i = 0; i < venues.length; i++) {
+      var venue = venues[i];
+      var windows = venue.windows || [];
+      for (var w = 0; w < windows.length; w++) {
+        var win = windows[w];
+        if (win.kind !== 'happy_hour') continue;
+        var intervals = resolveWindow(venue, win);
+
+        var live = null;
+        for (var a = 0; a < intervals.length; a++) {
+          if (inIntervalWrapped(t, intervals[a].startAbs, intervals[a].endAbs)) { live = intervals[a]; break; }
+        }
+        if (live) {
+          var lc = surpriseCandidate(venue, win, live.day, 'live', 0);
+          nowPool.push(lc);
+          taken[lc.key] = true;
+          liveVenues[venue.id || venue.name] = true;
+          continue; // live is Now, never Later
+        }
+
+        var soonest = null;
+        for (var b = 0; b < intervals.length; b++) {
+          var mins = minutesUntilWrapped(t, intervals[b].startAbs);
+          if (soonest === null || mins < soonest.mins) soonest = { mins: mins, iv: intervals[b] };
+        }
+        if (!soonest) continue;
+        if (soonest.mins <= 120) {
+          var sc = surpriseCandidate(venue, win, soonest.iv.day, 'soon', soonest.mins);
+          nowPool.push(sc);
+          taken[sc.key] = true;
+          continue;
+        }
+        if (gridDay) continue;
+        if (soonest.mins <= horizon) {
+          laterPool.push(surpriseCandidate(venue, win, soonest.iv.day, 'later', soonest.mins));
+        }
+      }
+    }
+
+    var laterScope = 'today', laterDay = null;
+    if (gridDay) {
+      laterPool = fullDayPool(venues, gridDay, taken);
+      laterScope = 'day';
+      laterDay = gridDay;
+    } else if (!laterPool.length) {
+      var tomorrow = DAYS[(DAY_INDEX[today] + 1) % 7];
+      var all = fullDayPool(venues, tomorrow, taken);
+      var fresh = all.filter(function (c) { return !liveVenues[c.venue.id || c.venue.name]; });
+      laterPool = fresh.length ? fresh : all;
+      laterScope = 'tomorrow';
+      laterDay = tomorrow;
+    }
+
+    return {
+      now: nowPool,
+      later: laterPool,
+      laterScope: laterScope,
+      laterDay: laterDay,
+      laterLabel: laterScope === 'today' ? 'later today'
+        : laterScope === 'tomorrow' ? 'tomorrow — ' + DAY_SHORT[laterDay]
+        : DAY_LONG[laterDay],
+      horizonMinutes: horizon,
+      serviceDay: today,
+    };
+  }
+
+  // Uniform draw from ONE pool — the tier ladder is gone, the caller chose the pool.
+  // `prefer` narrows to food (or drink) candidates when the pool has any, so a
+  // drink-only venue never wins while a food one is available. `exclude` is the key
+  // of the current pick: Roll again must move. poolSize is the honest count BEFORE
+  // the exclusion, because "one of N candidates" is the line that makes the switch
+  // legible; canRoll says whether Roll again has anywhere to go.
   function pickSurprise(candidates, rng, opts) {
     opts = opts || {};
     var prefer = opts.prefer === 'drink' ? 'drink' : 'food';
-    var tiers = ['live', 'soon', 'later'];
-    for (var i = 0; i < tiers.length; i++) {
-      var tier = tiers[i];
-      var pool = candidates.filter(function (c) { return c.tier === tier; });
-      if (!pool.length) continue;
-      if (tier === 'later') {
-        var min = Infinity;
-        pool.forEach(function (c) { if (c.startAbs < min) min = c.startAbs; });
-        pool = pool.filter(function (c) { return c.startAbs === min; });
-      }
-      var matching = pool.filter(function (c) {
-        return prefer === 'food' ? windowHasFood(c.win) : windowHasDrink(c.win);
-      });
-      if (matching.length) pool = matching;
-      var draw = typeof rng === 'function' ? rng() : 0;
-      var idx = Math.floor(draw * pool.length);
-      if (!(idx >= 0)) idx = 0;
-      if (idx >= pool.length) idx = pool.length - 1;
-      return { pick: pool[idx], tier: tier, poolSize: pool.length };
+    var pool = (candidates || []).slice();
+    if (!pool.length) return null;
+    var matching = pool.filter(function (c) {
+      return prefer === 'food' ? windowHasFood(c.win) : windowHasDrink(c.win);
+    });
+    if (matching.length) pool = matching;
+    var draw = pool;
+    if (opts.exclude) {
+      var rest = pool.filter(function (c) { return candidateKey(c) !== opts.exclude; });
+      if (rest.length) draw = rest;
     }
-    return null;
+    var r = typeof rng === 'function' ? rng() : 0;
+    var idx = Math.floor(r * draw.length);
+    if (!(idx >= 0)) idx = 0;
+    if (idx >= draw.length) idx = draw.length - 1;
+    return { pick: draw[idx], poolSize: pool.length, canRoll: pool.length > 1 };
   }
 
   // ---- Schema + semantic validation (shared by validate.js and in-page load guard) ----
@@ -1006,6 +1163,12 @@
     hasIntervalOn: hasIntervalOn,
     dayCoverageCounts: dayCoverageCounts,
     pickSurprise: pickSurprise,
+    surprisePools: surprisePools,
+    candidateKey: candidateKey,
+    serviceDayOf: serviceDayOf,
+    minutesUntilServiceEnd: minutesUntilServiceEnd,
+    DAY_SHORT: DAY_SHORT,
+    DAY_LONG: DAY_LONG,
     composeNote: composeNote,
   };
 });

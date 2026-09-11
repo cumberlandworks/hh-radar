@@ -15,6 +15,7 @@ const {
   ZONE_POLYGONS, ZONE_LABEL_ANCHORS, ZONE_MAP_LABELS, RIVER, INTERSTATES,
   zoneContains, zoneLabelBoxes, rectsIntersect, projectToView,
   labelBlockClearance, dayCoverageCounts, hasIntervalOn, pickSurprise,
+  surprisePools, candidateKey, serviceDayOf, minutesUntilServiceEnd,
   windowHasFood, windowHasDrink, composeNote,
 } = require('../logic.js');
 const path = require('node:path');
@@ -511,14 +512,17 @@ test('projectToView maps the extent corners onto the viewBox corners', () => {
   assert.ok(Math.abs(br[1] - MAP_VIEW_H) < 1e-9, 'bottom edge should be MAP_VIEW_H');
 });
 
-// ==================== v1.5 C3: pickSurprise ====================
-// A fixed rng makes every pick deterministic; nothing here touches Math.random.
+// ==================== v1.7 C1: surprisePools + pickSurprise (Now | Later) ====================
+// v1.5's tier-ladder tests are gone with the ladder. TJ: "I tested the roll again
+// feature - doesn't change anything" — the ladder's last tier narrowed to the ties at
+// the single earliest start, which live is two rows, so there was nothing to roll.
 const fixedRng = (v) => () => v;
 function cand(name, tier, deals, startAbs) {
   return {
     venue: { id: 'ik-' + name, name: name },
     win: win(['TUE'], '15:00', '18:00', { deals: deals }),
     tier: tier,
+    day: 'TUE',
     startAbs: startAbs === undefined ? 0 : startAbs,
   };
 }
@@ -535,37 +539,19 @@ test('pickSurprise: food candidates shut drink-only ones out of the pool entirel
     const res = pickSurprise(candidates, fixedRng(i / 20), { prefer: 'food' });
     assert.equal(res.pick.venue.name, 'FoodA', 'rng ' + (i / 20) + ' picked a drink-only venue');
     assert.equal(res.poolSize, 1);
+    assert.equal(res.canRoll, false, 'a one-candidate pool cannot roll');
   }
 });
 
-test('pickSurprise: with no food in the tier the drink-only pool is used rather than nothing', () => {
+test('pickSurprise: with no food in the pool the drink-only one is used rather than nothing', () => {
   const res = pickSurprise([cand('DrinkA', 'live', DRINK)], fixedRng(0.5), { prefer: 'food' });
   assert.equal(res.pick.venue.name, 'DrinkA');
-  assert.equal(res.tier, 'live');
 });
 
 test('pickSurprise: prefer:drink mirrors the rule (drink pool wins over food)', () => {
   const res = pickSurprise([cand('FoodA', 'live', FOOD), cand('DrinkA', 'live', DRINK)],
     fixedRng(0.9), { prefer: 'drink' });
   assert.equal(res.pick.venue.name, 'DrinkA');
-});
-
-test('pickSurprise: falls back live -> soon when nothing is live', () => {
-  const res = pickSurprise([cand('SoonA', 'soon', FOOD, 30), cand('LaterA', 'later', FOOD, 900)],
-    fixedRng(0), { prefer: 'food' });
-  assert.equal(res.tier, 'soon');
-  assert.equal(res.pick.venue.name, 'SoonA');
-});
-
-test('pickSurprise: falls back soon -> later, and "later" narrows to the earliest start only', () => {
-  const res = pickSurprise([
-    cand('Late9am', 'later', FOOD, 600),
-    cand('Earliest', 'later', FOOD, 300),
-    cand('AlsoEarliest', 'later', FOOD, 300),
-  ], fixedRng(0), { prefer: 'food' });
-  assert.equal(res.tier, 'later');
-  assert.equal(res.poolSize, 2, 'only the ties at the single earliest start are eligible');
-  assert.ok(['Earliest', 'AlsoEarliest'].includes(res.pick.venue.name));
 });
 
 test('pickSurprise: deterministic under a fixed rng, and the draw actually spreads', () => {
@@ -586,6 +572,143 @@ test('pickSurprise: rng returning exactly 1 (or nonsense) clamps instead of retu
 
 test('pickSurprise: an empty candidate list is null, not a crash', () => {
   assert.equal(pickSurprise([], fixedRng(0.5), {}), null);
+});
+
+// (e) Roll again must MOVE. This is the whole bug: 100 draws, never the excluded key.
+test('(e) pickSurprise: exclude — 100 draws from a 2-pool never return the excluded key', () => {
+  const pool = [cand('A', 'live', FOOD), cand('B', 'live', FOOD)];
+  const excluded = candidateKey(pool[0]);
+  for (let i = 0; i < 100; i++) {
+    const res = pickSurprise(pool, Math.random, { prefer: 'food', exclude: excluded });
+    assert.equal(res.pick.venue.name, 'B', 'draw ' + i + ' returned the excluded pick');
+    assert.equal(res.poolSize, 2, 'poolSize stays the honest count, not the post-exclusion one');
+    assert.equal(res.canRoll, true);
+  }
+});
+
+test('(f) pickSurprise: a pool of one reports canRoll:false (the card hides Roll again)', () => {
+  const res = pickSurprise([cand('Only', 'live', FOOD)], fixedRng(0.5), { prefer: 'food' });
+  assert.equal(res.poolSize, 1);
+  assert.equal(res.canRoll, false);
+  // Excluding the only candidate falls back to it rather than returning nothing.
+  const res2 = pickSurprise([cand('Only', 'live', FOOD)], fixedRng(0.5),
+    { prefer: 'food', exclude: candidateKey(cand('Only', 'live', FOOD)) });
+  assert.equal(res2.pick.venue.name, 'Only');
+  assert.equal(res2.canRoll, false);
+});
+
+test('surprisePools: specials never enter either pool (Surprise me promises a happy hour)', () => {
+  const v = { id: 'ik-1', name: 'S', hours: {}, windows: [
+    win(['TUE'], '11:00', '20:00', { kind: 'special', deals: FOOD }),
+    win(['TUE'], '16:00', '18:00', { kind: 'happy_hour', deals: FOOD }),
+  ] };
+  const pools = surprisePools([v], dt('TUE', 16, 30));
+  assert.equal(pools.now.length, 1, 'only the happy_hour window is live-eligible');
+  assert.equal(pools.now[0].win.kind, 'happy_hour');
+});
+
+test('surprisePools: a venue live now is never also in later', () => {
+  const v = { id: 'ik-1', name: 'Both', hours: {}, windows: [
+    win(['TUE'], '15:00', '18:00', { deals: FOOD }),   // live at 16:30
+    win(['TUE'], '21:00', '23:00', { deals: FOOD }),   // later tonight
+  ] };
+  const pools = surprisePools([v], dt('TUE', 16, 30));
+  assert.equal(pools.now.length, 1);
+  assert.equal(pools.now[0].win.start, '15:00');
+  assert.equal(pools.later.length, 1, 'the 21:00 window is a separate, legal Later pick');
+  assert.equal(pools.later[0].win.start, '21:00');
+  assert.equal(pools.laterScope, 'today');
+  assert.equal(pools.laterLabel, 'later today');
+  assert.notEqual(candidateKey(pools.now[0]), candidateKey(pools.later[0]),
+    'the same venue on two windows must have two distinct keys, or Roll again would over-exclude');
+});
+
+test('surprisePools: a window starting within 2h is Now, not Later', () => {
+  const v = { id: 'ik-1', name: 'Soon', hours: {}, windows: [win(['TUE'], '17:30', '19:00', { deals: FOOD })] };
+  const pools = surprisePools([v], dt('TUE', 16, 30));
+  assert.equal(pools.now.length, 1);
+  assert.equal(pools.now[0].tier, 'soon');
+  assert.equal(pools.now[0].startAbs, 60);
+  assert.ok(!pools.later.some((c) => c.win.start === '17:30'), 'a Now entry must not also be Later');
+});
+
+test('surprisePools: the service day runs to 03:00, so 01:00 SAT is still Friday night', () => {
+  assert.equal(serviceDayOf(dt('SAT', 1, 0)), 'FRI');
+  assert.equal(serviceDayOf(dt('SAT', 3, 0)), 'SAT');
+  assert.equal(serviceDayOf(dt('FRI', 23, 59)), 'FRI');
+  assert.equal(minutesUntilServiceEnd(dt('SAT', 1, 0)), 120, '01:00 -> 03:00 is two hours');
+  assert.equal(minutesUntilServiceEnd(dt('FRI', 16, 30)), 630, '16:30 -> 03:00 next day');
+});
+
+// ---- (a)-(d): measured against the real venues.json, the way the page runs ----
+const REAL = require(path.join(__dirname, '..', 'venues.json')).venues;
+
+test('(a) 16:30 TUE: Now is deep, Later is non-trivial and holds nothing live or soon', () => {
+  const pools = surprisePools(REAL, dt('TUE', 16, 30));
+  assert.ok(pools.now.length >= 30, 'now.length = ' + pools.now.length);
+  assert.ok(pools.later.length >= 5, 'later.length = ' + pools.later.length);
+  const nowKeys = new Set(pools.now.map(candidateKey));
+  assert.ok(!pools.later.some((c) => nowKeys.has(candidateKey(c))), 'later shares a key with now');
+  // The stronger promise from the block's ACCEPT: flipping to Later never shows a
+  // venue that is open as you read the card.
+  const liveVenues = new Set(pools.now.filter((c) => c.tier === 'live').map((c) => c.venue.id));
+  assert.ok(!pools.later.some((c) => liveVenues.has(c.venue.id)),
+    'Later offered a venue that is live right now');
+});
+
+test('(b) 04:20 FRI (the dead hour TJ tested): Now is empty, Later is the whole evening', () => {
+  const now = dt('FRI', 4, 20);
+  const pools = surprisePools(REAL, now);
+  assert.equal(pools.now.length, 0, 'nothing is live or starting soon at 04:20');
+  assert.ok(pools.later.length >= 10, 'later.length = ' + pools.later.length);
+  assert.equal(pools.laterScope, 'today');
+  const horizon = minutesUntilServiceEnd(now);
+  pools.later.forEach((c) => {
+    assert.ok(c.startAbs > 120 && c.startAbs <= horizon,
+      c.venue.name + ' starts ' + c.startAbs + 'm out, outside (120, ' + horizon + ']');
+  });
+  // The regression itself: the v1.5 fallback collapsed to the single earliest start.
+  const starts = new Set(pools.later.map((c) => c.win.start));
+  assert.ok(starts.size >= 5, 'later spans only ' + starts.size + ' distinct start times');
+});
+
+test('(c) 01:00 SAT, past the last start: Later rolls over to tomorrow with the tomorrow label', () => {
+  const pools = surprisePools(REAL, dt('SAT', 1, 0));
+  assert.equal(pools.laterScope, 'tomorrow');
+  assert.equal(pools.laterDay, 'SAT', 'the service day is FRI, so tomorrow is SAT');
+  assert.equal(pools.laterLabel, 'tomorrow — Sat');
+  assert.ok(pools.later.length >= 10, 'later.length = ' + pools.later.length);
+  pools.later.forEach((c) => {
+    assert.equal(c.day, 'SAT');
+    assert.ok(c.win.days.includes('SAT'));
+  });
+});
+
+test('(d) Day Grid override: Later is the selected day\'s full set, clock notwithstanding', () => {
+  const pools = surprisePools(REAL, dt('TUE', 16, 30), { day: 'SUN' });
+  assert.equal(pools.laterScope, 'day');
+  assert.equal(pools.laterDay, 'SUN');
+  assert.equal(pools.laterLabel, 'Sunday');
+  const expected = REAL.reduce((n, v) => n + v.windows.filter(
+    (w) => w.kind === 'happy_hour' && w.days.includes('SUN')).length, 0);
+  assert.equal(pools.later.length, expected, 'the full SUN set, nothing pruned');
+  assert.ok(pools.now.length >= 30, 'Now still means the clock, even on the grid tab');
+  // Selecting TODAY on the grid is not an override — it falls back to the clock rule.
+  const same = surprisePools(REAL, dt('TUE', 16, 30), { day: 'TUE' });
+  assert.notEqual(same.laterScope, 'day');
+});
+
+test('surprisePools: five rolls at the dead hour give distinct venues (the acceptance test)', () => {
+  const pools = surprisePools(REAL, dt('FRI', 4, 20));
+  const names = new Set();
+  let exclude = null;
+  for (let i = 0; i < 5; i++) {
+    const res = pickSurprise(pools.later, Math.random, { prefer: 'food', exclude: exclude });
+    assert.equal(res.canRoll, true);
+    exclude = candidateKey(res.pick);
+    names.add(res.pick.venue.name);
+  }
+  assert.ok(names.size >= 3, 'five rolls produced only ' + names.size + ' distinct venues');
 });
 
 // ==================== v1.5 C4: the grid coverage footer ====================
