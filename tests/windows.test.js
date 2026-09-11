@@ -17,6 +17,9 @@ const {
   labelBlockClearance, dayCoverageCounts, hasIntervalOn, pickSurprise,
   surprisePools, candidateKey, serviceDayOf, minutesUntilServiceEnd,
   windowHasFood, windowHasDrink, composeNote,
+  driveEstimateMin, walkEstimateMin, travelEstimateMin, formatEtaMin,
+  activeOrNextInterval, arrivalVerdict, MAKE_MARGIN_MIN,
+  NAV_APPS, isNavApp, navUrl, defaultNavApp,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -820,4 +823,158 @@ test('composeNote trims, and empty text stays empty so Send has nothing to post'
   assert.equal(composeNote('idea', '   '), '');
   assert.equal(composeNote('idea', ''), '');
   assert.equal(composeNote('idea', undefined), '');
+});
+
+// ==================== v1.8 (fix8): drive time, verdict, navigation links ====================
+
+// road = miles * 1.35; bands 18 / 24 / 32 mph on ROAD miles; +5 out the door, +5 to park.
+test('driveEstimateMin: the block’s worked examples', () => {
+  assert.equal(driveEstimateMin(0.5), 12); // road 0.675 @18 -> 5 + 2.25 + 5
+  assert.equal(driveEstimateMin(2), 19);   // road 2.7   @18 -> 5 + 9 + 5
+  assert.equal(driveEstimateMin(15), 48);  // road 20.25 @32 -> 5 + 37.97 + 5
+});
+
+// The block's flat bands are NOT monotonic: at 5.9mi the 24mph band charges 30 min and
+// at 6.0mi the 32mph band charges 25, so driving further would read as a shorter trip.
+// driveEstimateMin floors each band at what the band below charged at its own ceiling.
+test('driveEstimateMin: 6 miles is clamped up to the 8-road-mile boundary, not down to 25', () => {
+  assert.equal(driveEstimateMin(6), 30);
+  assert.equal(driveEstimateMin(5.9), 30, 'just inside the 24mph band');
+  assert.equal(driveEstimateMin(6.0), 30, 'just outside it — must not drop');
+});
+
+test('driveEstimateMin never decreases as the distance grows', () => {
+  let prev = -1;
+  for (let m = 0; m <= 40; m += 0.05) {
+    const v = driveEstimateMin(m);
+    assert.ok(v >= prev, `driveEstimateMin(${m.toFixed(2)}) = ${v} fell below ${prev}`);
+    prev = v;
+  }
+});
+
+test('driveEstimateMin floors at the door+park overhead and ignores junk input', () => {
+  assert.equal(driveEstimateMin(0), 10);
+  assert.equal(driveEstimateMin(-3), 10);
+  assert.equal(driveEstimateMin(null), 10);
+  assert.equal(driveEstimateMin(undefined), 10);
+});
+
+test('walkEstimateMin: 3 minutes to get moving, then 3 mph over a 1.25 detour', () => {
+  assert.equal(walkEstimateMin(0.5), 16); // 3 + 0.625/3*60 = 15.5 -> 16
+  assert.equal(walkEstimateMin(1), 28);   // 3 + 1.25/3*60  = 28
+  assert.equal(walkEstimateMin(0), 3);
+});
+
+test('travelEstimateMin dispatches on mode, defaulting to drive', () => {
+  assert.equal(travelEstimateMin(2, 'walk'), walkEstimateMin(2));
+  assert.equal(travelEstimateMin(2, 'drive'), driveEstimateMin(2));
+  assert.equal(travelEstimateMin(2), driveEstimateMin(2));
+  assert.equal(travelEstimateMin(2, 'teleport'), driveEstimateMin(2));
+});
+
+test('formatEtaMin: minutes under an hour, h+mm past it, never seconds', () => {
+  assert.equal(formatEtaMin(14), '14 min');
+  assert.equal(formatEtaMin(59), '59 min');
+  assert.equal(formatEtaMin(60), '1 h');
+  assert.equal(formatEtaMin(70), '1 h 10');
+  assert.equal(formatEtaMin(65), '1 h 05');
+  assert.equal(formatEtaMin(130), '2 h 10');
+  assert.equal(formatEtaMin(null), '');
+});
+
+// ---- arrivalVerdict: boundaries are the whole point ----
+// A WED 16:00-18:00 window resolves to startAbs = 2*1440 + 960, endAbs = 2*1440 + 1080.
+const WED_WIN = resolveWindow(venue({}, []), win(['WED'], '16:00', '18:00'))[0];
+
+test('arrivalVerdict boundaries: end-20 makes it, end-19 is close, end misses', () => {
+  const end = WED_WIN.endAbs;
+  assert.equal(arrivalVerdict(end - 20 - 30, 30, WED_WIN), 'make', 'arrive exactly end-20');
+  assert.equal(arrivalVerdict(end - 19 - 30, 30, WED_WIN), 'close', 'arrive end-19');
+  assert.equal(arrivalVerdict(end - 1 - 30, 30, WED_WIN), 'close', 'arrive one minute before end');
+  assert.equal(arrivalVerdict(end - 30, 30, WED_WIN), 'miss', 'arrive exactly at end');
+  assert.equal(arrivalVerdict(end + 10 - 30, 30, WED_WIN), 'miss', 'arrive after end');
+  assert.equal(MAKE_MARGIN_MIN, 20, 'the 20-minute margin is the documented contract');
+});
+
+test('arrivalVerdict: arriving before the window opens is early, not make', () => {
+  const start = WED_WIN.startAbs;
+  assert.equal(arrivalVerdict(start - 40, 10, WED_WIN), 'early', 'arrive 30 min before start');
+  assert.equal(arrivalVerdict(start - 10, 10, WED_WIN), 'make', 'arrive exactly at start');
+});
+
+test('arrivalVerdict returns null with no estimate or no interval', () => {
+  assert.equal(arrivalVerdict(1000, null, WED_WIN), null);
+  assert.equal(arrivalVerdict(1000, undefined, WED_WIN), null);
+  assert.equal(arrivalVerdict(1000, NaN, WED_WIN), null);
+  assert.equal(arrivalVerdict(1000, 10, null), null);
+});
+
+test('arrivalVerdict matches a week-crossing window a week either side', () => {
+  // SUN 22:00-02:00 resolves to endAbs past 10080; "now" is SUN 23:30 = 9930.
+  const w = win(['SUN'], '22:00', '02:00');
+  const iv = resolveWindow(venue({}, [w]), w)[0];
+  assert.ok(iv.endAbs > 10080, 'precondition: the interval wraps past the week');
+  const nowAbs = 6 * 1440 + 23 * 60 + 30;
+  assert.equal(arrivalVerdict(nowAbs, 15, iv), 'make', 'arrive 23:45 SUN, ends 02:00 MON');
+  assert.equal(arrivalVerdict(nowAbs, 160, iv), 'miss', 'arrive 02:10, past the end');
+  // The same clock expressed on the far side of the wrap must land identically.
+  assert.equal(arrivalVerdict(nowAbs - 10080, 15, iv), 'make');
+});
+
+test('activeOrNextInterval returns the live interval, else the soonest start', () => {
+  const w = win(['WED'], '16:00', '18:00');
+  const v = venue({}, [w]);
+  assert.equal(activeOrNextInterval(v, w, dt('WED', 17, 0)).startAbs, WED_WIN.startAbs, 'live now');
+  assert.equal(activeOrNextInterval(v, w, dt('WED', 15, 0)).startAbs, WED_WIN.startAbs, 'starts soon');
+  const w2 = win(['MON', 'FRI'], '16:00', '18:00');
+  const v2 = venue({}, [w2]);
+  assert.equal(activeOrNextInterval(v2, w2, dt('WED', 12, 0)).day, 'FRI', 'Friday is nearer than next Monday');
+});
+
+// ---- navigation URLs: exact strings, 6 decimals, name URL-encoded ----
+const NAV_VENUE = { lat: 36.1770247, lon: -86.7877993, name: '312 Pizza Company' };
+
+test('navUrl(waze) is the universal link that opens the Waze app when installed', () => {
+  assert.equal(navUrl('waze', NAV_VENUE),
+    'https://waze.com/ul?ll=36.177025,-86.787799&navigate=yes');
+});
+
+test('navUrl(apple) carries the destination and the URL-encoded venue name', () => {
+  assert.equal(navUrl('apple', NAV_VENUE),
+    'https://maps.apple.com/?daddr=36.177025,-86.787799&q=312%20Pizza%20Company');
+});
+
+test('navUrl(google) uses the documented api=1 directions form', () => {
+  assert.equal(navUrl('google', NAV_VENUE),
+    'https://www.google.com/maps/dir/?api=1&destination=36.177025,-86.787799');
+});
+
+test('navUrl encodes names with ampersands and slashes, and falls back to Apple', () => {
+  const v = { lat: 36.1, lon: -86.8, name: 'Fish & Chips / Bar' };
+  assert.equal(navUrl('apple', v),
+    'https://maps.apple.com/?daddr=36.100000,-86.800000&q=Fish%20%26%20Chips%20%2F%20Bar');
+  assert.equal(navUrl('nonsense', v), navUrl('apple', v), 'unknown key falls back to Apple Maps');
+});
+
+test('navUrl returns empty for a venue with no coordinates', () => {
+  assert.equal(navUrl('waze', { name: 'nowhere' }), '');
+  assert.equal(navUrl('waze', null), '');
+  assert.equal(navUrl('waze', { lat: 36.1, lon: null, name: 'half' }), '');
+});
+
+test('NAV_APPS lists exactly the three offered apps, and isNavApp gates storage', () => {
+  assert.deepEqual(NAV_APPS.map((a) => a.key), ['waze', 'apple', 'google']);
+  assert.deepEqual(NAV_APPS.map((a) => a.label), ['Waze', 'Apple Maps', 'Google Maps']);
+  assert.ok(isNavApp('waze') && isNavApp('apple') && isNavApp('google'));
+  assert.equal(isNavApp('bing'), false);
+  assert.equal(isNavApp(null), false);
+});
+
+test('defaultNavApp: Apple on Apple platforms, Google everywhere else', () => {
+  assert.equal(defaultNavApp('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)', 'iPhone'), 'apple');
+  assert.equal(defaultNavApp('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', 'MacIntel'), 'apple');
+  assert.equal(defaultNavApp('Mozilla/5.0 (iPad; CPU OS 18_0 like Mac OS X)', 'MacIntel'), 'apple');
+  assert.equal(defaultNavApp('Mozilla/5.0 (Linux; Android 14; Pixel 8)', 'Linux armv8l'), 'google');
+  assert.equal(defaultNavApp('Mozilla/5.0 (Windows NT 10.0; Win64; x64)', 'Win32'), 'google');
+  assert.equal(defaultNavApp(null, null), 'google');
 });

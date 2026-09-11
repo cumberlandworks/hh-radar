@@ -116,6 +116,23 @@ window: {
   window data wins) but gets a "Hours conflict" badge — never silently dropped.
 - Debug override: `?now=YYYY-MM-DDTHH:MM` in the URL forces the clock to that literal
   America/Chicago wall-clock time. Ignored unless the param is present.
+- Debug override: `?pos=LAT,LON` forces the reader's position to that point (v1.8), so a
+  drive-time verdict can be checked from a known corner of the map without standing there.
+  Same contract as `?now`: ignored unless present, **never written to localStorage**, never
+  sent anywhere, and it blocks the real Geolocation API from overwriting it for that page
+  view. The NOW view prints a red "debug position … — not your real location" line whenever
+  it is in force, so a screenshot can never be mistaken for a real one.
+- Drive time is a **straight-line estimate computed on the phone** (v1.8): crow-flight miles
+  x 1.35 for urban detour, then 18/24/32 mph by distance band, plus five minutes to get out
+  the door and five to park. No routing API, no backend, no position leaving the device —
+  which is exactly why every line reads "≈" and why the address on a card is a link into the
+  reader's own maps app, where the real ETA lives. Walk mode is 3 mph over a 1.25 detour.
+  The band table is floored so the estimate can never *fall* as the distance grows (see
+  `driveEstimateMin` in logic.js).
+- The address on a card opens **Waze, Apple Maps or Google Maps** — chosen once per phone.
+  The first tap on any Directions link asks; the answer is stored in `hhradar-navapp` and
+  changed later under Settings at the foot of the page. Before a choice is made the link
+  points at Apple Maps on Apple platforms and Google Maps elsewhere.
 
 ## Refresh runbook (do manually twice before ever automating)
 

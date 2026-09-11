@@ -182,6 +182,35 @@
   .deal { font-size: 13px; }
   .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
   .card-schedule { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); }
+
+  /* ==================== v1.8 C1/C2: verdict line + tappable address ==================== */
+  .card.unreachable { opacity: 0.55; }
+  .verdict { margin-top: 4px; font-size: 12.5px; font-weight: 700; color: var(--text-dim); }
+  .verdict.make { color: var(--amber-strong); }
+  .verdict.close { color: var(--drink); }
+  .verdict.miss { color: var(--bad); }
+  .verdict .est { font-weight: 400; }
+  /* The address is the one control on a card that leaves the app, so it gets the
+     44px touch target the icon buttons get, at full card width. */
+  .card-addr, .surprise-addr { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px; min-height: 44px; padding: 4px 0; font-size: 12px;
+    color: var(--text-dim); text-decoration: none; }
+  .card-addr .addr-go, .surprise-addr .addr-go { color: var(--drink); font-weight: 700;
+    font-size: 11px; white-space: nowrap; }
+  .card-addr:active .addr-go, .surprise-addr:active .addr-go { text-decoration: underline; }
+  .nav-chooser { display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    margin: 2px 0 6px; padding: 8px; border: 1px dashed var(--border); border-radius: 10px; }
+  .nav-chooser-q { font-size: 11.5px; color: var(--text-dim); width: 100%; }
+  .nav-chooser-note { width: 100%; font-size: 10.5px; color: var(--text-dim); }
+  a.nav-pick { display: inline-flex; align-items: center; min-height: 44px; padding: 4px 12px;
+    border-radius: 999px; border: 1px solid var(--border); background: var(--panel);
+    color: var(--drink); font-size: 12px; font-weight: 700; text-decoration: none; }
+  a.nav-pick:active { background: var(--drink-bg); }
+  .settings-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .settings-note { font-size: 11.5px; color: var(--text-dim); margin-top: 8px; }
+  .geo-relink { background: none; border: none; padding: 0; font: inherit;
+    color: var(--drink); font-weight: 700; text-decoration: underline; cursor: pointer; }
+  .debug-pos { font-size: 11px; color: var(--bad); font-weight: 700; padding: 0 0 6px; }
   .disagreements { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; }
   .disagreements details { display: inline; cursor: pointer; }
   .disagreements .more-label { color: var(--drink); font-weight: 600; }
@@ -486,6 +515,10 @@
     <button type="button" class="pill on" id="btn-food">🍽 Food-first</button>
     <button type="button" class="pill" id="btn-drink">🍹 Drink-first</button>
   </div>
+  <div class="toggle" id="travel-toggle" role="group" aria-label="Drive or walk for the time estimate">
+    <button type="button" class="pill on" id="btn-drive">🚗 Drive</button>
+    <button type="button" class="pill" id="btn-walk">🚶 Walk</button>
+  </div>
   <button type="button" class="pill" id="btn-surprise" aria-label="Surprise me — pick one at random">🎲 Surprise me</button>
 </div>
 
@@ -527,6 +560,20 @@
      TJ's who has never heard of this project, so "me / someone told me" (which
      encoded the maintainer's relay case) is gone, there is ONE obvious action, and
      the disclosure says in plain words what a note carries. -->
+<!-- v1.8 C1: the navigation-app preference lives here once it has been set. The
+     FIRST tap on any Directions link asks outright, so most readers never open this;
+     it exists so the answer is changeable and visible rather than a trapped guess. -->
+<div class="fb-wrap">
+  <details class="feedback" id="settings">
+    <summary>Settings</summary>
+    <div class="fb-body">
+      <p class="fb-intro">Which app should the address on a card open?</p>
+      <div class="settings-row" id="nav-app-row" role="group" aria-label="Navigation app"></div>
+      <div class="settings-note" id="nav-app-note"></div>
+    </div>
+  </details>
+</div>
+
 <div class="fb-wrap">
   <details class="feedback" id="feedback">
     <summary id="fb-summary">Feedback <span class="fb-count" id="fb-count" hidden></span></summary>
@@ -564,12 +611,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.7"></script>
+<script src="logic.js?v=1.8"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.7';
+  var APP_VERSION = 'v1.8';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -591,6 +638,7 @@
   var LS_NOTES = 'hhradar-fb-notes', LS_DRAFT = 'hhradar-fb-draft';
   var LS_FROM = 'hhradar-fb-from';
   var LS_WHO_LEGACY = 'hhradar-fb-who'; // v1.5's me/relayed toggle — removed in v1.6
+  var LS_TRAVEL = 'hhradar-travel', LS_NAVAPP = 'hhradar-navapp'; // v1.8
   var UNDO_MS = 3000;
 
   // ---------- debug clock override (?now=YYYY-MM-DDTHH:MM), ignored unless present ----------
@@ -618,6 +666,21 @@
     var hour = map.hour === '24' ? 0 : parseInt(map.hour, 10);
     return { year: +map.year, month: +map.month, day: +map.day, hour: hour, minute: parseInt(map.minute, 10), dayOfWeek: wd };
   }
+  // ---------- v1.8 C2/C3: debug position override (?pos=LAT,LON) ----------
+  // Same contract as ?now: ignored unless present, never written to localStorage,
+  // never sent anywhere. It exists so a verdict line can be screenshotted from a
+  // known corner of the map without standing there. Real readers get the real
+  // Geolocation API, which this override then blocks from overwriting.
+  function getPosOverride() {
+    var raw = new URLSearchParams(location.search).get('pos');
+    if (!raw) return null;
+    var m = raw.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
+    if (!m) return null;
+    var lat = parseFloat(m[1]), lon = parseFloat(m[2]);
+    if (!(lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180)) return null;
+    return { lat: lat, lon: lon };
+  }
+
   function dayOfWeekFromYMD(y, mo, day) {
     var js = new Date(Date.UTC(y, mo - 1, day)).getUTCDay(); // 0=Sun..6=Sat
     return ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][js];
@@ -644,6 +707,9 @@
     fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
     fbSent: [], // notes inside the 3-second undo window after a send
     fbMood: '', // v1.6 C1: '' | 'liked' | 'idea' | 'problem' — optional, single-select
+    travelMode: 'drive', // v1.8 C2: 'drive' | 'walk' — which estimate the verdict line uses
+    posOverride: null, // v1.8: {lat, lon} from ?pos=, or null
+    navApp: '', // v1.8 C1: '' until the reader picks one; then 'waze'|'apple'|'google'
   };
 
   // ---------- localStorage (v1.5 P5) ----------
@@ -671,6 +737,12 @@
   if (GRID_SORT_OPTIONS.indexOf(savedSort) !== -1) state.gridSort = savedSort;
   var restoredHoods = L.deserializeHoodSelection(lsGetJson('hhradar-hoods', null), L.hoodKeys());
   if (restoredHoods) state.hoodSelected = restoredHoods;
+  var savedTravel = lsGet(LS_TRAVEL, null);
+  if (savedTravel === 'drive' || savedTravel === 'walk') state.travelMode = savedTravel;
+  var savedNav = lsGet(LS_NAVAPP, null);
+  if (L.isNavApp(savedNav)) state.navApp = savedNav;
+  state.posOverride = getPosOverride();
+  if (state.posOverride) { state.geo = state.posOverride; state.geoStatus = 'granted'; }
   state.fbNotes = sanitizeNotes(lsGetJson(LS_NOTES, []));
   try { localStorage.removeItem(LS_WHO_LEGACY); } catch (e) {} // v1.6: toggle is gone
 
@@ -763,12 +835,77 @@
     return '<div class="card-schedule">' + escapeHtml(bits.join(' · ')) + '</div>';
   }
 
+  // ==================== v1.8 C1/C2: "will I make it?" + tap-to-navigate ====================
+  // Everything here is a straight-line estimate computed on this device. No routing
+  // API, no backend, no position leaving the phone — which is exactly why the line
+  // says "≈" and why the address link hands the reader to a maps app that knows better.
+
+  function travelInfoFor(venue, win) {
+    if (!state.geo || venue.lat == null || venue.lon == null) return null;
+    var miles = L.haversineMiles(state.geo.lat, state.geo.lon, venue.lat, venue.lon);
+    var eta = L.travelEstimateMin(miles, state.travelMode);
+    var interval = L.activeOrNextInterval(venue, win, state.now);
+    var nowAbs = L.minutesSinceWeekStart(state.now);
+    return {
+      miles: miles, eta: eta, interval: interval,
+      verdict: L.arrivalVerdict(nowAbs, eta, interval),
+      arriveAbs: nowAbs + eta,
+    };
+  }
+
+  // An absolute minute count (MON 00:00 = 0, possibly wrapped past the week) as a
+  // wall clock. fmtHM wants "HH:MM", so rebuild one rather than duplicate its rules.
+  function fmtAbsClock(abs) {
+    var mins = ((Math.round(abs) % 10080) + 10080) % 10080 % 1440;
+    var hh = Math.floor(mins / 60), mm = mins % 60;
+    return fmtHM((hh < 10 ? '0' + hh : String(hh)) + ':' + (mm < 10 ? '0' + mm : String(mm)));
+  }
+
+  var TRAVEL_WORD = { drive: 'drive', walk: 'walk' };
+
+  // The verdict line, NOW cards and the Surprise card only — the Day Grid is a
+  // planning view where "you'd miss it" is about a time the reader is not in.
+  function verdictLineHtml(t) {
+    if (!t || !t.verdict) return '';
+    var est = '≈ ' + L.formatEtaMin(t.eta) + ' ' + TRAVEL_WORD[state.travelMode];
+    var tail;
+    if (t.verdict === 'early') {
+      tail = 'you’d arrive ' + fmtAbsClock(t.arriveAbs) + ', starts ' + fmtAbsClock(t.interval.startAbs);
+    } else {
+      var ends = 'ends ' + fmtAbsClock(t.interval.endAbs);
+      tail = (t.verdict === 'make' ? 'you’d make it' :
+              t.verdict === 'close' ? 'cuts it close' : 'you’d miss it') + ' (' + ends + ')';
+    }
+    return '<div class="verdict ' + t.verdict + '" title="Straight-line estimate — tap the address for a real ETA">' +
+      '<span class="est">' + escapeHtml(est) + '</span> · ' + escapeHtml(tail) + '</div>';
+  }
+
+  function navAppInUse() {
+    return state.navApp || L.defaultNavApp(navigator.userAgent, navigator.platform);
+  }
+
+  // Present on every card in every view (NOW, grid inline, Surprise). The first tap
+  // is intercepted by the capture-phase chooser below when no app has been picked;
+  // stopPropagation keeps the tap from also toggling the card (fix2 C3).
+  function addressLinkHtml(venue, cls) {
+    if (!venue || !venue.address) return '';
+    var href = L.navUrl(navAppInUse(), venue);
+    if (!href) return '';
+    var label = venue.address + (venue.city ? ', ' + venue.city : '');
+    return '<a class="' + cls + '" href="' + escapeHtml(href) + '" target="_blank" rel="noopener"' +
+      ' data-nav-venue="' + escapeHtml(String(venue.id)) + '"' +
+      ' aria-label="Directions to ' + escapeHtml(venue.name) + ', ' + escapeHtml(label) + '"' +
+      ' onclick="event.stopPropagation()">' +
+      '<span class="addr-text">' + escapeHtml(label) + '</span>' +
+      '<span class="addr-go">Directions ↗</span></a>';
+  }
+
   // Shared card renderer for both the NOW view and a Day-Grid row's tap-to-expand
   // panel. `expanded` is passed in by the caller (NOW: state.expandedCards
   // membership, default collapsed; Grid: always true — C2). Collapsed: header +
   // badges + the COMPLETE deal list (food-first), no "+N more" truncation (C2).
   // Expanded adds: area/schedule and research provenance (C2).
-  function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key, expanded) {
+  function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key, expanded, travel) {
     var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
     var deals = win.deals.slice();
     var firstType = state.priority === 'food' ? 'food' : 'drink';
@@ -780,8 +917,11 @@
       ? '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>'
       : deals.map(dealLineHtml).join('');
     var extrasHtml = expanded ? scheduleBlockHtml(venue, win) + provenanceBlockHtml(venue, win) : '';
+    // v1.8 C2: a venue the reader cannot reach before last call is dimmed, not removed
+    // — it is still a real happy hour, and the reader may know a faster road than we do.
+    var unreachable = travel && travel.verdict === 'miss';
     return '' +
-      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
+      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (unreachable ? ' unreachable' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
         '<div class="card-top">' +
           '<div class="card-title">' +
             '<span class="card-name">' + escapeHtml(venue.name) + '</span>' +
@@ -790,6 +930,8 @@
           '<div class="card-status ' + statusClass + '">' + escapeHtml(statusLabel) + '</div>' +
         '</div>' +
         '<div class="card-meta">' + escapeHtml(venue.neighborhood || venue.city) + (distanceLabel ? ' · ' + distanceLabel : '') + '</div>' +
+        verdictLineHtml(travel) +
+        addressLinkHtml(venue, 'card-addr') +
         '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
         '<div class="deals">' + dealsInner + '</div>' +
         extrasHtml +
@@ -816,7 +958,7 @@
       ? 'Live until ' + fmtHM(resolveDisplayEnd(entry.venue, entry.window, entry.day))
       : 'Starts in ' + entry.minutesUntil + 'm';
     var key = cardKey(entry.venue, entry.window);
-    return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), key, state.expandedCards.has(key));
+    return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), key, state.expandedCards.has(key), entry.travel);
   }
 
   // ---------- NOW view (C3: Live now / Starting soon / All-day specials) ----------
@@ -837,9 +979,20 @@
       });
     });
 
+    // v1.8 C2: computed once per entry, not once per comparison — the sort below and
+    // every card renderer read the same object, and resolveWindow() is not free.
+    [live, soon, allDay].forEach(function (list) {
+      list.forEach(function (e) { e.travel = travelInfoFor(e.venue, e.window); });
+    });
+
     function byNameAsc(a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); }
+    // A card you cannot reach in time sinks below the ones you can, inside Live now.
+    // Without a position every rank is 0 and the old ordering stands untouched.
+    function missRank(e) { return e.travel && e.travel.verdict === 'miss' ? 1 : 0; }
 
     live.sort(function (a, b) {
+      var ma = missRank(a), mb = missRank(b);
+      if (ma !== mb) return ma - mb;
       if (state.geo) {
         var da = L.haversineMiles(state.geo.lat, state.geo.lon, a.venue.lat, a.venue.lon);
         var db = L.haversineMiles(state.geo.lat, state.geo.lon, b.venue.lat, b.venue.lon);
@@ -1730,8 +1883,15 @@
   // Later means the selected day). surpriseHtml() returns '' for the inactive view so
   // there is never a second copy holding duplicate control ids.
   function surprisePoolsFor() {
-    return L.surprisePools(filteredVenues(), state.now,
-      { day: state.currentTab === 'grid' ? state.day : null });
+    return L.surprisePools(filteredVenues(), state.now, {
+      day: state.currentTab === 'grid' ? state.day : null,
+      // v1.8 C2: with a position, the Now pool only offers places the reader can
+      // actually get to. Without one it is unfiltered, exactly as in v1.7.
+      reachable: state.geo ? function (c) {
+        var t = travelInfoFor(c.venue, c.win);
+        return !t || t.verdict !== 'miss';
+      } : null,
+    });
   }
 
   function surpriseListFor(pools, mode) { return mode === 'now' ? pools.now : pools.later; }
@@ -1877,8 +2037,14 @@
     var roll = s.canRoll
       ? '<button type="button" class="fb-btn surprise-roll">Roll again</button>'
       : '<span class="surprise-only">That’s the only option in this pool.</span>';
+    // v1.8 C2: the verdict rides on the Now pick only. On a Later pick — and the
+    // Later pool rolls over into tomorrow whenever tonight is spent — "you'd make it"
+    // would be measuring today's drive against a window on another day. The address
+    // link is on both, because the directions are just as good tomorrow.
+    var verdict = s.mode === 'now' ? verdictLineHtml(travelInfoFor(v, w)) : '';
     return '<div class="surprise">' + head + sw +
-      '<div class="surprise-line">' + line + '</div>' + sub +
+      '<div class="surprise-line">' + line + '</div>' + sub + verdict +
+      addressLinkHtml(v, 'surprise-addr') +
       '<div class="surprise-actions">' + cardActionsHtml(v, w) + roll + '</div>' +
       '</div>';
   }
@@ -1917,6 +2083,8 @@
 
   // ---------- geolocation ----------
   function requestGeo() {
+    // v1.8: ?pos= is the position for this page view. The real API must not overwrite it.
+    if (state.posOverride) return;
     if (!('geolocation' in navigator)) {
       state.geoStatus = 'unavailable';
       renderNow();
@@ -1932,18 +2100,39 @@
       },
       function () {
         state.geoStatus = 'denied';
+        if (state.geoAsked) state.geoRetryNote = 'Still blocked — allow location for this site in your browser settings.';
         renderNow();
         renderGridIfVisible();
       },
       { timeout: 8000 }
     );
   }
+  // C3: re-request on a tap of the top line. A browser that has remembered "deny"
+  // will not re-prompt without a settings change, so the second refusal says so.
+  function onGeoRetry() {
+    state.geoAsked = true;
+    state.geoRetryNote = '';
+    requestGeo();
+  }
   // C2 (v1.4): one home for this message — the top of the NOW view. The grid keeps
   // its own, narrower note (#grid-sort-note), which only fires when Distance sort is
   // chosen without a location, so the two are never on screen together.
+  // v1.8 C3: ONE line at the top of NOW, never per-card noise. It now carries the
+  // drive-time reason as well as the sort reason, and offers to ask again — a browser
+  // that has remembered a denial may silently do nothing, so the retry says what
+  // happened rather than pretending it worked (see onGeoRetry).
   function geoNoteHtml() {
-    if (state.geoStatus !== 'denied' && state.geoStatus !== 'unavailable') return '';
-    return '<div class="note" style="padding:0 0 8px">Location unavailable — sorted by neighborhood instead of distance.</div>';
+    var dbg = state.posOverride
+      ? '<div class="debug-pos">debug position ' + escapeHtml(state.posOverride.lat + ', ' + state.posOverride.lon) + ' (?pos) — not your real location</div>'
+      : '';
+    if (state.geoStatus !== 'denied' && state.geoStatus !== 'unavailable') return dbg;
+    var msg = state.geoStatus === 'unavailable'
+      ? 'Location unavailable on this device — sorted by neighborhood instead of distance.'
+      : 'Location off — turn it on for drive times.';
+    var retry = state.geoStatus === 'denied'
+      ? ' <button type="button" class="geo-relink" id="geo-retry">Ask again</button>' : '';
+    return dbg + '<div class="note" id="geo-note" style="padding:0 0 8px">' + msg + retry +
+      (state.geoRetryNote ? ' <span>' + escapeHtml(state.geoRetryNote) + '</span>' : '') + '</div>';
   }
   function renderGridIfVisible() {
     if (document.getElementById('view-grid').style.display !== 'none') renderGrid();
@@ -1985,6 +2174,106 @@
   }
   document.getElementById('view-now').addEventListener('click', surpriseDelegate, true);
   document.getElementById('view-grid').addEventListener('click', surpriseDelegate, true);
+
+  // ==================== v1.8 C1: navigation-app choice ====================
+  // TJ uses Waze; a friend handed this link may use Apple or Google. Rather than
+  // guess from the user agent and be quietly wrong, the FIRST tap on any Directions
+  // link asks, and the answer is remembered on this phone. One document-level
+  // CAPTURE listener covers every view — the links live in NOW cards, grid inline
+  // cards and the Surprise card, all of which re-render underneath it.
+  function venueById(id) {
+    for (var i = 0; i < state.venues.length; i++) {
+      if (String(state.venues[i].id) === String(id)) return state.venues[i];
+    }
+    return null;
+  }
+  function closeNavChooser() {
+    var old = document.querySelector('.nav-chooser');
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+  }
+  function openNavChooser(link) {
+    closeNavChooser();
+    var venue = venueById(link.getAttribute('data-nav-venue'));
+    if (!venue) return;
+    var box = document.createElement('div');
+    box.className = 'nav-chooser';
+    box.setAttribute('role', 'group');
+    box.setAttribute('aria-label', 'Open directions in');
+    box.innerHTML = '<span class="nav-chooser-q">Open directions in:</span>' +
+      L.NAV_APPS.map(function (a) {
+        return '<a class="nav-pick" data-nav-pick="' + a.key + '" href="' + escapeHtml(L.navUrl(a.key, venue)) +
+          '" target="_blank" rel="noopener">' + escapeHtml(a.label) + '</a>';
+      }).join('') +
+      '<span class="nav-chooser-note">Remembered on this phone — change it under Settings.</span>';
+    link.parentNode.insertBefore(box, link.nextSibling);
+  }
+  function setNavApp(key) {
+    if (!L.isNavApp(key)) return;
+    state.navApp = key;
+    lsSet(LS_NAVAPP, key);
+    renderNavAppSetting();
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var pick = e.target.closest('a.nav-pick');
+    if (pick) {
+      // No preventDefault: this anchor IS the navigation, so the tap that answers
+      // the question also opens the app. The chooser is torn down after the click
+      // has been dispatched, never during it.
+      e.stopPropagation();
+      setNavApp(pick.getAttribute('data-nav-pick'));
+      setTimeout(function () { closeNavChooser(); renderNow(); renderGridIfVisible(); }, 0);
+      return;
+    }
+    var link = e.target.closest('a.card-addr, a.surprise-addr');
+    if (link) {
+      if (state.navApp) return; // already answered — the href is already the right app
+      e.preventDefault();
+      e.stopPropagation();
+      openNavChooser(link);
+      return;
+    }
+    if (!e.target.closest('.nav-chooser')) closeNavChooser();
+  }, true);
+
+  // ---------- Settings: change the navigation app after the fact ----------
+  function renderNavAppSetting() {
+    var row = document.getElementById('nav-app-row');
+    if (!row) return;
+    row.innerHTML = L.NAV_APPS.map(function (a) {
+      return '<button type="button" class="pill' + (state.navApp === a.key ? ' on' : '') +
+        '" data-nav-set="' + a.key + '" aria-pressed="' + (state.navApp === a.key ? 'true' : 'false') + '">' +
+        escapeHtml(a.label) + '</button>';
+    }).join('');
+    document.getElementById('nav-app-note').textContent = state.navApp
+      ? 'Addresses open in ' + L.NAV_APPS.filter(function (a) { return a.key === state.navApp; })[0].label + '.'
+      : 'Not set yet — the first time you tap an address, this app will ask.';
+  }
+  document.getElementById('nav-app-row').addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-nav-set]');
+    if (!btn) return;
+    setNavApp(btn.getAttribute('data-nav-set'));
+    renderNow();
+    renderGridIfVisible();
+  });
+
+  // ==================== v1.8 C2: Drive | Walk ====================
+  function setTravelMode(mode) {
+    if (mode !== 'drive' && mode !== 'walk') return;
+    state.travelMode = mode;
+    lsSet(LS_TRAVEL, mode);
+    document.getElementById('btn-drive').classList.toggle('on', mode === 'drive');
+    document.getElementById('btn-walk').classList.toggle('on', mode === 'walk');
+    renderNow();
+    renderGridIfVisible();
+  }
+  document.getElementById('btn-drive').addEventListener('click', function () { setTravelMode('drive'); });
+  document.getElementById('btn-walk').addEventListener('click', function () { setTravelMode('walk'); });
+
+  // C3: the one top-of-NOW location line offers to ask again.
+  document.getElementById('view-now').addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('#geo-retry')) { e.stopPropagation(); onGeoRetry(); }
+  }, true);
   document.getElementById('zone-summary').addEventListener('click', function (e) {
     var mapBtn = e.target.closest('#map-toggle-sm');
     if (mapBtn) {
@@ -2044,6 +2333,11 @@
     computeHoodTotals();
     renderZoneSummary();
     wireFeedback();
+    // v1.8: reflect the restored Drive|Walk choice and the stored navigation app
+    // before the first paint, so a reload never flashes the defaults.
+    document.getElementById('btn-drive').classList.toggle('on', state.travelMode === 'drive');
+    document.getElementById('btn-walk').classList.toggle('on', state.travelMode === 'walk');
+    renderNavAppSetting();
     renderDaySelect();
     renderSortSelect();
     renderNow();

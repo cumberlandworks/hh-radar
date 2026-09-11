@@ -885,7 +885,7 @@
     return out;
   }
 
-  // surprisePools(venues, now, {day}) -> {now, later, laterLabel, laterScope, laterDay}
+  // surprisePools(venues, now, {day, reachable}) -> {now, later, laterLabel, laterScope, laterDay}
   //
   //   now   = live this minute, or starting within 2h. Specials are out: "Surprise
   //           me" promises a happy hour, and an all-day special is not an event.
@@ -951,6 +951,15 @@
           laterPool.push(surpriseCandidate(venue, win, soonest.iv.day, 'later', soonest.mins));
         }
       }
+    }
+
+    // v1.8: a bar you cannot reach before last call is not a surprise, it is a
+    // taunt. The caller supplies the predicate (it needs the reader's position and
+    // travel mode, which this file deliberately knows nothing about). Only the Now
+    // pool is filtered: `taken`/`liveVenues` are left alone on purpose, so a venue
+    // that is open-but-unreachable tonight keeps its existing rollover treatment.
+    if (typeof opts.reachable === 'function') {
+      nowPool = nowPool.filter(function (c) { return opts.reachable(c) !== false; });
     }
 
     var laterScope = 'today', laterDay = null;
@@ -1094,6 +1103,132 @@
     return errors;
   }
 
+  // ==================== v1.8 (fix8): drive time + navigation links ====================
+  // Scope guard from BLOCK-hh-radar-fix8: no backend, no routing API, no runtime
+  // libraries. The reader's position never leaves the phone — every number below is
+  // computed here from a straight-line distance, and the UI says out loud that it is
+  // an estimate. The maps app the reader taps into is the one that knows the traffic.
+
+  var DRIVE_DETOUR = 1.35;   // crow-flight -> road miles, urban detour factor
+  var WALK_DETOUR = 1.25;
+  var WALK_MPH = 3;
+  var DOOR_MIN = 5;          // getting out the door
+  var PARK_MIN = 5;          // parking and walking in
+  // Nashville's mix: surface streets, then a parkway, then the interstate share.
+  var DRIVE_BANDS = [
+    { maxRoad: 3, mph: 18 },
+    { maxRoad: 8, mph: 24 },
+    { maxRoad: Infinity, mph: 32 },
+  ];
+
+  function rawDriveMin(road, mph) { return DOOR_MIN + road / mph * 60 + PARK_MIN; }
+
+  // MONOTONIC CLAMP — a deliberate deviation from the block, which specifies flat
+  // speed bands keyed on `road` and nothing else. Those bands are not monotonic: at
+  // 5.9 mi the 24 mph band charges 30 min, and at 6.0 mi the 32 mph band charges 25,
+  // so moving FURTHER from a bar would shorten the estimate by five minutes. A reader
+  // cannot be told that. Each band is therefore floored at what the slower band below
+  // it charged at its own ceiling. Inside a band the block's arithmetic is untouched,
+  // and the clamp only ever binds just past a boundary (6.0-7.9 mi all read 30 min).
+  function driveEstimateMin(miles) {
+    var road = Math.max(0, Number(miles) || 0) * DRIVE_DETOUR;
+    var raw = null, floor = 0;
+    for (var i = 0; i < DRIVE_BANDS.length; i++) {
+      var band = DRIVE_BANDS[i];
+      if (road <= band.maxRoad) { raw = rawDriveMin(road, band.mph); break; }
+      floor = Math.max(floor, rawDriveMin(band.maxRoad, band.mph));
+    }
+    if (raw === null) raw = rawDriveMin(road, DRIVE_BANDS[DRIVE_BANDS.length - 1].mph);
+    return Math.round(Math.max(raw, floor));
+  }
+
+  // Three minutes to get moving, then a steady 3 mph over the same detour inflation.
+  function walkEstimateMin(miles) {
+    return Math.round(3 + Math.max(0, Number(miles) || 0) * WALK_DETOUR / WALK_MPH * 60);
+  }
+
+  function travelEstimateMin(miles, mode) {
+    return mode === 'walk' ? walkEstimateMin(miles) : driveEstimateMin(miles);
+  }
+
+  // "14 min" / "1 h 10". Never seconds — the input is already a rounded minute count,
+  // and a drive-time estimate built from a straight line has no business being precise.
+  function formatEtaMin(min) {
+    if (min === null || min === undefined || isNaN(min)) return '';
+    var m = Math.round(min);
+    if (m < 60) return m + ' min';
+    var h = Math.floor(m / 60), rest = m % 60;
+    return rest === 0 ? h + ' h' : h + ' h ' + (rest < 10 ? '0' + rest : rest);
+  }
+
+  // The interval a NOW card is about: the one running this minute, else the one that
+  // starts soonest. Mirrors how buildNowSections() filed the card in the first place.
+  function activeOrNextInterval(venue, win, dateInTz) {
+    var t = minutesSinceWeekStart(dateInTz);
+    var intervals = resolveWindow(venue, win);
+    for (var i = 0; i < intervals.length; i++) {
+      if (inIntervalWrapped(t, intervals[i].startAbs, intervals[i].endAbs)) return intervals[i];
+    }
+    var best = null;
+    for (var j = 0; j < intervals.length; j++) {
+      var mins = minutesUntilWrapped(t, intervals[j].startAbs);
+      if (best === null || mins < best.mins) best = { mins: mins, iv: intervals[j] };
+    }
+    return best ? best.iv : null;
+  }
+
+  var MAKE_MARGIN_MIN = 20; // "you'd make it" means 20 minutes of drinking, not 2
+
+  // `interval` is ONE resolved interval from resolveWindow() — {startAbs, endAbs} in
+  // absolute minutes since MON 00:00, so endAbs can sit past 10080 on a window that
+  // crosses the week boundary. The arrival is matched to the interval the way
+  // inIntervalWrapped() matches "now": try it a week either side, keep the nearest.
+  function arrivalVerdict(nowAbs, etaMin, interval) {
+    if (!interval || typeof interval.endAbs !== 'number') return null;
+    if (etaMin === null || etaMin === undefined || isNaN(etaMin)) return null;
+    var arrival = nowAbs + etaMin;
+    var mid = (interval.startAbs + interval.endAbs) / 2;
+    var best = arrival;
+    var candidates = [arrival - 10080, arrival + 10080];
+    for (var i = 0; i < candidates.length; i++) {
+      if (Math.abs(candidates[i] - mid) < Math.abs(best - mid)) best = candidates[i];
+    }
+    if (best < interval.startAbs) return 'early';
+    var remaining = interval.endAbs - best;
+    if (remaining >= MAKE_MARGIN_MIN) return 'make';
+    if (remaining > 0) return 'close';
+    return 'miss';
+  }
+
+  // ---- navigation links ----
+  // TJ, 2026-09-11: "I use waze on my phone no google maps" — and a friend handed the
+  // link may use either of the others, so the app asks once and remembers.
+  var NAV_APPS = [
+    { key: 'waze', label: 'Waze' },
+    { key: 'apple', label: 'Apple Maps' },
+    { key: 'google', label: 'Google Maps' },
+  ];
+  function isNavApp(key) {
+    for (var i = 0; i < NAV_APPS.length; i++) if (NAV_APPS[i].key === key) return true;
+    return false;
+  }
+  // Six decimals is ~11cm — past any meaning for a bar's front door, but it is what
+  // the data carries and truncating it would be a second, invisible rounding.
+  function navUrl(app, venue) {
+    if (!venue || venue.lat === null || venue.lat === undefined ||
+        venue.lon === null || venue.lon === undefined) return '';
+    var ll = Number(venue.lat).toFixed(6) + ',' + Number(venue.lon).toFixed(6);
+    if (app === 'waze') return 'https://waze.com/ul?ll=' + ll + '&navigate=yes';
+    if (app === 'google') return 'https://www.google.com/maps/dir/?api=1&destination=' + ll;
+    return 'https://maps.apple.com/?daddr=' + ll + '&q=' + encodeURIComponent(venue.name || '');
+  }
+  // Only the pre-choice default: the first tap on a Directions link asks outright and
+  // the answer sticks, so this is what a chooser-less fallback would open.
+  function defaultNavApp(ua, platform) {
+    return /iPhone|iPad|iPod|Mac/i.test(String(ua || '') + ' ' + String(platform || ''))
+      ? 'apple' : 'google';
+  }
+
   // ---------- v1.6 C1: feedback note composition ----------
   // The optional mood chip is not a separate field on the form; it is a tag on the
   // front of the note text, so a plain-text inbox sorts itself with no schema change.
@@ -1170,5 +1305,16 @@
     DAY_SHORT: DAY_SHORT,
     DAY_LONG: DAY_LONG,
     composeNote: composeNote,
+    driveEstimateMin: driveEstimateMin,
+    walkEstimateMin: walkEstimateMin,
+    travelEstimateMin: travelEstimateMin,
+    formatEtaMin: formatEtaMin,
+    activeOrNextInterval: activeOrNextInterval,
+    arrivalVerdict: arrivalVerdict,
+    MAKE_MARGIN_MIN: MAKE_MARGIN_MIN,
+    NAV_APPS: NAV_APPS,
+    isNavApp: isNavApp,
+    navUrl: navUrl,
+    defaultNavApp: defaultNavApp,
   };
 });

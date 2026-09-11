@@ -1,5 +1,66 @@
 # Changelog
 
+## 2026-09-11 — BLOCK-hh-radar-fix8-20260911: v1.8 ("will I make it?" + tap-to-navigate)
+
+TJ, 2026-09-11 ~04:35 CDT, verbatim:
+
+> "if there is a way to know the location it could estimate the time it would take to get
+> there - basically to know will I miss it or do I still have time - also a way to click on
+> the address to bring up a maps app on the phone easily."
+
+And ~04:38 CDT, verbatim:
+
+> "I use waze on my phone no google maps"
+
+Both answered on the phone, with the scope guard intact: **no backend, no routing API, no
+runtime libraries.** The reader's position never leaves the device — the estimate is computed
+locally from a straight-line distance and says so, and the address link hands the reader to a
+maps app that knows the traffic.
+
+- **A verdict line on every NOW card, once a position is known (C2).**
+  "≈ 11 min drive · you'd make it (ends 6pm)" / "cuts it close" / "you'd miss it" / on a
+  starting-soon card, "≈ 16 min drive · you'd arrive 4:46pm, starts 5pm". `make` means at
+  least 20 minutes on the ground; `close` is any arrival before the end; `miss` is arriving
+  at or after it. No position, no line — and one note at the top of NOW instead of noise on
+  54 cards.
+- **`miss` cards are dimmed, not removed, and sort to the bottom of Live now.** The venue is
+  still a real happy hour and the reader may know a faster road than the app does.
+- **A Drive | Walk toggle beside Food/Drink**, persisted in `hhradar-travel`.
+- **The address is a link into the phone's maps app (C1).** Present on every card in every
+  view — NOW, the Day Grid's inline card, and the Surprise card — at a 44px touch target,
+  with `event.stopPropagation()` so tapping it never also toggles the card open.
+- **Which maps app is asked once, not guessed.** The first tap on a Directions link opens a
+  three-way chooser (Waze · Apple Maps · Google Maps); the answer is stored in
+  `hhradar-navapp` and every address link on the page is rewritten to it. It is changeable
+  afterwards under a new **Settings** disclosure beside Feedback. Before a choice exists the
+  link points at Apple Maps on Apple platforms and Google Maps elsewhere — but TJ will pick
+  Waze on his first tap and never see the chooser again.
+- **Surprise me will not offer a bar you cannot reach.** With a position, `miss` candidates
+  are filtered out of the **Now** pool (`surprisePools(..., {reachable})`). Measured: 25
+  consecutive rolls at 17:30 produced zero unreachable picks.
+- **`?pos=LAT,LON` debug override** alongside `?now`, with the same contract — ignored unless
+  present, never persisted, never sent — plus a red banner on screen while it is in force.
+
+### Two things the block got wrong, both found by measuring
+
+1. **The drive-time formula is not monotonic.** The block specifies flat speed bands keyed on
+   road miles: 18 mph to 3, 24 mph to 8, 32 mph beyond. At 5.9 straight-line miles the 24 mph
+   band charges 30 minutes; at 6.0 miles the 32 mph band charges **25**. Driving further
+   would have shortened the estimate by five minutes. `driveEstimateMin` therefore floors each
+   band at what the band below it charged at its own ceiling — the block's arithmetic is
+   untouched inside a band, and the clamp only binds just past a boundary (6.0–7.9 mi all read
+   30 min). A monotonicity test sweeps 0–40 miles in 0.05-mile steps.
+2. **The C2 acceptance criterion cannot be met at 16:30.** The block asks for "at least one
+   `make` and one `miss`" in the 16:30 NOW view with `?pos=36.15,-86.78`. Measured across all
+   seven days: **16:30 yields zero `miss` cards on every one of them.** The happy hours live at
+   16:30 that are far away (Franklin, Murfreesboro) run long — JoJo's Fish House in
+   Murfreesboro is 31.6 mi and a 90-minute drive, but its window has 150 minutes left, so it
+   is a comfortable `make`. The only short windows at that hour end at 17:00 and belong to
+   downtown bars ten minutes away. The earliest hour that shows all three verdicts is
+   **17:30**, on every day of the week. Both views are in the shipped evidence.
+
+Everything else in the block landed as written.
+
 ## 2026-09-11 — BLOCK-hh-radar-fix7-20260911: v1.7 (Surprise me = Now | Later)
 
 TJ, 2026-09-11 ~04:18 CDT, verbatim:
