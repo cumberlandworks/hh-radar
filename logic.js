@@ -730,8 +730,35 @@
           }
         });
       });
+      warnings.push.apply(warnings, lintClosedDays(v));
     });
     return warnings;
+  }
+
+  // ---- v1.11 C4: closed-day lint ----
+  // A window on a day the venue's own hours say it is closed is either a stale deal or
+  // half-copied hours (v1.10 shipped 8 venues with only their FRI/SAT hours). Warn, never
+  // fail (except under --strict). Venues with no hours on file are skipped: the card
+  // already says "No hours on file". The second warning is venue-level and always comes
+  // with at least one of the first kind; it names the likelier cause.
+  function lintClosedDays(v) {
+    var out = [];
+    if (!hasHours(v)) return out;
+    var openDays = DAYS.filter(function (d) { return v.hours[d] && v.hours[d].length; });
+    var offDays = {};
+    (v.windows || []).forEach(function (w) {
+      (w.days || []).forEach(function (d) {
+        if (openDays.indexOf(d) !== -1) return;
+        out.push(v.name + ': ' + w.kind + ' window on ' + d + ' but hours say closed');
+        offDays[d] = true;
+      });
+    });
+    var off = DAYS.filter(function (d) { return offDays[d]; });
+    if (openDays.length <= 2 && off.length) {
+      out.push(v.name + ': hours on file for only ' + openDays.join('/') + ' but a window on ' +
+        off.join('/') + ' (hours may be incomplete)');
+    }
+    return out;
   }
 
   function daysBetween(a, b) {
@@ -871,13 +898,13 @@
   //   closed-today        — no ranges at all today
   //   closed-for-the-day  — every one of today's ranges is over
   //   no-hours            — nothing on file for any day
-  function hoursStatus(venue, nowChicago) {
-    if (!hasHours(venue)) return { state: 'no-hours' };
-    var di = DAY_INDEX[nowChicago.dayOfWeek];
-    var yesterday = DAYS[(di + 6) % 7], tomorrow = DAYS[(di + 1) % 7];
-    var t = nowChicago.hour * 60 + nowChicago.minute;
-    var today = dayRanges(venue, nowChicago.dayOfWeek, 0);
-    var all = dayRanges(venue, yesterday, -1440).concat(today, dayRanges(venue, tomorrow, 1440));
+  // Yesterday's, `day`'s and tomorrow's ranges on one axis (0 = `day`'s midnight), with
+  // ranges that touch or overlap merged into one stretch. Shared by hoursStatus and
+  // openBands so the card line and the grid band can never disagree.
+  function mergedRangesAround(venue, day) {
+    var di = DAY_INDEX[day];
+    var all = dayRanges(venue, DAYS[(di + 6) % 7], -1440)
+      .concat(dayRanges(venue, day, 0), dayRanges(venue, DAYS[(di + 1) % 7], 1440));
     all.sort(function (a, b) { return a.start - b.start; });
     var merged = [];
     for (var i = 0; i < all.length; i++) {
@@ -885,6 +912,14 @@
       if (last && all[i].start <= last.end) last.end = Math.max(last.end, all[i].end);
       else merged.push({ start: all[i].start, end: all[i].end });
     }
+    return merged;
+  }
+
+  function hoursStatus(venue, nowChicago) {
+    if (!hasHours(venue)) return { state: 'no-hours' };
+    var t = nowChicago.hour * 60 + nowChicago.minute;
+    var today = dayRanges(venue, nowChicago.dayOfWeek, 0);
+    var merged = mergedRangesAround(venue, nowChicago.dayOfWeek);
     for (var j = 0; j < merged.length; j++) {
       if (t >= merged[j].start && t < merged[j].end) return { state: 'open', closes: hmOf(merged[j].end) };
     }
@@ -899,6 +934,22 @@
       prevEnd = prevEnd === null ? today[k].end : Math.max(prevEnd, today[k].end);
     }
     return { state: 'closed-for-the-day' };
+  }
+
+  // v1.11 C3: openBands(venue, day, axisStart, axisEnd) -> the Day Grid's open-hours
+  // bands for `day`, as [{start, end}] minutes from `day`'s midnight, clipped to
+  // [axisStart, axisEnd). A range past midnight runs to its real close (then clips);
+  // yesterday's late range and tomorrow's early one count where they reach the axis;
+  // back-to-back ranges are one band, so only a real closed gap shows as a gap.
+  // null = no hours on file (no band); [] = closed for the whole axis.
+  function openBands(venue, day, axisStart, axisEnd) {
+    if (!hasHours(venue)) return null;
+    var out = [];
+    mergedRangesAround(venue, day).forEach(function (r) {
+      var s = Math.max(r.start, axisStart), e = Math.min(r.end, axisEnd);
+      if (e > s) out.push({ start: s, end: e });
+    });
+    return out;
   }
 
   // weekHours(venue) -> [{day, ranges: [["HH:MM","HH:MM"], ...]}] for MON..SUN, each
@@ -1600,6 +1651,7 @@
     composeNote: composeNote,
     hoursStatus: hoursStatus,
     weekHours: weekHours,
+    openBands: openBands,
     hoursSourceInfo: hoursSourceInfo,
     hasHours: hasHours,
     WINDOW_KINDS: WINDOW_KINDS,

@@ -1,5 +1,88 @@
 # Changelog
 
+## 2026-10-23 — BLOCK-hh-radar-fix11-20261023: v1.11 (hours corrected for 21 venues + open hours on the Day Grid + closed-day lint)
+
+TJ, 2026-10-23, verbatim:
+
+> ~18:05 CDT, his picks: "Hours fix only (Recommended),Closed-day lint,Better LinkedIn preview,LinQ to Downtown/SoBro,
+> I see that MrJ's has issues - is that in the fix?"
+
+> ~18:09: "before I paste that Mr J's has two locations with different hours. make sure those are accounted for."
+
+> ~18:11, with a Day Grid screenshot: "ok - i want to make sure thats taken into account for other places. - i think it
+> would also be helpful to have a visual on the day grid when they open in close as well."
+
+### The data fixes (the thinking thread's; hours only, no deal changed)
+`venues.json` is `refresh-20261023/venues-20261023d.json` byte for byte (md5
+`db7da350d475c62d2f57d79efd98b1a0`, 160 venues). Against v1.10 it differs in exactly **21
+venues**, in `hours`/`hours_source`/`hours_confidence`/`hours_notes` and LinQ's
+hood/neighborhood/zone only; every venue's `windows` is unchanged. The scripts, reports and
+intermediate files are in `data-src/refresh-20261023/` (`merge_20261023b.py`,
+`merge-report-20261023b.json`, `venues-20261023b.json`, `post_20261023c.py`,
+`venues-20261023c.json`, `post_20261023d.py`, `venues-20261023d.json`).
+
+1. **Half-week hours** (the v1.10 report's item 3). One research helper kept only the FRI/SAT
+   half of "Sun-Thu ...; Fri-Sat ..." for 8 venues. `merge_20261023b.py` fills Sun-Thu from the
+   helper's own source quote for **Chauhan Ale & Masala House, Two Hands - Nashville, Nicky's
+   Coal Fired Pizza, Slim & Husky's - Nashville/Buchanan Arts District, Mr. J's Original -
+   Nashville**; and reverts **Philippe Chow - Nashville, Van Leeuwen Ice Cream - Edgehill
+   Village, Prince St. Pizza - Nashville** to inKind's 2026-09-05 hours (low).
+2. **LinQ Social Kitchen** (ik-19732) relabelled Downtown/SoBro, zone downtown
+   (`post_20261023c.py`). Label only.
+3. **Chain-location audit** (`post_20261023d.py`, TJ 18:11). Every multi-location brand and
+   every helper note saying hours were carried over was checked:
+   - 11 venues whose hours ARE inKind's 2026-09-05 values but were labelled "researched" are
+     relabelled to the inKind source, confidence low: **Flour Your Dreams Bakery & Cafe,
+     Salvo's Pizza - Mt. Juliet, Salvo's Pizza - Franklin, Salvo's Pizza - Smyrna, Sushi By
+     Bou - Nashville, Bakersfield - Nashville, Gregorys Coffee - Opry Mills, Just Love Coffee -
+     Murfreesboro East, Blue Coast Burrito - Hendersonville, Vintage Vine 100, Tantisimo**.
+     (All 11 were already `hours_confidence: "low"`; only `hours_source` changes.)
+   - **The Pancake Pantry - Nashville** (220 Molloy St) had been given the Hillsboro Village
+     location's 6am-3pm; reverted to its own inKind hours (6am-2pm), low (was high).
+   - Both Mr. J's locations carry their own hours, checked again against mrjsoriginal.com at
+     ~18:10 (Nashville Sun-Thu 9-8, Fri-Sat 9-8:30; Franklin Mon-Thu 7:30-8:30, Fri-Sat
+     7:30-9, Sun 7:30-8). Mr. J's Franklin's "Dinner Specials" items come from the Nashville
+     page (Franklin's would not load) and stay at low confidence: no change.
+
+Hours sources now: 126 researched, 26 inKind 2026-09-05 (unconfirmed), 8 none found.
+
+### Changes
+- **C1:** the data above; `venues.json?v=1.11`, `logic.js?v=1.11`.
+- **C2:** LinQ's map-seam exception (tests) now names its new hood: Downtown/SoBro by hood,
+  still East of the drawn river, so it is still outside its own (now Downtown) polygon and
+  the "exception still true" test still holds. No polygon redraw.
+- **C3 — open hours on the Day Grid.** Every grid row draws the venue's open ranges for the
+  selected day as a quiet grey band behind its deal blocks, full row height: when it opens,
+  when it closes, and the gap when it closes between lunch and dinner (two bands). New pure
+  `openBands(venue, day, axisStart, axisEnd)` in logic.js shares one merge
+  (`mergedRangesAround`) with `hoursStatus`, so the card line and the band cannot disagree. A
+  range past midnight runs to its real close; bands clip to the 11am-2am axis (a place open
+  since 7:30am starts flush at the left edge). The band is neutral ink at low alpha
+  (`--hours-band*` tokens, both themes), a colour no block uses; `hours_confidence: "low"`
+  bands are fainter with a dashed top/bottom edge; no hours on file = no band. Deal blocks
+  are unchanged and on top. A one-line legend sits under the grid footer counts: "Grey band:
+  when the venue is open · Dashed: hours not confirmed".
+- **C4 — closed-day lint** in `validate.js` (WARN, non-failing; fails under `--strict`): "<venue>:
+  <kind> window on <D> but hours say closed" for every window day the venue's hours leave
+  out (venues with no hours on file are skipped), plus "hours on file for only <days> but a
+  window on <days> (hours may be incomplete)" when the hours cover 2 or fewer days. On the
+  corrected data it prints exactly three, where the sources disagree:
+  - Fortuna Italian Steakhouse: happy_hour window on MON but hours say closed
+  - The Side Piece Nashville: happy_hour window on TUE but hours say closed
+  - ZuZu: happy_hour window on MON but hours say closed
+
+  (Run on the v1.10 file it flags 6 of the 8 half-week venues and their "may be incomplete"
+  line; Van Leeuwen and Prince St. have no window on a missing day.)
+- **C5 — og-preview.png re-taken** (1200x627, 114,273 bytes, light theme, NOW view, no
+  `?pos`, localStorage cleared) at **`?now=2026-10-27T17:30`** (Tue): "LIVE NOW (55)", the map
+  with live counts, 51 North Taproom and Bag Lady's Fry Joint in full, and the top of a third
+  card. Captured at a 1440x752 CSS viewport scaled to 1200x627: no minute from 16:00 to 17:30
+  on any weekday fits more than one card at v1.10's 960px framing (JINYA's 15-deal card leads
+  16:00-16:59, 360 Bistro's 17:00-17:29). Same meta tags and URL.
+- **C6:** v1.11. 10 new tests (139 total): `openBands` (split day, clip, past midnight,
+  back-to-back merge, closed/no hours, real Mr. J's Nashville FRI, real Chauhan agreeing with
+  `hoursStatus`) and the closed-day lint (incl. the shipped data's three).
+
 ## 2026-10-23 — BLOCK-hh-radar-fix10-20261023: v1.10 (refreshed data + venue hours + lunch + referral, ready for a public post)
 
 TJ, 2026-10-23, verbatim:

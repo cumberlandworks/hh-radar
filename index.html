@@ -16,7 +16,8 @@
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
      draws. No venue count in any of this text: it would rot on the next refresh.
-     og-preview.png is a real screenshot of the NOW view, 1200x627 (see CHANGELOG v1.10). -->
+     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.11 at
+     ?now=2026-10-27T17:30; see CHANGELOG v1.11). -->
 <meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
@@ -47,6 +48,11 @@
     --lunch: #2f7d4f;
     --lunch-bg: #e3f2e8;
     --lunch-dot: rgba(47, 125, 79, 0.35);
+    /* v1.11 C3: the venue's open hours behind the grid blocks. Neutral ink at low alpha,
+       so no block colour (amber, drink blue, lunch green) is ever reused for it. */
+    --hours-band: rgba(22, 24, 29, 0.075);
+    --hours-band-low: rgba(22, 24, 29, 0.035);
+    --hours-band-edge: rgba(22, 24, 29, 0.28);
     /* v1.4 C3: the zone map has its own ground/ink tokens so it reads in both themes. */
     --map-bg: #eceee9;
     --map-dot: rgba(22, 24, 29, 0.55);
@@ -75,6 +81,9 @@
       --lunch: #6fcf97;
       --lunch-bg: #12281c;
       --lunch-dot: rgba(111, 207, 151, 0.35);
+      --hours-band: rgba(255, 255, 255, 0.075);
+      --hours-band-low: rgba(255, 255, 255, 0.035);
+      --hours-band-edge: rgba(255, 255, 255, 0.3);
       --map-bg: #0b1020;
       --map-dot: rgba(255, 255, 255, 0.6);
       --map-river: #4d7ea8;
@@ -304,6 +313,15 @@
   .block.lunch { background-color: var(--lunch-bg);
     background-image: radial-gradient(var(--lunch-dot) 1.2px, transparent 1.4px); background-size: 6px 6px;
     border: 1.5px dashed var(--lunch); }
+  /* v1.11 C3: open-hours band. Full row height (blocks inset 4px sit on top of it),
+     first in the track so every block and the now line paint over it. Low confidence =
+     fainter fill + dashed top/bottom edge. */
+  .hours-band { position: absolute; top: 0; bottom: 0; background: var(--hours-band); pointer-events: none; }
+  .hours-band.low { background: var(--hours-band-low); border-top: 1px dashed var(--hours-band-edge); border-bottom: 1px dashed var(--hours-band-edge); }
+  .grid-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+  .grid-legend .lg { display: inline-flex; align-items: center; gap: 5px; }
+  .grid-legend .sw { display: inline-block; width: 22px; height: 12px; border-radius: 2px; background: var(--hours-band); border: 1px solid var(--border); }
+  .grid-legend .sw.low { background: var(--hours-band-low); border: 1px dashed var(--hours-band-edge); }
   .block.allday { top: auto; bottom: 3px; height: 6px; border-radius: 3px; opacity: 0.75; }
   .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
   .grid-expanded { padding: 6px 10px 10px; background: var(--bg); border-bottom: 1px solid var(--border); }
@@ -610,6 +628,7 @@
         <div class="grid-inner" id="grid-inner"></div>
       </div>
       <div class="note" id="grid-note"></div>
+      <div class="note grid-legend" id="grid-legend"><span class="lg"><span class="sw"></span>Grey band: when the venue is open</span><span class="lg"><span class="sw low"></span>Dashed: hours not confirmed</span></div>
     </main>
   </div>
 </div>
@@ -683,12 +702,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.10"></script>
+<script src="logic.js?v=1.11"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.10';
+  var APP_VERSION = 'v1.11';
   // v1.10 C5: the tip link. Empty = nothing renders and nothing is in the DOM. Set it
   // to the full https url of the tip page once one exists (see README "Tip link").
   var TIP_URL = '';
@@ -1314,6 +1333,13 @@
 
     var rowsHtml = candidates.map(function (r) {
       var venue = r.venue, items = r.items;
+      // v1.11 C3: the venue's open hours for this day, behind the blocks. No hours on
+      // file = no band; a block outside the band keeps its "Hours conflict" badge.
+      var bandCls = 'hours-band' + (venue.hours_confidence === 'low' ? ' low' : '');
+      var bands = (L.openBands(venue, day, GRID_START, GRID_END) || []).map(function (b) {
+        return '<div class="' + bandCls + '" style="left:' + ((b.start - GRID_START) / GRID_SPAN * 100) +
+          '%;width:' + ((b.end - b.start) / GRID_SPAN * 100) + '%"></div>';
+      }).join('');
       var blocks = items.map(function (it) {
         var startPos = Math.max(it.startAbs - dayBase, GRID_START);
         var endPos = Math.min(it.endAbs - dayBase, GRID_END);
@@ -1337,7 +1363,7 @@
         '<div class="grid-row">' +
           '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="name">' + escapeHtml(venue.name) + '</span>' + rowLinksHtml(venue, items[0].win) + '</div>' +
           '<div class="grid-track">' +
-            blocks +
+            bands + blocks +
             (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
           '</div>' +
         '</div>' + expandedHtml +
@@ -2547,7 +2573,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.10').then(function (r) {
+  fetch('venues.json?v=1.11').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

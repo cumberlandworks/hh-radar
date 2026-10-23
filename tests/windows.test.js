@@ -23,6 +23,7 @@ const {
   NAV_PLATFORMS, NAV_FALLBACK_MS, navApps, detectPlatform,
   shouldShowNavFallback, armNavFallbackTimer, navControlHtml, navPickHtml,
   validateVenues, hoursStatus, weekHours, hoursSourceInfo,
+  openBands, lintVenues,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -388,7 +389,10 @@ test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell 
 // Wedgewood-Houston, but it sits ~0.002 lon east of the drawn Cumberland seam, inside
 // East. Its hood is the data's call (venues.json is not edited here); its dot renders
 // on the East side of the line. Do not add to this list without saying why.
-const MAP_SEAM_EXCEPTIONS = { 'ik-19732': 'LinQ Social Kitchen: WeHo by hood, East of the drawn river' };
+// v1.11: the thread relabelled it Downtown/SoBro, zone downtown (post_20261023c.py, label
+// only, same lat/lon). The dot is still inside East, so it is still outside its own
+// (now Downtown) polygon and the exception stays.
+const MAP_SEAM_EXCEPTIONS = { 'ik-19732': 'LinQ Social Kitchen: Downtown/SoBro by hood, East of the drawn river' };
 function coreVenuesForMap() {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood) &&
@@ -1330,4 +1334,76 @@ test('hoursSourceInfo: the three hours_source shapes the 2026-10-23 refresh writ
     { from: 'researched', date: '2026-10-23', unconfirmed: true });
   assert.deepEqual(hoursSourceInfo({ hours_source: 'none found 2026-10-23', hours_confidence: 'low' }),
     { from: 'none found', date: '2026-10-23', unconfirmed: true });
+});
+
+
+// ---- v1.11 C3: open-hours bands on the Day Grid ----
+// Axis as the grid draws it: 11:00 to 26:00 (2am next day).
+const AX0 = 11 * 60, AX1 = 26 * 60;
+
+test('openBands: a split day is two bands with the gap between them', () => {
+  const v = venue({ TUE: [['11:00', '14:00'], ['16:30', '21:00']] });
+  assert.deepEqual(openBands(v, 'TUE', AX0, AX1), [{ start: 660, end: 840 }, { start: 990, end: 1260 }]);
+});
+
+test('openBands: an early open clips flush to the axis start; a close past midnight runs to its real close', () => {
+  assert.deepEqual(openBands(venue({ FRI: [['07:30', '20:30']] }), 'FRI', AX0, AX1), [{ start: 660, end: 1230 }]);
+  assert.deepEqual(openBands(venue({ FRI: [['16:00', '01:30']] }), 'FRI', AX0, AX1), [{ start: 960, end: 1530 }]);
+  assert.deepEqual(openBands(venue({ FRI: [['16:00', '04:00']] }), 'FRI', AX0, AX1), [{ start: 960, end: 1560 }]);
+});
+
+test('openBands: back-to-back ranges are one band; tomorrow\'s 00:00 open joins tonight\'s', () => {
+  assert.deepEqual(openBands(venue({ TUE: [['11:00', '15:00'], ['15:00', '22:00']] }), 'TUE', AX0, AX1), [{ start: 660, end: 1320 }]);
+  assert.deepEqual(openBands(venue({ TUE: [['17:00', '00:00']], WED: [['00:00', '01:00']] }), 'TUE', AX0, AX1), [{ start: 1020, end: 1500 }]);
+});
+
+test('openBands: closed that day = []; no hours on file = null (no band)', () => {
+  assert.deepEqual(openBands(venue({ FRI: [['17:00', '22:00']] }), 'MON', AX0, AX1), []);
+  assert.equal(openBands(venue({}), 'MON', AX0, AX1), null);
+});
+
+test('openBands: the real Mr. J\'s Original - Nashville on FRI is 9am (clipped to 11am) to 8:30pm', () => {
+  const mj = REAL.find((v) => v.name === "Mr. J's Original - Nashville");
+  assert.deepEqual(openBands(mj, 'FRI', AX0, AX1), [{ start: 660, end: 1230 }]);
+});
+
+test('openBands and hoursStatus agree on the real Chauhan (TUE 11-2, 4:30-9)', () => {
+  const c = REAL.find((v) => v.name === 'Chauhan Ale & Masala House');
+  assert.deepEqual(openBands(c, 'TUE', AX0, AX1), [{ start: 660, end: 840 }, { start: 990, end: 1260 }]);
+  assert.deepEqual(hoursStatus(c, dt('TUE', 17, 0)), { state: 'open', closes: '21:00' });
+  assert.deepEqual(hoursStatus(c, dt('TUE', 15, 0)), { state: 'closed-between', closedFrom: '14:00', opens: '16:30' });
+});
+
+// ---- v1.11 C4: closed-day lint ----
+function lintVenue(hours, windows) {
+  return lintVenues({ venues: [{ name: 'X', hours: hours, windows: windows }] });
+}
+const hhWin = (days) => ({ kind: 'happy_hour', days: days, start: '16:00', end: '18:00', deals: [] });
+
+test('lint closed-day: a window on a day the hours leave out warns, once per day', () => {
+  const week = { TUE: [['11:00', '22:00']], WED: [['11:00', '22:00']], THU: [['11:00', '22:00']] };
+  assert.deepEqual(lintVenue(week, [hhWin(['MON', 'TUE'])]), ['X: happy_hour window on MON but hours say closed']);
+  assert.deepEqual(lintVenue(week, [hhWin(['TUE', 'WED'])]), []);
+});
+
+test('lint closed-day: hours for 2 or fewer days plus a window elsewhere also warns "may be incomplete"', () => {
+  assert.deepEqual(lintVenue({ FRI: [['11:00', '22:00']], SAT: [['11:00', '22:00']] }, [hhWin(['TUE', 'FRI'])]), [
+    'X: happy_hour window on TUE but hours say closed',
+    'X: hours on file for only FRI/SAT but a window on TUE (hours may be incomplete)',
+  ]);
+  assert.deepEqual(lintVenue({ FRI: [['11:00', '22:00']], SAT: [['11:00', '22:00']] }, [hhWin(['FRI'])]), []);
+});
+
+test('lint closed-day: no hours on file is skipped (the card already says so)', () => {
+  assert.deepEqual(lintVenue({}, [hhWin(['MON'])]), []);
+  assert.deepEqual(lintVenue(undefined, [hhWin(['MON'])]), []);
+});
+
+test('lint closed-day: the shipped data warns only where the sources disagree', () => {
+  const data = require(path.join(__dirname, '..', 'venues.json'));
+  assert.deepEqual(lintVenues(data).filter((w) => /hours say closed|may be incomplete/.test(w)).sort(), [
+    'Fortuna Italian Steakhouse: happy_hour window on MON but hours say closed',
+    'The Side Piece Nashville: happy_hour window on TUE but hours say closed',
+    'ZuZu: happy_hour window on MON but hours say closed',
+  ]);
 });

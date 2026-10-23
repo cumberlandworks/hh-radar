@@ -30,7 +30,7 @@ const errors = validateVenues(data);
 const lintWarnings = lintVenues(data);
 
 if (lintWarnings.length > 0) {
-  console.warn('validate.js: ' + lintWarnings.length + ' lint warning(s) (research prose / overlong deal text):');
+  console.warn('validate.js: ' + lintWarnings.length + ' lint warning(s) (research prose, overlong deal text, closed-day windows):');
   for (const w of lintWarnings) console.warn('  ! ' + w);
 }
 

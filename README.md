@@ -15,12 +15,12 @@ network call beyond its own files (the page, `logic.js`, `venues.json`, the icon
 desktop the referral QR image). The footer's referral, LinkedIn and GitHub links are plain
 links: nothing is fetched until the reader taps one.
 
-Coverage (refresh of 2026-10-23, v1.10): all **160** inKind partners in the Nashville metro
+Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11): all **160** inKind partners in the Nashville metro
 per inKind's own map API, every one researched by hand that day: hours, happy hour, lunch
 specials. **139 windows** (88 happy hour, 46 special, 5 lunch). **61** venues have a happy
 hour, **76** were checked and have none, and **23** are not confirmed either way yet (10 with
-no windows at all, 13 with only a special or lunch window). Hours were researched for 141
-venues; 11 keep inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file.
+no windows at all, 13 with only a special or lunch window). Hours were researched for 126
+venues; 26 carry inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file.
 v2 (parked) would fold in non-inKind aggregator listings.
 
 ## Files
@@ -166,6 +166,13 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   a happy hour on a day the hours say closed still shows, with its "Hours conflict" badge.
 - A window on a day the venue's own `hours` say it's closed is still evaluated (the
   window data wins) but gets a "Hours conflict" badge — never silently dropped.
+- **Open hours on the Day Grid** (v1.11, `openBands` in logic.js): every row carries a
+  quiet grey band behind its deal blocks for the venue's open ranges that day (built from
+  the same merged ranges as `hoursStatus`), so open, close and a closed gap between lunch
+  and dinner read at a glance. A range past midnight runs to its real close; bands clip to
+  the grid's 11am–2am axis. `hours_confidence: "low"` bands are fainter with a dashed edge;
+  no hours on file = no band. Blocks always sit on top, including any that fall outside
+  the band.
 - Debug override: `?now=YYYY-MM-DDTHH:MM` in the URL forces the clock to that literal
   America/Chicago wall-clock time. Ignored unless the param is present.
 - Debug override: `?pos=LAT,LON` forces the reader's position to that point (v1.8), so a
@@ -237,7 +244,9 @@ python3 -m http.server 8000              # serve locally, then open http://local
 
 `validate.js` also runs a WARN-level lint over every `deal.desc` (research prose or
 source-hedging language leaking into menu text, an overlong parenthetical, or a
-description over 140 chars) and prints hits without failing the build — pass
+description over 140 chars) and, since v1.11, a closed-day lint ("<venue>: <kind> window on
+<D> but hours say closed"; plus "hours may be incomplete" when the hours cover 2 or fewer
+days and a window falls on another), and prints hits without failing the build — pass
 `--strict` to make lint hits fail too. A hit isn't automatically wrong: most are
 legitimately long menu-item descriptions (an ingredient list in parentheses); only
 rewrite ones that are actually reviewer commentary (moving it to the window's

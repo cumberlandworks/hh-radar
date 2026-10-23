@@ -1476,7 +1476,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [
     {
      "days": [
@@ -1951,7 +1951,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): https://bluecoastburrito.com/locations/nashville-west/",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [
     {
      "days": [
@@ -3627,6 +3627,46 @@
    "official_site": "https://www.chauhannashville.com/",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
     "FRI": [
      [
       "11:00",
@@ -3645,6 +3685,16 @@
      [
       "16:30",
       "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:30",
+      "21:00"
      ]
     ]
    },
@@ -5488,7 +5538,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -6098,7 +6148,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -7201,7 +7251,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): https://www.justlovecoffee.com/tn-murfreesboro-east/",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -7811,9 +7861,9 @@
    "inkind_id": 19732,
    "name": "LinQ Social Kitchen",
    "city": "Nashville",
-   "neighborhood": "Wedgewood-Houston",
-   "hood": "Wedgewood-Houston",
-   "zone": "south",
+   "neighborhood": "Downtown/SoBro",
+   "hood": "Downtown/SoBro",
+   "zone": "downtown",
    "address": "175 Lafayette Street",
    "zip": "37210",
    "lat": 36.1468311,
@@ -8618,6 +8668,30 @@
    "official_site": "https://www.mrjsoriginal.com/",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
     "FRI": [
      [
       "09:00",
@@ -8628,6 +8702,12 @@
      [
       "09:00",
       "20:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "09:00",
+      "20:00"
      ]
     ]
    },
@@ -9129,6 +9209,30 @@
    "official_site": "https://nickysnashville.com",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
     "FRI": [
      [
       "17:00",
@@ -9139,6 +9243,12 @@
      [
       "17:00",
       "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "20:30"
      ]
     ]
    },
@@ -9943,6 +10053,36 @@
    "official_site": "https://www.philippechow.com/nashville/",
    "status": "open",
    "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
     "FRI": [
      [
       "17:00",
@@ -9956,7 +10096,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [
     {
      "days": [
@@ -10026,7 +10166,7 @@
    "notes": "Dinner-only; no lunch special.",
    "neighborhood_source": "centroid",
    "hours_confidence": "low",
-   "hours_notes": "Hours carried over from inKind 2026-09-05. The official page is robots-blocked and the menu page and Guru listing show no general hours today.",
+   "hours_notes": "Hours carried over from inKind 2026-09-05. The official page is robots-blocked and the menu page and Guru listing show no general hours today. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -10440,6 +10580,36 @@
    "official_site": "https://locations.princestreetpizza.com/nashville",
    "status": "open",
    "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
     "FRI": [
      [
       "11:00",
@@ -10453,7 +10623,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): https://locations.princestreetpizza.com/nashville",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -10461,7 +10631,7 @@
    "notes": "Open. No happy hour or lunch special on the official location page.",
    "neighborhood_source": "centroid",
    "hours_confidence": "low",
-   "hours_notes": "The location page gives no day-by-day times; hours carried over from inKind 2026-09-05. The olo ordering page is robots-blocked.",
+   "hours_notes": "The location page gives no day-by-day times; hours carried over from inKind 2026-09-05. The olo ordering page is robots-blocked. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -11365,7 +11535,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -11581,7 +11751,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): https://www.slicelife.com/restaurants/tn/mt-juliet/37122/salvo-s-pizza-mt-juliet/menu/",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": false,
    "checked": "2026-10-23",
@@ -11653,7 +11823,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -12118,6 +12288,30 @@
    "official_site": "https://slimandhuskys.com",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
     "FRI": [
      [
       "11:00",
@@ -12128,6 +12322,12 @@
      [
       "11:00",
       "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
      ]
     ]
    },
@@ -12388,7 +12588,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -12462,7 +12662,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [
     {
      "days": [
@@ -14091,58 +14291,58 @@
    "official_site": "https://thepancakepantry.com/",
    "status": "open",
    "hours": {
+    "SUN": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
     "MON": [
      [
       "06:00",
-      "15:00"
+      "14:00"
      ]
     ],
     "TUE": [
      [
       "06:00",
-      "15:00"
+      "14:00"
      ]
     ],
     "WED": [
      [
       "06:00",
-      "15:00"
+      "14:00"
      ]
     ],
     "THU": [
      [
       "06:00",
-      "15:00"
+      "14:00"
      ]
     ],
     "FRI": [
      [
       "06:00",
-      "15:00"
+      "14:00"
      ]
     ],
     "SAT": [
      [
       "06:00",
-      "15:00"
-     ]
-    ],
-    "SUN": [
-     [
-      "06:00",
-      "15:00"
+      "14:00"
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (high confidence): https://thepancakepantry.com/",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
    "notes": "The October pumpkin spice pancake promo is seasonal and one-time, so not recorded as a recurring window. No happy hour or lunch special.",
    "neighborhood_source": "centroid",
-   "hours_confidence": "high",
-   "hours_notes": "inKind showed a 14:00 close; the official site says 3 PM.",
+   "hours_confidence": "low",
+   "hours_notes": "Research applied the Hillsboro Village location's 6am-3pm to this location; reverted to this location's own inKind hours.",
    "lunch_checked": true
   },
   {
@@ -15119,6 +15319,30 @@
    "official_site": "https://www.twohandshospitality.com/location/two-hands-nashville/",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
     "FRI": [
      [
       "08:00",
@@ -15129,6 +15353,12 @@
      [
       "08:00",
       "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "21:00"
      ]
     ]
    },
@@ -15602,6 +15832,36 @@
    "official_site": "https://www.vanleeuwenicecream.com/",
    "status": "open",
    "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
     "FRI": [
      [
       "11:00",
@@ -15615,7 +15875,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [],
    "verified_no_hh": true,
    "checked": "2026-10-23",
@@ -15623,7 +15883,7 @@
    "notes": "Scoop shop, no alcohol. No happy hour or lunch special found.",
    "neighborhood_source": "centroid",
    "hours_confidence": "low",
-   "hours_notes": "Carried over from inKind 2026-09-05; Guru listing and brand site gave no hours today. Search results show the shop opened in March 2026 (Edgehill Village) with no closure news.",
+   "hours_notes": "Carried over from inKind 2026-09-05; Guru listing and brand site gave no hours today. Search results show the shop opened in March 2026 (Edgehill Village) with no closure news. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -16011,7 +16271,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (low confidence): ",
+   "hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
    "windows": [
     {
      "days": [
