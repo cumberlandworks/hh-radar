@@ -1,0 +1,245 @@
+{
+ "dropped_not_in_inkind": [
+  {
+   "id": 5822,
+   "name": "Boqueria - Nashville",
+   "why": "not in inKind map pull 2026-10-23"
+  },
+  {
+   "id": 11425,
+   "name": "SunLife Organics - 12 South",
+   "why": "not in inKind map pull 2026-10-23"
+  },
+  {
+   "id": 11426,
+   "name": "SunLife Organics - The Gulch",
+   "why": "not in inKind map pull 2026-10-23"
+  }
+ ],
+ "new": [
+  "Tiff's Treats - Nashville Bellevue",
+  "Tiff's Treats - Nashville Franklin",
+  "Tiff's Treats - Nashville Gulch",
+  "Tiff's Treats - Nashville Mt. Juliet",
+  "Tiff's Treats - Nashville Murfreesboro",
+  "Tiff's Treats - Nashville Nolensville",
+  "Single Tree BBQ",
+  "Fishmonger - Neuhoff",
+  "Fishmonger - Wedgewood-Houston",
+  "Chateau West",
+  "Jimmy Buffett's Margaritaville - Nashville",
+  "Music Row Bar & Grill",
+  "Pearl Diver",
+  "The Loading Dock",
+  "Jar 10",
+  "NoWhere Special",
+  "ZuZu",
+  "Kane Brown's",
+  "The Grilled Cheeserie",
+  "The Grilled Cheeserie - Café Cheeserie",
+  "Pins Mechanical Co. - Nashville",
+  "Anatolia Turkish",
+  "Bungalow 10 Dining",
+  "Jashan",
+  "LinQ Social Kitchen",
+  "Noir Kitchen & Cocktails",
+  "Sindoore"
+ ],
+ "windows_dropped_unrenderable": [
+  {
+   "venue": "Playdate",
+   "why": [
+    "no start",
+    "no end"
+   ],
+   "window": {
+    "kind": "special",
+    "days": [
+     "SAT",
+     "SUN"
+    ],
+    "start": null,
+    "end": null,
+    "area": "whole restaurant",
+    "deals": [
+     {
+      "type": "food",
+      "desc": "Dip specials during football (I Dip, You Dip, We Dip)",
+      "price": null
+     }
+    ],
+    "sources": [
+     "https://www.playdatenash.com/specialsandevents"
+    ],
+    "last_verified": "2026-10-23",
+    "corroborated": false,
+    "confidence": "low",
+    "change": "new",
+    "notes": "Official page: 'Join us at Playdate every Saturday and Sunday for football and dip specials.' No times, dips or prices given, so start/end are null."
+   }
+  },
+  {
+   "venue": "Bungalow 10 Dining",
+   "why": [
+    "no days",
+    "no start",
+    "no end"
+   ],
+   "window": {
+    "kind": "happy_hour",
+    "days": null,
+    "start": null,
+    "end": null,
+    "area": null,
+    "deals": [
+     {
+      "type": "food",
+      "desc": "$2 tacos",
+      "price": "$2"
+     },
+     {
+      "type": "food",
+      "desc": "Specialty Mexican pizza",
+      "price": "$16"
+     },
+     {
+      "type": "drink",
+      "desc": "Bottomless margaritas",
+      "price": "$35"
+     },
+     {
+      "type": "food",
+      "desc": "Half off pizza",
+      "price": "half price"
+     }
+    ],
+    "sources": [
+     "https://nashvilleguru.com/businesses/bungalow10"
+    ],
+    "last_verified": null,
+    "corroborated": false,
+    "confidence": "low",
+    "change": "new",
+    "notes": "Only the meta description of Guru's Bungalow10 page: 'Happy hour all day includes $2 tacos, $16 specialty Mexican pizza, and $35 bottomless margaritas. ... half off pizza, half off' (text cut off). No days, times or confirmed-on date. Not on the official homepage. Days and times unknown, so start/end/days are null."
+   }
+  },
+  {
+   "venue": "Noir Kitchen & Cocktails",
+   "why": [
+    "no days"
+   ],
+   "window": {
+    "kind": "happy_hour",
+    "days": null,
+    "start": "14:00",
+    "end": "18:00",
+    "area": null,
+    "deals": [
+     {
+      "type": "drink",
+      "desc": "2-for-1 Lemon Drops",
+      "price": "2-for-1"
+     },
+     {
+      "type": "drink",
+      "desc": "2-for-1 Don Julio shots",
+      "price": "2-for-1"
+     },
+     {
+      "type": "drink",
+      "desc": "2-for-1 Hennessy shots",
+      "price": "2-for-1"
+     },
+     {
+      "type": "drink",
+      "desc": "2-for-1 margaritas",
+      "price": "2-for-1"
+     },
+     {
+      "type": "food",
+      "desc": "Half-off appetizers",
+      "price": "half price"
+     }
+    ],
+    "sources": [
+     "https://nashvilleguru.com/businesses/noir-kitchen-cocktails",
+     "https://noironmain.com/"
+    ],
+    "last_verified": null,
+    "corroborated": false,
+    "confidence": "low",
+    "change": "new",
+    "notes": "Guru meta description: 'Happy hour from 2:00pm to 6:00pm includes 2-for-1 Lemon Drops, 2-for-1 Don Julio Shots, 2-for-1 Hennessy Shots,' continuing with 2-for-1 margaritas and half-off appetizers. Days not stated and no confirmed-on date. The official page only says it has 'happy hour specials' with cocktails, beer and wine. Days are null."
+   }
+  }
+ ],
+ "fixes": [
+  "Love & Exile: address ': 715 Main St A' -> '715 Main St A' (stray prefix in inKind data)"
+ ],
+ "hours_from_research": 141,
+ "hours_kept_inkind_0905": [
+  "Just Love Coffee - The Fountains",
+  "Taste of NY - Downtown",
+  "The Coffee House at Second and Bridge",
+  "The Herban Perk & Pantry",
+  "Van Leeuwen Ice Cream - Neuhoff",
+  "Bad-Ass Breakfast Burritos - East Nashville (Biergarten)",
+  "Electric Jane",
+  "Legendary Wings",
+  "The Coffee House Lewisburg",
+  "The Urban Perk",
+  "Two Ten Jack"
+ ],
+ "hours_none": [
+  "Bad-Ass Breakfast Burritos - Franklin (Biergarten)",
+  "Butterfly - Nashville",
+  "Tiff's Treats - Nashville Bellevue",
+  "Tiff's Treats - Nashville Franklin",
+  "Tiff's Treats - Nashville Gulch",
+  "Tiff's Treats - Nashville Nolensville",
+  "NoWhere Special",
+  "LinQ Social Kitchen"
+ ],
+ "status_unknown": [
+  "Tiff's Treats - Nashville Bellevue",
+  "Tiff's Treats - Nashville Gulch",
+  "Tiff's Treats - Nashville Nolensville",
+  "Flour Your Dreams Bakery & Cafe",
+  "Chateau West",
+  "Gregorys Coffee - Opry Mills",
+  "Salvo's Pizza - Franklin",
+  "615chuTNey",
+  "Legendary Wings",
+  "The Coffee House Lewisburg",
+  "The Urban Perk",
+  "LinQ Social Kitchen"
+ ],
+ "hh_unchecked": [
+  "Chateau West",
+  "Jimmy Buffett's Margaritaville - Nashville",
+  "NoWhere Special",
+  "Kane Brown's",
+  "LinQ Social Kitchen"
+ ],
+ "retired_windows": [
+  {
+   "venue": "City Winery - Nashville",
+   "was": "FRI 13:00-17:00 happy_hour ('Summer Fridays')",
+   "evidence": "https://citywinery.com/pages/nashville-restaurant-and-winery : the 'Summer Fridays' block now has an image only with no text, and happy hour text reads 'Mondays through Friday 4-6pm'; the sub-page https://citywinery.com/nashville/restaurant-and-winery does not mention Summer Fridays at all"
+  }
+ ],
+ "counts": {
+  "venues": 160,
+  "with_any_window": 79,
+  "with_hh": 61,
+  "verified_no_hh": 76,
+  "windows": 139,
+  "by_kind": {
+   "happy_hour": 88,
+   "special": 46,
+   "lunch": 5
+  },
+  "lunch_venues": 5,
+  "stale_on_2026-10-23": null
+ }
+}

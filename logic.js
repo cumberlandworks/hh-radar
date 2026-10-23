@@ -797,11 +797,19 @@
   // none === venues.length, for every day. The old footer collapsed the last two
   // into one "N venues have nothing on DAY" number, which is what made the outside
   // reader read it as "nothing is ever available" (see CHANGELOG v1.5).
+  //
+  // v1.10 C3: schema 2 splits the old `none` in two. `windows: []` with
+  // verified_no_hh true is "checked, no happy hour" (none); with it false it is
+  // "happy hour not checked yet" (unchecked, listed in uncheckedList) and must not
+  // be counted as a verified no. The four groups still partition the list.
   function dayCoverageCounts(venues, day) {
-    var onDay = 0, none = 0, otherList = [];
+    var onDay = 0, none = 0, otherList = [], uncheckedList = [];
     for (var i = 0; i < venues.length; i++) {
       var v = venues[i];
-      if (!v.windows || v.windows.length === 0) { none++; continue; }
+      if (!v.windows || v.windows.length === 0) {
+        if (v.verified_no_hh === false) uncheckedList.push(v); else none++;
+        continue;
+      }
       if (hasIntervalOn(v, day)) { onDay++; continue; }
       var nextDay = null;
       for (var k = 1; k <= 7; k++) {
@@ -815,7 +823,116 @@
       onDay: onDay,
       otherDays: otherList.length,
       none: none,
+      unchecked: uncheckedList.length,
       otherList: otherList,
+      uncheckedList: uncheckedList,
+    };
+  }
+
+  // ---- v1.10 C2: the venue's own opening hours ----
+  // `hours[D]` is a list of [open, close] ranges for calendar day D, venue tz. Same
+  // rule as `end: "close"`: a close <= its open is on D+1, so a range that started
+  // yesterday and runs past midnight is open now. Days absent = closed that day;
+  // an empty `hours` object = nothing on file.
+  function hasHours(venue) {
+    var h = venue && venue.hours;
+    if (!h) return false;
+    for (var k in h) if (h[k] && h[k].length) return true;
+    return false;
+  }
+
+  function hmOf(mins) {
+    var m = ((mins % 1440) + 1440) % 1440;
+    var hh = Math.floor(m / 60), mm = m % 60;
+    return (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
+  }
+
+  // Ranges of calendar day `day`, as [start, end) minutes relative to `offset`
+  // (0 = that day's midnight), sorted by start.
+  function dayRanges(venue, day, offset) {
+    var out = [];
+    var ranges = (venue.hours && venue.hours[day]) || [];
+    for (var i = 0; i < ranges.length; i++) {
+      var s = parseHM(ranges[i][0]), e = parseHM(ranges[i][1]);
+      if (e <= s) e += 1440;
+      out.push({ start: offset + s, end: offset + e });
+    }
+    out.sort(function (a, b) { return a.start - b.start; });
+    return out;
+  }
+
+  // hoursStatus(venue, nowChicago) -> { state, closes?, opens?, closedFrom? }, times "HH:MM".
+  //   open                — inside a range now; `closes` is when it ends (ranges that
+  //                         touch or overlap are one stretch, so back-to-back lunch and
+  //                         dinner do not read as a close at 3pm)
+  //   closed-between      — closed now between two of today's ranges; `closedFrom` is
+  //                         when the earlier one ended, `opens` when the next starts
+  //   closed-opens-later  — today's first range has not started; `opens`
+  //   closed-today        — no ranges at all today
+  //   closed-for-the-day  — every one of today's ranges is over
+  //   no-hours            — nothing on file for any day
+  function hoursStatus(venue, nowChicago) {
+    if (!hasHours(venue)) return { state: 'no-hours' };
+    var di = DAY_INDEX[nowChicago.dayOfWeek];
+    var yesterday = DAYS[(di + 6) % 7], tomorrow = DAYS[(di + 1) % 7];
+    var t = nowChicago.hour * 60 + nowChicago.minute;
+    var today = dayRanges(venue, nowChicago.dayOfWeek, 0);
+    var all = dayRanges(venue, yesterday, -1440).concat(today, dayRanges(venue, tomorrow, 1440));
+    all.sort(function (a, b) { return a.start - b.start; });
+    var merged = [];
+    for (var i = 0; i < all.length; i++) {
+      var last = merged[merged.length - 1];
+      if (last && all[i].start <= last.end) last.end = Math.max(last.end, all[i].end);
+      else merged.push({ start: all[i].start, end: all[i].end });
+    }
+    for (var j = 0; j < merged.length; j++) {
+      if (t >= merged[j].start && t < merged[j].end) return { state: 'open', closes: hmOf(merged[j].end) };
+    }
+    if (!today.length) return { state: 'closed-today' };
+    var prevEnd = null;
+    for (var k = 0; k < today.length; k++) {
+      if (today[k].start > t) {
+        return prevEnd === null
+          ? { state: 'closed-opens-later', opens: hmOf(today[k].start) }
+          : { state: 'closed-between', closedFrom: hmOf(prevEnd), opens: hmOf(today[k].start) };
+      }
+      prevEnd = prevEnd === null ? today[k].end : Math.max(prevEnd, today[k].end);
+    }
+    return { state: 'closed-for-the-day' };
+  }
+
+  // weekHours(venue) -> [{day, ranges: [["HH:MM","HH:MM"], ...]}] for MON..SUN, each
+  // day's ranges sorted by open time; [] = closed. null when nothing is on file.
+  function weekHours(venue) {
+    if (!hasHours(venue)) return null;
+    return DAYS.map(function (d) {
+      var ranges = ((venue.hours && venue.hours[d]) || []).slice().sort(function (a, b) {
+        return parseHM(a[0]) - parseHM(b[0]);
+      });
+      return { day: d, ranges: ranges.map(function (r) { return [r[0], r[1]]; }) };
+    });
+  }
+
+  // Where the hours came from, for the expanded card's one small line. hours_source
+  // is free text written by the refresh; the 2026-10-23 refresh uses three shapes:
+  //   "researched YYYY-MM-DD (high|med|low confidence): <url> [<url>]"
+  //   "inKind map API YYYY-MM-DD (...)"
+  //   "none found YYYY-MM-DD"
+  // Anything else is shown as-is. unconfirmed = hours_confidence "low".
+  function hoursSourceInfo(venue) {
+    var src = String((venue && venue.hours_source) || '').trim();
+    var dateM = src.match(/\d{4}-\d{2}-\d{2}/);
+    var urlM = src.match(/https?:\/\/\S+/);
+    var from;
+    if (/^inKind/i.test(src)) from = 'inKind listing';
+    else if (urlM) from = hostnameOf(urlM[0]) || 'researched';
+    else if (/^none found/i.test(src)) from = 'none found';
+    else if (/^researched/i.test(src)) from = 'researched';
+    else from = src || 'unknown';
+    return {
+      from: from,
+      date: dateM ? dateM[0] : null,
+      unconfirmed: !!venue && venue.hours_confidence === 'low',
     };
   }
 
@@ -1017,12 +1134,19 @@
   }
 
   // ---- Schema + semantic validation (shared by validate.js and in-page load guard) ----
+  var WINDOW_KINDS = ['happy_hour', 'special', 'lunch'];
+  function hasHappyHourWindow(venue) {
+    return (venue.windows || []).some(function (w) { return w && w.kind === 'happy_hour'; });
+  }
+
   function validateVenues(data) {
     var errors = [];
     function fail(msg) { errors.push(msg); }
 
     if (!data || typeof data !== 'object') { fail('root: not an object'); return errors; }
-    if (data.schema_version !== 1) fail('schema_version must be 1');
+    // v1.10: schema 2. Same shape as 1 plus three optional venue fields and the
+    // `lunch` kind; the one semantic change is what verified_no_hh is allowed to mean.
+    if (data.schema_version !== 2) fail('schema_version must be 2');
     if (typeof data.generated !== 'string') fail('generated must be a string');
     if (!Array.isArray(data.venues)) { fail('venues must be an array'); return errors; }
 
@@ -1049,9 +1173,19 @@
       if (v.status !== 'open') fail(p + ': status must be "open"');
       if (!Array.isArray(v.windows)) { fail(p + ': windows must be an array'); continue; }
       if (typeof v.verified_no_hh !== 'boolean') fail(p + ': verified_no_hh must be boolean');
-      if (v.verified_no_hh !== (v.windows.length === 0)) {
-        fail(p + ': verified_no_hh must equal (windows.length === 0)');
+      // v1.10 (schema 2): `windows: []` no longer implies "checked, none". With
+      // verified_no_hh false it means "happy hour not checked yet", and a venue whose
+      // only windows are lunch/special can still be verified no-HH. The one thing that
+      // stays a contradiction is claiming no happy hour next to a happy_hour window.
+      if (v.verified_no_hh === true && hasHappyHourWindow(v)) {
+        fail(p + ': verified_no_hh is true but the venue has a happy_hour window');
       }
+      if (v.hours_confidence !== undefined &&
+          v.hours_confidence !== 'high' && v.hours_confidence !== 'med' && v.hours_confidence !== 'low') {
+        fail(p + ': hours_confidence must be high|med|low');
+      }
+      if (v.hours_notes !== undefined && typeof v.hours_notes !== 'string') fail(p + ': hours_notes must be a string');
+      if (v.lunch_checked !== undefined && typeof v.lunch_checked !== 'boolean') fail(p + ': lunch_checked must be boolean');
 
       for (var wi = 0; wi < v.windows.length; wi++) {
         var w = v.windows[wi];
@@ -1076,7 +1210,7 @@
         if (!(w.end === 'close' || (typeof w.end === 'string' && HHMM_RE.test(w.end)))) {
           fail(wp + ': end must be HH:MM or "close"');
         }
-        if (w.kind !== 'happy_hour' && w.kind !== 'special') fail(wp + ': kind invalid');
+        if (WINDOW_KINDS.indexOf(w.kind) === -1) fail(wp + ': kind invalid');
         if (!Array.isArray(w.deals)) fail(wp + ': deals must be an array');
         else {
           for (var deIdx = 0; deIdx < w.deals.length; deIdx++) {
@@ -1464,6 +1598,11 @@
     DAY_SHORT: DAY_SHORT,
     DAY_LONG: DAY_LONG,
     composeNote: composeNote,
+    hoursStatus: hoursStatus,
+    weekHours: weekHours,
+    hoursSourceInfo: hoursSourceInfo,
+    hasHours: hasHours,
+    WINDOW_KINDS: WINDOW_KINDS,
     driveEstimateMin: driveEstimateMin,
     walkEstimateMin: walkEstimateMin,
     travelEstimateMin: travelEstimateMin,

@@ -22,6 +22,7 @@ const {
   NAV_APPS, isNavApp, navUrl, defaultNavApp,
   NAV_PLATFORMS, NAV_FALLBACK_MS, navApps, detectPlatform,
   shouldShowNavFallback, armNavFallbackTimer, navControlHtml, navPickHtml,
+  validateVenues, hoursStatus, weekHours, hoursSourceInfo,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -381,10 +382,27 @@ test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell 
 // what the map renders, but it remains the geometric cross-check on the hood
 // centroids. These tests cover what IS rendered.
 
+// v1.10: one named, measured exception, kept out of the containment tests rather than
+// redrawing three polygons and the river for one dot. LinQ Social Kitchen was new in the
+// 2026-10-23 refresh; the refresh's hood script (nearestNeighborhood) labelled it
+// Wedgewood-Houston, but it sits ~0.002 lon east of the drawn Cumberland seam, inside
+// East. Its hood is the data's call (venues.json is not edited here); its dot renders
+// on the East side of the line. Do not add to this list without saying why.
+const MAP_SEAM_EXCEPTIONS = { 'ik-19732': 'LinQ Social Kitchen: WeHo by hood, East of the drawn river' };
 function coreVenuesForMap() {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
-  return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood));
+  return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood) &&
+    !MAP_SEAM_EXCEPTIONS[v.id]);
 }
+
+test('MAP_SEAM_EXCEPTIONS: each exception is still really outside its own zone (drop it once fixed)', () => {
+  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  Object.keys(MAP_SEAM_EXCEPTIONS).forEach((id) => {
+    const v = venues.find((x) => x.id === id);
+    assert.ok(v, id + ' is no longer in venues.json — remove the exception');
+    assert.equal(zoneContains(zoneOf(v.hood), v.lat, v.lon), false, MAP_SEAM_EXCEPTIONS[id]);
+  });
+});
 
 test('ZONE_POLYGONS: one simple polygon per core zone, 6-12 vertices, inside the map extent', () => {
   assert.deepEqual(Object.keys(ZONE_POLYGONS).sort(), CORE_ZONE_KEYS.slice().sort());
@@ -432,12 +450,13 @@ test('ZONE_POLYGONS: no venue falls inside a FOREIGN zone polygon (the six regio
   assert.deepEqual(strays, []);
 });
 
-test('MAP_EXEMPT_HOODS: exactly the two Bellevue venues sit outside the map extent', () => {
+test('MAP_EXEMPT_HOODS: exactly the three Bellevue venues sit outside the map extent', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   const outside = venues.filter((v) => isCoreHood(v.hood) && (
     v.lat < MAP_EXTENT.minLat || v.lat > MAP_EXTENT.maxLat ||
     v.lon < MAP_EXTENT.minLon || v.lon > MAP_EXTENT.maxLon));
-  assert.deepEqual(outside.map((v) => v.hood), ['Bellevue', 'Bellevue'],
+  // v1.10: the 2026-10-23 refresh added Tiff's Treats - Nashville Bellevue (2 -> 3).
+  assert.deepEqual(outside.map((v) => v.hood), ['Bellevue', 'Bellevue', 'Bellevue'],
     'the exemption must not silently grow: ' + outside.map((v) => v.name + '/' + v.hood).join(', '));
 });
 
@@ -717,37 +736,49 @@ test('surprisePools: five rolls at the dead hour give distinct venues (the accep
 });
 
 // ==================== v1.5 C4: the grid coverage footer ====================
-test('dayCoverageCounts: the three groups partition the roster on EVERY day', () => {
+test('dayCoverageCounts: the four groups partition the roster on EVERY day', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].forEach((d) => {
     const c = dayCoverageCounts(venues, d);
-    assert.equal(c.onDay + c.otherDays + c.none, venues.length,
-      d + ': ' + c.onDay + ' + ' + c.otherDays + ' + ' + c.none + ' != ' + venues.length);
+    assert.equal(c.onDay + c.otherDays + c.none + c.unchecked, venues.length,
+      d + ': ' + c.onDay + ' + ' + c.otherDays + ' + ' + c.none + ' + ' + c.unchecked + ' != ' + venues.length);
     assert.equal(c.otherList.length, c.otherDays);
+    assert.equal(c.uncheckedList.length, c.unchecked);
   });
 });
 
 test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
-  const sun = dayCoverageCounts(venues, 'SUN');
-  assert.deepEqual({ onDay: sun.onDay, otherDays: sun.otherDays, none: sun.none },
-    { onDay: 34, otherDays: 35, none: 67 });
-  const tue = dayCoverageCounts(venues, 'TUE');
-  assert.deepEqual({ onDay: tue.onDay, otherDays: tue.otherDays, none: tue.none },
-    { onDay: 58, otherDays: 11, none: 67 });
+  const pick = (c) => ({ onDay: c.onDay, otherDays: c.otherDays, none: c.none, unchecked: c.unchecked });
+  // v1.10 (2026-10-23 data): 160 venues.
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 39, otherDays: 40, none: 71, unchecked: 10 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 14, none: 71, unchecked: 10 });
 });
 
-test('dayCoverageCounts: "none" is exactly the verified_no_hh roster, not a day artefact', () => {
+test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
-  const noWindows = venues.filter((v) => v.windows.length === 0).length;
-  ['MON', 'SUN'].forEach((d) => assert.equal(dayCoverageCounts(venues, d).none, noWindows));
+  const verifiedEmpty = venues.filter((v) => v.windows.length === 0 && v.verified_no_hh).length;
+  const notChecked = venues.filter((v) => v.windows.length === 0 && !v.verified_no_hh).length;
+  ['MON', 'SUN'].forEach((d) => {
+    assert.equal(dayCoverageCounts(venues, d).none, verifiedEmpty);
+    assert.equal(dayCoverageCounts(venues, d).unchecked, notChecked);
+  });
+});
+
+test('dayCoverageCounts: a "not checked yet" venue is never counted as no happy hour (v1.10 C3)', () => {
+  const unchecked = Object.assign(venue({}, []), { name: 'U', verified_no_hh: false });
+  const verified = Object.assign(venue({}, []), { name: 'V', verified_no_hh: true });
+  const c = dayCoverageCounts([unchecked, verified], 'MON');
+  assert.equal(c.none, 1);
+  assert.equal(c.unchecked, 1);
+  assert.deepEqual(c.uncheckedList.map((v) => v.name), ['U']);
 });
 
 test('dayCoverageCounts: it filters, so a zone selection changes onDay but never breaks the sum', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   const east = venues.filter((v) => v.zone === 'east');
   const c = dayCoverageCounts(east, 'SUN');
-  assert.equal(c.onDay + c.otherDays + c.none, east.length);
+  assert.equal(c.onDay + c.otherDays + c.none + c.unchecked, east.length);
   assert.ok(c.onDay < dayCoverageCounts(venues, 'SUN').onDay);
 });
 
@@ -1144,4 +1175,159 @@ test('defaultNavApp: Apple on Apple platforms, Google everywhere else', () => {
   assert.equal(defaultNavApp('Mozilla/5.0 (Linux; Android 14; Pixel 8)', 'Linux armv8l'), 'google');
   assert.equal(defaultNavApp('Mozilla/5.0 (Windows NT 10.0; Win64; x64)', 'Win32'), 'google');
   assert.equal(defaultNavApp(null, null), 'google');
+});
+
+// ==================== v1.10 C1: schema 2 validator ====================
+function v2file(venues) { return { schema_version: 2, generated: '2026-10-23', venues }; }
+function v2venue(extra) {
+  return Object.assign({
+    id: 'ik-1', name: 'Test', lat: 36.16, lon: -86.78, hood: 'Downtown/SoBro', zone: 'downtown',
+    tz: 'America/Chicago', inkind: true, status: 'open', hours: {}, windows: [], verified_no_hh: true,
+  }, extra);
+}
+
+test('validateVenues v2: the real venues.json passes', () => {
+  assert.deepEqual(validateVenues(require(path.join(__dirname, '..', 'venues.json'))), []);
+});
+
+test('validateVenues v2: schema_version must be 2 (1 is now rejected)', () => {
+  assert.deepEqual(validateVenues(v2file([v2venue()])), []);
+  const old = v2file([v2venue()]); old.schema_version = 1;
+  assert.ok(validateVenues(old).some((e) => /schema_version must be 2/.test(e)));
+});
+
+test('validateVenues v2: windows [] with verified_no_hh false = "happy hour not checked yet", valid', () => {
+  assert.deepEqual(validateVenues(v2file([v2venue({ verified_no_hh: false })])), []);
+});
+
+test('validateVenues v2: verified_no_hh true next to a happy_hour window is the one contradiction', () => {
+  const errs = validateVenues(v2file([v2venue({ windows: [win(['MON'], '16:00', '18:00')] })]));
+  assert.ok(errs.some((e) => /verified_no_hh is true but the venue has a happy_hour window/.test(e)), errs.join('\n'));
+  assert.deepEqual(validateVenues(v2file([v2venue({ verified_no_hh: false, windows: [win(['MON'], '16:00', '18:00')] })])), []);
+});
+
+test('validateVenues v2: a lunch-only or special-only venue can be verified no-HH', () => {
+  assert.deepEqual(validateVenues(v2file([v2venue({ windows: [win(['MON'], '11:00', '14:00', { kind: 'lunch' })] })])), []);
+  assert.deepEqual(validateVenues(v2file([v2venue({ windows: [win(['TUE'], '17:00', '21:00', { kind: 'special' })] })])), []);
+});
+
+test('validateVenues v2: kind may be lunch; anything else outside the three is still invalid', () => {
+  const bad = validateVenues(v2file([v2venue({ verified_no_hh: false, windows: [win(['MON'], '10:00', '14:00', { kind: 'brunch' })] })]));
+  assert.ok(bad.some((e) => /kind invalid/.test(e)));
+});
+
+test('validateVenues v2: optional hours_confidence / hours_notes / lunch_checked are type-checked when present', () => {
+  assert.deepEqual(validateVenues(v2file([v2venue({ hours_confidence: 'med', hours_notes: 'x', lunch_checked: false })])), []);
+  const errs = validateVenues(v2file([v2venue({ hours_confidence: 'maybe', hours_notes: 3, lunch_checked: 'yes' })]));
+  assert.ok(errs.some((e) => /hours_confidence must be high\|med\|low/.test(e)));
+  assert.ok(errs.some((e) => /hours_notes must be a string/.test(e)));
+  assert.ok(errs.some((e) => /lunch_checked must be boolean/.test(e)));
+});
+
+// ==================== v1.10 C3: kind "lunch" ====================
+test('isAllDay: a lunch window is never all-day, even long and before 14:00 (gated on special only)', () => {
+  const v = venue({}, []);
+  assert.equal(isAllDay(v, win(['MON'], '10:00', '17:00', { kind: 'lunch' })), false);
+  assert.equal(isAllDay(v, win(['MON'], '10:00', '17:00', { kind: 'special' })), true);
+});
+
+test('lunch windows resolve, go live and start soon exactly like any other window', () => {
+  const w = win(['MON', 'TUE'], '11:00', '14:30', { kind: 'lunch' });
+  const v = venue({}, [w]);
+  assert.equal(isActive(v, w, dt('TUE', 12, 0)), true);
+  assert.equal(isActive(v, w, dt('TUE', 14, 30)), false);
+  assert.equal(startsWithin(v, w, dt('TUE', 10, 0), 120, { excludeAllDay: true }), true);
+});
+
+test('surprisePools: lunch is treated like special — out of both pools (Surprise me promises a happy hour)', () => {
+  const lunch = Object.assign(venue({}, [win(['TUE'], '11:00', '14:30', { kind: 'lunch' })]), { id: 'ik-9', name: 'L' });
+  const pools = surprisePools([lunch], dt('TUE', 12, 0));
+  assert.equal(pools.now.length, 0);
+  assert.equal(pools.later.length, 0);
+});
+
+// ==================== v1.10 C2: the venue's own hours ====================
+const SPLIT = { MON: [['11:00', '14:30'], ['17:00', '22:00']], TUE: [['11:00', '14:30'], ['17:00', '22:00']] };
+
+test('hoursStatus: split day — open at lunch, closed-between in the gap, open at dinner, done after', () => {
+  const v = venue(SPLIT);
+  assert.deepEqual(hoursStatus(v, dt('TUE', 12, 0)), { state: 'open', closes: '14:30' });
+  assert.deepEqual(hoursStatus(v, dt('TUE', 15, 0)), { state: 'closed-between', closedFrom: '14:30', opens: '17:00' });
+  assert.deepEqual(hoursStatus(v, dt('TUE', 18, 0)), { state: 'open', closes: '22:00' });
+  assert.deepEqual(hoursStatus(v, dt('TUE', 22, 30)), { state: 'closed-for-the-day' });
+  assert.deepEqual(hoursStatus(v, dt('TUE', 9, 0)), { state: 'closed-opens-later', opens: '11:00' });
+});
+
+test('hoursStatus: minute boundaries — the open minute is open, the close minute is closed', () => {
+  const v = venue(SPLIT);
+  assert.equal(hoursStatus(v, dt('TUE', 10, 59)).state, 'closed-opens-later');
+  assert.equal(hoursStatus(v, dt('TUE', 11, 0)).state, 'open');
+  assert.equal(hoursStatus(v, dt('TUE', 14, 29)).state, 'open');
+  assert.equal(hoursStatus(v, dt('TUE', 14, 30)).state, 'closed-between');
+  assert.equal(hoursStatus(v, dt('TUE', 16, 59)).state, 'closed-between');
+  assert.equal(hoursStatus(v, dt('TUE', 17, 0)).state, 'open');
+  assert.equal(hoursStatus(v, dt('TUE', 21, 59)).state, 'open');
+  assert.equal(hoursStatus(v, dt('TUE', 22, 0)).state, 'closed-for-the-day');
+});
+
+test('hoursStatus: a close past midnight ends on D+1, and yesterday\'s late range is open now', () => {
+  const v = venue({ FRI: [['17:00', '02:00']], SAT: [['17:00', '02:00']] });
+  assert.deepEqual(hoursStatus(v, dt('FRI', 23, 0)), { state: 'open', closes: '02:00' });
+  // 01:00 Saturday belongs to Friday's range.
+  assert.deepEqual(hoursStatus(v, dt('SAT', 1, 0)), { state: 'open', closes: '02:00' });
+  assert.equal(hoursStatus(v, dt('SAT', 1, 59)).state, 'open');
+  // 02:00 Saturday: Friday's range is over and Saturday's has not begun.
+  assert.deepEqual(hoursStatus(v, dt('SAT', 2, 0)), { state: 'closed-opens-later', opens: '17:00' });
+  // 01:00 Sunday: Saturday's range still running, though Sunday itself has no hours.
+  assert.deepEqual(hoursStatus(v, dt('SUN', 1, 0)), { state: 'open', closes: '02:00' });
+  assert.deepEqual(hoursStatus(v, dt('SUN', 3, 0)), { state: 'closed-today' });
+});
+
+test('hoursStatus: the week wraps — Sunday night past midnight is open on Monday 00:30', () => {
+  const v = venue({ SUN: [['18:00', '01:00']] });
+  assert.deepEqual(hoursStatus(v, dt('MON', 0, 30)), { state: 'open', closes: '01:00' });
+  assert.deepEqual(hoursStatus(v, dt('MON', 1, 0)), { state: 'closed-today' });
+});
+
+test('hoursStatus: back-to-back ranges are one stretch (no fake 3pm close)', () => {
+  const v = venue({ MON: [['11:00', '15:00'], ['15:00', '22:00']] });
+  assert.deepEqual(hoursStatus(v, dt('MON', 14, 0)), { state: 'open', closes: '22:00' });
+});
+
+test('hoursStatus: closed-today when the day is absent; no-hours when nothing is on file', () => {
+  assert.deepEqual(hoursStatus(venue(SPLIT), dt('WED', 12, 0)), { state: 'closed-today' });
+  assert.deepEqual(hoursStatus(venue({}), dt('WED', 12, 0)), { state: 'no-hours' });
+  assert.deepEqual(hoursStatus({ windows: [] }, dt('WED', 12, 0)), { state: 'no-hours' });
+});
+
+test('hoursStatus: a range ending at 00:00 runs to midnight', () => {
+  const v = venue({ THU: [['16:00', '00:00']] });
+  assert.deepEqual(hoursStatus(v, dt('THU', 23, 59)), { state: 'open', closes: '00:00' });
+  assert.deepEqual(hoursStatus(v, dt('FRI', 0, 0)), { state: 'closed-today' });
+});
+
+test('weekHours: seven days MON..SUN, ranges sorted, closed days empty, split days kept as two', () => {
+  const wk = weekHours(venue({ TUE: [['17:00', '22:00'], ['11:00', '14:30']], SAT: [['17:00', '02:00']] }));
+  assert.deepEqual(wk.map((d) => d.day), ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']);
+  assert.deepEqual(wk[0].ranges, []);
+  assert.deepEqual(wk[1].ranges, [['11:00', '14:30'], ['17:00', '22:00']]);
+  assert.deepEqual(wk[5].ranges, [['17:00', '02:00']]);
+  assert.equal(weekHours(venue({})), null);
+});
+
+test('hoursStatus/weekHours: the real Jashan record gives the block\'s "Closed 2:30-5pm" state', () => {
+  const j = REAL.find((v) => v.name === 'Jashan');
+  assert.deepEqual(hoursStatus(j, dt('TUE', 15, 0)), { state: 'closed-between', closedFrom: '14:30', opens: '17:00' });
+  assert.equal(weekHours(j).filter((d) => d.ranges.length === 2).length, 7);
+});
+
+test('hoursSourceInfo: the three hours_source shapes the 2026-10-23 refresh writes', () => {
+  assert.deepEqual(hoursSourceInfo({ hours_source: 'researched 2026-10-23 (high confidence): https://www.jashannashville.com/hours', hours_confidence: 'high' }),
+    { from: 'jashannashville.com', date: '2026-10-23', unconfirmed: false });
+  assert.deepEqual(hoursSourceInfo({ hours_source: 'inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)', hours_confidence: 'low' }),
+    { from: 'inKind listing', date: '2026-09-05', unconfirmed: true });
+  assert.deepEqual(hoursSourceInfo({ hours_source: 'researched 2026-10-23 (low confidence): ', hours_confidence: 'low' }),
+    { from: 'researched', date: '2026-10-23', unconfirmed: true });
+  assert.deepEqual(hoursSourceInfo({ hours_source: 'none found 2026-10-23', hours_confidence: 'low' }),
+    { from: 'none found', date: '2026-10-23', unconfirmed: true });
 });

@@ -1,0 +1,193 @@
+location_id	name	city	zip_code	address	latitude	longitude	timezone	status	brand_id	brand_slug	purchase_page_link	venue_style
+# total_locations=10975 tn=191 pulled_at=Friday, October 23, 2026 at 5:17:52 PM CDT source=GET https://app.inkind.com/api/v5/map same-origin tab in TJ's Chrome
+7491	312 Pizza Company	Nashville	37208	371 Monroe Street	36.1770247	-86.7877993	America/Chicago	Open	1828	312_pizza_company	https://312pizzacompany.inkind.com/	casual_dining
+13114	360 Bistro	Nashville	37205	6000 Tennessee 100, Suite 100	36.0974041	-86.8736183	America/Chicago	Open	5301	360bistroqxiam_360bistro	https://360bistroqxiam.inkind.com/	fine_dining
+13929	51 North Taproom	Nashville	37209	704 51st Avenue North	36.1558259	-86.8484409	America/Chicago	Open	6075	51northtaproomllcboiau_51northtaproom	https://51northtaproomllcboiau.inkind.com/	casual_dining
+14555	615chuTNey	Nashville	37221	7075 Highway 70 South	36.0731702	-86.9187224	America/Chicago	Open	6507	615chutneyapiae_615chutney	https://615chutneyapiae.inkind.com/	casual_dining
+6367	Agave & Rye - Chattanooga	Chattanooga	37402	185 Chestnut St	35.0552878	-85.3121399	America/New_York	Open	1186	agave_and_rye	https://epicbrands.inkind.com/	casual_dining
+17561	Alla Vita - Nashville	Nashville	37203	523 Houston Street	36.1428708	-86.7687666	America/Chicago	Open	1720	alla_vita	https://bokarestaurantgroup.inkind.com/	fine_dining
+20519	Anatolia Turkish	Nashville	37205	48 White Bridge Pike	36.129745	-86.851958	America/Chicago	Open	10751	anatolia_turkish_restaurant	https://music-row-bar-grill.inkind.com/	unknown
+12500	Bad-Ass Breakfast Burritos - East Nashville (Biergarten)	Nashville	37206	908 Main St.	36.175842	-86.756294	America/Chicago	Open	4525	bad_ass_breakfast_burritos	https://doghaus.inkind.com/	fast_casual
+15989	Bad-Ass Breakfast Burritos - Franklin (Biergarten)	Franklin	37067	755 Crescent Centre Dr. Ste 104	35.9443445	-86.8126756	America/Chicago	Open	4525	bad_ass_breakfast_burritos	https://doghaus.inkind.com/	fast_casual
+12961	Bad Idea	Nashville	37206	1021 Russell Street, STE 101	36.1758733	-86.7503858	America/Chicago	Open	5294	badideakeiat_badidea	https://badideakeiat.inkind.com/	casual_fine_dining
+18202	Bag Lady's Fry Joint	Nashville	37208	1402 Buchanan St	36.1802806	-86.8082057	America/Chicago	Open	9088	bagladysfryjoint_bagladysfryjoint	https://bag-ladys-fry-joint.inkind.com/	fast_food
+2562	Bakersfield - Nashville	Nashville	37201	201 3rd Ave	36.159315	-86.774727	America/Chicago	Open	48	bakersfield	https://thunderdome.inkind.com/	casual_dining
+14147	Bar Mar - Nashville	Nashville	37203	300 12th Ave S	36.1535396	-86.7853126	America/Chicago	Open	639	bar_mar	https://joseandres.inkind.com/	bar
+18678	Big Kahuna Wings - West Town	Knoxville	37919	7804 Montvue Center Way	35.9252082	-84.0420458	America/New_York	Open	9406	bigkahunawingswesttown_bigkahunawingswesttown	https://big-kahuna-wings-west-town.inkind.com/	fast_casual
+12184	Black Tap Craft Burgers & Beer - Nashville	Nashville	37201	140 3rd Avenue North	36.1627299	-86.7765908	America/Chicago	Open	4807	blacktap_blacktapcraftburgersbeer	https://blacktap.inkind.com/	fast_casual
+11576	Blue Coast Burrito - Cool Springs	Franklin	37067	4091 Mallory Lane	35.9331871	-86.8246085	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11578	Blue Coast Burrito - Cookeville	Cookeville	38501	1010 S Jefferson Street	36.1375227	-85.501311	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11583	Blue Coast Burrito - Nashville West Shopping Center	Nashville	37209	6800 Charlotte Pike, Suite 106	36.1350412	-86.8880009	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11585	Blue Coast Burrito - Murfreesboro Memorial	Murfreesboro	37129	1122 Memorial Blvd	35.8592548	-86.3909951	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11586	Blue Coast Burrito - Hendersonville	Hendersonville	37075	112 Saundersville Rd.	36.3251108	-86.5954672	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11588	Blue Coast Burrito - Smyrna	Smyrna	37167	635 President Place	35.9808402	-86.5543679	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11580	Blue Coast Burrito - Mount Juliet	Mt. Juliet	37122	640 S. Mt Juliet Road, Suite 230	36.1619077	-86.51589	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+11587	Blue Coast Burrito - Murfreesboro Fortress	Murfreesboro	37128	1141 Fortress Blvd	35.8658786	-86.464418	America/Chicago	Open	4295	bluecoastburrito_bluecoastburrito	https://bluecoastburrito.inkind.com/	fast_casual
+9475	Brugada Kitchen & Bar	Nashville	37201	204 Commerce St	36.1633086	-86.7764636	America/Chicago	Open	3080	brugadakitchenandbar_brugadakitchenbar	https://brugadakitchenandbar.inkind.com/	fast_casual
+14146	Butterfly - Nashville	Nashville	37203	300 12th Ave S	36.1535396	-86.7853126	America/Chicago	Open	2733	butterfly	https://joseandres.inkind.com/	casual_fine_dining
+13452	Cajun Steamer - Franklin	Franklin	37067	1175 Meridian Blvd #108	35.9500876	-86.8078279	America/Chicago	Open	5394	cajunsteamers4iag_cajunsteamer	https://cajunsteamers4iag.inkind.com/	casual_dining
+9130	Ocean Prime - Nashville	Nashville	37203	990 Signal Crossing	36.2015546	-86.7835095	America/Chicago	Open	2842	cameronmitchell_oceanprime	https://cameronmitchell.inkind.com/	fine_dining
+18015	Carrington Oaks Coffeehouse - Collierville	Collierville	38017	914 Carrington Oak Ln S	35.0383042	-89.7028677	America/Chicago	Open	8940	carringtonoakscoffeehouselakeland_carringtonoakscoffeehouselakeland	https://carrington-oaks-coffeehouse-lakeland.inkind.com/	fast_casual
+18014	Carrington Oaks Coffeehouse - Lakeland	Lakeland	38002	9752 Mkt Grn Pl N #101	35.2583162	-89.7374197	America/Chicago	Open	8940	carringtonoakscoffeehouselakeland_carringtonoakscoffeehouselakeland	https://carrington-oaks-coffeehouse-lakeland.inkind.com/	fast_casual
+20518	Chateau West	Nashville	37203	3408 West End Avenue	36.138777	-86.8203184	America/Chicago	Open	10750	chateau_west_restaurant	https://music-row-bar-grill.inkind.com/	unknown
+14558	Chauhan Ale & Masala House	Nashville	37203	123 12th Avenue North	36.1604497	-86.7910645	America/Chicago	Open	6311	chauhanaleandmasalahousegtiaq_chauhanalemasalahouse	https://chauhanaleandmasalahousegtiaq.inkind.com/	casual_dining
+3389	City Winery - Nashville	Nashville	37203	609 Lafayette St	36.1522011	-86.7763561	America/Chicago	Open	336	city_winery	https://citywinery.inkind.com/	casual_fine_dining
+11920	Close Company - Nashville	Nashville	37208	1316 Adams Street	36.1804318	-86.7835428	America/Chicago	Open	4979	close_company	https://deathandco.inkind.com/	bar
+9590	Common Ground - Berry Hill	Nashville	37204	734 Thompson Lane	36.112784	-86.7674951	America/Chicago	Open	3159	commonground_commonground	https://commonground.inkind.com/	fast_casual
+19056	Craven Wings - Choto	Knoxville	37922	12350 South Northshore Drive	35.8313138	-84.1661103	America/New_York	Open	9525	cravenwingshuiat_cravenwings	https://cravenwingshuiat.inkind.com/	casual_dining
+19057	Craven Wings - Seymour	Seymour	37865	10721 Chapman Highway	35.8776421	-83.7746827	America/New_York	Open	9525	cravenwingshuiat_cravenwings	https://cravenwingshuiat.inkind.com/	casual_dining
+11329	Delta Blues BBQ - Bristol	Bristol	37620	724 State Street	36.5949282	-82.1863125	America/New_York	Open	4229	deltabluesbbq_deltabluesbbq	https://deltabluesbbq.inkind.com/	casual_dining
+10400	Docks Off 5th - Memphis	Memphis	38103	310 Beale Street	35.139661	-90.0507329	America/Chicago	Open	3768	docsoff5th_docksoff5th	https://docsoff5th.inkind.com/	casual_fine_dining
+12498	Dog Haus - East Nashville (Biergarten)	Nashville	37206	908 Main St.	36.175842	-86.756294	America/Chicago	Open	1460	dog_haus	https://doghaus.inkind.com/	casual_dining
+15988	Dog Haus - Franklin (Biergarten)	Franklin	37067	755 Crescent Centre Dr. Ste 104	35.9443445	-86.8126756	America/Chicago	Open	1460	dog_haus	https://doghaus.inkind.com/	casual_dining
+3346	Electric Jane	Nashville	37203	1301 Division St	36.1513842	-86.7879132	America/Chicago	Open	298	electric_jane	https://electricjane.inkind.com/	fine_dining
+16864	ELEVEN11	Nashville	37207	913 Dickerson Pike	36.1884094	-86.7730243	America/Chicago	Open	7908	eleven11wgiag_eleven11	https://eleven11wgiag.inkind.com/	bar
+15723	E+ROSE - 12South	Nashville	37204	2235 10th Avenue South	36.1270163	-86.7863578	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15727	E+ROSE - Germantown	Nashville	37208	1320 Adams Street, Suite 120, Suite 120	36.1807191	-86.7835139	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15731	E+ROSE - 505	Nashville	37219	501 Church Street	36.1631439	-86.780454	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15734	E+ROSE - East Nashville	Nashville	37216	4720 Gallatin Pike	36.231077	-86.72467	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15741	E+ROSE - Brentwood	Brentwood	37027	700 Old Hickory Boulevard, #203	36.0408958	-86.769227	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15743	E+ROSE - The Gulch	Nashville	37203	1201 Demonbreun Street, Suite 110	36.1542529	-86.7862414	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15740	E+ROSE - OneC1ty	Nashville	37209	4 City Boulevard, #108	36.1517994	-86.819488	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15742	E+ROSE - Peabody Plaza	Nashville	37210	10 Lea Avenue, Suite 150, Suite 150	36.1574645	-86.7696909	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+15735	E+ROSE - Wedgewood-Houston	Nashville	37203	610 Merritt Avenue	36.1405107	-86.7703882	America/Chicago	Open	7107	erosetiiau_erose	https://erosetiiau.inkind.com/	cafe
+20756	Fishmonger - Neuhoff	Nashville	37208	1316 Adams St #112	36.1806271	-86.7830506	America/Chicago	Open	10908	fishmonger_fishmonger	https://fishmonger.inkind.com/	fast_casual
+20757	Fishmonger - Wedgewood-Houston	Nashville	37208	475 Gray St Suite 104	36.1408977	-86.7705684	America/Chicago	Open	10908	fishmonger_fishmonger	https://fishmonger.inkind.com/	fast_casual
+8588	Blue Sushi - 5th & Broadway	Nashville	37203	5036 Broadway PL STE 220	36.1607763	-86.7794063	America/Chicago	Open	2564	flagshiprestaurantgroup_bluesushisakegrill	https://flagshiprestaurantgroup.inkind.com/	casual_dining
+8589	Blue Sushi - McEwen Northside	Franklin	37067	5001 Aspen Grove Dr STE 142	35.9372485	-86.8264858	America/Chicago	Open	2564	flagshiprestaurantgroup_bluesushisakegrill	https://flagshiprestaurantgroup.inkind.com/	casual_dining
+14096	Flour Your Dreams Bakery & Cafe	Nashville	37076	3968 Dodson Chapel Road	36.1741226	-86.6147679	America/Chicago	Open	6215	flouryourdreams7fiaw_flouryourdreamsbakerycafe	https://flouryourdreams7fiaw.inkind.com/	fast_casual
+18627	Fortuna Italian Steakhouse	Nashville	37221	8100 Tn-100	36.0452885	-86.9545238	America/Chicago	Open	9419	fortunaitaliansteakhouse2_fortunaitaliansteakhouse	https://fortuna-italian-steakhouse-2.inkind.com/	fast_casual
+19772	Rio De Brazil Steakhouse	Johnson City	37604	1091 Hamilton Place	36.3346159	-82.406062	America/New_York	Open	10148	gauchinhobraziliansteakhousehriaf_riodebrazilsteakhouse	https://gauchinhobraziliansteakhousehriaf.inkind.com/	unknown
+19769	Wahaca Mexican Kitchen	Johnson City	37604	1011 Hamilton Pl	36.3345072	-82.4053928	America/New_York	Open	10147	gauchinhobraziliansteakhousehriaf_wahacamexicankitchen	https://gauchinhobraziliansteakhousehriaf.inkind.com/	unknown
+9972	Goodnight Nashville	Nashville	37201	209 Broadway	36.161408	-86.775378	America/Chicago	Open	3433	goodnight_nashville	https://evening-entertainment-group.inkind.com/	bar
+11135	Grandpa Bar	Nashville	37208	1501 Herman Street, Suite 123	36.1660165	-86.7986805	America/Chicago	Open	4120	grandpabar_grandpabar	https://grandpabar.inkind.com/	bar
+8922	Gregorys Coffee - Opry Mills	Nashville	37214	439B Opry Mills Drive	36.2034354	-86.6946746	America/Chicago	Open	1220	gregory_s_coffee	https://gregoryscoffee.inkind.com/	coffee_shop
+18503	Butcher & Bee	Nashville	37206	902 Main Street	36.1758341	-86.7567921	America/Chicago	Open	9064	honesttogoodnesshospitalityh2ian_butcherbee	https://honesttogoodnesshospitalityh2ian.inkind.com/	casual_fine_dining
+18504	Fancypants	Nashville	37207	921 Dickerson Pike	36.1885187	-86.7729847	America/Chicago	Open	9319	honesttogoodnesshospitalityh2ian_fancypants	https://honesttogoodnesshospitalityh2ian.inkind.com/	casual_fine_dining
+11677	The Pancake Pantry - Hillsboro Village	Nashville	37212	1796 21st Avenue South	36.1370279	-86.8005337	America/Chicago	Open	4597	iconicrestaurantgroup_thepancakepantry	https://iconicrestaurantgroup.inkind.com/	casual_dining
+11678	The Pancake Pantry - Nashville	Nashville	37201	220 Molloy Street	36.1589298	-86.7740228	America/Chicago	Open	4597	iconicrestaurantgroup_thepancakepantry	https://iconicrestaurantgroup.inkind.com/	casual_dining
+19673	Jimmy Buffett's Margaritaville - Nashville	Nashville	37201	322 Broadway 2nd floor	36.16138	-86.777197	America/Chicago	Open	10085	internationalmealcompanymargaritavillekviaa_jimmybuffetsmargaritaville	https://internationalmealcompanymargaritavillekviaa.inkind.com/	unknown
+16940	Jai Dee Thai Kitchen	Knoxville	37912	5541 Clinton Hwy	36.0041881	-83.9851527	America/New_York	Open	8064	jaideethaikitchen_jaideethaikitchen	https://jai-dee-thai-kitchen.inkind.com/	fast_food
+19204	Bungalow 10 Dining	Nashville	37212	1910 Belcourt Avenue	36.1369811	-86.7992986	America/Chicago	Open	9742	jar10bungalow10diningnowherespecialgjiad_bungalow10dining	https://jar10bungalow10diningnowherespecialgjiad.inkind.com/	unknown
+19203	Jar 10	Nashville	37212	1910 Belcourt Avenue	36.1369811	-86.7992986	America/Chicago	Open	9468	jar10bungalow10diningnowherespecialgjiad_jar10	https://jar10bungalow10diningnowherespecialgjiad.inkind.com/	casual_dining
+19205	NoWhere Special	Nashville	37212	2000 Belcourt Avenue	36.1369528	-86.7994409	America/Chicago	Open	9743	jar10bungalow10diningnowherespecialgjiad_nowherespecial	https://jar10bungalow10diningnowherespecialgjiad.inkind.com/	unknown
+20959	Jashan	Nashville	37212	2100 21st Ave S	36.1315948	-86.8011118	America/Chicago	Open	11074	jashan_jashan	https://jashan.inkind.com/	fast_casual
+14441	Hank Williams Jr Boogie Bar	Nashville	37203	419 Broadway	36.1605712	-86.7777922	America/Chicago	Open	6536	jbjsnashville9xiag_hankwilliamsjrboogiebar	https://jbjsnashville9xiag.inkind.com/	unknown
+14440	JBJ's Nashville	Nashville	37203	405 Broadway	36.16061	-86.7771936	America/Chicago	Open	6481	jbjsnashville9xiag_jbjsnashville	https://jbjsnashville9xiag.inkind.com/	bar
+14442	Playdate	Nashville	37204	2405 12th Avenue South	36.1259265	-86.7895062	America/Chicago	Open	6537	jbjsnashville9xiag_playdate	https://jbjsnashville9xiag.inkind.com/	unknown
+19732	LinQ Social Kitchen	Nashville	37210	175 Lafayette Street	36.1468311	-86.7572812	America/Chicago	Open	10124	jcchospitalitygroupf0ian_linqsocialkitchen	https://jcchospitalitygroupf0ian.inkind.com/	unknown
+19731	Noir Kitchen & Cocktails	Nashville	37206	501 Main Street	36.1731297	-86.765197	America/Chicago	Open	10002	jcchospitalitygroupf0ian_noirkitchencocktails	https://jcchospitalitygroupf0ian.inkind.com/	casual_fine_dining
+15614	JINYA Ramen Bar - Nashville	Nashville	37203	415 11th Avenue N	36.1628039	-86.7911079	America/Chicago	Open	7014	jinyasoutheastdsiam_jinyaramenbar	https://jinyasoutheastdsiam.inkind.com/	fast_casual
+13100	The Detroit Cowboy	Nashville	37203	500 11th Avenue North	36.1637987	-86.7912215	America/Chicago	Open	5531	joevicarirestaurantgrouplwia0_thedetroitcowboy	https://joevicarirestaurantgrouplwia0.inkind.com/	unknown
+14947	JoJo's Fish House	Murfreesboro	37130	1626 Middle Tennessee Boulevard	35.8310493	-86.3755126	America/Chicago	Open	6730	jojosfishhouserdiao_jojosfishhouse	https://jojosfishhouserdiao.inkind.com/	casual_dining
+11289	Just Love Coffee - The Fountains	Murfreesboro	37129	1440 Medical Center Parkway, Suite A	35.860665	-86.4175839	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11297	Just Love Coffee - McEwen	Franklin	37067	4031 Aspen Grove Dr	35.9381092	-86.8263698	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11299	Just Love Coffee - Memphis Midtown	Memphis	38104	2041 Madison Ave, Suite 104	35.1366759	-89.993151	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11311	Just Love Coffee - Smyrna	Smyrna	37167	1310 Hazelwood Dr	35.958812	-86.5209899	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11268	Just Love Coffee - Alcoa	Alcoa	37701	1120 Franck St., Suite 101	35.7861616	-83.9861541	America/New_York	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11292	Just Love Coffee - Hendersonville	Hendersonville	37076	117 Saundersville Rd, Suite 101	36.3269047	-86.5912665	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11294	Just Love Coffee - Knoxville (Downtown)	Knoxville	37916	1710 Cumberland Ave	35.9562742	-83.9324228	America/New_York	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11302	Just Love Coffee - Murfreesboro East	Murfreesboro	37129	129 MTCS Road	35.8700508	-86.387203	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+11286	Just Love Coffee - Dickson	Dickson	37055	702 E College St	36.0709509	-87.3794108	America/Chicago	Open	4289	justlovecoffee_justlovecoffee	https://justlovecoffee.inkind.com/	unknown
+19432	Kane Brown's	Nashville	37201	312 Broadway	36.1614769	-86.7767871	America/Chicago	Open	9844	kanebrowns4hiav_kanebrowns	https://kanebrowns4hiav.inkind.com/	casual_dining
+12245	Live Oak	Nashville	37203	1522 Demonbreun Street	36.1531273	-86.7903702	America/Chicago	Open	4392	liveoak_liveoak	https://liveoak.inkind.com/	bar
+12246	Love & Exile	Nashville	37206	: 715 Main St A	36.175404	-86.759785	America/Chicago	Open	4906	loveandexile_loveandexile	https://loveandexile.inkind.com/	casual_dining
+9357	Philippe Chow - Nashville	Nashville	37203	209 10th Avenue South	36.1551649	-86.7825589	America/Chicago	Open	3012	merchantshospitality_philippechow	https://merchantshospitality.inkind.com/	unknown
+17564	Middleman	Nashville	37203	521 Houston Street	36.1429137	-86.7687507	America/Chicago	Open	8583	middleman	https://bokarestaurantgroup.inkind.com/	casual_fine_dining
+17565	Momotaro - Nashville	Nashville	37203	519 Houston Street	36.1429002	-86.7686216	America/Chicago	Open	8584	momotaro	https://bokarestaurantgroup.inkind.com/	casual_fine_dining
+12668	The Mockingbird	Nashville	37203	121 A 12th Avenue North	36.1576589	-86.7883153	America/Chicago	Open	4976	morphhospitalitygroup_themockingbird	https://morphhospitalitygroup.inkind.com/	unknown
+16870	Mr. J's Original - Franklin	Franklin	37067	330 Mayfield Drive, D4	35.9541075	-86.8027696	America/Chicago	Open	7868	mrjsoriginalofiai_mrjsoriginal	https://mrjsoriginalofiai.inkind.com/	fast_casual
+16869	Mr. J's Original - Nashville	Nashville	37210	45 Hermitage Avenue	36.1559792	-86.7674952	America/Chicago	Open	7868	mrjsoriginalofiai_mrjsoriginal	https://mrjsoriginalofiai.inkind.com/	fast_casual
+9315	Kayne Prime	Nashville	37203	1103 McGavock Street	36.1558009	-86.7860837	America/Chicago	Open	2979	mstreet_kayneprime	https://mstreet.inkind.com/	unknown
+9316	Moto	Nashville	37203	1120 McGavock Street	36.1560838	-86.7863707	America/Chicago	Open	2980	mstreet_moto	https://mstreet.inkind.com/	unknown
+9314	Saint Anejo	Nashville	37203	1120 McGavock Street	36.1560838	-86.7863707	America/Chicago	Open	2913	mstreet_saintanejo	https://mstreet.inkind.com/	fine_dining
+9318	Virago	Nashville	37203	1120 McGavock Street	36.1560838	-86.7863707	America/Chicago	Open	2982	mstreet_virago	https://mstreet.inkind.com/	unknown
+18564	Music Row Bar & Grill	Nashville	37212	1000 17th Ave S	36.1465964	-86.7934315	America/Chicago	Open	9388	musicrowbargrill_musicrowbargrill	https://music-row-bar-grill.inkind.com/	bar
+15771	Nacho Daddy - Nashville	Nashville	37203	800 19th Ave S #104	36.1502232	-86.7955412	America/Chicago	Open	7054	nachodaddyifiau_nachodaddy	https://nachodaddyifiau.inkind.com/	casual_fine_dining
+15712	Nashville Barrel Company - Tasting Room	Nashville	37219	425 Church Street	36.163197	-86.7796546	America/Chicago	Open	6980	nashvillebarrelcompanyvuiac_nashvillebarrelcompany	https://nashvillebarrelcompanyvuiac.inkind.com/	bar
+15711	Nashville Barrel Company - HQ	Nashville	37210	222 Fesslers Lane	36.152067	-86.7422005	America/Chicago	Open	6980	nashvillebarrelcompanyvuiac_nashvillebarrelcompany	https://nashvillebarrelcompanyvuiac.inkind.com/	bar
+5323	Nicky's Coal Fired Pizza	Nashville	37209	5026 Centennial Blvd	36.162462	-86.848713	America/Chicago	Open	801	nicky_s_coal_fired_pizza	https://nickyscoalfiredpizza.inkind.com/	casual_dining
+20004	Pearl Diver	Nashville	37206	1008 Gallatin Ave	36.1890678	-86.7463999	America/Chicago	Open	10341	pearldiver_pearldiver	https://pearl-diver.inkind.com/	fast_casual
+18153	Pete's Dueling Piano Bar - Nashville	Nashville	37201	152 2nd Avenue North	36.1635881	-86.7756872	America/Chicago	Open	8973	petesduelingpianobarnashvillekeiaa_petesduelingpianobarnashville	https://petesduelingpianobarnashvillekeiaa.inkind.com/	bar
+20463	Pins Mechanical Co. - Nashville	Nashville	37203	1102 Grundy Street	36.158569	-86.7880603	America/Chicago	Open	10299	pinsmechanical7jiat_pinsmechanicalco	https://pinsmechanical7jiat.inkind.com/	unknown
+13655	Greens and Grains by Point B	Knoxville	37923	124 South Peters Road	35.9121187	-84.0808819	America/New_York	Open	5886	pointbconceptsllciqia0_greensandgrainsbypointb	https://pointbconceptsllciqia0.inkind.com/	unknown
+13656	Point B	Knoxville	37923	1020 Ebenezer Road	35.8927021	-84.0674092	America/New_York	Open	5812	pointbconceptsllciqia0_pointb	https://pointbconceptsllciqia0.inkind.com/	casual_dining
+11136	Pokemoto - Nashville	Gallatin	37066	1025 Nashville Pike, Suite 130	36.3755391	-86.4722959	America/Chicago	Open	4294	pokemotonashville_pokemotonashville	https://pokemotonashville.inkind.com/	fast_casual
+10507	Present Tense	Nashville	37203	509 Houston St	36.1427018	-86.7683511	America/Chicago	Open	3750	presenttense_presenttense	https://presenttense.inkind.com/	fine_dining
+12723	Prince's Hot Chicken - Tanger Outlets	Nashville	37013	4060 Cane Ridge Parkway	36.0343394	-86.6442829	America/Chicago	Open	4931	princeshotchicken_princeshotchicken	https://princeshotchicken.inkind.com/	fast_casual
+12722	Prince's Hot Chicken - South	Nashville	37211	5814 Nolensville Pike	36.0437463	-86.7122459	America/Chicago	Open	4931	princeshotchicken_princeshotchicken	https://princeshotchicken.inkind.com/	fast_casual
+16195	Prince St. Pizza - Nashville	Nashville	37203	5056 Broadway B-103	36.1604016	-86.7797053	America/Chicago	Open	626	prince_street_pizza	https://princestreetpizza.inkind.com/	fast_casual
+12065	Punk Wok	Nashville	37209	4101 Charlotte Ave	36.1524451	-86.8355829	America/Chicago	Open	4770	punkwok_punkwok	https://punkwok.inkind.com/	casual_fine_dining
+16483	Puttshack - Nashville	Nashville	37203	138 12th Ave N	36.15855	-86.7886824	America/Chicago	Open	7632	puttshackxqiaj_puttshack	https://puttshackxqiaj.inkind.com/	unknown
+20451	Rebel Fork Kitchen	Chuckey	37641	5641 Erwin Hwy	36.1442138	-82.6902367	America/New_York	Open	10718	rebelforkkitchen1_rebelforkkitchen	https://rebel-fork-kitchen-1.inkind.com/	fast_casual
+11987	Riddim N Spice	Nashville	37208	Meharry Boulevard	36.1680383	-86.8084356	America/Chicago	Open	4449	riddimnspice_riddimnspice	https://riddimnspice.inkind.com/	cafe
+18499	King's Palace Cafe	Memphis	38103	162 Beale Street	35.1399175	-90.0525303	America/Chicago	Open	9314	rivercitymanagementgroup7piad_kingspalacecafe	https://rivercitymanagementgroup7piad.inkind.com/	unknown
+18500	Rum Boogie Cafe	Memphis	38103	182 Beale Street	35.1397803	-90.0519629	America/Chicago	Open	9142	rivercitymanagementgroup7piad_rumboogiecafe	https://rivercitymanagementgroup7piad.inkind.com/	casual_dining
+17460	Noodles & Co - Turkey Creek #9021	Knoxville	37934	11083 Parkside Drive	35.9027337	-84.1517989	America/New_York	Open	7766	rivercityrestaurantgroupffiaw_noodlescompany	https://rivercityrestaurantgroupffiaw.inkind.com/	fast_casual
+18188	RockHouse Live Key West - RockHouse Live Memphis	Memphis	38134	5709 Raleigh Lagrange Rd	35.1824472	-89.8727657	America/Chicago	Open	9009	rockhouselivekeywest_rockhouselivekeywest	https://rockhouse-live-key-west.inkind.com/	fast_casual
+18189	RockHouse Live Key West - Rock House Live Midtown	Memphis	38112	2586 Poplar Ave	35.1378984	-89.9747386	America/Chicago	Open	9009	rockhouselivekeywest_rockhouselivekeywest	https://rockhouse-live-key-west.inkind.com/	fast_casual
+10736	The Salty - 12 South	Nashville	37204	2311 12th Ave S, #105	36.1268634	-86.7893664	America/Chicago	Open	3941	saltydonut_thesaltydonut	https://saltydonut.inkind.com/	cafe
+17394	Salvo's Pizza - Smyrna	Smyrna	37167	701 President Place	35.9789354	-86.5582503	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17389	Salvo's Pizza - Gallatin	Gallatin	37066	565 Village Green Drive	36.3779229	-86.474775	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17390	Salvo's Pizza - Hermitage	Nashville	37076	3966 Dodson Chapel Road	36.1740347	-86.6147562	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17391	Salvo's Pizza - Spring	Spring Hill	37174	2078 Wall Street	35.770515	-86.9169453	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17392	Salvo's Pizza - Franklin	Franklin	37064	595 Hillsboro Rd #311	35.932237	-86.878058	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17393	Salvo's Pizza - Mt. Juliet	Mt. Juliet	37122	12800 Lebanon Road	36.2262967	-86.5387688	America/Chicago	Open	7551	salvospizza04iaa_salvospizza	https://salvospizza04iaa.inkind.com/	fast_casual
+17387	Taste of NY - Brentwood	Nashville	37211	15541 Old Hickory Boulevard	36.0394858	-86.7412838	America/Chicago	Open	8445	salvospizza04iaa_tasteofny	https://salvospizza04iaa.inkind.com/	fast_casual
+17388	Taste of NY - Downtown	Nashville	37219	530 Church Street	36.1628887	-86.7813311	America/Chicago	Open	8445	salvospizza04iaa_tasteofny	https://salvospizza04iaa.inkind.com/	fast_casual
+20960	Sindoore	Nashville	37214	457 Donelson Pike	36.1515317	-86.6660231	America/Chicago	Open	11075	sindoore_sindoore	https://sindoore.inkind.com/	fast_casual
+18632	Single Tree BBQ	Murfreesboro	37128	2805 Old Fort Pkwy Suite O	35.8445134	-86.4477131	America/Chicago	Open	9238	singletreebbqjdiau_singletreebbq	https://singletreebbqjdiau.inkind.com/	fast_casual
+7263	Slim & Husky's - Antioch	Antioch	37013	5270 Hickory Hollow Pkwy	36.0484369	-86.6562111	America/Chicago	Open	1667	slim_husky_s	https://slimandhuskys.inkind.com/	casual_dining
+7261	Slim & Husky's - Nashville/Buchanan Arts District	Nashville	37208	911 Buchanan St	36.1803246	-86.8026929	America/Chicago	Open	1667	slim_husky_s	https://slimandhuskys.inkind.com/	casual_dining
+7299	Slim & Husky's - Memphis/Downtown	Memphis	38103	634 Union Ave	35.139784	-90.039944	America/Chicago	Open	1667	slim_husky_s	https://slimandhuskys.inkind.com/	casual_dining
+10983	Slim & Husky's - Franklin	Franklin	37064	230 Franklin Road	35.9317978	-86.8593608	America/Chicago	Open	1667	slim_husky_s	https://slimandhuskys.inkind.com/	casual_dining
+19710	Straight Drop Seafood Memphis	Memphis	38107	615 Chelsea Ave	35.1633697	-90.0373563	America/Chicago	Open	10106	straightdropseafoodmemphis1_straightdropseafoodmemphis	https://straight-drop-seafood-memphis-1.inkind.com/	fast_casual
+10292	St. Vito Focacceria	Nashville	37203	605 Mansion Street	36.1515676	-86.7826499	America/Chicago	Open	3650	stvitofocacceria_stvitofocacceria	https://stvitofocacceria.inkind.com/	fine_dining
+9525	Sushi By Bou - Nashville	Nashville	37219	210 4th Ave N	36.1642022	-86.7789669	America/Chicago	Open	1743	sushi_by_bou	https://sushibybou.inkind.com/	casual_fine_dining
+13852	koshō	Nashville	37203	538 6th Avenue South	36.1539036	-86.7758261	America/Chicago	Open	5956	tabunxiak_kosh	https://tabunxiak.inkind.com/	casual_fine_dining
+17961	Tantisimo	Nashville	37209	306 46th Avenue North	36.1494481	-86.8418623	America/Chicago	Open	8791	tantisimo9biad_tantisimo	https://tantisimo9biad.inkind.com/	casual_dining
+10968	The Amsterdamian	Nashville	37206	925 Gallatin Avenue, Ste 102	36.1877138	-86.7462603	America/Chicago	Open	4143	theamsterdamian_theamsterdamian	https://theamsterdamian.inkind.com/	bar
+11912	The Authentique	Nashville	37206	925 Gallatin Avenue	36.1877175	-86.7462195	America/Chicago	Open	4300	theauthentique_theauthentique	https://theauthentique.inkind.com/	bar
+19232	The Coffee House at Second and Bridge	Franklin	37064	144 2nd Ave N	35.9273915	-86.8683503	America/Chicago	Open	9772	thecoffeehouseatsecondandbridge_thecoffeehouseatsecondandbridge	https://the-coffee-house-at-second-and-bridge.inkind.com/	coffee_shop
+19233	The Coffee House Lewisburg	Lewisburg	37091	764 West Commerce St	35.4506383	-86.7990685	America/Chicago	Open	9772	thecoffeehouseatsecondandbridge_thecoffeehouseatsecondandbridge	https://the-coffee-house-at-second-and-bridge.inkind.com/	coffee_shop
+14528	The Fox Bar & Cocktail Club	Nashville	37216	2905B Gallatin Pike	36.2028611	-86.7392778	America/Chicago	Open	6543	thefoxbarcocktailclubi1iai_thefoxbarcocktailclub	https://thefoxbarcocktailclubi1iai.inkind.com/	bar
+19707	The Green Beetle	Memphis	38103	325 S Main St	35.1374479	-90.0571502	America/Chicago	Open	10103	thegreenbeetle_thegreenbeetle	https://the-green-beetle.inkind.com/	fast_casual
+19634	The Grilled Cheeserie - Café Cheeserie	Nashville	37203	919 Broadway	36.1571048	-86.783278	America/Chicago	Open	10070	thegrilledcheeserieeastnashville_thegrilledcheeserie	https://the-grilled-cheeserie-east-nashville.inkind.com/	unknown
+19633	The Grilled Cheeserie	Nashville	37206	975 Main Street #101	36.1781121	-86.7521292	America/Chicago	Open	10070	thegrilledcheeserieeastnashville_thegrilledcheeserie	https://the-grilled-cheeserie-east-nashville.inkind.com/	unknown
+2613	The Hampton Social - Nashville	Nashville	37201	201 1st. Ave S.	36.1599591	-86.7732544	America/Chicago	Open	59	the_hampton_social	https://parkergroup.inkind.com/	casual_fine_dining
+20285	The Loading Dock	Nashville	37208	906 Buchanan Street	36.180619	-86.8022533	America/Chicago	Open	10569	theloadingdockpziar_theloadingdock	https://theloadingdockpziar.inkind.com/	casual_dining
+17384	The Side Piece Nashville	Nashville	37201	200 Commerce St	36.1633272	-86.7762902	America/Chicago	Open	8435	thesidepiecenashville_thesidepiecenashville	https://the-side-piece-nashville.inkind.com/	fast_casual
+21369	Tiff's Treats - Nashville Bellevue	Nashville	37221	7657 Hwy 70 S Suite 119	36.07662	-86.9498579	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21351	Tiff's Treats - Nashville Murfreesboro	Murfreesboro	37129	452 North Thompson Ln	35.8548917	-86.4294465	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21493	Tiff's Treats - Nashville Franklin	Franklin	37064	3046 Columbia Ave Suite 115	35.8940521	-86.8784051	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21448	Tiff's Treats - Nashville Gulch	Nashville	37203	137 12th Ave N.	36.1580269	-86.7889948	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21489	Tiff's Treats - Nashville Nolensville	Nolensville	37135	7240 Nolensville Rd Suite 103	35.9606014	-86.6719239	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21458	Tiff's Treats - Knoxville University	Knoxville	37916	2106 Cumberland Ave	35.9542085	-83.9382633	America/New_York	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21469	Tiff's Treats - Nashville Mt. Juliet	Mt. Juliet	37122	64 Belinda Parkway	36.1713038	-86.5066761	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21471	Tiff's Treats - Memphis Cordova	Cordova	38016	1585 Chickering Ln	35.1680842	-89.7947366	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+21454	Tiff's Treats - Memphis University	Memphis	38111	3473 Poplar Ave	35.1267621	-89.9464605	America/Chicago	Open	10828	tiffstreatsd9ian_tiffstreats	https://tiffstreatsd9ian.inkind.com/	fast_casual
+16747	Tío Fun Taqueria!	Nashville	37208	1008 Buchanan Street	36.1806797	-86.8036511	America/Chicago	Open	7631	tofunqwiag_tofun	https://tofunqwiag.inkind.com/	fast_casual
+16087	Acme Feed & Seed	Nashville	37201	101 Broadway	36.16202	-86.7744321	America/Chicago	Open	7372	tomkatshospitalityqiiay_acmefeedseed	https://tomkatshospitalityqiiay.inkind.com/	unknown
+16088	Saffire Restaurant	Franklin	37064	230 Franklin Road	35.9320728	-86.8584957	America/Chicago	Open	6744	tomkatshospitalityqiiay_saffirerestaurant	https://tomkatshospitalityqiiay.inkind.com/	casual_dining
+16090	Southernaire Market & Deli	Nashville	37201	150 3rd Avenue South	36.1600382	-86.7743902	America/Chicago	Open	7374	tomkatshospitalityqiiay_southernairemarketdeli	https://tomkatshospitalityqiiay.inkind.com/	unknown
+16089	The Southern Steak & Oyster	Nashville	37201	150 3rd Avenue South	36.1600382	-86.7743902	America/Chicago	Open	7373	tomkatshospitalityqiiay_thesouthernsteakoyster	https://tomkatshospitalityqiiay.inkind.com/	unknown
+6336	True Food Kitchen - Nashville	Nashville	37215	3996 Hillsboro Pike	36.1044687	-86.8145479	America/Chicago	Open	1152	true_food_kitchen	https://truefoodkitchen.inkind.com/	casual_dining
+8946	Two Hands - Franklin	Franklin	37064	230 Franklin Road, Suite 1302, Building No, #13	35.9323201	-86.8590642	America/Chicago	Open	21	two_hands	https://twohands.inkind.com/	casual_dining
+4949	Two Hands - Nashville	Nashville	37203	606 8th Ave. Store 400	36.1514681	-86.779126	America/Chicago	Open	21	two_hands	https://twohands.inkind.com/	casual_dining
+17673	Two Ten Jack	Nashville	37206	1900 Eastland Avenue #105	36.18159	-86.7355774	America/Chicago	Open	8294	twotenjackhliax_twotenjack	https://twotenjackhliax.inkind.com/	unknown
+13246	Germantown Cafe	Nashville	37208	1200 5th Avenue North	36.1755075	-86.7878885	America/Chicago	Open	5671	uphospitalitypartnersxuia1_germantowncafe	https://uphospitalitypartnersxuia1.inkind.com/	unknown
+13244	Karrington Rowe	Brentwood	37027	330 Franklin Road, #913D	36.0271484	-86.7908412	America/Chicago	Open	5686	uphospitalitypartnersxuia1_karringtonrowe	https://uphospitalitypartnersxuia1.inkind.com/	unknown
+13245	Park Cafe	Nashville	37209	4403 Murphy Road	36.1407283	-86.8394666	America/Chicago	Open	5687	uphospitalitypartnersxuia1_parkcafe	https://uphospitalitypartnersxuia1.inkind.com/	unknown
+12534	Van Leeuwen Ice Cream - Gulch	Nashville	37203	335 11th Avenue South	36.1533003	-86.7840008	America/Chicago	Open	4893	vanleeuwenicecream_vanleeuwenicecream	https://vanleeuwenicecream.inkind.com/	fast_casual
+12587	Van Leeuwen Ice Cream - Edgehill Village	Nashville	37212	1200 Villa Pl Ste 113	36.1429422	-86.7917384	America/Chicago	Open	4893	vanleeuwenicecream_vanleeuwenicecream	https://vanleeuwenicecream.inkind.com/	fast_casual
+12588	Van Leeuwen Ice Cream - Neuhoff	Nashville	37208	1316 Adams St Space #111	36.1804318	-86.7835428	America/Chicago	Open	4893	vanleeuwenicecream_vanleeuwenicecream	https://vanleeuwenicecream.inkind.com/	fast_casual
+11237	Connie's Upscale Dive	Nashville	37203	210 Louise Avenue	36.1519148	-86.8049132	America/Chicago	Open	4369	vernaconnies_conniesupscaledive	https://vernaconnies.inkind.com/	unknown
+11236	Verna Café & Bar	Nashville	37203	210 Louise Avenue	36.1519148	-86.8049132	America/Chicago	Open	4335	vernaconnies_verna	https://vernaconnies.inkind.com/	cafe
+18917	Legendary Wings	Nashville	37210	319 Peabody Street	36.155936	-86.7736168	America/Chicago	Open	9520	vintageventuresnfian_legendarywings	https://vintageventuresnfian.inkind.com/	unknown
+18919	The Herban Perk & Pantry	Nashville	37203	512 Rep. John Lewis Way South	36.1550966	-86.7745302	America/Chicago	Open	9320	vintageventuresnfian_theherbanperkpantry	https://vintageventuresnfian.inkind.com/	coffee_shop
+18918	The Urban Perk	Nashville	37210	319 Peabody Street	36.155936	-86.7736168	America/Chicago	Open	9521	vintageventuresnfian_theurbanperk	https://vintageventuresnfian.inkind.com/	unknown
+13745	Vintage Vine 100	Franklin	37067	4051 Aspen Grove Drive	35.9378452	-86.8260606	America/Chicago	Open	4669	vintagevine100_vintagevine100	https://vintagevine100.inkind.com/	casual_fine_dining
+13144	V Modern Italian - Nashville	Nashville	37203	820 Division Street	36.1501877	-86.7800579	America/Chicago	Open	5521	vmodernitalianyliau_vmodernitalian	https://vmodernitalianyliau.inkind.com/	fine_dining
+8647	Wooden City - Chattanooga	Chattanooga	37402	203 Broad St	35.0544382	-85.3110209	America/New_York	Open	2525	woodencity_woodencitytacoma	https://woodencity.inkind.com/	casual_fine_dining
+11400	Zukku Sushi - Knoxville	Knoxville	37920	2201 Kerns Rising Way	35.9534219	-83.9146944	America/New_York	Open	4459	zukku_zukkusushi	https://zukku.inkind.com/	unknown
+19427	ZuZu	Nashville	37201	215 1st Avenue South	36.1596985	-86.7730189	America/Chicago	Open	9842	zuzunashvilleweiaf_zuzu	https://zuzunashvilleweiaf.inkind.com/	fine_dining

@@ -1,5 +1,124 @@
 # Changelog
 
+## 2026-10-23 — BLOCK-hh-radar-fix10-20261023: v1.10 (refreshed data + venue hours + lunch + referral, ready for a public post)
+
+TJ, 2026-10-23, verbatim:
+
+> ~17:15 CDT: "I also want to add hours open / close - if they are closed for lunch for each
+> venue . - and if they have a lunch  special - I also want to add an inkind referal link / qr
+> code and a buy me a coffee link"
+
+> On the tip link: "leave a slot for buy me a coffee , I haven't signed up yet"
+
+> On the refresh: "Re-verify all 69 HH venues (Recommended)"
+
+> ~17:32 CDT: "Waze to radar seems to be working"
+
+> ~17:42 CDT: "fix10 picks: 1. A: screenshot preview; 2. A: Built by TJ White + LinkedIn +
+> GitHub; 3. A: referral with disclosure; 4. B: no note"
+
+Why now: TJ plans to post the radar on LinkedIn on Mon 2026-10-26 or Tue 2026-10-27, so
+strangers will open it.
+
+### v1.9 open question: CLOSED
+The v1.9 entry left one thing for TJ to confirm on a real phone: the app actually coming
+forward and "back" returning to the radar. TJ, ~17:32 CDT on his Android: "Waze to radar
+seems to be working." Confirmed; nothing left open from v1.9.
+
+### inKind's map API changed (measured by the thinking thread, 17:17 CDT)
+One same-origin `GET /api/v5/map` from a real app.inkind.com tab: HTTP 200, **10,975**
+locations, **191** in TN. The rows no longer carry `operating_hours`, `happy_hour`, `lunch` or
+any meal flag (absent from all 10,975 rows), and `zip` moved to `location.zip_code`. inKind
+is now the **roster source only**; hours and deals come from research.
+
+### Roster diff (metro cities + Nolensville): 160 venues
+- **27 new:** Tiff's Treats - Nashville Bellevue, Tiff's Treats - Nashville Franklin, Tiff's Treats - Nashville Gulch, Tiff's Treats - Nashville Mt. Juliet, Tiff's Treats - Nashville Murfreesboro, Tiff's Treats - Nashville Nolensville, Single Tree BBQ, Fishmonger - Neuhoff, Fishmonger - Wedgewood-Houston, Chateau West, Jimmy Buffett's Margaritaville - Nashville, Music Row Bar & Grill, Pearl Diver, The Loading Dock, Jar 10, NoWhere Special, ZuZu, Kane Brown's, The Grilled Cheeserie, The Grilled Cheeserie - Café Cheeserie, Pins Mechanical Co. - Nashville, Anatolia Turkish, Bungalow 10 Dining, Jashan, LinQ Social Kitchen, Noir Kitchen & Cocktails, Sindoore.
+- **3 gone:** Boqueria - Nashville, SunLife Organics - 12 South, SunLife Organics - The Gulch.
+- Every other id, name and address is identical.
+
+### The refreshed data (C1)
+All 160 venues were re-researched by four helpers under `data-src/refresh-20261023/BRIEF-v2.md`
+and merged by the thinking thread (`merge_20261023.py`; new venues' hoods from
+`hood_new_20261023.js`). `venues.json` is that file byte-for-byte (md5
+`79052ad64fe7cd917ae3056df95fdad8`). **139 windows** (88 happy_hour, 46 special, 5 lunch);
+**61** venues with a happy hour, **76** verified no HH; windows stale on 2026-11-05: 44 (was
+all 115). Hours researched for 141 venues; 11 keep inKind's 2026-09-05 hours
+(`hours_confidence: "low"`); 8 have none. The block put "HH not yet checked" at 5; measured
+against the file it is **10** venues with `windows: []` + `verified_no_hh: false` (plus 13
+special/lunch-only venues that are not marked verified either). The provenance is in
+`data-src/refresh-20261023/`, unedited.
+
+### Changes
+- **C1 — schema 2.** `validateVenues` changed in exactly three rules: `schema_version` must
+  be 2; `verified_no_hh: true` is an error only next to a `happy_hour` window (`windows: []`
+  + `false` = "happy hour not checked yet"; a lunch- or special-only venue can be verified
+  no-HH); `kind` may be `"lunch"`. The new optional fields `hours_confidence`
+  (high|med|low), `hours_notes` (string) and `lunch_checked` (boolean) are type-checked when
+  present. README "Schema" and "Semantics" document it.
+- **C2 — hours on every card.** New pure `hoursStatus(venue, now)` and `weekHours(venue)` in
+  logic.js. Every NOW card and grid inline card carries one line: "Open · closes 9pm",
+  "Closed 2:30–5pm · reopens 5pm", "Opens 5pm", "Closed today", "Closed for the day" or "No
+  hours on file". Past-midnight closes end on D+1 (yesterday's late range counts as open);
+  touching ranges are one stretch. The expanded card shows the week (split days as two
+  ranges) and "Hours from <site> · <date>", plus "unconfirmed" when `hours_confidence` is
+  low (`hoursSourceInfo`). The "Hours conflict" badge is untouched; nothing is hidden.
+- **C3 — `kind: "lunch"`.** Handled exactly like `special` everywhere `special` is (NOW lists,
+  counts, food-first muting, grid rows and time-sort rank), except: the tag reads "Lunch",
+  the grid block is dotted green with a dashed border (both themes, `--lunch*` tokens), and
+  it is never all-day. Like specials, lunch is not in the Surprise me pools. The Day Grid
+  footer's "have no happy hour at all" now counts only verified venues;
+  `dayCoverageCounts` gains `unchecked` / `uncheckedList`, shown as "N not checked yet",
+  each listed as "Happy hour not confirmed yet".
+- **C4 — referral (TJ pick 3A).** A "New to inKind?" section above Feedback: "$25 off your
+  first $50+ meal with my referral link. I get a credit too. Terms apply." linking
+  `https://app.inkind.com/refer/XRI8MWHF` (new tab, `rel="noopener"`). Offer wording from
+  TJ's inKind app referral screen, 2026-10-23. `inkind-referral-qr.svg` is committed with
+  its C2PA `<metadata>` block and `xmlns:c2pa` stripped (all 432 rects unchanged) and shown
+  at 120px beside the text on desktop only; a phone gets the link only, and the image is
+  not in the DOM or fetched there. **Re-decoded in this session** (Chromium's
+  `BarcodeDetector` on the committed file): it reads exactly
+  `https://app.inkind.com/refer/XRI8MWHF`.
+- **C5 — tip slot.** `TIP_URL = ''` in index.html. Empty = nothing renders. Set = "Support
+  this project ↗" in the footer. No platform is named. README "Tip link" says where.
+- **C6 — credit line (TJ pick 2A).** Footer, last line: "Built by TJ White · LinkedIn ·
+  Source on GitHub" (LinkedIn and GitHub are new-tab `noopener` links; the name is plain).
+- **C7 — link preview (TJ pick 1A).** Open Graph + `twitter:card summary_large_image` tags,
+  with no venue count in any of them. `og-preview.png` is 1200x627, 138 KB: a real headless
+  Chrome capture of the NOW view, light theme, `?now=2026-10-27T16:45`, no `?pos`, with
+  localStorage cleared first, taken at a 960x502 CSS viewport and 1.25 device-pixel ratio
+  so the text stays legible at LinkedIn's size. `?now` shows no debug line (only `?pos`
+  does). Geolocation was left unanswered for the capture, so neither a position nor a
+  "Location off" line appears.
+- **C8 — refresh runbook** rewritten from what actually worked on 2026-10-23, with
+  `data-src/refresh-20261023/` as the worked example. Cadence monthly, next due ~2026-11-23,
+  still by hand.
+- **C9 — v1.10.** `APP_VERSION`, `logic.js?v=1.10` and `venues.json?v=1.10` (the venues
+  query had been left at `?v=1.7` since v1.7; it changes now because the data did).
+
+### Data-coupled tests the new roster moved (no venue data edited)
+- **LinQ Social Kitchen** (new) got hood Wedgewood-Houston from `nearestNeighborhood`, but
+  its point sits east of the drawn Cumberland seam, inside the East polygon. Kept as a
+  single named exception in the map containment tests (`MAP_SEAM_EXCEPTIONS`), with a test
+  that fails once it is no longer needed; its dot renders on the East side of the line.
+- **Bellevue venues off the map edge: 2 → 3** (Tiff's Treats - Nashville Bellevue is new).
+- **Day coverage, measured:** SUN 39 on the day / 40 other days / 71 none / 10 not checked;
+  TUE 65 / 14 / 71 / 10.
+
+### Data notes for the thinking thread (reported, not edited)
+- **Chauhan Ale & Masala House** has hours for FRI and SAT only, but its happy hour runs
+  Mon–Thu + Sun 16:30–17:30, so every one of its happy-hour cards shows "Closed today" plus
+  "Hours conflict". Its notes say the time is "listed under Sun-Thu hours"; those
+  Sun–Thu hours look like they were dropped in the merge.
+- The block's own example, "Closed 2:30-5pm" at Chauhan 15:00, is Jashan's gap (14:30–17:00);
+  Chauhan's Friday gap is 14:00–16:30.
+
+### Tests
+`node --test`: **129 / 129** (107 old, of which 4 data-coupled ones were updated as above,
++ 22 new: the v2 validator rules including "not checked yet", lunch kind, `hoursStatus`
+incl. a split day, past-midnight closes, the week wrap and minute boundaries, `weekHours`,
+`hoursSourceInfo`, the coverage split). `node validate.js venues.json`: OK (160 venues, 139
+windows; 16 lint warnings, which do not fail).
+
 ## 2026-09-11 — BLOCK-hh-radar-fix9-20260911: v1.9 (open the nav app directly, never via its web page)
 
 TJ, 2026-09-11 ~05:05 CDT, verbatim:

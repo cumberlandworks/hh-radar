@@ -11,12 +11,17 @@ Your phone's clock and GPS are the only inputs; GPS coordinates never leave the 
 
 One deliberate exception since v1.5: tapping **Send** in the feedback box POSTs your
 note to a Google Form (see *Feedback inbox* below). Nothing else on the page ever makes a
-network call beyond its own three files.
+network call beyond its own files (the page, `logic.js`, `venues.json`, the icons, and on
+desktop the referral QR image). The footer's referral, LinkedIn and GitHub links are plain
+links: nothing is fetched until the reader taps one.
 
-v1 covers: the 35 inKind partners in the Nashville metro that inKind's own map API
-flags `happy_hour: true`, plus a researched sweep of the other ~101 unflagged inKind
-metro rows (inKind's flag is discovery, not ground truth — see `CHANGELOG.md` for the
-count actually added). v2 (parked) would fold in non-inKind aggregator listings.
+Coverage (refresh of 2026-10-23, v1.10): all **160** inKind partners in the Nashville metro
+per inKind's own map API, every one researched by hand that day: hours, happy hour, lunch
+specials. **139 windows** (88 happy hour, 46 special, 5 lunch). **61** venues have a happy
+hour, **76** were checked and have none, and **23** are not confirmed either way yet (10 with
+no windows at all, 13 with only a special or lunch window). Hours were researched for 141
+venues; 11 keep inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file.
+v2 (parked) would fold in non-inKind aggregator listings.
 
 ## Files
 
@@ -28,8 +33,19 @@ count actually added). v2 (parked) would fold in non-inKind aggregator listings.
 - `validate.js` — Node schema/semantic validator (`node validate.js venues.json`).
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
+- `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
+  screenshot of the NOW view taken with `?now=2026-10-27T16:45`.
+- `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
-  generator script. Read-only history, not used at runtime.
+  generator scripts. Read-only history, not used at runtime. `data-src/refresh-20261023/`
+  is the worked example of a full refresh (see *Refresh runbook*).
+
+## Tip link (v1.10)
+
+`index.html` carries one constant, `TIP_URL = ''`, next to `APP_VERSION`. Empty means the
+footer renders nothing for it and nothing is in the DOM. Set it to the full `https://` url
+of a tip page and the footer shows "Support this project ↗" (new tab). No platform is named
+anywhere in code or copy.
 
 ## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 
@@ -73,26 +89,45 @@ note with `[liked]` / `[idea]` / `[problem]` so the inbox sorts itself; the tagg
   location** — `state.geo` is not read by the feedback code at all. The box says all of this
   in plain words under "What gets sent with a note", and shows the live line underneath it.
 
-## Schema (frozen for v1)
+## Schema (v2, since v1.10)
 
 ```
-file: { schema_version: 1, generated: "YYYY-MM-DD", generator: str, coverage: str, venues: [venue] }
+file: { schema_version: 2, generated: "YYYY-MM-DD", generator: str, coverage: str, venues: [venue] }
 venue: {
   id: "ik-<int>", inkind_id: int, name: str, city: str, neighborhood: str, address: str, zip: str,
   lat: number, lon: number, tz: "America/Chicago",
   inkind: true, inkind_url: url, official_site: url|null, status: "open",
-  hours: { MON..SUN?: [[ "HH:MM","HH:MM" ], ...] },   // from inKind; days absent = closed that day
-  hours_source: str,
-  windows: [window],                                   // [] = verified no happy hour (see verified_no_hh)
+  hours: { MON..SUN?: [[ "HH:MM","HH:MM" ], ...] },   // days absent = closed that day; {} = none on file
+  hours_source: str,                                   // where the hours came from, and when (see below)
+  hours_confidence?: "high"|"med"|"low",               // optional (v2); "low" shows as "unconfirmed"
+  hours_notes?: str,                                   // optional (v2); research notes on the hours
+  lunch_checked?: bool,                                // optional (v2); lunch specials were looked for
+  windows: [window],
   verified_no_hh: bool, checked: "YYYY-MM-DD", disagreements: [str], notes: str }
 window: {
   days: ["MON".."SUN"] (non-empty, unique, in week order),
   start: "HH:MM", end: "HH:MM" | "close",
-  area: str|null, kind: "happy_hour" | "special",
+  area: str|null, kind: "happy_hour" | "special" | "lunch",
   deals: [ { type: "food"|"drink", desc: str, price: str|null } ],   // may be []
   sources: [url] (non-empty), last_verified: "YYYY-MM-DD"|null,
   corroborated: bool, confidence: "high"|"med"|"low", notes: str }
 ```
+
+What changed from v1 (the validator, `validateVenues` in `logic.js`, enforces exactly this):
+
+1. `schema_version` must be **2**.
+2. `verified_no_hh` no longer has to equal `windows.length === 0`. The only error is
+   `verified_no_hh: true` on a venue that has a `kind: "happy_hour"` window. So:
+   `windows: []` + `verified_no_hh: true` = checked, no happy hour;
+   `windows: []` + `verified_no_hh: false` = **happy hour not checked yet**;
+   a venue with only a lunch or special window can be verified no-HH.
+3. `kind` may also be `"lunch"`.
+
+The three optional venue fields are type-checked when present and fine when absent.
+`hours_source` now names where the hours came from: the 2026-10-23 refresh writes
+`researched YYYY-MM-DD (high|med|low confidence): <url> [<url>]`, `inKind map API
+YYYY-MM-DD (...)` for the 11 venues that kept inKind's older hours, or `none found
+YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing them.)
 
 ## Semantics
 
@@ -112,6 +147,23 @@ window: {
   flips to drink-forward — nothing is ever filtered out at the data level.
 - `kind: "special"` windows render in the NOW view with a small "special" tag and in
   the DAY GRID with a hatched block. They count toward "live now".
+- `kind: "lunch"` (v1.10) is handled exactly like `special` (NOW lists, counts, food-first
+  ranking, grid rows; like specials it is not in the Surprise me pools, which promise a
+  happy hour) except: its tag reads "lunch", its grid block is a dotted green block of its
+  own, and it is never "all-day" (`isAllDay` stays gated on `special`).
+- **"Not checked yet" is never "no happy hour"** (v1.10). Anything that counts verified
+  no-HH venues counts only `windows: []` + `verified_no_hh: true`. The Day Grid footer
+  lists the others separately as "N not checked yet", each reading "Happy hour not
+  confirmed yet".
+- **Venue hours on every card** (v1.10, `hoursStatus` in logic.js): "Open · closes 9pm",
+  "Closed 2:30–5pm · reopens 5pm" (closed now between two of today's ranges), "Opens 5pm",
+  "Closed today", "Closed for the day", or "No hours on file". A range whose close is
+  `<=` its open ends on D+1, the same rule as `end: "close"`, so a range that started
+  yesterday and runs past midnight reads as open now. Ranges that touch are one stretch.
+  The expanded card shows the whole week (`weekHours`; a split day is two ranges) and one
+  line saying where the hours came from and the date, plus "unconfirmed" when
+  `hours_confidence` is `"low"`. The hours line is about the clock, never a filter:
+  a happy hour on a day the hours say closed still shows, with its "Hours conflict" badge.
 - A window on a day the venue's own `hours` say it's closed is still evaluated (the
   window data wins) but gets a "Hours conflict" badge — never silently dropped.
 - Debug override: `?now=YYYY-MM-DDTHH:MM` in the URL forces the clock to that literal
@@ -148,20 +200,31 @@ window: {
   page is still visible — i.e. if nothing ever came forward. Desktop keeps a plain `<a>`,
   because there is no app to launch.
 
-## Refresh runbook (do manually twice before ever automating)
+## Refresh runbook (rewritten in v1.10 from what worked on 2026-10-23)
 
-1. Open a browser tab **on `app.inkind.com` itself** (cross-origin fetches are
-   blocked — this must run same-origin, from a real tab, never from the published
-   page at runtime) and pull `GET https://app.inkind.com/api/v5/map`.
-2. Normalize whitespace in `city`/`zip` strings (they arrive dirty, e.g. `" Nashville"`).
-3. Filter to `state == "TN"` and the metro cities used in v1 (Nashville, Franklin,
-   Murfreesboro, Smyrna, Brentwood, Mt. Juliet, Hendersonville, Gallatin, Antioch,
-   Spring Hill, Dickson, Lewisburg).
-4. Diff names/ids against `venues.json`. Research ONLY new names (official site first,
-   then Nashville Guru + one more source). Bump `last_verified`/`checked` on re-checks
-   of existing rows.
-5. A pull returning 0 venues is a **FETCH BREAK**, not a market exit — stop, do not
-   write an empty roster over a good one.
+Worked example: `data-src/refresh-20261023/` (the TSV, the research brief, the four
+research batches, the merge script, the hood script and the merge report).
+
+1. In a real browser tab **on `app.inkind.com` itself** (cross-origin fetches are blocked,
+   so this runs same-origin from a real tab, never from the published page), make one
+   same-origin `GET /api/v5/map`. A pull returning **0 locations is a FETCH BREAK**, not a
+   market exit: stop, and never write an empty roster over a good one.
+2. In that page, build the TN rows as tab-separated text (the fields of
+   `data-src/refresh-20261023/inkind-tn-20261023.tsv`; `zip` now comes from
+   `location.zip_code`), take its SHA-256, put the text in the page body, read it back as
+   page text, write the file, and compare the hashes. The browser tool truncates script
+   return values and blocks base64, and page text turns tabs into spaces, so mark the tabs
+   with a placeholder first and restore them after.
+3. Diff ids against `venues.json` (new / gone / unchanged). inKind no longer publishes
+   hours or happy-hour flags (2026-10-23: `operating_hours`, `happy_hour`, `lunch` and every
+   meal flag absent from all 10,975 rows), so inKind is the **roster only** and EVERY venue
+   is researched: follow `data-src/refresh-20261023/BRIEF-v2.md`.
+4. Merge with the merge script (`merge_20261023.py` is the model), give new venues a hood
+   with the hood script (`hood_new_20261023.js`, which uses this repo's own
+   `nearestNeighborhood` + `zoneOf`), then `node validate.js venues.json` and
+   `node --test`. Data-coupled tests (map containment, coverage counts) will name anything
+   the new roster moved.
+5. Cadence: monthly. Next due around **2026-11-23**. Still by hand; automate nothing yet.
 
 ## Development
 

@@ -1,0 +1,2632 @@
+[
+ {
+  "id": 14555,
+  "name": "615chuTNey",
+  "mode": "reverify",
+  "address": "7075 Highway 70 South, Nashville ",
+  "official_site": "https://nashvillechutney.com/",
+  "inkind_url": "https://615chutneyapiae.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "14:30"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "615chuTNey (Bellevue, Nashville) is a sit-down South Indian restaurant, closed Mondays, with lunch (11-2:30) and dinner (5-9:30, Sun until ~7:30-8:30) service plus live music Fri/Sat nights. Checked: official site nashvillechutney.com (homepage + attempted location page, which 404'd), Nashville Scene buffet feature, the inKind partner page itself, and targeted web searches for Nashville Guru / do615 / Eater / Thrillist coverage plus generic \"happy hour\"/\"taco tuesday\"/\"wine wednesday\" terms. No source \u2014 official or third-party \u2014 mentions a happy hour or a recurring discounted weekly special. The only recurring food offering found is a standard-priced (not discounted) lunch buffet at $15.99, Friday-Sunday 11am-2:30pm, which reads as their regular buffet menu rather than a \"special\" deal. One incidental finding: reportedly no corkage fee for BYOB wine, but this is a standing policy, not a recurring timed discount, so it doesn't qualify as a happy-hour/special window. Yelp returned 403 (blocked) so its reviews could not be directly checked for happy-hour mentions, but no other source corroborated one either. Given the sit-down, moderately-priced full-service concept with evening hours, an actual happy hour would very plausibly be marketed if it existed, and nothing surfaced after a genuine multi-source check \u2014 concluding verified_no_hh=true with reasonable confidence.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 12500,
+  "name": "Bad-Ass Breakfast Burritos - East Nashville (Biergarten)",
+  "mode": "reverify",
+  "address": "908 Main St., Nashville ",
+  "official_site": "https://www.badassbreakfastburritos.com/",
+  "inkind_url": "https://doghaus.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "16:40"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "\"Bad-Ass Breakfast Burritos\" is a virtual/ghost-kitchen breakfast-burrito brand that operates out of the Dog Haus Biergarten kitchen at 908 Main St, East Nashville (same address inKind lists). It has its own marketing site (badassbreakfastburritos.com) with a full menu and a \"Haus Rewards\" loyalty program, but no happy hour, daily special, or any recurring discount is mentioned anywhere on it. Its compact hours (07:00-16:40, breakfast/lunch window) confirm it's a morning/midday-only concept with no evening service of its own, consistent with no happy hour. Searched nashvilleguru.com specifically for this brand \u2014 no dedicated page exists; the only Nashville Guru hit was the co-located \"Dog Haus\" listing, which is just a name/address/phone stub with no specials content. No do615/Eater/Thrillist coverage of the burrito brand exists either. IMPORTANT NUANCE: the physical location (Dog Haus Biergarten, same address/kitchen) DOES run its own official happy hour \u2014 Mon-Sat 3-7pm, Sun 12-7pm, per Dog Haus's own locations.doghaus.com page ($1 off slider 3-packs, $2 off draft beer/wine and shareables, $3 off cocktails and wings) \u2014 but every one of those deals is on Dog Haus's own hot-dog/slider/bar menu, not on breakfast burritos, and Dog Haus is a distinct brand entry from this one. Because the deal doesn't apply to this brand's food and isn't advertised anywhere under the Bad-Ass Breakfast Burritos name, I did not record it as a window for this brand \u2014 recording it here would incorrectly suggest a burrito-specific discount exists. Conservative call: verified_no_hh=true for this brand specifically.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 14147,
+  "name": "Bar Mar - Nashville",
+  "mode": "reverify",
+  "address": "300 12th Ave S, Nashville ",
+  "official_site": "https://www.thebazaar.com/location/bar-mar-nashville/",
+  "inkind_url": "https://joseandres.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {},
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "area": "bar/lounge/patio only",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Coastal Hour cocktails (Peach Sangria, La Barceloneta, Feria de Sevilla)",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass (sparkling, ros\u00e9, white, or red)",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Estrella Damm Lager (bottle)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Gurutzeta Sagardoa Basque Cider (served tableside)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Fried Shrimp, tempura, tartar sauce",
+       "price": "$12"
+      },
+      {
+       "type": "food",
+       "desc": "Patatas Bravas, Spanish fried potato, spicy brava sauce, alioli, piment\u00f3n",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Smashed Txule-burger, dry-aged patties, American cheese, piparra peppers, brioche bun",
+       "price": "$18"
+      },
+      {
+       "type": "food",
+       "desc": "Ora King Salmon Causa, potato causa, jicama, yuzu-mayo",
+       "price": "$15"
+      },
+      {
+       "type": "food",
+       "desc": "Snapper Classic Ceviche, leche de tigre, sweet potato, red onion, corn nuts, cilantro",
+       "price": "$16"
+      },
+      {
+       "type": "food",
+       "desc": "Fried Snapper in Adobo, marinated European sea bass, tartare sauce, lemon",
+       "price": "$17"
+      }
+     ],
+     "sources": [
+      "https://www.thebazaar.com/location/bar-mar-nashville/",
+      "https://nashvilleguru.com/businesses/bar-mar-by-jose-andres",
+      "https://nashvilleguru.com/31034/nashvilles-top-5-happy-hours-day"
+     ],
+     "corroborated": false,
+     "confidence": "low",
+     "last_verified": "2026-09-05",
+     "notes": "Re-verified 2026-09-05 by live browser fetch of the JS-rendered thebazaar.com Coastal Hour menu tab (all items/prices confirmed exact, incl. Patatas Bravas $8 vs $14 on Main Menu) plus WebFetch of both Nashville Guru pages and the Yelp Q&A. CORRECTION vs original claim: 'corroborated' downgraded from true to false and confidence from med to low, because the day/time schedule (Mon-Thu+Sun, 5-7pm) is NOT independently corroborated \u2014 it comes only from Nashville Guru, and the two Nashville Guru URLs cited are the same publisher's own listing text repeated verbatim across two of their pages, not two independent sources. The official Jos\u00e9 Andr\u00e9s Group site (thebazaar.com) confirms the Coastal Hour menu and every price exactly but never states a day-of-week or time window anywhere on the page. So while the branded discount program itself is solidly confirmed (official site + third party agree on its existence and exact pricing), the specific hours someone would rely on to time a visit rest on a single publisher. A 4-year-old Yelp Q&A saying 'no happy hour' (verified genuine) likely predates this location's current iteration and was reasonably not treated as a live disagreement, but was also never resolved by an independent source. Recommend the app label this window's confidence as low/unverified-hours rather than presenting the 5-7pm window as fully confirmed."
+    }
+   ],
+   "notes": "Bar Mar Nashville (Jos\u00e9 Andr\u00e9s Group, inside W Nashville, 300 12th Ave S) runs a branded recurring happy hour called \"Coastal Hour,\" Mon-Thu and Sun 5-7pm, bar/lounge/patio only. Confirmed via a live JS-rendered fetch of the official thebazaar.com menu (exact discounted food/drink items and prices matching a dedicated Coastal Hour menu tab) plus consistent reporting on Nashville Guru across 3 of their pages. The official site does not itself print the day/time text, only the menu name and pricing, so confidence is med rather than high. No Friday/Saturday Coastal Hour (consistent with it being an early-dinner discount before weekend peak hours). General operating hours: Sun-Thu 5-9pm, Fri-Sat 5-10pm (dinner-only, no lunch service, so no lunch-special angle to check). [verify pass: Live re-verification (browser-rendered thebazaar.com Coastal Hour tab + WebFetch of both nashvilleguru.com pages + the Yelp Q&A) confirmed every price, item description, and quote in the original submission is genuine and accurate \u2014 nothing was hallucinated or fabricated, and all cited URLs are real and match the Bar Mar Nashville brand. The single defect is an honesty-of-labeling issue: 'corroborated: true' is claimed for the window, but the day/time schedule (the fact someone actually needs to time their visit correctly) is sourced from only one independent publisher (Nashville Guru), appearing on two of that publisher's own pages with identical boilerplate text \u2014 not two independent sources agreeing, which is what 'corroborated' should mean. The official site independently confirms the menu and exact pricing but is silent on days/hours. Corrected by downgrading corroborated to false and confidence from med to low; the window itself is retained (well-evidenced) rather than falling back to no-happy-hour, since the underlying program and pricing are directly confirmed on the venue's own official site.\"]",
+   "disagreements": [
+    "A Yelp Q&A (~4 years old) states 'No, they currently don't [have happy hour]' for Bar Mar Nashville, conflicting with the current 'Coastal Hour' menu found on the official site and Nashville Guru \u2014 but the Yelp answer appears to predate this location's recent opening (per Instagram posts announcing its opening), so it was not treated as a live/current disagreement."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11580,
+  "name": "Blue Coast Burrito - Mount Juliet",
+  "mode": "reverify",
+  "address": "640 S. Mt Juliet Road, Suite 230, Mt. Juliet ",
+  "official_site": "https://bluecoastburrito.com/",
+  "inkind_url": "https://bluecoastburrito.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "kind": "special",
+     "days": [
+      "TUE"
+     ],
+     "start": "17:00",
+     "end": "close",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
+       "price": "$2.99"
+      },
+      {
+       "type": "food",
+       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
+       "price": "$7"
+      }
+     ],
+     "sources": [
+      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
+      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/",
+      "https://www.facebook.com/bluecoastofficialpage/posts/tuesday-is-family-night-199-little-surfer-meals-6-small-burrito-combos-see-ya-th/551731728201427/"
+     ],
+     "corroborated": true,
+     "confidence": "low",
+     "last_verified": "2025-01-14",
+     "notes": "DOWNGRADED from med to low on adversarial re-check. This is a real, long-running (2013-2025) chain-wide 'Family Night'/'Taco Tuesday' food special, NOT a happy hour and not alcohol-focused - confirmed via live fetch of the Instagram, Facebook, and rutherfordsource.com sources (quotes match exactly). However: (1) a 4th 'source' originally listed for this window, a Tripadvisor Hendersonville review, returns HTTP 403 (confirmed by direct fetch) and was already marked ok:false/no-quote in checked_sources - it provided no actual support and has been removed from sources[]; (2) there is ZERO evidence specific to the Cool Springs/Franklin location itself - both the location's own website (4 pages checked) and its own Facebook page (bluecoastcoolsprings, confirmed via fetch: no mention of any weekly special) come back completely empty, so applicability here rests entirely on one chain-wide Instagram post's phrase 'in all Middle Tennessee area locations'; (3) that freshest evidence is from Jan 2025, ~20 months stale as of today (2026-09-05); (4) the 17:00 start time is NOT actually backed by any working source - the only verified source with a specific time (rutherfordsource, Murfreesboro-specific) says 'after 4pm' (16:00), and the 5:00pm figure traces only to the dead/403 Tripadvisor link. Treat this as plausible but unconfirmed for this specific location and specific time - a user could reasonably be told 'this Tuesday deal has historically run chain-wide, unconfirmed at this location currently, and may start as early as 4pm rather than 5pm.'"
+    }
+   ],
+   "notes": "This is NOT a happy hour (confirmed absent from every source, including the current official site, which lists flat beer pricing with no discount window). It IS a long-running recurring weekly FOOD special: \"Family Night\" / \"Taco Tuesday\" every Tuesday, discounting kids meals and adult combos. Evidence spans 2013 to January 2025 across the brand's own official Facebook and Instagram accounts, a third-party Murfreesboro kids-eat-free dining guide, and a Hendersonville Tripadvisor review - all agreeing on Tuesday as the day. The January 2025 Instagram post is the strongest single piece of evidence because it is (a) the most recent, (b) from the brand's own official Nashville-area account, and (c) explicitly states the deal runs \"in all Middle Tennessee area locations,\" which covers this Cool Springs/Franklin location along with the other 6 metro locations. Confidence is capped at \"med\" rather than \"high\" solely because the current official bluecoastburrito.com website itself is silent on it (checked homepage, both menu pages, and the Cool Springs location page) and because the exact time window isn't consistently stated by any source. Did not find any happy hour or specials coverage on Nashville Guru, Do615, Eater Nashville, or Thrillist for this brand - it does not appear to have a dedicated write-up on any of those sites. A separate, location-specific \"spin a wheel for 10/20/50/100% off\" Tuesday promo was found for the Cookeville, TN store, but Cookeville is outside this brand's 7 Nashville-metro locations, so it was not included in windows[]. [verify pass: Core quotes verified as genuine via live WebFetch of Instagram, Facebook, and rutherfordsource.com - not hallucinated. Two real problems found and corrected: (1) the window's sources[] included a Tripadvisor URL that checked_sources itself shows failed (ok:false, empty quote) and that I confirmed independently returns HTTP 403 - it was providing no actual support while padding the corroboration count; removed it. (2) confidence:\"med\" was too generous - I confirmed via fetch that the Cool Springs location's own website AND its own Facebook page both show zero trace of this promotion, meaning there is no location-specific confirmation at all, only a stale (~20mo old) chain-wide claim; downgraded to \"low\". Also flagged that the claimed 17:00 start time has no surviving verified source (the only live source with a specific time says \"after 4pm\"/16:00). corroborated:true was left as-is since 3 independently-verified sources do genuinely agree on the underlying chain-wide Tuesday practice - the location-specificity and staleness concerns are captured via confidence and notes instead. verified_no_hh:false is correctly used (kind=\"special\", not an alcohol happy hour) and was left unchanged.]",
+   "disagreements": [
+    "Deal pricing has changed over time: a 2013 official Facebook post and a 2020 third-party kids-eat-free guide (rutherfordsource.com) both state $1.99 kids meals + $6 adult small-burrito combo, while the most recent official Instagram post (Jan 2025) states $2.99 kids meals + $7 adult combo. Treated the 2025 figures as current/authoritative.",
+    "Start time is inconsistent: search-indexed Tripadvisor review content suggests a 5:00pm start ('5pm until 8:30pm'), the 2020 rutherfordsource.com guide says the adult/kids deal applies 'after 4pm', and the most recent (2025) official Instagram post states no specific time at all. Kept 5:00pm-close in windows[] as the more commonly cited window but this is not confirmed by any official source with times."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11588,
+  "name": "Blue Coast Burrito - Smyrna",
+  "mode": "reverify",
+  "address": "635 President Place, Smyrna ",
+  "official_site": "https://bluecoastburrito.com/",
+  "inkind_url": "https://bluecoastburrito.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "kind": "special",
+     "days": [
+      "TUE"
+     ],
+     "start": "17:00",
+     "end": "close",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
+       "price": "$2.99"
+      },
+      {
+       "type": "food",
+       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
+       "price": "$7"
+      }
+     ],
+     "sources": [
+      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
+      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/",
+      "https://www.facebook.com/bluecoastofficialpage/posts/tuesday-is-family-night-199-little-surfer-meals-6-small-burrito-combos-see-ya-th/551731728201427/"
+     ],
+     "corroborated": true,
+     "confidence": "low",
+     "last_verified": "2025-01-14",
+     "notes": "DOWNGRADED from med to low on adversarial re-check. This is a real, long-running (2013-2025) chain-wide 'Family Night'/'Taco Tuesday' food special, NOT a happy hour and not alcohol-focused - confirmed via live fetch of the Instagram, Facebook, and rutherfordsource.com sources (quotes match exactly). However: (1) a 4th 'source' originally listed for this window, a Tripadvisor Hendersonville review, returns HTTP 403 (confirmed by direct fetch) and was already marked ok:false/no-quote in checked_sources - it provided no actual support and has been removed from sources[]; (2) there is ZERO evidence specific to the Cool Springs/Franklin location itself - both the location's own website (4 pages checked) and its own Facebook page (bluecoastcoolsprings, confirmed via fetch: no mention of any weekly special) come back completely empty, so applicability here rests entirely on one chain-wide Instagram post's phrase 'in all Middle Tennessee area locations'; (3) that freshest evidence is from Jan 2025, ~20 months stale as of today (2026-09-05); (4) the 17:00 start time is NOT actually backed by any working source - the only verified source with a specific time (rutherfordsource, Murfreesboro-specific) says 'after 4pm' (16:00), and the 5:00pm figure traces only to the dead/403 Tripadvisor link. Treat this as plausible but unconfirmed for this specific location and specific time - a user could reasonably be told 'this Tuesday deal has historically run chain-wide, unconfirmed at this location currently, and may start as early as 4pm rather than 5pm.'"
+    }
+   ],
+   "notes": "This is NOT a happy hour (confirmed absent from every source, including the current official site, which lists flat beer pricing with no discount window). It IS a long-running recurring weekly FOOD special: \"Family Night\" / \"Taco Tuesday\" every Tuesday, discounting kids meals and adult combos. Evidence spans 2013 to January 2025 across the brand's own official Facebook and Instagram accounts, a third-party Murfreesboro kids-eat-free dining guide, and a Hendersonville Tripadvisor review - all agreeing on Tuesday as the day. The January 2025 Instagram post is the strongest single piece of evidence because it is (a) the most recent, (b) from the brand's own official Nashville-area account, and (c) explicitly states the deal runs \"in all Middle Tennessee area locations,\" which covers this Cool Springs/Franklin location along with the other 6 metro locations. Confidence is capped at \"med\" rather than \"high\" solely because the current official bluecoastburrito.com website itself is silent on it (checked homepage, both menu pages, and the Cool Springs location page) and because the exact time window isn't consistently stated by any source. Did not find any happy hour or specials coverage on Nashville Guru, Do615, Eater Nashville, or Thrillist for this brand - it does not appear to have a dedicated write-up on any of those sites. A separate, location-specific \"spin a wheel for 10/20/50/100% off\" Tuesday promo was found for the Cookeville, TN store, but Cookeville is outside this brand's 7 Nashville-metro locations, so it was not included in windows[]. [verify pass: Core quotes verified as genuine via live WebFetch of Instagram, Facebook, and rutherfordsource.com - not hallucinated. Two real problems found and corrected: (1) the window's sources[] included a Tripadvisor URL that checked_sources itself shows failed (ok:false, empty quote) and that I confirmed independently returns HTTP 403 - it was providing no actual support while padding the corroboration count; removed it. (2) confidence:\"med\" was too generous - I confirmed via fetch that the Cool Springs location's own website AND its own Facebook page both show zero trace of this promotion, meaning there is no location-specific confirmation at all, only a stale (~20mo old) chain-wide claim; downgraded to \"low\". Also flagged that the claimed 17:00 start time has no surviving verified source (the only live source with a specific time says \"after 4pm\"/16:00). corroborated:true was left as-is since 3 independently-verified sources do genuinely agree on the underlying chain-wide Tuesday practice - the location-specificity and staleness concerns are captured via confidence and notes instead. verified_no_hh:false is correctly used (kind=\"special\", not an alcohol happy hour) and was left unchanged.]",
+   "disagreements": [
+    "Deal pricing has changed over time: a 2013 official Facebook post and a 2020 third-party kids-eat-free guide (rutherfordsource.com) both state $1.99 kids meals + $6 adult small-burrito combo, while the most recent official Instagram post (Jan 2025) states $2.99 kids meals + $7 adult combo. Treated the 2025 figures as current/authoritative.",
+    "Start time is inconsistent: search-indexed Tripadvisor review content suggests a 5:00pm start ('5pm until 8:30pm'), the 2020 rutherfordsource.com guide says the adult/kids deal applies 'after 4pm', and the most recent (2025) official Instagram post states no specific time at all. Kept 5:00pm-close in windows[] as the more commonly cited window but this is not confirmed by any official source with times."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 18503,
+  "name": "Butcher & Bee",
+  "mode": "reverify",
+  "address": "902 Main Street, Nashville ",
+  "official_site": "https://butcherandbee.com/nashville",
+  "inkind_url": "https://honesttogoodnesshospitalityh2ian.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "21:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "17:00",
+      "22:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Checked the official site (butcherandbee.com/nashville, /food, and the Nashville events page) -- no happy hour, specials, or promotional pricing mentioned anywhere; only dinner/brunch/beverage menus. Checked Nashville Guru three ways: the venue profile article, the business directory listing, and their dedicated \"Best Nashville Happy Hours and Specials\" roundup page -- Butcher & Bee does not appear on the happy-hours roundup at all, and neither other page mentions any deal. Attempted do615.com venue page (403 blocked), Yelp business page (403 blocked), and OpenTable (timed out) as additional independent sources but could not retrieve their content directly; targeted web searches for \"Taco Tuesday\"/\"Wine Wednesday\"/\"industry night\" and site-restricted searches (site:butcherandbee.com happy hour) turned up nothing. Twice a WebSearch tool's own synthesized summary asserted a happy hour existed, but in both cases directly fetching the cited source showed the claim was unsupported/misattributed (see disagreements) -- treated those as noise, not evidence. Operating hours (dinner-only weekdays 5-9:30/10pm, brunch-only Sat/Sun 10am-2pm) are consistent with a scratch-kitchen, no-happy-hour concept, matching what was found. Given a real official-site check plus three additional independent sources attempted with none corroborating a recurring happy hour or weekly special, concluding verified_no_hh=true with reasonable confidence, though the two blocked sources (do615, Yelp) mean this isn't fully exhaustive.",
+   "disagreements": [
+    "One WebSearch synthesized-answer pass (not a fetched page) claimed 'Happy hour from 3:00pm to 6:00pm includes $2 off draft beers, a $9 featured cocktail, and select happy hour small plates... Wednesday specials all day include 2-for-1 craft beer' attributed to Nashville Guru's happy-hours roundup. Directly fetching that exact roundup page (https://nashvilleguru.com/best-nashville-happy-hours-and-specials) and asking it to quote the Butcher & Bee section verbatim confirmed Butcher & Bee is NOT listed on that page at all -- the search engine's AI summary had misattributed content from a different venue on that roundup to Butcher & Bee. Discarded as unsupported; not included in windows[]. Similarly a separate WebSearch summary asserted 'The restaurant offers happy hour specials' with no fetchable source backing it up."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 3389,
+  "name": "City Winery - Nashville",
+  "mode": "reverify",
+  "address": "609 Lafayette St, Nashville 37203",
+  "official_site": "https://citywinery.com/pages/nashville-restaurant-and-winery",
+  "inkind_url": "https://citywinery.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "13:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Happy Hour food specials (specific items not itemized on site)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Happy Hour drink specials (specific items not itemized on site)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://citywinery.com/pages/nashville-restaurant-and-winery"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Official live page (fetched today) reads: 'Join us Monday through Thursdays 4-6 PM for our Happy Hour food and drink specials, or get the weekend started early with Summer Fridays from 1-5 PM!' Friday is a SEPARATE 'Summer Fridays' promo (1-5pm), not labeled Happy Hour, so not included as a HH window here. No exact deal pricing given on-site.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "13:00",
+     "end": "17:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "'Summer Fridays' promo \u2014 get the weekend started early (details not itemized on site)",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://citywinery.com/pages/nashville-restaurant-and-winery"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Labeled 'Summer Fridays', not 'Happy Hour' \u2014 included since it's a discount window a reader would want to know about; oddity noted. May be seasonal (summer-only) and could lapse outside that season.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "Nashville Guru has no listing page for 'city-winery-nashville' slug (tried businesses/city-winery-nashville, 404/no content returned) and site search did not surface an alternate slug. Venue is primarily a live-music/dining venue in Wedgewood-Houston; happy hour is a secondary offering to full dinner/wine service.",
+   "disagreements": [
+    "Official site (fetched live 2026-09-05) states Happy Hour is Mon-Thu 4-6pm only, with Friday covered by a separate 'Summer Fridays' 1-5pm promo (no % discount stated). Third-party aggregator (visitmusiccity.com, undated) states Happy Hour runs Monday-Friday 4-6pm with '50% off wine on tap' \u2014 this both extends the window to Friday and states a specific discount not shown on the current official page. Could not resolve which is current; recorded both."
+   ]
+  },
+  "tj_question": "Official site says HH Mon-Thu 4-6, inKind hours had no Monday. | Official site (fetched live 2026-09-05) states Happy Hour is Mon-Thu 4-6pm only, with Friday covered by a separate 'Summer Fridays' 1-5pm promo (no % discount stated). Third-party aggregator (visitmusiccity.com, undated) states Happy Hour runs Monday-Friday 4-6pm with '50% off wine on tap' \u2014 this both extends the window to Friday and states a specific discount not shown on the current official page. Could not resolve which is current; recorded both."
+ },
+ {
+  "id": 12498,
+  "name": "Dog Haus - East Nashville (Biergarten)",
+  "mode": "reverify",
+  "address": "908 Main St., Nashville 37206",
+  "official_site": "https://locations.doghaus.com/locations/tn/nashville/908-main-st",
+  "inkind_url": "https://doghaus.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "00:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)",
+       "price": "-$1"
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": "-$2"
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": "-$2"
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": "-$3"
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": "-$3"
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/nashville/908-main-st"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Location page (live, fetched today) has a dedicated 'Happy Hour' block: '$1 OFF Any 3-Pack of Sliders / $2 OFF Draft Beer & Wine / $2 OFF Shareables / $3 OFF Haus Cocktails / $3 OFF Wings' with 'Monday - Saturday: 3PM - 7PM'.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 off any 3-pack of sliders (OG, BOJ, BMC, THC)",
+       "price": "-$1"
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beer & wine",
+       "price": "-$2"
+      },
+      {
+       "type": "food",
+       "desc": "$2 off shareables",
+       "price": "-$2"
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off Haus cocktails",
+       "price": "-$3"
+      },
+      {
+       "type": "food",
+       "desc": "$3 off wings",
+       "price": "-$3"
+      }
+     ],
+     "sources": [
+      "https://locations.doghaus.com/locations/tn/nashville/908-main-st"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Same location page: 'Sunday: 12PM - 7PM'.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "Nashville Guru's listing page for 'Dog Haus Biergarten' exists but currently carries no Happy Hours & Specials section (page has only address/directions), so it could not corroborate; not counted as a disagreement, just missing data. Corroborated is false because only one dated/quotable source (the official page) was available; Guru and Instagram could not confirm specifics.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 15741,
+  "name": "E+ROSE - Brentwood",
+  "mode": "reverify",
+  "address": "700 Old Hickory Boulevard, #203, Brentwood ",
+  "official_site": "https://eandrosewellness.com/",
+  "inkind_url": "https://erosetiiau.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "E+ROSE is a health/wellness juice bar and acai-bowl cafe chain (9 Nashville locations, founded by a Registered Dietitian) \u2014 counter-service, no alcohol, and this location's hours (7am-5pm daily, per both the inKind data and independently corroborated via Yelp/search) mean there is no evening service at all, making a traditional happy hour structurally implausible. Checked the official site (eandrosewellness.com, redirected from eandrose.com \u2014 direct WebFetch got a 403 bot-block but content was recoverable via search snippets), the specific 12South location page (404), Nashville Guru's business listing for this location, and Nashville Guru's master citywide happy-hours-and-specials aggregator page (E+Rose is absent from it). Also searched Yelp reviews and general web for any mention of recurring Tuesday/Wednesday deals, loyalty discounts, etc. \u2014 found only a loyalty/rewards app and a one-off 10%-off bulk catering discount for 20+ item orders, which is not a recurring happy-hour/weekly-special in the sense this schema tracks. No do615, Eater Nashville, or Thrillist coverage of this brand was found. Concluding verified_no_hh=true with reasonable confidence given the concept type and consistent absence across all sources checked.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 15742,
+  "name": "E+ROSE - Peabody Plaza",
+  "mode": "reverify",
+  "address": "10 Lea Avenue, Suite 150, Suite 150, Nashville ",
+  "official_site": "https://eandrosewellness.com/",
+  "inkind_url": "https://erosetiiau.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "E+ROSE is a health/wellness juice bar and acai-bowl cafe chain (9 Nashville locations, founded by a Registered Dietitian) \u2014 counter-service, no alcohol, and this location's hours (7am-5pm daily, per both the inKind data and independently corroborated via Yelp/search) mean there is no evening service at all, making a traditional happy hour structurally implausible. Checked the official site (eandrosewellness.com, redirected from eandrose.com \u2014 direct WebFetch got a 403 bot-block but content was recoverable via search snippets), the specific 12South location page (404), Nashville Guru's business listing for this location, and Nashville Guru's master citywide happy-hours-and-specials aggregator page (E+Rose is absent from it). Also searched Yelp reviews and general web for any mention of recurring Tuesday/Wednesday deals, loyalty discounts, etc. \u2014 found only a loyalty/rewards app and a one-off 10%-off bulk catering discount for 20+ item orders, which is not a recurring happy-hour/weekly-special in the sense this schema tracks. No do615, Eater Nashville, or Thrillist coverage of this brand was found. Concluding verified_no_hh=true with reasonable confidence given the concept type and consistent absence across all sources checked.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 3346,
+  "name": "Electric Jane",
+  "mode": "reverify",
+  "address": "1301 Division St, Nashville ",
+  "official_site": "https://theelectricjane.com/",
+  "inkind_url": "https://electricjane.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "The inKind page is just a gift-card landing page with no menu/hours info. Found the real official site (theelectricjane.com) via search; its current nav is OUR STORY / MEMBERSHIP / EVENT REQUEST / CONTACT \u2014 no menu, specials, or happy-hour page at all. That's because the venue has pivoted business models: as of spring 2026 it relaunched as an exclusive, membership-only club (500-1,000 cap), no longer open to the general public as a walk-in restaurant/bar \u2014 confirmed by a secondary press source (oftmw.com/Markets of Tomorrow) and consistent with the site's membership-focused navigation. Checked Nashville Guru's business listing page (no HH mention) and Nashville Guru's own dedicated \"Best Nashville Happy Hours and Specials\" roundup plus a second Wednesday-happy-hour aggregator (nashvillego.com) \u2014 Electric Jane appears in neither. do615, Yelp, and Tripadvisor all returned HTTP 403 and could not be fetched directly; Yelp/Tripadvisor snippets surfaced via web search did not include any grounded happy-hour quote either. Given a real official site with zero specials/happy-hour content, corroborating absence from two independent Nashville happy-hour aggregator lists, and the venue's shift to a private members-club model (which would not run a public happy hour), this is a genuine, multi-source negative check, not an absence-of-evidence default. Conclusion: verified_no_hh=true.",
+   "disagreements": [
+    "Raw web-search AI summaries (not grounded in any fetched page) asserted 'The Electric Jane offers happy hour specials,' but every actual page fetched (official site, Nashville Guru, two dedicated Nashville happy-hour aggregator roundups) contains zero mention of a happy hour, deal, price, or time window for this venue \u2014 treated the ungrounded search-summary claims as unreliable and did not use them."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 13246,
+  "name": "Germantown Cafe",
+  "mode": "reverify",
+  "address": "1200 5th Avenue North, Nashville 37208",
+  "official_site": "https://germantowncafe.com/",
+  "inkind_url": "https://uphospitalitypartnersxuia1.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "09:00",
+      "15:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "15:00"
+     ],
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:30",
+     "end": "18:30",
+     "area": "bar",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Cocktails",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Wines by the glass",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Beer",
+       "price": "$4"
+      },
+      {
+       "type": "food",
+       "desc": "Food specials (bar area only)",
+       "price": "$7-$25"
+      }
+     ],
+     "sources": [
+      "https://germantowncafe.com/",
+      "https://www.totalhappyhour.com/happy-hour-for-germantown-cafe-in-nashville-tn-37208/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Bar area only per aggregator; official site does not specify area but confirms same days/times.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "19:30",
+     "end": "21:00",
+     "area": "bar",
+     "deals": [],
+     "sources": [
+      "https://germantowncafe.com/"
+     ],
+     "last_verified": "2026-09-05",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Saturday happy hour window listed on official site footer; no deal specifics given and no second source found for this specific window.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "Google reviews (visible on official site) reference happy hour positively but give no specifics beyond 'love their happy hour deals'.",
+   "disagreements": [
+    "A general web-search summary claimed Monday features an extended happy hour from 3:30pm to 9:00pm in the bar, but the official site's own footer text only lists Mon-Fri 3:30-6:30pm and a separate Sat 7:30-9pm window, with no Monday extension mentioned. Treating the extended-Monday claim as unconfirmed/likely erroneous aggregation."
+   ]
+  },
+  "tj_question": "Saturday 7:30-9pm window has no deal detail. | A general web-search summary claimed Monday features an extended happy hour from 3:30pm to 9:00pm in the bar, but the official site's own footer text only lists Mon-Fri 3:30-6:30pm and a separate Sat 7:30-9pm window, with no Monday extension mentioned. Treating the extended-Monday claim as unconfirmed/likely erroneous aggregation."
+ },
+ {
+  "id": 14441,
+  "name": "Hank Williams Jr Boogie Bar",
+  "mode": "reverify",
+  "address": "419 Broadway, Nashville ",
+  "official_site": "https://www.hanksnash.com/",
+  "inkind_url": "https://jbjsnashville9xiag.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "MON": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Real official site found via web search: hanksnash.com (the inKind link at jbjsnashville9xiag.inkind.com is just a gift-card/payments landing page, confirmed no HH content). Fetched hanksnash.com home, /about, and /menu \u2014 none mention happy hour, daily/weekly specials, or time-limited pricing; menu is straight food/drink pricing only. Nashville Guru's business page for this venue exists but its fetched content (general venue description, holiday pop-up event coverage) had no happy-hour mention. Targeted web searches for \"happy hour\" combined with do615/Eater/Thrillist/Yelp/Reddit returned no matching content \u2014 Yelp itself blocked direct fetch (403) and nashvillego.com detail page 404'd, but neither surfaced HH text even in search snippets. This is a live-music/tourist honky-tonk-style bar on Broadway (opened Nov 2023) \u2014 the kind of high-traffic flat-rate tourist venue that typically doesn't run discount happy hours, consistent with finding none. Given a genuine multi-source check (official site + 2 independent third-party attempts) turned up nothing, concluding no recurring happy hour/special exists rather than guessing.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11286,
+  "name": "Just Love Coffee - Dickson",
+  "mode": "reverify",
+  "address": "702 E College St, Dickson ",
+  "official_site": "https://www.justlovecoffee.com/tn-dickson/",
+  "inkind_url": "https://justlovecoffee.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Brand is a counter-service breakfast/lunch/waffle cafe concept open ~7am-5pm daily (confirmed consistent across Dickson and Franklin/McEwen locations) with no evening service at any checked location, which structurally rules out a traditional happy hour. The official site's own per-location \\\"Specials\\\" page for Dickson explicitly and directly states no specials are currently offered - the strongest possible negative signal (official source, explicit statement). A second same-brand location page (Franklin/McEwen) corroborates: no specials/happy-hour language, only an unrelated seasonal drink promo image with no discount terms. Nashville Guru has no dedicated writeup on this venue (only a general business-directory stub and an unrelated article about a different, now-closed Demonbreun/Music Row location opening). Yelp pages for Dickson and a same-brand Georgia location both returned HTTP 403 and could not be directly verified, but no aggregator or search snippet anywhere surfaced happy-hour or recurring-special language for this brand. Two WebSearch tool summaries asserted, without ever producing a supporting quote or URL after being pressed twice, that \\\"Just Love Coffee Cafe locations do offer happy hour specials\\\" - I do not credit this: it cites no actual source page, contradicts every page actually fetched (official specials pages explicitly say none), and is inconsistent with the brand's morning-only operating hours. Concluding verified_no_hh=true with reasonable confidence given the explicit official-site denial plus corroborating hours/absence-of-evidence across multiple independent checks.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11311,
+  "name": "Just Love Coffee - Smyrna",
+  "mode": "reverify",
+  "address": "1310 Hazelwood Dr, Smyrna ",
+  "official_site": "https://www.justlovecoffee.com/tn-dickson/",
+  "inkind_url": "https://justlovecoffee.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Brand is a counter-service breakfast/lunch/waffle cafe concept open ~7am-5pm daily (confirmed consistent across Dickson and Franklin/McEwen locations) with no evening service at any checked location, which structurally rules out a traditional happy hour. The official site's own per-location \\\"Specials\\\" page for Dickson explicitly and directly states no specials are currently offered - the strongest possible negative signal (official source, explicit statement). A second same-brand location page (Franklin/McEwen) corroborates: no specials/happy-hour language, only an unrelated seasonal drink promo image with no discount terms. Nashville Guru has no dedicated writeup on this venue (only a general business-directory stub and an unrelated article about a different, now-closed Demonbreun/Music Row location opening). Yelp pages for Dickson and a same-brand Georgia location both returned HTTP 403 and could not be directly verified, but no aggregator or search snippet anywhere surfaced happy-hour or recurring-special language for this brand. Two WebSearch tool summaries asserted, without ever producing a supporting quote or URL after being pressed twice, that \\\"Just Love Coffee Cafe locations do offer happy hour specials\\\" - I do not credit this: it cites no actual source page, contradicts every page actually fetched (official specials pages explicitly say none), and is inconsistent with the brand's morning-only operating hours. Concluding verified_no_hh=true with reasonable confidence given the explicit official-site denial plus corroborating hours/absence-of-evidence across multiple independent checks.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 18917,
+  "name": "Legendary Wings",
+  "mode": "reverify",
+  "address": "319 Peabody Street, Nashville ",
+  "official_site": null,
+  "inkind_url": "https://vintageventuresnfian.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Legendary Wings (319 Peabody St, Nashville, TN 37210; phone 629-395-7288) is a brand-new, single-location fast-casual wings/smashburger counter concept \u2014 Google's own \"From the owner\" post is dated Jun 25, 2026, and all 12 Google reviews are tagged \"NEW\" (~1 week old at time of check). It has no independent official website (Google's own Business Profile prompts \"Add website,\" meaning Google has none on file, and no site was findable via search), no Yelp page (Yelp searches for \"Legendary Wings Nashville\" only surface an unrelated Florida chain, \"Buffalo Jack's Legendary Wings & Pizza\"), no Facebook page found, and zero press coverage on Nashville Guru (site:nashvilleguru.com search returned no results), do615, Thrillist Nashville, or Eater Nashville. Its only real web presence is the Google Maps/Business listing and a very small Instagram account (@legendarywingsnash, 21 followers) whose bio (\"Best Wings and Smash Burgers in Nashville\") makes no mention of happy hour or specials. Reviewed the Google Maps review highlight themes (smash burger, smoked, music, french fries \u2014 no \"happy hour\" or \"specials\" theme among them) and the visible review text; none mention a happy hour, wing special, or discount window. Operating hours (11am\u20137pm daily per inKind, matching Google's \"Opens 11 AM Sun\") show no late-evening bar service, consistent with a fast-casual counter-service format rather than a bar/lounge program that would run a happy hour. inKind's own venue-specific page for this brand 500-errored, so I relied on the root inKind page (generic gift-card landing, no venue specifics) plus Google/Instagram. The inKind happy_hour=false flag appears correct here, not a miss: after checking the official-site equivalent (there isn't one), Nashville Guru, Yelp/Google reviews, Instagram, and general web search for \"wing special/deal,\" I found no evidence of any recurring happy hour or weekly special. Conclusion: verified_no_hh=true, windows=[]. Confidence in this \"no\" conclusion is reasonably high given the breadth of sources checked, tempered only by the venue's newness (a happy hour could be added later that hasn't been documented anywhere yet).",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 17565,
+  "name": "Momotaro - Nashville",
+  "mode": "reverify",
+  "address": "519 Houston Street, Nashville ",
+  "official_site": "https://www.momotaronashville.com/",
+  "inkind_url": "https://bokarestaurantgroup.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "16:30",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Momotaro Nashville is an upscale modern-Japanese dinner-only restaurant from Boka Restaurant Group (Chicago-based group), opened June 2026 in Wedgewood-Houston. Hours are dinner-only: Mon-Sat 4:30-10pm, Sun 4:30-9pm \u2014 no lunch service, so no lunch-special angle to check. Official site has no happy hour, specials, or promo page. Nashville Guru's business listing page for it carries no happy hour mention (unlike the Philippe Chow case cited as a known miss). Web searches pairing the brand with \"happy hour\" across Yelp/Reddit/Eater/Thrillist returned nothing relevant. Direct Yelp fetch was blocked (403) so reviews couldn't be checked there, but no other source hinted at any recurring deal, and the venue's positioning (chef-driven, wagyu/dry-aged bluefin, no bar-forward marketing) is not consistent with a discount happy hour. Concluding verified_no_hh=true rather than guessing.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 15771,
+  "name": "Nacho Daddy - Nashville",
+  "mode": "reverify",
+  "address": "800 19th Ave S #104, Nashville 37203",
+  "official_site": "https://nachodaddy.com/menu/nacho-daddy-nashville-800-19th-avenue-south",
+  "inkind_url": "https://nachodaddyifiau.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "03:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar & patio",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "select mini nachos, tacos and other items $8 and under",
+       "price": "$8 and under"
+      },
+      {
+       "type": "drink",
+       "desc": "house margaritas and other drinks $8 and under",
+       "price": "$8 and under"
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/2025/2/10/nacho-daddy-must-try-happy-hour-specials-tickets",
+      "https://www.yelp.com/questions/nacho-daddy-when-is-happy-hour/FwsEylJ2i2bMTdfkVxXFcQ"
+     ],
+     "last_verified": "2025-02-10",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "do615 event listing describes Mon-Thu 3-6pm; a Yelp Q&A independently describes 3-6pm Mon-Fri at the bar and patio. Day-range disagreement noted below.",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "FRI",
+      "SAT"
+     ],
+     "start": "22:00",
+     "end": "02:00",
+     "area": "bar only",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "mini nachos, tacos $8 and under",
+       "price": "$8 and under"
+      },
+      {
+       "type": "drink",
+       "desc": "house margaritas $8 and under",
+       "price": "$8 and under"
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/sat/late-night-happy-hour-at-nacho-daddy-tickets",
+      "https://www.instagram.com/p/DISAI7_TW7e/?hl=en"
+     ],
+     "last_verified": null,
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Branded 'Late Night Happy Hour', Fri/Sat 10pm-2am, matches restaurant's late closing hours.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "Official nachodaddy.com/locations page 404'd; used the Toast-hosted location/menu page instead. Chain-wide brand, Nashville-specific HH page not separately published.",
+   "disagreements": [
+    "Day range for the afternoon happy hour: do615 (event listing) says Mon-Thu 3-6pm; a Yelp Q&A answer says Mon-Fri 3-6pm. Could not confirm which is current."
+   ]
+  },
+  "tj_question": "Afternoon HH Mon-Thu (do615) vs Mon-Fri (Yelp Q&A). Late HH Fri/Sat 10pm-2am. | Day range for the afternoon happy hour: do615 (event listing) says Mon-Thu 3-6pm; a Yelp Q&A answer says Mon-Fri 3-6pm. Could not confirm which is current."
+ },
+ {
+  "id": 9130,
+  "name": "Ocean Prime - Nashville",
+  "mode": "reverify",
+  "address": "990 Signal Crossing, Nashville ",
+  "official_site": "https://ocean-prime.com/locations-menus/nashville/",
+  "inkind_url": "https://cameronmitchell.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:30",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:30",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:30",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:30",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:30",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "area": "lounge/bar only",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$5 off Lounge Menu items",
+       "price": "$5 off"
+      },
+      {
+       "type": "drink",
+       "desc": "$5 off specialty/signature cocktails",
+       "price": "$5 off"
+      },
+      {
+       "type": "drink",
+       "desc": "Select wines by the glass",
+       "price": "$12"
+      }
+     ],
+     "sources": [
+      "https://ocean-prime.com/locations-menus/nashville/",
+      "https://ocean-prime.com/locations-menus/nashville/nashville-menu/lounge-menu/",
+      "https://nashvilleguru.com/businesses/ocean-prime"
+     ],
+     "corroborated": true,
+     "confidence": "high",
+     "last_verified": "2026-09-05",
+     "notes": "Officially branded 'The Happiest Hour' on Ocean Prime's own Nashville location page and lounge-menu page; independently corroborated (same days/times/deals) by Nashville Guru's business listing for this venue."
+    }
+   ],
+   "notes": "The inKind partner page was not the venue's own marketing site; the real official site is ocean-prime.com (Cameron Mitchell Restaurants brand). Two official pages (main Nashville location page and the Nashville lounge-menu page) both explicitly state a branded 'Happiest Hour' Mon-Fri 4-6pm in the lounge only: $5 off Lounge Menu, $5 off specialty/signature cocktails, and $12 select wines by the glass. This is independently corroborated by Nashville Guru's Ocean Prime business listing, which states the identical days, times, and deal details. No conflicting information was found across any source (a separate 'A Look Inside' Nashville Guru feature article did not mention happy hour but did not contradict it either \u2014 it was a restaurant-opening feature, not a specials listing). Confidence is high and corroborated=true given the explicit official-site statement plus independent aggregator agreement. [verify pass: Spot-checked all three load-bearing URLs directly via WebFetch and they hold up:\n\n1. https://ocean-prime.com/locations-menus/nashville/ \u2014 actually reads \"Join us Monday\u2013Friday from 4-6PM for happy hour and enjoy $5 off Lounge Menu and Specialty Cocktails as well as $12 Selected Wine offerings.\" Matches the claimed quote almost verbatim.\n\n2. https://ocean-prime.com/locations-menus/nashville/nashville-menu/lounge-menu/ \u2014 actually reads \"Offered Monday - Friday in our Lounge from 4:00 - 6:00 PM ... ENJOY $5 OFF OUR LOUNGE MENU & SPECIALTY COCKTAILS\" plus $12 select wines. Matches claimed quote.\n\n3. https://nashvilleguru.com/businesses/ocean-prime \u2014 actually reads \"Happy Hour from 4:00pm to 6:00pm (lounge only)\" with \"$5 off the Lounge Menu, $5 off signature cocktails, and $12 select wines by the glass,\" Mon-Fri. This is an independent, non-Cameron-Mitchell local business directory, and it agrees exactly on days, times, location restriction, and all three deal amounts.\n\nChecks against the adversarial criteria:\n- Every window has real, on-topic sources (not just a generic homepage) \u2014 confirmed, two are venue-specific location/menu subpages, one is an independent third party.\n- Quotes in checked_sources are specific and match the live pages almost word-for-word \u2014 not generic or fabricated.\n- corroborated=true is honest: it rests on the venue's own site (2 pages, same domain, so really one source) PLUS a genuinely independent source (Nashville Guru) agreeing on every detail \u2014 satisfies the 2-independent-sources bar.\n- Nothing hallucinated: prices ($5 off, $12 wine), days (Mon-Fri), hours (4-6pm), and area restriction (lounge/bar only) all check out verbatim across sources. ocean-prime.com is genuinely Ocean Prime's own official site (Cameron Mitchell Restaurants brand), so brand_slug/official_site pairing is correct \u2014 not a URL mismatch.\n- The one weak/empty-quote entry (nashvilleguru.com/192892/a-look-inside-ocean-prime) was honestly disclosed as non-supporting/non-contradicting rather than padded with a fake quote, which is a good sign, not a red flag.\n\nConclusion: the finding is plausible and well-supported. No corrections needed \u2014 echoing windows and verified_no_hh unchanged.]",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 14442,
+  "name": "Playdate",
+  "mode": "reverify",
+  "address": "2405 12th Avenue South, Nashville 37204",
+  "official_site": "https://www.playdatenash.com/",
+  "inkind_url": "https://jbjsnashville9xiag.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "20:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select cocktails $8 all day (restaurant only open Thu-Sun)",
+       "price": "$8"
+      }
+     ],
+     "sources": [
+      "https://www.playdatenash.com/specialsandevents",
+      "https://nashvilleguru.com/businesses/playdate"
+     ],
+     "last_verified": "2026-06-24",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Reverse/all-day happy hour: $8 cocktails run all day, but venue is only open Thu-Sun (closed Mon-Wed).",
+     "kind": "happy_hour"
+    },
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:30",
+     "end": "19:00",
+     "area": "whole restaurant",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Buy-one-get-one beer and wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.playdatenash.com/specialsandevents",
+      "https://nashvilleguru.com/businesses/playdate"
+     ],
+     "last_verified": "2026-06-24",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "Thursday's window overlaps with Ballistic Bingo Night 6:00-8:00pm; Saturday's overlaps with the 'Press Play' DJ party 4:00-8:00pm. No food deals found.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "No food happy-hour deals identified; Playdate's specials are drink-only (pizza is on the regular menu but not called out as a happy-hour deal).",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 12722,
+  "name": "Prince's Hot Chicken - South",
+  "mode": "reverify",
+  "address": "5814 Nolensville Pike, Nashville ",
+  "official_site": "https://www.princeshotchicken.com/",
+  "inkind_url": "https://princeshotchicken.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Genuine multi-source check found no recurring happy hour or weekly special for Prince's Hot Chicken - South (5814 Nolensville Pike). Official site (princeshotchicken.com) home, menu, and locations pages have zero mention of happy hour, specials, or discount times/days \u2014 the locations page confirms hours as Mon-Sat 11am-10pm, closed Sundays, and only lists address/phone/menu link. The inKind partner page's only promo is a prepay-bonus gift-card program (not a happy hour). Attempted nashvilleguru.com (site search turned up only unrelated articles about other Prince's locations at Assembly Food Hall / Fifth+Broadway / 6th&Peabody, not the South/Nolensville shop; guessed direct article URLs 404'd), do615.com, Yelp, TripAdvisor, and Eater Nashville, all of which returned 403/404/unfetchable and could not be loaded to check further (this session's WebSearch quota was also exhausted, limiting query-based discovery \u2014 relied on WebFetch of direct/guessed URLs instead). Business model fits: Prince's Hot Chicken Shack is a fast-casual, order-at-counter fried chicken concept with no bar/alcohol service, which structurally almost never runs a \"happy hour.\" No corroborating source found any recurring deal. Concluding verified_no_hh=true with reasonable but not exhaustive confidence, since several third-party aggregator sites (do615, Yelp, TripAdvisor, Eater) could not actually be loaded due to bot-blocking rather than being confirmed silent on the topic.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11987,
+  "name": "Riddim N Spice",
+  "mode": "reverify",
+  "address": "Meharry Boulevard, Nashville ",
+  "official_site": "https://riddimnspice.com",
+  "inkind_url": "https://riddimnspice.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Real official site confirmed at riddimnspice.com (2116 Meharry Blvd, Nashville, TN 37208 \u2014 matches the brief's Meharry Boulevard address exactly; phone 615-953-7121). Checked the homepage, both food and drink menu pages, and the Rum Room/patio private-event page \u2014 none mention a public recurring happy hour or weekly special; the drink menu itself only lists non-alcoholic sodas/juices/water (no by-the-glass alcohol pricing), and the only \"happy hour\" language on the official site is as an example of a private event type bookable in the Rum Room. Yelp's own business Q&A for this listing explicitly says \"No, Riddim N Spice does not have a happy hour.\" A June 2024 Nashville Scene investigative feature on the restaurant's financial struggles states a hoped-for happy hour \"has failed to materialize.\" The Infatuation's current (2026) Nashville dining guide covers the restaurant favorably but describes only occasional, social-media-announced patio pop-ups and a salsa night \u2014 explicitly telling readers to check social media for updates rather than citing a fixed recurring schedule \u2014 consistent with sporadic special events rather than a standing happy hour. The restaurant's own Instagram has, at different points (roughly 2023\u20132025), advertised \"happy hour\" pricing, but the days/times given are inconsistent across posts and none of it is corroborated by the current official site, menu, or a reliable independent editorial source with specific verified times. Given a real journalistic source says it never solidified, Yelp's own page for the business says no, and the current official site/menu are silent, I'm treating the older/inconsistent social posts as evidence of past or intermittent promotions rather than a currently-reliable recurring happy hour. Per the conservative instruction, calling verified_no_hh=true rather than publishing a schedule I can't corroborate or currently verify.",
+   "disagreements": [
+    "The restaurant's own past Instagram posts disagree with each other on the happy hour schedule: one post (~2 years old per Google's cache) says Thursday\u2013Saturday 7pm\u20139pm ($5 Rum Punch, $5 Margaritas); a later post (Sept 24, 2025 reel) says Wednesday\u2013Saturday 5pm\u20137pm. Neither schedule appears on the current official website, current food/drink menu pages, or in the 2026 Infatuation dining guide.",
+    "Yelp's dedicated Q&A for this business explicitly states there is no happy hour, while a June 2024 Nashville Scene investigative article states a happy hour concept 'has failed to materialize' for the restaurant, and Google's own Business Profile nonetheless carries a self-reported 'Happy hour food' service-option tag. Google Maps also separately lists a linked business, 'The Rum Room at Riddim N Spice' (cocktail bar), as 'Temporarily closed.'"
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 17389,
+  "name": "Salvo's Pizza - Gallatin",
+  "mode": "reverify",
+  "address": "565 Village Green Drive, Gallatin ",
+  "official_site": null,
+  "inkind_url": "https://salvospizza04iaa.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "MON": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Extensive search effort found no independently-verifiable official website, social media page, or third-party coverage for this brand at all -- not just no happy hour. Session's WebSearch tool budget was exhausted before any query could run, so all searching was done via WebFetch against Bing, Google, DuckDuckGo, Yelp, do615, Facebook, and direct domain guesses (salvospizza.com does not resolve). Bing results consistently surfaced only unrelated NYC \"Salvo\" restaurants (Casasalvo, Salvo's Pizzabar, SalvosNYC) or, on one query, completely unrelated recipe-site results, suggesting Bing/WebFetch was not indexing or matching this specific small Nashville-area chain at all (possibly too small/local for search-engine coverage, or the inKind branding name \"Salvo's Pizza + Taste of NY\" differs from how it's known locally). Google was blocked by bot-detection; DuckDuckGo HTML search hit a CAPTCHA; Yelp, Facebook, and do615 searches returned 403/404 errors. The inKind partner landing page itself (the only page that reliably loaded) contains only gift-card/rewards marketing copy -- no menu, no locations list (a /locations guess 500'd), no happy hour or specials language, and no link out to an official restaurant site. nashvilleguru.com's own site search returned \"0 results\" for this brand name directly. Given the complete absence of any confirmable official site or independent secondary source (do615, Eater Nashville, Thrillist were all unreachable/blocked, not merely silent on happy hour), I cannot respons\u2011ibly assert a recurring happy hour or special exists. Concluding verified_no_hh=true is the conservative call per the task's own guidance to prefer \"no\" over a low-confidence guess when a genuine, thorough check turns up nothing -- though I flag that this is a \"couldn't verify presence at all\" case rather than a \"checked the real site and it has no HH\" case, which is a meaningfully weaker basis than for brands with a working official site.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 17391,
+  "name": "Salvo's Pizza - Spring",
+  "mode": "reverify",
+  "address": "2078 Wall Street, Spring Hill ",
+  "official_site": null,
+  "inkind_url": "https://salvospizza04iaa.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "MON": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Extensive search effort found no independently-verifiable official website, social media page, or third-party coverage for this brand at all -- not just no happy hour. Session's WebSearch tool budget was exhausted before any query could run, so all searching was done via WebFetch against Bing, Google, DuckDuckGo, Yelp, do615, Facebook, and direct domain guesses (salvospizza.com does not resolve). Bing results consistently surfaced only unrelated NYC \"Salvo\" restaurants (Casasalvo, Salvo's Pizzabar, SalvosNYC) or, on one query, completely unrelated recipe-site results, suggesting Bing/WebFetch was not indexing or matching this specific small Nashville-area chain at all (possibly too small/local for search-engine coverage, or the inKind branding name \"Salvo's Pizza + Taste of NY\" differs from how it's known locally). Google was blocked by bot-detection; DuckDuckGo HTML search hit a CAPTCHA; Yelp, Facebook, and do615 searches returned 403/404 errors. The inKind partner landing page itself (the only page that reliably loaded) contains only gift-card/rewards marketing copy -- no menu, no locations list (a /locations guess 500'd), no happy hour or specials language, and no link out to an official restaurant site. nashvilleguru.com's own site search returned \"0 results\" for this brand name directly. Given the complete absence of any confirmable official site or independent secondary source (do615, Eater Nashville, Thrillist were all unreachable/blocked, not merely silent on happy hour), I cannot respons\u2011ibly assert a recurring happy hour or special exists. Concluding verified_no_hh=true is the conservative call per the task's own guidance to prefer \"no\" over a low-confidence guess when a genuine, thorough check turns up nothing -- though I flag that this is a \"couldn't verify presence at all\" case rather than a \"checked the real site and it has no HH\" case, which is a meaningfully weaker basis than for brands with a working official site.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 16090,
+  "name": "Southernaire Market & Deli",
+  "mode": "reverify",
+  "address": "150 3rd Avenue South, Nashville ",
+  "official_site": "https://www.southernairemarket.com",
+  "inkind_url": "https://tomkatshospitalityqiiay.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "15:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Southernaire Market & Deli is a weekday-only (Mon-Fri 11am-3pm), counter-service grocery/deli/butcher shop with no evening or weekend service -- confirmed consistently by its own official site (southernairemarket.com) and its current Yelp listing (21 reviews, none mentioning happy hour). Its only non-standard-price program is a punch-card lunch loyalty deal (buy 10, 11th free) and a daily-rotating \"sandwich of the day\" (regular price, not a discount, so not logged as a special). The space is bookable as a private event venue at night but that is reservation-only, not a recurring public happy hour. A real happy hour exists at the same street address, but it belongs to the separate sister brand The Southern Steak & Oyster, not to Southernaire itself, and the two brands' hours don't even overlap. Checked official site, Yelp, Nashville Guru (business listing + site-wide search), and Eater Nashville; no evidence of a recurring happy hour or weekly special for this brand at any point, current or historical. Confidence in verified_no_hh is high given the consistency across independent sources and the structural reason (deli closes at 3pm, before any evening HH could occur).",
+   "disagreements": [
+    "Not a happy-hour-specific conflict, but a brand-attribution risk worth flagging: several search results for \"Southernaire happy hour\" actually describe the sister restaurant The Southern Steak & Oyster's $1 Oyster Happy Hour (daily 3-5pm) at the same 150 3rd Ave S address. That is a distinct brand/suite, not Southernaire Market & Deli, whose own hours (Mon-Fri 11am-3pm) end before that window even starts.",
+    "Historical sources (2015 Eater/Nashville Guru opening articles) list hours as 10am-5:30pm daily, which conflicts with current official-site and Yelp hours (Mon-Fri 11am-3pm, closed weekends) -- treated as stale/outdated, not a live disagreement."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 17387,
+  "name": "Taste of NY - Brentwood",
+  "mode": "reverify",
+  "address": "15541 Old Hickory Boulevard, Nashville ",
+  "official_site": "https://tastenypizza.com",
+  "inkind_url": "https://salvospizza04iaa.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "MON": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "\"Taste of NY - Brentwood\" is the Brentwood-area location (15541 Old Hickory Blvd, Nashville TN 37211) of a small local chain that operates under two names \u2014 \"Taste of NY\" and \"Salvo's Family Pizza\" \u2014 both served from the same site, tastenypizza.com (confirmed as the real official site via Google Maps' listed website and Bing's own-site result; the inKind link is a payments/loyalty landing page only, not the venue's site). This is a counter-service/delivery NY-style pizza-by-the-slice and Italian-food concept (pizza, pasta, subs, calzones, salads) with a Kids menu and catering \u2014 no bar, no alcohol category on the online-ordering menu, and no \"Alcohol\" amenity flagged on its Yelp listing. Checked: (1) the official site tastenypizza.com \u2014 no happy hour/specials page, only a general working-hours block; (2) the live Brentwood ordering menu on orderexperience.net \u2014 15 categories, none themed as a special/happy-hour/deal; (3) Yelp's business page for this location \u2014 hours listed, zero mentions of happy hour or drink deals, no bar amenity; (4) Google Maps listing \u2014 345 reviews, none mentioning happy hour or drink specials, all about pizza/garlic knots/calzones; (5) Nashville Guru site search for \"Taste of NY\" \u2014 45 results, none a dedicated profile for this venue and it does not appear in Nashville Guru's Happy Hours guide; (6) the inKind partner page itself and the venue's Facebook page \u2014 no happy hour language, only a prepay-bonus loyalty promo on inKind. Given the fast-casual, no-apparent-liquor-license, counter/delivery-oriented format and the total absence of any happy-hour or recurring-special language across five independent sources, I'm concluding verified_no_hh=true rather than guessing. One caveat: I was working in a browser tab shared with other concurrent automated tasks (it kept getting hijacked mid-session to an unrelated \"Riddim N Spice\" happy-hour search from another process), so I leaned on WebFetch and on browser reads captured before each collision \u2014 but the same conclusion (no HH signal anywhere) held consistently across every source before that happened, so I'm confident in it despite the noisy tooling.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 19233,
+  "name": "The Coffee House Lewisburg",
+  "mode": "reverify",
+  "address": "764 West Commerce St, Lewisburg ",
+  "official_site": "https://thecoffeehousefranklinshop.com",
+  "inkind_url": "https://the-coffee-house-at-second-and-bridge.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "This is a daytime-only coffee shop / cafe (2 Nashville-metro locations: Franklin and Lewisburg, plus a third Cool Springs/Franklin Park location found on the official site) open 7:00 AM-5:00 PM every day, serving coffee, baked goods, breakfast and lunch (crepes, avocado toast, sandwiches) \u2014 no alcohol, no evening service. Found the real official site (thecoffeehousefranklinshop.com, distinct from the inKind landing page) via a Bing business-card result and checked its Downtown Franklin menu page (image-based \"swipe to view\" menu covering espresso drinks and food, no happy-hour or specials section) plus its locations/contact page. Checked the Facebook page (no specials/happy-hour posts or info-tab text), the Yelp listing (255 reviews, hours confirmed 7am-5pm daily, no reviewer mentions of happy hour or discounts), and searched nashvilleguru.com directly for the venue (no matching article \u2014 the two results returned were unrelated: a 2018 Nashville restaurant-buzz roundup and a 2013 new-business archive, neither naming this venue). A combined Bing query for this venue plus \"happy hour\" or \"special\" returned only generic happy-hour aggregator/directory sites, none of which list this business. Given the exclusively daytime, no-alcohol, counter-service coffee-shop format and the absence of any happy-hour or recurring-special mention across the official site, Facebook, Yelp, and Nashville Guru, I'm concluding verified_no_hh=true rather than guessing. Note: web-search engines (Google, DuckDuckGo) were largely blocked by captchas/403s during this research; Bing (via an interactive browser) was the working substitute and is the source for the official-site discovery and the happy-hour-specific query.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 2613,
+  "name": "The Hampton Social - Nashville",
+  "mode": "reverify",
+  "address": "201 1st. Ave S., Nashville ",
+  "official_site": "https://thehamptonsocial.com/nashville",
+  "inkind_url": "https://parkergroup.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "23:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "area": "select areas of the restaurant (per official site footnote)",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Specialty cocktails: Hampton Skinny Marg, Golden Hour, Pearl Diver, or a Martini",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Select beers",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Select wines",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Select bites: Wagyu Smashburger Tacos, Guacamole, Honey-Glazed Brussels Sprouts, Buffalo Cauliflower, Truffle Parmesan Fries",
+       "price": "$9"
+      },
+      {
+       "type": "food",
+       "desc": "Fresh oysters",
+       "price": "$1.50"
+      }
+     ],
+     "sources": [
+      "https://thehamptonsocial.com/nashville-happenings",
+      "https://thehamptonsocial.com/events/weekday-happy-hour"
+     ],
+     "corroborated": false,
+     "confidence": "high",
+     "last_verified": "2026-09-05",
+     "notes": "Branded 'Weekday Happy Hour', Mon-Fri 3-6pm. Independently re-verified live via browser on 2026-09-05: both official-site pages (Nashville-location event feed + dedicated event page) match this exactly, verbatim, including the 'select areas of the restaurant' footnote. Confidence is high because this is a dated, first-party, currently-live official source directly confirmed today -- not because of third-party corroboration. Downgraded corroborated to false: the two sources are both same-domain/same-publisher official pages, not independent outlets. Attempted third-party corroboration (OpenTable, Nashville Guru, Ginkaville) does not hold up -- direct fetch of both cited Nashville Guru pages today found zero mention of Hampton Social or any happy hour text, contradicting the Google-snippet-based corroboration used in the original research; OpenTable/do615/Yelp were never actually fetched (403/timeout) by either check."
+    }
+   ],
+   "notes": "Real official site is thehamptonsocial.com/nashville (inKind page is just a payments/ordering landing page, not the brand site). Found a clear, current, branded 'Weekday Happy Hour': Mon-Fri 3-6pm, $9 specialty cocktails, $6 select beers, $9 select wines, $9 select bites (tacos, guac, brussels sprouts, cauliflower, truffle fries), $1.50 oysters, footnoted as available in select areas of the restaurant only. This is stated verbatim with full pricing on two official-site pages with live 2026 event dates, so confidence is high despite inKind's own flag having missed it. Multiple independent secondary sources (OpenTable, Nashville Guru's search-indexed content, a 2020 local happy-hour blog) all corroborate the same 3-6pm weekday window, satisfying the 2+ independent source bar. Nashville Guru's own dedicated 'best happy hours' roundup page does not currently list this venue, and its live business-listing page for the venue is a thin unclaimed directory entry with no happy hour text -- neither contradicts the finding, they just aren't useful corroboration on their own. Yelp and do615 pages returned 403/blocked and could not be checked directly; OpenTable's own page timed out on direct fetch but its content was visible via a Google search snippet. Also noted but excluded from windows: a separate 'Girls Just Wanna Have Brunch' event (weekly Fri/Sat 10am-3pm rooftop brunch with live singing) starts Sept 26, 2026 -- it's recurring but has no stated discount/price deal, so it doesn't meet the food/drink 'special' bar as defined; and a 'Celebrate the Last Day of Summer' item (Tue Sep 22, half-off Aperol spritzes) is an explicit one-off, correctly excluded per the task's own-off rule. [verify pass: Re-fetched the two primary official-site URLs via a real browser (curl/WebFetch are blocked by the venue's Cloudflare challenge, matching the 403s the original research also hit on do615/Yelp/OpenTable). Both pages are live today (2026-09-05) and match the claim verbatim: Nashville-specific event feed lists exactly the Weekday Happy Hour (Mon-Fri 3-6pm) plus the two correctly-excluded items (Girls Just Wanna Have Brunch starting Sep 26, and the Sep 22 Aperol one-off) -- an exact match down to the excluded items, which is strong evidence the original research actually visited these pages rather than fabricating. No hallucinated prices, days, or URLs found; the brand/URL match is correct (thehamptonsocial.com is the real official site). The only defect: 'corroborated: true' was not earned -- the claimed third-party corroboration (Nashville Guru, OpenTable, Ginkaville via a Google search-snippet page) does not survive direct verification. I fetched both cited Nashville Guru pages directly and found zero happy-hour content on either (confirming what the original report's own 'disagreements' section already suspected but didn't act on). Corrected corroborated to false while keeping confidence high, since the underlying fact is confirmed by a live, dated, first-party source I independently checked today. No other changes needed; the window, prices, days, and 'select areas of the restaurant' caveat are safe to ship as-is.]",
+   "disagreements": [
+    "Ginkaville.com's 2020 write-up states the happy hour had 'no food specials', while the current (2026) official site lists food deals ($9 bites, $1.50 oysters) alongside drinks -- treated as the deal having expanded since 2020, not a live conflict; current official site kept as authoritative.",
+    "Google's indexed snippet for the Nashville Guru business page reads 'Happy hour from 3:00pm to 6:00pm includes half off ros\u00e9 of the day...', but the live Nashville Guru page as fetched directly is a thin/unclaimed listing with no happy hour text at all -- likely a stale cache or since-removed listing detail; not used as a standalone source, only as corroboration of the 3-6pm window via the official site."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 11678,
+  "name": "The Pancake Pantry - Nashville",
+  "mode": "reverify",
+  "address": "220 Molloy Street, Nashville ",
+  "official_site": "https://thepancakepantry.com/",
+  "inkind_url": "https://iconicrestaurantgroup.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "MON": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "WED": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "THU": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "The Pancake Pantry - Hillsboro Village is a breakfast/lunch counter-style concept, open 6am-3pm daily at both Nashville locations, with no evening service and no mention of alcohol anywhere. Checked the official site (thepancakepantry.com home, menu, and visit pages), the Nashville Guru business listing, and the inKind partner page \u2014 none mention a happy hour, specials, or any recurring weekly food/drink deal. A direct web search for \"Pancake Pantry\" + \"happy hour\" also returned nothing relevant. Given the daytime-only, no-alcohol operating model plus the absence of any deal language across all sources checked, concluding verified_no_hh=true with reasonable confidence.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 18918,
+  "name": "The Urban Perk",
+  "mode": "reverify",
+  "address": "319 Peabody Street, Nashville ",
+  "official_site": null,
+  "inkind_url": "https://vintageventuresnfian.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "MON": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "WED": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "THU": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "The Urban Perk is a real, currently operating small coffee counter (Google Maps 4.7/13 reviews, most from the last 1-3 months, describing it as newly opened) located inside a corner-market food hall at 319 Peabody St, Nashville, TN 37210. The same street address also houses at least one other independent food-court counter (\"Legendary Wings,\" a chicken-wings concept with its own Maps listing and phone number) \u2014 that explains why an address-based search surfaces a second, unrelated business; it is not a rename or data error affecting Urban Perk itself. Urban Perk has no independent official website: Google Maps shows no website on file (\"Add website\"), the inKind link is just a payment/rewards landing page with no menu content, and the only other web presence is a generic DIBIZ \"digital business card\" (dibiz.com/theurbanperk) with boilerplate marketing copy and no pricing, hours-of-deals, or specials mentioned. Google Maps' live hours (\"Closed \u00b7 Opens 7:45 AM Sun\") corroborate the compact hours provided (Sun-Fri 7:45am-2:30pm, closed Saturday) \u2014 this is a morning/early-afternoon-only coffee counter with zero evening service, so a bar-style happy hour is structurally not possible. Checked and found nothing: NashvilleGuru site search (only unrelated hits), a combined do615/Eater Nashville/Thrillist site search (Google explicitly returned \"No results found\"), a Yelp/Facebook/Instagram site search (only an unrelated \"Urban Perk Boutique Homes\" real-estate account), a direct \"Urban Perk Nashville happy hour OR special\" query (no relevant hits), and all visible Google Maps reviews (mention lattes, cinnamon rolls, atmosphere \u2014 never a discount or special). Several general search engines (Bing, DuckDuckGo, Ecosia, Startpage, Marginalia) were also tried directly but returned blocked/irrelevant/captcha pages and added no signal beyond Google. No recurring happy hour or weekly food/drink special was found anywhere for this brand. Given the closing time (2:30pm) and the total absence of any specials mention across every source checked, concluding verified_no_hh=true.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 17673,
+  "name": "Two Ten Jack",
+  "mode": "reverify",
+  "address": "1900 Eastland Avenue #105, Nashville 37206",
+  "official_site": "https://www.twotenjack.com/",
+  "inkind_url": "https://twotenjackhliax.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "MON": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 Asahi, Kirin, and PBR",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "House red and white wine",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Jack Juice (sake punch)",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Infused shochu (rotating selection)",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Steamed edamame",
+       "price": "$3"
+      },
+      {
+       "type": "food",
+       "desc": "Crispy rice spicy tuna",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.twotenjack.com/menu/happy-hour",
+      "https://do615.com/events/weekly/wed/happy-hour-at-two-ten-jack-1572637049"
+     ],
+     "last_verified": null,
+     "corroborated": true,
+     "confidence": "low",
+     "notes": "do615 listing: 'Happy Hour Monday - Thursday 4:00pm - 6:00pm'. Deal list from checkle.com (not directly fetchable). Official site's happy-hour page is an ordering page with no times. Friday unconfirmed.",
+     "kind": "happy_hour"
+    }
+   ],
+   "notes": "Nashville location at 1900 Eastland Ave #105. Two Ten Jack also has a Chattanooga location; sources sometimes conflate the two.",
+   "disagreements": [
+    "do615.com event page text says 'Happy Hour Monday \u2013 Thursday from 4:00pm \u2013 6:00[pm]' while a separate aggregator summary (checkle.com, not independently fetchable) and general web search consensus describe Monday\u2013Friday 4-6pm. Could not resolve which is current."
+   ]
+  },
+  "tj_question": "Mon-Thu 4-6 (do615) vs Mon-Fri (aggregator). Recorded Mon-Thu. | do615.com event page text says 'Happy Hour Monday \u2013 Thursday from 4:00pm \u2013 6:00[pm]' while a separate aggregator summary (checkle.com, not independently fetchable) and general web search consensus describe Monday\u2013Friday 4-6pm. Could not resolve which is current."
+ },
+ {
+  "id": 12534,
+  "name": "Van Leeuwen Ice Cream - Gulch",
+  "mode": "reverify",
+  "address": "335 11th Avenue South, Nashville ",
+  "official_site": "https://www.vanleeuwenicecream.com/",
+  "inkind_url": "https://vanleeuwenicecream.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "verified_no_hh": true,
+   "windows": [],
+   "notes": "Van Leeuwen is a national ice cream/dessert chain (scoop shop, no alcohol service) with an Edgehill Village Nashville location. Checked the official brand site (vanleeuwenicecream.com \u2014 a shop directory/e-commerce site with no dedicated Edgehill Village page found; the direct /pages/edgehill-village guess 404'd), the inKind gift-card landing page (promotes only a generic prepaid-gift rewards program, not a time-limited happy hour), and Nashville Guru's dedicated Edgehill business listing (nashvilleguru.com/businesses/van-leeuwen-ice-cream-edgehill, updated 2025-05-13) which lists only address/hours/photo with no specials or happy-hour mention. Yelp (403, blocked) and a do615.com event search (403, blocked) could not be fetched directly, and this session's WebSearch quota was exhausted before broader queries (e.g. Thrillist/Eater) could run, so corroboration is limited to the two sources that did load. Given this is a straightforward ice cream/dessert counter-service concept (no bar, no alcohol) and neither the brand's own site nor the one third-party listing that loaded shows any recurring discount window, concluding verified_no_hh=true is the conservative and well-supported call.",
+   "disagreements": []
+  },
+  "tj_question": null
+ },
+ {
+  "id": 9318,
+  "name": "Virago",
+  "mode": "reverify",
+  "address": "1120 McGavock Street, Nashville ",
+  "official_site": "https://www.viragonashville.com",
+  "inkind_url": "https://mstreet.inkind.com/",
+  "current": {
+   "hours_2026_09_05_from_inkind": {
+    "SUN": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:30",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "23:00"
+     ]
+    ]
+   },
+   "verified_no_hh": false,
+   "windows": [
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "16:30",
+     "end": "22:00",
+     "kind": "special",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Half Price Shefu (starters) \u2014 e.g. Miso Soup, V2 Edamame, Szechuan Cauliflower \u2014 listed at half-off menu prices",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half Price Maki \u2014 select sushi rolls (Oishi, Crunchy California, Dynamite, Hamachi Maki, Honey Fire, Smoky Heat, Godzilla, New Moon) at half price",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-For-1 Sake + Cocktails \u2014 Ozeki Hot Sake, Tokyo Sangria, Yuzu Sour, Wasabi Martini",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.viragonashville.com/menus/maki-sake-monday?location=virago"
+     ],
+     "corroborated": false,
+     "confidence": "high",
+     "last_verified": "2026-09-05",
+     "notes": "Branded weekly special 'Maki-Sake Monday' independently re-verified live via the official site's own schema.org Menu JSON-LD (three discount sections with the exact items/prices claimed: Miso Soup $7, V2 Edamame $9, Szechuan Cauliflower $14, Oishi $23, Crunchy California $14, Dynamite $16, Hamachi Maki $14). The 16:30-22:00 Monday window is directly confirmed by the same page's schema.org Restaurant openingHours block ('Mo 16:30-22:00') rather than inferred from unverified Instagram/aggregator echoes as the original note claimed. Only ONE source backs this window (the official menu page itself), so corroborated is corrected to false despite the high confidence warranted by it being primary official-site structured data."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "area": "bar and lounge",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select cocktails",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Wines by the glass",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Raw bar and chef's favorite selections",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://do615.com/events/weekly/fri/virago-daily-happy-hour",
+      "https://www.totalhappyhour.com/happy-hour-for-virago-in-nashville-tn-37203/"
+     ],
+     "corroborated": true,
+     "confidence": "med",
+     "last_verified": "2026-09-05",
+     "notes": "Re-verified live: do615.com quote confirmed verbatim ('VIRAGO DAILY HAPPY HOUR ... Every Fri 5:00PM - 7:00PM ... $6 cocktails, wines by the glass, and raw bar/chef's favorite, served in the bar and lounge'); totalhappyhour.com quote confirmed verbatim ('Everyday \u2014 17:00 thru 19:00 ... $6 Cocktails and Wine by the glass'). Two independent aggregators genuinely agree on days/times/price, so corroborated=true is justified. NOT found anywhere on the official viragonashville.com site. A third aggregator (happyhournearmenow.com) was independently re-verified as giving a conflicting Mon-Thu-only, 5-6:30pm, $8/$7/$6 variant \u2014 this real disagreement is disclosed rather than hidden, which is why confidence stays medium rather than high."
+    }
+   ],
+   "notes": "Found two distinct recurring deals for Virago (M Street's upscale sushi/Asian restaurant in the Gulch, 1120 McGavock St), despite inKind not flagging happy_hour=true. (1) 'Maki-Sake Monday' \u2014 a branded, Monday-only, restaurant-wide special (half-price starters, half-price select maki rolls, 2-for-1 sake and cocktails) confirmed directly in the official site's own structured menu data (viragonashville.com runs on the Popmenu platform, which exposes machine-readable menu content) \u2014 this is the highest-confidence finding since it comes straight from the venue. (2) A 'Daily Happy Hour' (5-7pm, bar/lounge, $6 cocktails and wine by the glass, plus raw bar/chef's favorites) reported consistently by two independent secondary sources (do615.com and totalhappyhour.com), but never mentioned on the official site itself and contradicted in specifics (days/price/end-time) by a third aggregator (happyhournearmenow.com) \u2014 so this is marked medium confidence with the disagreement flagged rather than silently resolved. A fourth aggregator (thehappyhourfinder.com) was discarded outright as stale (wrong pre-relocation address and dead domain). WebFetch was blocked (403) on viragonashville.com, mstreetnashville.com, and yelp.com directly, so the official-site content was retrieved instead via the browser tool by reading the page's embedded schema.org/Popmenu JSON data. Given the venue clearly has at least one real, well-documented recurring deal (Maki-Sake Monday) plus reasonable secondary corroboration for a daily happy hour, verified_no_hh=false is the honest call here \u2014 this is the opposite failure mode from the Philippe Chow miss (a real HH inKind didn't flag) but confirms the same lesson: the absence of inKind's flag doesn't mean absence of a deal. [verify pass: Independently re-fetched the live sources rather than trusting the claim: (1) viragonashville.com's Maki-Sake Monday page via browser JS extraction of its schema.org JSON-LD \u2014 confirmed every claimed item/price (Miso Soup $7, V2 Edamame $9, Szechuan Cauliflower $14, Oishi $23, Crunchy California $14, Dynamite $16, Hamachi Maki $14) and confirmed the 16:30-22:00 Monday window via the same page's Restaurant openingHours JSON-LD ('Mo 16:30-22:00') \u2014 nothing fabricated, no invented prices/items. (2) do615.com and totalhappyhour.com fetched live \u2014 both quotes in checked_sources are verbatim-accurate. (3) happyhournearmenow.com (the disagreeing source) fetched live \u2014 its quote is also verbatim-accurate, confirming the reported three-way aggregator conflict is real, not invented. Found one genuine defect: windows[0] (Maki-Sake Monday) was marked corroborated=true while citing only a single source in its sources array, with the note improperly leaning on an uncited 'Instagram post/aggregator echo' to justify that corroboration claim \u2014 a clear violation of the 'corroborated=true requires 2+ independent sources' rule. Corrected that field to false (confidence left at high since the single source is strong primary/official data, independently re-verified as accurate). Window 2's corroborated=true/confidence=med was checked and is honestly earned (2 real agreeing sources, conflicting third source properly disclosed rather than suppressed). No hallucinated URLs, brand mismatches, or invented day patterns found anywhere else in the report.]",
+   "disagreements": [
+    "happyhournearmenow.com says the happy hour runs Mon-Thu 5:00-6:30pm only (none Fri-Sun) at $8 cocktails/$7 wine/$6 sake plus $9 crispy rice tuna, while do615.com and totalhappyhour.com both independently describe a DAILY (7-day) happy hour 5:00-7:00pm at a flat $6 for cocktails and wine by the glass. Kept the do615/totalhappyhour version in windows[] since it has two agreeing independent sources vs. one dissenting source.",
+    "thehappyhourfinder.com lists a Mon-Fri 5-7pm happy hour with $5 champagne/cocktails/martinis, but cites Virago's OLD address (1811 Division St) and defunct domain (viragosushi.com) \u2014 clearly stale data predating the venue's move to 1120 McGavock St \u2014 so it was excluded entirely from windows[].",
+    "The official site (viragonashville.com) explicitly publishes 'Maki-Sake Monday' as a named recurring menu but contains no 'Happy Hour' menu or mention anywhere in its own menu system, so the broader daily-happy-hour claim is aggregator-sourced only, never venue-confirmed."
+   ]
+  },
+  "tj_question": null
+ },
+ {
+  "id": 20519,
+  "name": "Anatolia Turkish",
+  "mode": "new",
+  "address": "48 White Bridge Pike, Nashville 37205",
+  "official_site": null,
+  "inkind_url": "https://music-row-bar-grill.inkind.com/",
+  "inkind_venue_style": "unknown",
+  "current": null,
+  "tj_question": null
+ },
+ {
+  "id": 19204,
+  "name": "Bungalow 10 Dining",
+  "mode": "new",
+  "address": "1910 Belcourt Avenue, Nashville 37212",
+  "official_site": null,
+  "inkind_url": "https://jar10bungalow10diningnowherespecialgjiad.inkind.com/",
+  "inkind_venue_style": "unknown",
+  "current": null,
+  "tj_question": null
+ },
+ {
+  "id": 20959,
+  "name": "Jashan",
+  "mode": "new",
+  "address": "2100 21st Ave S, Nashville 37212",
+  "official_site": null,
+  "inkind_url": "https://jashan.inkind.com/",
+  "inkind_venue_style": "fast_casual",
+  "current": null,
+  "tj_question": null
+ },
+ {
+  "id": 19732,
+  "name": "LinQ Social Kitchen",
+  "mode": "new",
+  "address": "175 Lafayette Street, Nashville 37210",
+  "official_site": null,
+  "inkind_url": "https://jcchospitalitygroupf0ian.inkind.com/",
+  "inkind_venue_style": "unknown",
+  "current": null,
+  "tj_question": null
+ },
+ {
+  "id": 19731,
+  "name": "Noir Kitchen & Cocktails",
+  "mode": "new",
+  "address": "501 Main Street, Nashville 37206",
+  "official_site": null,
+  "inkind_url": "https://jcchospitalitygroupf0ian.inkind.com/",
+  "inkind_venue_style": "casual_fine_dining",
+  "current": null,
+  "tj_question": null
+ },
+ {
+  "id": 20960,
+  "name": "Sindoore",
+  "mode": "new",
+  "address": "457 Donelson Pike, Nashville 37214",
+  "official_site": null,
+  "inkind_url": "https://sindoore.inkind.com/",
+  "inkind_venue_style": "fast_casual",
+  "current": null,
+  "tj_question": null
+ }
+]
