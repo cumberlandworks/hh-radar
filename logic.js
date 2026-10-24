@@ -124,9 +124,12 @@
   // Earliest future start (in minutes-from-now) across all windows of `venue`.
   // Returns {minutesFromNow, day, start} or null if venue has no windows.
   // opts.excludeAllDay: skip all-day windows entirely (they shouldn't win "next start").
+  // opts.skipTempClosed (v1.13 C4): skip an occurrence whose start date is inside one of
+  // the venue's `temp_closed` ranges. Needs a dated `dateInTz`; without one nothing is skipped.
   function nextStart(venue, dateInTz, opts) {
     opts = opts || {};
     var t = minutesSinceWeekStart(dateInTz);
+    var today = opts.skipTempClosed && venue.temp_closed ? ymdOf(dateInTz) : null;
     var best = null;
     for (var w = 0; w < venue.windows.length; w++) {
       var win = venue.windows[w];
@@ -134,6 +137,7 @@
       var intervals = resolveWindow(venue, win);
       for (var i = 0; i < intervals.length; i++) {
         var mins = minutesUntilWrapped(t, intervals[i].startAbs);
+        if (today && tempClosureOn(venue, addDaysYMD(today, Math.floor((t % 1440 + mins) / 1440)))) continue;
         if (best === null || mins < best.minutesFromNow) {
           best = { minutesFromNow: mins, day: intervals[i].day, start: win.start, window: win };
         }
@@ -143,8 +147,9 @@
   }
 
   // Earliest future start across ALL venues (for the NOW-view empty state).
+  // v1.13 C4: never a start on a date the venue is temporarily closed.
   function nextStartAcrossVenues(venues, dateInTz, opts) {
-    opts = opts || {};
+    opts = Object.assign({}, opts, { skipTempClosed: true });
     var best = null;
     for (var i = 0; i < venues.length; i++) {
       var ns = nextStart(venues[i], dateInTz, opts);
@@ -190,16 +195,15 @@
   // v1.2 fix: BOTH rules are gated on kind === 'special'. A `happy_hour`-kind
   // window is never all-day for ranking purposes, however long its span (Blue
   // Sushi 11:00-18:30, Playdate 11:00-20:00 are real, time-bound happy hours).
-  // Only a `special` window — (a) with a resolved span >= 5 hours on any day
-  // it runs, or (b) starting before 14:00 (the common "available all day,
-  // every day" capture pattern) — counts as all-day.
+  // Only a `special` window with a resolved span >= 5 hours on a day it runs
+  // counts as all-day. v1.13 C2 dropped the old second rule ("starts before
+  // 14:00"): it made The Loading Dock's 7-9am deal a thin all-day bar.
   function isAllDay(venue, win) {
     if (win.kind !== 'special') return false;
     var intervals = resolveWindow(venue, win);
     for (var i = 0; i < intervals.length; i++) {
       if (intervals[i].endAbs - intervals[i].startAbs >= 300) return true;
     }
-    if (parseHM(win.start) < 14 * 60) return true;
     return false;
   }
 
@@ -1057,6 +1061,37 @@
     return axis;
   }
 
+  // v1.13 C3: the starts gridAxisStart is given. rows: [{venue, items: [{win, startAbs}],
+  // closed}] for one day; only windows drawn as normal blocks count (not all-day, not a
+  // temp-closed row), so Two Hands' all-day 8am specials no longer pull the axis back.
+  function gridBlockStarts(rows, dayBase) {
+    var starts = [];
+    (rows || []).forEach(function (r) {
+      if (r.closed) return;
+      r.items.forEach(function (it) {
+        if (!isAllDay(r.venue, it.win)) starts.push(it.startAbs - dayBase);
+      });
+    });
+    return starts;
+  }
+
+  // ---- v1.13 C1: the tip card (TJ, 2026-10-23: "I don't mind using my personal venmo") ----
+  // Empty url = '' (nothing in the DOM). The QR is desktop only (platform 'other'), like
+  // the referral's: a phone reader is holding the device the link opens on.
+  // The handle shown is the url's last path segment ("https://venmo.com/u/Tjwhite-" ->
+  // "@Tjwhite-"; the trailing hyphen is part of the username).
+  function tipSectionHtml(url, platform) {
+    if (!url) return '';
+    var handle = '@' + String(url).replace(/[?#].*$/, '').replace(/\/+$/, '').split('/').pop();
+    return '<div class="fb-wrap"><section class="referral" id="tip" aria-labelledby="tip-h">' +
+      '<div class="ref-text"><h2 id="tip-h">Like the radar?</h2>' +
+      '<p>Tip on Venmo: <a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + escapeHtml(handle) + '</a></p></div>' +
+      (platform === 'other'
+        ? '<img class="ref-qr" src="venmo-qr.svg" width="120" height="120" alt="QR code for TJ&#39;s Venmo">'
+        : '') +
+      '</section></div>';
+  }
+
   // ---- v1.12 C2: the price a deal line shows, or null ----
   // TJ, 2026-10-23: "the formatting seems redundant". 76 deals repeated their price in
   // the text ("$2 off draft beer & wine — -$2"). The price is dropped when the text
@@ -1818,6 +1853,8 @@
     outsideHoursDays: outsideHoursDays,
     lintOutsideHours: lintOutsideHours,
     gridAxisStart: gridAxisStart,
+    gridBlockStarts: gridBlockStarts,
+    tipSectionHtml: tipSectionHtml,
     GRID_DEFAULT_START: GRID_DEFAULT_START,
     GRID_EARLIEST_START: GRID_EARLIEST_START,
     dealPriceLabel: dealPriceLabel,

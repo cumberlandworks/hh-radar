@@ -1,5 +1,59 @@
 # Changelog
 
+## 2026-10-23 — BLOCK-hh-radar-fix13-20261023: v1.13 (Venmo tip link + grid polish)
+
+TJ, 2026-10-23, verbatim:
+
+> ~19:29 CDT: "what's next on the schedule including donation options including venmo ."
+
+> ~19:32: "I don't mind using my personal venmo. I have transactions turned off anyway"
+
+> ~19:35: a screenshot of his Venmo "Venmo me" screen: "Tj White", "@Tjwhite-".
+
+The grid items (C2–C4) are the fix12 report's items 3, 4 and its empty-state note, proposed to TJ at ~19:33;
+he added nothing else.
+
+### Data
+Unchanged. `venues.json` is the v1.12 file byte for byte (159 venues, 138 windows).
+
+### Changes
+- **C1 — Venmo tip.** `TIP_URL = 'https://venmo.com/u/Tjwhite-'` (the trailing hyphen is part of the username;
+  the page uses the `/u/` profile url, not the `venmo.com/code?user_id=` url TJ's in-app QR encodes). A card
+  between the referral and Feedback, in the referral's style: "Like the radar?" / "Tip on Venmo: @Tjwhite-",
+  the handle linking to `TIP_URL` in a new tab with `rel="noopener"`. It is built by `tipSectionHtml` in
+  logic.js (so it is testable) and replaces v1.10's "Support this project ↗" footer line. On desktop (platform
+  `other`) `venmo-qr.svg` sits beside it at 120px, alt "QR code for TJ's Venmo". A phone gets the link only and
+  never fetches the QR (measured: no `venmo-qr` resource entry at 375px). `TIP_URL = ''` still renders nothing
+  (now tested). **QR check:** made at build time with segno 1.6.6 (QR version 3, error level Q, 29 modules + a
+  4-module white quiet zone, the same 37-unit SVG shape as `inkind-referral-qr.svg`); not shipped, no runtime
+  library. Chromium's `BarcodeDetector` on the committed file reads exactly `https://venmo.com/u/Tjwhite-`
+  (and the referral QR still reads `https://app.inkind.com/refer/XRI8MWHF`).
+- **C2 — `isAllDay`.** The "starts before 14:00" rule is gone; a `special` is all-day only when a resolved span on
+  a day it runs is 5 hours or more. Windows whose classification changed (all-day -> normal block), out of 46
+  specials:
+  - The Loading Dock, Mon–Fri 7–9am (now a full hatched block, and it can be "starting soon").
+  - JBJ's Nashville, Sat–Sun 10am–2pm.
+  Every other special that starts before 2pm runs 5 hours or more and stays all-day (Two Hands' 8am specials,
+  Acme, Cajun Steamer, 312 Pizza, 51 North and the rest).
+- **C3 — Day Grid axis.** `gridAxisStart` is fed by the new `gridBlockStarts`: only windows drawn as normal blocks
+  (not all-day bars, not temp-closed rows). With all zones shown: **Mon 7am, Tue 7am, Wed 7am, Thu 7am, Fri 7am
+  (The Loading Dock), Sat 9am, Sun 9am (Playdate's 9am–close happy hour, Fri–Sun).** Two Hands' all-day 8am
+  specials no longer pull the weekend back to 8am. Sunday is 9am, not the 10am JBJ's 10–2 special would give,
+  because Playdate starts earlier.
+- **C4 — NOW empty state.** `nextStartAcrossVenues` skips an occurrence whose start date is inside the venue's
+  `temp_closed` range (`nextStart`'s new `skipTempClosed`). Mon Oct 26 at 10pm, Punk Wok's next start is now
+  Thu Oct 29 11am, not its closed Wed Oct 28 11am.
+- **C5:** v1.13 in the footer and on the `logic.js` / `venues.json` cache-bust queries. `og-preview.png` was **not**
+  re-taken: a fresh capture at `?now=2026-10-27T17:30` (the v1.12 framing) matches the committed image with no
+  pixel more than 32 levels apart (2,269 of 752,400 pixels differ faintly, anti-aliasing), Live now 55,
+  All-day specials 11. Neither changed window runs on Tuesday at 5:30pm.
+
+### Tests and lint
+`node --test`: 159/159 (152 + 7 new: isAllDay on the real data, gridBlockStarts, the Punk Wok empty state, the
+undated-clock guard, tipSectionHtml empty, tipSectionHtml per platform, TIP_URL + venmo-qr.svg in the repo).
+The one test that pinned the old 14:00 rule now pins its removal. `node validate.js venues.json`: OK, 159
+venues, 138 windows, 29 lint warnings (unchanged).
+
 ## 2026-10-23 — BLOCK-hh-radar-fix12-20261023: v1.12 (cleaner deal lines, outside-hours flag, morning deals, closures, lunch text)
 
 TJ, 2026-10-23, verbatim:

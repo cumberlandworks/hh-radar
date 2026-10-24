@@ -36,18 +36,23 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
-  screenshot of the NOW view taken with `?now=2026-10-27T16:45`.
+  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged in v1.13).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
+- `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
   generator scripts. Read-only history, not used at runtime. `data-src/refresh-20261023/`
   is the worked example of a full refresh (see *Refresh runbook*).
 
-## Tip link (v1.10)
+## Tip link (v1.10, set in v1.13)
 
-`index.html` carries one constant, `TIP_URL = ''`, next to `APP_VERSION`. Empty means the
-footer renders nothing for it and nothing is in the DOM. Set it to the full `https://` url
-of a tip page and the footer shows "Support this project ↗" (new tab). No platform is named
-anywhere in code or copy.
+`index.html` carries one constant, `TIP_URL`, next to `APP_VERSION`. Since v1.13 it is set
+to TJ's Venmo, `https://venmo.com/u/Tjwhite-` (TJ, 2026-10-23: "I don't mind using my
+personal venmo"). The card it draws (`tipSectionHtml` in logic.js) sits between the
+referral and Feedback in the referral's style: "Like the radar?" / "Tip on Venmo:
+@Tjwhite-", the handle being the url's last path segment, linked in a new tab with
+`rel="noopener"`. On desktop `venmo-qr.svg` sits beside it at 120px; a phone gets the link
+only and never fetches the QR. Set `TIP_URL = ''` and nothing renders and nothing is in the
+DOM. If the url changes, regenerate `venmo-qr.svg` and decode it before committing.
 
 ## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 
@@ -158,6 +163,9 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   ranking, grid rows; like specials it is not in the Surprise me pools, which promise a
   happy hour) except: its tag reads "lunch", its grid block is a dotted green block of its
   own, and it is never "all-day" (`isAllDay` stays gated on `special`).
+- **All-day** (`isAllDay`): a `special` whose resolved span on a day it runs is 5 hours or
+  more. v1.13 dropped the old "starts before 2pm" rule, so a short morning special (The
+  Loading Dock, 7–9am) is a normal block that can start soon.
 - **"Not checked yet" is never "no happy hour"** (v1.10). Anything that counts verified
   no-HH venues counts only `windows: []` + `verified_no_hh: true`. The Day Grid footer
   lists the others separately as "N not checked yet", each reading "Happy hour not
@@ -193,7 +201,8 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   "Outside posted hours" badge on its card. Never hidden. A window on a day the hours leave
   out entirely keeps "Hours conflict" instead.
 - **Morning deals on the Day Grid** (v1.12, `gridAxisStart`). The axis starts at 11am unless
-  a shown row has a window starting earlier on the selected day; then it starts at that hour
+  a shown row has a window drawn as a normal block (v1.13 `gridBlockStarts`: not an all-day
+  bar) starting earlier on the selected day; then it starts at that hour
   (rounded down, never before 6am). Bands, blocks, hour lines and the now line follow it. A
   phone labels every 2nd hour, every 3rd once the axis runs past 15 hours. Rows for a
   temporarily closed date do not move the axis.

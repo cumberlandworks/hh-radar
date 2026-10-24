@@ -25,7 +25,7 @@ const {
   validateVenues, hoursStatus, weekHours, hoursSourceInfo,
   openBands, lintVenues,
   dealPriceLabel, formatDays, tempClosureOn, tempClosedFor, windowTempClosedNow, dateOfDay,
-  outsideHoursDays, lintOutsideHours, gridAxisStart,
+  outsideHoursDays, lintOutsideHours, gridAxisStart, gridBlockStarts, tipSectionHtml,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -174,7 +174,7 @@ test('nextStart returns null for a venue with no windows (verified_no_hh venue)'
   assert.equal(nextStart(v, dt('WED', 10, 0)), null);
 });
 
-// ---- C4 (v1.2): isAllDay is gated on kind === 'special' for BOTH rules ----
+// ---- C4 (v1.2): isAllDay is gated on kind === 'special' (v1.13 C2: one rule, span only) ----
 test('isAllDay: a long-span happy_hour window (Blue Sushi 11:00-18:30) is NOT all-day', () => {
   const w = win(['TUE'], '11:00', '18:30', { kind: 'happy_hour' }); // 450 min span
   const v = venue({}, [w]);
@@ -187,7 +187,7 @@ test('isAllDay: the same long span on a special window IS all-day', () => {
   assert.equal(isAllDay(v, w), true, 'special kind with span >= 300 min is all-day');
 });
 
-test('isAllDay: resolved span 299 minutes is not all-day, 300 is (special kind, start >= 14:00 so rule (b) cannot fire)', () => {
+test('isAllDay: resolved span 299 minutes is not all-day, 300 is (special kind)', () => {
   const short = win(['WED'], '14:00', '18:59', { kind: 'special' }); // 299 min
   const long = win(['WED'], '14:00', '19:00', { kind: 'special' }); // 300 min
   const v = venue({}, [short, long]);
@@ -195,12 +195,24 @@ test('isAllDay: resolved span 299 minutes is not all-day, 300 is (special kind, 
   assert.equal(isAllDay(v, long), true, '300 minutes: all-day');
 });
 
-test('isAllDay: kind=special start rule fires at 13:59, not at 14:00 (short span both ways)', () => {
+test('isAllDay (v1.13 C2): the start time no longer matters; a short special is a block at 13:59, 14:00 or 7am', () => {
   const before = win(['WED'], '13:59', '15:59', { kind: 'special' }); // 120 min span, start < 14:00
   const at = win(['WED'], '14:00', '16:00', { kind: 'special' }); // 120 min span, start === 14:00
-  const v = venue({}, [before, at]);
-  assert.equal(isAllDay(v, before), true, '13:59 start: all-day via start rule');
-  assert.equal(isAllDay(v, at), false, '14:00 start: not all-day (rule is strictly <14:00, span too short)');
+  const dock = win(['MON', 'TUE', 'WED', 'THU', 'FRI'], '07:00', '09:00', { kind: 'special' }); // The Loading Dock
+  const v = venue({}, [before, at, dock]);
+  assert.equal(isAllDay(v, before), false, '13:59 start, 2h: not all-day (the old start rule is gone)');
+  assert.equal(isAllDay(v, at), false, '14:00 start, 2h: not all-day');
+  assert.equal(isAllDay(v, dock), false, '7-9am: a normal block');
+  assert.equal(isAllDay(v, win(['SAT'], '08:00', '13:00', { kind: 'special' })), true, '8am, 5h: still all-day by span');
+});
+
+test('isAllDay (v1.13 C2): on the real data The Loading Dock and JBJ\'s Sunday 10-2 are blocks, Two Hands stays all-day', () => {
+  const dock = REAL.find((v) => v.name === 'The Loading Dock');
+  assert.equal(isAllDay(dock, dock.windows.find((w) => w.kind === 'special' && w.start === '07:00')), false);
+  const jbj = REAL.find((v) => v.name === "JBJ's Nashville");
+  assert.equal(isAllDay(jbj, jbj.windows.find((w) => w.start === '10:00' && w.end === '14:00')), false);
+  const th = REAL.find((v) => v.name === 'Two Hands - Nashville');
+  assert.ok(th.windows.filter((w) => w.kind === 'special').every((w) => isAllDay(th, w)), 'Two Hands 8am specials run >= 5h');
 });
 
 test('isAllDay: happy_hour kind at 08:00 with a short span is NOT all-day (start rule is kind-gated)', () => {
@@ -1232,7 +1244,7 @@ test('validateVenues v2: optional hours_confidence / hours_notes / lunch_checked
 });
 
 // ==================== v1.10 C3: kind "lunch" ====================
-test('isAllDay: a lunch window is never all-day, even long and before 14:00 (gated on special only)', () => {
+test('isAllDay: a lunch window is never all-day, even long (gated on special only)', () => {
   const v = venue({}, []);
   assert.equal(isAllDay(v, win(['MON'], '10:00', '17:00', { kind: 'lunch' })), false);
   assert.equal(isAllDay(v, win(['MON'], '10:00', '17:00', { kind: 'special' })), true);
@@ -1566,4 +1578,66 @@ test('gridAxisStart: 11am unless a shown window starts earlier; rounded down to 
   assert.equal(gridAxisStart([600, 480]), 480, 'the earliest wins, in any order');
   assert.equal(gridAxisStart([300]), 360, 'floor 6am');
   assert.equal(gridAxisStart([660]), 660);
+});
+
+// ==================== v1.13 ====================
+// C3: only windows drawn as normal blocks set the Day Grid's left edge.
+test('gridBlockStarts (v1.13 C3): all-day bars and temp-closed rows do not count', () => {
+  const allDay8 = venue({}, [win(['SAT'], '08:00', '17:00', { kind: 'special' })]); // 9h: all-day bar
+  const hh9 = venue({}, [win(['SAT'], '09:00', '11:00', { kind: 'happy_hour' })]);
+  const dock7 = venue({}, [win(['SAT'], '07:00', '09:00', { kind: 'special' })]); // 2h: a block
+  const base = 5 * 1440;
+  const row = (v, closed) => ({ venue: v, closed: !!closed, items: resolveWindow(v, v.windows[0]).filter((iv) => iv.day === 'SAT').map((iv) => ({ win: v.windows[0], startAbs: iv.startAbs })) });
+  assert.deepEqual(gridBlockStarts([row(allDay8), row(hh9)], base), [540]);
+  assert.equal(gridAxisStart(gridBlockStarts([row(allDay8), row(hh9)], base)), 540, 'axis at 9am, not 8am');
+  assert.equal(gridAxisStart(gridBlockStarts([row(allDay8)], base)), 660, 'an all-day bar alone leaves 11am');
+  assert.equal(gridAxisStart(gridBlockStarts([row(dock7), row(hh9)], base)), 420, 'a short 7am special is a block');
+  assert.equal(gridAxisStart(gridBlockStarts([row(dock7, true), row(hh9)], base)), 540, 'a closed row does not count');
+  assert.deepEqual(gridBlockStarts([], base), []);
+});
+
+// C4: the NOW empty state never names a start on a temp-closed date.
+test('nextStartAcrossVenues (v1.13 C4): skips Punk Wok on its break (dead hour Mon Oct 26, 10pm)', () => {
+  const dead = nowAt('2026-10-26T22:00');
+  const plain = nextStart(PUNK, dead);
+  assert.equal(plain.day, 'WED', 'documents the old answer: Wed Oct 28 11am, a closed date');
+  const solo = nextStartAcrossVenues([PUNK], dead, { excludeAllDay: true });
+  assert.equal(solo.next.day, 'THU', 'first open date is Thu Oct 29');
+  assert.equal(solo.next.start, '11:00');
+  const other = venue({}, [win(['WED'], '16:00', '18:00', { kind: 'happy_hour' })]);
+  const best = nextStartAcrossVenues([PUNK, other], dead, { excludeAllDay: true });
+  assert.equal(best.venue, other, 'Wed 4pm elsewhere beats a closed Wed 11am at Punk Wok');
+  const after = nextStartAcrossVenues([PUNK, other], nowAt('2026-10-28T22:00'), { excludeAllDay: true });
+  assert.equal(after.venue, PUNK, 'Wed Oct 28 10pm: Punk Wok Thu 11am (open again) wins');
+});
+
+test('nextStart (v1.13 C4): skipTempClosed needs a dated clock; an undated one skips nothing', () => {
+  assert.equal(nextStart(PUNK, dt('MON', 22, 0), { skipTempClosed: true }).day, 'WED');
+});
+
+// C1: the Venmo card. TIP_URL empty renders nothing (the v1.10 C5 contract).
+test('tipSectionHtml (v1.13 C1): empty url renders nothing', () => {
+  assert.equal(tipSectionHtml('', 'other'), '');
+  assert.equal(tipSectionHtml('', 'android'), '');
+  assert.equal(tipSectionHtml(null, 'ios'), '');
+});
+
+test('tipSectionHtml (v1.13 C1): link on every platform, QR on desktop only', () => {
+  const url = 'https://venmo.com/u/Tjwhite-';
+  const desk = tipSectionHtml(url, 'other');
+  assert.match(desk, /<h2 id="tip-h">Like the radar\?<\/h2>/);
+  assert.ok(desk.includes('Tip on Venmo: <a href="https://venmo.com/u/Tjwhite-" target="_blank" rel="noopener">@Tjwhite-</a>'));
+  assert.ok(desk.includes('src="venmo-qr.svg"') && desk.includes('alt="QR code for TJ&#39;s Venmo"') && desk.includes('width="120"'));
+  for (const p of ['ios', 'android']) {
+    const phone = tipSectionHtml(url, p);
+    assert.ok(phone.includes('>@Tjwhite-</a>'), p + ': link');
+    assert.ok(!phone.includes('venmo-qr'), p + ': no QR, never fetched');
+  }
+});
+
+test('index.html (v1.13 C1): TIP_URL is the Venmo profile and venmo-qr.svg is committed', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.match(html, /var TIP_URL = 'https:\/\/venmo\.com\/u\/Tjwhite-';/);
+  assert.ok(fs.existsSync(path.join(__dirname, '..', 'venmo-qr.svg')));
 });

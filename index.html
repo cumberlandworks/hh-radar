@@ -714,15 +714,15 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.12"></script>
+<script src="logic.js?v=1.13"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.12';
-  // v1.10 C5: the tip link. Empty = nothing renders and nothing is in the DOM. Set it
-  // to the full https url of the tip page once one exists (see README "Tip link").
-  var TIP_URL = '';
+  var APP_VERSION = 'v1.13';
+  // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
+  // nothing renders and nothing is in the DOM (L.tipSectionHtml).
+  var TIP_URL = 'https://venmo.com/u/Tjwhite-';
   var DAY_FULL = { MON: 'Monday', TUE: 'Tuesday', WED: 'Wednesday', THU: 'Thursday', FRI: 'Friday', SAT: 'Saturday', SUN: 'Sunday' };
   var GRID_SORT_OPTIONS = ['time', 'distance', 'name'];
 
@@ -1367,11 +1367,8 @@
       return { venue: venue, items: dayIntervalsForVenue(venue, day), closed: L.tempClosedFor(venue, state.now, day, 1) };
     }).filter(function (r) { return r.items.length > 0; });
 
-    var starts = [];
-    candidates.forEach(function (r) {
-      if (!r.closed) r.items.forEach(function (it) { starts.push(it.startAbs - dayBase); });
-    });
-    GRID_START = L.gridAxisStart(starts);
+    // v1.13 C3: only normal blocks set the left edge (no all-day bars, no closed rows).
+    GRID_START = L.gridAxisStart(L.gridBlockStarts(candidates, dayBase));
     GRID_SPAN = GRID_END - GRID_START;
     var hourPct = 6000 / GRID_SPAN;
     var showNowLine = isToday && nowPos >= GRID_START && nowPos <= GRID_END;
@@ -2635,6 +2632,15 @@
     box.appendChild(img);
   }
 
+  // v1.13 C1: the Venmo card, between the referral and Feedback. Nothing when TIP_URL
+  // is empty; the QR only on desktop, so a phone never fetches venmo-qr.svg.
+  function renderTip() {
+    var ref = document.getElementById('referral');
+    if (!ref || document.getElementById('tip')) return;
+    var html = L.tipSectionHtml(TIP_URL, NAV_PLATFORM);
+    if (html) ref.parentNode.insertAdjacentHTML('afterend', html);
+  }
+
   // ---------- boot ----------
   function fatal(msg) {
     var el = document.getElementById('fatal');
@@ -2642,7 +2648,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.12').then(function (r) {
+  fetch('venues.json?v=1.13').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
@@ -2656,15 +2662,15 @@
     state.now = getNowInChicago();
     state.day = state.now.dayOfWeek;
 
-    // v1.10 C5/C6: the tip line only when TIP_URL is set; the credit line is last.
+    // v1.10 C6: the credit line is last. v1.13 C1: the tip is its own card (renderTip).
     document.getElementById('footer').innerHTML = '<span class="foot-line">Data generated ' + escapeHtml(state.generated) + ' · ' +
       state.venues.length + ' venues · ' + state.venues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
       escapeHtml(APP_VERSION) + ' · <a href="README.md">README</a></span>' +
-      (TIP_URL ? '<span class="foot-line"><a href="' + escapeHtml(TIP_URL) + '" target="_blank" rel="noopener">Support this project ↗</a></span>' : '') +
       '<span class="foot-line">Built by TJ White · ' +
         '<a href="https://www.linkedin.com/in/tjwhite19" target="_blank" rel="noopener">LinkedIn</a> · ' +
         '<a href="https://github.com/cumberlandworks/hh-radar" target="_blank" rel="noopener">Source on GitHub</a></span>';
     renderReferralQr();
+    renderTip();
 
     computeHoodTotals();
     renderZoneSummary();
