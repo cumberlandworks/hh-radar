@@ -16,8 +16,8 @@
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
      draws. No venue count in any of this text: it would rot on the next refresh.
-     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.11 at
-     ?now=2026-10-27T17:30; see CHANGELOG v1.11). -->
+     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.12 at
+     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.12). -->
 <meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
@@ -212,6 +212,16 @@
   .deals { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
   .deal { font-size: 13px; }
   .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
+  /* v1.12 C2: the price is its own muted token after the text, no dash in front. */
+  .deal .price { margin-left: 7px; color: var(--text-dim); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  /* v1.12 C8: a lunch card says what it is, one line under the name. */
+  .card-what { flex: 1 0 100%; font-size: 12.5px; font-weight: 600; color: var(--lunch); }
+  /* v1.12 C8: reader-facing window note (only windows that also carry research_notes). */
+  .win-note { margin-top: 6px; font-size: 12px; color: var(--text-dim); }
+  /* v1.12 C8: research prose lives behind a closed disclosure, expanded card only. */
+  details.src-notes { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; }
+  details.src-notes > summary { cursor: pointer; color: var(--drink); font-weight: 600; min-height: 24px; }
+  details.src-notes p { margin: 4px 0 0; overflow-wrap: anywhere; }
   .card-schedule { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); }
 
   /* ==================== v1.10 C2: the venue's own hours ==================== */
@@ -324,6 +334,8 @@
   .grid-legend .sw.low { background: var(--hours-band-low); border: 1px dashed var(--hours-band-edge); }
   .block.allday { top: auto; bottom: 3px; height: 6px; border-radius: 3px; opacity: 0.75; }
   .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
+  /* v1.12 C3: a temporarily closed venue's row on a closed date: a label, no blocks or bands. */
+  .grid-closed { position: absolute; top: 50%; left: 6px; transform: translateY(-50%); z-index: 2; padding: 2px 6px; border-radius: 4px; background: var(--panel); font-size: 11.5px; font-weight: 700; color: var(--bad); white-space: nowrap; pointer-events: none; }
   .grid-expanded { padding: 6px 10px 10px; background: var(--bg); border-bottom: 1px solid var(--border); }
   .grid-expanded .card { margin: 6px 0 0; }
   .grid-expanded .card:first-child { margin-top: 0; }
@@ -702,12 +714,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.11"></script>
+<script src="logic.js?v=1.12"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.11';
+  var APP_VERSION = 'v1.12';
   // v1.10 C5: the tip link. Empty = nothing renders and nothing is in the DOM. Set it
   // to the full https url of the tip page once one exists (see README "Tip link").
   var TIP_URL = '';
@@ -875,12 +887,22 @@
       out.push('<span class="badge warn">' + (Object.keys(venue.hours || {}).length === 0 ? 'No hours on file' : 'Hours conflict') + '</span>');
     }
     if (warns.indexOf('missing-hours-fallback-2359') !== -1) out.push('<span class="badge warn">Close time assumed</span>');
+    // v1.12 C4: partly or wholly outside the hours on a day the venue IS open. Never hidden.
+    var off = L.outsideHoursDays(venue, win);
+    if (off.length) {
+      var onDays = off.length === 7 ? 'every day' : 'on ' + L.formatDays(off);
+      out.push('<span class="badge warn" title="Runs outside the posted opening hours ' + escapeHtml(onDays) + '">Outside posted hours</span>');
+    }
     return out.join('');
   }
 
+  // v1.12 C2: no dash separators. The price shows only when the text does not already
+  // say it (L.dealPriceLabel), as its own muted token.
   function dealLineHtml(d) {
     var icon = d.type === 'food' ? '🍽' : '🥂';
-    return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) + (d.price ? ' — ' + escapeHtml(d.price) : '') + '</div>';
+    var price = L.dealPriceLabel(d);
+    return '<div class="deal"><span class="tag">' + icon + '</span>' + escapeHtml(d.desc) +
+      (price ? '<span class="price">' + escapeHtml(price) + '</span>' : '') + '</div>';
   }
 
   // One implementation, in logic.js, because v1.9's navControlHtml builds escaped
@@ -896,18 +918,23 @@
     return venue.id + '#' + venue.windows.indexOf(win);
   }
 
-  // Research provenance (disagreements + window notes) — expanded-card only, truncated
-  // to 240 chars with a native <details> "more" disclosure for the rest. The <details>
-  // stops click propagation so opening "more" never also toggles the card (C3).
+  // v1.12 C8: research provenance (venue disagreements + the window's research prose)
+  // sits in a closed "Source notes" disclosure, expanded card only, no ⚠. A window that
+  // carries `research_notes` has reader text in `notes` (shown on the card by
+  // readerNoteHtml) and its prose here; for every other window `notes` IS the prose.
+  // The <details> stops click propagation so opening it never also toggles the card (C3).
   function provenanceBlockHtml(venue, win) {
     var bits = [];
     if (venue.disagreements && venue.disagreements.length) bits.push(venue.disagreements.join(' · '));
-    if (win.notes) bits.push(win.notes);
+    var prose = typeof win.research_notes === 'string' ? win.research_notes : win.notes;
+    if (prose) bits.push(prose);
     if (!bits.length) return '';
-    var text = bits.join(' · ');
-    if (text.length <= 240) return '<div class="disagreements">⚠ ' + escapeHtml(text) + '</div>';
-    var head = text.slice(0, 240), tail = text.slice(240);
-    return '<div class="disagreements" onclick="event.stopPropagation()">⚠ <details><summary>' + escapeHtml(head) + '… <span class="more-label">more</span></summary>' + escapeHtml(tail) + '</details></div>';
+    return '<details class="src-notes" onclick="event.stopPropagation()"><summary>Source notes</summary>' +
+      bits.map(function (b) { return '<p>' + escapeHtml(b) + '</p>'; }).join('') + '</details>';
+  }
+  function readerNoteHtml(win) {
+    if (typeof win.research_notes !== 'string' || !win.notes) return '';
+    return '<div class="win-note">' + escapeHtml(win.notes) + '</div>';
   }
 
   // C1: the two per-window action buttons (HH info + inKind), shown in every card
@@ -925,10 +952,20 @@
   function scheduleBlockHtml(venue, win) {
     var bits = [];
     if (win.area) bits.push(win.area);
-    var dayLabels = win.days.map(function (d) { return DAY_FULL[d].slice(0, 3); }).join('/');
-    var endLabel = win.end === 'close' ? 'close' : fmtHM(win.end);
-    bits.push(dayLabels + ' ' + fmtHM(win.start) + '–' + endLabel);
+    bits.push(windowWhenLabel(win));
     return '<div class="card-schedule">' + escapeHtml(bits.join(' · ')) + '</div>';
+  }
+  // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close" (v1.12 C8: day ranges).
+  function windowWhenLabel(win) {
+    var when = win.end === 'close' ? fmtHM(win.start) + '–close' : fmtRangeHM(win.start, win.end);
+    return L.formatDays(win.days) + ' ' + when;
+  }
+  // v1.12 C8: "Lunch special · Mon–Sat 11am–2:30pm · dine-in only" (area only when set).
+  function lunchLineHtml(win) {
+    if (win.kind !== 'lunch') return '';
+    var bits = ['Lunch special', windowWhenLabel(win)];
+    if (win.area) bits.push(win.area);
+    return '<div class="card-what">' + escapeHtml(bits.join(' · ')) + '</div>';
   }
 
   // ==================== v1.10 C2: the venue's own hours ====================
@@ -938,9 +975,19 @@
     if (x.slice(-2) === y.slice(-2)) x = x.slice(0, -2);
     return x + '–' + y;
   }
+  var MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  // "2026-10-29" -> "Thu, Oct 29"
+  function fmtShortDate(ymd) {
+    var p = ymd.split('-').map(Number);
+    return L.DAY_SHORT[L.weekdayOfYMD(ymd)] + ', ' + MONTH_SHORT[p[1] - 1] + ' ' + p[2];
+  }
   var HOURS_CLOSED = { 'closed-between': 1, 'closed-opens-later': 1, 'closed-today': 1, 'closed-for-the-day': 1 };
   function hoursLineHtml(venue) {
     var st = L.hoursStatus(venue, state.now), text;
+    if (st.state === 'temp-closed') {
+      return '<div class="hours-line closed"><b>Closed until ' + escapeHtml(fmtShortDate(st.until)) + '</b>' +
+        (st.note ? ' · ' + escapeHtml(st.note) : '') + '</div>';
+    }
     if (st.state === 'open') text = '<b>Open</b> · closes ' + fmtHM(st.closes);
     else if (st.state === 'closed-between') text = '<b>Closed ' + fmtRangeHM(st.closedFrom, st.opens) + '</b> · reopens ' + fmtHM(st.opens);
     else if (st.state === 'closed-opens-later') text = '<b>Opens ' + fmtHM(st.opens) + '</b>';
@@ -1047,7 +1094,8 @@
     var dealsInner = deals.length === 0
       ? '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>'
       : deals.map(dealLineHtml).join('');
-    var extrasHtml = expanded ? scheduleBlockHtml(venue, win) + weekHoursHtml(venue) + provenanceBlockHtml(venue, win) : '';
+    // A lunch card already says its days and times under the name (C8); no second copy.
+    var extrasHtml = expanded ? (win.kind === 'lunch' ? '' : scheduleBlockHtml(venue, win)) + weekHoursHtml(venue) + provenanceBlockHtml(venue, win) : '';
     // v1.8 C2: a venue the reader cannot reach before last call is dimmed, not removed
     // — it is still a real happy hour, and the reader may know a faster road than we do.
     var unreachable = travel && travel.verdict === 'miss';
@@ -1056,6 +1104,7 @@
         '<div class="card-top">' +
           '<div class="card-title">' +
             '<span class="card-name">' + escapeHtml(venue.name) + '</span>' +
+            lunchLineHtml(win) +
             cardActionsHtml(venue, win) +
           '</div>' +
           '<div class="card-status ' + statusClass + '">' + escapeHtml(statusLabel) + '</div>' +
@@ -1066,6 +1115,7 @@
         addressLinkHtml(venue, 'card-addr') +
         '<div class="badges"><span class="badge inkind">inKind</span>' + renderBadges(venue, win) + '</div>' +
         '<div class="deals">' + dealsInner + '</div>' +
+        readerNoteHtml(win) +
         extrasHtml +
       '</div>';
   }
@@ -1076,7 +1126,7 @@
   }
 
   function isVenueLiveNow(venue) {
-    return venue.windows.some(function (w) { return L.isActive(venue, w, state.now); });
+    return venue.windows.some(function (w) { return L.isActive(venue, w, state.now) && !L.windowTempClosedNow(venue, w, state.now); });
   }
 
   function distanceLabel(venue) {
@@ -1098,6 +1148,7 @@
     var live = [], soon = [], allDay = [];
     filteredVenues().forEach(function (venue) {
       venue.windows.forEach(function (win) {
+        if (L.windowTempClosedNow(venue, win, state.now)) return; // v1.12 C3: closed that date
         var allDayWin = L.isAllDay(venue, win);
         if (L.isActive(venue, win, state.now)) {
           (allDayWin ? allDay : live).push({ venue: venue, window: win, status: 'active', day: state.now.dayOfWeek });
@@ -1174,7 +1225,10 @@
   }
 
   // ---------- DAY GRID (C1: fit-to-screen; C2: sort + prune) ----------
-  var GRID_START = 11 * 60, GRID_END = 26 * 60, GRID_SPAN = GRID_END - GRID_START;
+  // v1.12 C5: the left edge moves. renderGrid sets GRID_START per day from the rows it
+  // shows (L.gridAxisStart: 11am, or earlier for a morning window, never before 6am);
+  // the header, bands, blocks and now line all read these two.
+  var GRID_START = L.GRID_DEFAULT_START, GRID_END = 26 * 60, GRID_SPAN = GRID_END - GRID_START;
 
   function isNarrowViewport() { return window.innerWidth < 600; }
 
@@ -1216,8 +1270,11 @@
     var narrow = isNarrowViewport();
     var ticks = [];
     var idx = 0;
+    // A phone labels every 2nd hour; past 15 hours (a morning axis, v1.12 C5) every 3rd,
+    // so the labels never touch.
+    var every = narrow ? (GRID_SPAN > 15 * 60 ? 3 : 2) : 1;
     for (var m = GRID_START; m <= GRID_END; m += 60, idx++) {
-      if (narrow && idx % 2 !== 0) continue;
+      if (idx % every !== 0) continue;
       var hour = Math.floor(m / 60) % 24;
       var label = (hour === 0 ? '12a' : hour === 12 ? '12p' : (hour % 12) + (hour < 12 ? 'a' : 'p'));
       var pct = (m - GRID_START) / GRID_SPAN * 100;
@@ -1260,7 +1317,7 @@
 
   function gridDayCardHtml(venue, win, day) {
     var isToday = day === state.now.dayOfWeek;
-    var activeNow = isToday && L.isActive(venue, win, state.now);
+    var activeNow = isToday && L.isActive(venue, win, state.now) && !L.tempClosedFor(venue, state.now, day, 1);
     var statusLabel, statusClass;
     if (activeNow) {
       statusLabel = 'Live until ' + fmtHM(resolveDisplayEnd(venue, win, day));
@@ -1303,12 +1360,21 @@
     var nowT = L.minutesSinceWeekStart(state.now);
     var nowPos = nowT - dayBase;
     var isToday = day === state.now.dayOfWeek;
-    var showNowLine = isToday && nowPos >= GRID_START && nowPos <= GRID_END;
 
     var visibleVenues = filteredVenues();
     var candidates = visibleVenues.map(function (venue) {
-      return { venue: venue, items: dayIntervalsForVenue(venue, day) };
+      // v1.12 C3: the grid's weekday stands for its next date (today or later).
+      return { venue: venue, items: dayIntervalsForVenue(venue, day), closed: L.tempClosedFor(venue, state.now, day, 1) };
     }).filter(function (r) { return r.items.length > 0; });
+
+    var starts = [];
+    candidates.forEach(function (r) {
+      if (!r.closed) r.items.forEach(function (it) { starts.push(it.startAbs - dayBase); });
+    });
+    GRID_START = L.gridAxisStart(starts);
+    GRID_SPAN = GRID_END - GRID_START;
+    var hourPct = 6000 / GRID_SPAN;
+    var showNowLine = isToday && nowPos >= GRID_START && nowPos <= GRID_END;
 
     if (state.gridSort === 'name') {
       candidates.sort(function (a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); });
@@ -1334,13 +1400,15 @@
     var rowsHtml = candidates.map(function (r) {
       var venue = r.venue, items = r.items;
       // v1.11 C3: the venue's open hours for this day, behind the blocks. No hours on
-      // file = no band; a block outside the band keeps its "Hours conflict" badge.
+      // file = no band; a block outside the band carries "Outside posted hours" (v1.12
+      // C4), or "Hours conflict" when the hours leave the whole day out. A temporarily
+      // closed date (v1.12 C3) draws a label instead of bands and blocks.
       var bandCls = 'hours-band' + (venue.hours_confidence === 'low' ? ' low' : '');
-      var bands = (L.openBands(venue, day, GRID_START, GRID_END) || []).map(function (b) {
+      var bands = r.closed ? '' : (L.openBands(venue, day, GRID_START, GRID_END) || []).map(function (b) {
         return '<div class="' + bandCls + '" style="left:' + ((b.start - GRID_START) / GRID_SPAN * 100) +
           '%;width:' + ((b.end - b.start) / GRID_SPAN * 100) + '%"></div>';
       }).join('');
-      var blocks = items.map(function (it) {
+      var blocks = r.closed ? '<div class="grid-closed">Closed (temporary)</div>' : items.map(function (it) {
         var startPos = Math.max(it.startAbs - dayBase, GRID_START);
         var endPos = Math.min(it.endAbs - dayBase, GRID_END);
         if (endPos <= startPos) return '';
@@ -1362,7 +1430,7 @@
       return '<div class="grid-row-group" data-venue-id="' + escapeHtml(venue.id) + '">' +
         '<div class="grid-row">' +
           '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="name">' + escapeHtml(venue.name) + '</span>' + rowLinksHtml(venue, items[0].win) + '</div>' +
-          '<div class="grid-track">' +
+          '<div class="grid-track" style="background-size:' + hourPct + '% 100%">' +
             bands + blocks +
             (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
           '</div>' +
@@ -2091,9 +2159,10 @@
     // One LINE, per C3 — several deal descriptions in the data are whole paragraphs
     // (Saffire's runs 253 characters). The full text is one tap away on the card below.
     var desc = clipToOneLine(chosen.desc, 58);
-    // Some descs already carry the price ("...all $9"); don't print it twice.
-    var showPrice = chosen.price && chosen.desc.indexOf(chosen.price) === -1;
-    return desc + (showPrice ? ' ' + chosen.price : '');
+    // Some descs already carry the price ("...all $9"); don't print it twice (v1.12: the
+    // same rule as the card's deal line).
+    var price = L.dealPriceLabel(chosen);
+    return desc + (price ? ' ' + price : '');
   }
   function clipToOneLine(text, max) {
     text = String(text).replace(/\s+/g, ' ').trim();
@@ -2573,7 +2642,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.11').then(function (r) {
+  fetch('venues.json?v=1.12').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

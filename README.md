@@ -15,12 +15,14 @@ network call beyond its own files (the page, `logic.js`, `venues.json`, the icon
 desktop the referral QR image). The footer's referral, LinkedIn and GitHub links are plain
 links: nothing is fetched until the reader taps one.
 
-Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11): all **160** inKind partners in the Nashville metro
-per inKind's own map API, every one researched by hand that day: hours, happy hour, lunch
-specials. **139 windows** (88 happy hour, 46 special, 5 lunch). **61** venues have a happy
-hour, **76** were checked and have none, and **23** are not confirmed either way yet (10 with
-no windows at all, 13 with only a special or lunch window). Hours were researched for 126
-venues; 26 carry inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file.
+Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11; 615chuTNey dropped as
+permanently closed in v1.12): **159** inKind partners in the Nashville metro per inKind's own
+map API, every one researched by hand that day: hours, happy hour, lunch specials. **138
+windows** (88 happy hour, 46 special, 4 lunch). **61** venues have a happy hour, **75** were
+checked and have none, and **23** are not confirmed either way yet (10 with no windows at all,
+13 with only a special or lunch window). Hours were researched for 125 venues; 26 carry
+inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file. One venue (Punk Wok)
+carries a temporary closure.
 v2 (parked) would fold in non-inKind aggregator listings.
 
 ## Files
@@ -102,6 +104,8 @@ venue: {
   hours_confidence?: "high"|"med"|"low",               // optional (v2); "low" shows as "unconfirmed"
   hours_notes?: str,                                   // optional (v2); research notes on the hours
   lunch_checked?: bool,                                // optional (v2); lunch specials were looked for
+  temp_closed?: [ { from: "YYYY-MM-DD", to: "YYYY-MM-DD", note: str, source: url } ],
+                                                       // optional (v1.12); both dates inclusive, from <= to
   windows: [window],
   verified_no_hh: bool, checked: "YYYY-MM-DD", disagreements: [str], notes: str }
 window: {
@@ -110,7 +114,8 @@ window: {
   area: str|null, kind: "happy_hour" | "special" | "lunch",
   deals: [ { type: "food"|"drink", desc: str, price: str|null } ],   // may be []
   sources: [url] (non-empty), last_verified: "YYYY-MM-DD"|null,
-  corroborated: bool, confidence: "high"|"med"|"low", notes: str }
+  corroborated: bool, confidence: "high"|"med"|"low", notes: str,
+  research_notes?: str }                               // optional (v1.12); see Semantics
 ```
 
 What changed from v1 (the validator, `validateVenues` in `logic.js`, enforces exactly this):
@@ -123,7 +128,9 @@ What changed from v1 (the validator, `validateVenues` in `logic.js`, enforces ex
    a venue with only a lunch or special window can be verified no-HH.
 3. `kind` may also be `"lunch"`.
 
-The three optional venue fields are type-checked when present and fine when absent.
+The optional venue fields (and, since v1.12, `temp_closed` and the window's
+`research_notes`) are type-checked when present and fine when absent; the schema version
+stays 2.
 `hours_source` now names where the hours came from: the 2026-10-23 refresh writes
 `researched YYYY-MM-DD (high|med|low confidence): <url> [<url>]`, `inKind map API
 YYYY-MM-DD (...)` for the 11 venues that kept inKind's older hours, or `none found
@@ -170,9 +177,36 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   quiet grey band behind its deal blocks for the venue's open ranges that day (built from
   the same merged ranges as `hoursStatus`), so open, close and a closed gap between lunch
   and dinner read at a glance. A range past midnight runs to its real close; bands clip to
-  the grid's 11am–2am axis. `hours_confidence: "low"` bands are fainter with a dashed edge;
+  the grid's axis (11am–2am, or earlier for a morning deal since v1.12). `hours_confidence: "low"` bands are fainter with a dashed edge;
   no hours on file = no band. Blocks always sit on top, including any that fall outside
   the band.
+- **Temporary closures** (v1.12, `temp_closed`). When today's date (America/Chicago) is inside
+  a range, the card's hours line reads "Closed until Thu, Oct 29" (the day after `to`) plus
+  the range's note, and wins over every other hours state. The venue's windows on those dates
+  are not live, not starting soon, not on the map's live dots and not in either Surprise me
+  pool, and its Day Grid row for such a date shows a plain "Closed (temporary)" label instead
+  of bands and blocks. A grid weekday stands for its next date (today or later). The windows
+  stay in the data. A range in the past never matches.
+- **Outside posted hours** (v1.12, `outsideHoursDays`). A window interval on a day the venue
+  IS open that is not wholly inside one of the merged open stretches `hoursStatus` uses
+  (early start, a deal in a lunch–dinner gap, a close after the venue's) gets one
+  "Outside posted hours" badge on its card. Never hidden. A window on a day the hours leave
+  out entirely keeps "Hours conflict" instead.
+- **Morning deals on the Day Grid** (v1.12, `gridAxisStart`). The axis starts at 11am unless
+  a shown row has a window starting earlier on the selected day; then it starts at that hour
+  (rounded down, never before 6am). Bands, blocks, hour lines and the now line follow it. A
+  phone labels every 2nd hour, every 3rd once the axis runs past 15 hours. Rows for a
+  temporarily closed date do not move the axis.
+- **Deal lines** (v1.12, `dealPriceLabel`): text, then the price as its own muted token, no
+  dash. The price is left out when the text already says it (every number in it appears in
+  the text; or, for a wordy price like "half price", the price itself does, ignoring case and
+  spacing). A leading minus reads as a discount: "-$2" -> "$2 off".
+- **Window notes** (v1.12). Day lists read as ranges everywhere (`formatDays`: "Mon–Sat",
+  "Mon, Wed–Fri", "Daily"; a pair stays "Sat, Sun"). A lunch card says what it is under the
+  name: "Lunch special · Mon–Sat 11am–2:30pm · dine-in only" (area only when set). When a
+  window has `research_notes`, its `notes` is reader text and shows as a quiet line on the
+  card; otherwise `notes` is research prose and, with the venue's `disagreements`, sits in a
+  closed "Source notes" disclosure in the expanded card. No ⚠ on either.
 - Debug override: `?now=YYYY-MM-DDTHH:MM` in the URL forces the clock to that literal
   America/Chicago wall-clock time. Ignored unless the param is present.
 - Debug override: `?pos=LAT,LON` forces the reader's position to that point (v1.8), so a
@@ -246,7 +280,9 @@ python3 -m http.server 8000              # serve locally, then open http://local
 source-hedging language leaking into menu text, an overlong parenthetical, or a
 description over 140 chars) and, since v1.11, a closed-day lint ("<venue>: <kind> window on
 <D> but hours say closed"; plus "hours may be incomplete" when the hours cover 2 or fewer
-days and a window falls on another), and prints hits without failing the build — pass
+days and a window falls on another), since v1.12 an outside-hours lint ("<venue>: <kind>
+window HH:MM–HH:MM outside posted hours on <days>", the same rule as the card badge), and
+prints hits without failing the build — pass
 `--strict` to make lint hits fail too. A hit isn't automatically wrong: most are
 legitimately long menu-item descriptions (an ingredient list in parentheses); only
 rewrite ones that are actually reviewer commentary (moving it to the window's

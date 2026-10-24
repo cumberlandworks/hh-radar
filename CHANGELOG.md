@@ -1,5 +1,96 @@
 # Changelog
 
+## 2026-10-23 — BLOCK-hh-radar-fix12-20261023: v1.12 (cleaner deal lines, outside-hours flag, morning deals, closures, lunch text)
+
+TJ, 2026-10-23, verbatim:
+
+> ~18:45 CDT, with a Google screenshot of 615chuTNey marked "Permanently closed" and a NOW-view screenshot of Dog Haus:
+> "the formatting seems redundant and doesn't look great. - also I think that the Punk Wok is closing next month."
+
+> ~18:55: "Flag deals outside hours,Show morning deals"
+
+> ~19:07, with a screenshot of Jashan's expanded lunch card and Punk Wok's grid row: "The lunch options on some of these
+> aren't clear."
+
+### Findings (the thinking thread's)
+- **Redundant price.** 415 of 484 deals carried a `price`; in 76 every number in `price` was already in `desc`
+  ("$2 off draft beer & wine" + "-$2"), and "-$2" printed as "— -$2".
+- **615chuTNey is permanently closed** (Google, TJ's screenshot; OpenTable on research day; r/nashville "615Chutney
+  Closed?"). Still on inKind's map; dropped from the radar.
+- **Punk Wok is staying open; the Oct 25 closure was reversed on Oct 23.** It announced on Oct 20 it would close for
+  good on Oct 25; on Oct 23 the owner said it stays open after a deal with the landlord, takes "a short break after
+  the weekend" and reopens Thu Oct 29 (WSMV, 2026-10-23 3:50 PM CDT; Nashville Scene). So it is not closing next
+  month: it is closed Mon Oct 26 to Wed Oct 28.
+
+### Data
+`venues.json` is `refresh-20261023/venues-20261023f.json` byte for byte (md5 `60f049abdd60aa727e119d58a4355a33`,
+159 venues, 138 windows). Made from the fix11 file by `post_20261023e.py` (615chuTNey removed; Punk Wok gains
+`temp_closed: [{from: "2026-10-26", to: "2026-10-28", note, source}]` and a notes sentence; `coverage` updated),
+then `post_20261023f.py` (the 4 lunch windows, Jashan, Ocean Prime, Punk Wok and Single Tree BBQ, get short
+reader-facing deal text and `notes`; their old research wording moves to a new optional window field
+`research_notes`; Single Tree's unexplained "$10 lunch" deal becomes a note). Measured diff against v1.11: exactly
+that, nothing else. Both scripts and both files are in `data-src/refresh-20261023/`.
+
+### Changes
+- **C1:** the data above; `venues.json?v=1.12`, `logic.js?v=1.12`. The validator type-checks the new optional
+  `temp_closed` (array of `{from, to}` "YYYY-MM-DD", `from <= to`, `note` string, `source` URL) and window
+  `research_notes` (string). Schema stays 2. README Schema/Semantics updated.
+- **C2 — deal lines.** New pure `dealPriceLabel(deal)` in logic.js: null when every number in `price` appears in
+  `desc` (compared by value, so "$11.00" matches "$11"), or when a price with no number ("half price", "2-for-1",
+  "free") appears in `desc` ignoring case and spacing; otherwise the price, with a leading minus read as "off"
+  ("-$2" -> "$2 off"). The price renders as its own muted token after the text, no dash: "Smashburger  $7". No dash
+  separators in deal lines at all. The Surprise card uses the same rule. **Counts: 413 deals carry a price; before,
+  413 showed one; after, 334 do (79 dropped as repeats).** No surviving price starts with a minus, so the "off"
+  rewrite fires on none of today's data (every "-$N" deal already said "$N off" in its text).
+- **C3 — temporary closures.** `hoursStatus` returns `temp-closed` (with `until`, the day after `to`, and the note)
+  when today's America/Chicago date is inside a range; the card reads "Closed until Thu, Oct 29 · Short break;
+  reopens Thu Oct 29". The venue's windows on those dates are not live, not starting soon, not on the map's live
+  dots and not in either Surprise me pool; its Day Grid row for such a date (a grid weekday = its next date) shows a
+  plain "Closed (temporary)" label instead of bands and blocks. Past ranges are ignored. Tests: Punk Wok at
+  `?now=2026-10-28T12:00` closed, `2026-10-29T12:00` and `2026-10-25T12:00` normal.
+- **C4 — deals outside posted hours.** New pure `outsideHoursDays(venue, win)` uses the same merged open stretches as
+  `hoursStatus`/`openBands`: a window interval on a day the venue IS open that is partly or wholly outside them gets
+  one "Outside posted hours" badge per card (NOW and grid inline card; the tooltip names the days). Never hidden. The
+  whole-day case keeps "Hours conflict". validate.js lints it (WARN). Flagged, exactly the 8 the fix11 report named
+  (10 windows):
+  ```
+  ! 51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON
+  ! 51 North Taproom: special window 11:00–23:00 outside posted hours on WED
+  ! 51 North Taproom: special window 11:00–23:00 outside posted hours on THU
+  ! Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU
+  ! JBJ's Nashville: special window 10:00–14:00 outside posted hours on SUN
+  ! Present Tense: happy_hour window 16:00–17:30 outside posted hours on SUN
+  ! The Detroit Cowboy: happy_hour window 15:00–close outside posted hours on MON/TUE/WED/THU/FRI/SAT
+  ! The Southern Steak & Oyster: happy_hour window 15:00–17:00 outside posted hours on MON/TUE/WED/THU/FRI/SAT/SUN
+  ! Verna Café & Bar: happy_hour window 15:00–18:00 outside posted hours on MON/THU/FRI/SAT/SUN
+  ! ZuZu: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU/FRI
+  ```
+- **C5 — morning deals on the Day Grid.** New pure `gridAxisStart(starts)`: 11am, unless a shown row has a window
+  starting earlier on the selected day; then that hour, rounded down, never before 6am. Header ticks, hour lines,
+  bands, blocks and the now line follow the axis. On a phone the header labels every 3rd hour once the axis runs
+  past 15 hours (every 2nd before), so labels never touch. Rows on a temporarily closed date do not move the axis.
+  With today's data the axis starts at 7am Mon–Fri (The Loading Dock's 7–9am "Grumpy Hour") and 8am Sat/Sun (Two
+  Hands' 8am specials, every day), unless a zone filter hides those venues.
+- **C6:** `og-preview.png` re-taken at the fix11 minute and framing (`?now=2026-10-27T17:30`, 1440x752 CSS at DPR
+  0.833 = 1200x627): 51 North's card now reads "$2 off draft beer, house wine & well liquor" with no "— -$2". Same
+  URL and tags.
+- **C8 — lunch and window text a stranger can read.** A lunch card says what it is in one line under the name
+  ("Lunch special · Mon–Sat 11am–2:30pm · dine-in only", area only when set), and its expanded card drops the now
+  duplicate schedule line. New pure `formatDays(days)`: "Mon–Sat", "Mon, Wed–Fri", "Daily", pairs stay pairs ("Sat,
+  Sun"); it replaces every "Mon/Tue/Wed/..." string. A window with `research_notes` shows its `notes` as a quiet
+  plain line, no ⚠; every other window's `notes`, which is research prose, moves off the card into a closed "Source
+  notes" disclosure in the expanded card, no ⚠. The venue's `disagreements` (also research prose, and the other half
+  of the old ⚠ block) go into the same disclosure. Confidence badges unchanged. A deal with no price shows no price
+  token (Punk Wok's bento).
+- **C7:** v1.12 in the footer.
+
+### Tests and lint
+`node --test`: 152/152 (139 + 13 new: dealPriceLabel x4 including the measured 413/334 counts, formatDays,
+temp closures x4 including the validator, outsideHoursDays x3 including the measured lint list, gridAxisStart).
+Two measured tests moved with the data: the map exemption is now the two Bellevue venues (615chuTNey was the
+third), and SUN onDay 39 -> 38, TUE otherDays 14 -> 13. `node validate.js venues.json`: OK, 159 venues, 138
+windows, 29 lint warnings (16 deal-text, 3 closed-day, 10 outside-hours).
+
 ## 2026-10-23 — BLOCK-hh-radar-fix11-20261023: v1.11 (hours corrected for 21 venues + open hours on the Day Grid + closed-day lint)
 
 TJ, 2026-10-23, verbatim:

@@ -24,6 +24,8 @@ const {
   shouldShowNavFallback, armNavFallbackTimer, navControlHtml, navPickHtml,
   validateVenues, hoursStatus, weekHours, hoursSourceInfo,
   openBands, lintVenues,
+  dealPriceLabel, formatDays, tempClosureOn, tempClosedFor, windowTempClosedNow, dateOfDay,
+  outsideHoursDays, lintOutsideHours, gridAxisStart,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -454,13 +456,14 @@ test('ZONE_POLYGONS: no venue falls inside a FOREIGN zone polygon (the six regio
   assert.deepEqual(strays, []);
 });
 
-test('MAP_EXEMPT_HOODS: exactly the three Bellevue venues sit outside the map extent', () => {
+test('MAP_EXEMPT_HOODS: exactly the two Bellevue venues sit outside the map extent', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   const outside = venues.filter((v) => isCoreHood(v.hood) && (
     v.lat < MAP_EXTENT.minLat || v.lat > MAP_EXTENT.maxLat ||
     v.lon < MAP_EXTENT.minLon || v.lon > MAP_EXTENT.maxLon));
   // v1.10: the 2026-10-23 refresh added Tiff's Treats - Nashville Bellevue (2 -> 3).
-  assert.deepEqual(outside.map((v) => v.hood), ['Bellevue', 'Bellevue', 'Bellevue'],
+  // v1.12: 615chuTNey (Bellevue) dropped, permanently closed (3 -> 2).
+  assert.deepEqual(outside.map((v) => v.hood), ['Bellevue', 'Bellevue'],
     'the exemption must not silently grow: ' + outside.map((v) => v.name + '/' + v.hood).join(', '));
 });
 
@@ -754,9 +757,9 @@ test('dayCoverageCounts: the four groups partition the roster on EVERY day', () 
 test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   const pick = (c) => ({ onDay: c.onDay, otherDays: c.otherDays, none: c.none, unchecked: c.unchecked });
-  // v1.10 (2026-10-23 data): 160 venues.
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 39, otherDays: 40, none: 71, unchecked: 10 });
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 14, none: 71, unchecked: 10 });
+  // v1.12 (2026-10-23f data): 159 venues; 615chuTNey (FRI/SAT/SUN) dropped.
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 38, otherDays: 40, none: 71, unchecked: 10 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 13, none: 71, unchecked: 10 });
 });
 
 test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
@@ -1406,4 +1409,161 @@ test('lint closed-day: the shipped data warns only where the sources disagree', 
     'The Side Piece Nashville: happy_hour window on TUE but hours say closed',
     'ZuZu: happy_hour window on MON but hours say closed',
   ]);
+});
+
+
+// ==================== v1.12 (fix12) ====================
+
+// ---- C2: dealPriceLabel ----
+test('dealPriceLabel: a price the text already says is dropped (every number in it is in the text)', () => {
+  assert.equal(dealPriceLabel({ desc: '$2 off draft beer', price: '-$2' }), null);
+  assert.equal(dealPriceLabel({ desc: '$10 12" cheese pizzas and $19 deep dish', price: '$10/$19' }), null);
+  assert.equal(dealPriceLabel({ desc: '$11 cocktails', price: '$11.00' }), null, 'numbers compare by value');
+  assert.equal(dealPriceLabel({ desc: 'Cocktails $11', price: '$4.25-$11.00' }), '$4.25-$11.00', 'one number missing = shown');
+});
+
+test('dealPriceLabel: a wordy price the text contains (case and spacing ignored) is dropped', () => {
+  assert.equal(dealPriceLabel({ desc: 'Half Price wings', price: 'half price' }), null);
+  assert.equal(dealPriceLabel({ desc: '2-for-1 wells', price: '2-for-1' }), null);
+  assert.equal(dealPriceLabel({ desc: 'Free chips and salsa', price: 'free' }), null);
+  assert.equal(dealPriceLabel({ desc: 'Wings', price: 'half price' }), 'half price', 'a wordy price is not vacuously "all numbers present"');
+});
+
+test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', () => {
+  assert.equal(dealPriceLabel({ desc: 'Smashburger', price: '$7' }), '$7');
+  assert.equal(dealPriceLabel({ desc: 'Wings', price: '-$2' }), '$2 off');
+  assert.equal(dealPriceLabel({ desc: 'Bottles of wine', price: '-50%' }), '50% off');
+  assert.equal(dealPriceLabel({ desc: 'Draft beer', price: '$2.99-$3.99' }), '$2.99-$3.99', 'an inner dash is a range, not a discount');
+  assert.equal(dealPriceLabel({ desc: 'Bento box lunch', price: null }), null);
+  assert.equal(dealPriceLabel({ desc: 'Bento box lunch', price: '' }), null);
+});
+
+test('dealPriceLabel: measured on venues.json — 413 priced deals, 334 still show a price', () => {
+  let priced = 0, shown = 0;
+  REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
+    if (d.price) priced++;
+    if (dealPriceLabel(d) !== null) shown++;
+  })));
+  assert.equal(priced, 413);
+  assert.equal(shown, 334);
+  const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
+  assert.deepEqual(dog.windows[0].deals.map(dealPriceLabel), [null, null, null, null, null]);
+});
+
+// ---- C8: formatDays ----
+test('formatDays: runs of three or more as ranges, pairs stay pairs, all seven = Daily', () => {
+  assert.equal(formatDays(['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']), 'Mon–Sat');
+  assert.equal(formatDays(['MON', 'WED', 'THU', 'FRI']), 'Mon, Wed–Fri');
+  assert.equal(formatDays(['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']), 'Daily');
+  assert.equal(formatDays(['SAT', 'SUN']), 'Sat, Sun');
+  assert.equal(formatDays(['TUE']), 'Tue');
+  assert.equal(formatDays(['MON', 'TUE', 'THU', 'SAT', 'SUN']), 'Mon, Tue, Thu, Sat, Sun');
+  assert.equal(formatDays(['SUN', 'MON']), 'Mon, Sun', 'week order, no wrap past Sunday');
+});
+
+// ---- C3: temporary closures (Punk Wok, Oct 26-28) ----
+function nowAt(iso) {
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  const y = +m[1], mo = +m[2], d = +m[3];
+  const dow = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][new Date(Date.UTC(y, mo - 1, d)).getUTCDay()];
+  return { year: y, month: mo, day: d, hour: +m[4], minute: +m[5], dayOfWeek: dow };
+}
+const PUNK = REAL.find((v) => v.name === 'Punk Wok');
+const PUNK_LUNCH = PUNK.windows.find((w) => w.kind === 'lunch');
+const PUNK_HH = PUNK.windows.find((w) => w.kind === 'happy_hour');
+
+test('hoursStatus: Punk Wok is temp-closed on Oct 28, open on Oct 29 and Oct 25', () => {
+  assert.deepEqual(hoursStatus(PUNK, nowAt('2026-10-28T12:00')),
+    { state: 'temp-closed', until: '2026-10-29', untilDay: 'THU', note: 'Short break; reopens Thu Oct 29' });
+  assert.deepEqual(hoursStatus(PUNK, nowAt('2026-10-29T12:00')), { state: 'open', closes: '21:00' });
+  assert.deepEqual(hoursStatus(PUNK, nowAt('2026-10-25T12:00')), { state: 'open', closes: '21:00' });
+  assert.equal(hoursStatus(PUNK, nowAt('2026-10-26T12:00')).state, 'temp-closed', 'first day, inclusive');
+  assert.equal(hoursStatus(PUNK, nowAt('2026-10-27T12:00')).state, 'temp-closed', 'wins over its own closed Tuesday');
+});
+
+test('temp closures: windows on closed dates are not live, not soon, not in Surprise me', () => {
+  const t28 = nowAt('2026-10-28T12:00'), t29 = nowAt('2026-10-29T12:00'), t25 = nowAt('2026-10-25T12:00');
+  assert.equal(isActive(PUNK, PUNK_LUNCH, t28), true, 'the window itself still resolves');
+  assert.equal(windowTempClosedNow(PUNK, PUNK_LUNCH, t28), true);
+  assert.equal(windowTempClosedNow(PUNK, PUNK_LUNCH, t29), false);
+  assert.equal(windowTempClosedNow(PUNK, PUNK_HH, t25), false);
+  const inPool = (pool) => pool.some((c) => c.venue.name === 'Punk Wok');
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-28T15:30')).now), false, 'live HH on Oct 28 is out');
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-28T14:00')).now), false, 'starting-soon HH on Oct 28 is out');
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-29T15:30')).now), true);
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-25T15:30')).now), true);
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-25T12:00'), { day: 'MON' }).later), false, 'grid Monday = Oct 26');
+  assert.equal(inPool(surprisePools([PUNK], nowAt('2026-10-25T12:00'), { day: 'THU' }).later), true, 'grid Thursday = Oct 29');
+});
+
+test('temp closures: dates map from weekdays both ways, and past ranges are ignored', () => {
+  assert.equal(dateOfDay(nowAt('2026-10-25T12:00'), 'MON', 1), '2026-10-26');
+  assert.equal(dateOfDay(nowAt('2026-10-25T12:00'), 'SUN', 1), '2026-10-25');
+  assert.equal(dateOfDay(nowAt('2026-10-29T01:00'), 'WED', -1), '2026-10-28', 'a window running past midnight started yesterday');
+  assert.equal(dateOfDay(nowAt('2026-12-31T12:00'), 'FRI', 1), '2027-01-01');
+  assert.equal(tempClosedFor(PUNK, nowAt('2026-11-02T12:00'), 'MON', 1), false);
+  assert.equal(tempClosureOn(PUNK, '2026-10-29'), null);
+  assert.equal(tempClosedFor(PUNK, dt('WED', 12, 0, {}), 'WED', 1), false, 'no calendar date = no closure check');
+});
+
+test('validateVenues v2: temp_closed and research_notes are type-checked', () => {
+  const base = JSON.parse(JSON.stringify(PUNK));
+  const errs = (patch) => validateVenues(v2file([Object.assign(JSON.parse(JSON.stringify(base)), patch)]));
+  assert.deepEqual(errs({}), []);
+  assert.ok(errs({ temp_closed: {} }).some((e) => /temp_closed must be an array/.test(e)));
+  assert.ok(errs({ temp_closed: [{ from: '2026-10-28', to: '2026-10-26', note: '', source: 'https://x.test' }] }).some((e) => /from must be <= to/.test(e)));
+  assert.ok(errs({ temp_closed: [{ from: '10/26', to: '2026-10-28', note: '', source: 'https://x.test' }] }).some((e) => /from must be YYYY-MM-DD/.test(e)));
+  assert.ok(errs({ temp_closed: [{ from: '2026-10-26', to: '2026-10-28', note: 3, source: 'https://x.test' }] }).some((e) => /note must be a string/.test(e)));
+  assert.ok(errs({ temp_closed: [{ from: '2026-10-26', to: '2026-10-28', note: '', source: 'wsmv' }] }).some((e) => /source must be a URL/.test(e)));
+  const w = JSON.parse(JSON.stringify(base.windows));
+  w[1].research_notes = 7;
+  assert.ok(errs({ windows: w }).some((e) => /research_notes must be a string/.test(e)));
+});
+
+// ---- C4: deals outside posted hours ----
+test('outsideHoursDays: a 1-hour early start (ZuZu-style) and a deal in the lunch-dinner gap (The Southern-style)', () => {
+  const zuzu = venue({ TUE: [['17:00', '23:00']], WED: [['16:00', '23:00']] }, []);
+  assert.deepEqual(outsideHoursDays(zuzu, win(['TUE', 'WED'], '16:00', '18:00')), ['TUE']);
+  const southern = venue({ FRI: [['11:00', '15:00'], ['17:00', '22:00']] }, []);
+  assert.deepEqual(outsideHoursDays(southern, win(['FRI'], '15:00', '17:00')), ['FRI'], 'wholly in the gap');
+  assert.deepEqual(outsideHoursDays(southern, win(['FRI'], '14:00', '18:00')), ['FRI'], 'spans the gap');
+  assert.deepEqual(outsideHoursDays(southern, win(['FRI'], '17:00', '19:00')), []);
+  assert.deepEqual(outsideHoursDays(southern, win(['FRI'], '15:00', 'close')), ['FRI'], 'close = the last close, across the gap');
+});
+
+test('outsideHoursDays: back-to-back ranges are one stretch, past-midnight closes count, closed days and no hours are not this case', () => {
+  assert.deepEqual(outsideHoursDays(venue({ MON: [['11:00', '15:00'], ['15:00', '22:00']] }, []), win(['MON'], '14:00', '16:00')), []);
+  assert.deepEqual(outsideHoursDays(venue({ FRI: [['17:00', '02:00']] }, []), win(['FRI'], '23:00', '01:00')), []);
+  assert.deepEqual(outsideHoursDays(venue({ FRI: [['17:00', '00:30']] }, []), win(['FRI'], '23:00', '01:00')), ['FRI']);
+  assert.deepEqual(outsideHoursDays(venue({ MON: [['11:00', '22:00']] }, []), win(['TUE'], '16:00', '18:00')), [], 'closed day = Hours conflict');
+  assert.deepEqual(outsideHoursDays(venue({}, []), win(['TUE'], '06:00', '08:00')), []);
+});
+
+test('outside-hours lint: measured on venues.json — the 8 venues fix11 named, 10 windows', () => {
+  const lines = REAL.flatMap(lintOutsideHours);
+  assert.deepEqual(lines, [
+    '51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON',
+    '51 North Taproom: special window 11:00–23:00 outside posted hours on WED',
+    '51 North Taproom: special window 11:00–23:00 outside posted hours on THU',
+    'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU',
+    "JBJ's Nashville: special window 10:00–14:00 outside posted hours on SUN",
+    'Present Tense: happy_hour window 16:00–17:30 outside posted hours on SUN',
+    'The Detroit Cowboy: happy_hour window 15:00–close outside posted hours on MON/TUE/WED/THU/FRI/SAT',
+    'The Southern Steak & Oyster: happy_hour window 15:00–17:00 outside posted hours on MON/TUE/WED/THU/FRI/SAT/SUN',
+    'Verna Café & Bar: happy_hour window 15:00–18:00 outside posted hours on MON/THU/FRI/SAT/SUN',
+    'ZuZu: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU/FRI',
+  ]);
+  assert.ok(lintVenues({ venues: REAL }).some((l) => /outside posted hours/.test(l)), 'runs inside lintVenues');
+});
+
+// ---- C5: the Day Grid axis ----
+test('gridAxisStart: 11am unless a shown window starts earlier; rounded down to the hour; never before 6am', () => {
+  assert.equal(gridAxisStart([]), 660);
+  assert.equal(gridAxisStart([900, 1020]), 660);
+  assert.equal(gridAxisStart([420, 900]), 420, 'Loading Dock 7am');
+  assert.equal(gridAxisStart([450]), 420, '7:30 -> 7am');
+  assert.equal(gridAxisStart([659]), 600);
+  assert.equal(gridAxisStart([600, 480]), 480, 'the earliest wins, in any order');
+  assert.equal(gridAxisStart([300]), 360, 'floor 6am');
+  assert.equal(gridAxisStart([660]), 660);
 });

@@ -2,7 +2,7 @@
  "schema_version": 2,
  "generated": "2026-10-23",
  "generator": "merge_20261023.py (hh-radar planning thread, from research/batch*.json + inkind-tn-20261023.tsv)",
- "coverage": "160 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23",
+ "coverage": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed)",
  "venues": [
   {
    "id": "ik-7491",
@@ -627,124 +627,6 @@
    "neighborhood_source": "centroid",
    "hours_confidence": "med",
    "hours_notes": "Hours shown are bar hours. Kitchen: Mon-Thu 11-21, Fri-Sat 11-22, Sun 11-21. The /specials page header lists later closes on some days (Mon/Wed/Thu 11pm, Sat 11:30pm) that disagree with the homepage; homepage used.",
-   "lunch_checked": true
-  },
-  {
-   "id": "ik-14555",
-   "inkind_id": 14555,
-   "name": "615chuTNey",
-   "city": "Nashville",
-   "neighborhood": "Bellevue",
-   "hood": "Bellevue",
-   "zone": "west",
-   "address": "7075 Highway 70 South",
-   "zip": "",
-   "lat": 36.0731702,
-   "lon": -86.9187224,
-   "tz": "America/Chicago",
-   "inkind": true,
-   "inkind_url": "https://615chutneyapiae.inkind.com/",
-   "official_site": "https://nashvillechutney.com/",
-   "status": "open",
-   "hours": {
-    "TUE": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "21:30"
-     ]
-    ],
-    "WED": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "21:30"
-     ]
-    ],
-    "THU": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "21:30"
-     ]
-    ],
-    "FRI": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "21:30"
-     ]
-    ],
-    "SAT": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "21:30"
-     ]
-    ],
-    "SUN": [
-     [
-      "11:00",
-      "14:30"
-     ],
-     [
-      "17:00",
-      "20:30"
-     ]
-    ]
-   },
-   "hours_source": "researched 2026-10-23 (low confidence): https://wanderlog.com/place/details/1492231/615chutney-a-very-indian-affair; https://joinpearl.co/restaurants/nashville/615chutney",
-   "windows": [
-    {
-     "days": [
-      "FRI",
-      "SAT",
-      "SUN"
-     ],
-     "start": "11:00",
-     "end": "14:30",
-     "area": "whole restaurant",
-     "kind": "lunch",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "Lunch buffet",
-       "price": "$15.99"
-      }
-     ],
-     "sources": [
-      "https://www.nashvillescene.com/food_drink/features/nashville-buffets/article_0b1282aa-64d3-11ef-a3be-bfea7b7aa2b7.html"
-     ],
-     "last_verified": null,
-     "corroborated": false,
-     "confidence": "low",
-     "notes": "Nashville Scene buffet guide (appears to be 2024): 'Lunch buffet 11 a.m. to 2:30 p.m. Friday to Sunday; $15.99.' Set-price lunch-only buffet, so recorded as lunch kind. Not on the official site today; price may be stale."
-    }
-   ],
-   "verified_no_hh": true,
-   "checked": "2026-10-23",
-   "disagreements": [
-    "OpenTable (three country domains) says 'This restaurant is permanently closed.' Wanderlog and joinpearl still show current hours and no closure. Official site carries a 'THIS IS A NON LIVE LOCATION' banner whose meaning is unclear."
-   ],
-   "notes": "Closure status unresolved. OpenTable flags it permanently closed, but that may only mean it left OpenTable; the official site banner 'NON LIVE LOCATION' is ambiguous and the phone is 615-248-8639. A phone call or Google listing check by TJ settles it. No happy hour found anywhere. Still operating? Not confirmed 2026-10-23.",
-   "neighborhood_source": "centroid",
-   "hours_confidence": "low",
-   "hours_notes": "Hours match the inKind listing but come from aggregators only. The official site shows no hours.",
    "lunch_checked": true
   },
   {
@@ -6413,17 +6295,17 @@
      ],
      "start": "11:00",
      "end": "14:30",
-     "area": "dine-in",
+     "area": "dine-in only",
      "kind": "lunch",
      "deals": [
       {
        "type": "food",
-       "desc": "Veg Thali: 3 veg entrees, lentils, appetizer, rice, naan, papadum, dessert",
+       "desc": "Veg thali: 3 veg entrees, lentils, appetizer, rice, naan, dessert",
        "price": "$16"
       },
       {
        "type": "food",
-       "desc": "Non Veg Thali: 2 non-veg entrees, 1 veg entree, lentils, tandoori chicken, rice, naan, papadum, dessert",
+       "desc": "Non-veg thali: 2 meat entrees, 1 veg entree, tandoori chicken, lentils, rice, naan, dessert",
        "price": "$18"
       }
      ],
@@ -6433,7 +6315,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "med",
-     "notes": "Set-price thalis listed on the official Lunch Menu page, 'Not available for take-away'. The page gives no days or times for the thalis, so days and times are the lunch hours Mon-Fri 11-2:30 and Sat 11-2:30. Sunday brunch not included."
+     "notes": "Set-price lunch plates.",
+     "research_notes": "Set-price thalis listed on the official Lunch Menu page, 'Not available for take-away'. The page gives no days or times for the thalis, so days and times are the lunch hours Mon-Fri 11-2:30 and Sat 11-2:30. Sunday brunch not included."
     }
    ],
    "verified_no_hh": true,
@@ -9584,12 +9467,12 @@
      ],
      "start": "11:30",
      "end": "16:00",
-     "area": "whole restaurant",
+     "area": null,
      "kind": "lunch",
      "deals": [
       {
        "type": "food",
-       "desc": "Lunch Prix Fixe: starter, entree, and cookies, ice cream or sorbet",
+       "desc": "3-course lunch: soup or salad, entree, dessert",
        "price": "$32"
       }
      ],
@@ -9599,7 +9482,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "high",
-     "notes": "Official page today: 'Lunch Prix Fixe ... $32 per person'. Starters: bisque, French onion, house salad or Caesar. Entrees: blackened snapper, sushi and salad, roasted chicken, or steak frites. Menu hours stated as lunch MON-FRI 11:30-4."
+     "notes": "Weekday lunch prix fixe, per person.",
+     "research_notes": "Official page today: 'Lunch Prix Fixe ... $32 per person'. Starters: bisque, French onion, house salad or Caesar. Entrees: blackened snapper, sushi and salad, roasted chicken, or steak frites. Menu hours stated as lunch MON-FRI 11:30-4."
     }
    ],
    "verified_no_hh": false,
@@ -10875,7 +10759,7 @@
      "deals": [
       {
        "type": "food",
-       "desc": "Blue Plate Bento Box: chef's choice entree, sushi maki, salad, edamame, orange slices (changes daily, lunchtime only)",
+       "desc": "Bento box lunch: chef's choice entree, sushi roll, salad, edamame",
        "price": null
       }
      ],
@@ -10885,7 +10769,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Site lists \"Blue Plate Bento Box (changes daily, lunchtime only)\" and \"Lunch: Bowls & Other Deliciousness (M-F 11am-2pm)\"; no prices shown. Counted as a lunch special because the bento is lunch-only; the bowls alone would not be. Tuesday excluded per closed-Tuesday text."
+     "notes": "Changes daily. Price not posted.",
+     "research_notes": "Site lists \"Blue Plate Bento Box (changes daily, lunchtime only)\" and \"Lunch: Bowls & Other Deliciousness (M-F 11am-2pm)\"; no prices shown. Counted as a lunch special because the bento is lunch-only; the bowls alone would not be. Tuesday excluded per closed-Tuesday text."
     }
    ],
    "verified_no_hh": false,
@@ -10895,10 +10780,18 @@
     "Closed day: site body \"CLOSED Tuesdays\", site meta \"Open Tuesday - Sunday\", inKind and Pearl show Tuesday open.",
     "Weekend hours: Pearl shows Sat/Sun opening 3 PM; site mentions weekend dim sum brunch 11am-3pm."
    ],
-   "notes": "Needs a phone call: which day is it closed (Tue or Mon), and is the domestic $2 or $2.50. First-visit question: Partly settled. The official site body says $2.50 domestics; its meta description says \"$2 domestics daily from 3-6pm\". The Yelp-derived $2 matches the meta line, so the site disagrees with itself. $2.50 recorded; the page body is the visible menu text.",
+   "notes": "Needs a phone call: which day is it closed (Tue or Mon), and is the domestic $2 or $2.50. First-visit question: Partly settled. The official site body says $2.50 domestics; its meta description says \"$2 domestics daily from 3-6pm\". The Yelp-derived $2 matches the meta line, so the site disagrees with itself. $2.50 recorded; the page body is the visible menu text. Announced a permanent closure for Oct 25 on Oct 20, reversed it on Oct 23 after a deal with the landlord; staying open (WSMV, Nashville Scene).",
    "hours_confidence": "low",
    "hours_notes": "Site body says closed Tuesdays; the same site's meta description says \"Open Tuesday - Sunday\" (which would make Monday the closed day); inKind and Pearl show Tuesday open. Weekend dim sum brunch 11am-3pm on the site supports an 11am weekend open. Body text used.",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "temp_closed": [
+    {
+     "from": "2026-10-26",
+     "to": "2026-10-28",
+     "note": "Short break; reopens Thu Oct 29",
+     "source": "https://www.wsmv.com/2026/10/23/punk-wok-owner-says-restaurant-will-remain-open-following-permanent-closure-announcement/"
+    }
+   ]
   },
   {
    "id": "ik-16483",
@@ -12071,13 +11964,8 @@
      "deals": [
       {
        "type": "food",
-       "desc": "Lunch items with fries: pulled pork sandwich, cheeseburger, 3 chicken tenders, smoked slaw dog, smoked bologna sandwich",
+       "desc": "Lunch plate with fries: pulled pork, burger, tenders, slaw dog or bologna",
        "price": "$6.99"
-      },
-      {
-       "type": "food",
-       "desc": "$10 lunch Tuesday through Friday (contents not stated)",
-       "price": "$10"
       }
      ],
      "sources": [
@@ -12087,7 +11975,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "med",
-     "notes": "Menu page: 'Served 11 am-2pm. Dine in ONLY', each item $6.99, days not stated. Homepage Instagram captions: 'Did you know we have a $10 lunch Tuesday through Friday'. Days Tue-Fri come from the Instagram caption; the $6.99 vs $10 difference is not explained on the site."
+     "notes": "Their social posts also advertise a \"$10 lunch\" Tue-Fri.",
+     "research_notes": "Menu page: 'Served 11 am-2pm. Dine in ONLY', each item $6.99, days not stated. Homepage Instagram captions: 'Did you know we have a $10 lunch Tuesday through Friday'. Days Tue-Fri come from the Instagram caption; the $6.99 vs $10 difference is not explained on the site."
     }
    ],
    "verified_no_hh": true,

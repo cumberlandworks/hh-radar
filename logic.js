@@ -15,6 +15,7 @@
   var DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
   var DAY_INDEX = { MON: 0, TUE: 1, WED: 2, THU: 3, FRI: 4, SAT: 5, SUN: 6 };
   var HHMM_RE = /^([01][0-9]|2[0-3]):[0-5][0-9]$/;
+  var YMD_RE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   // Display names, here rather than in index.html because surprisePools composes
   // the Later label ("tomorrow — Sat", "Sunday") and the label is part of what the
   // pool means — the tests assert it.
@@ -731,6 +732,7 @@
         });
       });
       warnings.push.apply(warnings, lintClosedDays(v));
+      warnings.push.apply(warnings, lintOutsideHours(v));
     });
     return warnings;
   }
@@ -898,6 +900,9 @@
   //   closed-today        — no ranges at all today
   //   closed-for-the-day  — every one of today's ranges is over
   //   no-hours            — nothing on file for any day
+  //   temp-closed         — v1.12: today is inside a `temp_closed` range; `until` is the
+  //                         reopening date (the day after `to`), `untilDay` its weekday,
+  //                         `note` the range's note. Wins over every other state.
   // Yesterday's, `day`'s and tomorrow's ranges on one axis (0 = `day`'s midnight), with
   // ranges that touch or overlap merged into one stretch. Shared by hoursStatus and
   // openBands so the card line and the grid band can never disagree.
@@ -916,6 +921,8 @@
   }
 
   function hoursStatus(venue, nowChicago) {
+    var tc = tempClosureOn(venue, ymdOf(nowChicago));
+    if (tc) return { state: 'temp-closed', until: addDaysYMD(tc.to, 1), untilDay: weekdayOfYMD(addDaysYMD(tc.to, 1)), note: tc.note || '' };
     if (!hasHours(venue)) return { state: 'no-hours' };
     var t = nowChicago.hour * 60 + nowChicago.minute;
     var today = dayRanges(venue, nowChicago.dayOfWeek, 0);
@@ -962,6 +969,135 @@
       });
       return { day: d, ranges: ranges.map(function (r) { return [r[0], r[1]]; }) };
     });
+  }
+
+  // ---- v1.12 C3: temporary closures ----
+  // `temp_closed: [{from, to, note, source}]`, dates "YYYY-MM-DD" in the venue's tz,
+  // both ends inclusive. The windows stay in the data (they are the venue's real
+  // deals); on a closed date they are simply not on. A range in the past never matches.
+  function ymdOf(d) {
+    if (!d || typeof d.year !== 'number') return null;
+    return d.year + '-' + (d.month < 10 ? '0' : '') + d.month + '-' + (d.day < 10 ? '0' : '') + d.day;
+  }
+  function addDaysYMD(ymd, n) {
+    var p = ymd.split('-').map(Number);
+    var t = new Date(Date.UTC(p[0], p[1] - 1, p[2] + n));
+    return ymdOf({ year: t.getUTCFullYear(), month: t.getUTCMonth() + 1, day: t.getUTCDate() });
+  }
+  function weekdayOfYMD(ymd) {
+    var p = ymd.split('-').map(Number);
+    return DAYS[(new Date(Date.UTC(p[0], p[1] - 1, p[2])).getUTCDay() + 6) % 7];
+  }
+  function tempClosureOn(venue, ymd) {
+    var list = venue && venue.temp_closed;
+    if (!ymd || !Array.isArray(list)) return null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] && list[i].from <= ymd && ymd <= list[i].to) return list[i];
+    }
+    return null;
+  }
+  // The calendar date of weekday `day` nearest `now`: dir -1 = today or the most recent
+  // one (the day a running window started on), +1 = today or the next one (the day an
+  // upcoming window starts on, and the date a Day Grid weekday stands for).
+  function dateOfDay(now, day, dir) {
+    var today = ymdOf(now);
+    if (!today) return null;
+    var a = DAY_INDEX[now.dayOfWeek], b = DAY_INDEX[day];
+    return addDaysYMD(today, dir < 0 ? -((a - b + 7) % 7) : (b - a + 7) % 7);
+  }
+  function tempClosedFor(venue, now, day, dir) {
+    return !!tempClosureOn(venue, dateOfDay(now, day, dir));
+  }
+  // The occurrence a NOW card is about (running, else next) falls on a closed date.
+  function windowTempClosedNow(venue, win, now) {
+    if (!venue || !venue.temp_closed) return false;
+    var iv = activeOrNextInterval(venue, win, now);
+    if (!iv) return false;
+    return tempClosedFor(venue, now, iv.day, isActive(venue, win, now) ? -1 : 1);
+  }
+
+  // ---- v1.12 C4: deals outside posted hours ----
+  // A window interval on day D that is not wholly inside ONE of the merged open stretches
+  // hoursStatus/openBands use (so back-to-back ranges count as one). Only days the venue
+  // is open: a window on a closed day is the "Hours conflict" case, not this one. No
+  // hours on file = nothing to compare against = []. Returns the flagged days, week order.
+  function outsideHoursDays(venue, win) {
+    if (!hasHours(venue)) return [];
+    var out = [];
+    resolveWindow(venue, win).forEach(function (iv) {
+      var d = iv.day;
+      if (!(venue.hours[d] && venue.hours[d].length)) return;
+      var base = DAY_INDEX[d] * 1440;
+      var s = iv.startAbs - base, e = iv.endAbs - base;
+      var inside = mergedRangesAround(venue, d).some(function (r) { return r.start <= s && e <= r.end; });
+      if (!inside && out.indexOf(d) === -1) out.push(d);
+    });
+    return out;
+  }
+  function lintOutsideHours(v) {
+    var out = [];
+    (v.windows || []).forEach(function (w) {
+      var days = outsideHoursDays(v, w);
+      if (!days.length) return;
+      out.push(v.name + ': ' + w.kind + ' window ' + w.start + '–' + w.end + ' outside posted hours on ' + days.join('/'));
+    });
+    return out;
+  }
+
+  // ---- v1.12 C5: the Day Grid's left edge ----
+  // starts: minutes-from-midnight at which the shown rows' windows start on the day.
+  // Anything before 11am pulls the axis back to that hour (rounded down), never past 6am.
+  var GRID_DEFAULT_START = 11 * 60, GRID_EARLIEST_START = 6 * 60;
+  function gridAxisStart(starts) {
+    var axis = GRID_DEFAULT_START;
+    (starts || []).forEach(function (m) {
+      if (typeof m !== 'number' || m >= axis) return;
+      axis = Math.max(GRID_EARLIEST_START, Math.floor(m / 60) * 60);
+    });
+    return axis;
+  }
+
+  // ---- v1.12 C2: the price a deal line shows, or null ----
+  // TJ, 2026-10-23: "the formatting seems redundant". 76 deals repeated their price in
+  // the text ("$2 off draft beer & wine — -$2"). The price is dropped when the text
+  // already says it: every number in it appears in the text, or (for a price with no
+  // number) the price itself does, ignoring case and spacing. A leading minus is a
+  // discount: "-$2" reads "$2 off".
+  function numbersIn(text) {
+    return (String(text).match(/\d+(?:\.\d+)?/g) || []).map(parseFloat);
+  }
+  function dealPriceLabel(deal) {
+    var price = deal && deal.price != null ? String(deal.price).trim() : '';
+    if (!price) return null;
+    var desc = String(deal.desc || '');
+    var nums = numbersIn(price);
+    if (nums.length) {
+      var have = numbersIn(desc);
+      if (nums.every(function (n) { return have.indexOf(n) !== -1; })) return null;
+    }
+    var squash = function (t) { return t.toLowerCase().replace(/\s+/g, ''); };
+    if (squash(desc).indexOf(squash(price)) !== -1) return null;
+    var m = price.match(/^[-−–]\s*(.+)$/);
+    return m ? m[1] + ' off' : price;
+  }
+
+  // ---- v1.12 C8: day lists as ranges ----
+  // MON..SAT -> "Mon–Sat"; MON,WED,THU,FRI -> "Mon, Wed–Fri"; all seven -> "Daily".
+  // A run of two stays a pair ("Sat, Sun"). Week order, Monday first, no wrap.
+  function formatDays(days) {
+    var idx = DAYS.filter(function (d) { return (days || []).indexOf(d) !== -1; }).map(function (d) { return DAY_INDEX[d]; });
+    if (idx.length === 7) return 'Daily';
+    var parts = [];
+    for (var i = 0; i < idx.length; ) {
+      var j = i;
+      while (j + 1 < idx.length && idx[j + 1] === idx[j] + 1) j++;
+      var a = DAY_SHORT[DAYS[idx[i]]], b = DAY_SHORT[DAYS[idx[j]]];
+      if (j - i >= 2) parts.push(a + '–' + b);
+      else if (j === i + 1) parts.push(a, b);
+      else parts.push(a);
+      i = j + 1;
+    }
+    return parts.join(', ');
   }
 
   // Where the hours came from, for the expanded card's one small line. hours_source
@@ -1037,10 +1173,11 @@
   // Every happy_hour occurrence on `day`, regardless of the clock. Used for the two
   // pools that are not bounded by "the rest of tonight": the rollover into tomorrow
   // and the Day Grid's selected day.
-  function fullDayPool(venues, day, taken) {
+  function fullDayPool(venues, day, taken, now) {
     var out = [];
     for (var i = 0; i < venues.length; i++) {
       var venue = venues[i];
+      if (now && tempClosedFor(venue, now, day, 1)) continue; // v1.12 C3
       var windows = venue.windows || [];
       for (var w = 0; w < windows.length; w++) {
         var win = windows[w];
@@ -1094,6 +1231,8 @@
         for (var a = 0; a < intervals.length; a++) {
           if (inIntervalWrapped(t, intervals[a].startAbs, intervals[a].endAbs)) { live = intervals[a]; break; }
         }
+        // v1.12 C3: an occurrence on a temporarily closed date is in neither pool.
+        if (live && tempClosedFor(venue, dateInTz, live.day, -1)) continue;
         if (live) {
           var lc = surpriseCandidate(venue, win, live.day, 'live', 0);
           nowPool.push(lc);
@@ -1108,6 +1247,7 @@
           if (soonest === null || mins < soonest.mins) soonest = { mins: mins, iv: intervals[b] };
         }
         if (!soonest) continue;
+        if (tempClosedFor(venue, dateInTz, soonest.iv.day, 1)) continue;
         if (soonest.mins <= 120) {
           var sc = surpriseCandidate(venue, win, soonest.iv.day, 'soon', soonest.mins);
           nowPool.push(sc);
@@ -1132,12 +1272,12 @@
 
     var laterScope = 'today', laterDay = null;
     if (gridDay) {
-      laterPool = fullDayPool(venues, gridDay, taken);
+      laterPool = fullDayPool(venues, gridDay, taken, dateInTz);
       laterScope = 'day';
       laterDay = gridDay;
     } else if (!laterPool.length) {
       var tomorrow = DAYS[(DAY_INDEX[today] + 1) % 7];
-      var all = fullDayPool(venues, tomorrow, taken);
+      var all = fullDayPool(venues, tomorrow, taken, dateInTz);
       var fresh = all.filter(function (c) { return !liveVenues[c.venue.id || c.venue.name]; });
       laterPool = fresh.length ? fresh : all;
       laterScope = 'tomorrow';
@@ -1237,6 +1377,21 @@
       }
       if (v.hours_notes !== undefined && typeof v.hours_notes !== 'string') fail(p + ': hours_notes must be a string');
       if (v.lunch_checked !== undefined && typeof v.lunch_checked !== 'boolean') fail(p + ': lunch_checked must be boolean');
+      // v1.12: optional temporary closures, both dates inclusive, venue tz.
+      if (v.temp_closed !== undefined) {
+        if (!Array.isArray(v.temp_closed)) fail(p + ': temp_closed must be an array');
+        else v.temp_closed.forEach(function (tc, ti) {
+          var tp = p + '.temp_closed[' + ti + ']';
+          if (!tc || typeof tc !== 'object') { fail(tp + ': not an object'); return; }
+          var okFrom = typeof tc.from === 'string' && YMD_RE.test(tc.from);
+          var okTo = typeof tc.to === 'string' && YMD_RE.test(tc.to);
+          if (!okFrom) fail(tp + ': from must be YYYY-MM-DD');
+          if (!okTo) fail(tp + ': to must be YYYY-MM-DD');
+          if (okFrom && okTo && tc.from > tc.to) fail(tp + ': from must be <= to');
+          if (typeof tc.note !== 'string') fail(tp + ': note must be a string');
+          if (typeof tc.source !== 'string' || !/^https?:\/\//.test(tc.source)) fail(tp + ': source must be a URL');
+        });
+      }
 
       for (var wi = 0; wi < v.windows.length; wi++) {
         var w = v.windows[wi];
@@ -1279,6 +1434,8 @@
           fail(wp + ': confidence invalid');
         }
         if (typeof w.corroborated !== 'boolean') fail(wp + ': corroborated must be boolean');
+        // v1.12: when present, `notes` is reader text and this holds the research prose.
+        if (w.research_notes !== undefined && typeof w.research_notes !== 'string') fail(wp + ': research_notes must be a string');
       }
     }
 
@@ -1652,6 +1809,19 @@
     hoursStatus: hoursStatus,
     weekHours: weekHours,
     openBands: openBands,
+    tempClosureOn: tempClosureOn,
+    tempClosedFor: tempClosedFor,
+    windowTempClosedNow: windowTempClosedNow,
+    dateOfDay: dateOfDay,
+    addDaysYMD: addDaysYMD,
+    weekdayOfYMD: weekdayOfYMD,
+    outsideHoursDays: outsideHoursDays,
+    lintOutsideHours: lintOutsideHours,
+    gridAxisStart: gridAxisStart,
+    GRID_DEFAULT_START: GRID_DEFAULT_START,
+    GRID_EARLIEST_START: GRID_EARLIEST_START,
+    dealPriceLabel: dealPriceLabel,
+    formatDays: formatDays,
     hoursSourceInfo: hoursSourceInfo,
     hasHours: hasHours,
     WINDOW_KINDS: WINDOW_KINDS,
