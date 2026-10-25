@@ -7,7 +7,7 @@
      until something forces a revalidate; no-cache makes it ask every launch, and the
      ?v= query on logic.js/venues.json makes the two files it pulls miss the old
      entries outright. Bump logic.js?v= whenever APP_VERSION changes, and venues.json?v=
-     whenever the data does (v1.22 to v1.24 changed no data, so it stays ?v=1.21). -->
+     whenever the data does (the fix24 C3 data step changed it, so ?v=1.24). -->
 <meta http-equiv="Cache-Control" content="no-cache">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -3294,7 +3294,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.21').then(function (r) {
+  fetch('venues.json?v=1.24').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

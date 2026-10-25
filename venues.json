@@ -650,7 +650,7 @@
     "MON": [
      [
       "11:00",
-      "16:30"
+      "23:00"
      ]
     ],
     "TUE": [
@@ -690,7 +690,7 @@
      ]
     ]
    },
-   "hours_source": "Google business listing, checked 2026-10-25",
+   "hours_source": "Official site floor hours (1st floor 11am-11pm daily), checked 2026-10-25",
    "windows": [
     {
      "days": [
@@ -801,7 +801,7 @@
    "notes": "Only the official site was reachable, so corroborated=false. No lunch special on the home or happy hour pages.",
    "neighborhood_source": "centroid",
    "hours_confidence": "low",
-   "hours_notes": "Google panel and venue site text disagree: site snippet says Mon-Wed 16:30-23:00, Thu/Sun 11-23, Fri-Sat 11-02. Multi-floor venue, hours vary by floor.",
+   "hours_notes": "Google panel and venue site text disagree: site snippet says Mon-Wed 16:30-23:00, Thu/Sun 11-23, Fri-Sat 11-02. Multi-floor venue, hours vary by floor. TJ ruling 2026-10-25 (fix24 C3 lean): Monday set to 11:00-23:00; no source had it ending at 16:30.",
    "lunch_checked": true
   },
   {
@@ -5515,6 +5515,12 @@
    "official_site": "https://www.fortunanashville.com/happyhour",
    "status": "open",
    "hours": {
+    "MON": [
+     [
+      "16:30",
+      "21:30"
+     ]
+    ],
     "TUE": [
      [
       "16:30",
@@ -5552,7 +5558,7 @@
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (med confidence): https://www.fortunanashville.com/happyhour",
+   "hours_source": "Official homepage \"Daily 4:30 PM-9:30 PM\", checked 2026-10-25",
    "windows": [
     {
      "days": [
@@ -5660,11 +5666,11 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-10-25",
    "disagreements": [],
    "notes": "Dinner-only; no lunch special. Single-sourced (official only). First-visit question: The 4pm-8pm weekday claim still has no source. Searches found only Atmosfy/Tock listings with no such text. Official site says 4:30-6:30 daily, bar and lounge only.",
    "hours_confidence": "med",
-   "hours_notes": "Site is inconsistent on Monday: footer says Tue-Sun, hours section says daily. Monday left out; inKind had daily 4:30-9pm. Close time is 9:30pm on the site vs 9pm in the earlier data.",
+   "hours_notes": "Site is inconsistent on Monday: footer says Tue-Sun, hours section says daily. Monday left out; inKind had daily 4:30-9pm. Close time is 9:30pm on the site vs 9pm in the earlier data. TJ ruling 2026-10-25 (fix24 C3 lean): Monday open 16:30-21:30 (homepage \"Daily\", Monday wine promo, Atmosfy daily); only the /happyhour footer says Tue-Sun.",
    "lunch_checked": true
   },
   {
@@ -13516,61 +13522,12 @@
      "corroborated": true,
      "confidence": "high",
      "notes": "Sunday starts at 3pm per the same menu-page line."
-    },
-    {
-     "days": [
-      "MON",
-      "TUE",
-      "WED",
-      "THU",
-      "FRI",
-      "SAT",
-      "SUN"
-     ],
-     "start": "15:00",
-     "end": "close",
-     "area": "patio",
-     "kind": "happy_hour",
-     "deals": [
-      {
-       "type": "drink",
-       "desc": "Patio draft beer (Tony Joe White Cowboy Singer Lager, Marble Fox Southern Blonde Ale, Tailgate Orange Wheat)",
-       "price": "$4-$5"
-      },
-      {
-       "type": "drink",
-       "desc": "Patio bottled beer (American Rebel, Coors Light, Modelo Especial, Stella Artois, Yuengling)",
-       "price": "$3-$4"
-      },
-      {
-       "type": "drink",
-       "desc": "Patio wine by the glass (sparkling, rose, white, red)",
-       "price": "$6-$9"
-      },
-      {
-       "type": "drink",
-       "desc": "Patio signature cocktails (Old Fashioned, White Lotus Martini, Ancho Mama's Margarita)",
-       "price": "$8"
-      },
-      {
-       "type": "food",
-       "desc": "Patio Golden Hour bites (calamari, cauliflower, fries, oysters, shrimp cocktail, sliders, tacos, poutine, tenderloin tips)",
-       "price": null
-      }
-     ],
-     "sources": [
-      "https://thedetroitcowboy.com/nashville-the-detroit-cowboy-food-menu"
-     ],
-     "last_verified": "2026-09-05",
-     "corroborated": false,
-     "confidence": "low",
-     "notes": "Not found on the menu page today (no Patio Menu or \"Patio Season\" section; the page shows no prices at all). Carried over from the 2026-09-05 read, which quoted \"served nightly on the Patio from 3pm until the party is over\". May have moved to another page or been removed."
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-10-25",
    "disagreements": [],
-   "notes": "Sunday brunch 10-2:30 exists. No lunch special on any page seen.",
+   "notes": "Sunday brunch 10-2:30 exists. No lunch special on any page seen. TJ ruling 2026-10-25 (fix24 C3 lean): the daily 3pm-close patio happy hour (last verified 2026-09-05) was removed; the menu page and Visit Music City list only the Mon-Sat 4-6pm / Sun 3-6pm Golden Hour.",
    "hours_confidence": "high",
    "hours_notes": "Sunday has a brunch range 10:00-14:30 and a dinner range 15:00-21:00. inKind showed Fri/Sat close at 23:00 and Sunday dinner only.",
    "lunch_checked": true
@@ -16614,14 +16571,13 @@
    "windows": [
     {
      "days": [
-      "MON",
       "TUE",
       "WED",
       "THU",
       "FRI"
      ],
-     "start": "16:00",
-     "end": "18:00",
+     "start": "17:00",
+     "end": "19:00",
      "area": "bar",
      "kind": "happy_hour",
      "deals": [
@@ -16647,14 +16603,14 @@
       }
      ],
      "sources": [
-      "https://experiencezuzu.com/Nashville",
       "https://experiencezuzu.com/nashville/",
+      "https://experiencezuzu.com/Nashville",
       "https://nashvilleguru.com/?p=161879"
      ],
-     "last_verified": null,
+     "last_verified": "2026-10-25",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Times and days disagree across official pages: /Nashville says Monday-Friday 4-6pm; /nashville/ says Tuesday-Friday 5-7pm (FAQ: happy hour and dinner at the bar). Guru (undated, no confirmed-on date) says 4-6pm with the deals listed here, days not stated. Deals come from the Guru meta text only; official pages list no deals or prices."
+     "notes": "Times and days disagree across official pages: /Nashville says Monday-Friday 4-6pm; /nashville/ says Tuesday-Friday 5-7pm (FAQ: happy hour and dinner at the bar). Guru (undated, no confirmed-on date) says 4-6pm with the deals listed here, days not stated. Deals come from the Guru meta text only; official pages list no deals or prices. TJ ruling 2026-10-25 (fix24 C3 lean): Tue-Fri 5-7pm, the official /nashville/ reading; it fits the posted 5pm opening and Monday closed."
     }
    ],
    "verified_no_hh": false,
@@ -16663,7 +16619,7 @@
     "Happy hour: Mon-Fri 4-6pm (experiencezuzu.com/Nashville, Guru time) vs Tue-Fri 5-7pm (experiencezuzu.com/nashville/).",
     "Hours: Mon-Wed 4-11pm and Thu-Sun 4pm-midnight vs Tue-Sun 5-10pm."
    ],
-   "notes": "Dinner-only; no lunch special found. The Mon-Fri 4-6 reading was chosen for the window only because Guru's time matches it; the other reading is recorded above.",
+   "notes": "Dinner-only; no lunch special found. The window uses the Tue-Fri 5-7pm reading (TJ ruling 2026-10-25); the other reading is recorded above.",
    "hours_confidence": "high",
    "lunch_checked": true
   }

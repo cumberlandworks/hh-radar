@@ -1554,9 +1554,8 @@ test('lint closed-day: no hours on file is skipped (the card already says so)', 
 test('lint closed-day: the shipped data warns only where the sources disagree', () => {
   const data = require(path.join(__dirname, '..', 'venues.json'));
   assert.deepEqual(lintVenues(data).filter((w) => /hours say closed|may be incomplete/.test(w)).sort(), [
-    'Fortuna Italian Steakhouse: happy_hour window on MON but hours say closed',
+    // v1.24 data step (TJ ruling): Fortuna open Monday, ZuZu's happy hour Tue–Fri.
     'The Side Piece Nashville: happy_hour window on TUE but hours say closed',
-    'ZuZu: happy_hour window on MON but hours say closed',
   ]);
 });
 
@@ -1592,14 +1591,15 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 // "Half-price crepes" no longer carries a 50 in its text, so its "50% off" price shows (360 -> 361).
 // v1.21 (2026-10-25n data): the 7 Blue Coast family nights take 12 priced deals, all shown (438 -> 426,
 // 361 -> 349); The Authentique's crepes now read "All crepes" + "50% off".
-test('dealPriceLabel: measured on venues.json — 426 priced deals, 349 still show a price', () => {
+// v1.24 data step: the Detroit Cowboy patio window (4 priced deals, all shown) is gone: 426/349 -> 422/345.
+test('dealPriceLabel: measured on venues.json — 422 priced deals, 345 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 426);
-  assert.equal(shown, 349);
+  assert.equal(priced, 422);
+  assert.equal(shown, 345);
   const auth = REAL.find((v) => v.name === 'The Authentique').windows.find((w) => w.kind === 'special');
   assert.deepEqual(auth.deals.map((d) => [d.desc, dealPriceLabel(d)]), [['All crepes', '50% off']]);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
@@ -1698,21 +1698,19 @@ test('outsideHoursDays: back-to-back ranges are one stretch, past-midnight close
 // v1.14 (2026-10-25j data, Google-listing hours): JBJ's Sunday and The Southern are gone
 // (now inside posted hours); Present Tense moves SUN -> THU; Acme (low, Google and its
 // site disagree), LinQ, NoWhere Special and The Side Piece are new. 10 venues, 12 windows.
-test('outside-hours lint: measured on venues.json — 10 venues, 12 windows (v1.14)', () => {
+// v1.24 data step (TJ ruling): Acme Monday hours, Detroit Cowboy patio window and ZuZu's times no longer warn.
+test('outside-hours lint: measured on venues.json — 7 venues, 9 windows (v1.14, v1.24 data)', () => {
   const lines = REAL.flatMap(lintOutsideHours);
   assert.deepEqual(lines, [
     '51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on WED',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on THU',
-    'Acme Feed & Seed: happy_hour window 16:30–18:30 outside posted hours on MON',
     'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU',
     'LinQ Social Kitchen: happy_hour window 16:00–21:00 outside posted hours on FRI',
     'NoWhere Special: happy_hour window 16:00–19:00 outside posted hours on FRI',
     'Present Tense: happy_hour window 16:00–17:30 outside posted hours on THU',
-    'The Detroit Cowboy: happy_hour window 15:00–close outside posted hours on MON/TUE/WED/THU/FRI/SAT',
     'The Side Piece Nashville: happy_hour window 15:00–18:00 outside posted hours on WED',
     'Verna Café & Bar: happy_hour window 15:00–18:00 outside posted hours on MON/THU/FRI/SAT/SUN',
-    'ZuZu: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU/FRI',
   ]);
   assert.ok(lintVenues({ venues: REAL }).some((l) => /outside posted hours/.test(l)), 'runs inside lintVenues');
 });
@@ -2193,7 +2191,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v1.24';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.24'));
+  assert.ok(html.includes("var APP_VERSION = 'v1.24';") && html.includes("venues.json?v=1.24") && html.includes('logic.js?v=1.24'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----

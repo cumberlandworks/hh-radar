@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix24-20261025, data step: TJ's ruling on the C3 leans (venues.json?v=1.24)
+
+TJ, 2026-10-25, verbatim: "Apply the strongest C3 leans as a data fix: Acme Monday hours, Fortuna open Monday, drop the
+Detroit Cowboy patio window, ZuZu HH Tue–Fri 5–7pm."
+
+None of these was settled by a 2026-dated source; each is TJ's call on the official pages as read 2026-10-25
+(`data-src/refresh-20261023/post_20261025o.py`, `venues-20261025n.json` → `venues-20261025o.json` = `venues.json`).
+- **Acme Feed & Seed:** Monday hours 11am–4:30pm → 11am–11pm, the 1st-floor hours the other days use. The Mon–Thu
+  4:30–6:30 happy hour is now inside them.
+- **Fortuna Italian Steakhouse:** open Monday 4:30–9:30pm (homepage "Daily").
+- **The Detroit Cowboy:** the daily 3pm–close patio happy hour (last verified 2026-09-05) is removed. The Mon–Sat
+  4–6pm and Sun 3–6pm Golden Hour stay.
+- **ZuZu:** happy hour Mon–Fri 4–6pm → Tue–Fri 5–7pm (the official /nashville/ page). Still low confidence, so it
+  keeps "Verify before you go".
+
+Validate: outside-hours/closed-day warnings 15 → 10, lint warnings 31 → 22, windows 140 → 139. `venues.json?v=1.24`.
+The app is still v1.24 (no code change), so pages already open won't show the update bar; a reload picks it up.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix24-20261025: v1.24 (one "Live now" list, no red, hours conflicts re-checked)
 
 TJ, 2026-10-25 14:14, verbatim:
