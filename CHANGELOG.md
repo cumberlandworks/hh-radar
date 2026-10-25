@@ -28,6 +28,10 @@ neighborhood chips.
   with the data: coverage SUN other-days 41 → 34, none 78 → 85, TUE on-day 65 → 58; priced deals 438 → 426, shown
   361 → 349; the `windowLine` "close" case uses Nicky's Monday special instead of Blue Coast Mt. Juliet's Tuesday.
   README coverage counts updated (140 windows; 85 with none; 6 with only a special or lunch).
+- **Images.** Re-taken from the live v1.21 site because they now look different: `og-preview.png` (Live now 59 → 52,
+  zone and map counts: West 6 → 5, Franklin & Brentwood 9 → 8, Outer suburbs 5 → 0) and LinkedIn `post-01-now`
+  (Live now 59 → 52) and `post-01b-now-zones-open` (the same zone counts). `post-02-daygrid` and `post-03-card` are
+  unchanged: the same 14 grid rows and the same Park Cafe card, so they were not replaced.
 
 ## 2026-10-25 — BLOCK-hh-radar-fix20-20261025: v1.20 (a pre-launch trust pass: deal times as clear as the grid)
 

@@ -40,7 +40,7 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
   screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.20 for the new subtitle and card
-  lines: light theme, storage cleared, referral bar dismissed, the v1.12 framing).
+  lines, and in v1.21 for the Blue Coast removal: light theme, storage cleared, referral bar dismissed, the v1.12 framing).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
