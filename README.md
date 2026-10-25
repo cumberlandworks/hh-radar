@@ -175,7 +175,8 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   If `end <= start` (e.g. 22:00→02:00) the end is on D+1.
 - `end: "close"` resolves to the LAST closing time in `hours[D]`; if that closing time
   is `<=` the window start (e.g. "00:00", "03:00") it is on D+1. If `hours[D]` is
-  missing, the window is treated as ending at 23:59 on D and gets a data-warning badge.
+  missing, the window is treated as ending at 23:59 on D, and its card says "Closing time
+  isn't posted" (v1.24, `L.hoursCaveat`).
 - STARTING SOON = not active now and the window's next start is within 120 minutes.
 - STALE = `last_verified` null OR older than 60 days from the phone clock's date.
   UNVERIFIED = `confidence == "low"`. Both render as a badge; neither hides a venue.
@@ -194,7 +195,13 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   own, and it is never "all-day" (`isAllDay` stays gated on `special`).
 - **All-day** (`isAllDay`): a `special` whose resolved span on a day it runs is 5 hours or
   more. v1.13 dropped the old "starts before 2pm" rule, so a short morning special (The
-  Loading Dock, 7–9am) is a normal block that can start soon.
+  Loading Dock, 7–9am) is a normal block that can start soon. Since v1.24 an all-day window is
+  filed like any other in NOW (live -> "Live now", within 2 hours -> "Starting soon"; there is no
+  "All-day specials" section) and its window line reads "All-day special · …".
+- **One live count** (v1.24, `L.nowEntries`). The "Live now (N)" heading, the phone Where
+  sheet's "Show N live now" and the zone chips' NOW numbers (`L.liveCountsByHood`) all count the
+  same entries: one per live window (a card), not per venue. Inside each NOW section happy hours
+  come first, then a thin "Lunch & specials" label over the rest.
 - **"Not checked yet" is never "no happy hour"** (v1.10). Anything that counts verified
   no-HH venues counts only `windows: []` + `verified_no_hh: true`. The Day Grid footer
   lists the others separately as "N not checked yet", each reading "Happy hour not
@@ -207,9 +214,13 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   The expanded card shows the whole week (`weekHours`; a split day is two ranges) and one
   line saying where the hours came from and the date, plus "unconfirmed" when
   `hours_confidence` is `"low"`. The hours line is about the clock, never a filter:
-  a happy hour on a day the hours say closed still shows, with its "Hours conflict" badge.
+  a happy hour on a day the hours say closed still shows, with "Verify before you go" and a
+  plain sentence (below).
 - A window on a day the venue's own `hours` say it's closed is still evaluated (the
-  window data wins) but gets a "Hours conflict" badge — never silently dropped.
+  window data wins) but is never silently dropped. Since v1.24 (`L.hoursCaveat`) the card
+  carries "Verify before you go" and one sentence in the body ink: "Heads up: posted hours say
+  closed on Mon. Call ahead." No hours on file reads "We don't have this venue's hours. Call
+  ahead." There are no red badges.
 - **Open hours on the Day Grid** (v1.11, `openBands` in logic.js): every row carries a
   quiet grey band behind its deal blocks for the venue's open ranges that day (built from
   the same merged ranges as `hoursStatus`), so open, close and a closed gap between lunch
@@ -226,9 +237,11 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   stay in the data. A range in the past never matches.
 - **Outside posted hours** (v1.12, `outsideHoursDays`). A window interval on a day the venue
   IS open that is not wholly inside one of the merged open stretches `hoursStatus` uses
-  (early start, a deal in a lunch–dinner gap, a close after the venue's) gets one
-  "Outside posted hours" badge on its card. Never hidden. A window on a day the hours leave
-  out entirely keeps "Hours conflict" instead.
+  (early start, a deal in a lunch–dinner gap, a close after the venue's) is never hidden.
+  Since v1.24 its card has "Verify before you go" and a sentence: "Heads up: posted hours on
+  Mon are 11am–4:30pm, which don't cover this happy hour. Call ahead." Days with the same hours
+  are grouped (`formatDays`); past two different groups it says "on Tue–Fri don't fully cover
+  this happy hour".
 - **Morning deals on the Day Grid** (v1.12, `gridAxisStart`). The axis starts at 11am unless
   a shown row has a window drawn as a normal block (v1.13 `gridBlockStarts`: not an all-day
   bar) starting earlier on the selected day; then it starts at that hour
@@ -250,15 +263,16 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   hours are on file, it says "11am until close" and never invents one. The Day Grid card, its
   block labels and the "other days" list use the same rule for their one day.
 - **Day Grid card** (v1.20 C4). It describes the selected day: "Tue: open 11am–9pm" (or "Tue:
-  closed"), not the live clock. Only NOW shows "Open · closes 9pm". "Opens…" is never red; red is
-  kept for closed today, hours conflict and outside posted hours.
+  closed"), not the live clock. Only NOW shows "Open · closes 9pm". Since v1.24 nothing a
+  reader sees is red except the debug-position line; "Closed" is bold body ink.
 - **Source notes** (v1.20 C8, `L.sourceNoteLines`). The expanded card's "Source notes" shows one
   sentence built from the data: "Checked on <first source's host> · <last_verified>", plus
   "Sources disagree — check before you go" when the venue has `disagreements`. The research prose
   (`notes`, `research_notes`, `disagreements`) stays in the data and is not rendered. A window with
   `research_notes` still shows its reader-facing `notes` as a quiet line under the deals.
 - **Badges** (v1.20 C9). inKind, Special, Lunch, Verify before you go (low confidence or not
-  checked in 60 days; this replaced Unverified), and the red hours warnings. Each explains itself
+  checked in 60 days, or, since v1.24, posted hours that don't match the deal; this replaced
+  Unverified and the red hours warnings). Each explains itself
   on hover or focus, and a one-line key sits under the NOW list and the Day Grid. "Deal info"
   (was "HH info") opens the window's best source.
 - **Day Grid marks** (v1.20 C5/C6). A block prints its times inside it ("4:30–6:30") when they fit,
@@ -349,7 +363,7 @@ source-hedging language leaking into menu text, an overlong parenthetical, or a
 description over 140 chars) and, since v1.11, a closed-day lint ("<venue>: <kind> window on
 <D> but hours say closed"; plus "hours may be incomplete" when the hours cover 2 or fewer
 days and a window falls on another), since v1.12 an outside-hours lint ("<venue>: <kind>
-window HH:MM–HH:MM outside posted hours on <days>", the same rule as the card badge), and
+window HH:MM–HH:MM outside posted hours on <days>", the same rule as the card's sentence), and
 prints hits without failing the build — pass
 `--strict` to make lint hits fail too. A hit isn't automatically wrong: most are
 legitimately long menu-item descriptions (an ingredient list in parentheses); only

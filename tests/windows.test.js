@@ -2193,7 +2193,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v1.23';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.23'));
+  assert.ok(html.includes("var APP_VERSION = 'v1.24';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.24'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2459,4 +2459,162 @@ test('index.html (v1.22 C1): the Where sheet is a modal dialog with Done, All/No
   assert.ok(html.includes("window.addEventListener('popstate', function () { whereHist.popstate(); });"));
   assert.ok(html.includes('max-height: 85vh; max-height: 85dvh;'));
   assert.ok(!html.includes('zonesOpen') && !html.includes('toggleZonesOpen'));
+});
+
+// ==================== v1.24 (fix24): one live list, no red ====================
+const L24 = require('../logic.js');
+const VENUES24 = require('../venues.json').venues;
+const DATES24 = {
+  MON: { year: 2026, month: 10, day: 26 }, TUE: { year: 2026, month: 10, day: 27 },
+  WED: { year: 2026, month: 10, day: 28 }, THU: { year: 2026, month: 10, day: 29 },
+  FRI: { year: 2026, month: 10, day: 30 }, SAT: { year: 2026, month: 10, day: 31 },
+  SUN: { year: 2026, month: 10, day: 25 },
+};
+const at24 = (d, h, m) => dt(d, h, m, DATES24[d]);
+
+// ---- C1: nowEntries files all-day windows like any other ----
+test('nowEntries (v1.24 C1): a live all-day special is live; one starting within 2h is soon', () => {
+  const v = venue({ SUN: [['10:00', '22:00']] }, [
+    win(['SUN'], '11:00', '21:00', { kind: 'special' }), // all-day (10h)
+    win(['SUN'], '16:00', '18:00'),
+  ]);
+  assert.equal(L24.isAllDay(v, v.windows[0]), true);
+  let e = L24.nowEntries([v], at24('SUN', 14, 14));
+  assert.deepEqual(e.live.map((x) => x.window), [v.windows[0]]);
+  assert.deepEqual(e.soon.map((x) => x.window), [v.windows[1]]);
+  assert.equal(e.soon[0].minutesUntil, 106);
+  e = L24.nowEntries([v], at24('SUN', 9, 30));
+  assert.deepEqual(e.soon.map((x) => x.window), [v.windows[0]], 'all-day, 90 min out: Starting soon');
+  assert.equal(e.live.length, 0);
+});
+
+test('nowEntries (v1.24 C1): a window on a temporarily closed date is left out', () => {
+  const v = venue({ SUN: [['10:00', '22:00']] }, [win(['SUN'], '11:00', '21:00', { kind: 'special' })]);
+  v.temp_closed = [{ from: '2026-10-25', to: '2026-10-25', note: 'private event' }];
+  const e = L24.nowEntries([v], at24('SUN', 14, 14));
+  assert.equal(e.live.length + e.soon.length, 0);
+});
+
+test('nowKindRank (v1.24 C1): happy hours first, then lunch and specials', () => {
+  assert.equal(L24.nowKindRank({ kind: 'happy_hour' }), 0);
+  assert.equal(L24.nowKindRank({ kind: 'lunch' }), 1);
+  assert.equal(L24.nowKindRank({ kind: 'special' }), 1);
+});
+
+test('windowLine (v1.24 C1): an all-day special says so; a short one stays "Special"', () => {
+  const v = venue({ SUN: [['10:00', '22:00']] }, [
+    win(['SUN'], '11:00', '21:00', { kind: 'special' }),
+    win(['SUN'], '16:00', '18:00', { kind: 'special' }),
+  ]);
+  assert.equal(L24.windowLine(v, v.windows[0]), 'All-day special · Sun 11am–9pm');
+  assert.equal(L24.windowLine(v, v.windows[1]), 'Special · Sun 4–6pm');
+});
+
+// The page's three numbers, rebuilt the way index.html builds them: the "Live now (N)" heading
+// and the Where sheet's "Show N live now" are nowEntries(filtered).live.length; the zone chips are
+// zoneCountFor(selected, visibleHoods, stateHoods, liveCountsByHood(all venues)).
+function zonesAsPage(venues) {
+  const totals = {};
+  venues.forEach((v) => { totals[v.hood] = (totals[v.hood] || 0) + 1; });
+  const chips = L24.chipHoodsByZone(venues);
+  return L24.ZONES.map((z) => {
+    const visible = z.hoods.filter((h) => totals[h] > 0);
+    return { key: z.key, visible, stateHoods: chips[z.key].length ? chips[z.key] : visible };
+  }).filter((z) => z.visible.length);
+}
+test('v1.24 C1: "Live now (N)" = the Where sheet = the sum of the selected zone chips, on the real data', () => {
+  const zones = zonesAsPage(VENUES24);
+  const zoneOf = (k) => zones.find((z) => z.key === k);
+  const none = new Set();
+  const selections = { all: new Set(L24.hoodKeys()) };
+  zones.forEach((z) => { selections[z.key + ' only'] = L24.applyZoneTap(none, z.key, z.stateHoods); });
+  // A partly-on zone: Downtown, plus one Gulch & Midtown neighborhood.
+  const part = L24.applyZoneTap(none, 'downtown', zoneOf('downtown').stateHoods);
+  part.add(zoneOf('gulch').stateHoods[0]);
+  selections['downtown + part of gulch'] = part;
+  const times = [at24('SUN', 14, 14), at24('MON', 16, 45), at24('WED', 12, 0), at24('FRI', 17, 30),
+    at24('SAT', 11, 30), at24('TUE', 3, 0), at24('THU', 22, 15)];
+  let checked = 0;
+  times.forEach((now) => {
+    const counts = L24.liveCountsByHood(VENUES24, now);
+    Object.keys(selections).forEach((name) => {
+      const sel = selections[name];
+      const heading = L24.nowEntries(L24.applyHoodFilter(VENUES24, { selected: sel }), now).live.length;
+      const chips = zones.reduce((n, z) => {
+        if (L24.zoneChipState(sel, z.stateHoods).state === 'none') return n;
+        return n + L24.zoneCountFor(sel, z.visible, z.stateHoods, counts);
+      }, 0);
+      assert.equal(chips, heading, `${name} at ${now.dayOfWeek} ${now.hour}:${now.minute}`);
+      checked++;
+    });
+  });
+  assert.ok(checked >= 60);
+  // TJ's 14:14 case: Downtown only on Sunday.
+  const dn = L24.nowEntries(L24.applyHoodFilter(VENUES24, { selected: selections['downtown only'] }), at24('SUN', 14, 14));
+  assert.ok(dn.live.length >= 3, 'the two all-day cards now count under Live now');
+});
+test('v1.24 C1: the identity above holds because every hood with a deal window has a chip', () => {
+  const chips = new Set([].concat(...Object.values(L24.chipHoodsByZone(VENUES24))));
+  VENUES24.filter((v) => v.windows.length).forEach((v) => assert.ok(chips.has(v.hood), v.name + ' / ' + v.hood));
+});
+
+// ---- C2: one plain sentence instead of the red badges ----
+const HRS24 = { MON: [['11:00', '16:30']], TUE: [['11:00', '23:00']], WED: [['11:00', '23:00']], THU: [['11:00', '23:00']] };
+test('hoursCaveat (v1.24 C2): outside the posted hours on one day', () => {
+  const v = venue(HRS24, [win(['MON', 'TUE', 'WED', 'THU'], '16:30', '18:30')]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours on Mon are 11am–4:30pm, which don’t cover this happy hour. Call ahead.');
+  assert.equal(L24.hasHoursCaveat(v, v.windows[0]), true);
+});
+test('hoursCaveat (v1.24 C2): a posted closed day', () => {
+  const v = venue({ TUE: [['16:30', '21:30']], WED: [['16:30', '21:30']] }, [win(['MON', 'TUE', 'WED'], '16:30', '18:30')]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]), 'Heads up: posted hours say closed on Mon. Call ahead.');
+});
+test('hoursCaveat (v1.24 C2): no hours on file', () => {
+  const v = venue({}, [win(['MON'], '16:00', '18:00')]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]), 'We don’t have this venue’s hours. Call ahead.');
+});
+test('hoursCaveat (v1.24 C2): "until close" on a closed day says the closing time isn’t posted', () => {
+  const v = venue({ SAT: [['11:00', '23:00']] }, [win(['SAT', 'SUN'], '11:00', 'close', { kind: 'special' })]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours say closed on Sun. Closing time isn’t posted. Call ahead.');
+});
+test('hoursCaveat (v1.24 C2): days with the same hours group with formatDays; two groups both show', () => {
+  const v = venue({ TUE: [['16:30', '21:00']], WED: [['16:30', '21:00']], THU: [['16:30', '21:00']], FRI: [['16:30', '23:00']] },
+    [win(['TUE', 'WED', 'THU'], '16:00', '18:00'), win(['TUE', 'WED', 'THU', 'FRI'], '16:00', '18:00', { kind: 'lunch' })]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours on Tue–Thu are 4:30–9pm, which don’t cover this happy hour. Call ahead.');
+  assert.equal(L24.hoursCaveat(v, v.windows[1]),
+    'Heads up: posted hours on Tue–Thu are 4:30–9pm and on Fri 4:30–11pm, which don’t cover this lunch deal. Call ahead.');
+});
+test('hoursCaveat (v1.24 C2): a closed day plus three different hours stays one short sentence', () => {
+  const v = venue({ TUE: [['17:00', '21:00']], WED: [['17:00', '21:00']], THU: [['17:00', '22:00']], FRI: [['17:00', '23:00']] },
+    [win(['MON', 'TUE', 'WED', 'THU', 'FRI'], '16:00', '18:00')]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours say closed on Mon, and on Tue–Fri don’t fully cover this happy hour. Call ahead.');
+});
+test('hoursCaveat (v1.24 C2): a split day lists both ranges; a covered window says nothing', () => {
+  const v = venue({ MON: [['07:00', '15:00'], ['17:00', '00:00']] },
+    [win(['MON'], '15:00', '18:00'), win(['MON'], '17:00', '19:00')]);
+  assert.equal(L24.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours on Mon are 7am–3pm, 5pm–12am, which don’t cover this happy hour. Call ahead.');
+  assert.equal(L24.hoursCaveat(v, v.windows[1]), '');
+  assert.equal(L24.hasHoursCaveat(v, v.windows[1]), false);
+});
+
+test('index.html (v1.24): one live list, no red badges, --bad only for #fatal and .debug-pos', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('All-day specials ('), 'no All-day specials section');
+  assert.ok(!html.includes('allDay'), 'no third list');
+  ['Hours conflict', 'Outside posted hours', 'Close time assumed', "badge warn", "'warn'", 'Red: a real problem']
+    .forEach((t) => assert.ok(!html.includes(t), t));
+  assert.ok(html.includes('return L.nowEntries(filteredVenues(), state.now).live.length;'), 'Where sheet count');
+  assert.ok(html.includes('var entries = L.nowEntries(filteredVenues(), state.now);'), 'Live now heading');
+  assert.ok(html.includes('var live = L.liveCountsByHood(state.venues, state.now);'), 'zone counts');
+  // Every rule that reads var(--bad), by selector.
+  const users = [];
+  html.replace(/([^{}]+)\{[^{}]*var\(--bad\)[^{}]*\}/g, (m, sel) => { users.push(sel.trim().split('\n').pop().trim()); return m; });
+  assert.deepEqual(users.sort(), ['#fatal', '.debug-pos']);
+  assert.ok(!/(^|[^-])--bad[^:)]/m.test(html.replace(/var\(--bad\)/g, '')), 'no other --bad use');
 });

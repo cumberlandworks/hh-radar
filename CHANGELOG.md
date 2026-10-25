@@ -1,5 +1,54 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix24-20261025: v1.24 (one "Live now" list, no red, hours conflicts re-checked)
+
+TJ, 2026-10-25 14:14, verbatim:
+
+> "something else - i selected downtown and its says live Now (1), .. starting sooon others then two that are all day
+> those conflicting and confusing I think.  Also the red is very much looking like an error like Acme - and what would
+> that mean hours conflict outside posted hours - I'm not sure people would understand. I think change the color /
+> wording or fix anything that would come up that would cause a stop in someones brain"
+
+### Diagnosis
+- **D1.** `buildNowSections` filed live all-day windows under "All-day specials", not "Live now". TJ's Downtown at
+  Sun 14:14 read "Live now (1)", "Starting soon (3)", "All-day specials (2)". The zone chips counted live *venues*,
+  all-day included (Downtown said 3), while the heading and the Where sheet counted live *cards* without all-day (1).
+- **D2.** "Hours conflict", "Outside posted hours", "No hours on file" and "Close time assumed" were red badges, and
+  the key read "Red: a real problem with the hours". "Closed" in the hours line, "you'd miss it" and the grid's
+  "Closed (temporary)" were red too.
+- **D3.** `validate.js` lists 11 venues whose deal times fall outside their posted hours or on a posted closed day
+  (15 warnings).
+
+### Changes
+- **C1: one live list.** `L.nowEntries` files every window the same way: live → "Live now", starting within 2 hours
+  → "Starting soon". The "All-day specials" section is gone. The same entries feed the "Live now (N)" heading, the
+  Where sheet's "Show N live now" and the zone counts (`L.liveCountsByHood`, one per live card). A test checks on
+  the real data that the three agree, for every zone alone, all, and a partly-on zone, at seven times of the week.
+  Inside each section happy hours come first, in the section's usual order, then a thin "Lunch & specials" label
+  (no count) over the rest. The all-day card's window line now says "All-day special · …"; before, it said only
+  "Special". The empty state and Surprise me are unchanged: Surprise me only offers happy hours, and the empty
+  state counts the same entries as before.
+- **C2: no red, plain words.** The four red badges are gone. A window whose posted hours don't back up the deal
+  gets "Verify before you go" (once) and one sentence on the card in the body ink, built from the data by
+  `L.hoursCaveat`:
+  - "Heads up: posted hours on Mon are 11am–4:30pm, which don't cover this happy hour. Call ahead."
+  - "Heads up: posted hours say closed on Mon. Call ahead."
+  - "We don't have this venue's hours. Call ahead."
+  - "Closing time isn't posted." (a deal "until close" on a day with no posted hours)
+  Days with the same hours group with `formatDays`. Past two different groups it reads "on Tue–Fri don't fully
+  cover this happy hour". The badge key drops the red row. "Verify before you go" now explains: "Not confirmed
+  recently, or the venue's posted hours don't match the deal." "Closed" in the hours line is bold body ink.
+  "you'd miss it" is the dim text color, and "Closed (temporary)" on the grid is body ink. The grid's
+  count/rows-mismatch guard is a plain badge. `--bad` is now used only by `#fatal` and `.debug-pos` (a test reads
+  index.html for it). The grid blocks had no labels since v1.22, so nothing red was left there; the hours band
+  shows a block outside the hours.
+- **C3: the 11 re-checked.** One web-research pass (sources: venue sites, press, listings). Only NoWhere Special
+  had a 2026-dated source with different hours: a Sept 17, 2026 press piece says it opens at 4pm. It disagrees
+  with the Google listing read on 2026-10-25, which says 5pm and closed Mondays. Nothing was settled by a 2026
+  source, so **no data changed**: `venues.json` and `venues.json?v=1.21` are as they were, and the 11 venues' cards
+  show the C2 sentence. The table is in the fix24 report.
+- **C4.** v1.24 (`APP_VERSION`, `logic.js?v=1.24`, `version.txt`). Tests 217 → 231.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix23-20261025: v1.23 (drive times that match the maps app, phone grid labels)
 
 TJ, 2026-10-25 14:10, verbatim:

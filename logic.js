@@ -1263,10 +1263,94 @@
   // "Happy hour · Mon–Fri 4–6pm · bar only", "Lunch special · Tue–Fri 11am–2pm · dine-in only".
   var KIND_LABEL = { happy_hour: 'Happy hour', special: 'Special', lunch: 'Lunch special' };
   function windowLine(venue, win) {
-    var bits = [KIND_LABEL[win.kind] || KIND_LABEL.happy_hour, windowWhenLabel(win, venue)];
+    // v1.24 C1: all-day specials sit in "Live now" with everything else, so the card says it.
+    var kind = isAllDay(venue, win) ? 'All-day special' : (KIND_LABEL[win.kind] || KIND_LABEL.happy_hour);
+    var bits = [kind, windowWhenLabel(win, venue)];
     if (win.area) bits.push(win.area);
     return bits.join(' · ');
   }
+
+  // ---- v1.24 C2 (TJ 14:14): plain words about the hours, no red ----
+  // TJ: "the red is very much looking like an error ... what would that mean hours conflict
+  // outside posted hours - I'm not sure people would understand." The four red badges are
+  // gone; a window whose deal the posted hours don't back up gets "Verify before you go"
+  // (hasHoursCaveat) and one plain sentence built from the data (hoursCaveat).
+  var CAVEAT_KIND = { happy_hour: 'happy hour', special: 'special', lunch: 'lunch deal' };
+  function hasHoursCaveat(venue, win) {
+    return hoursCaveat(venue, win) !== '';
+  }
+  // '' when the posted hours cover the deal on every one of its days.
+  //   "We don't have this venue's hours. Call ahead."
+  //   "Heads up: posted hours say closed on Mon. Call ahead."
+  //   "Heads up: posted hours on Mon are 11am–4:30pm, which don't cover this happy hour. Call ahead."
+  //   "Heads up: posted hours say closed on Mon, and on Tue–Fri don't fully cover this happy hour. Call ahead."
+  // "Closing time isn't posted." joins when the deal runs "until close" on a day with no
+  // posted hours (the card's end time is then a stand-in). Days are grouped with formatDays;
+  // outside days with the same hours share a group, and past two groups the hours are left
+  // to the card's week list.
+  function hoursCaveat(venue, win) {
+    if (!win || !win.days || !win.days.length) return '';
+    if (!hasHours(venue)) return 'We don’t have this venue’s hours. Call ahead.';
+    var closed = DAYS.filter(function (d) {
+      return win.days.indexOf(d) !== -1 && !(venue.hours[d] && venue.hours[d].length);
+    });
+    var outside = outsideHoursDays(venue, win);
+    if (!closed.length && !outside.length) return '';
+    var kind = CAVEAT_KIND[win.kind] || CAVEAT_KIND.happy_hour;
+    var groups = [];
+    outside.forEach(function (d) {
+      var txt = weekHours(venue).filter(function (w) { return w.day === d; })[0].ranges
+        .map(function (r) { return fmtRangeHM(r[0], r[1]); }).join(', ');
+      var g = groups.filter(function (x) { return x.txt === txt; })[0];
+      if (g) g.days.push(d); else groups.push({ txt: txt, days: [d] });
+    });
+    var outsidePart = '';
+    if (groups.length === 1 || groups.length === 2) {
+      outsidePart = groups.map(function (g, i) {
+        return 'on ' + formatDays(g.days) + (i === 0 ? ' are ' : ' ') + g.txt;
+      }).join(' and ') + ', which don’t cover this ' + kind;
+    } else if (groups.length) {
+      outsidePart = 'on ' + formatDays(outside) + ' don’t fully cover this ' + kind;
+    }
+    var parts = [];
+    if (closed.length) parts.push('say closed on ' + formatDays(closed));
+    if (outsidePart) parts.push(outsidePart);
+    var out = 'Heads up: posted hours ' + parts.join(', and ') + '.';
+    if (win.end === 'close' && closed.length) out += ' Closing time isn’t posted.';
+    return out + ' Call ahead.';
+  }
+
+  // ---- v1.24 C1 (TJ 14:14): one live list ----
+  // TJ: "i selected downtown and its says live Now (1), .. starting sooon others then two that
+  // are all day those conflicting and confusing". All-day windows are filed like any other:
+  // live -> live, starting within 2 hours -> soon. This one function feeds the "Live now (N)"
+  // heading, the Where sheet's "Show N live now" and the zone/hood counts (liveCountsByHood),
+  // so the three can't disagree. Entries are cards: one per window, not per venue.
+  function nowEntries(venues, dateInTz) {
+    var live = [], soon = [];
+    (venues || []).forEach(function (venue) {
+      (venue.windows || []).forEach(function (win) {
+        if (windowTempClosedNow(venue, win, dateInTz)) return; // v1.12 C3: closed that date
+        if (isActive(venue, win, dateInTz)) {
+          live.push({ venue: venue, window: win, status: 'active' });
+        } else if (startsWithin(venue, win, dateInTz, 120)) {
+          soon.push({ venue: venue, window: win, status: 'soon', minutesUntil: minutesUntilNextStart(venue, win, dateInTz) });
+        }
+      });
+    });
+    return { live: live, soon: soon };
+  }
+  // Live cards per hood, over the venues given (the page passes all of them, so a chip's
+  // number doesn't move when another chip is toggled).
+  function liveCountsByHood(venues, dateInTz) {
+    var counts = {};
+    nowEntries(venues, dateInTz).live.forEach(function (e) {
+      counts[e.venue.hood] = (counts[e.venue.hood] || 0) + 1;
+    });
+    return counts;
+  }
+  // Inside a NOW section: happy hours first, then lunch and specials.
+  function nowKindRank(win) { return win.kind === 'happy_hour' ? 0 : 1; }
 
   // ---- v1.20 C4: the Day Grid card describes the day it is under ----
   // "Tue: open 11am–9pm", "Sun: open 8am–3pm, 5pm–12am", "Mon: closed",
@@ -2279,6 +2363,11 @@
     driveEstimateMin: driveEstimateMin,
     walkEstimateMin: walkEstimateMin,
     travelEstimateMin: travelEstimateMin,
+    nowEntries: nowEntries,
+    liveCountsByHood: liveCountsByHood,
+    nowKindRank: nowKindRank,
+    hoursCaveat: hoursCaveat,
+    hasHoursCaveat: hasHoursCaveat,
     arrivalLeadMin: arrivalLeadMin,
     PARK_MIN: PARK_MIN,
     formatEtaMin: formatEtaMin,

@@ -7,7 +7,7 @@
      until something forces a revalidate; no-cache makes it ask every launch, and the
      ?v= query on logic.js/venues.json makes the two files it pulls miss the old
      entries outright. Bump logic.js?v= whenever APP_VERSION changes, and venues.json?v=
-     whenever the data does (v1.22 and v1.23 changed no data, so it stays ?v=1.21). -->
+     whenever the data does (v1.22 to v1.24 changed no data, so it stays ?v=1.21). -->
 <meta http-equiv="Cache-Control" content="no-cache">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -243,6 +243,8 @@
   .suburb-row .suburb-name { font-size: 11px; color: var(--text-dim); margin-right: 8px; }
   .suburb-row .suburb-name .count { font-weight: 700; color: var(--text); opacity: 0.8; margin-left: 3px; }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
+  /* v1.24 C1: a thin label inside a section, over its lunch and specials. No count. */
+  .section-sub { font-size: 11px; font-weight: 600; color: var(--text-dim); margin: 12px 2px 6px; padding-top: 8px; border-top: 1px solid var(--border); }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
   .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
@@ -273,7 +275,9 @@
   .badge.special { color: var(--amber-strong); border-color: var(--amber); }
   .badge.lunch { color: var(--lunch); border-color: var(--lunch); }
   .badge.inkind { color: var(--amber-strong); border-color: var(--amber); }
-  .badge.warn { color: var(--bad); border-color: var(--bad); }
+  /* v1.24 C2 (TJ 14:14): no red badges. An hours problem is "Verify before you go" plus one
+     plain sentence on the card (L.hoursCaveat), in the body ink. */
+  .hours-caveat { margin-top: 6px; font-size: 12.5px; line-height: 1.4; color: var(--text); }
   /* v1.22 C2 (TJ 13:30, "The one place is greyed out"): a card is never dimmed for missing the
      chosen deal type; it says so. Drink blue / amber, the grid's own colours for the two types. */
   .badge.drinks-only { color: var(--drink); border-color: var(--drink); }
@@ -298,7 +302,7 @@
   /* ==================== v1.10 C2: the venue's own hours ==================== */
   .hours-line { margin-top: 3px; font-size: 12.5px; color: var(--text-dim); }
   .hours-line b { font-weight: 700; color: var(--text); }
-  .hours-line.closed b { color: var(--bad); }
+  /* v1.24 C2: "Closed" is bold body ink, like the rest of the line (it was red). */
   .hours-line.none { font-style: italic; }
   .week-hours { margin-top: 8px; display: grid; grid-template-columns: auto 1fr; gap: 1px 10px;
     font-size: 11.5px; color: var(--text-dim); }
@@ -311,7 +315,7 @@
   .verdict { margin-top: 4px; font-size: 12.5px; font-weight: 700; color: var(--text-dim); }
   .verdict.make { color: var(--amber-strong); }
   .verdict.close { color: var(--drink); }
-  .verdict.miss { color: var(--bad); }
+  .verdict.miss { color: var(--text-dim); } /* v1.24 C2: the card already sinks; no red */
   .verdict .est { font-weight: 400; }
   /* The address is the one control on a card that leaves the app, so it gets the
      44px touch target the icon buttons get, at full card width. */
@@ -429,7 +433,7 @@
   .block.allday { top: auto; bottom: 3px; height: 6px; border-radius: 3px; opacity: 0.75; }
   .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
   /* v1.12 C3: a temporarily closed venue's row on a closed date: a label, no blocks or bands. */
-  .grid-closed { position: absolute; top: 50%; left: 6px; transform: translateY(-50%); z-index: 2; padding: 2px 6px; border-radius: 4px; background: var(--panel); font-size: 11.5px; font-weight: 700; color: var(--bad); white-space: nowrap; pointer-events: none; }
+  .grid-closed { position: absolute; top: 50%; left: 6px; transform: translateY(-50%); z-index: 2; padding: 2px 6px; border-radius: 4px; background: var(--panel); font-size: 11.5px; font-weight: 700; color: var(--text); white-space: nowrap; pointer-events: none; }
   .grid-expanded { padding: 6px 10px 10px; background: var(--bg); border-bottom: 1px solid var(--border); }
   .grid-expanded .card { margin: 6px 0 0; }
   .grid-expanded .card:first-child { margin-top: 0; }
@@ -970,12 +974,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.23"></script>
+<script src="logic.js?v=1.24"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.23';
+  var APP_VERSION = 'v1.24';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1136,11 +1140,7 @@
     inkind: 'Listed on inKind: pay through the app and the bill earns bonus credit.',
     special: 'A one-day or all-day deal, not the regular happy hour.',
     lunch: 'A weekday lunch deal.',
-    verify: 'Not confirmed recently, or the source is shaky. Check with the venue before you go.',
-    'Hours conflict': 'The deal is listed for a day the venue’s posted hours say it is closed.',
-    'No hours on file': 'We have no opening hours for this venue.',
-    'Close time assumed': 'The deal runs “until close” and we have no close time for that day.',
-    'Outside posted hours': 'Part of the deal falls outside the venue’s posted opening hours.',
+    verify: 'Not confirmed recently, or the venue’s posted hours don’t match the deal. Check with the venue before you go.',
     // v1.22 C2: the window has deals, but none of the type chosen with Food-first / Drink-first.
     'drinks-only': 'No food deal in this window, only drinks. Shown because Food-first is on.',
     'food-only': 'No drink deal in this window, only food. Shown because Drink-first is on.',
@@ -1154,28 +1154,24 @@
     var out = [];
     if (win.kind === 'special') out.push(badgeHtml('special', 'Special', BADGE_TIPS.special));
     if (win.kind === 'lunch') out.push(badgeHtml('lunch', 'Lunch', BADGE_TIPS.lunch));
-    if (L.isUnverified(win) || L.isStale(win.last_verified, state.now)) out.push(badgeHtml('verify', 'Verify before you go', BADGE_TIPS.verify));
-    var warns = L.windowWarnings(venue, win);
-    if (warns.indexOf('closed-day-per-hours') !== -1) {
-      var hc = Object.keys(venue.hours || {}).length === 0 ? 'No hours on file' : 'Hours conflict';
-      out.push(badgeHtml('warn', hc, BADGE_TIPS[hc]));
-    }
-    if (warns.indexOf('missing-hours-fallback-2359') !== -1) out.push(badgeHtml('warn', 'Close time assumed', BADGE_TIPS['Close time assumed']));
-    // v1.12 C4: partly or wholly outside the hours on a day the venue IS open. Never hidden.
-    var off = L.outsideHoursDays(venue, win);
-    if (off.length) {
-      var onDays = off.length === 7 ? 'every day' : 'on ' + L.formatDays(off);
-      out.push(badgeHtml('warn', 'Outside posted hours', BADGE_TIPS['Outside posted hours'].replace(/\.$/, ' ' + onDays + '.')));
+    // v1.24 C2 (TJ 14:14): the four red hours badges (hours conflict, outside posted hours,
+    // no hours on file, close time assumed) are gone. Those windows get this one badge,
+    // once, and the card says what is wrong in a sentence (hoursCaveatHtml).
+    if (L.isUnverified(win) || L.isStale(win.last_verified, state.now) || L.hasHoursCaveat(venue, win)) {
+      out.push(badgeHtml('verify', 'Verify before you go', BADGE_TIPS.verify));
     }
     return out.join('');
+  }
+  function hoursCaveatHtml(venue, win) {
+    var text = L.hoursCaveat(venue, win);
+    return text ? '<div class="hours-caveat">' + escapeHtml(text) + '</div>' : '';
   }
   // The one-line key: the same badges, the same words.
   function badgeKeyHtml() {
     var only = state.priority === 'drink' ? 'food-only' : 'drinks-only';
     var rows = [['inkind', 'inKind', BADGE_TIPS.inkind], [only, ONLY_LABEL[only], BADGE_TIPS[only]],
       ['special', 'Special', BADGE_TIPS.special],
-      ['lunch', 'Lunch', BADGE_TIPS.lunch], ['verify', 'Verify before you go', BADGE_TIPS.verify],
-      ['warn', 'Hours conflict · Outside posted hours', 'Red: a real problem with the hours. Check before you go.']];
+      ['lunch', 'Lunch', BADGE_TIPS.lunch], ['verify', 'Verify before you go', BADGE_TIPS.verify]];
     return '<div class="note badge-key" id="badge-key"><span>Labels:</span>' + rows.map(function (r) {
       return '<span class="bk">' + badgeHtml(r[0], r[1], r[2]) + '</span>';
     }).join('') + '</div>';
@@ -1388,6 +1384,7 @@
         addressLinkHtml(venue, 'card-addr') +
         '<div class="badges">' + badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) +
           (only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '') + renderBadges(venue, win) + '</div>' +
+        hoursCaveatHtml(venue, win) +
         windowLineHtml(venue, win) +
         '<div class="deals">' + dealsInner + '</div>' +
         readerNoteHtml(win) +
@@ -1418,37 +1415,28 @@
     return cardHtml(entry.venue, entry.window, statusLabel, entry.status, distanceLabel(entry.venue), key, state.expandedCards.has(key), entry.travel);
   }
 
-  // ---------- NOW view (C3: Live now / Starting soon / All-day specials) ----------
+  // ---------- NOW view (C3: Live now / Starting soon) ----------
+  // v1.24 C1 (TJ 14:14): one live list. L.nowEntries files an all-day window like any other
+  // (live -> Live now, within 2 hours -> Starting soon); there is no "All-day specials" section.
+  // Inside each section: happy hours first, in the section's usual order, then lunch and specials.
   function buildNowSections() {
-    var live = [], soon = [], allDay = [];
-    filteredVenues().forEach(function (venue) {
-      venue.windows.forEach(function (win) {
-        if (L.windowTempClosedNow(venue, win, state.now)) return; // v1.12 C3: closed that date
-        var allDayWin = L.isAllDay(venue, win);
-        if (L.isActive(venue, win, state.now)) {
-          (allDayWin ? allDay : live).push({ venue: venue, window: win, status: 'active', day: state.now.dayOfWeek });
-        } else if (allDayWin) {
-          if (L.startsWithin(venue, win, state.now, 120)) {
-            allDay.push({ venue: venue, window: win, status: 'soon', minutesUntil: L.minutesUntilNextStart(venue, win, state.now), day: state.now.dayOfWeek });
-          }
-        } else if (L.startsWithin(venue, win, state.now, 120, { excludeAllDay: true })) {
-          soon.push({ venue: venue, window: win, status: 'soon', minutesUntil: L.minutesUntilNextStart(venue, win, state.now), day: state.now.dayOfWeek });
-        }
-      });
-    });
-
+    var entries = L.nowEntries(filteredVenues(), state.now);
+    var live = entries.live, soon = entries.soon;
     // v1.8 C2: computed once per entry, not once per comparison — the sort below and
     // every card renderer read the same object, and resolveWindow() is not free.
-    [live, soon, allDay].forEach(function (list) {
-      list.forEach(function (e) { e.travel = travelInfoFor(e.venue, e.window); });
+    [live, soon].forEach(function (list) {
+      list.forEach(function (e) { e.day = state.now.dayOfWeek; e.travel = travelInfoFor(e.venue, e.window); });
     });
 
     function byNameAsc(a, b) { return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0); }
-    // A card you cannot reach in time sinks below the ones you can, inside Live now.
+    function byKind(a, b) { return L.nowKindRank(a.window) - L.nowKindRank(b.window); }
+    // A card you cannot reach in time sinks below the ones you can, inside its group.
     // Without a position every rank is 0 and the old ordering stands untouched.
     function missRank(e) { return e.travel && e.travel.verdict === 'miss' ? 1 : 0; }
 
     live.sort(function (a, b) {
+      var k = byKind(a, b);
+      if (k) return k;
       var ma = missRank(a), mb = missRank(b);
       if (ma !== mb) return ma - mb;
       if (state.geo) {
@@ -1461,22 +1449,28 @@
       }
       return byNameAsc(a, b);
     });
-    soon.sort(function (a, b) { return a.minutesUntil !== b.minutesUntil ? a.minutesUntil - b.minutesUntil : byNameAsc(a, b); });
-    allDay.sort(function (a, b) {
-      if (state.geo) {
-        var da2 = L.haversineMiles(state.geo.lat, state.geo.lon, a.venue.lat, a.venue.lon);
-        var db2 = L.haversineMiles(state.geo.lat, state.geo.lon, b.venue.lat, b.venue.lon);
-        if (da2 !== db2) return da2 - db2;
-      }
-      return byNameAsc(a, b);
+    soon.sort(function (a, b) {
+      return byKind(a, b) || (a.minutesUntil !== b.minutesUntil ? a.minutesUntil - b.minutesUntil : byNameAsc(a, b));
     });
-    return { live: live, soon: soon, allDay: allDay };
+    return { live: live, soon: soon };
+  }
+
+  // One section: its heading and count, its happy hours, then a thin "Lunch & specials" label
+  // (no count of its own) over the rest when the section has both.
+  function nowSectionHtml(title, list) {
+    if (!list.length) return '';
+    var html = '<div class="section-heading">' + title + ' (' + list.length + ')</div>';
+    var hh = list.filter(function (e) { return L.nowKindRank(e.window) === 0; });
+    var other = list.filter(function (e) { return L.nowKindRank(e.window) !== 0; });
+    html += hh.map(nowEntryCardHtml).join('');
+    if (other.length && hh.length) html += '<div class="section-sub">Lunch &amp; specials</div>';
+    return html + other.map(nowEntryCardHtml).join('');
   }
 
   function renderNow() {
     var el = document.getElementById('view-now');
     var sections = buildNowSections();
-    var total = sections.live.length + sections.soon.length + sections.allDay.length;
+    var total = sections.live.length + sections.soon.length;
     if (total === 0) {
       var eligible = filteredVenues().filter(function (v) { return v.windows.length > 0; });
       // v1.21 C2: the next HAPPY HOUR, plus a quieter line for a lunch or special that starts sooner.
@@ -1504,9 +1498,7 @@
       return;
     }
     var html = surpriseHtml('now') + geoNoteHtml();
-    if (sections.live.length) html += '<div class="section-heading">Live now (' + sections.live.length + ')</div>' + sections.live.map(nowEntryCardHtml).join('');
-    if (sections.soon.length) html += '<div class="section-heading">Starting soon (' + sections.soon.length + ')</div>' + sections.soon.map(nowEntryCardHtml).join('');
-    if (sections.allDay.length) html += '<div class="section-heading">All-day specials (' + sections.allDay.length + ')</div>' + sections.allDay.map(nowEntryCardHtml).join('');
+    html += nowSectionHtml('Live now', sections.live) + nowSectionHtml('Starting soon', sections.soon);
     el.innerHTML = html + badgeKeyHtml();
   }
 
@@ -1685,9 +1677,9 @@
     var rowsHtml = candidates.map(function (r) {
       var venue = r.venue, items = r.items;
       // v1.11 C3: the venue's open hours for this day, behind the blocks. No hours on
-      // file = no band; a block outside the band carries "Outside posted hours" (v1.12
-      // C4), or "Hours conflict" when the hours leave the whole day out. A temporarily
-      // closed date (v1.12 C3) draws a label instead of bands and blocks.
+      // file = no band. A block outside the band carries no label of its own (v1.24 C2):
+      // the band shows it, and the row's card says it in words (L.hoursCaveat). A
+      // temporarily closed date (v1.12 C3) draws a label instead of bands and blocks.
       var bandCls = 'hours-band' + (venue.hours_confidence === 'low' ? ' low' : '');
       var bands = r.closed ? '' : (L.openBands(venue, day, GRID_START, GRID_END) || []).map(function (b) {
         return '<div class="' + bandCls + '" style="left:' + ((b.start - GRID_START) / GRID_SPAN * 100) +
@@ -1779,7 +1771,7 @@
     var cov = L.dayCoverageCounts(visibleVenues, day);
     // The grid draws a row for exactly the onDay group; if these ever disagree the
     // footer is lying about what is on screen, so say so rather than print a number.
-    var mismatch = cov.onDay !== rowsDrawn ? ' <span class="badge warn">count/rows mismatch</span>' : '';
+    var mismatch = cov.onDay !== rowsDrawn ? ' <span class="badge">count/rows mismatch</span>' : '';
     var sum = zoneFilterSummary();
     var prefix = sum.filtered
       ? 'In ' + sum.zoneCount + ' zone' + (sum.zoneCount === 1 ? '' : 's') + ': '
@@ -1900,17 +1892,20 @@
     return L.hoodKeys().filter(function (h) { return HOOD_TOTALS[h] > 0 && !HOOD_HAS_HH[h]; });
   }
 
-  // NOW: live-now count per hood. GRID: rows-on-selected-day count per hood.
-  // Always computed against ALL venues (not hood-filtered) so deselecting one
+  // NOW: live cards per hood (v1.24 C1: L.liveCountsByHood, the same entries as the "Live now
+  // (N)" heading, so a zone's number is its cards under that heading). GRID: rows-on-selected-day
+  // count per hood. Always computed against ALL venues (not hood-filtered) so deselecting one
   // hood doesn't change the numbers shown on every OTHER chip.
   function hoodCounts() {
     var counts = {};
     L.hoodKeys().forEach(function (h) { counts[h] = 0; });
+    if (state.currentTab !== 'grid') {
+      var live = L.liveCountsByHood(state.venues, state.now);
+      Object.keys(live).forEach(function (h) { counts[h] = live[h]; });
+      return counts;
+    }
     state.venues.forEach(function (v) {
-      var counts_here = state.currentTab === 'grid'
-        ? dayIntervalsForVenue(v, state.day).length > 0
-        : isVenueLiveNow(v);
-      if (counts_here) counts[v.hood] = (counts[v.hood] || 0) + 1;
+      if (dayIntervalsForVenue(v, state.day).length > 0) counts[v.hood] = (counts[v.hood] || 0) + 1;
     });
     return counts;
   }
@@ -2731,7 +2726,7 @@
   var whereHist = L.sheetHistory(window.history, hideWhere);
   function whereCount() {
     if (state.currentTab === 'grid') return L.dayCoverageCounts(filteredVenues(), state.day).onDay;
-    return buildNowSections().live.length;
+    return L.nowEntries(filteredVenues(), state.now).live.length; // v1.24 C1: = "Live now (N)"
   }
   function whereCheckHtml(cls, st, name, count, data, ariaName) {
     var checked = st === 'all' ? 'true' : (st === 'some' ? 'mixed' : 'false');
