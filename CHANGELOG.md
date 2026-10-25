@@ -64,7 +64,11 @@ TJ, 2026-10-25, verbatim:
   their next reload.
 - **C7: v1.22.** `APP_VERSION` and `logic.js?v=1.22`; `venues.json?v=1.21` is unchanged (no data change). Tests
   198 → 214.
-- **Images.** Re-taken from the live v1.22 site in the follow-up commit (they have to come from the live page).
+- **Images.** Re-taken from the live v1.22 site, same framing as fix15/fix21, because they now look different:
+  `og-preview.png` (cards carry "Drinks only" badges instead of being dimmed) and LinkedIn `post-01-now` (the Where
+  line and the badges), `post-01b-now-zones-open` (now the phone Where sheet, open, "Show 52 live now") and
+  `post-02-daygrid` (times under each name, no in-block labels). `post-03-card` is unchanged (the same Park Cafe
+  card), so it was not replaced.
 
 ## 2026-10-25 — BLOCK-hh-radar-fix21-20261025: v1.21 (last pre-launch tidy)
 
