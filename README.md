@@ -37,7 +37,8 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
-  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged through v1.15, so it has no referral bar and shows the pre-v1.15 chip style).
+  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.16: light theme, storage cleared,
+  referral bar dismissed, the v1.12 framing).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
@@ -283,11 +284,18 @@ research batches, the merge script, the hood script and the merge report).
    hours or happy-hour flags (2026-10-23: `operating_hours`, `happy_hour`, `lunch` and every
    meal flag absent from all 10,975 rows), so inKind is the **roster only** and EVERY venue
    is researched: follow `data-src/refresh-20261023/BRIEF-v2.md`.
-4. Merge with the merge script (`merge_20261023.py` is the model), give new venues a hood
-   with the hood script (`hood_new_20261023.js`, which uses this repo's own
-   `nearestNeighborhood` + `zoneOf`), then `node validate.js venues.json` and
+4. Merge with the merge script (`merge_20261023.py` is the model), then give each new venue
+   its hood **by hand from its street address** (v1.16: `post_20261025l.py` is the model —
+   one of the 36 keys in `logic.js` `ZONES`, with `zone` = `zoneOf(hood)`). The hood script
+   (`hood_new_20261023.js`, `nearestNeighborhood` + `zoneOf`) is only a fallback for a venue
+   nobody has placed yet: nearest-centroid misfiled 7 of the core venues before v1.16, so
+   check what it picks against the address. A new hood key needs a `ZONES` entry and a
+   `NEIGHBORHOOD_CENTROIDS` entry. Then `node validate.js venues.json` and
    `node --test`. Data-coupled tests (map containment, coverage counts) will name anything
-   the new roster moved.
+   the new roster moved; a dot that falls outside its own zone's drawn polygon goes in the
+   named `MAP_SEAM_EXCEPTIONS` list in `tests/windows.test.js`, with a reason, rather than a
+   redrawn polygon. A hood chip only appears once one of its venues has a happy hour
+   (computed at load); there is no list of hidden hoods to maintain.
 5. Cadence: monthly. Next due around **2026-11-23**. Still by hand; automate nothing yet.
 
 ## Development

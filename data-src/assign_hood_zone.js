@@ -4,7 +4,8 @@
 // 1-space JSON formatting exactly (JSON.stringify(data, null, 1), no trailing
 // newline — matches the file as written by build_venues_20260905.py).
 //
-// Mapping priority (see BLOCK-hh-radar-fix3-20260906 C1 for the source rule):
+// Mapping priority (see BLOCK-hh-radar-fix3-20260906 C1 for the source rule; v1.16 adds
+// rule 0: a venue whose `hood` is already a valid key, set by hand from its address, keeps it):
 //   1. OUTLIER_OVERRIDES by venue id — two venues (Dickson, Lewisburg) whose
 //      `neighborhood` field already equals an unrelated centroid name (an artifact
 //      of the original nearestNeighborhood fallback, which had no better option
@@ -26,22 +27,19 @@ const OUTLIER_OVERRIDES = {
   'ik-19233': 'Lewisburg',  // The Coffee House Lewisburg; neighborhood field says "Franklin/Cool Springs"
 };
 
+// v1.16 (fix16 C1): the aliases that only pointed at pre-v1.16 hood names
+// ('Downtown/SoBro', 'Sylvan Park/Charlotte', 'Belle Meade / West Nashville', ...) are
+// gone with those names. Only the two Franklin spellings still resolve to a live key.
 const HAND_SET_ALIASES = {
-  'Downtown (Fifth + Broadway)': 'Downtown/SoBro',
-  'SoBro': 'Downtown/SoBro',
-  'SoBro / Pie Town': 'Downtown/SoBro',
-  'The Gulch / 8th Ave S': 'The Gulch',
-  'Marathon Village': 'Germantown',
-  'Sylvan Park': 'Sylvan Park/Charlotte',
-  'Charlotte / Sylvan Park': 'Sylvan Park/Charlotte',
   'Franklin (McEwen)': 'Franklin/Cool Springs',
   'Franklin (Cool Springs)': 'Franklin/Cool Springs',
-  'Belle Meade / West Nashville': 'Belle Meade / West Nashville', // kept as its own key
 };
 
 const CENTROID_NAMES = new Set(L.NEIGHBORHOOD_CENTROIDS.map((c) => c.name));
 
 function computeHood(venue, warnings) {
+  // v1.16: hoods are set by hand from the street address; a valid one is never recomputed.
+  if (L.zoneOf(venue.hood)) return venue.hood;
   if (OUTLIER_OVERRIDES[venue.id]) return OUTLIER_OVERRIDES[venue.id];
   if (HAND_SET_ALIASES[venue.neighborhood]) return HAND_SET_ALIASES[venue.neighborhood];
   if (CENTROID_NAMES.has(venue.neighborhood)) return venue.neighborhood;

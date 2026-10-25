@@ -231,22 +231,37 @@
   }
 
   // ---- C6: neighborhood nearest-centroid fallback ----
-  // Small hand table of Nashville-metro neighborhood centroids, used only to
-  // relabel venues whose neighborhood came from the old free-text heuristic
-  // (see build script). Deterministic and testable; not meant to be precise
-  // to the block/parcel level.
+  // One centroid per hood key. v1.16: a venue's hood is set BY HAND from its street
+  // address when it is added (data-src/refresh-20261023/post_20261025l.py); the
+  // nearest centroid is only a fallback for a venue nobody has placed yet (it had
+  // misfiled 7 venues). The 25 core entries are hoods-v2.json's centroids (the mean
+  // of each hood's own venues); the suburb entries are unchanged since v1.3.
   var NEIGHBORHOOD_CENTROIDS = [
-    { name: '12 South', lat: 36.1189, lon: -86.7902 },
-    { name: 'The Gulch', lat: 36.1533, lon: -86.7853 },
-    { name: 'Midtown', lat: 36.1500, lon: -86.8000 },
-    { name: 'Downtown/SoBro', lat: 36.1627, lon: -86.7816 },
-    { name: 'Germantown', lat: 36.1751, lon: -86.7908 },
-    { name: 'East Nashville', lat: 36.1751, lon: -86.7539 },
-    { name: 'Wedgewood-Houston', lat: 36.1385, lon: -86.7692 },
-    { name: 'Sylvan Park/Charlotte', lat: 36.1500, lon: -86.8300 },
-    { name: 'Berry Hill', lat: 36.1225, lon: -86.7778 },
-    { name: 'Belle Meade/West', lat: 36.0870, lon: -86.8628 },
-    { name: 'Bellevue', lat: 36.0723, lon: -86.9611 },
+    { name: 'Lower Broadway', lat: 36.1611, lon: -86.7772 },
+    { name: 'Downtown & Printers Alley', lat: 36.1633, lon: -86.7782 },
+    { name: 'SoBro', lat: 36.1577, lon: -86.7745 },
+    { name: 'Rutledge Hill & Rolling Mill Hill', lat: 36.1544, lon: -86.7683 },
+    { name: 'The Gulch', lat: 36.1540, lon: -86.7844 },
+    { name: 'Nashville Yards & North Gulch', lat: 36.1599, lon: -86.7892 },
+    { name: 'Midtown & Music Row', lat: 36.1495, lon: -86.7968 },
+    { name: 'Hillsboro Village & Belmont', lat: 36.1359, lon: -86.7999 },
+    { name: 'West End', lat: 36.1453, lon: -86.8199 },
+    { name: 'Germantown', lat: 36.1773, lon: -86.7869 },
+    { name: 'Buchanan Arts District & North Nashville', lat: 36.1780, lon: -86.8050 },
+    { name: 'Dickerson Pike', lat: 36.1885, lon: -86.7730 },
+    { name: 'Five Points & Main Street', lat: 36.1757, lon: -86.7567 },
+    { name: 'Gallatin Avenue & Eastwood', lat: 36.1865, lon: -86.7436 },
+    { name: 'Inglewood & Riverside', lat: 36.2170, lon: -86.7320 },
+    { name: 'East Bank & Fesslers', lat: 36.1521, lon: -86.7422 },
+    { name: '12 South', lat: 36.1266, lon: -86.7884 },
+    { name: 'Wedgewood-Houston', lat: 36.1421, lon: -86.7692 },
+    { name: 'Berry Hill', lat: 36.1128, lon: -86.7675 },
+    { name: 'Green Hills', lat: 36.1045, lon: -86.8145 },
+    { name: 'Sylvan Park', lat: 36.1475, lon: -86.8390 },
+    { name: 'The Nations', lat: 36.1591, lon: -86.8486 },
+    { name: 'West Nashville & White Bridge', lat: 36.1324, lon: -86.8700 },
+    { name: 'Belle Meade', lat: 36.0974, lon: -86.8736 },
+    { name: 'Bellevue', lat: 36.0610, lon: -86.9522 },
     { name: 'Franklin/Cool Springs', lat: 35.9300, lon: -86.8500 },
     { name: 'Brentwood', lat: 36.0331, lon: -86.7828 },
     { name: 'Murfreesboro', lat: 35.8456, lon: -86.3903 },
@@ -255,6 +270,7 @@
     { name: 'Smyrna', lat: 35.9828, lon: -86.5186 },
     { name: 'Gallatin', lat: 36.3883, lon: -86.4472 },
     { name: 'Antioch/Hermitage', lat: 36.1000, lon: -86.6300 },
+    { name: 'Donelson & Opry Mills', lat: 36.2034, lon: -86.6947 },
   ];
 
   function haversineMiles(lat1, lon1, lat2, lon2) {
@@ -276,21 +292,22 @@
     return best;
   }
 
-  // ---- ZONE model (v1.3): 8 zones grouping the 21 canonical hood keys ----
+  // ---- ZONE model (v1.3; v1.16 hoods): 8 zones grouping the 36 canonical hood keys ----
   // Two tiers per TJ's ruling: ZONE is the default filter/map-color granularity,
-  // HOOD is the finer chip revealed on demand. Every venue's `hood` (see
-  // data-src/assign_hood_zone.js) is one of the 21 keys below; `zone` is derived
-  // from it via zoneOf so the data file and this table can never disagree
-  // (validateVenues checks venue.zone === zoneOf(venue.hood)).
+  // HOOD is the finer chip revealed on demand. Every venue's `hood` is one of the
+  // keys below; `zone` is derived from it via zoneOf so the data file and this table
+  // can never disagree (validateVenues checks venue.zone === zoneOf(venue.hood)).
+  // v1.16 (TJ 2026-10-25, "some people would care about their neighborhood being
+  // represented"): the core hoods are hoods-v2.json's, in its order.
   var ZONES = [
-    { key: 'downtown', label: 'Downtown', hue: 205, hoods: ['Downtown/SoBro'] },
-    { key: 'gulch', label: 'Gulch & Midtown', hue: 275, hoods: ['The Gulch', 'Midtown'] },
-    { key: 'north', label: 'Germantown & North', hue: 150, hoods: ['Germantown'] },
-    { key: 'east', label: 'East', hue: 340, hoods: ['East Nashville'] },
-    { key: 'south', label: 'South', hue: 95, hoods: ['12 South', 'Wedgewood-Houston', 'Berry Hill'] },
-    { key: 'west', label: 'West', hue: 190, hoods: ['Sylvan Park/Charlotte', 'Belle Meade / West Nashville', 'Bellevue'] },
+    { key: 'downtown', label: 'Downtown', hue: 205, hoods: ['Lower Broadway', 'Downtown & Printers Alley', 'SoBro', 'Rutledge Hill & Rolling Mill Hill'] },
+    { key: 'gulch', label: 'Gulch & Midtown', hue: 275, hoods: ['The Gulch', 'Nashville Yards & North Gulch', 'Midtown & Music Row', 'Hillsboro Village & Belmont', 'West End'] },
+    { key: 'north', label: 'Germantown & North', hue: 150, hoods: ['Germantown', 'Buchanan Arts District & North Nashville', 'Dickerson Pike'] },
+    { key: 'east', label: 'East', hue: 340, hoods: ['Five Points & Main Street', 'Gallatin Avenue & Eastwood', 'Inglewood & Riverside', 'East Bank & Fesslers'] },
+    { key: 'south', label: 'South', hue: 95, hoods: ['12 South', 'Wedgewood-Houston', 'Berry Hill', 'Green Hills'] },
+    { key: 'west', label: 'West', hue: 190, hoods: ['Sylvan Park', 'The Nations', 'West Nashville & White Bridge', 'Belle Meade', 'Bellevue'] },
     { key: 'franklin', label: 'Franklin & Brentwood', hue: 235, hoods: ['Brentwood', 'Franklin/Cool Springs'] },
-    { key: 'outer', label: 'Outer suburbs', hue: 35, hoods: ['Antioch/Hermitage', 'Smyrna', 'Murfreesboro', 'Mt. Juliet', 'Hendersonville', 'Gallatin', 'Dickson', 'Lewisburg'] },
+    { key: 'outer', label: 'Outer suburbs', hue: 35, hoods: ['Antioch/Hermitage', 'Smyrna', 'Murfreesboro', 'Mt. Juliet', 'Hendersonville', 'Gallatin', 'Dickson', 'Lewisburg', 'Donelson & Opry Mills'] },
   ];
   // The 6 "core" zones get a Voronoi cell on the map; "franklin" and "outer" render
   // as suburb tiles instead (C4). This is a zone-membership choice, not a raw
@@ -320,16 +337,12 @@
   // so the two can never drift apart.
   var CORE_MAP_BBOX = { minLat: 36.03, maxLat: 36.26, minLon: -86.97, maxLon: -86.63 };
 
-  // One lat/lon centroid per core hood, for the Voronoi map. Reuses
-  // NEIGHBORHOOD_CENTROIDS (11 of its 19 entries are core hoods; the name differs
-  // for exactly one -- the hood key is "Belle Meade / West Nashville" per C1,
-  // the centroid is named "Belle Meade/West") plus that one rename.
-  var CENTROID_RENAME = { 'Belle Meade/West': 'Belle Meade / West Nashville' };
+  // One lat/lon centroid per core hood, for the Voronoi map. v1.16: every core hood
+  // has its own NEIGHBORHOOD_CENTROIDS entry under the same name, so no rename table.
   function coreHoodCentroids() {
     var out = [];
     NEIGHBORHOOD_CENTROIDS.forEach(function (c) {
-      var hood = CENTROID_RENAME[c.name] || c.name;
-      if (isCoreHood(hood)) out.push({ hood: hood, lat: c.lat, lon: c.lon });
+      if (isCoreHood(c.name)) out.push({ hood: c.name, lat: c.lat, lon: c.lon });
     });
     return out;
   }
@@ -449,6 +462,8 @@
     // Herban Perk & Pantry in the Gulch while City Winery (south-west of both) and
     // Legendary Wings (north-east of both) stay Downtown — the data's own hood
     // labels interleave along this seam, so no straight boundary can split them.
+    // v1.16: koshō and The Herban Perk are SoBro (Downtown) by street address now; the
+    // notch stays as drawn (fix16 C1) and both are named map exceptions in the tests.
     downtown: [
       [36.1735, -86.7830],
       [36.1735, -86.7745],

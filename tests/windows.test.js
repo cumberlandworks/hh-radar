@@ -6,7 +6,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   resolveWindow, isActive, startsWithin, nextStart, nextStartAcrossVenues,
-  isStale, windowWarnings, isAllDay, nearestNeighborhood, bestSourceUrl,
+  isStale, windowWarnings, isAllDay, nearestNeighborhood, NEIGHBORHOOD_CENTROIDS, bestSourceUrl,
   ZONES, hoodKeys, zoneOf, isCoreHood, applyHoodFilter,
   serializeHoodSelection, deserializeHoodSelection,
   projectLatLon, polygonArea, pointInPolygon, voronoiCells,
@@ -262,20 +262,41 @@ test('bestSourceUrl: falls back to inkind_url when there is no official_site and
 // ---- C6: neighborhood nearest-centroid ----
 test('nearestNeighborhood pins known coordinates to their neighborhoods', () => {
   assert.equal(nearestNeighborhood(36.1535, -86.7853), 'The Gulch', 'Bar Mar coordinates -> The Gulch');
-  assert.equal(nearestNeighborhood(36.1189, -86.7902), '12 South', 'exact 12 South centroid -> 12 South');
+  assert.equal(nearestNeighborhood(36.1189, -86.7902), '12 South', 'pre-v1.16 12 South centroid -> 12 South (still nearest)');
 });
 
 // ---- ZONE model (v1.3): hoodKeys / zoneOf / isCoreHood ----
-test('hoodKeys returns exactly 21 keys in the C3-specified chip order', () => {
+// v1.16: 21 -> 36 keys. The core hoods are hoods-v2.json's, in its order (fix16 C1).
+test('hoodKeys returns exactly 36 keys in the fix16-specified chip order', () => {
   const keys = hoodKeys();
-  assert.equal(keys.length, 21);
+  assert.equal(keys.length, 36);
   assert.deepEqual(keys, [
-    'Downtown/SoBro', 'The Gulch', 'Midtown', 'Germantown', 'East Nashville',
-    '12 South', 'Wedgewood-Houston', 'Berry Hill', 'Sylvan Park/Charlotte',
-    'Belle Meade / West Nashville', 'Bellevue',
+    'Lower Broadway', 'Downtown & Printers Alley', 'SoBro', 'Rutledge Hill & Rolling Mill Hill',
+    'The Gulch', 'Nashville Yards & North Gulch', 'Midtown & Music Row', 'Hillsboro Village & Belmont', 'West End',
+    'Germantown', 'Buchanan Arts District & North Nashville', 'Dickerson Pike',
+    'Five Points & Main Street', 'Gallatin Avenue & Eastwood', 'Inglewood & Riverside', 'East Bank & Fesslers',
+    '12 South', 'Wedgewood-Houston', 'Berry Hill', 'Green Hills',
+    'Sylvan Park', 'The Nations', 'West Nashville & White Bridge', 'Belle Meade', 'Bellevue',
     'Brentwood', 'Franklin/Cool Springs', 'Antioch/Hermitage', 'Smyrna',
     'Murfreesboro', 'Mt. Juliet', 'Hendersonville', 'Gallatin', 'Dickson', 'Lewisburg',
+    'Donelson & Opry Mills',
   ]);
+});
+
+test('ZONES core hoods match data-src hoods-v2.json exactly, in order', () => {
+  const hv2 = require(path.join(__dirname, '..', 'data-src', 'refresh-20261023', 'hoods-v2.json'));
+  CORE_ZONE_KEYS.forEach((z) => {
+    assert.deepEqual(ZONES.find((x) => x.key === z).hoods, hv2[z].map((h) => h.hood), z);
+  });
+  const outer = ZONES.find((x) => x.key === 'outer').hoods;
+  assert.equal(outer[outer.length - 1], 'Donelson & Opry Mills');
+});
+
+test('every hood key has exactly one NEIGHBORHOOD_CENTROIDS entry except Dickson and Lewisburg', () => {
+  const names = NEIGHBORHOOD_CENTROIDS.map((c) => c.name);
+  assert.equal(new Set(names).size, names.length, 'duplicate centroid');
+  assert.deepEqual(hoodKeys().filter((h) => !names.includes(h)), ['Dickson', 'Lewisburg']);
+  assert.deepEqual(names.filter((n) => zoneOf(n) === null), [], 'centroid with no zone');
 });
 
 test('ZONES has 8 zones and every hood belongs to exactly one', () => {
@@ -285,13 +306,14 @@ test('ZONES has 8 zones and every hood belongs to exactly one', () => {
     assert.equal(seen.has(h), false, h + ' appears in more than one zone');
     seen.add(h);
   }));
-  assert.equal(seen.size, 21);
+  assert.equal(seen.size, 36);
 });
 
 test('zoneOf maps every hood to its zone and returns null for an unknown key', () => {
   assert.equal(zoneOf('The Gulch'), 'gulch');
   assert.equal(zoneOf('Dickson'), 'outer');
-  assert.equal(zoneOf('Belle Meade / West Nashville'), 'west');
+  assert.equal(zoneOf('Belle Meade'), 'west');
+  assert.equal(zoneOf('Donelson & Opry Mills'), 'outer');
   assert.equal(zoneOf('not-a-real-hood'), null);
 });
 
@@ -326,15 +348,16 @@ test('applyHoodFilter: "None" (empty Set) returns no venues -- an empty selectio
 });
 
 test('deserializeHoodSelection: round-trips a saved selection', () => {
-  const original = new Set(['The Gulch', 'Midtown']);
+  const original = new Set(['The Gulch', 'Midtown & Music Row']);
   const raw = JSON.parse(JSON.stringify(serializeHoodSelection(original)));
   const restored = deserializeHoodSelection(raw, hoodKeys());
-  assert.deepEqual(Array.from(restored).sort(), ['Midtown', 'The Gulch']);
+  assert.deepEqual(Array.from(restored).sort(), ['Midtown & Music Row', 'The Gulch']);
 });
 
 test('deserializeHoodSelection: silently drops unknown keys instead of resetting to all', () => {
+  // v1.16: a pre-v1.16 key ('Midtown') is unknown now and drops the same way.
   const restored = deserializeHoodSelection(['The Gulch', 'Atlantis', 'Midtown'], hoodKeys());
-  assert.deepEqual(Array.from(restored).sort(), ['Midtown', 'The Gulch']);
+  assert.deepEqual(Array.from(restored).sort(), ['The Gulch']);
 });
 
 test('deserializeHoodSelection: an empty array is a legitimate "none" state, not reset to all', () => {
@@ -407,7 +430,17 @@ test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell 
 // v1.11: the thread relabelled it Downtown/SoBro, zone downtown (post_20261023c.py, label
 // only, same lat/lon). The dot is still inside East, so it is still outside its own
 // (now Downtown) polygon and the exception stays.
-const MAP_SEAM_EXCEPTIONS = { 'ik-19732': 'LinQ Social Kitchen: Downtown/SoBro by hood, East of the drawn river' };
+// v1.16 (fix16 C1): hoods are now set by street address, and five more venues land in a
+// zone whose drawn polygon does not hold their dot. The block keeps the polygons as drawn,
+// so each one is a named exception here; LinQ's hood is now Rutledge Hill & Rolling Mill Hill.
+const MAP_SEAM_EXCEPTIONS = {
+  'ik-19732': 'LinQ Social Kitchen: Downtown (Rutledge Hill) by address, East of the drawn river',
+  'ik-13852': 'koshō: Downtown (SoBro, 538 6th Ave S) by address, inside the Gulch notch',
+  'ik-18919': 'The Herban Perk & Pantry: Downtown (SoBro, 512 Rep. John Lewis Way S) by address, inside the Gulch notch',
+  'ik-20518': 'Chateau West: Gulch & Midtown (West End, 3408 West End Ave) by address, inside West',
+  'ik-15740': 'E+ROSE - OneC1ty: Gulch & Midtown (West End, 4 City Blvd) by address, inside West',
+  'ik-20959': 'Jashan: Gulch & Midtown (Hillsboro Village, 2100 21st Ave S) by address, inside South',
+};
 function coreVenuesForMap() {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood) &&
@@ -1202,7 +1235,7 @@ test('defaultNavApp: Apple on Apple platforms, Google everywhere else', () => {
 function v2file(venues) { return { schema_version: 2, generated: '2026-10-23', venues }; }
 function v2venue(extra) {
   return Object.assign({
-    id: 'ik-1', name: 'Test', lat: 36.16, lon: -86.78, hood: 'Downtown/SoBro', zone: 'downtown',
+    id: 'ik-1', name: 'Test', lat: 36.16, lon: -86.78, hood: 'SoBro', zone: 'downtown',
     tz: 'America/Chicago', inkind: true, status: 'open', hours: {}, windows: [], verified_no_hh: true,
   }, extra);
 }

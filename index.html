@@ -16,8 +16,8 @@
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
      draws. No venue count in any of this text: it would rot on the next refresh.
-     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.12 at
-     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.12). -->
+     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.16 at
+     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.16). -->
 <meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
@@ -68,6 +68,10 @@
     --pill-line: #bdb9b0;
     --pill-on-l: 32%;
     --pill-on-ink: #ffffff;
+    /* v1.16 C2: actions (All, None, Surprise me, Zones, Map) are neither selected nor
+       unselected toggles: a quiet neutral fill, normal-weight label, no check, no amber. */
+    --action-bg: #dcd8cf;
+    --action-ink: #16181d;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -99,6 +103,8 @@
       --pill-line: #3d4a63;
       --pill-on-l: 65%;
       --pill-on-ink: #0f1420;
+      --action-bg: #2b3550;
+      --action-ink: #eef0f4;
     }
   }
   * { box-sizing: border-box; }
@@ -137,6 +143,11 @@
   /* C2: a zone with nothing live/on-the-day dims instead of showing a "0" badge
      (v1.15: only while unselected, so a selected chip always reads as selected). */
   .pill.zero:not(.on) { opacity: 0.5; }
+  /* v1.16 C2: action buttons. Same shape as every pill, but filled neutral with the body
+     ink at normal weight; no state class ever applies to them (Map says aria-expanded). */
+  .pill.action { background: var(--action-bg); border-color: var(--action-bg); color: var(--action-ink);
+    font-weight: 400; }
+  .pill.action:active { filter: brightness(0.94); }
   .pill:focus-visible { outline: 2px solid hsl(var(--pill-hue, 35), 58%, 46%); outline-offset: 2px; }
   .pill .caret { border: none; background: transparent; color: inherit; font-family: inherit;
     font-size: 10px; line-height: 1; padding: 0 0 0 3px; margin-right: -3px; cursor: pointer; }
@@ -576,6 +587,9 @@
     .zone-toolbar.open .zone-row { margin-top: 8px; }
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
+    /* v1.16 C1: up to five neighborhood chips per zone. The zone name takes its own line so
+       the chips start flush left and wrap in even rows (two rows at 375px). */
+    .hood-strip .strip-label { flex: 0 0 100%; margin: 0; }
     /* v1.6 C3: "All" and "None" carry no count badge, so 11px of padding left them
        40px wide — measured at 390px. Everything in this row is a real target now. */
     .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
@@ -670,7 +684,7 @@
     <button type="button" class="pill on" id="btn-drive">🚗 Drive</button>
     <button type="button" class="pill" id="btn-walk">🚶 Walk</button>
   </div>
-  <button type="button" class="pill" id="btn-surprise" aria-label="Surprise me — pick one at random">🎲 Surprise me</button>
+  <button type="button" class="pill action" id="btn-surprise" aria-label="Surprise me — pick one at random">🎲 Surprise me</button>
 </div>
 
 <div class="zone-toolbar" id="zone-toolbar">
@@ -777,12 +791,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.15"></script>
+<script src="logic.js?v=1.16"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.15';
+  var APP_VERSION = 'v1.16';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1579,17 +1593,53 @@
     var idx = zone.hoods.indexOf(hood);
     return 'hsl(' + zone.hue + ',58%,' + (46 + (idx % 3) * 10) + '%)';
   }
+  // v1.16: the chip carries the short name (five fit a 375px strip); the full hood key is
+  // the chip's title and accessible name.
   var HOOD_SHORT_LABELS = {
-    'Downtown/SoBro': 'Downtown', 'Sylvan Park/Charlotte': 'Sylvan Park',
-    'Belle Meade / West Nashville': 'Belle Meade', 'Wedgewood-Houston': 'WeHo', 'East Nashville': 'East Nash.',
+    'Lower Broadway': 'Lower Broad', 'Downtown & Printers Alley': 'Printers Alley',
+    'Rutledge Hill & Rolling Mill Hill': 'Rutledge Hill', 'Nashville Yards & North Gulch': 'Nashville Yards',
+    'Midtown & Music Row': 'Midtown', 'Hillsboro Village & Belmont': 'Hillsboro',
+    'Buchanan Arts District & North Nashville': 'Buchanan & North', 'Five Points & Main Street': 'Five Points',
+    'Gallatin Avenue & Eastwood': 'Gallatin Ave', 'Inglewood & Riverside': 'Inglewood',
+    'East Bank & Fesslers': 'East Bank', 'Wedgewood-Houston': 'WeHo',
+    'West Nashville & White Bridge': 'White Bridge', 'Donelson & Opry Mills': 'Donelson',
+    'Franklin/Cool Springs': 'Franklin', 'Antioch/Hermitage': 'Antioch',
   };
   function shortHoodLabel(hood) { return HOOD_SHORT_LABELS[hood] || hood; }
 
   var HOOD_TOTALS = null; // per-hood venue count across the WHOLE dataset (C3: hoods with 0 aren't rendered)
+  // v1.16 C1b (TJ, 2026-10-25: "keep them separate if they actually have happy hours"):
+  // hoods where at least one venue has a happy_hour window. Only these get a chip; it is
+  // computed from the data at load, so a hood's chip appears by itself once it gains one.
+  var HOOD_HAS_HH = null;
   function computeHoodTotals() {
     HOOD_TOTALS = {};
+    HOOD_HAS_HH = {};
     L.hoodKeys().forEach(function (h) { HOOD_TOTALS[h] = 0; });
-    state.venues.forEach(function (v) { HOOD_TOTALS[v.hood] = (HOOD_TOTALS[v.hood] || 0) + 1; });
+    state.venues.forEach(function (v) {
+      HOOD_TOTALS[v.hood] = (HOOD_TOTALS[v.hood] || 0) + 1;
+      if (v.windows.some(function (w) { return w.kind === 'happy_hour'; })) HOOD_HAS_HH[v.hood] = true;
+    });
+    syncHiddenHoods();
+  }
+  // A hood with no chip cannot be picked on its own, so it follows its zone: selected
+  // exactly when every chip in that zone is (the zone pill is "on"). A saved selection
+  // naming a hidden hood is therefore ignored rather than shown, and venues in hidden hoods
+  // show whenever their zone is selected. Zones with no chip at all toggle as one unit.
+  function syncHiddenHoods() {
+    if (!HOOD_TOTALS) return;
+    L.ZONES.forEach(function (zone) {
+      var chips = chipHoodsOf(zone);
+      if (!chips.length) return;
+      var zoneOn = chips.every(function (h) { return state.hoodSelected.has(h); });
+      zone.hoods.forEach(function (h) {
+        if (chips.indexOf(h) !== -1) return;
+        if (zoneOn) state.hoodSelected.add(h); else state.hoodSelected.delete(h);
+      });
+    });
+  }
+  function hiddenHoodKeys() {
+    return L.hoodKeys().filter(function (h) { return HOOD_TOTALS[h] > 0 && !HOOD_HAS_HH[h]; });
   }
 
   // NOW: live-now count per hood. GRID: rows-on-selected-day count per hood.
@@ -1614,8 +1664,12 @@
   // hue border; deselected = a muted 1px border; some-but-not-all hoods = dashed.
   // The caret only appears on zones with more than one hood.
   function zonePillHtml(zone, visibleHoods, counts) {
-    var selectedCount = visibleHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
-    var allSel = selectedCount === visibleHoods.length;
+    // v1.16: selected state is read off the chips (hidden hoods follow them); the count
+    // still covers every venue in the zone, hidden hoods included.
+    var chips = chipHoodsOf(zone);
+    var stateHoods = chips.length ? chips : visibleHoods;
+    var selectedCount = stateHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
+    var allSel = selectedCount === stateHoods.length;
     var noneSel = selectedCount === 0;
     var count = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
     var cls = 'pill' + (allSel ? ' on' : (noneSel ? '' : ' partial')) + (count === 0 ? ' zero' : '');
@@ -1624,7 +1678,7 @@
       ' aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
         '<span class="dot"></span>' + escapeHtml(zone.label) +
         (count > 0 ? '<span class="count">' + count + '</span>' : '') +
-        (visibleHoods.length > 1
+        (chips.length > 1
           ? '<button type="button" class="caret" data-caret-zone="' + escapeHtml(zone.key) + '"' +
             ' aria-label="Show ' + escapeHtml(zone.label) + ' neighborhoods" aria-expanded="' + expanded + '">' +
             (expanded ? '▾' : '▸') + '</button>'
@@ -1635,6 +1689,10 @@
   function visibleHoodsOf(zone) {
     return zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
   }
+  // v1.16 C1b: the hoods that get a chip — a venue there has a happy hour.
+  function chipHoodsOf(zone) {
+    return zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0 && HOOD_HAS_HH[h]; });
+  }
 
   function renderZoneRow() {
     var counts = hoodCounts();
@@ -1644,9 +1702,9 @@
     }).join('');
     // C2: All / None live in the same row, at the right end, as text pills.
     html += '<div class="row-actions">' +
-      '<button type="button" class="pill" id="hood-all">All</button>' +
-      '<button type="button" class="pill" id="hood-none">None</button>' +
-      '<button type="button" class="pill map-toggle-btn" id="map-toggle-btn" aria-pressed="' +
+      '<button type="button" class="pill action" id="hood-all">All</button>' +
+      '<button type="button" class="pill action" id="hood-none">None</button>' +
+      '<button type="button" class="pill action map-toggle-btn" id="map-toggle-btn" aria-expanded="' +
         (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') +
         '" aria-controls="sidebar">Map</button>' +
       '</div>';
@@ -1661,16 +1719,17 @@
     var zone = state.expandedZone && L.ZONES.filter(function (z) { return z.key === state.expandedZone; })[0];
     if (!zone) { el.innerHTML = ''; return; }
     var counts = hoodCounts();
-    var visibleHoods = visibleHoodsOf(zone);
     el.innerHTML = '<span class="strip-label">' + escapeHtml(zone.label) + '</span>' +
-      visibleHoods.map(function (h) { return hoodPillHtml(h, zone, counts); }).join('');
+      chipHoodsOf(zone).map(function (h) { return hoodPillHtml(h, zone, counts); }).join('');
   }
 
   function hoodPillHtml(hood, zone, counts) {
     var sel = state.hoodSelected.has(hood);
     var count = counts[hood] || 0;
     return '<button type="button" class="pill hue' + (sel ? ' on' : '') + (count === 0 ? ' zero' : '') +
-      '" style="--pill-hue:' + zone.hue + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(hood) + '">' +
+      '" style="--pill-hue:' + zone.hue + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(hood) + '"' +
+      (shortHoodLabel(hood) !== hood ? ' title="' + escapeHtml(hood) + '" aria-label="' + escapeHtml(hood) +
+        (count > 0 ? ', ' + count : '') + '"' : '') + '>' +
       '<span class="dot"></span>' + escapeHtml(shortHoodLabel(hood)) +
       (count > 0 ? '<span class="count">' + count + '</span>' : '') + '</button>';
   }
@@ -1776,7 +1835,7 @@
     var stripHtml = L.ZONES.filter(function (z) {
       return L.CORE_ZONE_KEYS.indexOf(z.key) === -1;
     }).map(function (z) {
-      var hoods = visibleHoodsOf(z);
+      var hoods = chipHoodsOf(z);
       if (!hoods.length) return '';
       return '<div class="suburb-row"><span class="strip-label">' + escapeHtml(z.label) + '</span>' +
         hoods.map(function (h) { return hoodPillHtml(h, z, counts); }).join('') + '</div>';
@@ -1787,6 +1846,7 @@
   }
 
   function onHoodSelectionChanged() {
+    syncHiddenHoods();
     lsSet('hhradar-hoods', JSON.stringify(L.serializeHoodSelection(state.hoodSelected)));
     renderHoodChips();
     renderMap();
@@ -1811,8 +1871,7 @@
     var mapBtn = e.target.closest('#map-toggle-btn');
     if (mapBtn) {
       var open = document.getElementById('sidebar').classList.toggle('open');
-      mapBtn.classList.toggle('on', open);
-      mapBtn.setAttribute('aria-pressed', open ? 'true' : 'false');
+      mapBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       return;
     }
     var caret = e.target.closest('[data-caret-zone]');
@@ -1836,9 +1895,10 @@
   function toggleZone(key) {
     var zone = L.ZONES.filter(function (z) { return z.key === key; })[0];
     if (!zone) return;
-    var visibleHoods = visibleHoodsOf(zone);
-    var allSel = visibleHoods.every(function (h) { return state.hoodSelected.has(h); });
-    visibleHoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
+    // v1.16: on/off is read off the chips, and the whole zone (hidden hoods too) flips.
+    var chips = chipHoodsOf(zone);
+    var allSel = (chips.length ? chips : visibleHoodsOf(zone)).every(function (h) { return state.hoodSelected.has(h); });
+    zone.hoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
     onHoodSelectionChanged();
   }
 
@@ -2348,11 +2408,12 @@
   function renderZoneSummary() {
     var sum = zoneFilterSummary();
     document.getElementById('zone-summary').innerHTML =
-      '<div class="pill zone-summary-btn" id="zone-summary-btn" role="button" tabindex="0"' +
+      '<div class="pill action zone-summary-btn" id="zone-summary-btn" role="button" tabindex="0"' +
         ' aria-expanded="' + (state.zonesOpen ? 'true' : 'false') + '" aria-controls="zone-row">' +
         'Zones: <span class="zs-names">' + escapeHtml(sum.plain === 'all' ? 'All' : (sum.plain === 'none' ? 'None' : sum.plain)) + '</span>' +
         ' \u00b7 ' + (state.zonesOpen ? 'done' : 'edit') + '</div>' +
-      '<button type="button" class="pill" id="map-toggle-sm" aria-controls="sidebar">Map</button>';
+      '<button type="button" class="pill action" id="map-toggle-sm" aria-controls="sidebar" aria-expanded="' +
+        (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') + '">Map</button>';
     document.getElementById('zone-toolbar').classList.toggle('open', state.zonesOpen);
   }
   function toggleZonesOpen() {
@@ -2653,8 +2714,7 @@
     var mapBtn = e.target.closest('#map-toggle-sm');
     if (mapBtn) {
       var open = document.getElementById('sidebar').classList.toggle('open');
-      mapBtn.classList.toggle('on', open);
-      mapBtn.setAttribute('aria-pressed', open ? 'true' : 'false');
+      mapBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       return;
     }
     if (e.target.closest('#zone-summary-btn')) toggleZonesOpen();
@@ -2753,7 +2813,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.15').then(function (r) {
+  fetch('venues.json?v=1.16').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

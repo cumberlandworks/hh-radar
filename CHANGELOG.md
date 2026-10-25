@@ -1,5 +1,84 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix16-20261025: v1.16 (finer neighborhoods, action-button style, fresh link preview)
+
+TJ, 2026-10-25, verbatim:
+
+> ~03:28, on the thread's proposal (fresh link preview + a separate style for All/None/Surprise me/Zones): "Yes - South
+> has three distinct areas - , but I know Nashville has more and some people would care about their neighborhood being
+> represented - I think it would be good to break those up as well."
+
+> ~03:37: "Ocean Prime is in Nashville Yards"
+
+> ~03:40, with a v1.15 Day Grid screenshot (South's hood chips; under the map, Outer suburbs' Gallatin, Dickson and
+> Lewisburg drawn checked/filled with no count): "also split looks good - keep them separate if they actually have happy
+> hours. - some of the outer cities show up like they may have something, but they don't"
+
+### Findings (thread)
+- Hoods were set by the nearest of a few centroids, and 7 venues were misfiled: Jashan and True Food Kitchen as
+  12 South, E+ROSE 12South as Berry Hill, Chateau West as Sylvan Park, Gregorys Opry Mills as East Nashville, and
+  koshō and The Herban Perk as The Gulch. The thread set every core venue's hood by hand from its street address.
+- Ocean Prime's inKind map point was about 3 mi north of the restaurant (Nashville Yards, 990 Signal Crossing). Its
+  lat/lon moved to 36.1592, -86.7858 (approximate).
+
+### Data
+`venues.json` is `data-src/refresh-20261023/venues-20261025l.json` byte for byte (md5 397787f0…, 159 venues, 149
+windows), written by `post_20261025l.py`, which also wrote `hoods-v2.json` (zone → ordered hoods, each with its venue
+count and a centroid = the mean of its venues). Against v1.15 only `hood`, `neighborhood` and `zone` changed on
+venues, plus Ocean Prime's `lat`, `lon` and `notes`. The 8 zones are unchanged. There are 36 hoods now: 25 core,
+Brentwood and Franklin/Cool Springs, the 8 outer towns, and Donelson & Opry Mills. Zone moves: Chateau West, E+ROSE
+OneC1ty and Jashan go to Gulch & Midtown; koshō and The Herban Perk go to Downtown; Gregorys Opry Mills goes to Outer
+suburbs.
+
+### Changes
+- **C1: neighborhoods.** `ZONES` carries hoods-v2.json's lists in its order:
+  - Downtown: Lower Broadway, Downtown & Printers Alley, SoBro, Rutledge Hill & Rolling Mill Hill
+  - Gulch & Midtown: The Gulch, Nashville Yards & North Gulch, Midtown & Music Row, Hillsboro Village & Belmont, West End
+  - Germantown & North: Germantown, Buchanan Arts District & North Nashville, Dickerson Pike
+  - East: Five Points & Main Street, Gallatin Avenue & Eastwood, Inglewood & Riverside, East Bank & Fesslers
+  - South: 12 South, Wedgewood-Houston, Berry Hill, Green Hills
+  - West: Sylvan Park, The Nations, West Nashville & White Bridge, Belle Meade, Bellevue
+  - Outer suburbs: the 8 towns as before, plus Donelson & Opry Mills
+
+  `NEIGHBORHOOD_CENTROIDS` holds hoods-v2.json's centroids for the core hoods, the unchanged suburb ones, and Donelson &
+  Opry Mills. `CENTROID_RENAME` is gone, since every hood now has a centroid under its own name.
+  `data-src/assign_hood_zone.js` drops the aliases that only pointed at the old names, and it never recomputes a
+  valid hood. A chip shows a short name ("Printers Alley", "Nashville Yards", "Buchanan & North", "WeHo", ...), and
+  its title and accessible name are the full hood. On phones the strip's zone label takes its own line, so the chips
+  wrap in two even rows at 375px. The map polygons are unchanged. Five more dots now fall outside their own zone's
+  polygon, and each is a named exception in `MAP_SEAM_EXCEPTIONS` (tests): koshō and The Herban Perk (Downtown, in
+  the Gulch notch), Chateau West and E+ROSE OneC1ty (Gulch & Midtown, inside West), and Jashan (Gulch & Midtown,
+  inside South). LinQ stays one, as Rutledge Hill. README: hoods are set by address when a venue is added, and
+  `nearestNeighborhood` is only a fallback.
+- **C1b: a neighborhood chip only where there is a happy hour.** A hood gets a chip (in the strip under a zone, and
+  under the map for Franklin & Brentwood and Outer suburbs) only if at least one of its venues has a `happy_hour`
+  window. This is computed from the data at load. Today 12 hoods have no chip: East Bank & Fesslers, Inglewood &
+  Riverside, West End, West Nashville & White Bridge, Antioch/Hermitage, Dickson, Donelson & Opry Mills, Gallatin,
+  Hendersonville, Lewisburg, Mt. Juliet and Smyrna. Under the map, Outer suburbs now shows only Murfreesboro. A hidden
+  hood follows its zone: it is selected exactly when all of that zone's chips are, so its venues show whenever the
+  zone is selected. A saved selection that names a hidden hood is ignored. Zone pills, their counts and the map are
+  as before. A hood chip can't show as selected while its zone is deselected (checked for every zone at 375px).
+- **C2: action buttons.** All, None, Surprise me, "Zones: … · edit/done" and Map (both of them) are actions, not
+  toggles. They get their own quiet style, `.pill.action`: a neutral fill, the body ink at normal weight, no check and
+  no amber. Map no longer turns amber when the map is open; it reports `aria-expanded`.
+
+  | | Light | Dark |
+  |---|---|---|
+  | Fill | `#dcd8cf` | `#2b3550` |
+  | Fill vs page | 1.30:1 | 1.51:1 |
+  | Label on fill | 12.49:1 | 10.65:1 |
+- **C3:** `og-preview.png` re-taken: 1200x627, light theme, real NOW view at `?now=2026-10-27T17:30`, the v1.12
+  framing (1440x752.4 CSS at DPR 0.833), storage cleared and the referral bar dismissed. Same URL and tags.
+- **C4:** the four LinkedIn shots in `~/Documents/Claude-Other-Projects/hh-radar/linkedin-20261025/` were re-taken from
+  the live site (outside the repo). `post-01b` also has Downtown's neighborhood chips open.
+- **C5:** v1.16 (`APP_VERSION`, `logic.js?v=1.16`, `venues.json?v=1.16`).
+
+### Tests
+`node --test` 169/169 (was 167). These data-coupled tests changed: the hood-key list (21 → 36), the zone membership
+count, `zoneOf` examples, the two `deserializeHoodSelection` tests (the old 'Midtown' key is now unknown and drops),
+the v2 validator fixture's hood, and `MAP_SEAM_EXCEPTIONS` (1 → 6). New tests: the `ZONES` core lists equal
+hoods-v2.json, and every hood except Dickson and Lewisburg has exactly one centroid.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix15-20261025: v1.15 (data tidy, bar closes on tap, clear selected states)
 
 TJ, 2026-10-25, verbatim:
