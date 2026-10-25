@@ -26,7 +26,7 @@ const {
   openBands, lintVenues,
   dealPriceLabel, formatDays, tempClosureOn, tempClosedFor, windowTempClosedNow, dateOfDay,
   outsideHoursDays, lintOutsideHours, gridAxisStart, gridBlockStarts, tipSectionHtml,
-  REFBAR_KEY, refBarDismissed, dismissRefBar,
+  REFBAR_KEY, refBarDismissed, dismissRefBar, followRefBar,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -1701,4 +1701,30 @@ test('index.html (v1.14 C2/C3): the bar points at the referral card; the card ha
   // The bar itself never links to inKind: the disclosure in the card is seen first.
   const bar = html.slice(html.indexOf('<div class="refbar"'), html.indexOf('<header>'));
   assert.ok(bar.length > 0 && !bar.includes('inkind.com'));
+});
+
+// v1.15 C2 (TJ, 2026-10-25): tapping the bar's text also dismisses it.
+test('followRefBar (v1.15 C2): the tap path writes the key, hides the bar, then goes to the card', () => {
+  const s = memStorage();
+  const calls = [];
+  const saved = followRefBar(s, () => calls.push('hide'), () => calls.push('go'));
+  assert.equal(saved, true);
+  assert.ok(s.has('hhradar-refbar-dismissed'));
+  assert.equal(refBarDismissed(s), true);
+  assert.deepEqual(calls, ['hide', 'go']);
+});
+
+test('followRefBar (v1.15 C2): blocked storage still hides the bar and goes to the card, never throws', () => {
+  for (const st of [throwingStorage, null]) {
+    const calls = [];
+    assert.equal(followRefBar(st, () => calls.push('hide'), () => calls.push('go')), false);
+    assert.deepEqual(calls, ['hide', 'go']);
+  }
+});
+
+test('index.html (v1.15 C2): the bar text is wired through L.followRefBar; × still dismisses', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.match(html, /getElementById\('refbar-link'\)\.addEventListener\('click'[\s\S]{0,120}L\.followRefBar\(store,/);
+  assert.match(html, /getElementById\('refbar-x'\)\.addEventListener\('click'[\s\S]{0,80}L\.dismissRefBar\(store\)/);
 });

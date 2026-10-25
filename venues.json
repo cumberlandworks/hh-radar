@@ -1,6 +1,6 @@
 {
  "schema_version": 2,
- "generated": "2026-10-23",
+ "generated": "2026-10-25",
  "generator": "merge_20261023.py (hh-radar planning thread, from research/batch*.json + inkind-tn-20261023.tsv)",
  "coverage": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed)",
  "venues": [
@@ -1017,7 +1017,6 @@
    ],
    "notes": "Open (nothing suggests closure). No happy hour found anywhere; the earlier unsourced claim stays unverified. First-visit question: Still could not trace the 'before 6pm happy hour with fried bologna sandwich' claim to any page. Official site, Nashville Guru and Nashville Go list no happy hour. Treated as absent, not as a window.",
    "hours_confidence": "high",
-   "hours_notes": "Official site shows no hours text. Nashville Go says 5pm-1am daily (undated); the 2026-09-05 inKind hours said 5:00-10:30pm with a late-night menu to 12:30am. Likely 5pm-10:30 kitchen vs later bar/late-night, unresolved.",
    "lunch_checked": true
   },
   {
@@ -1437,7 +1436,6 @@
    "notes": "No happy hour found on official site, previously or today. Only the do615 Tuesday tequila shot item remains, unconfirmed. Lunch not verifiable (locations/menu page fetch failed).",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Official site and Guru fetches returned no hours text (locations page failed). Hours carried over from inKind 2026-09-05, not reconfirmed today.",
    "lunch_checked": false
   },
   {
@@ -1921,7 +1919,6 @@
    "notes": "Not a happy hour. Recurring Tuesday family-night food special only. No lunch special found.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Hendersonville hours carried over from inKind; the sister Nashville West page shows 10:30am-8:30pm with no day breakdown.",
    "lunch_checked": true
   },
   {
@@ -3205,7 +3202,6 @@
    ],
    "notes": "Needs TJ or a live check to pin down happy hour days and times. No lunch special found; OpenTable says lunch is not yet offered.",
    "hours_confidence": "high",
-   "hours_notes": "The official site's last two ranges (10am-1am, 10am-10pm) have no day labels; assigned to Saturday and Sunday by order, which matches Guru's weekend brunch (10am-4pm). OpenTable (undated) disagrees on Fri open, closing times and Sat/Sun opening. Monday not listed anywhere, treated as closed.",
    "lunch_checked": true
   },
   {
@@ -3412,7 +3408,6 @@
    "notes": "No happy hour on the venue's site or Guru. Only lead is the hotel's Tacos & Tequila event; treat as low confidence.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "No hours on the venue page or Guru. The Marriott event listing shows 4:00 PM-11:00 PM daily for the Tacos & Tequila promo, which is promo time, not confirmed opening hours.",
    "lunch_checked": true
   },
   {
@@ -4069,7 +4064,6 @@
    "notes": "Opens 4pm, so no lunch. No happy hour found on the site, Guru or Infatuation.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "From undated Nashville Guru; the venue site lists no hours (location pages failed to load). inKind has Thursday closing at midnight; Guru has 2am.",
    "lunch_checked": true
   },
   {
@@ -5350,7 +5344,6 @@
    "notes": "Now a private members club (Guru category 'Private Members Club'; WhatNow: relaunch 'as an exclusive members club'). A public happy-hour radar probably should not list it. TJ's call.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "No hours published. inKind showed Wed-Sat evenings only, not confirmed anywhere.",
    "lunch_checked": true
   },
   {
@@ -5702,7 +5695,6 @@
    "notes": "Bakery-cafe, counter service, closes 14:00. No evidence of closure but no current confirmation of operation either. Could not read the menu page, so lunch specials not checked. Still operating? Not confirmed 2026-10-23.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Hours are the inKind values; the official site only exposes page titles to the fetch tool (JS-rendered), and Infatuation, Edible Nashville and Marketspread pages list no hours.",
    "lunch_checked": false
   },
   {
@@ -6312,7 +6304,6 @@
    "notes": "Coffee kiosk, no alcohol. Only loyalty offers, no happy hour or lunch special. still_operating set to unknown because no page confirmed the store today (an opening press release exists in search results; no closure evidence found). Still operating? Not confirmed 2026-10-23.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Hours carried over from inKind 2026-09-05; brand site and locations pages gave no store-level hours today. Mall kiosk, so follows Opry Mills mall hours.",
    "lunch_checked": true
   },
   {
@@ -6386,7 +6377,6 @@
    "notes": "No happy hour or lunch special on the official site, FAQ, or Guru.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Official site says 'Open Daily 10am-2' and the FAQ says to check Google Maps for current hours. Recorded 10am-2am to match inKind. Nashville Go (undated) shows different hours.",
    "lunch_checked": true
   },
   {
@@ -6777,7 +6767,6 @@
    "notes": "The old record had only the Thursday bull riding night. The Friday Girls Night Out is a real happy hour with two sources, neither the venue's own page.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Venue site says only 'Hours SUBJECT TO CHANGE'. OpenTable (used here) and NashvilleGo disagree; inKind showed 10am-2am daily.",
    "lunch_checked": true
   },
   {
@@ -7434,7 +7423,6 @@
    "notes": "The input official_site pointed at the Dickson page; the Murfreesboro East page is https://www.justlovecoffee.com/tn-murfreesboro-east/. Daytime cafe, no happy hour or lunch special found.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "The location page lists no times today. Hours carried over from inKind; same-brand locations are 7am-5pm.",
    "lunch_checked": true
   },
   {
@@ -7578,7 +7566,6 @@
    "notes": "Same counter-service daytime cafe concept as the Hendersonville store; no happy hour or lunch special found on any Just Love page reached, but this store's own page could not be loaded.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Could not find hours for the Fountains store. Brand pages for this store did not load; the nearby Murfreesboro East page says 'Call for Hours'. inKind lists Mon-Thu 07:00-18:00, Fri-Sat 07:00-19:00, Sun 08:00-18:00, unconfirmed.",
    "lunch_checked": false
   },
   {
@@ -8028,7 +8015,6 @@
    "notes": "New 2026 counter-service wings and smash burger spot with no website, Yelp, Guru or press that this tool can reach. Nothing could be checked, so windows is null rather than an empty verified negative. Prior pass found only a Google listing and a small Instagram, neither mentioning specials. Happy hour not re-checkable 2026-10-23; windows carried from 2026-09-05. Still operating? Not confirmed 2026-10-23. No happy hour on its site or in its Google photos (checked by TJ 2026-10-25).",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "No website, no fetchable listing. inKind shows 11:00-19:00 Sun-Fri (no Saturday); not confirmed anywhere.",
    "lunch_checked": false
   },
   {
@@ -8105,7 +8091,6 @@
    "disagreements": [],
    "notes": "Nothing reachable for this venue. Same operator as Noir (shared inKind account). Needs a manual look. Happy hour not yet confirmed (2026-10-23). Still operating? Not confirmed 2026-10-23.",
    "hours_confidence": "high",
-   "hours_notes": "No hours found.",
    "lunch_checked": false
   },
   {
@@ -9859,7 +9844,6 @@
    "disagreements": [],
    "notes": "The official site has a dedicated Happy Hour page, so a happy hour very likely exists, but its days, times and prices are in an image that could not be read. TJ or a browser check needed. Signature cocktails are $14 per Hoodline. Shares an inKind page with Jar 10. Happy hour not yet confirmed (2026-10-23).",
    "hours_confidence": "high",
-   "hours_notes": "The site's /hours page failed to load and Guru shows no hours. Opened summer 2026 as a 21+ tapas lounge with late-night DJs.",
    "lunch_checked": false
   },
   {
@@ -10411,7 +10395,6 @@
    "notes": "Evening-only show venue with a cover. No happy hour or lunch.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "The venue's two pages disagree on days and times. The downtown page gives closing time and Mon/Tue, so it is used here; inKind has Mon/Tue closed, Sun/Wed/Thu 18:30-01:00, Fri/Sat 16:00-02:00.",
    "lunch_checked": true
   },
   {
@@ -10545,7 +10528,6 @@
    "notes": "Dinner-only; no lunch special.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Hours carried over from inKind 2026-09-05. The official page is robots-blocked and the menu page and Guru listing show no general hours today. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -10938,7 +10920,6 @@
    ],
    "notes": "Site meta description mentions lunch Fri-Sat but the hours block lists no lunch. Not recorded as a lunch special. First-visit question: Not settled. The only happy hour text is \"Happy Hour 4-530\" on a 2023-era site with no days or deals. Wednesday: OpenTable (current) lists Wed 5-9pm, so inKind's Wednesday hours look right and the venue's own site is the stale one. Guru and Infatuation have no HH text.",
    "hours_confidence": "high",
-   "hours_notes": "Own site (copyright 2023) lists Thu-Sat 5-11 and Sun 5-9 and no Wednesday; OpenTable lists Wed 5-9 and Thu-Sat 4-11; inKind lists Sun 4-9, Thu 5-11, Fri/Sat 4-11:30. OpenTable used. The restaurant reopened at 509 Houston St on 2026-03-06 (Edible Nashville), so the 2023 site is stale.",
    "lunch_checked": true
   },
   {
@@ -11010,7 +10991,6 @@
    "notes": "Open. No happy hour or lunch special on the official location page.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "The location page gives no day-by-day times; hours carried over from inKind 2026-09-05. The olo ordering page is robots-blocked. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -11283,7 +11263,6 @@
    ],
    "notes": "Needs a phone call: which day is it closed (Tue or Mon), and is the domestic $2 or $2.50. First-visit question: Partly settled. The official site body says $2.50 domestics; its meta description says \"$2 domestics daily from 3-6pm\". The Yelp-derived $2 matches the meta line, so the site disagrees with itself. $2.50 recorded; the page body is the visible menu text. Announced a permanent closure for Oct 25 on Oct 20, reversed it on Oct 23 after a deal with the landlord; staying open (WSMV, Nashville Scene).",
    "hours_confidence": "high",
-   "hours_notes": "Site body says closed Tuesdays; the same site's meta description says \"Open Tuesday - Sunday\" (which would make Monday the closed day); inKind and Pearl show Tuesday open. Weekend dim sum brunch 11am-3pm on the site supports an 11am weekend open. Body text used.",
    "lunch_checked": true,
    "temp_closed": [
     {
@@ -11937,7 +11916,6 @@
    "notes": "No website, Slice listing or search coverage found for the Franklin store; open status unconfirmed (no closure evidence either). Slice shows only generic order discounts, not a happy hour or lunch special. Still operating? Not confirmed 2026-10-23.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Carried over from inKind 2026-09-05. Slice page for the Smyrna store shows only 'Open until 9:00 PM' with no day table.",
    "lunch_checked": true
   },
   {
@@ -12225,7 +12203,6 @@
    "notes": "Slice ordering listing for 701 President Pl is live and shows Open until 9:00 PM today. No website of its own. Slice shows only generic order discounts, not a happy hour or lunch special.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Carried over from inKind 2026-09-05. Slice page for the Smyrna store shows only 'Open until 9:00 PM' with no day table.",
    "lunch_checked": true
   },
   {
@@ -12986,7 +12963,6 @@
    "notes": "Reservation omakase at the Dream hotel. No happy hour or lunch special found, same as earlier pass. Hours not confirmable from the official site.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "inKind hours carried over. Official site pages do not show Nashville-specific hours.",
    "lunch_checked": true
   },
   {
@@ -13129,7 +13105,6 @@
    "disagreements": [],
    "notes": "Weekend brunch ranges (10-2) in hours are from the earlier record; no lunch special identified, but the menu page could not be read today.",
    "hours_confidence": "high",
-   "hours_notes": "Hours carried over from inKind 2026-09-05. The official /menus page is robots-blocked for this tool and Guru shows no hours.",
    "lunch_checked": false
   },
   {
@@ -13273,7 +13248,6 @@
    "notes": "The earlier note described the Brentwood store (15541 Old Hickory Blvd); this venue is the downtown store at 530 Church St Suite 100. No happy hour found, but the official site could not be loaded this time, so the negative rests on Slice and Poyst. Slice shows ordering-platform bundle deals and a 45% online-order banner; those are app promos and are not recorded as specials.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "The official site (tastenypizza.com) would not load. Slice and Poyst confirm the 530 Church St address and a late close but give no day-by-day hours. inKind lists Sun 11-23, Mon-Thu 10-23, Fri 10-01, Sat 11-01, unconfirmed.",
    "lunch_checked": true
   },
   {
@@ -13394,7 +13368,6 @@
    ],
    "notes": "Evening-only bar, no lunch. First-visit question: Settled for now: two fetches of the official menu page today both show Tuesday - Friday, 5pm-7pm. Monday is dropped. The homepage also says doors open Tuesday through Sunday, which supports Monday being closed, but OpenTable and inKind still list Monday.",
    "hours_confidence": "high",
-   "hours_notes": "OpenTable and inKind say Mon-Sat 5pm-midnight; the official homepage says \"Tuesday through Sunday\" with 5pm open and no closing time. Mon-Sat used, unresolved.",
    "lunch_checked": true
   },
   {
@@ -13575,7 +13548,6 @@
    "notes": "Daytime coffee shop. No happy hour or lunch special found, though the official site text was thin (menu is image-based).",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Official site and Visit Franklin show no hours in the text retrieved. inKind and the earlier pass (Yelp) say 7:00-17:00 daily; unconfirmed today.",
    "lunch_checked": true
   },
   {
@@ -13641,7 +13613,6 @@
    "notes": "Daytime coffee shop; the 2026-09-05 pass found no happy hour (Yelp, Facebook, official Franklin site). Could not re-verify the Lewisburg shop or its existence today. Lunch not checked. Still operating? Not confirmed 2026-10-23.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "The official site only describes the Franklin shop; no Lewisburg page was reachable. inKind shows Mon-Sat 07:00-17:00, unconfirmed today.",
    "lunch_checked": false
   },
   {
@@ -14273,7 +14244,6 @@
    "notes": "Nothing new could be learned today; all venue channels block this tool. Still_operating not disproved but not confirmed either. Needs a call to the shop, (629) 702-2537 per the earlier record.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Official site, Facebook and Yelp all blocked fetching (robots). inKind lists Sun-Thu 06:30-19:00 and Fri 06:30-20:00 with no Saturday; an earlier third-party source (wherevi) said Friday to 21:00. None confirmed today.",
    "lunch_checked": false
   },
   {
@@ -14738,7 +14708,6 @@
    "notes": "The October pumpkin spice pancake promo is seasonal and one-time, so not recorded as a recurring window. No happy hour or lunch special.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Research applied the Hillsboro Village location's 6am-3pm to this location; reverted to this location's own inKind hours.",
    "lunch_checked": true
   },
   {
@@ -14812,7 +14781,6 @@
    "notes": "Donut and coffee shop; no happy hour or lunch special found. Marked operating on the strength of the delivery listing and the Infatuation review; the brand site disagrees.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Delivery-app hours only. The brand's own locations page still lists this store as 'coming soon!'.",
    "lunch_checked": true
   },
   {
@@ -14922,7 +14890,6 @@
    "notes": "Weekly Jazz & Blues Jam on Wednesdays 7-10pm is an event, not a deal. Weekend jazz brunch exists. No lunch special found.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Official site shows no hours. Wed-Sun from OpenTable; Monday from inKind (11-22); Tuesday unknown (inKind and OpenTable both omit it). inKind had Wed 17:00-22:00, Sun 08:00 and Thu-Sat 11:00-03:00.",
    "lunch_checked": true
   },
   {
@@ -15036,7 +15003,6 @@
    ],
    "notes": "Lunch menu exists but no lunch-only deal or set price found.",
    "hours_confidence": "high",
-   "hours_notes": "The same page has a second hours list that conflicts (Mon-Thu 5-9pm only, no lunch). The earlier inKind data showed continuous service. Two ranges per day follow the main hours section; the oyster happy hour 3-5pm falls in the gap between lunch and dinner.",
    "lunch_checked": true
   },
   {
@@ -15102,7 +15068,6 @@
    "notes": "Coffee counter in the same Peabody St food hall as Legendary Wings, no web presence this tool can reach. The prior pass saw only a Google listing. Treated as unchecked. Happy hour not re-checkable 2026-10-23; windows carried from 2026-09-05. Still operating? Not confirmed 2026-10-23. Coffee shop open 7:45am-2:30pm; no happy hour listed (2026-10-25).",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "No website or fetchable listing. inKind shows Sun-Fri 07:45-14:30, unconfirmed.",
    "lunch_checked": false
   },
   {
@@ -16002,7 +15967,6 @@
    ],
    "notes": "Could not confirm the happy hour from anything current. Needs a live-browser check of twotenjack.com. Lunch not checked because the official site did not render. First-visit question: Mon-Thu is the only reading any source I could fetch supports (Nashville Scene 2022 and do615 2020). I found no source saying Mon-Fri; the earlier checkle.com summary is not fetchable. Kept Mon-Thu at low confidence since all sources are 4-6 years old.",
    "hours_confidence": "high",
-   "hours_notes": "The official site is JavaScript-only and gives no hours to this tool. OpenTable (undated) shows evening hours only, Mon-Sat, which conflicts with inKind (lunch 11-2 Mon-Fri and dinner 4-9 or 4-10, Sat evening only). Not recorded as hours until confirmed.",
    "lunch_checked": false
   },
   {
@@ -16251,7 +16215,6 @@
    "notes": "Scoop shop, no alcohol. No happy hour or lunch special found.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "hours_notes": "Carried over from inKind 2026-09-05; Guru listing and brand site gave no hours today. Search results show the shop opened in March 2026 (Edgehill Village) with no closure news. Research hours were incomplete (FRI/SAT only); using inKind 2026-09-05 hours.",
    "lunch_checked": true
   },
   {
@@ -16394,7 +16357,6 @@
    "notes": "Ice cream scoop shop in the Neuhoff District; opened Aug 28, 2025, so operating as of the last report. The earlier note described the Edgehill Village store, which is a different location. The $1 scoop deal was a one-day grand opening promotion. No happy hour or lunch special found, though the brand site was not reachable.",
    "neighborhood_source": "centroid",
    "hours_confidence": "med",
-   "hours_notes": "Brand store pages would not load and Guru shows no hours. inKind lists Sun-Thu 11:00-23:00 and Fri-Sat 11:00-00:00, unconfirmed.",
    "lunch_checked": true
   },
   {
@@ -16691,7 +16653,6 @@
    ],
    "notes": "Wine bar opening at 3pm Mon-Fri so no lunch. Deal list is sparse in the earlier record (house wine $7, cocktails $8, discounted flights and small plates without prices). First-visit question: Not settled. Official site could not be fetched today (robots_disallowed) and no Guru or Yelp text was reachable. The 2026-09-05 read of the official page said Tuesday-Friday 3-6pm; the Monday-Friday claim has no source. Recommend a call to the shop.",
    "hours_confidence": "high",
-   "hours_notes": "Carried over from inKind 2026-09-05. vintagevine100.com blocks this tool (robots) so no hours text was read today.",
    "lunch_checked": false
   },
   {
@@ -16952,7 +16913,6 @@
    ],
    "notes": "Dinner-only; no lunch special found. The Mon-Fri 4-6 reading was chosen for the window only because Guru's time matches it; the other reading is recorded above.",
    "hours_confidence": "high",
-   "hours_notes": "Two fetches of the official location page disagreed: /Nashville showed Mon-Wed 4pm-11pm and Thu-Sun 4pm-midnight; /nashville/ showed Tue-Sun 5-10pm with Monday not listed. The lowercase page is used because it carries the 'hours may vary' note, but this is unresolved.",
    "lunch_checked": true
   }
  ]

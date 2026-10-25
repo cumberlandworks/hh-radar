@@ -37,7 +37,7 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
-  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged through v1.14, so it has no referral bar).
+  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged through v1.15, so it has no referral bar and shows the pre-v1.15 chip style).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
@@ -56,16 +56,17 @@ radar?" before) / "Tip on Venmo:
 only and never fetches the QR. Set `TIP_URL = ''` and nothing renders and nothing is in the
 DOM. If the url changes, regenerate `venmo-qr.svg` and decode it before committing.
 
-## Referral bar and card (v1.10, bar v1.14)
+## Referral bar and card (v1.10, bar v1.14, tap-to-dismiss v1.15)
 
 The inKind referral card ("New to inKind?") sits between Settings and the tip card. Since
 v1.14 it is tinted with the amber tokens in both themes and its link is a "Get $25 off"
 button (new tab, `rel="noopener"`); desktop keeps the QR beside it. A thin bar above the
 header ("New to inKind? $25 off your first $50+ meal →") only scrolls to that card and rings
 it for a moment; it never opens inKind itself, so the card's disclosure is always seen
-first. Its × (aria-label "Dismiss") hides it and writes `hhradar-refbar-dismissed`; when
-storage is blocked the bar simply shows again next visit (`refBarDismissed` /
-`dismissRefBar` in logic.js). No referral card, no bar.
+first. Its × (aria-label "Dismiss") hides it and writes `hhradar-refbar-dismissed`; since
+v1.15 tapping the text does the same (`followRefBar`), so the bar is gone when the reader
+scrolls back up. When storage is blocked the bar simply shows again next visit
+(`refBarDismissed` / `dismissRefBar` in logic.js). No referral card, no bar.
 
 ## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 

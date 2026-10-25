@@ -1,5 +1,71 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix15-20261025: v1.15 (data tidy, bar closes on tap, clear selected states)
+
+TJ, 2026-10-25, verbatim:
+
+> 03:04 CDT, with a dark-theme desktop screenshot of the NOW view (zone chips Downtown and Gulch & Midtown selected,
+> the rest not): "The selections are very light - you can barely tell if you've clicked them or not"
+
+> ~03:10: "I want to post a screen shot + it would be nice if you click on the link on the top when you scroll back up
+> its gone instead of still having to hit x"
+
+### Thread rulings on the fix14 report
+- "Outside posted hours" on NoWhere Special, LinQ, Acme Feed & Seed and The Side Piece stays. It is the honest signal
+  (a venue's own happy-hour page against its Google opening time). No data or code change.
+- The stale `hours_notes` and the old "Data generated" date are fixed in data (below).
+
+### Data
+`venues.json` is `data-src/refresh-20261023/venues-20261025k.json` byte for byte (159 venues, 149 windows).
+`post_20261025k.py` removes `hours_notes` from the 40 venues whose hours now come from the 2026-10-25 Google pass.
+Those notes described the old source ("No hours found", "OpenTable used", ...). Acme Feed & Seed keeps its note,
+which the pass wrote. Chateau West and Salvo's Mt. Juliet keep the notes TJ's own checks wrote (their hours come from
+their sites, so the rule never reached them). Top-level `generated` goes from 2026-10-23 to 2026-10-25, so the
+footer now says "Data generated 2026-10-25". Nothing else changed. No test pinned a removed note.
+
+### Changes
+- **C2: the bar closes on tap.** Tapping the bar's text still scrolls to the referral card and rings it, and now it
+  also dismisses the bar. It writes the same `hhradar-refbar-dismissed` key, through the same guarded storage, and
+  hides the bar before the scroll starts. So the bar is not there when the reader scrolls back up, or on the next
+  visit. With storage blocked, the bar hides for this visit and shows again next time. The × works as before. The
+  new `followRefBar(storage, hideBar, goToCard)` in logic.js does the tap path.
+- **C5: selected states you can see.** Every toggle is now filled when it is on and outline-only when it is off:
+  zone chips, neighborhood chips (the zone strip and the suburb chips under the map), Food-first / Drink-first,
+  Drive / Walk, the Day Grid day pills, the Time / Distance / Name sort pills, and the Map and nav-app pills. Now /
+  Day Grid is unchanged.
+  - **Selected:** the page amber with the "Now" tab's dark ink. Zone and neighborhood chips use their zone's own
+    hue instead: `hsl(hue, 58%, 32%)` with white text in light, and `hsl(hue, 58%, 65%)` with dark ink in dark.
+    They also show a ✓ in place of the colour dot.
+  - **Unselected:** transparent, a visible 1px outline (`--pill-line`), dim label.
+  - A zone with nothing live now dims only while unselected.
+  - A zone with some of its neighborhoods selected keeps its dashed outline.
+
+  Measured from computed styles at 1280px (headless Chrome), with alpha composited over the real background. The
+  zone chips are the minimum over all 8 hues, all selected at once. The neighborhood chips are Gulch & Midtown's
+  strip and Brentwood under the map.
+
+  | Toggle | Light: fill vs unselected bg | Light: label on fill | Dark: fill vs unselected bg | Dark: label on fill |
+  |---|---|---|---|---|
+  | Zone chips (min of 8 hues) | 4.32:1 (was 1.21) | 4.71:1 | 4.87:1 (was 1.15) | 4.87:1 |
+  | Neighborhood chips, zone strip | 9.77:1 (was 1.49) | 10.66:1 | 5.45:1 (was 1.19) | 5.45:1 |
+  | Neighborhood chips, under the map | 12.24:1 (was 1.54) | 12.24:1 | 4.46:1 (was 1.15) | 4.87:1 |
+  | Food-first / Drink-first | 3.07:1 (was 1.40) | 5.55:1 | 9.08:1 (was 1.29) | 9.17:1 |
+  | Drive / Walk | 3.07:1 (was 1.40) | 5.55:1 | 9.08:1 (was 1.29) | 9.17:1 |
+  | Day Grid day pills | 3.07:1 (was 1.40) | 5.55:1 | 9.08:1 (was 1.29) | 9.17:1 |
+  | Sort pills | 3.07:1 (was 1.40) | 5.55:1 | 9.08:1 (was 1.29) | 9.17:1 |
+
+  The targets were at least 3:1 for the fill and at least 4.5:1 for the label. Every row meets both. Light amber at
+  3.07:1 is the closest to the line. It is the same amber as the "Now" tab.
+- **C4:** v1.15 (`APP_VERSION`, `logic.js?v=1.15`, `venues.json?v=1.15`).
+
+### Tests
+`node --test`: 167/167 (164 plus 3 new tests):
+- the tap path writes the key, hides the bar, then goes to the card;
+- blocked or missing storage still hides the bar and goes to the card;
+- index.html wires the bar text through `L.followRefBar` and × through `L.dismissRefBar`.
+
+`node validate.js venues.json`: OK, with 31 lint warnings (unchanged).
+
 ## 2026-10-25 — BLOCK-hh-radar-fix14-20261025: v1.14 (browser-checked hours + happy hours, referral bar and card)
 
 TJ, 2026-10-25, verbatim:

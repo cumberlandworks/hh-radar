@@ -62,6 +62,12 @@
     --map-label-dim: rgba(22, 24, 29, 0.62);
     --header-h: 76px;
     --gridsticky-h: 88px;
+    /* v1.15 C5: selected toggles are filled, unselected are outline only. --pill-line is the
+       outline; zone and neighborhood chips fill with their zone hue at --pill-on-l lightness
+       and --pill-on-ink text (measured >= 4.3:1 against the page, >= 4.7:1 label, all hues). */
+    --pill-line: #bdb9b0;
+    --pill-on-l: 32%;
+    --pill-on-ink: #ffffff;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -90,6 +96,9 @@
       --map-road: rgba(255, 255, 255, 0.28);
       --map-label: #ffffff;
       --map-label-dim: rgba(255, 255, 255, 0.72);
+      --pill-line: #3d4a63;
+      --pill-on-l: 65%;
+      --pill-on-ink: #0f1420;
     }
   }
   * { box-sizing: border-box; }
@@ -110,15 +119,24 @@
      (a bare hsl hue number) tints the selected state; with no hue set a pill
      falls back to the amber accent, so non-zone pills need no extra rules. */
   .pill { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    height: 30px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--border);
-    background: var(--panel); color: var(--text-dim); font-family: inherit; font-size: 12px;
+    height: 30px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--pill-line);
+    background: transparent; color: var(--text-dim); font-family: inherit; font-size: 12px;
     font-weight: 600; line-height: 1; white-space: nowrap; cursor: pointer; -webkit-appearance: none; }
   .pill .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: hsl(var(--pill-hue, 35), 58%, 46%); }
   .pill .count { font-size: 11px; font-weight: 700; color: var(--text); opacity: 0.8; }
-  .pill.on { background: hsla(var(--pill-hue, 35), 58%, 46%, 0.25); border-color: hsl(var(--pill-hue, 35), 58%, 46%); color: var(--text); }
+  /* v1.15 C5 (TJ, 2026-10-25: "The selections are very light"). Selected = filled: the page
+     amber with the "Now" tab's dark ink, or (zone and neighborhood chips, `.hue`) the zone's own
+     hue with a check mark in place of the dot. Unselected = transparent, outline, dim label. */
+  .pill.on { background: var(--amber); border-color: var(--amber); color: #1a1200; }
+  .pill.on .count { color: inherit; opacity: 0.85; }
+  .pill.hue.on { background: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l));
+    border-color: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); color: var(--pill-on-ink); }
+  .pill.hue.on .dot { display: none; }
+  .pill.hue.on::before { content: "\2713"; font-size: 12px; font-weight: 800; line-height: 1; }
   .pill.partial { border-style: dashed; border-color: hsl(var(--pill-hue, 35), 58%, 46%); color: var(--text); }
-  /* C2: a zone with nothing live/on-the-day dims instead of showing a "0" badge. */
-  .pill.zero { opacity: 0.5; }
+  /* C2: a zone with nothing live/on-the-day dims instead of showing a "0" badge
+     (v1.15: only while unselected, so a selected chip always reads as selected). */
+  .pill.zero:not(.on) { opacity: 0.5; }
   .pill:focus-visible { outline: 2px solid hsl(var(--pill-hue, 35), 58%, 46%); outline-offset: 2px; }
   .pill .caret { border: none; background: transparent; color: inherit; font-family: inherit;
     font-size: 10px; line-height: 1; padding: 0 0 0 3px; margin-right: -3px; cursor: pointer; }
@@ -759,12 +777,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.14"></script>
+<script src="logic.js?v=1.15"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.14';
+  var APP_VERSION = 'v1.15';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1602,7 +1620,7 @@
     var count = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
     var cls = 'pill' + (allSel ? ' on' : (noneSel ? '' : ' partial')) + (count === 0 ? ' zero' : '');
     var expanded = state.expandedZone === zone.key;
-    return '<div class="' + cls + '" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
+    return '<div class="' + cls + ' hue" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
       ' aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
         '<span class="dot"></span>' + escapeHtml(zone.label) +
         (count > 0 ? '<span class="count">' + count + '</span>' : '') +
@@ -1651,7 +1669,7 @@
   function hoodPillHtml(hood, zone, counts) {
     var sel = state.hoodSelected.has(hood);
     var count = counts[hood] || 0;
-    return '<button type="button" class="pill' + (sel ? ' on' : '') + (count === 0 ? ' zero' : '') +
+    return '<button type="button" class="pill hue' + (sel ? ' on' : '') + (count === 0 ? ' zero' : '') +
       '" style="--pill-hue:' + zone.hue + '" aria-pressed="' + sel + '" data-hood="' + escapeHtml(hood) + '">' +
       '<span class="dot"></span>' + escapeHtml(shortHoodLabel(hood)) +
       (count > 0 ? '<span class="count">' + count + '</span>' : '') + '</button>';
@@ -2689,6 +2707,7 @@
   // v1.14 C2: the referral bar. Shown unless dismissed, and only when the referral
   // card is on the page. The text scrolls to the card and rings it; × fades the bar
   // out and remembers it (L.dismissRefBar; a blocked storage just means it shows again).
+  // v1.15 C2: the text dismisses it too (L.followRefBar), so it is gone on the way back up.
   function wireRefBar() {
     var bar = document.getElementById('refbar');
     var card = document.getElementById('referral');
@@ -2700,8 +2719,7 @@
     // The ring stays 1.6s after the scroll settles, not after the tap: on a busy NOW
     // list the smooth scroll alone took ~1.5s (measured), which left the ring ~0.3s.
     var flashTimer = null, flashRun = 0;
-    document.getElementById('refbar-link').addEventListener('click', function (ev) {
-      ev.preventDefault();
+    function flashCard() {
       var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       card.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
       card.classList.add('ref-flash');
@@ -2715,6 +2733,10 @@
         if (stillFrames < 6 && Date.now() - started < 4000) { requestAnimationFrame(waitForStill); return; }
         flashTimer = setTimeout(function () { card.classList.remove('ref-flash'); }, 1600);
       })();
+    }
+    document.getElementById('refbar-link').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      L.followRefBar(store, function () { bar.hidden = true; updateStickyOffsets(); }, flashCard);
     });
     document.getElementById('refbar-x').addEventListener('click', function () {
       L.dismissRefBar(store);
@@ -2731,7 +2753,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.14').then(function (r) {
+  fetch('venues.json?v=1.15').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

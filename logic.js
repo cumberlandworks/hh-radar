@@ -1109,6 +1109,16 @@
       return true;
     } catch (e) { return false; }
   }
+  // v1.15 C2 (TJ, 2026-10-25): tapping the bar's text also dismisses it, so it is not
+  // there when the reader scrolls back up. The key is written and the bar hidden before
+  // the scroll starts (hiding it first keeps the card's landing spot steady). Returns
+  // whether the key was saved; a blocked storage still hides the bar for this visit.
+  function followRefBar(storage, hideBar, goToCard) {
+    var saved = dismissRefBar(storage);
+    hideBar();
+    goToCard();
+    return saved;
+  }
 
   // ---- v1.12 C2: the price a deal line shows, or null ----
   // TJ, 2026-10-23: "the formatting seems redundant". 76 deals repeated their price in
@@ -1876,6 +1886,7 @@
     REFBAR_KEY: REFBAR_KEY,
     refBarDismissed: refBarDismissed,
     dismissRefBar: dismissRefBar,
+    followRefBar: followRefBar,
     GRID_DEFAULT_START: GRID_DEFAULT_START,
     GRID_EARLIEST_START: GRID_EARLIEST_START,
     dealPriceLabel: dealPriceLabel,
