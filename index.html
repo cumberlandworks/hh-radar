@@ -6,7 +6,8 @@
      it with max-age=600, but the standalone web-app shell re-uses whatever it has
      until something forces a revalidate; no-cache makes it ask every launch, and the
      ?v= query on logic.js/venues.json makes the two files it pulls miss the old
-     entries outright. Bump BOTH query strings whenever APP_VERSION changes. -->
+     entries outright. Bump logic.js?v= whenever APP_VERSION changes, and venues.json?v=
+     whenever the data does (v1.22 changed no data, so it stays ?v=1.21). -->
 <meta http-equiv="Cache-Control" content="no-cache">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -76,9 +77,6 @@
        unselected toggles: a quiet neutral fill, normal-weight label, no check, no amber. */
     --action-bg: #dcd8cf;
     --action-ink: #16181d;
-    /* v1.20 C5: the time printed inside a grid block sits on this, so it reads on every
-       block look (amber fill, blue outline, hatch, dots). */
-    --block-label-bg: rgba(255, 255, 255, 0.88);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -114,7 +112,6 @@
       --pill-some-l: 22%;
       --action-bg: #2b3550;
       --action-ink: #eef0f4;
-      --block-label-bg: rgba(15, 20, 32, 0.82);
     }
   }
   * { box-sizing: border-box; }
@@ -248,7 +245,6 @@
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
-  .card.muted { opacity: 0.62; }
   .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
   .card-title { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; flex: 1 1 140px; min-width: 0; }
   .card-name { font-weight: 700; font-size: 15px; }
@@ -278,6 +274,10 @@
   .badge.lunch { color: var(--lunch); border-color: var(--lunch); }
   .badge.inkind { color: var(--amber-strong); border-color: var(--amber); }
   .badge.warn { color: var(--bad); border-color: var(--bad); }
+  /* v1.22 C2 (TJ 13:30, "The one place is greyed out"): a card is never dimmed for missing the
+     chosen deal type; it says so. Drink blue / amber, the grid's own colours for the two types. */
+  .badge.drinks-only { color: var(--drink); border-color: var(--drink); }
+  .badge.food-only { color: var(--amber-strong); border-color: var(--amber); }
   .deals { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
   .deal { font-size: 13px; }
   .deal .tag { display: inline-block; width: 15px; text-align: center; margin-right: 4px; }
@@ -368,11 +368,20 @@
      `html body { overflow-x: hidden }` was removed above. */
   #grid-wrap { border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; margin: 0 16px 0; }
   .grid-inner { position: relative; }
-  .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); height: 36px; }
+  /* v1.22 C4: min-height, not height: the label's times line can make a row taller. */
+  .grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); min-height: 36px; }
   .grid-row-group:last-child .grid-row { border-bottom: none; }
   .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 0 0 8px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 2px; overflow: hidden; cursor: pointer; }
   .grid-rowlabel:active { background: var(--amber-bg); }
-  .grid-rowlabel span.name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* v1.22 C4 (TJ 13:09): the name, then that day's times under it (they replace the labels
+     inside the blocks, which hid on most blocks and had no am/pm). */
+  .grid-rowlabel .rl-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center;
+    padding: 4px 4px 4px 0; }
+  .grid-rowlabel span.name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .grid-rowlabel .rl-times { font-size: 11px; font-weight: 500; line-height: 1.25; color: var(--text-dim);
+    font-variant-numeric: tabular-nums; }
+  .grid-rowlabel .rl-t { white-space: nowrap; }
+  .grid-rowlabel .rl-nodeal { font-size: 11px; font-weight: 500; line-height: 1.25; color: var(--text); }
   /* C1: the row's own links, so a venue's Deal info / inKind page is one tap from
      the grid — no drill-in. 36px wide, full row height, never allowed to wrap or
      shrink; the name ellipsizes into whatever is left. */
@@ -390,8 +399,14 @@
   .grid-header-tick { position: absolute; top: 0; font-size: 9.5px; color: var(--text-dim); transform: translateX(-50%); padding-top: 4px; white-space: nowrap; }
   .block { position: absolute; top: 4px; bottom: 4px; border-radius: 5px; }
   .block.food { background: var(--amber); }
-  .block.drink { background: var(--drink); background: var(--drink-bg); border: 1.5px solid var(--drink); }
-  .block.food.drinkmode { background: var(--drink-bg); border: 1.5px solid var(--drink); }
+  .block.drink { background: var(--drink-bg); border: 1.5px solid var(--drink); }
+  /* v1.22 C3 (TJ 13:09, every block navy in Drink-first): the priority decides the fill in
+     both modes (L.gridBlockLook). Drink-first: a drink deal is solid drink blue, food only is
+     the amber outline. No deals: a grey outline, the same in both modes (solid, unlike the
+     dashed "hours not confirmed" band). */
+  .block.drinkfill { background: var(--drink); }
+  .block.foodline { background: var(--amber-bg); border: 1.5px solid var(--amber); }
+  .block.nodeal { background: var(--panel); border: 1.5px solid var(--text-dim); }
   .block.special { background-image: repeating-linear-gradient(45deg, var(--special-stripe), var(--special-stripe) 4px, transparent 4px, transparent 8px); border: 1.5px solid var(--amber); }
   /* v1.10 C3: lunch — dotted green, distinct from the special's amber hatch. */
   .block.lunch { background-color: var(--lunch-bg);
@@ -411,12 +426,6 @@
   .grid-legend .block { position: relative; display: inline-block; top: 0; bottom: 0; width: 22px; height: 12px; border-radius: 3px; }
   .grid-legend .block.allday { top: 0; bottom: auto; height: 5px; opacity: 0.75; }
   .grid-legend .sw-now { display: inline-block; width: 2px; height: 14px; background: var(--nowline); }
-  /* v1.20 C5: the block's times, when they fit (fitBlockLabels hides the rest). */
-  .block .blabel { position: absolute; left: 3px; top: 50%; transform: translateY(-50%); max-width: none;
-    padding: 2px 3px; border-radius: 3px; background: var(--block-label-bg); color: var(--text);
-    font-size: 10px; font-weight: 700; line-height: 1; white-space: nowrap; pointer-events: none;
-    font-variant-numeric: tabular-nums; }
-  .block .blabel.nofit { display: none; }
   .block.allday { top: auto; bottom: 3px; height: 6px; border-radius: 3px; opacity: 0.75; }
   .nowline { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--nowline); z-index: 1; }
   /* v1.12 C3: a temporarily closed venue's row on a closed date: a label, no blocks or bands. */
@@ -483,6 +492,16 @@
   @media (prefers-reduced-motion: reduce) {
     .refbar, #referral { transition: none; }
   }
+  /* v1.22 C6 (D3): a page restored from memory says when the site has moved on. */
+  .updbar { display: flex; align-items: center; gap: 8px; background: var(--drink-bg); color: var(--text);
+    border-bottom: 1px solid var(--drink); font-size: 13px; line-height: 1.3; font-weight: 600;
+    padding: env(safe-area-inset-top, 0px) calc(8px + env(safe-area-inset-right, 0px)) 0 calc(16px + env(safe-area-inset-left, 0px)); }
+  .updbar[hidden] { display: none; }
+  .updbar span { flex: 1 1 auto; min-width: 0; padding: 4px 0; }
+  /* Body ink, not drink blue: blue on this tint measured 4.46:1 in light mode. */
+  .updbar button { flex: 0 0 auto; min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--text);
+    font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; }
+  .updbar button:focus-visible { outline: 2px solid var(--drink); outline-offset: -2px; }
   #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
 
   /* ==================== v1.5 C4: grid coverage footer ==================== */
@@ -640,9 +659,60 @@
   .controls { display: contents; }
   .zone-summary { display: none; gap: 6px; align-items: center; }
   .zone-summary .pill { flex: 0 1 auto; min-width: 0; }
-  .zone-summary .zone-summary-btn { overflow: hidden; }
-  .zone-summary .zone-summary-btn .zs-names { overflow: hidden; text-overflow: ellipsis; }
-  .zone-summary .zone-summary-btn .zs-more { flex: 0 0 auto; }
+  /* ---- v1.22 C1 (TJ 13:30, picked "Where sheet"): phones get one Where line and a sheet ----
+     Phones = the two media queries that showed the old zone summary (PHONE_MQ in the script).
+     The line is a single line at 375px; the summary ellipsizes, the chevron never does. */
+  .zone-summary .where-line { flex: 1 1 auto; justify-content: flex-start; gap: 6px; overflow: hidden; }
+  .where-line .wl-text { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; text-align: left; }
+  .where-line .wl-text b { font-weight: 700; }
+  .where-line .wl-chev { flex: 0 0 auto; font-size: 19px; line-height: 1; margin-top: -2px; }
+  .where-root { position: fixed; inset: 0; z-index: 50; }
+  .where-root[hidden] { display: none; }
+  .where-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); opacity: 0; transition: opacity 0.22s ease; }
+  .where-sheet { position: absolute; left: 0; right: 0; bottom: 0; max-height: 85vh; max-height: 85dvh;
+    display: flex; flex-direction: column; background: var(--panel); color: var(--text);
+    border-radius: 16px 16px 0 0; box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.25); outline: none;
+    transform: translateY(100%); transition: transform 0.22s ease;
+    padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+  .where-root.open .where-backdrop { opacity: 1; }
+  .where-root.open .where-sheet { transform: none; }
+  .ws-head { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: 4px 6px 4px 16px; border-bottom: 1px solid var(--border); }
+  .ws-head h2 { margin: 0; font-size: 17px; font-weight: 700; }
+  .ws-done { min-height: 44px; min-width: 64px; border: 0; background: none; color: var(--drink); font: inherit;
+    font-size: 15px; font-weight: 700; cursor: pointer; border-radius: 8px; }
+  .ws-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 8px 0 0; }
+  .ws-allnone { display: flex; gap: 8px; padding: 0 16px 8px; }
+  .ws-allnone .pill { height: 44px; min-width: 72px; font-size: 14px; }
+  .ws-row { display: flex; align-items: stretch; border-top: 1px solid var(--border); }
+  .ws-check { flex: 1 1 auto; min-width: 0; min-height: 48px; display: flex; align-items: center; gap: 12px;
+    padding: 0 12px 0 16px; border: 0; background: none; color: var(--text); font: inherit; font-size: 15px;
+    font-weight: 600; text-align: left; cursor: pointer; -webkit-appearance: none; }
+  .ws-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ws-count { flex: 0 0 auto; font-size: 13px; font-weight: 700; color: var(--text); opacity: 0.8;
+    font-variant-numeric: tabular-nums; }
+  /* The box uses the chips' own fill and ink (--pill-on-l / --pill-on-ink, v1.15 C5), so it
+     meets the same contrast in both themes. All = a check, some = a dash, none = empty. */
+  .ws-box { flex: 0 0 22px; width: 22px; height: 22px; border-radius: 6px;
+    border: 2px solid hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); display: inline-flex; align-items: center;
+    justify-content: center; color: var(--pill-on-ink); font-size: 14px; font-weight: 800; line-height: 1; }
+  .ws-check.all .ws-box, .ws-check.some .ws-box { background: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); }
+  .ws-check.all .ws-box::before { content: "\2713"; }
+  .ws-check.some .ws-box::before { content: "\2013"; }
+  .ws-exp { flex: 0 0 52px; min-height: 48px; border: 0; border-left: 1px solid var(--border); background: none;
+    color: var(--text); font: inherit; font-size: 26px; line-height: 1; cursor: pointer; }
+  .ws-hoods { background: var(--bg); }
+  .ws-hoods .ws-check { width: 100%; min-height: 44px; padding-left: 50px; padding-right: 26px; font-size: 14px;
+    font-weight: 500; border-top: 1px solid var(--border); }
+  .ws-hoods .ws-name { white-space: normal; }
+  .ws-foot { flex: 0 0 auto; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--border); }
+  .ws-show { width: 100%; }
+  .ws-check:focus-visible, .ws-exp:focus-visible, .ws-done:focus-visible, .ws-show:focus-visible {
+    outline: 2px solid var(--amber-strong); outline-offset: -2px; }
+  html.where-locked, html.where-locked body { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) { .where-sheet, .where-backdrop { transition: none; } }
 
   @media (max-width: 599px) {
     h1 { font-size: 16px; margin-bottom: 8px; }
@@ -653,12 +723,12 @@
     nav.tabs button { min-height: 44px; }
     .toolbar { flex-wrap: wrap; }
     .toolbar .pill { height: 44px; font-size: 13px; }
-    /* Collapsed by default: one line instead of five. Tapping "edit" adds .open. */
+    /* v1.22 C1: the Where line stands in for the zone row, All/None and the Neighborhoods
+       panel; the sheet is the picker. */
     .zone-summary { display: flex; }
     .zone-summary .pill { height: 44px; font-size: 13px; }
-    .zone-toolbar:not(.open) .zone-row,
-    .zone-toolbar:not(.open) .hood-strip { display: none; }
-    .zone-toolbar.open .zone-row { margin-top: 8px; }
+    .zone-toolbar .zone-row,
+    .zone-toolbar .hood-strip { display: none; }
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
     /* v1.16 C1: up to five neighborhood chips per zone. The zone name takes its own line so
@@ -689,7 +759,7 @@
     .grid-header { margin-left: 8px; margin-right: 8px; }
     /* 45, not 44: the 1px bottom border is inside the box, so a 44px row makes
        its full-height links 43 tall. */
-    .grid-row { height: 45px; }
+    .grid-row { min-height: 45px; }
     /* 55%, 11px type, 6px of left padding and no inter-item gap: two 44px tap
        targets plus >= 12 characters of venue name do not both fit inside the v1.4
        46% at 11.5px — the binding case is 375px wide, not 390. */
@@ -717,15 +787,15 @@
     .toolbar, .zone-toolbar { padding-top: 6px; }
     .toolbar .pill, .zone-summary .pill { height: 44px; font-size: 13px; }
     .zone-summary { display: flex; }
-    .zone-toolbar:not(.open) .zone-row,
-    .zone-toolbar:not(.open) .hood-strip { display: none; }
+    .zone-toolbar .zone-row,
+    .zone-toolbar .hood-strip { display: none; }
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
     .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
     .hood-strip { max-height: 55vh; overflow-y: auto; }
     .hood-strip .group-all { min-height: 44px; min-width: 44px; }
     .day-select .pill, .sort-select .pill { height: 44px; }
-    .grid-row { height: 45px; }
+    .grid-row { min-height: 45px; }
     .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
     .icon-btn { min-height: 44px; }
   }
@@ -734,6 +804,11 @@
 <!-- v1.14 C2 (TJ pick A, 2026-10-25): a thin dismissible bar. It only scrolls to the
      referral card (never opens inKind itself), so the card's disclosure is always seen
      before the link. Hidden until the script decides: not dismissed and the card exists. -->
+<!-- v1.22 C6: shown only when version.txt says a newer version is live (checkForUpdate). -->
+<div class="updbar" id="updbar" role="status" hidden>
+  <span>There’s a newer version of the radar.</span><button type="button" id="updbar-refresh">Refresh</button>
+</div>
+
 <div class="refbar" id="refbar" hidden>
   <a class="refbar-link" href="#referral" id="refbar-link">New to inKind? $25 off your first $50+ meal&nbsp;<b aria-hidden="true">→</b></a>
   <button type="button" class="refbar-x" id="refbar-x" aria-label="Dismiss">×</button>
@@ -863,17 +938,34 @@
 
 <footer id="footer"></footer>
 
+<!-- v1.22 C1 (TJ 13:30): the phone Where sheet. Opened from the Where line; it changes the same
+     selection the zone chips do, live. role=dialog, focus trapped inside, Back closes it. -->
+<div class="where-root" id="where-root" hidden>
+  <div class="where-backdrop" id="where-backdrop"></div>
+  <div class="where-sheet" id="where-sheet" role="dialog" aria-modal="true" aria-labelledby="where-title" tabindex="-1">
+    <div class="ws-head"><h2 id="where-title">Where</h2><button type="button" class="ws-done" id="where-done">Done</button></div>
+    <div class="ws-scroll" id="where-scroll">
+      <div class="ws-allnone" role="group" aria-label="Select all or none">
+        <button type="button" class="pill action" id="where-all">All</button>
+        <button type="button" class="pill action" id="where-none">None</button>
+      </div>
+      <div class="ws-list" id="where-list" role="group" aria-label="Zones and neighborhoods"></div>
+    </div>
+    <div class="ws-foot"><button type="button" class="fb-btn primary ws-show" id="where-show"></button></div>
+  </div>
+</div>
+
 <!-- Cache-busted with the app version: index.html and logic.js are deployed together and
      can add cross-file dependencies (e.g. v1.2's cardActionsHtml calling L.bestSourceUrl),
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.21"></script>
+<script src="logic.js?v=1.22"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.21';
+  var APP_VERSION = 'v1.22';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -966,7 +1058,6 @@
     // v1.18 C1: the Neighborhoods panel is closed by default; open/closed is remembered.
     hoodsOpen: lsGet('hhradar-hoods-open', '0') === '1',
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
-    zonesOpen: false, // v1.5 C2: phones collapse the zone row behind a one-line summary
     surprise: null, // v1.7 C1: {mode:'now'|'later', pick, poolSize, canRoll}, or null when dismissed
     lastExpanded: null, // v1.5 C1: last card the user opened — goes in the feedback context
     fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
@@ -1040,7 +1131,11 @@
     'No hours on file': 'We have no opening hours for this venue.',
     'Close time assumed': 'The deal runs “until close” and we have no close time for that day.',
     'Outside posted hours': 'Part of the deal falls outside the venue’s posted opening hours.',
+    // v1.22 C2: the window has deals, but none of the type chosen with Food-first / Drink-first.
+    'drinks-only': 'No food deal in this window, only drinks. Shown because Food-first is on.',
+    'food-only': 'No drink deal in this window, only food. Shown because Drink-first is on.',
   };
+  var ONLY_LABEL = { 'drinks-only': 'Drinks only', 'food-only': 'Food only' };
   function badgeHtml(cls, label, tip) {
     return '<span class="badge ' + cls + '" tabindex="0" data-tip="' + escapeHtml(tip) + '"' +
       ' aria-label="' + escapeHtml(label + ': ' + tip) + '" onclick="event.stopPropagation()">' + escapeHtml(label) + '</span>';
@@ -1066,7 +1161,9 @@
   }
   // The one-line key: the same badges, the same words.
   function badgeKeyHtml() {
-    var rows = [['inkind', 'inKind', BADGE_TIPS.inkind], ['special', 'Special', BADGE_TIPS.special],
+    var only = state.priority === 'drink' ? 'food-only' : 'drinks-only';
+    var rows = [['inkind', 'inKind', BADGE_TIPS.inkind], [only, ONLY_LABEL[only], BADGE_TIPS[only]],
+      ['special', 'Special', BADGE_TIPS.special],
       ['lunch', 'Lunch', BADGE_TIPS.lunch], ['verify', 'Verify before you go', BADGE_TIPS.verify],
       ['warn', 'Hours conflict · Outside posted hours', 'Red: a real problem with the hours. Check before you go.']];
     return '<div class="note badge-key" id="badge-key"><span>Labels:</span>' + rows.map(function (r) {
@@ -1086,11 +1183,6 @@
   // One implementation, in logic.js, because v1.9's navControlHtml builds escaped
   // markup there and two copies of an escaper is how one of them rots.
   var escapeHtml = L.escapeHtml;
-
-  function hasDrinkOnly(win) {
-    var hasDrink = win.deals.some(function (d) { return d.type === 'drink'; });
-    return !hasDrink;
-  }
 
   function cardKey(venue, win) {
     return venue.id + '#' + venue.windows.indexOf(win);
@@ -1249,7 +1341,11 @@
   // truncation (C2). Expanded adds: the week's hours and the source line.
   // `day` (Day Grid only, v1.20 C4): the hours line describes that day, not the clock.
   function cardHtml(venue, win, statusLabel, statusClass, distanceLabel, key, expanded, travel, day) {
-    var hasFoodMuted = state.priority === 'food' ? !L.windowHasFood(win) : hasDrinkOnly(win);
+    // v1.22 C2: no dimming. A window without the chosen deal type carries a badge instead
+    // (L.onlyBadgeFor: Drinks only / Food only); its deals still sort by the priority below.
+    // (hasDrinkOnly, which returned true for a window with NO drink deal, is gone: this was its
+    // only caller, and L.onlyBadgeFor reads L.windowHasDrink / L.windowHasFood.)
+    var only = L.onlyBadgeFor(win, state.priority);
     var deals = win.deals.slice();
     var firstType = state.priority === 'food' ? 'food' : 'drink';
     deals.sort(function (a, b) {
@@ -1257,14 +1353,14 @@
       return a.type === firstType ? -1 : 1;
     });
     var dealsInner = deals.length === 0
-      ? '<div class="deal" style="color:var(--text-dim)">No deal details published — verify on arrival</div>'
+      ? '<div class="deal no-deals">' + escapeHtml(L.NO_DEALS_TEXT) + '</div>' // v1.22 C5, body ink
       : deals.map(dealLineHtml).join('');
     var extrasHtml = expanded ? weekHoursHtml(venue) + provenanceBlockHtml(venue, win) : '';
     // v1.8 C2: a venue the reader cannot reach before last call is dimmed, not removed
     // — it is still a real happy hour, and the reader may know a faster road than we do.
     var unreachable = travel && travel.verdict === 'miss';
     return '' +
-      '<div class="card' + (hasFoodMuted ? ' muted' : '') + (unreachable ? ' unreachable' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
+      '<div class="card' + (unreachable ? ' unreachable' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
         '<div class="card-top">' +
           '<div class="card-title">' +
             '<span class="card-name">' + escapeHtml(venue.name) + '</span>' +
@@ -1276,7 +1372,8 @@
         hoursLineHtml(venue, day) +
         verdictLineHtml(travel) +
         addressLinkHtml(venue, 'card-addr') +
-        '<div class="badges">' + badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) + renderBadges(venue, win) + '</div>' +
+        '<div class="badges">' + badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) +
+          (only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '') + renderBadges(venue, win) + '</div>' +
         windowLineHtml(venue, win) +
         '<div class="deals">' + dealsInner + '</div>' +
         readerNoteHtml(win) +
@@ -1586,19 +1683,17 @@
         var startPos = Math.max(it.startAbs - dayBase, GRID_START);
         var endPos = Math.min(it.endAbs - dayBase, GRID_END);
         if (endPos <= startPos) return '';
-        var isFood = L.windowHasFood(it.win);
         // v1.10 C3: lunch draws like special (no food/drink tint) but in its own look.
-        var cls = 'block ' + (it.win.kind === 'special' || it.win.kind === 'lunch' ? it.win.kind : (state.priority === 'food' ? (isFood ? 'food' : 'drink') : (isFood ? 'food drinkmode' : 'drink')));
+        // v1.22 C3: happy hours follow the priority in both modes (L.gridBlockLook).
+        var cls = 'block ' + L.gridBlockLook(it.win, state.priority);
         if (L.isAllDay(venue, it.win)) cls += ' allday';
         var leftPct = (startPos - GRID_START) / GRID_SPAN * 100;
         var widthPct = (endPos - startPos) / GRID_SPAN * 100;
-        // v1.20 C5 (TJ 05:01): the block's own times, printed inside it when they fit
-        // (fitBlockLabels). A "close" end is the resolved close the block is drawn to (C3).
+        // v1.22 C4: the times are under the venue name now (L.gridRowTimes); the block keeps
+        // them as its hover title. A "close" end is the resolved close it is drawn to.
         var endHM = L.closeHMOn(venue, it.win, day) || (it.win.end === 'close' ? null : it.win.end);
-        var label = endHM ? L.compactRangeHM(it.win.start, endHM) : fmtHM(it.win.start) + '–close';
         var full = endHM ? fmtRangeHM(it.win.start, endHM) : fmtHM(it.win.start) + ' until close';
-        return '<div class="' + cls + '" style="left:' + leftPct + '%;width:' + widthPct + '%" title="' + escapeHtml(full) + '">' +
-          (L.isAllDay(venue, it.win) ? '' : '<span class="blabel">' + escapeHtml(label) + '</span>') + '</div>';
+        return '<div class="' + cls + '" style="left:' + leftPct + '%;width:' + widthPct + '%" title="' + escapeHtml(full) + '"></div>';
       }).join('');
       var expandedHtml = state.gridRowOpen.has(venue.id)
         ? '<div class="grid-expanded">' + items.map(function (it) { return gridDayCardHtml(venue, it.win, day); }).join('') + '</div>'
@@ -1609,7 +1704,9 @@
       // via closest('.grid-row-group') in the delegated handler (C3).
       return '<div class="grid-row-group" data-venue-id="' + escapeHtml(venue.id) + '">' +
         '<div class="grid-row">' +
-          '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="name">' + escapeHtml(venue.name) + '</span>' + rowLinksHtml(venue, items[0].win) + '</div>' +
+          '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="rl-text">' +
+            '<span class="name">' + escapeHtml(venue.name) + '</span>' + rowTimesHtml(venue, day, items, r.closed) + '</span>' +
+            rowLinksHtml(venue, items[0].win) + '</div>' +
           '<div class="grid-track" style="background-size:' + hourPct + '% 100%">' +
             bands + blocks +
             (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
@@ -1632,24 +1729,29 @@
     document.getElementById('grid-legend').innerHTML = gridLegendHtml() + badgeKeyHtml();
 
     updateStickyOffsets();
-    fitBlockLabels();
   }
 
-  // v1.20 C5: a block's times show only when the whole label fits inside the block.
-  function fitBlockLabels() {
-    Array.prototype.forEach.call(document.querySelectorAll('#grid-inner .block .blabel'), function (lb) {
-      lb.classList.remove('nofit');
-      if (lb.offsetWidth + 6 > lb.parentNode.clientWidth) lb.classList.add('nofit');
-    });
+  // v1.22 C4 (TJ 13:09): that day's times under the name, "close" resolved, plus C5's
+  // "Deals not posted, ask at the bar" when a window has none. A temporarily closed date
+  // draws no blocks, so it gets no times either.
+  function rowTimesHtml(venue, day, items, closed) {
+    if (closed) return '';
+    var t = L.gridRowTimes(venue, day, items);
+    // A line may break between windows or after a tag, never inside "10am–2pm".
+    return '<span class="rl-times">' + t.parts.map(function (p) {
+      return (p.tag ? escapeHtml(p.tag) + ' ' : '') + '<span class="rl-t">' + escapeHtml(p.time) + '</span>';
+    }).join(' \u00b7 ') + '</span>' +
+      (t.noDeals ? '<span class="rl-nodeal">' + escapeHtml(t.noDeals) + '</span>' : '');
   }
 
   // v1.20 C6 (QA#4): one row naming every mark on the grid, drawn with the grid's own
-  // classes. In drink-first mode food and drink happy hours share one look, so one entry.
+  // classes. v1.22 C3: the happy-hour entries follow the mode, as the blocks do.
   function gridLegendHtml() {
     function lg(sw, text) { return '<span class="lg">' + sw + text + '</span>'; }
     var hh = state.priority === 'food'
-      ? lg('<span class="block food"></span>', 'Happy hour (food)') + lg('<span class="block drink"></span>', 'Happy hour (drink only)')
-      : lg('<span class="block drink"></span>', 'Happy hour');
+      ? lg('<span class="block food"></span>', 'Happy hour, food deal') + lg('<span class="block drink"></span>', 'Happy hour, drinks only')
+      : lg('<span class="block drinkfill"></span>', 'Happy hour, drink deal') + lg('<span class="block foodline"></span>', 'Happy hour, food only');
+    hh += lg('<span class="block nodeal"></span>', 'Happy hour, deals not posted');
     return '<div class="lg-row">' + hh +
       lg('<span class="block special"></span>', 'Special') +
       lg('<span class="block special allday"></span>', 'All-day special') +
@@ -1900,7 +2002,7 @@
       '<span class="count">' + count + '</span></button>';
   }
 
-  function renderHoodChips() { renderZoneRow(); renderHoodStrip(); renderZoneSummary(); }
+  function renderHoodChips() { renderZoneRow(); renderHoodStrip(); renderZoneSummary(); renderWhereSheet(); }
 
   // ---- v1.4 C3/C4: the map ----
   // Six hand-authored zone polygons (logic.js ZONE_POLYGONS) over a river line and
@@ -2585,24 +2687,152 @@
     return { filtered: filtered, zoneCount: selectedZones.length, labels: labels, plain: plain,
       shown: labels.slice(0, 2).join(', '), more: Math.max(0, labels.length - 2) };
   }
+  // v1.22 C1 (TJ 13:30): on phones, one line, "📍 Where: <summary> ›" (L.whereSummary), and the
+  // Map control beside it as before. It opens the Where sheet.
+  function whereZones() {
+    return L.ZONES.filter(function (z) { return visibleHoodsOf(z).length > 0; }).map(function (z) {
+      return { key: z.key, label: z.label, hue: z.hue, stateHoods: stateHoodsOf(z) };
+    });
+  }
   function renderZoneSummary() {
-    var sum = zoneFilterSummary();
+    var text = L.whereSummary(state.hoodSelected, whereZones());
     document.getElementById('zone-summary').innerHTML =
-      '<div class="pill action zone-summary-btn" id="zone-summary-btn" role="button" tabindex="0"' +
-        ' aria-expanded="' + (state.zonesOpen ? 'true' : 'false') + '" aria-controls="zone-row">' +
-        // v1.19: "n of m" makes the names longer, so "+N" sits outside the part that is cut short.
-        'Zones: <span class="zs-names">' + escapeHtml(sum.plain === 'all' ? 'All' : (sum.plain === 'none' ? 'None' : sum.shown)) + '</span>' +
-        (sum.plain !== 'all' && sum.plain !== 'none' && sum.more ? '<span class="zs-more">\u00a0+' + sum.more + '</span>' : '') +
-        ' \u00b7 ' + (state.zonesOpen ? 'done' : 'edit') + '</div>' +
+      '<button type="button" class="pill action where-line" id="where-line" aria-haspopup="dialog" aria-controls="where-sheet"' +
+        ' aria-expanded="' + (whereHist && whereHist.isOpen() ? 'true' : 'false') + '">' +
+        '<span aria-hidden="true">\ud83d\udccd</span><span class="wl-text">Where: <b>' + escapeHtml(text) + '</b></span>' +
+        '<span class="wl-chev" aria-hidden="true">\u203a</span></button>' +
       '<button type="button" class="pill action" id="map-toggle-sm" aria-controls="sidebar" aria-expanded="' +
         (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') + '">Map</button>';
-    document.getElementById('zone-toolbar').classList.toggle('open', state.zonesOpen);
   }
-  function toggleZonesOpen() {
-    state.zonesOpen = !state.zonesOpen;
+
+  // ---------- v1.22 C1: the Where sheet ----------
+  // The same selection, storage and pure functions as the chips (L.zoneChipState, L.applyZoneTap
+  // via toggleZone, L.zoneCountFor); every tap applies at once, so the page and Surprise me
+  // follow it underneath. Expansion lives here only and is not saved: partly-on zones open
+  // expanded each time the sheet opens.
+  var PHONE_MQ = window.matchMedia
+    ? window.matchMedia('(max-width: 599px), (max-width: 926px) and (max-height: 480px) and (orientation: landscape)')
+    : null;
+  var whereExpanded = new Set();
+  var whereHist = L.sheetHistory(window.history, hideWhere);
+  function whereCount() {
+    if (state.currentTab === 'grid') return L.dayCoverageCounts(filteredVenues(), state.day).onDay;
+    return buildNowSections().live.length;
+  }
+  function whereCheckHtml(cls, st, name, count, data, ariaName) {
+    var checked = st === 'all' ? 'true' : (st === 'some' ? 'mixed' : 'false');
+    var when = state.currentTab === 'grid' ? ' on ' + DAY_FULL[state.day] : ' live now';
+    return '<button type="button" class="ws-check ' + cls + ' ' + st + '" role="checkbox" aria-checked="' + checked + '"' +
+      ' aria-label="' + escapeHtml(ariaName + ', ' + count + when) + '" ' + data + '>' +
+      '<span class="ws-box" aria-hidden="true"></span><span class="ws-name">' + escapeHtml(name) + '</span>' +
+      '<span class="ws-count" aria-hidden="true">' + count + '</span></button>';
+  }
+  function renderWhereSheet() {
+    if (!whereHist || !whereHist.isOpen()) return;
+    var list = document.getElementById('where-list');
+    var act = document.activeElement;
+    var focusKey = act && list.contains(act) ? act.getAttribute('data-ws-key') : null;
+    var counts = hoodCounts();
+    list.innerHTML = whereZones().map(function (z) {
+      var zone = zoneByKey(z.key);
+      var st = L.zoneChipState(state.hoodSelected, z.stateHoods).state;
+      var count = L.zoneCountFor(state.hoodSelected, visibleHoodsOf(zone), z.stateHoods, counts);
+      var hoods = chipHoodsOf(zone);
+      var canExpand = hoods.length >= 2;
+      var open = canExpand && whereExpanded.has(z.key);
+      var k = escapeHtml(z.key);
+      var html = '<div class="ws-row" style="--pill-hue:' + z.hue + '">' +
+        whereCheckHtml('ws-zone', st, z.label, count, 'data-ws-zone="' + k + '" data-ws-key="z:' + k + '"', z.label) +
+        (canExpand ? '<button type="button" class="ws-exp" aria-expanded="' + (open ? 'true' : 'false') + '"' +
+          ' aria-label="' + (open ? 'Hide ' : 'Show ') + escapeHtml(z.label) + ' neighborhoods"' +
+          ' data-ws-exp="' + k + '" data-ws-key="e:' + k + '">' + (open ? '\u25be' : '\u25b8') + '</button>' : '') +
+        '</div>';
+      if (open) {
+        html += '<div class="ws-hoods" role="group" aria-label="' + escapeHtml(z.label) + ' neighborhoods" style="--pill-hue:' + z.hue + '">' +
+          hoods.map(function (h) {
+            var hk = escapeHtml(h);
+            return whereCheckHtml('ws-hood', state.hoodSelected.has(h) ? 'all' : 'none', h, counts[h] || 0,
+              'data-ws-hood="' + hk + '" data-ws-key="h:' + hk + '"', h);
+          }).join('') + '</div>';
+      }
+      return html;
+    }).join('');
+    document.getElementById('where-show').textContent = L.whereFooterLabel(state.currentTab, whereCount(), state.day);
+    if (focusKey) {
+      var again = [].filter.call(list.querySelectorAll('[data-ws-key]'), function (b) { return b.getAttribute('data-ws-key') === focusKey; })[0];
+      if (again) again.focus();
+    }
+  }
+  function openWhere() {
+    if (!whereHist.open()) return;
+    whereExpanded = new Set(whereZones().filter(function (z) {
+      return chipHoodsOf(zoneByKey(z.key)).length >= 2 && L.zoneChipState(state.hoodSelected, z.stateHoods).state === 'some';
+    }).map(function (z) { return z.key; }));
+    var root = document.getElementById('where-root');
+    root.hidden = false;
+    document.documentElement.classList.add('where-locked');
+    renderWhereSheet();
     renderZoneSummary();
-    updateStickyOffsets();
+    document.getElementById('where-scroll').scrollTop = 0;
+    document.getElementById('where-sheet').focus();
+    requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('open'); }); });
   }
+  // whereHist's onClose: every way out (Done, the footer button, the backdrop, Escape, Back).
+  function hideWhere() {
+    var root = document.getElementById('where-root');
+    root.classList.remove('open');
+    document.documentElement.classList.remove('where-locked');
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var done = function () { if (!whereHist.isOpen()) root.hidden = true; };
+    if (still) done(); else setTimeout(done, 240);
+    renderZoneSummary();
+    var line = document.getElementById('where-line');
+    if (line) line.focus();
+  }
+  function closeWhere() { whereHist.close(); }
+  window.addEventListener('popstate', function () { whereHist.popstate(); });
+  document.getElementById('where-done').addEventListener('click', closeWhere);
+  document.getElementById('where-show').addEventListener('click', closeWhere);
+  document.getElementById('where-backdrop').addEventListener('click', closeWhere);
+  document.getElementById('where-all').addEventListener('click', function () {
+    state.hoodSelected = new Set(L.hoodKeys());
+    onHoodSelectionChanged();
+  });
+  document.getElementById('where-none').addEventListener('click', function () {
+    state.hoodSelected = new Set();
+    onHoodSelectionChanged();
+  });
+  document.getElementById('where-list').addEventListener('click', function (e) {
+    var exp = e.target.closest('[data-ws-exp]');
+    if (exp) {
+      toggleSetMember(whereExpanded, exp.getAttribute('data-ws-exp'));
+      renderWhereSheet();
+      return;
+    }
+    var zoneBtn = e.target.closest('[data-ws-zone]');
+    if (zoneBtn) { toggleZone(zoneBtn.getAttribute('data-ws-zone')); return; }
+    var hoodBtn = e.target.closest('[data-ws-hood]');
+    if (hoodBtn) {
+      toggleSetMember(state.hoodSelected, hoodBtn.getAttribute('data-ws-hood'));
+      onHoodSelectionChanged();
+    }
+  });
+  // Escape closes; Tab and Shift+Tab cycle inside the sheet; focus that lands outside is pulled back.
+  document.getElementById('where-root').addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); closeWhere(); return; }
+    if (e.key !== 'Tab') return;
+    var sheet = document.getElementById('where-sheet');
+    var f = [].filter.call(sheet.querySelectorAll('button'), function (b) { return !b.disabled && b.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1], at = document.activeElement;
+    if (e.shiftKey && (at === first || at === sheet)) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); }
+  });
+  document.addEventListener('focusin', function (e) {
+    if (!whereHist.isOpen()) return;
+    var sheet = document.getElementById('where-sheet');
+    if (!sheet.contains(e.target)) sheet.focus();
+  });
 
   // ---------- geolocation ----------
   function requestGeo() {
@@ -2925,12 +3155,7 @@
       mapBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       return;
     }
-    if (e.target.closest('#zone-summary-btn')) toggleZonesOpen();
-  });
-  document.getElementById('zone-summary').addEventListener('keydown', function (e) {
-    if (!isEnterOrSpace(e) || !e.target.closest('#zone-summary-btn')) return;
-    e.preventDefault();
-    toggleZonesOpen();
+    if (e.target.closest('#where-line')) openWhere();
   });
   document.getElementById('btn-food').addEventListener('click', function () { setPriority('food'); });
   document.getElementById('btn-drink').addEventListener('click', function () { setPriority('drink'); });
@@ -2946,6 +3171,8 @@
   window.addEventListener('resize', function () {
     updateStickyOffsets();
     renderGridIfVisible();
+    // v1.22 C1: the sheet is a phone control; a window widened past the phone breakpoint closes it.
+    if (whereHist.isOpen() && PHONE_MQ && !PHONE_MQ.matches) closeWhere();
   });
 
   // v1.10 C4: desktop only. A phone reader is holding the device the link opens on,
@@ -3021,6 +3248,35 @@
     });
   }
   wireRefBar();
+
+  // ==================== v1.22 C6 (D3): the update check ====================
+  // TJ's 1:31 screenshots were v1.13: DuckDuckGo restored the tab from memory. There is no
+  // service worker, so a reload fixes it; this tells a returning reader to do one. The page
+  // asks for version.txt (it holds APP_VERSION) only when it comes back after 15+ minutes
+  // hidden, or is restored from the back/forward cache. Never on first load, never polled,
+  // silent on any error. The only fetch besides venues.json and the feedback POST (README).
+  var UPDATE_AFTER_HIDDEN_MS = 15 * 60 * 1000;
+  var hiddenSince = document.hidden ? Date.now() : null;
+  function checkForUpdate() {
+    try {
+      fetch('version.txt?t=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+        return r.ok ? r.text() : null;
+      }).then(function (text) {
+        if (L.versionDiffers(text, APP_VERSION)) {
+          document.getElementById('updbar').hidden = false;
+          updateStickyOffsets();
+        }
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { hiddenSince = Date.now(); return; }
+    var away = hiddenSince === null ? 0 : Date.now() - hiddenSince;
+    hiddenSince = null;
+    if (away >= UPDATE_AFTER_HIDDEN_MS) checkForUpdate();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) checkForUpdate(); });
+  document.getElementById('updbar-refresh').addEventListener('click', function () { location.reload(); });
 
   // ---------- boot ----------
   function fatal(msg) {

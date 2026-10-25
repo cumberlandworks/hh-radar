@@ -1,5 +1,71 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix22-20261025: v1.22 (phone Where sheet, no grey cards, honest grid colors, update check)
+
+TJ, 2026-10-25, verbatim:
+
+> 13:09, desktop Day Grid SUN, all zones, every block a navy outline, labels only on some blocks, one reading "5–1":
+> "noticed this while I had all the spots loaded."
+
+> 13:30, four Android screenshots (two at 1:31 in DuckDuckGo, footer "v1.13"; a grey JBJ's Nashville NOW card; the open
+> Neighborhoods panel, several screens tall): "The one place is greyed out. I'm assuming that it's because I can't make
+> it maybe, but that's not clear.  Also the neighborshoods are clunky on the phone. If they could all fit on one line
+> that may be slightly better, but I'm open to suggestions for any suggestions including a re engineer to fix it."
+
+> 13:3x, on the thread's options: picked "Where sheet (Recommended)" and "Write it with these".
+
+### Diagnosis
+- **D1.** The grey JBJ's card was `.card.muted { opacity: 0.62 }`, set when the window had no deal of the chosen type.
+  Food first is the default and the Sat/Sun brunch has only a drink deal. Nothing said why. (`hasDrinkOnly` returned
+  true for a window with NO drink deal: the name was backwards.)
+- **D2.** In Drink first, food windows got `food drinkmode` and drink-only windows got `drink`, and both drew as the
+  light drink fill with a drink border: every happy-hour block looked the same (TJ's all-navy 13:09 shot).
+- **D3.** TJ's 1:31 shots were v1.13: DuckDuckGo restored the tab from memory. With no service worker a reload fixes
+  it, but a returning visitor had no way to learn the page was stale.
+- **D4.** The grid's in-block labels hid whenever a block was too narrow (13 of 37 showed on SUN at 375px), and the
+  ones that showed had no am/pm ("5–1").
+- **D5.** Five happy-hour windows have no deals (Butterfly, Margaritaville, LinQ, Music Row Bar & Grill, Present Tense);
+  their cards said "No deal details published — verify on arrival".
+
+### Changes
+- **C1: the Where sheet (phones).** Phones are the two media queries that already showed the folded zone summary:
+  `max-width: 599px`, and landscape phones (`max-width: 926px and max-height: 480px`). There the zone row, All/None and
+  the Neighborhoods panel are replaced by one line, "📍 Where: <summary> ›", beside the unchanged Map button. The
+  summary is `L.whereSummary`: "All of Nashville", "Nothing selected", or the selected zones in zone order with
+  " (part)" for a partly-on zone and "+N" after two names. The line opens a bottom sheet (max 85vh, scrolls inside):
+  a sticky "Where" header with Done, an All / None row, one row per zone (tri-state checkbox, name, the zone chips'
+  count, ▸/▾ on zones with 2+ neighborhoods; partly-on zones open expanded), and a sticky footer button, "Show N live
+  now" (the "Live now (N)" heading) or "Show N on <Day>" (the grid's "N venues with happy hours on <Day>"). Taps apply
+  live with the same state, storage and functions as the chips. Done, the footer button, the backdrop, Escape and
+  Android's Back close it; Back closes it without leaving the page (`L.sheetHistory`: one history entry pushed on
+  open, popped by any other close). `role="dialog"`, `aria-modal`, focus moved in and trapped, and returned to the
+  Where line on close. Desktop and tablet are unchanged.
+- **C2: no grey cards.** `.card.muted` is gone. A window with deals but none of the chosen type carries a badge,
+  "Drinks only" (Food first) or "Food only" (Drink first), with a hover/focus note, and it is in the Labels key
+  (`L.onlyBadgeFor`). `hasDrinkOnly` is gone (its one caller uses `L.onlyBadgeFor`). `.card.unreachable` ("you'd miss
+  it") is the only opacity left on a card.
+- **C3: grid colors follow the priority.** `L.gridBlockLook`: Food first, a food deal is filled amber and drinks-only
+  is the drink outline (as before); Drink first, a drink deal is filled solid drink blue and food-only is an amber
+  outline. A window with no deals is a grey outline in both modes. Specials, lunch and all-day bars are unchanged. The
+  legend changes with the mode and lists "Happy hour, deals not posted".
+- **C4: times under the venue name.** Each grid row's label has a second line with that day's windows
+  (`L.gridRowTimes`): "4:30–6:30pm"; several joined with " · " in start order, specials and lunch tagged
+  ("Special 10am–2pm", "Lunch 11am–2pm"); "close" resolved. A time range never breaks across lines. The in-block labels
+  and their measuring code are gone; rows grow to fit (min 36px, 45px on phones). `fmtRangeHM` now keeps both am/pm
+  on a range past midnight: JBJ's game-day special read "11–2am" and now reads "11am–2am" (cards too).
+- **C5: deals not posted.** A window with no deals says "Deals not posted, ask at the bar" (`L.NO_DEALS_TEXT`) on
+  its card, in body ink, and on its grid row. Where only one of a row's windows lacks deals, the note names its times
+  ("4–6pm: deals not posted, ask at the bar", Butterfly on weekdays).
+- **C6: update check.** `version.txt` holds the APP_VERSION string. When the page comes back after 15+ minutes hidden,
+  or is restored from the back/forward cache, it fetches `version.txt?t=<now>` with `cache: 'no-store'`; if that is a
+  real version string that differs (`L.versionDiffers`), a slim bar says "There’s a newer version of the radar." with
+  Refresh. No check on first load, no polling, silent on error. A test fails if `version.txt` and APP_VERSION differ.
+  **Pages already open on v1.21 or older don't have this code**, so they will not show the bar; they update on
+  their next reload.
+- **C7: v1.22.** `APP_VERSION` and `logic.js?v=1.22`; `venues.json?v=1.21` is unchanged (no data change). Tests
+  198 → 214.
+- **Images.** Re-taken from the live v1.22 site in the follow-up commit (they have to come from the live page).
+
 ## 2026-10-25 — BLOCK-hh-radar-fix21-20261025: v1.21 (last pre-launch tidy)
 
 TJ, 2026-10-25 13:05, verbatim:

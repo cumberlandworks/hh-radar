@@ -12,7 +12,14 @@ Your phone's clock and GPS are the only inputs; GPS coordinates never leave the 
 One deliberate exception since v1.5: tapping **Send** in the feedback box POSTs your
 note to a Google Form (see *Feedback inbox* below). Nothing else on the page ever makes a
 network call beyond its own files (the page, `logic.js`, `venues.json`, the icons, and on
-desktop the referral QR image). The footer's referral, LinkedIn and GitHub links are plain
+desktop the referral QR image).
+
+The update check (v1.22) is the only fetch besides `venues.json` and that feedback POST.
+When the page comes back after 15+ minutes hidden, or is restored from the browser's
+back/forward cache, it asks for `version.txt` (this site's own file, `cache: 'no-store'`);
+if that differs from `APP_VERSION`, a slim bar offers a Refresh. Never on first load, never
+polled, silent on any error. `version.txt` must hold the APP_VERSION string; a test fails
+if the two differ. The footer's referral, LinkedIn and GitHub links are plain
 links: nothing is fetched until the reader taps one.
 
 Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11; 615chuTNey dropped as
@@ -173,8 +180,12 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
 - STALE = `last_verified` null OR older than 60 days from the phone clock's date.
   UNVERIFIED = `confidence == "low"`. Both render as a badge; neither hides a venue.
 - FOOD-FIRST is render-time: a window "has food" iff any deal has `type: "food"`.
-  Default UI: full-colour = has food; muted = drink-only or `deals: []`. The toggle
-  flips to drink-forward — nothing is ever filtered out at the data level.
+  Nothing is dimmed (v1.22): a card whose window has deals but none of the chosen type
+  carries a "Drinks only" (Food-first) or "Food only" (Drink-first) badge
+  (`L.onlyBadgeFor`), and a window with `deals: []` says "Deals not posted, ask at the
+  bar". In the Day Grid a happy hour with the chosen type is filled (amber, or solid drink
+  blue in Drink-first), one with only the other type is an outline, and one with no deals is
+  a grey outline (`L.gridBlockLook`). Nothing is ever filtered out at the data level.
 - `kind: "special"` windows render in the NOW view with a small "special" tag and in
   the DAY GRID with a hatched block. They count toward "live now".
 - `kind: "lunch"` (v1.10) is handled exactly like `special` (NOW lists, counts, food-first

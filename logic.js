@@ -1196,9 +1196,10 @@
     return h12 + (m === '00' ? '' : ':' + m) + ap;
   }
   // "2:30–5pm", "11am–2:30pm": the first time drops its am/pm when both share it.
+  // v1.22 C4: not when the range runs past midnight: 11:00–02:00 is "11am–2am", never "11–2am".
   function fmtRangeHM(a, b) {
     var x = fmtHM(a), y = fmtHM(b);
-    if (x.slice(-2) === y.slice(-2)) x = x.slice(0, -2);
+    if (x.slice(-2) === y.slice(-2) && parseHM(b) > parseHM(a)) x = x.slice(0, -2);
     return x + '–' + y;
   }
   // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close". v1.20 C3: given the
@@ -1354,6 +1355,122 @@
   // v1.20 C10: "Select all" / "Clear" (TJ's fix19 report: "none" read as a status).
   function hoodGroupControlLabel(selected, visibleHoods) {
     return zoneChipState(selected, visibleHoods).state === 'all' ? 'Clear' : 'Select all';
+  }
+
+  // ---- v1.22 C1 (TJ 13:30): the phone "Where" line and sheet ----
+  // TJ: "the neighborshoods are clunky on the phone." The phone shows one line,
+  // "📍 Where: <summary> ›", and a sheet that slides up. `zones` = [{label, stateHoods}] in
+  // zone order, the zones the page offers (a zone with no hood to pick is left out).
+  function whereSummary(selected, zones) {
+    var states = (zones || []).map(function (z) {
+      return { label: z.label, st: zoneChipState(selected, z.stateHoods).state };
+    });
+    if (states.length && states.every(function (s) { return s.st === 'all'; })) return 'All of Nashville';
+    var names = states.filter(function (s) { return s.st !== 'none'; }).map(function (s) {
+      return s.label + (s.st === 'some' ? ' (part)' : '');
+    });
+    if (!names.length) return 'Nothing selected';
+    return names.slice(0, 2).join(', ') + (names.length > 2 ? ' +' + (names.length - 2) : '');
+  }
+  // The sheet's footer button. `n` is the number the page itself shows: the "Live now (N)"
+  // heading in NOW, the "N venues with happy hours on <Day>" line in the Day Grid.
+  function whereFooterLabel(tab, n, day) {
+    return tab === 'grid' ? 'Show ' + n + ' on ' + DAY_LONG[day] : 'Show ' + n + ' live now';
+  }
+  // Android Back closes the sheet and stays on the page. Opening pushes one history entry;
+  // Back (popstate) then closes the sheet. Any other close (Done, the backdrop, Escape, the
+  // footer button) pops that entry itself, and the popstate that follows is swallowed.
+  // `hist` is window.history (or a fake in the tests); `onClose` hides the sheet.
+  function sheetHistory(hist, onClose) {
+    var open = false, pushed = false, swallow = 0;
+    return {
+      isOpen: function () { return open; },
+      open: function () {
+        if (open) return false;
+        open = true;
+        try { hist.pushState({ hhWhere: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
+        return true;
+      },
+      close: function () {
+        if (!open) return false;
+        open = false;
+        onClose();
+        if (pushed) {
+          pushed = false;
+          swallow++;
+          try { hist.back(); } catch (e) { swallow--; }
+        }
+        return true;
+      },
+      popstate: function () {
+        if (swallow > 0) { swallow--; return 'swallowed'; }
+        if (!open) return 'ignored';
+        open = false;
+        pushed = false;
+        onClose();
+        return 'closed';
+      },
+    };
+  }
+
+  // ---- v1.22 C2/C3 (TJ 13:09, 13:30): the chosen priority, said instead of dimmed ----
+  // A window with deals but none of the chosen type: 'drinks-only' (Food first) or
+  // 'food-only' (Drink first). null when it has the chosen type, or no deals at all (C5).
+  function onlyBadgeFor(win, priority) {
+    if (!win.deals.length) return null;
+    if (priority === 'drink') return windowHasDrink(win) ? null : 'food-only';
+    return windowHasFood(win) ? null : 'drinks-only';
+  }
+  // The Day Grid block's look. Happy hours follow the priority in both modes: a window with
+  // the chosen deal type is filled ('food' amber, 'drinkfill' solid drink blue), one with only
+  // the other type is the outline ('drink', 'foodline'), one with no deals is 'nodeal'.
+  // Specials and lunch keep their own looks.
+  function gridBlockLook(win, priority) {
+    if (win.kind === 'special' || win.kind === 'lunch') return win.kind;
+    if (!win.deals.length) return 'nodeal';
+    if (priority === 'drink') return windowHasDrink(win) ? 'drinkfill' : 'foodline';
+    return windowHasFood(win) ? 'food' : 'drink';
+  }
+
+  // ---- v1.22 C5: a window with no deals ----
+  var NO_DEALS_TEXT = 'Deals not posted, ask at the bar';
+
+  // ---- v1.22 C4 (TJ 13:09, "5–1"): the grid row's times, under the venue name ----
+  // `items` = that day's [{win, startAbs}] for one venue. "4:30–6:30pm"; several windows
+  // joined with " · " in start order, non-happy-hour kinds tagged ("Special 10am–2pm",
+  // "Lunch 11am–2pm"); a "close" end resolved for that day ("5pm–1am"). `noDeals` is
+  // NO_DEALS_TEXT when no window that day has deals, the windows' times in front of it
+  // when only some lack them, else ''.
+  var ROW_KIND_TAG = { special: 'Special', lunch: 'Lunch' };
+  function gridRowTimes(venue, day, items) {
+    var sorted = (items || []).slice().sort(function (a, b) {
+      return a.startAbs - b.startAbs || (a.win.kind === 'happy_hour' ? 0 : 1) - (b.win.kind === 'happy_hour' ? 0 : 1);
+    });
+    // `parts` = [{tag, time}] for the page, which keeps each time range on one line.
+    var seen = {}, parts = [], bare = [];
+    sorted.forEach(function (it) {
+      var part = { tag: ROW_KIND_TAG[it.win.kind] || '', time: windowTimeLabel(venue, it.win, day) };
+      var text = (part.tag ? part.tag + ' ' : '') + part.time;
+      if (!it.win.deals.length) bare.push(text);
+      if (seen[text]) return;
+      seen[text] = true;
+      parts.push(part);
+    });
+    var noDeals = '';
+    if (bare.length && bare.length === sorted.length) noDeals = NO_DEALS_TEXT;
+    else if (bare.length) noDeals = bare.join(', ') + ': ' + NO_DEALS_TEXT.charAt(0).toLowerCase() + NO_DEALS_TEXT.slice(1);
+    return {
+      times: parts.map(function (p) { return (p.tag ? p.tag + ' ' : '') + p.time; }).join(' · '),
+      parts: parts, noDeals: noDeals,
+    };
+  }
+
+  // ---- v1.22 C6 (D3): the update check ----
+  // version.txt holds APP_VERSION. Only a real version string that differs counts, so a
+  // captive portal's HTML or an empty body never shows the bar.
+  function versionDiffers(remote, appVersion) {
+    var v = String(remote == null ? '' : remote).trim();
+    return /^v\d+(\.\d+)*$/.test(v) && v !== appVersion;
   }
 
   // Where the hours came from, for the expanded card's one small line. hours_source
@@ -2128,6 +2245,14 @@
     zoneTapTarget: zoneTapTarget,
     applyZoneTap: applyZoneTap,
     hoodGroupControlLabel: hoodGroupControlLabel,
+    whereSummary: whereSummary,
+    whereFooterLabel: whereFooterLabel,
+    sheetHistory: sheetHistory,
+    onlyBadgeFor: onlyBadgeFor,
+    gridBlockLook: gridBlockLook,
+    NO_DEALS_TEXT: NO_DEALS_TEXT,
+    gridRowTimes: gridRowTimes,
+    versionDiffers: versionDiffers,
     closeHMOn: closeHMOn,
     windowTimeLabel: windowTimeLabel,
     compactRangeHM: compactRangeHM,

@@ -2164,7 +2164,8 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes('Notes go to TJ,\n        the person who built this.'));
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
-  assert.ok(html.includes("var APP_VERSION = 'v1.21';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.21'));
+  // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
+  assert.ok(html.includes("var APP_VERSION = 'v1.22';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.22'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2217,4 +2218,217 @@ test('index.html (v1.21 C2/C3): "next happy hour", a quieter "Sooner" line, zone
   assert.ok(html.includes('.empty .empty-sooner {'));
   assert.ok(html.includes("        '<span class=\"count\">' + count + '</span>' +\n      '</div>';"), 'zone pill always has a count');
   assert.ok(!html.includes("(count > 0 ? '<span class=\"count\">' + count + '</span>' : '')"));
+});
+
+// ==================== v1.22 (BLOCK-hh-radar-fix22-20261025) ====================
+function itemsOn(v, day) {
+  const out = [];
+  v.windows.forEach((w) => {
+    if (w.days.indexOf(day) === -1) return;
+    L20.resolveWindow(v, w).forEach((iv) => { if (iv.day === day) out.push({ win: w, startAbs: iv.startAbs, endAbs: iv.endAbs }); });
+  });
+  return out;
+}
+const WHERE_ZONES = ZONES.map((z) => ({ key: z.key, label: z.label, stateHoods: z.hoods.slice() }));
+const hoodsOfZone = (key) => ZONES.find((z) => z.key === key).hoods;
+
+// ---- C1: the Where line's summary, the footer, the history handling ----
+test('whereSummary (v1.22 C1): all, none, one zone, partial, 3+ zones', () => {
+  assert.equal(L20.whereSummary(new Set(hoodKeys()), WHERE_ZONES), 'All of Nashville');
+  assert.equal(L20.whereSummary(new Set(), WHERE_ZONES), 'Nothing selected');
+  assert.equal(L20.whereSummary(new Set(hoodsOfZone('east')), WHERE_ZONES), 'East');
+  const partGulch = new Set(hoodsOfZone('downtown').concat(['The Gulch']));
+  assert.equal(L20.whereSummary(partGulch, WHERE_ZONES), 'Downtown, Gulch & Midtown (part)');
+  const four = new Set(hoodsOfZone('downtown').concat(['The Gulch'], hoodsOfZone('east'), hoodsOfZone('outer')));
+  assert.equal(L20.whereSummary(four, WHERE_ZONES), 'Downtown, Gulch & Midtown (part) +2');
+  // Every zone but one hood: not "All of Nashville".
+  const allButOne = new Set(hoodKeys()); allButOne.delete('SoBro');
+  assert.equal(L20.whereSummary(allButOne, WHERE_ZONES), 'Downtown (part), Gulch & Midtown +6');
+  // Zone order, not tap order.
+  assert.equal(L20.whereSummary(new Set(hoodsOfZone('west').concat(hoodsOfZone('north'))), WHERE_ZONES), 'Germantown & North, West');
+});
+
+test('whereFooterLabel (v1.22 C1): NOW counts live, the Day Grid names the day', () => {
+  assert.equal(L20.whereFooterLabel('now', 52, 'TUE'), 'Show 52 live now');
+  assert.equal(L20.whereFooterLabel('grid', 40, 'SUN'), 'Show 40 on Sunday');
+  assert.equal(L20.whereFooterLabel('now', 0, 'SUN'), 'Show 0 live now');
+});
+
+function fakeHistory() {
+  const h = { entries: 1, calls: [], pushState() { h.entries++; h.calls.push('push'); }, back() { h.entries--; h.calls.push('back'); } };
+  return h;
+}
+test('sheetHistory (v1.22 C1): Back closes the sheet and stays on the page', () => {
+  const hist = fakeHistory(); let closed = 0;
+  const c = L20.sheetHistory(hist, () => { closed++; });
+  assert.equal(c.open(), true);
+  assert.equal(hist.entries, 2, 'opening pushes one entry');
+  assert.equal(c.open(), false, 'a second open is a no-op');
+  assert.equal(hist.entries, 2);
+  // The browser's Back pops our entry, then fires popstate.
+  hist.entries--;
+  assert.equal(c.popstate(), 'closed');
+  assert.equal(closed, 1);
+  assert.equal(c.isOpen(), false);
+  assert.equal(hist.entries, 1, 'still on the page: nothing else was popped');
+  assert.deepEqual(hist.calls, ['push']);
+});
+test('sheetHistory (v1.22 C1): Done / backdrop / Escape pop the entry themselves; that popstate is swallowed', () => {
+  const hist = fakeHistory(); let closed = 0;
+  const c = L20.sheetHistory(hist, () => { closed++; });
+  c.open();
+  assert.equal(c.close(), true);
+  assert.equal(closed, 1);
+  assert.equal(hist.entries, 1, 'the pushed entry is gone');
+  assert.equal(c.popstate(), 'swallowed', 'the popstate history.back() causes does not close anything again');
+  assert.equal(closed, 1);
+  assert.equal(c.close(), false, 'closing a closed sheet does nothing');
+  assert.equal(c.popstate(), 'ignored', 'a later Back (e.g. leaving the page) is not ours');
+  assert.deepEqual(hist.calls, ['push', 'back']);
+  // Open again: a fresh entry.
+  c.open(); assert.equal(hist.entries, 2);
+});
+test('sheetHistory (v1.22 C1): a history that throws still opens and closes the sheet', () => {
+  const bad = { pushState() { throw new Error('SecurityError'); }, back() { throw new Error('x'); } };
+  let closed = 0;
+  const c = L20.sheetHistory(bad, () => { closed++; });
+  assert.equal(c.open(), true);
+  assert.equal(c.close(), true);
+  assert.equal(closed, 1);
+  assert.equal(c.popstate(), 'ignored');
+});
+
+// ---- C2: no grey cards, a badge instead ----
+const JBJ = REAL.find((v) => v.name === "JBJ's Nashville");
+const JBJ_BRUNCH = JBJ.windows.find((w) => w.kind === 'special' && w.start === '10:00');
+test('onlyBadgeFor (v1.22 C2): TJ\'s JBJ\'s brunch is DRINKS ONLY in Food first, nothing in Drink first', () => {
+  assert.equal(L20.onlyBadgeFor(JBJ_BRUNCH, 'food'), 'drinks-only');
+  assert.equal(L20.onlyBadgeFor(JBJ_BRUNCH, 'drink'), null);
+  const foodOnly = win(['MON'], '16:00', '18:00', { deals: [{ type: 'food', desc: 'Wings' }] });
+  assert.equal(L20.onlyBadgeFor(foodOnly, 'drink'), 'food-only');
+  assert.equal(L20.onlyBadgeFor(foodOnly, 'food'), null);
+  assert.equal(L20.onlyBadgeFor(win(['MON'], '16:00', '18:00'), 'food'), null, 'no deals: no badge (C5 covers it)');
+  assert.equal(L20.onlyBadgeFor(win(['MON'], '16:00', '18:00'), 'drink'), null);
+});
+test('index.html (v1.22 C2): no muted card, hasDrinkOnly gone, the badges and their key', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('.card.muted') && !html.includes("' muted'") && !html.includes('hasFoodMuted'));
+  assert.ok(!/function hasDrinkOnly|hasDrinkOnly\(/.test(html));
+  assert.ok(html.includes("var ONLY_LABEL = { 'drinks-only': 'Drinks only', 'food-only': 'Food only' };"));
+  assert.ok(html.includes("(only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '')"));
+  assert.ok(html.includes("[only, ONLY_LABEL[only], BADGE_TIPS[only]]"), 'in the key');
+  // The only opacity left on a card is the "you'd miss it" dim.
+  const cardOpacity = html.match(/\.card[\w.:-]*\s*\{[^}]*opacity[^}]*\}/g) || [];
+  assert.deepEqual(cardOpacity, ['.card.unreachable { opacity: 0.55; }']);
+});
+
+// ---- C3: grid colours follow the priority ----
+test('gridBlockLook (v1.22 C3): filled = the chosen type, outline = the other, grey = no deals', () => {
+  const both = win(['MON'], '16:00', '18:00', { deals: [{ type: 'food', desc: 'a' }, { type: 'drink', desc: 'b' }] });
+  const food = win(['MON'], '16:00', '18:00', { deals: [{ type: 'food', desc: 'a' }] });
+  const drink = win(['MON'], '16:00', '18:00', { deals: [{ type: 'drink', desc: 'b' }] });
+  const none = win(['MON'], '16:00', '18:00');
+  assert.deepEqual([both, food, drink, none].map((w) => L20.gridBlockLook(w, 'food')), ['food', 'food', 'drink', 'nodeal']);
+  assert.deepEqual([both, food, drink, none].map((w) => L20.gridBlockLook(w, 'drink')), ['drinkfill', 'foodline', 'drinkfill', 'nodeal']);
+  assert.equal(L20.gridBlockLook(Object.assign({}, drink, { kind: 'special' }), 'drink'), 'special');
+  assert.equal(L20.gridBlockLook(Object.assign({}, none, { kind: 'lunch' }), 'food'), 'lunch');
+});
+test('index.html (v1.22 C3): no drinkmode, the legend follows the mode', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('drinkmode'));
+  assert.ok(html.includes(".block.drinkfill { background: var(--drink); }"));
+  assert.ok(html.includes("var cls = 'block ' + L.gridBlockLook(it.win, state.priority);"));
+  assert.ok(html.includes("'Happy hour, drink deal'") && html.includes("'Happy hour, food only'"));
+  assert.ok(html.includes("'Happy hour, food deal'") && html.includes("'Happy hour, drinks only'"));
+  assert.ok(html.includes("'Happy hour, deals not posted'"));
+});
+
+// ---- C4: times under the venue name ----
+test('gridRowTimes (v1.22 C4): one happy hour, several windows tagged, past midnight', () => {
+  const v1 = venue({}, [win(['TUE'], '16:30', '18:30', { deals: [{ type: 'food', desc: 'a' }] })]);
+  const t1 = L20.gridRowTimes(v1, 'TUE', itemsOn(v1, 'TUE'));
+  assert.deepEqual([t1.times, t1.noDeals, t1.parts], ['4:30–6:30pm', '', [{ tag: '', time: '4:30–6:30pm' }]]);
+  const v2 = venue({}, [win(['TUE'], '17:00', '01:00', { deals: [{ type: 'drink', desc: 'a' }] })]);
+  assert.equal(L20.gridRowTimes(v2, 'TUE', itemsOn(v2, 'TUE')).times, '5pm–1am');
+  const v3 = venue({}, [
+    win(['TUE'], '16:00', '18:00', { deals: [{ type: 'drink', desc: 'a' }] }),
+    win(['TUE'], '11:00', '14:00', { kind: 'lunch', deals: [{ type: 'food', desc: 'b' }] }),
+    win(['TUE'], '10:00', '14:00', { kind: 'special', deals: [{ type: 'drink', desc: 'c' }] }),
+  ]);
+  assert.equal(L20.gridRowTimes(v3, 'TUE', itemsOn(v3, 'TUE')).times, 'Special 10am–2pm · Lunch 11am–2pm · 4–6pm');
+  // TJ's JBJ's Sunday: the brunch, and the game-day special to close (2am), "close" resolved.
+  assert.equal(L20.gridRowTimes(JBJ, 'SUN', itemsOn(JBJ, 'SUN')).times, 'Special 10am–2pm · Special 11am–2am');
+});
+test('fmtRangeHM (v1.22 C4): a range past midnight keeps both am/pm', () => {
+  assert.equal(L20.fmtRangeHM('11:00', '02:00'), '11am–2am');
+  assert.equal(L20.fmtRangeHM('16:00', '18:00'), '4–6pm');
+  assert.equal(L20.fmtRangeHM('09:00', '11:30'), '9–11:30am');
+  assert.equal(L20.fmtRangeHM('22:00', '02:00'), '10pm–2am');
+});
+test('index.html (v1.22 C4): the in-block labels and their measuring code are gone', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('blabel') && !html.includes('fitBlockLabels') && !html.includes('nofit'));
+  assert.ok(html.includes("rowTimesHtml(venue, day, items, r.closed)"));
+  assert.ok(html.includes('.grid-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); min-height: 36px; }'));
+});
+
+// ---- C5: deals not posted ----
+test('NO_DEALS_TEXT (v1.22 C5): Present Tense\'s card and grid row say "Deals not posted, ask at the bar"', () => {
+  assert.equal(L20.NO_DEALS_TEXT, 'Deals not posted, ask at the bar');
+  const pt = REAL.find((v) => v.name === 'Present Tense');
+  const tp = L20.gridRowTimes(pt, 'SUN', itemsOn(pt, 'SUN'));
+  assert.deepEqual([tp.times, tp.noDeals], ['4–5:30pm', 'Deals not posted, ask at the bar']);
+  // Butterfly's Monday: a special with deals beside a happy hour without: the note names the times.
+  const bf = REAL.find((v) => v.name === 'Butterfly - Nashville');
+  const tb = L20.gridRowTimes(bf, 'MON', itemsOn(bf, 'MON'));
+  assert.deepEqual([tb.times, tb.noDeals], ['4–6pm · Special 4–11pm', '4–6pm: deals not posted, ask at the bar']);
+  assert.deepEqual(tb.parts, [{ tag: '', time: '4–6pm' }, { tag: 'Special', time: '4–11pm' }]);
+  // The five no-deal happy hours (D5).
+  const bare = [];
+  REAL.forEach((v) => v.windows.forEach((w) => { if (w.kind === 'happy_hour' && !w.deals.length) bare.push(v.name); }));
+  assert.equal(bare.length, 5);
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('No deal details published'));
+  assert.ok(html.includes("'<div class=\"deal no-deals\">' + escapeHtml(L.NO_DEALS_TEXT) + '</div>'"));
+});
+
+// ---- C6: the update check ----
+test('versionDiffers (v1.22 C6): only a real, different version string', () => {
+  assert.equal(L20.versionDiffers('v1.23\n', 'v1.22'), true);
+  assert.equal(L20.versionDiffers('v1.22\n', 'v1.22'), false);
+  assert.equal(L20.versionDiffers('  v1.22  ', 'v1.22'), false);
+  assert.equal(L20.versionDiffers('<!doctype html><title>Wi-Fi login</title>', 'v1.22'), false);
+  assert.equal(L20.versionDiffers('', 'v1.22'), false);
+  assert.equal(L20.versionDiffers(null, 'v1.22'), false);
+  assert.equal(L20.versionDiffers(undefined, 'v1.22'), false);
+});
+test('version.txt (v1.22 C6): matches APP_VERSION, so a release cannot forget it', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const app = html.match(/var APP_VERSION = '([^']+)';/)[1];
+  const txt = fs.readFileSync(path.join(__dirname, '..', 'version.txt'), 'utf8').trim();
+  assert.equal(txt, app);
+  assert.ok(html.includes("fetch('version.txt?t=' + Date.now(), { cache: 'no-store' })"));
+  assert.ok(html.includes('var UPDATE_AFTER_HIDDEN_MS = 15 * 60 * 1000;'));
+  assert.ok(html.includes("window.addEventListener('pageshow', function (e) { if (e.persisted) checkForUpdate(); });"));
+  assert.ok(html.includes('There’s a newer version of the radar.'));
+  // No check on first load: the only callers are the two listeners.
+  assert.equal((html.match(/checkForUpdate\(\)/g) || []).length, 3, 'one definition + two listeners');
+});
+
+// ---- C1 wiring ----
+test('index.html (v1.22 C1): the Where sheet is a modal dialog with Done, All/None and a footer', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('role="dialog" aria-modal="true" aria-labelledby="where-title"'));
+  assert.ok(html.includes('<h2 id="where-title">Where</h2>') && html.includes('id="where-done">Done</button>'));
+  assert.ok(html.includes('id="where-all">All</button>') && html.includes('id="where-none">None</button>'));
+  assert.ok(html.includes("var whereHist = L.sheetHistory(window.history, hideWhere);"));
+  assert.ok(html.includes("window.addEventListener('popstate', function () { whereHist.popstate(); });"));
+  assert.ok(html.includes('max-height: 85vh; max-height: 85dvh;'));
+  assert.ok(!html.includes('zonesOpen') && !html.includes('toggleZonesOpen'));
 });
