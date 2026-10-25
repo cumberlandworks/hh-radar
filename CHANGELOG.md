@@ -1,5 +1,55 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix18-20261025: v1.18 (a real Neighborhoods panel, full schedules in "other days", neutral "tap")
+
+TJ, 2026-10-25, verbatim:
+
+> 03:59, desktop NOW screenshot (Germantown & North, East, South, Franklin & Brentwood selected; one hood row shown, for
+> Germantown & North): "a couple of related things I found when testing. the neighborhoods only show for the last zone
+> selected and they only show up if you hit the tiny dot next to the zone."
+
+> 04:04, Day Grid screenshot (East selected, but the GULCH & MIDTOWN hood row still showing): "does it also fix this - I
+> hit guluch - then chip - delesected and hit east they still show up"
+
+> 04:07, Day Grid Sat, East selected, the "4 have them other days" list open, each venue with ONE day: "this does not
+> seem right either since they seem to have happy hours on other days."
+
+### Changes
+- **C1: the Neighborhoods panel.** The ▸ carets on the zone chips are gone; a zone chip is a plain toggle again. One
+  "Neighborhoods ▾/▴" action button sits after All / None. Open, it shows a panel under the zone row with one group per
+  *selected* zone (any of its hoods selected), in zone order, headed by the zone name, holding that zone's hood chips
+  (only hoods with a happy hour, as in v1.16). The groups come from `L.hoodPanelGroups(selection, L.chipHoodsByZone(venues))`
+  on every render and are never stored, so deselecting a zone drops its group at once and selecting one adds it. This
+  is what fixes TJ's 04:04 case: the old strip showed one remembered `expandedZone`, which deselecting never cleared.
+  With nothing selected the panel says "Select a zone to see its neighborhoods." Closed by default; open/closed is
+  remembered per browser (`hhradar-hoods-open`, try/catch). The Franklin & Brentwood / Outer suburbs chips under the
+  map are unchanged.
+  - Phones: with every zone selected the panel's chips are ~829px tall, more than a 812px screen. Below 600px (and on
+    landscape phones) it stops at 55vh (447px at 812) and scrolls inside.
+  - The zone row now wraps at every width. Its one-line rule (v1.4) was for carets that grew inside the row; v1.17 was
+    already 1257px wide in a 1248px row at 1280, and pushed All/None ~400px off-screen at 900–1024. The new button made
+    it worse, so the row wraps; All / None / Neighborhoods sit right-aligned on the next line when they don't fit.
+- **C2: full schedules in "other days".** Each venue in the list shows its whole schedule (`L.venueScheduleParts`, the
+  page's time style via `formatDays`), several windows joined with " · ". The count includes every window kind
+  (`hasIntervalOn` reads them all), so specials and lunch are listed too, after the happy hours, with a small
+  "special"/"lunch" tag. East on Saturday: Pearl Diver "Mon–Fri 4–6pm · Wed 4pm–close SPECIAL", The Amsterdamian
+  "Tue–Fri 5–7pm", The Authentique "Tue–Thu 5–6:30pm · Wed 5pm–close SPECIAL", Two Ten Jack "Mon–Thu 4–6pm". Names
+  never break; a schedule too long to sit beside its name drops to its own line. `fmtHM`, `fmtRangeHM` and
+  `windowWhenLabel` moved into logic.js so the list and the cards share them.
+- **C3: neutral "tap".** Every user-facing "tap":
+
+  | Where | Before | After |
+  |---|---|---|
+  | Save for later status | … waiting. Tap Send when you're ready. | … waiting. Send when you're ready. |
+  | Arrival verdict tooltip | Straight-line estimate — tap the address for a real ETA | Straight-line estimate — select the address for a real ETA |
+  | Settings, maps app not set | Not set yet — the first time you tap an address, this app will ask. | Not set yet — the first time you open directions, this app will ask. |
+  | "What gets sent with a note" | … the last place you tapped, … | … the last place you selected, … |
+
+  The fourth was not in the block's list. A new test fails on any user-facing "tap"/"taps"/"tapped"/"tapping".
+- **C4: v1.18.** `APP_VERSION`, `logic.js?v=1.18`, `venues.json?v=1.18`. `og-preview.png` re-taken (same framing as
+  v1.16: 1440 CSS at DPR 0.833, light, `?now=2026-10-27T17:30`, location prompt unanswered), because its zone row
+  changed visibly: no carets, a Neighborhoods button. Tests 175 → 183.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix17-20261025: v1.17 (device-neutral wording, Surprise me refresh, one QR, Downtown outline)
 
 TJ, 2026-10-25, verbatim:

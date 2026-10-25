@@ -16,8 +16,8 @@
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
      draws. No venue count in any of this text: it would rot on the next refresh.
-     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.16 at
-     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.16). -->
+     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.18 at
+     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.18). -->
 <meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
@@ -149,8 +149,6 @@
     font-weight: 400; }
   .pill.action:active { filter: brightness(0.94); }
   .pill:focus-visible { outline: 2px solid hsl(var(--pill-hue, 35), 58%, 46%); outline-offset: 2px; }
-  .pill .caret { border: none; background: transparent; color: inherit; font-family: inherit;
-    font-size: 10px; line-height: 1; padding: 0 0 0 3px; margin-right: -3px; cursor: pointer; }
 
   /* ---- v1.4 C2: zone row is ONE line; the hood strip is its SIBLING ----
      Nothing is ever appended inside a pill, so expanding a zone can never
@@ -158,15 +156,20 @@
      rendered inside the zone's flex-column wrapper, stretching that zone's
      pill from 89px to 466px and pushing two pills onto a second row). */
   .zone-toolbar { padding: 10px 16px 0; }
-  .zone-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; }
+  /* v1.18: wraps at every width. One line (v1.4) overflowed below ~1290px once the row
+     held eight zones plus All/None (v1.17 at 1280: 1257px in 1248px), and the
+     Neighborhoods button made it worse. With no carets, nothing inside a pill grows. */
+  .zone-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
   .zone-row .pill { flex: 0 0 auto; }
   .zone-row .row-actions { display: flex; gap: 6px; margin-left: auto; flex: 0 0 auto; }
-  .hood-strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  /* v1.18 C1: the Neighborhoods panel, one wrapped chip group per selected zone. */
+  .hood-strip { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
   .hood-strip:empty { display: none; }
+  .hood-group { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hood-empty { margin: 0; font-size: 12px; color: var(--text-dim); }
   .hood-strip .pill { height: 27px; font-size: 11.5px; padding: 0 9px; }
   .hood-strip .strip-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.05em; color: var(--text-dim); align-self: center; margin-right: 2px; }
-  @media (max-width: 899px) { .zone-row { flex-wrap: wrap; } }
   @media (min-width: 900px) { .zone-row .map-toggle-btn { display: none; } }
 
   /* ---- Layout (v1.3 C5): sidebar on wide screens, drawer on phones ---- */
@@ -455,7 +458,13 @@
   ul.cov-list { list-style: none; margin: 8px 0 2px; padding: 8px 10px; max-height: 44vh; overflow-y: auto;
     background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
   ul.cov-list li { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; font-size: 12px; }
-  ul.cov-list .cov-when { color: var(--text-dim); flex: 0 0 auto; }
+  /* v1.18 C2: the whole schedule now, so it may wrap; it keeps to the right. */
+  ul.cov-list .cov-when { color: var(--text-dim); flex: 0 1 auto; text-align: right; }
+  /* The name never breaks; a schedule too long to sit beside it drops to its own line. */
+  ul.cov-list li.cov-sched { flex-wrap: wrap; row-gap: 0; }
+  ul.cov-list li.cov-sched .cov-name { flex: 0 0 auto; max-width: 100%; }
+  ul.cov-list li.cov-sched .cov-when { flex: 1 1 auto; }
+  ul.cov-list .cov-tag { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
   /* ==================== v1.5 C3: "Surprise me" hero card ==================== */
   .surprise { background: var(--panel); border: 1.5px solid var(--amber); border-radius: 14px;
@@ -595,17 +604,14 @@
     /* v1.16 C1: up to five neighborhood chips per zone. The zone name takes its own line so
        the chips start flush left and wrap in even rows (two rows at 375px). */
     .hood-strip .strip-label { flex: 0 0 100%; margin: 0; }
+    /* v1.18 C1: with every zone selected the panel is ~830px of 44px chips, taller than
+       the screen. It stops at 55% of the screen and scrolls inside, so the cards stay
+       in reach and the Neighborhoods button stays near. */
+    .hood-strip { max-height: 55vh; overflow-y: auto; }
     /* v1.6 C3: "All" and "None" carry no count badge, so 11px of padding left them
        40px wide — measured at 390px. Everything in this row is a real target now. */
     .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
     .zone-summary .pill { min-height: 44px; }
-    /* The caret was a 7.8x10 target inside a 30px pill. It now fills the pill's
-       full height and 44px of width, eating the pill's right padding to do it. */
-    /* v1.6 C3: the zone-summary pill was 42px tall, so its stretched caret measured
-       44x42 — the last sub-44 target in the chrome at 390px. */
-    .zone-row .pill .caret, .hood-strip .pill .caret, .zone-summary .pill .caret {
-      display: inline-flex; align-items: center; justify-content: center; min-width: 44px;
-      min-height: 44px; align-self: stretch; margin: 0 -11px 0 2px; padding: 0; font-size: 14px; }
     /* 16px of side padding here plus main's 8px left only 43.3px per day pill at
        375; 8px puts all seven back over 44. */
     .day-select, .sort-select { padding-left: 8px; padding-right: 8px; }
@@ -651,9 +657,7 @@
     .zone-row .map-toggle-btn { display: none; }
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
     .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
-    .zone-row .pill .caret, .hood-strip .pill .caret { display: inline-flex; align-items: center;
-      justify-content: center; min-width: 44px; align-self: stretch; margin: 0 -11px 0 2px;
-      padding: 0; font-size: 14px; }
+    .hood-strip { max-height: 55vh; overflow-y: auto; }
     .day-select .pill, .sort-select .pill { height: 44px; }
     .grid-row { height: 45px; }
     .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
@@ -782,7 +786,7 @@
       <details class="fb-ctxwrap"><summary>What gets sent with a note</summary>
         <div class="fb-ctx">Your note, your name if you typed one, and a short line about where
           you were: the app version, which screen and day you were on, your zone filter, the last
-          place you tapped, and your screen size. <b>Never your location.</b></div>
+          place you selected, and your screen size. <b>Never your location.</b></div>
         <div class="fb-ctx fb-ctx-live">Right now that line reads: <span id="fb-ctx"></span></div>
       </details>
     </div>
@@ -796,12 +800,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.17"></script>
+<script src="logic.js?v=1.18"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.17';
+  var APP_VERSION = 'v1.18';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -890,7 +894,8 @@
     gridRowOpen: new Set(), // venue.id set: which Day Grid rows show their inline card(s)
     expandedCards: new Set(), // cardKey set: which cards (NOW or Grid) are expanded
     hoodSelected: new Set(L.hoodKeys()), // ZONE/HOOD filter (v1.3 C2): default = all
-    expandedZone: null, // v1.4 C2: at most ONE zone's hoods are shown, in the sibling strip
+    // v1.18 C1: the Neighborhoods panel is closed by default; open/closed is remembered.
+    hoodsOpen: lsGet('hhradar-hoods-open', '0') === '1',
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
     zonesOpen: false, // v1.5 C2: phones collapse the zone row behind a one-line summary
     surprise: null, // v1.7 C1: {mode:'now'|'later', pick, poolSize, canRoll}, or null when dismissed
@@ -937,12 +942,8 @@
   state.fbNotes = sanitizeNotes(lsGetJson(LS_NOTES, []));
   try { localStorage.removeItem(LS_WHO_LEGACY); } catch (e) {} // v1.6: toggle is gone
 
-  function fmtHM(hm) {
-    var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
-    var ap = h >= 12 ? 'pm' : 'am';
-    var h12 = h % 12; if (h12 === 0) h12 = 12;
-    return h12 + (m === '00' ? '' : ':' + m) + ap;
-  }
+  // v1.18: the time style lives in logic.js now, so the "other days" list can share it.
+  function fmtHM(hm) { return L.fmtHM(hm); }
 
   function resolveDisplayEnd(venue, win, day) {
     var intervals = L.resolveWindow(venue, win);
@@ -1038,10 +1039,7 @@
     return '<div class="card-schedule">' + escapeHtml(bits.join(' · ')) + '</div>';
   }
   // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close" (v1.12 C8: day ranges).
-  function windowWhenLabel(win) {
-    var when = win.end === 'close' ? fmtHM(win.start) + '–close' : fmtRangeHM(win.start, win.end);
-    return L.formatDays(win.days) + ' ' + when;
-  }
+  function windowWhenLabel(win) { return L.windowWhenLabel(win); }
   // v1.12 C8: "Lunch special · Mon–Sat 11am–2:30pm · dine-in only" (area only when set).
   function lunchLineHtml(win) {
     if (win.kind !== 'lunch') return '';
@@ -1052,11 +1050,7 @@
 
   // ==================== v1.10 C2: the venue's own hours ====================
   // "2:30–5pm", "11am–2:30pm": the first time drops its am/pm when both share it.
-  function fmtRangeHM(a, b) {
-    var x = fmtHM(a), y = fmtHM(b);
-    if (x.slice(-2) === y.slice(-2)) x = x.slice(0, -2);
-    return x + '–' + y;
-  }
+  function fmtRangeHM(a, b) { return L.fmtRangeHM(a, b); }
   var MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   // "2026-10-29" -> "Thu, Oct 29"
   function fmtShortDate(ymd) {
@@ -1144,7 +1138,7 @@
       tail = (t.verdict === 'make' ? 'you’d make it' :
               t.verdict === 'close' ? 'cuts it close' : 'you’d miss it') + ' (' + ends + ')';
     }
-    return '<div class="verdict ' + t.verdict + '" title="Straight-line estimate — tap the address for a real ETA">' +
+    return '<div class="verdict ' + t.verdict + '" title="Straight-line estimate — select the address for a real ETA">' +
       '<span class="est">' + escapeHtml(est) + '</span> · ' + escapeHtml(tail) + '</div>';
   }
 
@@ -1546,8 +1540,18 @@
     var others = cov.otherList.slice().sort(function (a, b) {
       return a.venue.name < b.venue.name ? -1 : (a.venue.name > b.venue.name ? 1 : 0);
     }).map(function (o) {
-      return '<li>' + escapeHtml(o.venue.name) + '<span class="cov-when">' +
-        escapeHtml(o.nextDay ? DAY_FULL[o.nextDay] : 'no day resolves') + '</span></li>';
+      // v1.18 C2 (TJ: "they seem to have happy hours on other days"): the venue's whole
+      // schedule, not just the next day. The count includes specials and lunch, so they
+      // are listed too, tagged.
+      var parts = L.venueScheduleParts(o.venue);
+      var when = o.nextDay && parts.length
+        ? parts.map(function (p) {
+            return escapeHtml(p.text) + (p.kind === 'happy_hour' ? ''
+              : ' <span class="cov-tag">' + (p.kind === 'lunch' ? 'lunch' : 'special') + '</span>');
+          }).join(' \u00b7 ')
+        : 'no day resolves';
+      return '<li class="cov-sched"><span class="cov-name">' + escapeHtml(o.venue.name) + '</span>' +
+        '<span class="cov-when">' + when + '</span></li>';
     }).join('');
     var otherPart = cov.otherDays > 0
       ? '<details class="cov-pop"><summary>' + cov.otherDays + ' have them other days</summary>' +
@@ -1617,6 +1621,7 @@
   // hoods where at least one venue has a happy_hour window. Only these get a chip; it is
   // computed from the data at load, so a hood's chip appears by itself once it gains one.
   var HOOD_HAS_HH = null;
+  var CHIP_HOODS = null; // v1.18: zone key -> chip hoods, L.chipHoodsByZone(state.venues)
   function computeHoodTotals() {
     HOOD_TOTALS = {};
     HOOD_HAS_HH = {};
@@ -1625,6 +1630,7 @@
       HOOD_TOTALS[v.hood] = (HOOD_TOTALS[v.hood] || 0) + 1;
       if (v.windows.some(function (w) { return w.kind === 'happy_hour'; })) HOOD_HAS_HH[v.hood] = true;
     });
+    CHIP_HOODS = L.chipHoodsByZone(state.venues);
     syncHiddenHoods();
   }
   // A hood with no chip cannot be picked on its own, so it follows its zone: selected
@@ -1667,7 +1673,8 @@
   // the zone has nothing live/on-the-day and the pill dims instead (`.zero`), so a
   // row of zeros stops shouting. Selected = the zone hue at 0.25 alpha with a 1px
   // hue border; deselected = a muted 1px border; some-but-not-all hoods = dashed.
-  // The caret only appears on zones with more than one hood.
+  // v1.18 C1: no caret any more; a zone pill is a plain toggle. Its hoods are in the
+  // Neighborhoods panel.
   function zonePillHtml(zone, visibleHoods, counts) {
     // v1.16: selected state is read off the chips (hidden hoods follow them); the count
     // still covers every venue in the zone, hidden hoods included.
@@ -1678,16 +1685,10 @@
     var noneSel = selectedCount === 0;
     var count = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
     var cls = 'pill' + (allSel ? ' on' : (noneSel ? '' : ' partial')) + (count === 0 ? ' zero' : '');
-    var expanded = state.expandedZone === zone.key;
     return '<div class="' + cls + ' hue" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
       ' aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
         '<span class="dot"></span>' + escapeHtml(zone.label) +
         (count > 0 ? '<span class="count">' + count + '</span>' : '') +
-        (chips.length > 1
-          ? '<button type="button" class="caret" data-caret-zone="' + escapeHtml(zone.key) + '"' +
-            ' aria-label="Show ' + escapeHtml(zone.label) + ' neighborhoods" aria-expanded="' + expanded + '">' +
-            (expanded ? '▾' : '▸') + '</button>'
-          : '') +
       '</div>';
   }
 
@@ -1695,9 +1696,8 @@
     return zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0; });
   }
   // v1.16 C1b: the hoods that get a chip — a venue there has a happy hour.
-  function chipHoodsOf(zone) {
-    return zone.hoods.filter(function (h) { return HOOD_TOTALS[h] > 0 && HOOD_HAS_HH[h]; });
-  }
+  // v1.18: read off L.chipHoodsByZone, which the Neighborhoods panel uses too.
+  function chipHoodsOf(zone) { return CHIP_HOODS[zone.key] || []; }
 
   function renderZoneRow() {
     var counts = hoodCounts();
@@ -1709,6 +1709,8 @@
     html += '<div class="row-actions">' +
       '<button type="button" class="pill action" id="hood-all">All</button>' +
       '<button type="button" class="pill action" id="hood-none">None</button>' +
+      '<button type="button" class="pill action" id="hood-panel-btn" aria-controls="hood-strip" aria-expanded="' +
+        (state.hoodsOpen ? 'true' : 'false') + '">Neighborhoods ' + (state.hoodsOpen ? '\u25b4' : '\u25be') + '</button>' +
       '<button type="button" class="pill action map-toggle-btn" id="map-toggle-btn" aria-expanded="' +
         (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') +
         '" aria-controls="sidebar">Map</button>' +
@@ -1716,16 +1718,26 @@
     document.getElementById('zone-row').innerHTML = html;
   }
 
-  // The hood strip is a SIBLING of the zone row, never a child of a pill — that is
-  // the whole point of C2. At most one zone is expanded, so opening another simply
-  // replaces the strip's contents and no pill above it ever moves.
+  // The hood strip is a SIBLING of the zone row, never a child of a pill (v1.4 C2).
+  // v1.18 C1 (TJ, 2026-10-25: "the neighborhoods only show for the last zone selected"):
+  // it is now the Neighborhoods panel, one group per SELECTED zone, rebuilt from the
+  // selection on every render (L.hoodPanelGroups), so it can never show a zone that is
+  // no longer selected. Open/closed is the only thing remembered.
   function renderHoodStrip() {
     var el = document.getElementById('hood-strip');
-    var zone = state.expandedZone && L.ZONES.filter(function (z) { return z.key === state.expandedZone; })[0];
-    if (!zone) { el.innerHTML = ''; return; }
+    if (!state.hoodsOpen) { el.innerHTML = ''; return; }
+    var groups = L.hoodPanelGroups(state.hoodSelected, CHIP_HOODS);
+    if (!groups.length) {
+      el.innerHTML = '<p class="hood-empty">Select a zone to see its neighborhoods.</p>';
+      return;
+    }
     var counts = hoodCounts();
-    el.innerHTML = '<span class="strip-label">' + escapeHtml(zone.label) + '</span>' +
-      chipHoodsOf(zone).map(function (h) { return hoodPillHtml(h, zone, counts); }).join('');
+    el.innerHTML = groups.map(function (g) {
+      var zone = zoneByKey(g.key);
+      return '<div class="hood-group" role="group" aria-label="' + escapeHtml(g.label) + ' neighborhoods">' +
+        '<span class="strip-label">' + escapeHtml(g.label) + '</span>' +
+        g.hoods.map(function (h) { return hoodPillHtml(h, zone, counts); }).join('') + '</div>';
+    }).join('');
   }
 
   function hoodPillHtml(hood, zone, counts) {
@@ -1860,7 +1872,7 @@
   }
 
   // v1.4 C2: the zone row is re-rendered on every state change, so every control
-  // inside it (pills, carets, All/None/Map) is handled by delegation on the two
+  // inside it (pills, All/None/Neighborhoods/Map) is handled by delegation on the two
   // stable containers rather than by per-element listeners.
   document.getElementById('zone-row').addEventListener('click', function (e) {
     if (e.target.closest('#hood-all')) {
@@ -1879,12 +1891,11 @@
       mapBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       return;
     }
-    var caret = e.target.closest('[data-caret-zone]');
-    if (caret) {
-      var ck = caret.getAttribute('data-caret-zone');
-      // Only one zone expanded at a time — expanding another replaces it (C2).
-      state.expandedZone = state.expandedZone === ck ? null : ck;
+    if (e.target.closest('#hood-panel-btn')) {
+      state.hoodsOpen = !state.hoodsOpen;
+      lsSet('hhradar-hoods-open', state.hoodsOpen ? '1' : '0');
       renderHoodChips();
+      updateStickyOffsets();
       return;
     }
     var zoneChip = e.target.closest('[data-zone]');
@@ -1893,7 +1904,7 @@
   document.getElementById('zone-row').addEventListener('keydown', function (e) {
     if (!isEnterOrSpace(e)) return;
     var zoneChip = e.target.closest('.pill[data-zone]');
-    if (!zoneChip || e.target !== zoneChip) return; // caret + All/None/Map are real <button>s
+    if (!zoneChip || e.target !== zoneChip) return; // All/None/Neighborhoods/Map are real <button>s
     e.preventDefault();
     toggleZone(zoneChip.getAttribute('data-zone'));
   });
@@ -2102,7 +2113,7 @@
     renderFeedback();
     if (!quiet) {
       setFbStatus('Saved in this browser \u2014 ' + state.fbNotes.length + ' note' +
-        (state.fbNotes.length === 1 ? '' : 's') + ' waiting. Tap Send when you\u2019re ready.');
+        (state.fbNotes.length === 1 ? '' : 's') + ' waiting. Send when you\u2019re ready.');
     }
     return true;
   }
@@ -2693,7 +2704,7 @@
     var chosen = L.NAV_APPS.filter(function (a) { return a.key === state.navApp; })[0];
     document.getElementById('nav-app-note').textContent = state.navApp && chosen
       ? 'Addresses open in ' + chosen.label + '.'
-      : 'Not set yet — the first time you tap an address, this app will ask.';
+      : 'Not set yet — the first time you open directions, this app will ask.';
   }
   document.getElementById('nav-app-row').addEventListener('click', function (e) {
     var btn = e.target.closest('[data-nav-set]');
@@ -2831,7 +2842,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.17').then(function (r) {
+  fetch('venues.json?v=1.18').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

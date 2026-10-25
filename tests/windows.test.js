@@ -1838,3 +1838,114 @@ test('index.html (v1.15 C2): the bar text is wired through L.followRefBar; × st
   assert.match(html, /getElementById\('refbar-link'\)\.addEventListener\('click'[\s\S]{0,120}L\.followRefBar\(store,/);
   assert.match(html, /getElementById\('refbar-x'\)\.addEventListener\('click'[\s\S]{0,80}L\.dismissRefBar\(store\)/);
 });
+
+// ==================== v1.18 C1: the Neighborhoods panel ====================
+// TJ, 2026-10-25 03:59: "the neighborhoods only show for the last zone selected and they
+// only show up if you hit the tiny dot next to the zone." 04:04: "I hit guluch - then chip
+// - delesected and hit east they still show up".
+const L18 = require('../logic.js');
+const zoneHoods = (key) => ZONES.find((z) => z.key === key).hoods;
+
+test('hoodPanelGroups (v1.18 C1): one group per selected zone, in zone order, chip hoods only', () => {
+  const chips = L18.chipHoodsByZone(REAL);
+  const sel = new Set([].concat(zoneHoods('south'), zoneHoods('north'), zoneHoods('east')));
+  const groups = L18.hoodPanelGroups(sel, chips);
+  assert.deepEqual(groups.map((g) => g.key), ['north', 'east', 'south']);
+  assert.deepEqual(groups.find((g) => g.key === 'east').hoods, ['Five Points & Main Street', 'Gallatin Avenue & Eastwood']);
+  // Only hoods with a happy hour get a chip (v1.16): East's other two have none.
+  for (const g of groups) {
+    for (const h of g.hoods) assert.ok(REAL.some((v) => v.hood === h && v.windows.some((w) => w.kind === 'happy_hour')), h);
+  }
+  assert.deepEqual(L18.hoodPanelGroups(new Set(), chips), [], 'nothing selected: no groups');
+  const all = L18.hoodPanelGroups(new Set(hoodKeys()), chips);
+  assert.deepEqual(all.map((g) => g.key), ZONES.map((z) => z.key));
+});
+
+test('hoodPanelGroups (v1.18 C1): a pure function of (selection, data)', () => {
+  const chips = L18.chipHoodsByZone(REAL);
+  const before = JSON.stringify(chips);
+  const sel = new Set(zoneHoods('gulch'));
+  const a = L18.hoodPanelGroups(sel, chips);
+  a[0].hoods.push('mutated');
+  const b = L18.hoodPanelGroups(sel, chips);
+  assert.equal(JSON.stringify(chips), before, 'the data is not touched');
+  assert.ok(!b[0].hoods.includes('mutated'), 'each call builds fresh groups');
+  assert.deepEqual(L18.hoodPanelGroups(new Set(sel), chips), b);
+  // A zone with one hood still selected keeps its group.
+  assert.deepEqual(L18.hoodPanelGroups(new Set(['The Gulch']), chips).map((g) => g.key), ['gulch']);
+});
+
+test('hoodPanelGroups (v1.18 C1): TJ\'s 04:04 steps — Gulch, open, deselect Gulch, select East -> only East', () => {
+  const chips = L18.chipHoodsByZone(REAL);
+  const sel = new Set();
+  zoneHoods('gulch').forEach((h) => sel.add(h)); // select Gulch & Midtown
+  assert.deepEqual(L18.hoodPanelGroups(sel, chips).map((g) => g.label), ['Gulch & Midtown']); // open Neighborhoods
+  zoneHoods('gulch').forEach((h) => sel.delete(h)); // deselect Gulch & Midtown
+  assert.deepEqual(L18.hoodPanelGroups(sel, chips), []);
+  zoneHoods('east').forEach((h) => sel.add(h)); // select East
+  assert.deepEqual(L18.hoodPanelGroups(sel, chips).map((g) => g.label), ['East']);
+});
+
+test('index.html (v1.18 C1): no zone carets; one Neighborhoods button, closed by default, remembered', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!html.includes('data-caret-zone') && !html.includes('expandedZone'));
+  assert.ok(!html.includes('▸'), 'no ▸ left');
+  assert.match(html, /id="hood-panel-btn" aria-controls="hood-strip"/);
+  assert.ok(html.includes("hoodsOpen: lsGet('hhradar-hoods-open', '0') === '1',"));
+  assert.ok(html.includes("lsSet('hhradar-hoods-open', state.hoodsOpen ? '1' : '0');"));
+  assert.ok(html.includes('L.hoodPanelGroups(state.hoodSelected, CHIP_HOODS)'));
+  assert.ok(html.includes('Select a zone to see its neighborhoods.'));
+});
+
+// ==================== v1.18 C2: full schedules in "other days" ====================
+// TJ, 2026-10-25 04:07: "this does not seem right either since they seem to have happy hours
+// on other days."
+test('venueScheduleParts (v1.18 C2): East on Saturday — the four "other days" venues, whole schedules', () => {
+  const east = new Set(zoneHoods('east'));
+  const cov = dayCoverageCounts(REAL.filter((v) => east.has(v.hood)), 'SAT');
+  const got = {};
+  cov.otherList.forEach((o) => { got[o.venue.name] = L18.venueScheduleParts(o.venue); });
+  assert.deepEqual(Object.keys(got).sort(), ['Pearl Diver', 'The Amsterdamian', 'The Authentique', 'Two Ten Jack']);
+  const hh = (n) => got[n].filter((p) => p.kind === 'happy_hour').map((p) => p.text);
+  assert.deepEqual(hh('Pearl Diver'), ['Mon–Fri 4–6pm']);
+  assert.deepEqual(hh('The Amsterdamian'), ['Tue–Fri 5–7pm']);
+  assert.deepEqual(hh('The Authentique'), ['Tue–Thu 5–6:30pm']);
+  assert.deepEqual(hh('Two Ten Jack'), ['Mon–Thu 4–6pm']);
+  // The count includes specials (hasIntervalOn reads every window), so they are listed, after.
+  assert.deepEqual(got['Pearl Diver'], [{ text: 'Mon–Fri 4–6pm', kind: 'happy_hour' }, { text: 'Wed 4pm–close', kind: 'special' }]);
+});
+
+test('venueScheduleParts (v1.18 C2): happy hours first, exact repeats once; time style', () => {
+  const v = venue({}, [
+    win(['SAT'], '11:00', '14:30', { kind: 'lunch' }),
+    win(['MON', 'TUE', 'WED'], '15:00', '18:00'),
+    win(['FRI'], '21:00', 'close', { kind: 'special' }),
+    win(['MON', 'TUE', 'WED'], '15:00', '18:00'),
+    win(['SAT', 'SUN'], '12:30', '17:00'),
+  ]);
+  assert.deepEqual(L18.venueScheduleParts(v).map((p) => p.kind + ' ' + p.text), [
+    'happy_hour Mon–Wed 3–6pm', 'happy_hour Sat, Sun 12:30–5pm', 'special Fri 9pm–close', 'lunch Sat 11am–2:30pm',
+  ]);
+  assert.equal(L18.fmtHM('00:00'), '12am');
+  assert.equal(L18.fmtRangeHM('11:00', '14:30'), '11am–2:30pm');
+});
+
+test('index.html (v1.18 C2): the other-days list draws venueScheduleParts, specials tagged', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('var parts = L.venueScheduleParts(o.venue);'));
+  assert.ok(html.includes("' <span class=\"cov-tag\">' + (p.kind === 'lunch' ? 'lunch' : 'special') + '</span>'"));
+});
+
+// ==================== v1.18 C3: neutral "tap" ====================
+// Extends v1.17's "this phone" test: no user-facing "tap" either. Comments are stripped first.
+test('index.html (v1.18 C3): no user-facing "tap"', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '').replace(/\s\/\/ .*$/gm, '');
+  assert.deepEqual(html.match(/\btap(s|ped|ping)?\b/gi) || [], []);
+  assert.ok(html.includes('Send when you\\u2019re ready.'));
+  assert.ok(html.includes('Straight-line estimate — select the address for a real ETA'));
+  assert.ok(html.includes('the first time you open directions, this app will ask.'));
+});

@@ -1171,6 +1171,69 @@
     return parts.join(', ');
   }
 
+  // ---- v1.18 C2: a venue's whole schedule, for the grid's "other days" list ----
+  // "16:00" -> "4pm", "17:30" -> "5:30pm". The page's time style (moved here from index.html).
+  function fmtHM(hm) {
+    var parts = hm.split(':'), h = parseInt(parts[0], 10), m = parts[1];
+    var ap = h >= 12 ? 'pm' : 'am';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    return h12 + (m === '00' ? '' : ':' + m) + ap;
+  }
+  // "2:30–5pm", "11am–2:30pm": the first time drops its am/pm when both share it.
+  function fmtRangeHM(a, b) {
+    var x = fmtHM(a), y = fmtHM(b);
+    if (x.slice(-2) === y.slice(-2)) x = x.slice(0, -2);
+    return x + '–' + y;
+  }
+  // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close".
+  function windowWhenLabel(win) {
+    var when = win.end === 'close' ? fmtHM(win.start) + '–close' : fmtRangeHM(win.start, win.end);
+    return formatDays(win.days) + ' ' + when;
+  }
+  // One entry per window, happy hours first, then specials, then lunch (each kept in
+  // file order): [{text: "Mon–Fri 4–6pm", kind: "happy_hour"}, ...]. An exact repeat
+  // (same kind and label) is shown once.
+  function venueScheduleParts(venue) {
+    var order = { happy_hour: 0, special: 1, lunch: 2 };
+    var wins = ((venue && venue.windows) || []).map(function (w, i) { return { w: w, i: i }; });
+    wins.sort(function (a, b) {
+      var ka = order[a.w.kind] == null ? 3 : order[a.w.kind], kb = order[b.w.kind] == null ? 3 : order[b.w.kind];
+      return ka - kb || a.i - b.i;
+    });
+    var seen = {}, out = [];
+    wins.forEach(function (x) {
+      var part = { text: windowWhenLabel(x.w), kind: x.w.kind || 'happy_hour' };
+      var key = part.kind + '|' + part.text;
+      if (seen[key]) return;
+      seen[key] = true;
+      out.push(part);
+    });
+    return out;
+  }
+
+  // ---- v1.18 C1: the Neighborhoods panel ----
+  // The hoods that get a chip, per zone key, in zone order: a hood with at least one
+  // venue holding a happy_hour window (the v1.16 rule).
+  function chipHoodsByZone(venues) {
+    var hasHH = {};
+    (venues || []).forEach(function (v) {
+      if ((v.windows || []).some(function (w) { return w.kind === 'happy_hour'; })) hasHH[v.hood] = true;
+    });
+    var out = {};
+    ZONES.forEach(function (z) { out[z.key] = z.hoods.filter(function (h) { return hasHH[h]; }); });
+    return out;
+  }
+  // One group per SELECTED zone (any of its hoods selected), in zone order, each holding
+  // that zone's chip hoods. Derived from the selection every time and never stored, so
+  // deselecting a zone drops its group and selecting one adds it (TJ, 2026-10-25 04:04).
+  function hoodPanelGroups(selected, chipHoods) {
+    return ZONES.filter(function (z) {
+      return (chipHoods[z.key] || []).length > 0 && z.hoods.some(function (h) { return selected.has(h); });
+    }).map(function (z) {
+      return { key: z.key, label: z.label, hue: z.hue, hoods: chipHoods[z.key].slice() };
+    });
+  }
+
   // Where the hours came from, for the expanded card's one small line. hours_source
   // is free text written by the refresh; the 2026-10-23 refresh uses three shapes:
   //   "researched YYYY-MM-DD (high|med|low confidence): <url> [<url>]"
@@ -1932,6 +1995,12 @@
     GRID_EARLIEST_START: GRID_EARLIEST_START,
     dealPriceLabel: dealPriceLabel,
     formatDays: formatDays,
+    fmtHM: fmtHM,
+    fmtRangeHM: fmtRangeHM,
+    windowWhenLabel: windowWhenLabel,
+    venueScheduleParts: venueScheduleParts,
+    chipHoodsByZone: chipHoodsByZone,
+    hoodPanelGroups: hoodPanelGroups,
     hoursSourceInfo: hoursSourceInfo,
     hasHours: hasHours,
     WINDOW_KINDS: WINDOW_KINDS,
