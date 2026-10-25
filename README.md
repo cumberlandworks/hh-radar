@@ -17,11 +17,12 @@ links: nothing is fetched until the reader taps one.
 
 Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11; 615chuTNey dropped as
 permanently closed in v1.12; a browser pass of Google business listings and venue sites on
-2026-10-25, v1.14; deal text cleaned and two unexplained specials dropped in v1.20): **159** inKind
+2026-10-25, v1.14; deal text cleaned and two unexplained specials dropped in v1.20; Blue Coast's
+Tuesday family night dropped in v1.21): **159** inKind
 partners in the Nashville metro per inKind's own map API, every one researched by hand: hours, happy
-hour, lunch specials. **147 windows** (99 happy hour, 44 special, 4 lunch). **68** venues have a happy
-hour, **78** were checked and have no window at all, and **13** have only a special or lunch window
-(measured on the v1.20 data); none is "not checked yet". Hours: 41 venues
+hour, lunch specials. **140 windows** (99 happy hour, 37 special, 4 lunch). **68** venues have a happy
+hour, **85** were checked and have no window at all, and **6** have only a special or lunch window
+(measured on the v1.21 data); none is "not checked yet". Hours: 41 venues
 carry Google-listing hours and 3 their own site's (v1.14), 109 the 2026-10-23 research, 1
 inKind's 2026-09-05 hours; 4 are marked unconfirmed (low confidence) and 5 have none on file.
 One venue (Punk Wok) carries a temporary closure.

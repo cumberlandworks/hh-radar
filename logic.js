@@ -129,6 +129,7 @@
   // opts.excludeAllDay: skip all-day windows entirely (they shouldn't win "next start").
   // opts.skipTempClosed (v1.13 C4): skip an occurrence whose start date is inside one of
   // the venue's `temp_closed` ranges. Needs a dated `dateInTz`; without one nothing is skipped.
+  // opts.kinds (v1.21 C2): only windows of these kinds count (e.g. ['happy_hour']).
   function nextStart(venue, dateInTz, opts) {
     opts = opts || {};
     var t = minutesSinceWeekStart(dateInTz);
@@ -137,6 +138,7 @@
     for (var w = 0; w < venue.windows.length; w++) {
       var win = venue.windows[w];
       if (opts.excludeAllDay && isAllDay(venue, win)) continue;
+      if (opts.kinds && opts.kinds.indexOf(win.kind || 'happy_hour') < 0) continue;
       var intervals = resolveWindow(venue, win);
       for (var i = 0; i < intervals.length; i++) {
         var mins = minutesUntilWrapped(t, intervals[i].startAbs);
@@ -161,6 +163,17 @@
       }
     }
     return best;
+  }
+
+  // v1.21 C2 (fix20 review): the NOW empty state names the next HAPPY HOUR, never a breakfast
+  // special ("next: The Loading Dock at 7am"). `sooner` is the next lunch or special when it
+  // starts before that happy hour, else null (and null with no happy hour at all). Same selection and temp-closure rules as
+  // nextStartAcrossVenues; opts pass through (the page sends excludeAllDay).
+  function emptyStateNext(venues, dateInTz, opts) {
+    var hh = nextStartAcrossVenues(venues, dateInTz, Object.assign({}, opts, { kinds: ['happy_hour'] }));
+    var other = nextStartAcrossVenues(venues, dateInTz, Object.assign({}, opts, { kinds: ['lunch', 'special'] }));
+    var sooner = hh && other && other.next.minutesFromNow < hh.next.minutesFromNow ? other : null;
+    return { hh: hh, sooner: sooner };
   }
 
   // Minutes remaining until the currently-active interval of `win` ends (null if not active now).
@@ -2025,6 +2038,7 @@
     isActive: isActive,
     startsWithin: startsWithin,
     nextStart: nextStart,
+    emptyStateNext: emptyStateNext,
     nextStartAcrossVenues: nextStartAcrossVenues,
     isStale: isStale,
     isUnverified: isUnverified,

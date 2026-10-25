@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix21-20261025: v1.21 (last pre-launch tidy)
+
+TJ, 2026-10-25 13:05, verbatim:
+
+> "https://www.facebook.com/BlueCoastBurritoLR/videos/its-taco-tuesday-and-family-night-come-see-us-and-we-will-make-it-rain-tacos/1079845381088367/
+> this is what I saw - maybe its better to just leave it off - this is little rock.
+> create the next block with this info - thanks. - also good with your suggestions."
+
+The suggestions, from the fix20 review: the dead-hour message should not present a breakfast special as the next happy
+hour; "Half-price crepes 50% off" said the discount twice; zone chips with nothing live should show "0" like
+neighborhood chips.
+
+- **Data.** `venues.json` = `venues-20261025n.json` byte for byte (md5 9d0e7abdb2486b9fe49652af3099459d), made by
+  `post_20261025n.py` from the v1.20 file. Blue Coast Burrito's Tuesday family night is removed from all 7 locations:
+  the recent post TJ saw is the Little Rock franchise, and the only Nashville-area source is from Jan 2025. Each is now
+  verified no happy hour, with a note saying why. The Authentique's crepe deal reads "All crepes" + "50% off".
+  140 windows (was 147). Both files are in `data-src/refresh-20261023/`.
+- **C2: the "next" line says what it is.** The NOW empty state names the next happy hour: "No happy hours right now —
+  next happy hour: Blue Sushi - 5th & Broadway at 11am (today)." If a lunch or special starts sooner, a second,
+  quieter line says so: "Sooner: The Loading Dock's special at 7am" (with the day only when it differs from the happy
+  hour's). Same selection and temp-closure rules as before (`L.emptyStateNext`; `L.nextStart` takes `opts.kinds`).
+  With no happy hour anywhere, the old fallback messages stand and there is no "Sooner" line.
+- **C3: zone chips say 0.** A zone with nothing live shows "0" (and still dims when not selected), the same rule and
+  style as the neighborhood chips since v1.20.
+- **C4: v1.21.** `APP_VERSION`, `logic.js?v=1.21`, `venues.json?v=1.21`. Tests 194 → 198; the data-coupled tests moved
+  with the data: coverage SUN other-days 41 → 34, none 78 → 85, TUE on-day 65 → 58; priced deals 438 → 426, shown
+  361 → 349; the `windowLine` "close" case uses Nicky's Monday special instead of Blue Coast Mt. Juliet's Tuesday.
+  README coverage counts updated (140 windows; 85 with none; 6 with only a special or lunch).
+
 ## 2026-10-25 — BLOCK-hh-radar-fix20-20261025: v1.20 (a pre-launch trust pass: deal times as clear as the grid)
 
 TJ, 2026-10-25, verbatim:

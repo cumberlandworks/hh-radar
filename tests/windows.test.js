@@ -877,8 +877,10 @@ test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   // verified 5 more as no happy hour, so "not checked yet" is 0.
   // v1.20 (2026-10-25m data): both Slim & Husky's lost their only window ("$12 Tuesday"), so
   // two venues move from "other days" to none (and off Tuesday).
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 41, none: 78, unchecked: 0 });
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 16, none: 78, unchecked: 0 });
+  // v1.21 (2026-10-25n data): the 7 Blue Coast Burritos lost their only window (Tuesday family
+  // night, a Little Rock post), so seven more move to none and off Tuesday.
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 34, none: 85, unchecked: 0 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 58, otherDays: 16, none: 85, unchecked: 0 });
 });
 
 test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
@@ -1560,14 +1562,18 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 // v1.14: 413/334 on the v1.13 data; the 2026-10-25j windows add 27 priced deals, 26 shown.
 // v1.20 (2026-10-25m data): the two "$12 Tuesday" deals are gone (440 -> 438), and The Authentique's
 // "Half-price crepes" no longer carries a 50 in its text, so its "50% off" price shows (360 -> 361).
-test('dealPriceLabel: measured on venues.json — 438 priced deals, 361 still show a price', () => {
+// v1.21 (2026-10-25n data): the 7 Blue Coast family nights take 12 priced deals, all shown (438 -> 426,
+// 361 -> 349); The Authentique's crepes now read "All crepes" + "50% off".
+test('dealPriceLabel: measured on venues.json — 426 priced deals, 349 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 438);
-  assert.equal(shown, 361);
+  assert.equal(priced, 426);
+  assert.equal(shown, 349);
+  const auth = REAL.find((v) => v.name === 'The Authentique').windows.find((w) => w.kind === 'special');
+  assert.deepEqual(auth.deals.map((d) => [d.desc, dealPriceLabel(d)]), [['All crepes', '50% off']]);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
   assert.deepEqual(dog.windows[0].deals.map(dealPriceLabel), [null, null, null, null, null]);
 });
@@ -2049,9 +2055,14 @@ test('windowLine (v1.20 C2): kind · days and times · area, one line per window
   assert.equal(L20.windowLine(v, win(['TUE', 'WED', 'THU', 'FRI'], '11:00', '14:00', { kind: 'lunch', area: 'dine-in only' })),
     'Lunch special · Tue–Fri 11am–2pm · dine-in only');
   assert.equal(L20.windowLine(v, win(['TUE'], '17:00', 'close', { kind: 'special' })), 'Special · Tue 5–8:30pm');
-  // TJ's three 04:59 cards, from venues.json.
+  // TJ's three 04:59 cards, from venues.json. v1.21: Blue Coast's Tuesday is gone (2026-10-25n
+  // data); Nicky's Monday special is the same "close" case.
   const bc = byName('Blue Coast Burrito - Mount Juliet');
-  assert.equal(L20.windowLine(bc, bc.windows[0]), 'Special · Tue 5–8:30pm');
+  assert.deepEqual(bc.windows, []);
+  assert.equal(bc.verified_no_hh, true);
+  const nk = byName("Nicky's Coal Fired Pizza");
+  const nkMon = nk.windows.find((w) => w.kind === 'special' && w.days.join() === 'MON');
+  assert.equal(L20.windowLine(nk, nkMon), 'Special · Mon 5–8:30pm');
   const st = byName('Single Tree BBQ');
   assert.equal(L20.windowLine(st, st.windows[0]), 'Lunch special · Tue–Fri 11am–2pm · dine-in only');
   const b360 = byName('360 Bistro');
@@ -2151,7 +2162,59 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes('Deal info ↗'));
   assert.ok(html.includes('href="https://github.com/cumberlandworks/hh-radar#readme" target="_blank" rel="noopener">README</a>'));
   assert.ok(html.includes('Notes go to TJ,\n        the person who built this.'));
-  assert.ok(html.includes("(best.next.day === state.now.dayOfWeek ? 'today' : DAY_FULL[best.next.day])"));
+  assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
-  assert.ok(html.includes("var APP_VERSION = 'v1.20';") && html.includes("venues.json?v=1.20") && html.includes('logic.js?v=1.20'));
+  assert.ok(html.includes("var APP_VERSION = 'v1.21';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.21'));
+});
+
+// ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
+// fix20's report: "next: The Loading Dock at 7am", a breakfast special, shown as the next happy hour.
+test('emptyStateNext (v1.21 C2): 03:00 Tuesday names a happy hour, the Loading Dock special is the sooner line', () => {
+  const eligible = REAL.filter((v) => v.windows.length > 0);
+  const r = L20.emptyStateNext(eligible, nowAt('2026-10-27T03:00'), { excludeAllDay: true });
+  assert.equal(r.hh.next.window.kind, 'happy_hour');
+  assert.equal(r.hh.venue.name, 'Blue Sushi - 5th & Broadway');
+  assert.deepEqual([r.hh.next.day, r.hh.next.start], ['TUE', '11:00']);
+  assert.equal(r.sooner.venue.name, 'The Loading Dock');
+  assert.equal(r.sooner.next.window.kind, 'special');
+  assert.deepEqual([r.sooner.next.day, r.sooner.next.start], ['TUE', '07:00']);
+  // The old answer, for the record: any kind wins.
+  assert.equal(nextStartAcrossVenues(eligible, nowAt('2026-10-27T03:00'), { excludeAllDay: true }).venue.name, 'The Loading Dock');
+});
+
+test('emptyStateNext (v1.21 C2): sooner only when a lunch or special starts before the happy hour', () => {
+  const hh = venue({}, [win(['WED'], '16:00', '18:00', { kind: 'happy_hour' })]);
+  const lunch = venue({}, [win(['WED'], '11:00', '14:00', { kind: 'lunch' })]);
+  const late = venue({}, [win(['WED'], '19:00', '21:00', { kind: 'special' })]);
+  const now = dt('WED', 9, 0);
+  let r = L20.emptyStateNext([hh, lunch, late], now);
+  assert.equal(r.hh.venue, hh);
+  assert.equal(r.sooner.venue, lunch);
+  assert.equal(r.sooner.next.window.kind, 'lunch');
+  r = L20.emptyStateNext([hh, late], now);
+  assert.equal(r.hh.venue, hh);
+  assert.equal(r.sooner, null, 'a special after the happy hour is not "sooner"');
+  r = L20.emptyStateNext([lunch], now);
+  assert.equal(r.hh, null, 'no happy hour anywhere: no next happy hour');
+  assert.equal(r.sooner, null, 'and nothing to be sooner than');
+  assert.equal(L20.nextStart(lunch, now, { kinds: ['happy_hour'] }), null);
+});
+
+test('emptyStateNext (v1.21 C2): the temp-closure rule still holds (Punk Wok, Mon Oct 26 10pm)', () => {
+  const other = venue({}, [win(['WED'], '16:00', '18:00', { kind: 'happy_hour' })]);
+  const r = L20.emptyStateNext([PUNK, other], nowAt('2026-10-26T22:00'), { excludeAllDay: true });
+  assert.equal(r.hh.venue, other, 'Punk Wok is closed Wed Oct 28; its happy hour does not win');
+  assert.equal(r.sooner, null, 'nor its Wed lunch: the first open lunch is Thu, after the Wed 4pm happy hour');
+});
+
+test('index.html (v1.21 C2/C3): "next happy hour", a quieter "Sooner" line, zone chips say 0', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes("'No happy hours right now — next happy hour: <b>'"));
+  assert.ok(!html.includes("'No happy hours right now — next: <b>'"));
+  assert.ok(html.includes("'<div class=\"empty-sooner\">Sooner: <b>'"));
+  assert.ok(html.includes("nx.sooner.next.window.kind === 'lunch' ? 'lunch special' : 'special'"));
+  assert.ok(html.includes('.empty .empty-sooner {'));
+  assert.ok(html.includes("        '<span class=\"count\">' + count + '</span>' +\n      '</div>';"), 'zone pill always has a count');
+  assert.ok(!html.includes("(count > 0 ? '<span class=\"count\">' + count + '</span>' : '')"));
 });

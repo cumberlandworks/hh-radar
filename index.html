@@ -349,6 +349,9 @@
   .disagreements .more-label { color: var(--drink); font-weight: 600; }
   .empty { text-align: center; padding: 60px 20px; color: var(--text-dim); }
   .empty b { color: var(--text); }
+  /* v1.21 C2: the sooner lunch/special under the next-happy-hour line, quieter. */
+  .empty .empty-sooner { margin-top: 10px; font-size: 13px; opacity: 0.8; }
+  .empty .empty-sooner b { color: var(--text-dim); font-weight: 600; }
 
   #grid-sticky { position: sticky; top: var(--header-h); z-index: 4; background: var(--bg); padding-bottom: 4px; }
   .day-select { display: flex; gap: 4px; padding: 8px 16px 0; }
@@ -865,12 +868,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.20"></script>
+<script src="logic.js?v=1.21"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.20';
+  var APP_VERSION = 'v1.21';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1365,13 +1368,22 @@
     var total = sections.live.length + sections.soon.length + sections.allDay.length;
     if (total === 0) {
       var eligible = filteredVenues().filter(function (v) { return v.windows.length > 0; });
-      var best = L.nextStartAcrossVenues(eligible, state.now, { excludeAllDay: true });
+      // v1.21 C2: the next HAPPY HOUR, plus a quieter line for a lunch or special that starts sooner.
+      var nx = L.emptyStateNext(eligible, state.now, { excludeAllDay: true });
+      var best = nx.hh;
+      var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };
       var msg;
       if (best) {
         // v1.20 C11 (QA#7): "today" when it is today, and a way to the whole day's plan.
-        msg = 'No happy hours right now — next: <b>' + escapeHtml(best.venue.name) + '</b> at ' +
-          fmtHM(best.next.start) + ' (' + (best.next.day === state.now.dayOfWeek ? 'today' : DAY_FULL[best.next.day]) + ').' +
+        msg = 'No happy hours right now — next happy hour: <b>' + escapeHtml(best.venue.name) + '</b> at ' +
+          fmtHM(best.next.start) + ' (' + dayWord(best.next.day) + ').' +
           ' <button type="button" class="geo-relink" id="see-grid">See the Day Grid</button>';
+        if (nx.sooner) {
+          var sk = nx.sooner.next.window.kind === 'lunch' ? 'lunch special' : 'special';
+          msg += '<div class="empty-sooner">Sooner: <b>' + escapeHtml(nx.sooner.venue.name) + '</b>’s ' + sk +
+            ' at ' + fmtHM(nx.sooner.next.start) +
+            (nx.sooner.next.day !== best.next.day ? ' (' + dayWord(nx.sooner.next.day) + ')' : '') + '</div>';
+        }
       } else if (state.hoodSelected.size < L.hoodKeys().length) {
         msg = 'No happy hours match your selected neighborhoods. Try selecting more on the map or chip list.';
       } else {
@@ -1788,9 +1800,8 @@
   }
 
   // ---- v1.4 C2: the zone row (one steady line) + the sibling hood strip ----
-  // A zone pill is: dot · label · count. The count badge is dropped entirely when
-  // the zone has nothing live/on-the-day and the pill dims instead (`.zero`), so a
-  // row of zeros stops shouting. Selected = the zone hue at 0.25 alpha with a 1px
+  // A zone pill is: dot · label · count. A zone with nothing live/on-the-day dims
+  // (`.zero`) and, since v1.21 C3, still says 0 (it used to drop the badge). Selected = the zone hue at 0.25 alpha with a 1px
   // hue border; deselected = a muted 1px border.
   // v1.18 C1: no caret any more; a zone pill is a plain toggle. Its hoods are in the
   // Neighborhoods panel.
@@ -1807,11 +1818,12 @@
     return '<div class="' + cls + ' hue" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
       ' aria-pressed="' + (st.state === 'all' ? 'true' : (st.state === 'some' ? 'mixed' : 'false')) + '"' +
       (st.state === 'some' ? ' aria-label="' + escapeHtml(zone.label) + ', ' + st.on + ' of ' + st.of + ' neighborhoods' +
-        (count > 0 ? ', ' + count : '') + '"' : '') +
+        ', ' + count + '"' : '') +
       ' data-zone="' + escapeHtml(zone.key) + '">' +
         '<span class="dot"></span>' + escapeHtml(zone.label) +
         (st.state === 'some' ? '<span class="some-badge">' + st.on + ' of ' + st.of + '</span>' : '') +
-        (count > 0 ? '<span class="count">' + count + '</span>' : '') +
+        // v1.21 C3: "0" when nothing in the zone is live, like the neighborhood chips (v1.20 C10).
+        '<span class="count">' + count + '</span>' +
       '</div>';
   }
 
@@ -3017,7 +3029,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.20').then(function (r) {
+  fetch('venues.json?v=1.21').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

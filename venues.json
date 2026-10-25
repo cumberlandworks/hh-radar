@@ -1783,35 +1783,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (high confidence): https://bluecoastburrito.com/locations/cool-springs/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "Little Surfer meal (entree, chips, salsa, drink) with adult meal purchase",
-       "price": "$2.99-$3.99"
-      }
-     ],
-     "sources": [
-      "https://nashvillemoms.com/kids-eat-free-cheap-nashville"
-     ],
-     "last_verified": null,
-     "corroborated": false,
-     "confidence": "low",
-     "notes": "Third-party guide (page modified 2026-07-23): \"Tuesday 5-9 pm Little Surfer Meals (entree, chips, salsa and drink) are $2.99-$3.99 with adult meal purchase\" and \"This offer varies by location so be sure to check your location's website or call ahead.\" The brand site and this location page are silent on it. Jan 2025 chain Instagram/Facebook posts (prior pass) also said Tuesday Family Night, with $6-7 adult small burrito combo (not re-seen today). Page says 5-9 PM but store closes 20:30-21:00, so \"close\" used. Not a happy hour. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "No happy hour, no lunch special on the brand site or location page. Only a chain-wide Tuesday kids-meal special, unconfirmed at this location.",
+   "notes": "No happy hour, no lunch special on the brand site or location page. Only a chain-wide Tuesday kids-meal special, unconfirmed at this location. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "hours_notes": "Matches inKind hours.",
@@ -1879,44 +1855,13 @@
     ]
    },
    "hours_source": "Google business listing, checked 2026-10-25",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
-       "price": "$2.99"
-      },
-      {
-       "type": "food",
-       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
-       "price": "$7"
-      }
-     ],
-     "sources": [
-      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
-      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/",
-      "https://www.facebook.com/bluecoastofficialpage/posts/tuesday-is-family-night-199-little-surfer-meals-6-small-burrito-combos-see-ya-th/551731728201427/"
-     ],
-     "last_verified": "2025-01-14",
-     "corroborated": true,
-     "confidence": "low",
-     "notes": "Official Hendersonville menu page (fetched today) lists no family night or Taco Tuesday; Little Surfer meals shown at flat $5.50, beer $4.50 domestic. Nashville Moms (undated) still lists Tuesday 5-9pm Little Surfer meals $2.99-$3.99 with adult purchase and notes it varies by location. Last confirmed by Jan 2025 Instagram post. Likely still running but not confirmed today. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-25",
    "disagreements": [
     "Official menu page shows kids meal at flat $5.50 with no Tuesday discount; Instagram (Jan 2025) and Nashville Moms show $2.99-$3.99 on Tuesday."
    ],
-   "notes": "Not a happy hour. Recurring Tuesday family-night food special only. No lunch special found.",
+   "notes": "Not a happy hour. Recurring Tuesday family-night food special only. No lunch special found. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "lunch_checked": true
@@ -1983,41 +1928,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (high confidence): https://bluecoastburrito.com/locations/mt-juliet/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
-       "price": "$2.99"
-      },
-      {
-       "type": "food",
-       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
-       "price": "$7"
-      }
-     ],
-     "sources": [
-      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
-      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/"
-     ],
-     "last_verified": "2025-01-14",
-     "corroborated": true,
-     "confidence": "low",
-     "notes": "Not on the official site or this location's page today (page shows only Local Favorites). Instagram and Facebook posts are robots-blocked to this tool, so the Jan 2025 chain-wide post could not be re-read. Kept as unconfirmed. Start time uncertain: 16:00 per a Murfreesboro guide, 17:00 per older notes. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "Prior record's notes mention Cool Springs/Franklin (copy-paste from another Blue Coast); this entry is the Mount Juliet store. No happy hour. No lunch special found on the official site.",
+   "notes": "Prior record's notes mention Cool Springs/Franklin (copy-paste from another Blue Coast); this entry is the Mount Juliet store. No happy hour. No lunch special found on the official site. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "lunch_checked": true
@@ -2084,41 +1999,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (med confidence): https://bluecoastburrito.com/locations/murfreesboro-fortress/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "Little Surfer kids meal with purchase of an adult combo",
-       "price": "$2.99"
-      },
-      {
-       "type": "food",
-       "desc": "Adult small burrito combo (chips + drink), Family Night / Taco Tuesday price",
-       "price": "$7"
-      }
-     ],
-     "sources": [
-      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
-      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/"
-     ],
-     "last_verified": "2025-01-14",
-     "corroborated": true,
-     "confidence": "low",
-     "notes": "Not on the Murfreesboro Fortress page or the homepage today (no family night, happy hour or deal text). Rests on a Jan 2025 chain-wide Instagram post. Start time uncertain: a 2020 guide says 'after 4pm'. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "Tuesday family night is stale (Jan 2025) and not on the venue's site; low confidence. No happy hour found.",
+   "notes": "Tuesday family night is stale (Jan 2025) and not on the venue's site; low confidence. No happy hour found. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "med",
    "hours_notes": "Fetch summary reported the times as approximate; they match the inKind hours.",
@@ -2186,35 +2071,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (high confidence): https://bluecoastburrito.com/locations/murfreesboro/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "Little Surfer meal (entree, chips, salsa, drink) with adult meal purchase",
-       "price": "$2.99-$3.99"
-      }
-     ],
-     "sources": [
-      "https://nashvillemoms.com/kids-eat-free-cheap-nashville"
-     ],
-     "last_verified": null,
-     "corroborated": false,
-     "confidence": "low",
-     "notes": "Third-party guide (page modified 2026-07-23): \"Tuesday 5-9 pm Little Surfer Meals (entree, chips, salsa and drink) are $2.99-$3.99 with adult meal purchase\" and \"This offer varies by location so be sure to check your location's website or call ahead.\" The brand site and this location page are silent on it. Jan 2025 chain Instagram/Facebook posts (prior pass) also said Tuesday Family Night, with $6-7 adult small burrito combo (not re-seen today). Page says 5-9 PM but store closes 20:30-21:00, so \"close\" used. Not a happy hour. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "No happy hour, no lunch special on the brand site or location page. Only a chain-wide Tuesday kids-meal special, unconfirmed at this location.",
+   "notes": "No happy hour, no lunch special on the brand site or location page. Only a chain-wide Tuesday kids-meal special, unconfirmed at this location. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "hours_notes": "Matches inKind hours.",
@@ -2282,42 +2143,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (med confidence): https://bluecoastburrito.com/locations/nashville-west/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
-       "price": "$2.99"
-      },
-      {
-       "type": "food",
-       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
-       "price": "$7"
-      }
-     ],
-     "sources": [
-      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
-      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/",
-      "https://www.facebook.com/bluecoastofficialpage/posts/tuesday-is-family-night-199-little-surfer-meals-6-small-burrito-combos-see-ya-th/551731728201427/"
-     ],
-     "last_verified": "2025-01-14",
-     "corroborated": true,
-     "confidence": "low",
-     "notes": "Nashville West page (fetched today) mentions no family night or Taco Tuesday. Nashville Moms (undated) lists Tuesday 5-9pm Little Surfer meals $2.99-$3.99 with adult purchase, varies by location. Last confirmed by Jan 2025 Instagram post. Not confirmed today. TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "Not a happy hour. Recurring Tuesday family-night food special only; unconfirmed today. No lunch special found.",
+   "notes": "Not a happy hour. Recurring Tuesday family-night food special only; unconfirmed today. No lunch special found. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "med",
    "hours_notes": "Page gives one set of hours with no day breakdown; applied to all days.",
@@ -2385,41 +2215,11 @@
     ]
    },
    "hours_source": "researched 2026-10-23 (high confidence): https://bluecoastburrito.com/locations/smyrna/",
-   "windows": [
-    {
-     "days": [
-      "TUE"
-     ],
-     "start": "17:00",
-     "end": "close",
-     "area": null,
-     "kind": "special",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "\"Little Surfer\" kids meal, discounted with purchase of an adult combo",
-       "price": "$2.99"
-      },
-      {
-       "type": "food",
-       "desc": "Adult small burrito combo (chips + drink) at Family Night / Taco Tuesday price",
-       "price": "$7"
-      }
-     ],
-     "sources": [
-      "https://www.instagram.com/bluecoastnashville/p/DE0Mw3jOWTo/",
-      "https://rutherfordsource.com/kids-eat-free-cheap-murfreesboro-restaurant-list/"
-     ],
-     "last_verified": "2025-01-14",
-     "corroborated": true,
-     "confidence": "low",
-     "notes": "Not on the official site or this location's page today. Instagram and Facebook posts are robots-blocked to this tool, so the Jan 2025 chain-wide post could not be re-read. Kept as unconfirmed. Start time uncertain (16:00 vs 17:00). TJ saw a recent Facebook post with this deal (reported 2026-10-25)."
-    }
-   ],
-   "verified_no_hh": false,
+   "windows": [],
+   "verified_no_hh": true,
    "checked": "2026-10-23",
    "disagreements": [],
-   "notes": "Same chain-wide Tuesday Family Night situation as Mount Juliet. No happy hour. No lunch special found.",
+   "notes": "Same chain-wide Tuesday Family Night situation as Mount Juliet. No happy hour. No lunch special found. Tuesday family night left off (2026-10-25): the recent post TJ found is the Little Rock franchise; no Nashville-area source since Jan 2025.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "lunch_checked": true
@@ -13409,7 +13209,7 @@
      "deals": [
       {
        "type": "food",
-       "desc": "Half-price crepes",
+       "desc": "All crepes",
        "price": "50% off"
       }
      ],
