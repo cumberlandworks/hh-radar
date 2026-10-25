@@ -275,9 +275,10 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   sent anywhere, and it blocks the real Geolocation API from overwriting it for that page
   view. The NOW view prints a red "debug position … — not your real location" line whenever
   it is in force, so a screenshot can never be mistaken for a real one.
-- Drive time is a **straight-line estimate computed on the phone** (v1.8): crow-flight miles
-  x 1.35 for urban detour, then 18/24/32 mph by distance band, plus five minutes to get out
-  the door and five to park. No routing API, no backend, no position leaving the device —
+- Drive time is a **straight-line estimate computed on the phone** (v1.8; v1.23 numbers):
+  crow-flight miles x 1.35 for urban detour, then 20/26/35 mph by distance band, plus one
+  minute to pull out. That is drive time only, the number a maps app shows. The arrival
+  clock and the "you'd make it" verdict add five minutes to park and walk in. No routing API, no backend, no position leaving the device —
   which is exactly why every line reads "≈" and why the address on a card is a link into the
   reader's own maps app, where the real ETA lives. Walk mode is 3 mph over a 1.25 detour.
   The band table is floored so the estimate can never *fall* as the distance grows (see

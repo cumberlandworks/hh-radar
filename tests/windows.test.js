@@ -17,7 +17,7 @@ const {
   labelBlockClearance, dayCoverageCounts, hasIntervalOn, pickSurprise,
   surprisePools, candidateKey, serviceDayOf, minutesUntilServiceEnd,
   windowHasFood, windowHasDrink, composeNote,
-  driveEstimateMin, walkEstimateMin, travelEstimateMin, formatEtaMin,
+  driveEstimateMin, walkEstimateMin, travelEstimateMin, formatEtaMin, arrivalLeadMin, PARK_MIN,
   activeOrNextInterval, arrivalVerdict, MAKE_MARGIN_MIN,
   NAV_APPS, isNavApp, navUrl, defaultNavApp,
   NAV_PLATFORMS, NAV_FALLBACK_MS, navApps, detectPlatform,
@@ -988,36 +988,54 @@ test('composeNote trims, and empty text stays empty so Send has nothing to post'
 
 // ==================== v1.8 (fix8): drive time, verdict, navigation links ====================
 
-// road = miles * 1.35; bands 18 / 24 / 32 mph on ROAD miles; +5 out the door, +5 to park.
+// v1.23 (fix23): road = miles * 1.35; bands 20 / 26 / 35 mph on ROAD miles; +1 to pull out.
+// Drive time only, as a maps app shows it. Parking (+5) belongs to the arrival, not here.
 test('driveEstimateMin: the block’s worked examples', () => {
-  assert.equal(driveEstimateMin(0.5), 12); // road 0.675 @18 -> 5 + 2.25 + 5
-  assert.equal(driveEstimateMin(2), 19);   // road 2.7   @18 -> 5 + 9 + 5
-  assert.equal(driveEstimateMin(15), 48);  // road 20.25 @32 -> 5 + 37.97 + 5
+  assert.equal(driveEstimateMin(0.5), 3);  // road 0.675 @20 -> 1 + 2.03
+  assert.equal(driveEstimateMin(2), 9);    // road 2.7   @20 -> 1 + 8.1
+  assert.equal(driveEstimateMin(15), 36);  // road 20.25 @35 -> 1 + 34.71
 });
 
-// The block's flat bands are NOT monotonic: at 5.9mi the 24mph band charges 30 min and
-// at 6.0mi the 32mph band charges 25, so driving further would read as a shorter trip.
-// driveEstimateMin floors each band at what the band below charged at its own ceiling.
-test('driveEstimateMin: 6 miles is clamped up to the 8-road-mile boundary, not down to 25', () => {
-  assert.equal(driveEstimateMin(6), 30);
-  assert.equal(driveEstimateMin(5.9), 30, 'just inside the 24mph band');
-  assert.equal(driveEstimateMin(6.0), 30, 'just outside it — must not drop');
+// TJ 14:10: "one says 12 - its 3 - two other ones i checked say 20 and they are 9 and 14".
+// Back-solved, those are road 0.6 mi and road 3.0 mi.
+test('driveEstimateMin: TJ’s cases, by road miles', () => {
+  assert.equal(driveEstimateMin(0.6 / 1.35), 3);  // was 12
+  assert.equal(driveEstimateMin(3.0 / 1.35), 10); // was 20; his maps app said 9 and 14
+});
+
+// Flat bands are NOT monotonic: just past 3 road miles the 26mph band charges 7.9 min where
+// the 20mph band charged 10 at its ceiling. driveEstimateMin floors each band at what the
+// band below charged at its own ceiling.
+test('driveEstimateMin: just past a band edge is clamped up, never down', () => {
+  assert.equal(driveEstimateMin(3.01 / 1.35), 10, 'road 3.01 must not drop to 8');
+  assert.equal(driveEstimateMin(3.9 / 1.35), 10, 'road 3.9, where the 26mph band catches up');
+  assert.equal(driveEstimateMin(8.01 / 1.35), 19, 'road 8.01 must not drop to 15');
 });
 
 test('driveEstimateMin never decreases as the distance grows', () => {
   let prev = -1;
-  for (let m = 0; m <= 40; m += 0.05) {
+  for (let m = 0; m <= 40; m += 0.01) {
     const v = driveEstimateMin(m);
     assert.ok(v >= prev, `driveEstimateMin(${m.toFixed(2)}) = ${v} fell below ${prev}`);
     prev = v;
   }
 });
 
-test('driveEstimateMin floors at the door+park overhead and ignores junk input', () => {
-  assert.equal(driveEstimateMin(0), 10);
-  assert.equal(driveEstimateMin(-3), 10);
-  assert.equal(driveEstimateMin(null), 10);
-  assert.equal(driveEstimateMin(undefined), 10);
+test('driveEstimateMin floors at the one minute to pull out and ignores junk input', () => {
+  assert.equal(driveEstimateMin(0), 1);
+  assert.equal(driveEstimateMin(-3), 1);
+  assert.equal(driveEstimateMin(null), 1);
+  assert.equal(driveEstimateMin(undefined), 1);
+  assert.equal(driveEstimateMin('junk'), 1);
+  assert.equal(driveEstimateMin(NaN), 1);
+});
+
+test('arrivalLeadMin: driving adds 5 min to park, walking adds nothing', () => {
+  assert.equal(PARK_MIN, 5);
+  assert.equal(arrivalLeadMin(10, 'drive'), 15);
+  assert.equal(arrivalLeadMin(10, undefined), 15, 'drive is the default');
+  assert.equal(arrivalLeadMin(16, 'walk'), 16);
+  assert.equal(arrivalLeadMin(null, 'drive'), null);
 });
 
 test('walkEstimateMin: 3 minutes to get moving, then 3 mph over a 1.25 detour', () => {
@@ -1055,6 +1073,16 @@ test('arrivalVerdict boundaries: end-20 makes it, end-19 is close, end misses', 
   assert.equal(arrivalVerdict(end - 30, 30, WED_WIN), 'miss', 'arrive exactly at end');
   assert.equal(arrivalVerdict(end + 10 - 30, 30, WED_WIN), 'miss', 'arrive after end');
   assert.equal(MAKE_MARGIN_MIN, 20, 'the 20-minute margin is the documented contract');
+});
+
+test('the verdict uses drive + 5: a 10-minute drive leaving at end-30 cuts it close', () => {
+  const end = WED_WIN.endAbs;
+  const drive = 10;
+  assert.equal(arrivalVerdict(end - 30, drive, WED_WIN), 'make', 'bare drive would arrive end-20');
+  assert.equal(arrivalVerdict(end - 30, arrivalLeadMin(drive, 'drive'), WED_WIN), 'close', 'drive+5 arrives end-15');
+  assert.equal(arrivalVerdict(end - 12, drive, WED_WIN), 'close', 'bare drive would arrive end-2');
+  assert.equal(arrivalVerdict(end - 12, arrivalLeadMin(drive, 'drive'), WED_WIN), 'miss', 'drive+5 lands past the end');
+  assert.equal(arrivalVerdict(end - 30, arrivalLeadMin(drive, 'walk'), WED_WIN), 'make', 'walk mode adds nothing');
 });
 
 test('arrivalVerdict: arriving before the window opens is early, not make', () => {
@@ -2165,7 +2193,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v1.22';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.22'));
+  assert.ok(html.includes("var APP_VERSION = 'v1.23';") && html.includes("venues.json?v=1.21") && html.includes('logic.js?v=1.23'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----

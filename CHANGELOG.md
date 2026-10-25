@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix23-20261025: v1.23 (drive times that match the maps app, phone grid labels)
+
+TJ, 2026-10-25 14:10, verbatim:
+
+> "that works only other fix I can see atm are the drive times - i tested a couple and they are all over esimated by a bit
+> - one says 12 - its 3 - two other ones i checked say 20 and they are 9 and 14"
+
+("that works" is about the thread's proposal in the fix22 report: on phones, drop the i/K link columns from grid rows so
+names and times get the room.)
+
+### Diagnosis
+- **D1.** The drive estimate was 5 min out the door + road / mph × 60 + 5 min to park, with road = crow miles × 1.35 and
+  bands of 18 / 24 / 32 mph. TJ's maps app shows driving time only, so the 10 fixed minutes were the gap he saw.
+  Back-solved: his "12" is road ~0.6 mi (maps said 3); both "20"s are road ~3.0 mi (maps said 9 and 14).
+- **D2.** At 375px the grid's two 44px link columns (i, K) took 88 of the label's 188px. 30 of 40 venue names on SUN
+  were cut ("Bag Lady's Fr…"), and the times line wrapped to as many as 5 lines (Two Hands - Nashville).
+
+### Changes
+- **C1: drive time only.** The shown number is `1 + road / mph × 60`, with bands of 20 mph (road ≤ 3 mi), 26 mph
+  (≤ 8) and 35 mph (beyond). The 1.35 detour factor stays. The monotonic clamp stays, re-derived for the new bands: the
+  floors are 10 min at the 3-mile edge and 19.5 at the 8-mile edge, so road 3.0–3.9 mi all read 10 and road
+  8.0–10.8 mi all read 19. DOOR_MIN is gone. The arrival clock and the verdict add 5 min to park and walk in
+  (`L.arrivalLeadMin`: arrival = now + drive + 5), so "you'd make it" and "cuts it close" stay honest. Walk mode is
+  unchanged, with no parking add. The drive line's hover text: "Straight-line estimate of drive time; your maps app
+  knows the traffic. Arrival times add 5 min to park." (Walk mode keeps its old hover text, which is about walking.)
+
+  | crow miles | 0.25 | 0.5 | 1 | 2 | 3 | 5 | 8 | 12 | 20 |
+  |---|---|---|---|---|---|---|---|---|---|
+  | v1.22 min | 11 | 12 | 15 | 19 | 20 | 27 | 30 | 40 | 61 |
+  | v1.23 min | 2 | 3 | 5 | 9 | 10 | 17 | 20 | 29 | 47 |
+
+- **C2: phone grid labels.** At the phone breakpoint (`max-width: 599px`, and landscape phones) grid rows drop the i
+  and K columns. The label keeps its 55%, so the timeline track is as wide as in v1.22 (153px at 375). The name is
+  one line, and the times line is clamped to 2 lines. At 375px on SUN, 2 of 40 names are cut (both
+  "Dog Haus - … (Biergarten)"), and no times line runs past 2 lines. A row tap still opens the card, which has both
+  Deal info and inKind. Desktop is unchanged: pixel-identical at 1280.
+- **C3.** v1.23 (`APP_VERSION`, `logic.js?v=1.23`, `version.txt`). `venues.json?v=1.21` is unchanged: no data changed.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix22-20261025: v1.22 (phone Where sheet, no grey cards, honest grid colors, update check)
 
 TJ, 2026-10-25, verbatim:

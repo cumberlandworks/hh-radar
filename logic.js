@@ -1859,24 +1859,28 @@
   var DRIVE_DETOUR = 1.35;   // crow-flight -> road miles, urban detour factor
   var WALK_DETOUR = 1.25;
   var WALK_MPH = 3;
-  var DOOR_MIN = 5;          // getting out the door
-  var PARK_MIN = 5;          // parking and walking in
+  // v1.23 (fix23, TJ 14:10): "they are all over esimated by a bit - one says 12 - its 3".
+  // The shown number is drive time only, as the maps app shows it: one minute to pull
+  // out, then the road at the band's speed. Parking is not drive time; it is added to
+  // the ARRIVAL (arrivalLeadMin) so "you'd make it" stays honest.
+  var DRIVE_START_MIN = 1;   // pulling out
+  var PARK_MIN = 5;          // parking and walking in, arrival math only
   // Nashville's mix: surface streets, then a parkway, then the interstate share.
   var DRIVE_BANDS = [
-    { maxRoad: 3, mph: 18 },
-    { maxRoad: 8, mph: 24 },
-    { maxRoad: Infinity, mph: 32 },
+    { maxRoad: 3, mph: 20 },
+    { maxRoad: 8, mph: 26 },
+    { maxRoad: Infinity, mph: 35 },
   ];
 
-  function rawDriveMin(road, mph) { return DOOR_MIN + road / mph * 60 + PARK_MIN; }
+  function rawDriveMin(road, mph) { return DRIVE_START_MIN + road / mph * 60; }
 
-  // MONOTONIC CLAMP — a deliberate deviation from the block, which specifies flat
-  // speed bands keyed on `road` and nothing else. Those bands are not monotonic: at
-  // 5.9 mi the 24 mph band charges 30 min, and at 6.0 mi the 32 mph band charges 25,
-  // so moving FURTHER from a bar would shorten the estimate by five minutes. A reader
+  // MONOTONIC CLAMP — flat speed bands keyed on `road` alone are not monotonic: just
+  // past 3 road miles the 26 mph band charges 7.9 min where the 20 mph band charged 10
+  // at its ceiling, so moving FURTHER from a bar would shorten the estimate. A reader
   // cannot be told that. Each band is therefore floored at what the slower band below
-  // it charged at its own ceiling. Inside a band the block's arithmetic is untouched,
-  // and the clamp only ever binds just past a boundary (6.0-7.9 mi all read 30 min).
+  // it charged at its own ceiling (10 min at 3 road mi, 19.5 at 8). Inside a band the
+  // arithmetic is untouched; the clamp only binds just past a boundary (road 3.0-3.9 mi
+  // all read 10, road 8.0-10.8 mi all read 19).
   function driveEstimateMin(miles) {
     var road = Math.max(0, Number(miles) || 0) * DRIVE_DETOUR;
     var raw = null, floor = 0;
@@ -1896,6 +1900,14 @@
 
   function travelEstimateMin(miles, mode) {
     return mode === 'walk' ? walkEstimateMin(miles) : driveEstimateMin(miles);
+  }
+
+  // v1.23 C1: minutes from now until the reader is IN the venue — the shown travel
+  // estimate, plus parking and walking in when driving. Walk mode has no parking add.
+  // The verdict and the "you'd arrive" clock use this, never the bare estimate.
+  function arrivalLeadMin(etaMin, mode) {
+    if (etaMin === null || etaMin === undefined || isNaN(etaMin)) return etaMin;
+    return mode === 'walk' ? etaMin : etaMin + PARK_MIN;
   }
 
   // "14 min" / "1 h 10". Never seconds — the input is already a rounded minute count,
@@ -2267,6 +2279,8 @@
     driveEstimateMin: driveEstimateMin,
     walkEstimateMin: walkEstimateMin,
     travelEstimateMin: travelEstimateMin,
+    arrivalLeadMin: arrivalLeadMin,
+    PARK_MIN: PARK_MIN,
     formatEtaMin: formatEtaMin,
     activeOrNextInterval: activeOrNextInterval,
     arrivalVerdict: arrivalVerdict,

@@ -7,7 +7,7 @@
      until something forces a revalidate; no-cache makes it ask every launch, and the
      ?v= query on logic.js/venues.json makes the two files it pulls miss the old
      entries outright. Bump logic.js?v= whenever APP_VERSION changes, and venues.json?v=
-     whenever the data does (v1.22 changed no data, so it stays ?v=1.21). -->
+     whenever the data does (v1.22 and v1.23 changed no data, so it stays ?v=1.21). -->
 <meta http-equiv="Cache-Control" content="no-cache">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -764,7 +764,13 @@
        targets plus >= 12 characters of venue name do not both fit inside the v1.4
        46% at 11.5px — the binding case is 375px wide, not 390. */
     .grid-rowlabel { width: 55%; min-width: 55%; max-width: 55%; padding-left: 6px; gap: 0; font-size: 11px; }
-    .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
+    /* v1.23 C2: no i / K columns on a phone; a row tap opens the card, which carries both
+       links. The label keeps its 55% (the track is as wide as v1.22) and the name and times
+       get the 88px the two columns took: the name on one line, the times on at most two. */
+    .grid-rowlabel a.rowlink { display: none; }
+    .grid-rowlabel .rl-text { padding-right: 6px; }
+    .grid-rowlabel .rl-times { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+      line-clamp: 2; overflow: hidden; }
     .grid-header-tick { font-size: 10px; }
     .icon-btn { min-height: 44px; }
     .card-actions .icon-btn { min-width: 44px; }
@@ -796,7 +802,11 @@
     .hood-strip .group-all { min-height: 44px; min-width: 44px; }
     .day-select .pill, .sort-select .pill { height: 44px; }
     .grid-row { min-height: 45px; }
-    .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
+    /* v1.23 C2: same as the portrait phone: no i / K columns, the row tap opens the card. */
+    .grid-rowlabel a.rowlink { display: none; }
+    .grid-rowlabel .rl-text { padding-right: 6px; }
+    .grid-rowlabel .rl-times { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+      line-clamp: 2; overflow: hidden; }
     .icon-btn { min-height: 44px; }
   }
 </style>
@@ -960,12 +970,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.22"></script>
+<script src="logic.js?v=1.23"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.22';
+  var APP_VERSION = 'v1.23';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1286,12 +1296,14 @@
     if (!state.geo || venue.lat == null || venue.lon == null) return null;
     var miles = L.haversineMiles(state.geo.lat, state.geo.lon, venue.lat, venue.lon);
     var eta = L.travelEstimateMin(miles, state.travelMode);
+    // v1.23 C1: the shown number is drive time only; the arrival adds 5 min to park.
+    var lead = L.arrivalLeadMin(eta, state.travelMode);
     var interval = L.activeOrNextInterval(venue, win, state.now);
     var nowAbs = L.minutesSinceWeekStart(state.now);
     return {
       miles: miles, eta: eta, interval: interval,
-      verdict: L.arrivalVerdict(nowAbs, eta, interval),
-      arriveAbs: nowAbs + eta,
+      verdict: L.arrivalVerdict(nowAbs, lead, interval),
+      arriveAbs: nowAbs + lead,
     };
   }
 
@@ -1318,7 +1330,9 @@
       tail = (t.verdict === 'make' ? 'you’d make it' :
               t.verdict === 'close' ? 'cuts it close' : 'you’d miss it') + ' (' + ends + ')';
     }
-    return '<div class="verdict ' + t.verdict + '" title="Straight-line estimate — select the address for a real ETA">' +
+    var tip = state.travelMode === 'walk' ? 'Straight-line estimate — select the address for a real ETA' :
+      'Straight-line estimate of drive time; your maps app knows the traffic. Arrival times add ' + L.PARK_MIN + ' min to park.';
+    return '<div class="verdict ' + t.verdict + '" title="' + escapeHtml(tip) + '">' +
       '<span class="est">' + escapeHtml(est) + '</span> · ' + escapeHtml(tail) + '</div>';
   }
 
