@@ -53,15 +53,16 @@ personal venmo"). The card it draws (`tipSectionHtml` in logic.js) sits between 
 referral and Feedback in the referral's style: "Enjoying the radar?" (v1.14; "Like the
 radar?" before) / "Tip on Venmo:
 @Tjwhite-", the handle being the url's last path segment, linked in a new tab with
-`rel="noopener"`. On desktop `venmo-qr.svg` sits beside it at 120px; a phone gets the link
-only and never fetches the QR. Set `TIP_URL = ''` and nothing renders and nothing is in the
-DOM. If the url changes, regenerate `venmo-qr.svg` and decode it before committing.
+`rel="noopener"`. Since v1.17 it has no QR on any platform (TJ, 2026-10-25: "one QR code -
+dont hide"); the referral card's is the page's only one. Set `TIP_URL = ''` and nothing
+renders and nothing is in the DOM.
 
 ## Referral bar and card (v1.10, bar v1.14, tap-to-dismiss v1.15)
 
 The inKind referral card ("New to inKind?") sits between Settings and the tip card. Since
 v1.14 it is tinted with the amber tokens in both themes and its link is a "Get $25 off"
-button (new tab, `rel="noopener"`); desktop keeps the QR beside it. A thin bar above the
+button (new tab, `rel="noopener"`); desktop keeps the QR beside it, captioned "Scan for $25
+off" since v1.17. A thin bar above the
 header ("New to inKind? $25 off your first $50+ meal →") only scrolls to that card and rings
 it for a moment; it never opens inKind itself, so the card's disclosure is always seen
 first. Its × (aria-label "Dismiss") hides it and writes `hhradar-refbar-dismissed`; since

@@ -1,5 +1,63 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix17-20261025: v1.17 (device-neutral wording, Surprise me refresh, one QR, Downtown outline)
+
+TJ, 2026-10-25, verbatim:
+
+> 03:49, quoting the feedback box ("Like something? Want something? Found something broken? Tell us — no account
+> needed. Notes stay on this phone until you send them.") with a desktop NOW screenshot (zones Downtown, Gulch & Midtown,
+> Germantown & North selected; the Surprise me card reading "Nothing later in this filter. Select more zones and try
+> again." while the NOW line said "next: JBJ's Nashville at 10am (Sunday)"): "Two things this assumes phone - the may be
+> using a computer - likely phone, but who knows. Also the Surprise me seems to not operate correctly if you have no zones
+> selected and then select a zone after."
+
+> 03:53, with a desktop screenshot of the referral and tip cards, each with a QR: "the qr codes don't show up on my phone
+> which is fine - but they are right next to each other here and I'm wondering if that's odd and if it would be a good
+> idea to allow users to hide one or both /all"
+
+> 03:55, on the thread's answer (keep the referral QR with a caption, drop the Venmo QR, no hide controls): "I agree with
+> that - one QR code - dont hide"
+
+### Changes
+- **C1: device-neutral wording.** Every user-facing "this phone" is gone. Where the text is about browser storage, it
+  now says "in this browser":
+
+  | Where | Before | After |
+  |---|---|---|
+  | Feedback intro | Notes stay on this phone until you send them. | Notes stay in this browser until you send them. |
+  | Save for later status | Saved on this phone — N notes waiting. … | Saved in this browser — N notes waiting. … |
+  | Send failed status | Kept on this phone — try again when you're online. | Kept in this browser — try again when you're online. |
+  | Directions chooser note (iOS/Android) | … Remembered on this phone — change it under Settings. | … Remembered in this browser — change it under Settings. |
+
+  The desktop branch of that last note already said "Remembered in this browser". The phone-only Directions logic is
+  unchanged. Code comments still say "phone" where they mean one. A new test fails if a user-facing "this phone" or
+  "your phone" comes back.
+- **C2: Surprise me follows the filters.** The card was already redrawn on every filter change, and its pools were
+  recomputed, but the pick was kept from the moment it was drawn. So an empty card ("Nothing later in this filter")
+  stayed empty after zones were selected. `L.refreshSurprise` now runs on every render of the card. A pick that is
+  still in its (Food/Drink-filtered) pool stays, with a fresh pool size. A pick that has left the pool is replaced, and
+  Now/Later stays as chosen. An empty card has no pick the reader chose, so it re-opens by the 🎲 rule: Now if anything
+  is on, otherwise Later. Zones, neighborhood chips, Food/Drink and Drive/Walk all re-render, so they all refresh it. TJ's steps at
+  `?now=2026-10-25T03:48` (Sunday): None → Surprise me gives the empty card; selecting Downtown, Gulch & Midtown and
+  Germantown & North gives a Later pick from 13 candidates. In the check run that was The Southern Steak & Oyster,
+  3pm–5pm, SoBro. `pickSurprise`'s Food/Drink pool is now its own helper (`surpriseDrawPool`) so the two share it.
+- **C3: one QR.** On desktop the referral QR now has a "Scan for $25 off" caption under it. The tip card has no QR
+  on any platform. `venmo-qr.svg` is deleted, `tipSectionHtml(url)` drops its platform argument, and the "@Tjwhite-"
+  link stays. There are no hide controls.
+- **C4: plain Downtown outline.** The notch's inner vertex `[36.1537, -86.7724]` is removed from `downtown` and from
+  `gulch`, which mirrors it, so the shared edge runs straight from `[36.1531, -86.7778]` to `[36.1573, -86.7757]`.
+  Nothing else was redrawn. koshō and The Herban Perk & Pantry now sit inside Downtown, so their two
+  `MAP_SEAM_EXCEPTIONS` entries are dropped. The containment tests pass without them, and no other venue moved into a foreign
+  polygon. Exceptions left: LinQ Social Kitchen, Chateau West, E+ROSE - OneC1ty, Jashan.
+- **C5:** v1.17 (`APP_VERSION`, `logic.js?v=1.17`, `venues.json?v=1.17`). There are no og or LinkedIn retakes. The
+  og image does show the map, but at that size the removed notch is about 3 px.
+
+### Tests
+`node --test` 175/175 (was 169). The tip tests now check for no QR and that `venmo-qr.svg` is absent, and the two
+notch exceptions are gone. New tests: `refreshSurprise` (dismissed, kept, replaced or mode kept, empty re-open, and
+TJ's Sunday 03:48 steps against the real data, which include Blue Sushi 5th & Broadway's noon window in the Later
+pool) and no user-facing "this phone".
+
 ## 2026-10-25 — BLOCK-hh-radar-fix16-20261025: v1.16 (finer neighborhoods, action-button style, fresh link preview)
 
 TJ, 2026-10-25, verbatim:

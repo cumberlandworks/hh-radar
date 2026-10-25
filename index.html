@@ -387,6 +387,11 @@
   /* The QR carries its own white ground and quiet zone, so it scans in dark mode too. */
   .referral .ref-qr { flex: 0 0 120px; width: 120px; height: 120px; display: block;
     image-rendering: pixelated; border-radius: 6px; }
+  /* v1.17 C3 (TJ, 2026-10-25: "one QR code - dont hide"): the referral QR is the only one
+     on the page, and a caption says what scanning it gets you. */
+  .referral .ref-qr-fig { flex: 0 0 120px; margin: 0; }
+  .referral .ref-qr-cap { margin-top: 4px; font-size: 12px; font-weight: 600; text-align: center;
+    color: var(--text); }
   /* v1.14 C3 (TJ pick C): the referral card is tinted and carries a real button, so it
      stands out from Settings, Feedback and the tip card (which shares .referral) without
      looking like a venue card. Scoped to #referral for that reason. */
@@ -759,7 +764,7 @@
     <summary id="fb-summary">Feedback <span class="fb-count" id="fb-count" hidden></span></summary>
     <div class="fb-body">
       <p class="fb-intro">Like something? Want something? Found something broken? Tell us —
-        no account needed. Notes stay on this phone until you send them.</p>
+        no account needed. Notes stay in this browser until you send them.</p>
       <ul class="fb-pending" id="fb-pending"></ul>
       <div class="fb-mood" role="group" aria-label="What kind of note is this (optional)">
         <button type="button" class="mood" data-mood="liked" aria-pressed="false"><span class="mood-e" aria-hidden="true">&#x1F44D;</span>Liked it</button>
@@ -791,12 +796,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.16"></script>
+<script src="logic.js?v=1.17"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.16';
+  var APP_VERSION = 'v1.17';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -2096,7 +2101,7 @@
     saveNotes();
     renderFeedback();
     if (!quiet) {
-      setFbStatus('Saved on this phone \u2014 ' + state.fbNotes.length + ' note' +
+      setFbStatus('Saved in this browser \u2014 ' + state.fbNotes.length + ' note' +
         (state.fbNotes.length === 1 ? '' : 's') + ' waiting. Tap Send when you\u2019re ready.');
     }
     return true;
@@ -2140,7 +2145,7 @@
       showUndo();
     }).catch(function () {
       btn.disabled = false;
-      setFbStatus('Kept on this phone \u2014 try again when you\u2019re online.');
+      setFbStatus('Kept in this browser \u2014 try again when you\u2019re online.');
     });
   }
   // The Undo only cancels the 3-second CLEAR of the just-sent list. The POST has
@@ -2346,8 +2351,13 @@
     if (!state.surprise) return '';
     // One card in the DOM, in the view the reader is looking at.
     if (host !== (state.currentTab === 'grid' ? 'grid' : 'now')) return '';
-    var s = state.surprise;
     var pools = surprisePoolsFor();
+    // v1.17 C2 (TJ, 2026-10-25: Surprise me "seems to not operate correctly if you have
+    // no zones selected and then select a zone after"): every render — and every zone,
+    // chip, Food/Drink or Drive/Walk change renders — checks the pick against the pools
+    // as they are now. A pick still in its pool stays; otherwise a new one is rolled.
+    state.surprise = L.refreshSurprise(state.surprise, pools, Math.random, { prefer: state.priority });
+    var s = state.surprise;
     var head = '<div class="surprise-head"><span class="tier">🎲 Surprise me</span>' +
       '<span class="why">' + escapeHtml(surpriseWhy(pools, s.mode, s.pick)) + '</span>' +
       '<button type="button" class="surprise-dismiss" aria-label="Dismiss">×</button></div>';
@@ -2548,7 +2558,7 @@
       (NAV_PLATFORM === 'other'
         ? 'Remembered in this browser — change it under Settings.'
         : 'Opens the app directly. If it isn\'t installed you\'ll get a browser link ' +
-          'instead. Remembered on this phone — change it under Settings.') +
+          'instead. Remembered in this browser — change it under Settings.') +
       '</span>';
     link.parentNode.insertBefore(box, link.nextSibling);
   }
@@ -2746,21 +2756,29 @@
     if (NAV_PLATFORM !== 'other') return;
     var box = document.getElementById('referral');
     if (!box || box.querySelector('.ref-qr')) return;
+    // v1.17 C3: the QR sits in a figure with a one-line caption under it.
+    var fig = document.createElement('figure');
+    fig.className = 'ref-qr-fig';
     var img = document.createElement('img');
     img.className = 'ref-qr';
     img.src = 'inkind-referral-qr.svg';
     img.width = 120;
     img.height = 120;
     img.alt = 'QR code for TJ\'s inKind referral link';
-    box.appendChild(img);
+    var cap = document.createElement('figcaption');
+    cap.className = 'ref-qr-cap';
+    cap.textContent = 'Scan for $25 off';
+    fig.appendChild(img);
+    fig.appendChild(cap);
+    box.appendChild(fig);
   }
 
   // v1.13 C1: the Venmo card, between the referral and Feedback. Nothing when TIP_URL
-  // is empty; the QR only on desktop, so a phone never fetches venmo-qr.svg.
+  // is empty. v1.17 C3: no QR on any platform (the referral's is the page's only one).
   function renderTip() {
     var ref = document.getElementById('referral');
     if (!ref || document.getElementById('tip')) return;
-    var html = L.tipSectionHtml(TIP_URL, NAV_PLATFORM);
+    var html = L.tipSectionHtml(TIP_URL);
     if (html) ref.parentNode.insertAdjacentHTML('afterend', html);
   }
 
@@ -2813,7 +2831,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.16').then(function (r) {
+  fetch('venues.json?v=1.17').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

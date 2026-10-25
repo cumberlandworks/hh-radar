@@ -435,12 +435,13 @@ test('voronoiCells: every core-hood venue in venues.json falls inside SOME cell 
 // so each one is a named exception here; LinQ's hood is now Rutledge Hill & Rolling Mill Hill.
 const MAP_SEAM_EXCEPTIONS = {
   'ik-19732': 'LinQ Social Kitchen: Downtown (Rutledge Hill) by address, East of the drawn river',
-  'ik-13852': 'koshō: Downtown (SoBro, 538 6th Ave S) by address, inside the Gulch notch',
-  'ik-18919': 'The Herban Perk & Pantry: Downtown (SoBro, 512 Rep. John Lewis Way S) by address, inside the Gulch notch',
   'ik-20518': 'Chateau West: Gulch & Midtown (West End, 3408 West End Ave) by address, inside West',
   'ik-15740': 'E+ROSE - OneC1ty: Gulch & Midtown (West End, 4 City Blvd) by address, inside West',
   'ik-20959': 'Jashan: Gulch & Midtown (Hillsboro Village, 2100 21st Ave S) by address, inside South',
 };
+// v1.17 C4: the Downtown notch is gone, so koshō (ik-13852) and The Herban Perk & Pantry
+// (ik-18919) sit inside Downtown and are no longer exceptions; the two tests below hold them
+// to it like any other core venue.
 function coreVenuesForMap() {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   return venues.filter((v) => isCoreHood(v.hood) && !MAP_EXEMPT_HOODS.includes(v.hood) &&
@@ -773,6 +774,75 @@ test('(d) Day Grid override: Later is the selected day\'s full set, clock notwit
   // Selecting TODAY on the grid is not an override — it falls back to the clock rule.
   const same = surprisePools(REAL, dt('TUE', 16, 30), { day: 'TUE' });
   assert.notEqual(same.laterScope, 'day');
+});
+
+// ==================== v1.17 C2: Surprise me follows the filters ====================
+const { refreshSurprise, applyHoodFilter: hoodFilter } = require('../logic.js');
+
+test('refreshSurprise (v1.17 C2): dismissed stays dismissed', () => {
+  assert.equal(refreshSurprise(null, { now: [cand('A', 'live', FOOD)], later: [] }, fixedRng(0)), null);
+});
+
+test('refreshSurprise (v1.17 C2): a pick still in its pool is kept, with the fresh pool size', () => {
+  const a = cand('A', 'live', FOOD), b = cand('B', 'live', FOOD), c = cand('C', 'live', FOOD);
+  const prev = { mode: 'now', pick: a, poolSize: 1, canRoll: false };
+  for (const r of [0, 0.5, 0.99]) {
+    const s = refreshSurprise(prev, { now: [b, a, c], later: [] }, fixedRng(r), { prefer: 'food' });
+    assert.equal(s.pick.venue.name, 'A', 'rng ' + r + ' re-rolled a pick that was still in the pool');
+    assert.equal(s.mode, 'now');
+    assert.equal(s.poolSize, 3);
+    assert.equal(s.canRoll, true);
+  }
+});
+
+test('refreshSurprise (v1.17 C2): a pick filtered out is replaced, and Now/Later stays as chosen', () => {
+  const a = cand('A', 'live', FOOD), b = cand('B', 'live', FOOD);
+  const prev = { mode: 'later', pick: a, poolSize: 2, canRoll: true };
+  const s = refreshSurprise(prev, { now: [a], later: [b] }, fixedRng(0), { prefer: 'food' });
+  assert.equal(s.mode, 'later');
+  assert.equal(s.pick.venue.name, 'B');
+  // Food -> Drink: the pool narrows to drink windows, so a food-only pick is replaced.
+  const d = cand('D', 'live', DRINK);
+  const s2 = refreshSurprise({ mode: 'now', pick: a, poolSize: 2, canRoll: true },
+    { now: [a, d], later: [] }, fixedRng(0), { prefer: 'drink' });
+  assert.equal(s2.pick.venue.name, 'D');
+  // Its pool emptied: an empty card in the chosen mode, not a silent switch.
+  const s3 = refreshSurprise({ mode: 'now', pick: a, poolSize: 1, canRoll: false },
+    { now: [], later: [b] }, fixedRng(0), { prefer: 'food' });
+  assert.deepEqual(s3, { mode: 'now', pick: null, poolSize: 0, canRoll: false });
+});
+
+test('refreshSurprise (v1.17 C2): an empty card re-opens by the 🎲 rule (Now if anything is on)', () => {
+  const a = cand('A', 'live', FOOD), b = cand('B', 'live', FOOD);
+  const empty = { mode: 'later', pick: null, poolSize: 0, canRoll: false };
+  assert.equal(refreshSurprise(empty, { now: [a], later: [b] }, fixedRng(0)).mode, 'now');
+  assert.equal(refreshSurprise(empty, { now: [], later: [b] }, fixedRng(0)).pick.venue.name, 'B');
+  assert.deepEqual(refreshSurprise(empty, { now: [], later: [] }, fixedRng(0)), empty);
+});
+
+// TJ's exact steps, Sunday 03:48: None -> Surprise me (empty) -> select Downtown, Gulch &
+// Midtown, Germantown & North -> a Later pick, a Sunday happy hour, never JBJ's (a special).
+test('refreshSurprise (v1.17 C2): TJ\'s steps at SUN 03:48 — None, Surprise me, three zones -> a Later pick', () => {
+  const now = dt('SUN', 3, 48, { year: 2026, month: 10, day: 25 });
+  const none = surprisePools(hoodFilter(REAL, { selected: new Set() }), now);
+  assert.equal(none.now.length + none.later.length, 0);
+  let card = refreshSurprise({ mode: 'later', pick: null, poolSize: 0, canRoll: false }, none, fixedRng(0.5));
+  assert.equal(card.pick, null, 'None selected: the empty card');
+  const three = ZONES.filter((z) => ['downtown', 'gulch', 'north'].includes(z.key));
+  assert.equal(three.length, 3);
+  const sel = new Set([].concat(...three.map((z) => z.hoods)));
+  const pools = surprisePools(hoodFilter(REAL, { selected: sel }), now);
+  for (const r of [0, 0.25, 0.5, 0.75, 0.999]) {
+    card = refreshSurprise({ mode: 'later', pick: null, poolSize: 0, canRoll: false }, pools, fixedRng(r), { prefer: 'food' });
+    assert.equal(card.mode, 'later');
+    assert.ok(card.pick, 'rng ' + r + ': still "Nothing later"');
+    assert.equal(card.pick.win.kind, 'happy_hour');
+    assert.equal(card.pick.day, 'SUN');
+    assert.ok(sel.has(card.pick.venue.hood));
+    assert.ok(!/JBJ/.test(card.pick.venue.name));
+  }
+  assert.ok(pools.later.some((c) => /Blue Sushi/.test(c.venue.name) && c.win.start === '12:00'),
+    'Blue Sushi 5th & Broadway from noon is in the Later pool');
 });
 
 test('surprisePools: five rolls at the dead hour give distinct venues (the acceptance test)', () => {
@@ -1658,29 +1728,36 @@ test('nextStart (v1.13 C4): skipTempClosed needs a dated clock; an undated one s
 
 // C1: the Venmo card. TIP_URL empty renders nothing (the v1.10 C5 contract).
 test('tipSectionHtml (v1.13 C1): empty url renders nothing', () => {
-  assert.equal(tipSectionHtml('', 'other'), '');
-  assert.equal(tipSectionHtml('', 'android'), '');
-  assert.equal(tipSectionHtml(null, 'ios'), '');
+  assert.equal(tipSectionHtml(''), '');
+  assert.equal(tipSectionHtml(null), '');
 });
 
-test('tipSectionHtml (v1.13 C1): link on every platform, QR on desktop only', () => {
-  const url = 'https://venmo.com/u/Tjwhite-';
-  const desk = tipSectionHtml(url, 'other');
-  assert.match(desk, /<h2 id="tip-h">Enjoying the radar\?<\/h2>/);
-  assert.ok(desk.includes('Tip on Venmo: <a href="https://venmo.com/u/Tjwhite-" target="_blank" rel="noopener">@Tjwhite-</a>'));
-  assert.ok(desk.includes('src="venmo-qr.svg"') && desk.includes('alt="QR code for TJ&#39;s Venmo"') && desk.includes('width="120"'));
-  for (const p of ['ios', 'android']) {
-    const phone = tipSectionHtml(url, p);
-    assert.ok(phone.includes('>@Tjwhite-</a>'), p + ': link');
-    assert.ok(!phone.includes('venmo-qr'), p + ': no QR, never fetched');
-  }
+// v1.17 C3 (TJ, 2026-10-25: "one QR code - dont hide"): the tip card has the link and no QR.
+test('tipSectionHtml (v1.17 C3): the Venmo link, and no QR', () => {
+  const html = tipSectionHtml('https://venmo.com/u/Tjwhite-');
+  assert.match(html, /<h2 id="tip-h">Enjoying the radar\?<\/h2>/);
+  assert.ok(html.includes('Tip on Venmo: <a href="https://venmo.com/u/Tjwhite-" target="_blank" rel="noopener">@Tjwhite-</a>'));
+  assert.ok(!html.includes('<img') && !html.includes('venmo-qr'));
 });
 
-test('index.html (v1.13 C1): TIP_URL is the Venmo profile and venmo-qr.svg is committed', () => {
+test('index.html (v1.17 C3): TIP_URL is the Venmo profile; venmo-qr.svg is gone; the one QR is captioned', () => {
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.match(html, /var TIP_URL = 'https:\/\/venmo\.com\/u\/Tjwhite-';/);
-  assert.ok(fs.existsSync(path.join(__dirname, '..', 'venmo-qr.svg')));
+  assert.ok(!fs.existsSync(path.join(__dirname, '..', 'venmo-qr.svg')));
+  assert.ok(!html.includes("src = 'venmo-qr.svg'") && !html.includes('src="venmo-qr.svg"'));
+  assert.ok(html.includes("img.src = 'inkind-referral-qr.svg';"));
+  assert.ok(html.includes("cap.textContent = 'Scan for $25 off';"));
+});
+
+// v1.17 C1 (TJ, 2026-10-25: "this assumes phone - the may be using a computer"): no
+// user-facing string says "this phone" / "your phone". Comments are stripped first.
+test('index.html (v1.17 C1): no user-facing "this phone" / "your phone"', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  assert.equal((html.match(/\b(this|your) phone\b/gi) || []).length, 0);
+  assert.ok(html.includes('Notes stay in this browser until you send them.'));
 });
 
 // v1.14 C4 (TJ, 2026-10-25): "Enjoying the radar vs Like".

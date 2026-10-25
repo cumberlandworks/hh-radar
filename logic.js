@@ -458,12 +458,10 @@
   // germantown), I-65 and I-440 (the southern edge of the core), and Charlotte
   // Ave / Richland Creek (the west divide). See CHANGELOG v1.4 for the derivation.
   var ZONE_POLYGONS = {
-    // Downtown/SoBro. The west edge carries the notch that keeps koshō and The
-    // Herban Perk & Pantry in the Gulch while City Winery (south-west of both) and
-    // Legendary Wings (north-east of both) stay Downtown — the data's own hood
-    // labels interleave along this seam, so no straight boundary can split them.
-    // v1.16: koshō and The Herban Perk are SoBro (Downtown) by street address now; the
-    // notch stays as drawn (fix16 C1) and both are named map exceptions in the tests.
+    // Downtown/SoBro. Until v1.16 the west edge carried a notch that kept koshō and
+    // The Herban Perk & Pantry in the Gulch; v1.16 filed both as SoBro (Downtown) by
+    // street address, and v1.17 C4 removed the notch (its inner vertex
+    // [36.1537, -86.7724], here and in gulch), so the edge runs straight again.
     downtown: [
       [36.1735, -86.7830],
       [36.1735, -86.7745],
@@ -473,18 +471,16 @@
       [36.1465, -86.7680],
       [36.1465, -86.7790],
       [36.1531, -86.7778],
-      [36.1537, -86.7724],
       [36.1573, -86.7757],
       [36.1600, -86.7815],
       [36.1655, -86.7860],
     ],
-    // The Gulch & Midtown. Shares Downtown's notched edge vertex-for-vertex (in
+    // The Gulch & Midtown. Shares Downtown's west edge vertex-for-vertex (in
     // reverse) so the two regions abut exactly, with no sliver between them.
     gulch: [
       [36.1655, -86.7860],
       [36.1600, -86.7815],
       [36.1573, -86.7757],
-      [36.1537, -86.7724],
       [36.1531, -86.7778],
       [36.1465, -86.7790],
       [36.1450, -86.7860],
@@ -1093,19 +1089,16 @@
   // ---- v1.13 C1: the tip card (TJ, 2026-10-23: "I don't mind using my personal venmo") ----
   // v1.14 C4: the heading is "Enjoying the radar?" (TJ, 2026-10-25: a reader tips after
   // using it for a bit).
-  // Empty url = '' (nothing in the DOM). The QR is desktop only (platform 'other'), like
-  // the referral's: a phone reader is holding the device the link opens on.
+  // Empty url = '' (nothing in the DOM). v1.17 C3 (TJ, 2026-10-25: "one QR code - dont
+  // hide"): no QR on any platform; the referral card's is the page's only one.
   // The handle shown is the url's last path segment ("https://venmo.com/u/Tjwhite-" ->
   // "@Tjwhite-"; the trailing hyphen is part of the username).
-  function tipSectionHtml(url, platform) {
+  function tipSectionHtml(url) {
     if (!url) return '';
     var handle = '@' + String(url).replace(/[?#].*$/, '').replace(/\/+$/, '').split('/').pop();
     return '<div class="fb-wrap"><section class="referral" id="tip" aria-labelledby="tip-h">' +
       '<div class="ref-text"><h2 id="tip-h">Enjoying the radar?</h2>' +
       '<p>Tip on Venmo: <a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + escapeHtml(handle) + '</a></p></div>' +
-      (platform === 'other'
-        ? '<img class="ref-qr" src="venmo-qr.svg" width="120" height="120" alt="QR code for TJ&#39;s Venmo">'
-        : '') +
       '</section></div>';
   }
 
@@ -1381,15 +1374,21 @@
   // of the current pick: Roll again must move. poolSize is the honest count BEFORE
   // the exclusion, because "one of N candidates" is the line that makes the switch
   // legible; canRoll says whether Roll again has anywhere to go.
-  function pickSurprise(candidates, rng, opts) {
-    opts = opts || {};
-    var prefer = opts.prefer === 'drink' ? 'drink' : 'food';
+  // The pool pickSurprise actually draws from: the candidates matching Food/Drink, or
+  // all of them when none match.
+  function surpriseDrawPool(candidates, prefer) {
+    prefer = prefer === 'drink' ? 'drink' : 'food';
     var pool = (candidates || []).slice();
-    if (!pool.length) return null;
     var matching = pool.filter(function (c) {
       return prefer === 'food' ? windowHasFood(c.win) : windowHasDrink(c.win);
     });
-    if (matching.length) pool = matching;
+    return matching.length ? matching : pool;
+  }
+
+  function pickSurprise(candidates, rng, opts) {
+    opts = opts || {};
+    var pool = surpriseDrawPool(candidates, opts.prefer);
+    if (!pool.length) return null;
     var draw = pool;
     if (opts.exclude) {
       var rest = pool.filter(function (c) { return candidateKey(c) !== opts.exclude; });
@@ -1400,6 +1399,32 @@
     if (!(idx >= 0)) idx = 0;
     if (idx >= draw.length) idx = draw.length - 1;
     return { pick: draw[idx], poolSize: pool.length, canRoll: pool.length > 1 };
+  }
+
+  // v1.17 C2: bring an open Surprise card up to date with the pools as they are now
+  // (zones, chips, Food/Drink and Drive/Walk all change them). prev is the card state
+  // {mode, pick, poolSize, canRoll} or null (dismissed -> null). The chosen Now/Later
+  // stays; a pick still in its pool is kept (as the fresh candidate, so live/soon and the
+  // pool size are current); otherwise a new one is drawn. An empty card's mode was never
+  // the reader's choice, so it re-opens by the 🎲 rule: Now when anything is on, else Later.
+  function refreshSurprise(prev, pools, rng, opts) {
+    if (!prev) return null;
+    opts = opts || {};
+    var mode = prev.pick ? prev.mode : (pools.now.length ? 'now' : 'later');
+    var list = mode === 'now' ? pools.now : pools.later;
+    if (prev.pick) {
+      var key = candidateKey(prev.pick);
+      var pool = surpriseDrawPool(list, opts.prefer);
+      for (var i = 0; i < pool.length; i++) {
+        if (candidateKey(pool[i]) === key) {
+          return { mode: mode, pick: pool[i], poolSize: pool.length, canRoll: pool.length > 1 };
+        }
+      }
+    }
+    var res = pickSurprise(list, rng, { prefer: opts.prefer });
+    return res
+      ? { mode: mode, pick: res.pick, poolSize: res.poolSize, canRoll: res.canRoll }
+      : { mode: mode, pick: null, poolSize: 0, canRoll: false };
   }
 
   // ---- Schema + semantic validation (shared by validate.js and in-page load guard) ----
@@ -1877,6 +1902,7 @@
     hasIntervalOn: hasIntervalOn,
     dayCoverageCounts: dayCoverageCounts,
     pickSurprise: pickSurprise,
+    refreshSurprise: refreshSurprise,
     surprisePools: surprisePools,
     candidateKey: candidateKey,
     serviceDayOf: serviceDayOf,
