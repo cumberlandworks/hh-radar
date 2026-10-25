@@ -1076,6 +1076,8 @@
   }
 
   // ---- v1.13 C1: the tip card (TJ, 2026-10-23: "I don't mind using my personal venmo") ----
+  // v1.14 C4: the heading is "Enjoying the radar?" (TJ, 2026-10-25: a reader tips after
+  // using it for a bit).
   // Empty url = '' (nothing in the DOM). The QR is desktop only (platform 'other'), like
   // the referral's: a phone reader is holding the device the link opens on.
   // The handle shown is the url's last path segment ("https://venmo.com/u/Tjwhite-" ->
@@ -1084,12 +1086,28 @@
     if (!url) return '';
     var handle = '@' + String(url).replace(/[?#].*$/, '').replace(/\/+$/, '').split('/').pop();
     return '<div class="fb-wrap"><section class="referral" id="tip" aria-labelledby="tip-h">' +
-      '<div class="ref-text"><h2 id="tip-h">Like the radar?</h2>' +
+      '<div class="ref-text"><h2 id="tip-h">Enjoying the radar?</h2>' +
       '<p>Tip on Venmo: <a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + escapeHtml(handle) + '</a></p></div>' +
       (platform === 'other'
         ? '<img class="ref-qr" src="venmo-qr.svg" width="120" height="120" alt="QR code for TJ&#39;s Venmo">'
         : '') +
       '</section></div>';
+  }
+
+  // ---- v1.14 C2: the referral bar's dismissal ----
+  // storage is window.localStorage or null (reading window.localStorage itself throws
+  // when site data is blocked). Every access is guarded: a storage that throws reads as
+  // "not dismissed", so the bar just shows again next visit, and a failed write is false.
+  var REFBAR_KEY = 'hhradar-refbar-dismissed';
+  function refBarDismissed(storage) {
+    try { return !!storage && storage.getItem(REFBAR_KEY) !== null; } catch (e) { return false; }
+  }
+  function dismissRefBar(storage) {
+    try {
+      if (!storage) return false;
+      storage.setItem(REFBAR_KEY, '1');
+      return true;
+    } catch (e) { return false; }
   }
 
   // ---- v1.12 C2: the price a deal line shows, or null ----
@@ -1855,6 +1873,9 @@
     gridAxisStart: gridAxisStart,
     gridBlockStarts: gridBlockStarts,
     tipSectionHtml: tipSectionHtml,
+    REFBAR_KEY: REFBAR_KEY,
+    refBarDismissed: refBarDismissed,
+    dismissRefBar: dismissRefBar,
     GRID_DEFAULT_START: GRID_DEFAULT_START,
     GRID_EARLIEST_START: GRID_EARLIEST_START,
     dealPriceLabel: dealPriceLabel,

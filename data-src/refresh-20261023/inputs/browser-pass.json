@@ -1,0 +1,2672 @@
+[
+ {
+  "id": 16087,
+  "name": "Acme Feed & Seed",
+  "address": "101 Broadway, Nashville TN ",
+  "official_site": "https://www.acmefeedandseed.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.acmefeedandseed.com/",
+  "current_windows": null
+ },
+ {
+  "id": 12961,
+  "name": "Bad Idea",
+  "address": "1021 Russell Street, STE 101, Nashville TN 37206",
+  "official_site": "https://www.badideanashville.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://nashvillego.com/eat-and-drink/bars/bad-idea",
+  "current_windows": null
+ },
+ {
+  "id": 12500,
+  "name": "Bad-Ass Breakfast Burritos - East Nashville (Biergarten)",
+  "address": "908 Main St., Nashville TN ",
+  "official_site": "https://www.badassbreakfastburritos.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "MON": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "16:40"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 15989,
+  "name": "Bad-Ass Breakfast Burritos - Franklin (Biergarten)",
+  "address": "755 Crescent Centre Dr. Ste 104, Franklin TN ",
+  "official_site": "https://www.badassbreakfastburritos.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": null
+ },
+ {
+  "id": 2562,
+  "name": "Bakersfield - Nashville",
+  "address": "201 3rd Ave, Nashville TN ",
+  "official_site": "https://www.bakersfieldtacos.com/",
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": [
+   {
+    "kind": "special",
+    "days": [
+     "TUE"
+    ],
+    "start": "11:00",
+    "end": "23:00",
+    "deals": [
+     "$3 tequila shot"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 11586,
+  "name": "Blue Coast Burrito - Hendersonville",
+  "address": "112 Saundersville Rd., Hendersonville TN ",
+  "official_site": "https://bluecoastburrito.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "WED": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "THU": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:30",
+     "20:30"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 19204,
+  "name": "Bungalow 10 Dining",
+  "address": "1910 Belcourt Avenue, Nashville TN 37212",
+  "official_site": "https://bungalow10dining.com/",
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "TUE": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "01:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://bungalow10dining.com/; https://www.opentable.ie/r/bungalow-10-nashville",
+  "current_windows": []
+ },
+ {
+  "id": 14146,
+  "name": "Butterfly - Nashville",
+  "address": "300 12th Ave S, Nashville TN ",
+  "official_site": "https://www.butterflybyjose.com/location/nashville/",
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": [
+   {
+    "kind": "special",
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "16:00",
+    "end": "23:00",
+    "deals": [
+     "Two signature tacos and a margarita (Tacos & Tequila)",
+     "Margarita pitcher with curated trio of dips"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 20518,
+  "name": "Chateau West",
+  "address": "3408 West End Avenue, Nashville TN 37203",
+  "official_site": null,
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.opentable.com/r/chateau-west-nashville",
+  "current_windows": []
+ },
+ {
+  "id": 11920,
+  "name": "Close Company - Nashville",
+  "address": "1316 Adams Street, Nashville TN ",
+  "official_site": "https://www.closecompanybar.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://nashvilleguru.com/businesses/close-company",
+  "current_windows": null
+ },
+ {
+  "id": 3346,
+  "name": "Electric Jane",
+  "address": "1301 Division St, Nashville TN ",
+  "official_site": "https://theelectricjane.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "WED": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 14096,
+  "name": "Flour Your Dreams Bakery & Cafe",
+  "address": "3968 Dodson Chapel Road, Nashville TN ",
+  "official_site": "https://www.flouryourdreamsbakery.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "08:00",
+     "14:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 8922,
+  "name": "Gregorys Coffee - Opry Mills",
+  "address": "439B Opry Mills Drive, Nashville TN ",
+  "official_site": "https://gregoryscoffee.com",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "WED": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "THU": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "18:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 14441,
+  "name": "Hank Williams Jr Boogie Bar",
+  "address": "419 Broadway, Nashville TN ",
+  "official_site": "https://www.hanksnash.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.hanksnash.com/; https://nashvillego.com/eat-and-drink/bars/hank-williams-jr-boogie-bar",
+  "current_windows": null
+ },
+ {
+  "id": 19203,
+  "name": "Jar 10",
+  "address": "1910 Belcourt Avenue, Nashville TN 37212",
+  "official_site": "https://jar10nashville.com",
+  "need": [
+   "happy_hour"
+  ],
+  "current_hours": {
+   "THU": [
+    [
+     "17:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "13:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (high confidence): https://jar10nashville.com",
+  "current_windows": [
+   {
+    "kind": "special",
+    "days": [
+     "SAT",
+     "SUN"
+    ],
+    "start": "11:00",
+    "end": "16:00",
+    "deals": [
+     "Bottomless Brunch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 14440,
+  "name": "JBJ's Nashville",
+  "address": "405 Broadway, Nashville TN ",
+  "official_site": "https://www.jbjsnash.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.opentable.com/r/jbjs-nashville; https://nashvillego.com/eat-and-drink/bars/jbjs",
+  "current_windows": null
+ },
+ {
+  "id": 19673,
+  "name": "Jimmy Buffett's Margaritaville - Nashville",
+  "address": "322 Broadway 2nd floor, Nashville TN 37201",
+  "official_site": "https://margaritavillenashville.com/",
+  "need": [
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (med confidence): https://margaritavillenashville.com/; https://www.opentable.com/r/margaritaville-nashville-2",
+  "current_windows": []
+ },
+ {
+  "id": 11302,
+  "name": "Just Love Coffee - Murfreesboro East",
+  "address": "129 MTCS Road, Murfreesboro TN ",
+  "official_site": "https://www.justlovecoffee.com/tn-dickson/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 11289,
+  "name": "Just Love Coffee - The Fountains",
+  "address": "1440 Medical Center Parkway, Suite A, Murfreesboro TN ",
+  "official_site": "https://www.justlovecoffee.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "08:00",
+     "18:00"
+    ]
+   ],
+   "MON": [
+    [
+     "07:00",
+     "18:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "18:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "18:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "18:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "19:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "19:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 19432,
+  "name": "Kane Brown's",
+  "address": "312 Broadway, Nashville TN 37201",
+  "official_site": "https://kanebrownsonbroadway.com/",
+  "need": [
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (high confidence): https://kanebrownsonbroadway.com/; https://www.opentable.hk/r/kane-browns-on-broadway-nashville",
+  "current_windows": []
+ },
+ {
+  "id": 18917,
+  "name": "Legendary Wings",
+  "address": "319 Peabody Street, Nashville TN ",
+  "official_site": null,
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "MON": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": []
+ },
+ {
+  "id": 19732,
+  "name": "LinQ Social Kitchen",
+  "address": "175 Lafayette Street, Nashville TN 37210",
+  "official_site": null,
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": []
+ },
+ {
+  "id": 19731,
+  "name": "Noir Kitchen & Cocktails",
+  "address": "501 Main Street, Nashville TN 37206",
+  "official_site": "https://noironmain.com/",
+  "need": [
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "00:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "23:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (high confidence): https://noironmain.com/; https://www.letsgetoffline.com/nashville/restaurants/noir-kitchen-cocktails-nsh-east-nashville",
+  "current_windows": []
+ },
+ {
+  "id": 19205,
+  "name": "NoWhere Special",
+  "address": "2000 Belcourt Avenue, Nashville TN 37212",
+  "official_site": "http://www.nowherespecialnash.com/",
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": []
+ },
+ {
+  "id": 18153,
+  "name": "Pete's Dueling Piano Bar - Nashville",
+  "address": "152 2nd Avenue North, Nashville TN ",
+  "official_site": "https://petesduelingpianobar.com/nashville",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "19:00",
+     "02:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "19:00",
+     "02:00"
+    ]
+   ],
+   "WED": [
+    [
+     "19:00",
+     "02:00"
+    ]
+   ],
+   "THU": [
+    [
+     "18:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "18:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "18:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "19:00",
+     "02:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://petesduelingpianobar.com/downtown-nashville; https://petesduelingpianobar.com/nashville",
+  "current_windows": null
+ },
+ {
+  "id": 9357,
+  "name": "Philippe Chow - Nashville",
+  "address": "209 10th Avenue South, Nashville TN ",
+  "official_site": "https://www.philippechow.com/nashville/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "MON": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 10507,
+  "name": "Present Tense",
+  "address": "509 Houston St, Nashville TN 37203",
+  "official_site": "https://www.liveinthepresenttense.com/eat",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "WED": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.opentable.com/r/present-tense-nashville; https://www.liveinthepresenttense.com/eat",
+  "current_windows": null
+ },
+ {
+  "id": 16195,
+  "name": "Prince St. Pizza - Nashville",
+  "address": "5056 Broadway B-103, Nashville TN ",
+  "official_site": "https://locations.princestreetpizza.com/nashville",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "MON": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "04:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "04:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 12065,
+  "name": "Punk Wok",
+  "address": "4101 Charlotte Ave, Nashville TN 37209",
+  "official_site": "https://www.punkwok.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.punkwok.com/; https://joinpearl.co/bars/nashville-united-states-tennessee/punk-wok",
+  "current_windows": null
+ },
+ {
+  "id": 17392,
+  "name": "Salvo's Pizza - Franklin",
+  "address": "595 Hillsboro Rd #311, Franklin TN ",
+  "official_site": null,
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 17393,
+  "name": "Salvo's Pizza - Mt. Juliet",
+  "address": "12800 Lebanon Road, Mt. Juliet TN ",
+  "official_site": null,
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "20:30"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": []
+ },
+ {
+  "id": 17394,
+  "name": "Salvo's Pizza - Smyrna",
+  "address": "701 President Place, Smyrna TN ",
+  "official_site": null,
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "21:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 9525,
+  "name": "Sushi By Bou - Nashville",
+  "address": "210 4th Ave N, Nashville TN ",
+  "official_site": "https://sushibybou.com",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 17961,
+  "name": "Tantisimo",
+  "address": "306 46th Avenue North, Nashville TN 37209",
+  "official_site": "https://www.tantisimo.com/menus",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "TUE": [
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "21:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 17388,
+  "name": "Taste of NY - Downtown",
+  "address": "530 Church Street, Nashville TN ",
+  "official_site": "https://tastenypizza.com",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "MON": [
+    [
+     "10:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "01:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 10968,
+  "name": "The Amsterdamian",
+  "address": "925 Gallatin Avenue, Ste 102, Nashville TN 37206",
+  "official_site": "https://theamsterdamian.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.opentable.com/r/the-amsterdamian-nashville; https://theamsterdamian.com/",
+  "current_windows": null
+ },
+ {
+  "id": 19232,
+  "name": "The Coffee House at Second and Bridge",
+  "address": "144 2nd Ave N, Franklin TN ",
+  "official_site": "https://thecoffeehousefranklinshop.com",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "MON": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 19233,
+  "name": "The Coffee House Lewisburg",
+  "address": "764 West Commerce St, Lewisburg TN ",
+  "official_site": "https://thecoffeehousefranklinshop.com",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "17:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 18919,
+  "name": "The Herban Perk & Pantry",
+  "address": "512 Rep. John Lewis Way South, Nashville TN ",
+  "official_site": "https://theherbanunderground.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "06:30",
+     "19:00"
+    ]
+   ],
+   "MON": [
+    [
+     "06:30",
+     "19:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "06:30",
+     "19:00"
+    ]
+   ],
+   "WED": [
+    [
+     "06:30",
+     "19:00"
+    ]
+   ],
+   "THU": [
+    [
+     "06:30",
+     "19:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "06:30",
+     "20:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 11678,
+  "name": "The Pancake Pantry - Nashville",
+  "address": "220 Molloy Street, Nashville TN ",
+  "official_site": "https://thepancakepantry.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "MON": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "WED": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "THU": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "06:00",
+     "14:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 10736,
+  "name": "The Salty - 12 South",
+  "address": "2311 12th Ave S, #105, Nashville TN ",
+  "official_site": "https://www.saltydonut.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "07:00",
+     "20:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.ubereats.com/store/the-salty-donut-12-south/OZOIyclPUvOOAlS3wRhi9g",
+  "current_windows": null
+ },
+ {
+  "id": 17384,
+  "name": "The Side Piece Nashville",
+  "address": "200 Commerce St, Nashville TN ",
+  "official_site": "https://www.thesidepiecenashville.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "09:00",
+     "03:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "09:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.opentable.com/r/the-side-piece-nashville",
+  "current_windows": null
+ },
+ {
+  "id": 16089,
+  "name": "The Southern Steak & Oyster",
+  "address": "150 3rd Avenue South, Nashville TN 37201",
+  "official_site": "https://www.thesouthernnashville.com/drinks",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "15:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.thesouthernnashville.com/drinks",
+  "current_windows": null
+ },
+ {
+  "id": 18918,
+  "name": "The Urban Perk",
+  "address": "319 Peabody Street, Nashville TN ",
+  "official_site": null,
+  "need": [
+   "hours",
+   "happy_hour"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ],
+   "MON": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ],
+   "WED": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ],
+   "THU": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:45",
+     "14:30"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": []
+ },
+ {
+  "id": 21369,
+  "name": "Tiff's Treats - Nashville Bellevue",
+  "address": "7657 Hwy 70 S Suite 119, Nashville TN 37221",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": null
+ },
+ {
+  "id": 21493,
+  "name": "Tiff's Treats - Nashville Franklin",
+  "address": "3046 Columbia Ave Suite 115, Franklin TN 37064",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": null
+ },
+ {
+  "id": 21448,
+  "name": "Tiff's Treats - Nashville Gulch",
+  "address": "137 12th Ave N., Nashville TN 37203",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": null
+ },
+ {
+  "id": 21469,
+  "name": "Tiff's Treats - Nashville Mt. Juliet",
+  "address": "64 Belinda Parkway, Mt. Juliet TN 37122",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "20:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.ezcater.com/catering/tiffs-treats-mt-juliet",
+  "current_windows": null
+ },
+ {
+  "id": 21351,
+  "name": "Tiff's Treats - Nashville Murfreesboro",
+  "address": "452 North Thompson Ln, Murfreesboro TN 37129",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "WED": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "THU": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "20:30"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://www.ezcater.com/catering/tiffs-treats-murfreesboro",
+  "current_windows": null
+ },
+ {
+  "id": 21489,
+  "name": "Tiff's Treats - Nashville Nolensville",
+  "address": "7240 Nolensville Rd Suite 103, Nolensville TN 37135",
+  "official_site": "https://www.tiffstreats.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": null,
+  "current_hours_source": "none found 2026-10-23",
+  "current_windows": null
+ },
+ {
+  "id": 17673,
+  "name": "Two Ten Jack",
+  "address": "1900 Eastland Avenue #105, Nashville TN 37206",
+  "official_site": "https://www.twotenjack.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "11:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "14:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 12587,
+  "name": "Van Leeuwen Ice Cream - Edgehill Village",
+  "address": "1200 Villa Pl Ste 113, Nashville TN ",
+  "official_site": "https://www.vanleeuwenicecream.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "MON": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 12588,
+  "name": "Van Leeuwen Ice Cream - Neuhoff",
+  "address": "1316 Adams St Space #111, Nashville TN ",
+  "official_site": "https://www.vanleeuwenicecream.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "SUN": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "MON": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 13745,
+  "name": "Vintage Vine 100",
+  "address": "4051 Aspen Grove Drive, Franklin TN 37067",
+  "official_site": "https://www.vintagevine100.com/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "MON": [
+    [
+     "15:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "15:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "12:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "12:00",
+     "20:00"
+    ]
+   ]
+  },
+  "current_hours_source": "inKind map API 2026-09-05 (not re-confirmed 2026-10-23; inKind no longer publishes hours)",
+  "current_windows": null
+ },
+ {
+  "id": 19427,
+  "name": "ZuZu",
+  "address": "215 1st Avenue South, Nashville TN 37201",
+  "official_site": "https://experiencezuzu.com/nashville/",
+  "need": [
+   "hours"
+  ],
+  "current_hours": {
+   "TUE": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ]
+  },
+  "current_hours_source": "researched 2026-10-23 (low confidence): https://experiencezuzu.com/nashville/",
+  "current_windows": null
+ }
+]

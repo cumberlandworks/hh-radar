@@ -26,6 +26,7 @@ const {
   openBands, lintVenues,
   dealPriceLabel, formatDays, tempClosureOn, tempClosedFor, windowTempClosedNow, dateOfDay,
   outsideHoursDays, lintOutsideHours, gridAxisStart, gridBlockStarts, tipSectionHtml,
+  REFBAR_KEY, refBarDismissed, dismissRefBar,
 } = require('../logic.js');
 const path = require('node:path');
 
@@ -769,9 +770,10 @@ test('dayCoverageCounts: the four groups partition the roster on EVERY day', () 
 test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
   const pick = (c) => ({ onDay: c.onDay, otherDays: c.otherDays, none: c.none, unchecked: c.unchecked });
-  // v1.12 (2026-10-23f data): 159 venues; 615chuTNey (FRI/SAT/SUN) dropped.
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 38, otherDays: 40, none: 71, unchecked: 10 });
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 13, none: 71, unchecked: 10 });
+  // v1.14 (2026-10-25j data): the browser pass added 11 happy-hour windows at 7 venues and
+  // verified 5 more as no happy hour, so "not checked yet" is 0.
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 43, none: 76, unchecked: 0 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 67, otherDays: 16, none: 76, unchecked: 0 });
 });
 
 test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
@@ -1450,14 +1452,15 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
   assert.equal(dealPriceLabel({ desc: 'Bento box lunch', price: '' }), null);
 });
 
-test('dealPriceLabel: measured on venues.json — 413 priced deals, 334 still show a price', () => {
+// v1.14: 413/334 on the v1.13 data; the 2026-10-25j windows add 27 priced deals, 26 shown.
+test('dealPriceLabel: measured on venues.json — 440 priced deals, 360 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 413);
-  assert.equal(shown, 334);
+  assert.equal(priced, 440);
+  assert.equal(shown, 360);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
   assert.deepEqual(dog.windows[0].deals.map(dealPriceLabel), [null, null, null, null, null]);
 });
@@ -1551,17 +1554,22 @@ test('outsideHoursDays: back-to-back ranges are one stretch, past-midnight close
   assert.deepEqual(outsideHoursDays(venue({}, []), win(['TUE'], '06:00', '08:00')), []);
 });
 
-test('outside-hours lint: measured on venues.json — the 8 venues fix11 named, 10 windows', () => {
+// v1.14 (2026-10-25j data, Google-listing hours): JBJ's Sunday and The Southern are gone
+// (now inside posted hours); Present Tense moves SUN -> THU; Acme (low, Google and its
+// site disagree), LinQ, NoWhere Special and The Side Piece are new. 10 venues, 12 windows.
+test('outside-hours lint: measured on venues.json — 10 venues, 12 windows (v1.14)', () => {
   const lines = REAL.flatMap(lintOutsideHours);
   assert.deepEqual(lines, [
     '51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on WED',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on THU',
+    'Acme Feed & Seed: happy_hour window 16:30–18:30 outside posted hours on MON',
     'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU',
-    "JBJ's Nashville: special window 10:00–14:00 outside posted hours on SUN",
-    'Present Tense: happy_hour window 16:00–17:30 outside posted hours on SUN',
+    'LinQ Social Kitchen: happy_hour window 16:00–21:00 outside posted hours on FRI',
+    'NoWhere Special: happy_hour window 16:00–19:00 outside posted hours on FRI',
+    'Present Tense: happy_hour window 16:00–17:30 outside posted hours on THU',
     'The Detroit Cowboy: happy_hour window 15:00–close outside posted hours on MON/TUE/WED/THU/FRI/SAT',
-    'The Southern Steak & Oyster: happy_hour window 15:00–17:00 outside posted hours on MON/TUE/WED/THU/FRI/SAT/SUN',
+    'The Side Piece Nashville: happy_hour window 15:00–18:00 outside posted hours on WED',
     'Verna Café & Bar: happy_hour window 15:00–18:00 outside posted hours on MON/THU/FRI/SAT/SUN',
     'ZuZu: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU/FRI',
   ]);
@@ -1625,7 +1633,7 @@ test('tipSectionHtml (v1.13 C1): empty url renders nothing', () => {
 test('tipSectionHtml (v1.13 C1): link on every platform, QR on desktop only', () => {
   const url = 'https://venmo.com/u/Tjwhite-';
   const desk = tipSectionHtml(url, 'other');
-  assert.match(desk, /<h2 id="tip-h">Like the radar\?<\/h2>/);
+  assert.match(desk, /<h2 id="tip-h">Enjoying the radar\?<\/h2>/);
   assert.ok(desk.includes('Tip on Venmo: <a href="https://venmo.com/u/Tjwhite-" target="_blank" rel="noopener">@Tjwhite-</a>'));
   assert.ok(desk.includes('src="venmo-qr.svg"') && desk.includes('alt="QR code for TJ&#39;s Venmo"') && desk.includes('width="120"'));
   for (const p of ['ios', 'android']) {
@@ -1640,4 +1648,57 @@ test('index.html (v1.13 C1): TIP_URL is the Venmo profile and venmo-qr.svg is co
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.match(html, /var TIP_URL = 'https:\/\/venmo\.com\/u\/Tjwhite-';/);
   assert.ok(fs.existsSync(path.join(__dirname, '..', 'venmo-qr.svg')));
+});
+
+// v1.14 C4 (TJ, 2026-10-25): "Enjoying the radar vs Like".
+test('tipSectionHtml (v1.14 C4): the heading is "Enjoying the radar?"', () => {
+  const html = tipSectionHtml('https://venmo.com/u/Tjwhite-', 'ios');
+  assert.ok(html.includes('>Enjoying the radar?</h2>'));
+  assert.ok(!html.includes('Like the radar'));
+});
+
+// v1.14 C2: the referral bar's dismissal, against a fake storage.
+function memStorage() {
+  const m = new Map();
+  return {
+    getItem: (k) => (m.has(k) ? m.get(k) : null),
+    setItem: (k, v) => { m.set(k, String(v)); },
+    has: (k) => m.has(k),
+  };
+}
+const throwingStorage = {
+  getItem() { throw new Error('SecurityError'); },
+  setItem() { throw new Error('QuotaExceededError'); },
+};
+
+test('refBar (v1.14 C2): the key is hhradar-refbar-dismissed', () => {
+  assert.equal(REFBAR_KEY, 'hhradar-refbar-dismissed');
+});
+
+test('refBar (v1.14 C2): not dismissed until dismissed, then remembered', () => {
+  const s = memStorage();
+  assert.equal(refBarDismissed(s), false);
+  assert.equal(dismissRefBar(s), true);
+  assert.ok(s.has('hhradar-refbar-dismissed'));
+  assert.equal(refBarDismissed(s), true);
+});
+
+test('refBar (v1.14 C2): storage that throws or is missing reads as not dismissed, never throws', () => {
+  assert.equal(refBarDismissed(throwingStorage), false);
+  assert.equal(dismissRefBar(throwingStorage), false);
+  assert.equal(refBarDismissed(null), false);
+  assert.equal(dismissRefBar(null), false);
+  assert.equal(refBarDismissed(undefined), false);
+});
+
+test('index.html (v1.14 C2/C3): the bar points at the referral card; the card has the button', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('href="#referral" id="refbar-link"'));
+  assert.ok(html.includes('aria-label="Dismiss"'));
+  assert.ok(html.includes('<a class="ref-btn" href="https://app.inkind.com/refer/XRI8MWHF" target="_blank" rel="noopener">Get $25 off</a>'));
+  assert.ok(html.includes('$25 off your first $50+ meal. I get a credit too. Terms apply.'));
+  // The bar itself never links to inKind: the disclosure in the card is seen first.
+  const bar = html.slice(html.indexOf('<div class="refbar"'), html.indexOf('<header>'));
+  assert.ok(bar.length > 0 && !bar.includes('inkind.com'));
 });

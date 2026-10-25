@@ -1,0 +1,3130 @@
+{
+ "pass": "browser-20261025",
+ "venues": [
+  {
+   "id": 16087,
+   "name": "Acme Feed & Seed",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "16:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "Google panel and venue site text disagree: site snippet says Mon-Wed 16:30-23:00, Thu/Sun 11-23, Fri-Sat 11-02. Multi-floor venue, hours vary by floor."
+  },
+  {
+   "id": 12961,
+   "name": "Bad Idea",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "22:30"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 12500,
+   "name": "Bad-Ass Breakfast Burritos - East Nashville (Biergarten)",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "23:59"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "23:59"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Uber Eats snippet in Google results 2026-10-25 (delivery hours)",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "No Google business panel; brand site has no hours."
+  },
+  {
+   "id": 15989,
+   "name": "Bad-Ass Breakfast Burritos - Franklin (Biergarten)",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "08:00",
+      "21:45"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "21:45"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "21:45"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "21:45"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "23:45"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "23:45"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "21:45"
+     ]
+    ]
+   },
+   "hours_source": "Uber Eats snippet in Google results 2026-10-25 (delivery hours)",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "No Google business panel; Grubhub snippet shows 08:00-21:25 for that day."
+  },
+  {
+   "id": 2562,
+   "name": "Bakersfield - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Half price chips and dips",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Modelo draft",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Shot of the day",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Classic margarita",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Virgin margarita (NA)",
+       "price": "$5"
+      }
+     ],
+     "sources": [
+      "https://www.bakersfieldtacos.com/menu"
+     ],
+     "confidence": "med",
+     "notes": "Chain-wide menu page, not Nashville-specific."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 11586,
+   "name": "Blue Coast Burrito - Hendersonville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:30",
+      "20:30"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 19204,
+   "name": "Bungalow 10 Dining",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "13:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "TUE"
+     ],
+     "start": "17:00",
+     "end": "20:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Margarita or lemon drop tower",
+       "price": "$45"
+      },
+      {
+       "type": "food",
+       "desc": "Rotel dip, spinach dip, 3 tacos or nachos",
+       "price": "$10"
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/bungalow-10"
+     ],
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "kind": "happy_hour",
+     "days": [
+      "WED"
+     ],
+     "start": "17:00",
+     "end": "20:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Signature select flights",
+       "price": "$20"
+      },
+      {
+       "type": "food",
+       "desc": "Wing basket or select pizzas",
+       "price": "$10"
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/bungalow-10"
+     ],
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "kind": "happy_hour",
+     "days": [
+      "THU"
+     ],
+     "start": "17:00",
+     "end": "20:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Bottomless fried rice (protein +$5)",
+       "price": "$22"
+      },
+      {
+       "type": "drink",
+       "desc": "Reposado lemon drops",
+       "price": "$9"
+      },
+      {
+       "type": "drink",
+       "desc": "Lychee martinis 2-for-1",
+       "price": null
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/bungalow-10"
+     ],
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "kind": "happy_hour",
+     "days": [
+      "FRI"
+     ],
+     "start": "13:00",
+     "end": "20:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Tender basket, spinach dip, rotel fries, fried rice or chicken sandwich and fries (until 6 PM)",
+       "price": "$10"
+      },
+      {
+       "type": "drink",
+       "desc": "Reposado shots 1-4 PM",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Reposado shots 4-6 PM",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Reposado shots 6-8 PM",
+       "price": "$7"
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/bungalow-10"
+     ],
+     "confidence": "med",
+     "notes": ""
+    },
+    {
+     "kind": "happy_hour",
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "20:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Reposado, Hennessy or margaritas",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Bottomless lemon drops",
+       "price": "$35"
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/bungalow-10"
+     ],
+     "confidence": "med",
+     "notes": ""
+    }
+   ],
+   "notes": "Happy hour from third-party listing (The Local Round); venue site did not render. Hookah $20 nightly omitted."
+  },
+  {
+   "id": 14146,
+   "name": "Butterfly - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [],
+     "sources": [
+      "https://www.butterflybyjose.com/news-item/sunset-sips"
+     ],
+     "confidence": "med",
+     "notes": "Sunset Sips on venue site: specially priced sips and bites, no prices shown. Page does not name Nashville; Google snippet separately says 4-11 PM with a $22 taco deal."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 20518,
+   "name": "Chateau West",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "21:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "15:00",
+      "22:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "unknown",
+   "windows": [],
+   "notes": "Google snippet only: a 2022 Yelp answer said 4-6 Mon-Thu, then a waiter said no happy hour. Not confirmed; no venue site."
+  },
+  {
+   "id": 11920,
+   "name": "Close Company - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 3346,
+   "name": "Electric Jane",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "SUN": []
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 14096,
+   "name": "Flour Your Dreams Bakery & Cafe",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "14:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "14:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 8922,
+   "name": "Gregorys Coffee - Opry Mills",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "18:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 14441,
+   "name": "Hank Williams Jr Boogie Bar",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "09:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 14440,
+   "name": "JBJ's Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "09:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 11302,
+   "name": "Just Love Coffee - Murfreesboro East",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 11289,
+   "name": "Just Love Coffee - The Fountains",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "18:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "18:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "18:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "18:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "19:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "18:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 18917,
+   "name": "Legendary Wings",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "unknown",
+   "windows": [],
+   "notes": "No site; Google snippets returned other businesses."
+  },
+  {
+   "id": 19732,
+   "name": "LinQ Social Kitchen",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "THU": [],
+    "FRI": [
+     [
+      "17:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "21:00",
+     "area": null,
+     "deals": [],
+     "sources": [
+      "Google result: LinQ Instagram post snippet"
+     ],
+     "confidence": "low",
+     "notes": "Snippet: every Friday 4PM-9PM, food and drink specials, $20 hookah; other posts mention 4-for-1 drinks. Menu specifics not seen."
+    },
+    {
+     "kind": "happy_hour",
+     "days": [
+      "TUE"
+     ],
+     "start": "20:00",
+     "end": "23:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Tacos",
+       "price": "$2"
+      },
+      {
+       "type": "food",
+       "desc": "Sliders",
+       "price": "$2"
+      },
+      {
+       "type": "food",
+       "desc": "Oysters",
+       "price": "$2"
+      }
+     ],
+     "sources": [
+      "https://ohbz.com/linqmenu"
+     ],
+     "confidence": "low",
+     "notes": "Facebook snippet: tonight happy hour 8PM-11PM with $2 hookahs, tacos, sliders, oysters; venue group site links a $2 Tuesday Happy Hour flyer (not read). Day inferred as Tuesday from flyer name."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 19205,
+   "name": "NoWhere Special",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Don Julio reposado 2-for-1",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Well shots",
+       "price": "$5"
+      },
+      {
+       "type": "drink",
+       "desc": "Wines",
+       "price": "$7"
+      },
+      {
+       "type": "drink",
+       "desc": "Select signature cocktails",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Soul roll",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Philly cheesesteak egg roll",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Truffle fries",
+       "price": "$5"
+      },
+      {
+       "type": "food",
+       "desc": "Caesar salad",
+       "price": "$6"
+      },
+      {
+       "type": "food",
+       "desc": "Tacos (2)",
+       "price": "$8"
+      },
+      {
+       "type": "food",
+       "desc": "Oxtail grilled cheese",
+       "price": "$10"
+      },
+      {
+       "type": "food",
+       "desc": "Oyster Rockefeller",
+       "price": "$10"
+      }
+     ],
+     "sources": [
+      "http://www.nowherespecialnash.com/happy-hour"
+     ],
+     "confidence": "high",
+     "notes": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 18153,
+   "name": "Pete's Dueling Piano Bar - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [],
+    "WED": [
+     [
+      "18:30",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "18:30",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "18:30",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 9357,
+   "name": "Philippe Chow - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 10507,
+   "name": "Present Tense",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "23:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "23:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 16195,
+   "name": "Prince St. Pizza - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "04:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "04:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 12065,
+   "name": "Punk Wok",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 17392,
+   "name": "Salvo's Pizza - Franklin",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 17393,
+   "name": "Salvo's Pizza - Mt. Juliet",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "unknown",
+   "windows": [],
+   "notes": "No venue site; Google snippet was for a different business (Salvo Osteria Romana)."
+  },
+  {
+   "id": 17394,
+   "name": "Salvo's Pizza - Smyrna",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 9525,
+   "name": "Sushi By Bou - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 17961,
+   "name": "Tantisimo",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 17388,
+   "name": "Taste of NY - Downtown",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 10968,
+   "name": "The Amsterdamian",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 19232,
+   "name": "The Coffee House at Second and Bridge",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 19233,
+   "name": "The Coffee House Lewisburg",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "17:00"
+     ]
+    ],
+    "SUN": []
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 18919,
+   "name": "The Herban Perk & Pantry",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "06:30",
+      "19:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "06:30",
+      "19:00"
+     ]
+    ],
+    "WED": [
+     [
+      "06:30",
+      "19:00"
+     ]
+    ],
+    "THU": [
+     [
+      "06:30",
+      "19:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "06:30",
+      "20:00"
+     ]
+    ],
+    "SAT": [],
+    "SUN": [
+     [
+      "06:30",
+      "19:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 11678,
+   "name": "The Pancake Pantry - Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "WED": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "THU": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "06:00",
+      "14:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 10736,
+   "name": "The Salty - 12 South",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "07:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 17384,
+   "name": "The Side Piece Nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [],
+    "WED": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 16089,
+   "name": "The Southern Steak & Oyster",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 18918,
+   "name": "The Urban Perk",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "WED": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "THU": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ],
+    "SAT": [],
+    "SUN": [
+     [
+      "07:45",
+      "14:30"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "unknown",
+   "windows": [],
+   "notes": "No venue site; Google snippet was for a different business. Coffee shop hours 07:45-14:30."
+  },
+  {
+   "id": 21369,
+   "name": "Tiff's Treats - Nashville Bellevue",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "med",
+   "happy_hour": "not_needed",
+   "notes": "Google panel is 'Tiff's Treats Cookie Delivery' (Nashville, 629-209-3300), not store-specific."
+  },
+  {
+   "id": 21448,
+   "name": "Tiff's Treats - Nashville Gulch",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "med",
+   "happy_hour": "not_needed",
+   "notes": "Google panel is 'Tiff's Treats Cookie Delivery' (Nashville, 629-209-3300), not store-specific."
+  },
+  {
+   "id": 21493,
+   "name": "Tiff's Treats - Nashville Franklin",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "Google gave no store panel; order.online shows ordering hours 09:45-22:10 today. Hours copied from the Nashville delivery panel."
+  },
+  {
+   "id": 21469,
+   "name": "Tiff's Treats - Nashville Mt. Juliet",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "Google local result shows 10 AM-10 PM (Sunday), consistent with Nashville delivery panel; weekly table not shown for this store."
+  },
+  {
+   "id": 21351,
+   "name": "Tiff's Treats - Nashville Murfreesboro",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "low",
+   "happy_hour": "not_needed",
+   "notes": "Google returned another business (Great American Cookies) for this address; hours copied from the Nashville delivery panel, not store-specific."
+  },
+  {
+   "id": 21489,
+   "name": "Tiff's Treats - Nashville Nolensville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "med",
+   "happy_hour": "not_needed",
+   "notes": "Google panel is 'Tiff's Treats Cookie Delivery' (Nashville), not store-specific."
+  },
+  {
+   "id": 17673,
+   "name": "Two Ten Jack",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "14:00"
+     ],
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SUN": []
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 12587,
+   "name": "Van Leeuwen Ice Cream - Edgehill Village",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 12588,
+   "name": "Van Leeuwen Ice Cream - Neuhoff",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "med",
+   "happy_hour": "not_needed",
+   "notes": "Panel identical to Edgehill location; confirm it is the Neuhoff store."
+  },
+  {
+   "id": 13745,
+   "name": "Vintage Vine 100",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 19427,
+   "name": "ZuZu",
+   "status": "open",
+   "hours": {
+    "MON": [],
+    "TUE": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_source": "Google listing 2026-10-25",
+   "hours_confidence": "high",
+   "happy_hour": "not_needed",
+   "notes": ""
+  },
+  {
+   "id": 19203,
+   "name": "Jar 10",
+   "status": "open",
+   "hours": null,
+   "hours_source": "",
+   "hours_confidence": "low",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Cocktails",
+       "price": "$6"
+      },
+      {
+       "type": "drink",
+       "desc": "Beer 2-for-1",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Wine",
+       "price": "$6"
+      }
+     ],
+     "sources": [
+      "Google result: Jar Cocktail Club Facebook post"
+     ],
+     "confidence": "low",
+     "notes": "Facebook snippet in Google: Friday 4-6 pm, and says Tues-Fri 4-6 and Sat 2-6; Google hours list Wed closed, Sat 11-4. Instagram snippet: happy hour until 8pm with $35 bottomless lemon drops. Unverified on venue site; menu page text had no happy hour."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 19673,
+   "name": "Jimmy Buffett's Margaritaville - Nashville",
+   "status": "open",
+   "hours": null,
+   "hours_source": "",
+   "hours_confidence": "low",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "deals": [],
+     "sources": [
+      "https://www.margaritavillenashville.com/happy-hour-2024"
+     ],
+     "confidence": "med",
+     "notes": "Venue page says every Friday 3pm to 7pm, no deals listed, dates subject to change."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "id": 19432,
+   "name": "Kane Brown's",
+   "status": "open",
+   "hours": null,
+   "hours_source": "",
+   "hours_confidence": "low",
+   "happy_hour": "unknown",
+   "windows": [],
+   "notes": "Venue site only links PDF menus (food, brunch, drinks), not opened to avoid downloads; Google showed no happy hour."
+  },
+  {
+   "id": 19731,
+   "name": "Noir Kitchen & Cocktails",
+   "status": "open",
+   "hours": null,
+   "hours_source": "",
+   "hours_confidence": "low",
+   "happy_hour": "found",
+   "windows": [
+    {
+     "kind": "happy_hour",
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Lemon drops 2-for-1",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Don Julio shots 2-for-1",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Hennessy shots 2-for-1",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Margaritas 2-for-1",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half off appetizers",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Tacos (Tuesday only)",
+       "price": "$3"
+      }
+     ],
+     "sources": [
+      "https://www.thelocalround.com/venue/noir-kitchen-cocktails"
+     ],
+     "confidence": "low",
+     "notes": "Aggregator and Nashville Guru snippet say 2-6 PM daily; a Facebook post snippet says Mon-Thu 4-7 PM. Venue site lists a Happy Hour Menu PDF but it was not opened."
+    }
+   ],
+   "notes": ""
+  }
+ ]
+}

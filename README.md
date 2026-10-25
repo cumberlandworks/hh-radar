@@ -16,13 +16,14 @@ desktop the referral QR image). The footer's referral, LinkedIn and GitHub links
 links: nothing is fetched until the reader taps one.
 
 Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11; 615chuTNey dropped as
-permanently closed in v1.12): **159** inKind partners in the Nashville metro per inKind's own
-map API, every one researched by hand that day: hours, happy hour, lunch specials. **138
-windows** (88 happy hour, 46 special, 4 lunch). **61** venues have a happy hour, **75** were
-checked and have none, and **23** are not confirmed either way yet (10 with no windows at all,
-13 with only a special or lunch window). Hours were researched for 125 venues; 26 carry
-inKind's 2026-09-05 hours (marked unconfirmed); 8 have none on file. One venue (Punk Wok)
-carries a temporary closure.
+permanently closed in v1.12; a browser pass of Google business listings and venue sites on
+2026-10-25, v1.14): **159** inKind partners in the Nashville metro per inKind's own map API,
+every one researched by hand: hours, happy hour, lunch specials. **149 windows** (99 happy
+hour, 46 special, 4 lunch). **68** venues have a happy hour, **80** were checked and have none,
+and **11** have only a special or lunch window; none is "not checked yet". Hours: 41 venues
+carry Google-listing hours and 3 their own site's (v1.14), 109 the 2026-10-23 research, 1
+inKind's 2026-09-05 hours; 4 are marked unconfirmed (low confidence) and 5 have none on file.
+One venue (Punk Wok) carries a temporary closure.
 v2 (parked) would fold in non-inKind aggregator listings.
 
 ## Files
@@ -36,7 +37,7 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
-  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged in v1.13).
+  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (v1.12; unchanged through v1.14, so it has no referral bar).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
@@ -48,11 +49,23 @@ v2 (parked) would fold in non-inKind aggregator listings.
 `index.html` carries one constant, `TIP_URL`, next to `APP_VERSION`. Since v1.13 it is set
 to TJ's Venmo, `https://venmo.com/u/Tjwhite-` (TJ, 2026-10-23: "I don't mind using my
 personal venmo"). The card it draws (`tipSectionHtml` in logic.js) sits between the
-referral and Feedback in the referral's style: "Like the radar?" / "Tip on Venmo:
+referral and Feedback in the referral's style: "Enjoying the radar?" (v1.14; "Like the
+radar?" before) / "Tip on Venmo:
 @Tjwhite-", the handle being the url's last path segment, linked in a new tab with
 `rel="noopener"`. On desktop `venmo-qr.svg` sits beside it at 120px; a phone gets the link
 only and never fetches the QR. Set `TIP_URL = ''` and nothing renders and nothing is in the
 DOM. If the url changes, regenerate `venmo-qr.svg` and decode it before committing.
+
+## Referral bar and card (v1.10, bar v1.14)
+
+The inKind referral card ("New to inKind?") sits between Settings and the tip card. Since
+v1.14 it is tinted with the amber tokens in both themes and its link is a "Get $25 off"
+button (new tab, `rel="noopener"`); desktop keeps the QR beside it. A thin bar above the
+header ("New to inKind? $25 off your first $50+ meal →") only scrolls to that card and rings
+it for a moment; it never opens inKind itself, so the card's disclosure is always seen
+first. Its × (aria-label "Dismiss") hides it and writes `hhradar-refbar-dismissed`; when
+storage is blocked the bar simply shows again next visit (`refBarDismissed` /
+`dismissRefBar` in logic.js). No referral card, no bar.
 
 ## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 

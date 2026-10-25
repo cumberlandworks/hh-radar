@@ -1,5 +1,76 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix14-20261025: v1.14 (browser-checked hours + happy hours, referral bar and card)
+
+TJ, 2026-10-25, verbatim:
+
+> 01:34 CDT: "What I'm thinking about now is any locations that aren't confirmed for hours, ones that don't have happy
+> hours confirmed, and that the bottom section that has the referral doesn't stand out to a user scrolling at all imo.
+> It doesn't need to be flashing. But I'm up for suggestions to get people to see it... Maybe even a bar on top as well
+> if that's not too intrusive."
+
+> 01:56: "A and C seem right being able to close it feels good - Also after seeing this here I'm thinking Enjoying the
+> radar vs Like may be better sense they could tip after using it for a bit." / "Also browser is approved as long its its
+> sonnet."
+
+(A = a thin dismissible bar at the top; C = the referral footer card tinted, with a real button.)
+
+> 02:28, with screenshots of chateauwestrestaurant.com/contact, salvopizza.com/mt-juliet and Google's panel for The
+> Urban Perk: "tell me if this hellps"
+
+> 02:37, two screenshots of kanebrownsonbroadway.com (home page hours; the /happenings/ Monday Industry Night flyer).
+
+> 02:38: "google search has Industry night starts at 8, but Im not sure if that should be added since most of my
+> network wont be industry people and its different from the rest."
+
+> 02:48: "looking at both of those sites and images on google it doesn't appear that either have a happy hour"
+> (Chateau West, Legendary Wings).
+
+### Data
+`venues.json` is `data-src/refresh-20261023/venues-20261025j.json` byte for byte (159 venues, 149 windows). A Sonnet
+browser pass in TJ's Chrome on 2026-10-25 read Google business-listing hours and venue sites for 55 venues;
+`post_20261025g.py` folds it in (its docstring lists every ruling), then `h`, `i` and `j` apply TJ's own checks.
+- **Hours.** 43 venues took Google-listing hours (high/med; Acme Feed & Seed low because Google and its site
+  disagree). Not taken: the six Tiff's Treats (a shared brand delivery panel or another store's panel) and both
+  Bad-Ass Breakfast Burritos (Uber Eats delivery hours). Chateau West and Salvo's Mt. Juliet then took their own
+  sites' hours over Google's (h), and Kane Brown's its site's Mon–Wed 11am–2am, Thu–Sun 10am–2am (i). Unconfirmed
+  hours drop from 43 to 4; no hours from 8 to 5.
+- **Happy hours added** (11 windows at 7 venues): NoWhere Special, Bakersfield, Bungalow 10 (five day-specific
+  windows), Butterfly, Margaritaville, Noir (low; sources disagree), LinQ (Friday only, low). Not added: LinQ's
+  Tuesday (the day was inferred from a file name) and Jar 10 (the only source was a "Jar Cocktail Club" post, possibly
+  another business).
+- **Verified no happy hour:** Salvo's Mt. Juliet and The Urban Perk (a coffee shop, 7:45am–2:30pm, Google matches)
+  (h); Kane Brown's (i; its Monday Industry Night for service-industry workers is left off and only noted); Chateau
+  West and Legendary Wings (j). "Not checked yet" goes from 10 to 0.
+- **Known effect:** The Southern Steak & Oyster's Google hours are 11am–9pm, so its 3–5pm happy hour is no longer
+  outside posted hours.
+- Copied to `data-src/refresh-20261023/`: `post_20261025{g,h,i,j}.py`, `venues-20261025{g,h,i,j}.json`,
+  `research/browser-pass.json`, `inputs/browser-pass.json`.
+
+### Changes
+- **C2 — referral bar (TJ pick A).** A thin amber-tinted bar above the header: "New to inKind? $25 off your first
+  $50+ meal →" and a × (44px, aria-label "Dismiss"). One line at 375px (measured: 45px tall). The text scrolls to the
+  referral card and rings it; it never opens inKind, so the card's disclosure is seen first. The ring stays 1.6s
+  after the scroll settles (on a busy NOW list the smooth scroll alone takes ~1.5s). × fades the bar out and writes
+  `hhradar-refbar-dismissed`; with storage blocked the bar just shows again next visit, with no error
+  (`refBarDismissed` / `dismissRefBar` in logic.js). No referral card, no bar.
+- **C3 — referral card (TJ pick C).** Tinted with `--amber-bg` and an `--amber` border in both themes (scoped to
+  `#referral`, since the tip card shares `.referral`). Heading "New to inKind?", text "$25 off your first $50+
+  meal. I get a credit too. Terms apply.", and a "Get $25 off" button to the referral link (new tab,
+  `rel="noopener"`). Desktop keeps the QR beside it.
+- **C4 —** the tip card heading is "Enjoying the radar?" (was "Like the radar?"). Text and link unchanged.
+- **C5:** v1.14 in the footer and on the `logic.js` / `venues.json` cache-bust queries. `og-preview.png` not re-taken.
+  README coverage numbers updated, and a "Referral bar and card" section added.
+
+### Tests and lint
+`node --test`: 164/164 (159 + 5 new: the tip heading, the dismissal key, dismiss/remember, storage throwing or
+missing, and the bar/card markup). Three tests that measure the real data were re-pinned to the new file:
+`dayCoverageCounts` (SUN 40/43/76/0, TUE 67/16/76/0), `dealPriceLabel` (440 priced, 360 shown) and the outside-hours
+lint list. `node validate.js venues.json`: OK, 159 venues, 149 windows, 31 lint warnings (was 29). Outside-hours
+and closed-day lines: gone are JBJ's Sunday special and The Southern; Present Tense moves from SUN to THU; new are
+Acme Feed & Seed (MON, low-confidence hours), LinQ (FRI), NoWhere Special (FRI 4pm, Google opens 5pm) and The Side
+Piece (WED).
+
 ## 2026-10-23 — BLOCK-hh-radar-fix13-20261023: v1.13 (Venmo tip link + grid polish)
 
 TJ, 2026-10-23, verbatim:
