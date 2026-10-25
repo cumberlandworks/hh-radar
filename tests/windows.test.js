@@ -1949,3 +1949,82 @@ test('index.html (v1.18 C3): no user-facing "tap"', () => {
   assert.ok(html.includes('Straight-line estimate — select the address for a real ETA'));
   assert.ok(html.includes('the first time you open directions, this app will ask.'));
 });
+
+// ==================== v1.19 C1: three zone-chip states ====================
+// TJ, 2026-10-25 04:33: "not quite looking right here." 04:37, on the filled / "2 of 4" /
+// outline mockup: "lets try that".
+test('zoneChipState (v1.19 C1): all / some / none over the visible hoods, with on and of', () => {
+  const chips = L18.chipHoodsByZone(REAL);
+  const dt = chips.downtown;
+  assert.equal(dt.length, 4);
+  assert.deepEqual(L18.zoneChipState(new Set(dt), dt), { state: 'all', on: 4, of: 4 });
+  assert.deepEqual(L18.zoneChipState(new Set(['SoBro', 'Rutledge Hill & Rolling Mill Hill']), dt), { state: 'some', on: 2, of: 4 });
+  assert.deepEqual(L18.zoneChipState(new Set(), dt), { state: 'none', on: 0, of: 4 });
+  // Hoods with no chip never decide the state: Gulch's West End has no happy hour.
+  assert.ok(!chips.gulch.includes('West End'));
+  assert.equal(L18.zoneChipState(new Set(['West End']), chips.gulch).state, 'none');
+  assert.equal(L18.zoneChipState(new Set(chips.gulch), chips.gulch).state, 'all');
+  // A zone with exactly one visible hood (Outer suburbs: Murfreesboro) is only all or none.
+  assert.deepEqual(chips.outer, ['Murfreesboro']);
+  assert.equal(L18.zoneChipState(new Set(['Murfreesboro']), chips.outer).state, 'all');
+  assert.equal(L18.zoneChipState(new Set(['Smyrna']), chips.outer).state, 'none');
+  for (let n = 0; n < 2; n++) {
+    const s = L18.zoneChipState(new Set(chips.outer.slice(0, n)), chips.outer).state;
+    assert.ok(s === 'all' || s === 'none', s);
+  }
+  assert.equal(L18.zoneChipState(new Set(['x']), []).state, 'none', 'no visible hoods: none');
+});
+
+test('zoneTapTarget / applyZoneTap (v1.19 C1): none -> all, some -> all, all -> none; pure', () => {
+  assert.equal(L18.zoneTapTarget('none'), 'all');
+  assert.equal(L18.zoneTapTarget('some'), 'all');
+  assert.equal(L18.zoneTapTarget('all'), 'none');
+  const chips = L18.chipHoodsByZone(REAL);
+  const vis = chips.gulch;
+  const some = new Set(['The Gulch', 'Midtown & Music Row', 'Hillsboro Village & Belmont', 'Sylvan Park']);
+  const frozen = JSON.stringify([...some]);
+  const all = L18.applyZoneTap(some, 'gulch', vis);
+  assert.equal(JSON.stringify([...some]), frozen, 'the input Set is not touched');
+  assert.equal(L18.zoneChipState(all, vis).state, 'all');
+  for (const h of zoneHoods('gulch')) assert.ok(all.has(h), 'whole zone on, hidden hoods too: ' + h);
+  assert.ok(all.has('Sylvan Park'), 'other zones untouched');
+  const none = L18.applyZoneTap(all, 'gulch', vis);
+  assert.equal(L18.zoneChipState(none, vis).state, 'none');
+  for (const h of zoneHoods('gulch')) assert.ok(!none.has(h), h);
+  assert.ok(none.has('Sylvan Park'));
+  assert.equal(L18.zoneChipState(L18.applyZoneTap(none, 'gulch', vis), vis).state, 'all', 'none -> all');
+  assert.deepEqual([...L18.applyZoneTap(some, 'nope', vis)].sort(), [...some].sort(), 'unknown zone: a copy, unchanged');
+});
+
+// ==================== v1.19 C2: one neighborhood picker ====================
+test('hoodGroupControlLabel (v1.19 C2): the group heading reads "all" while some are ticked, "none" when all are', () => {
+  const chips = L18.chipHoodsByZone(REAL);
+  const vis = chips.downtown;
+  let sel = new Set(['SoBro']);
+  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'all');
+  sel = L18.applyZoneTap(sel, 'downtown', vis); // the control does what the zone chip does
+  assert.equal(L18.zoneChipState(sel, vis).state, 'all');
+  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'none');
+  sel = L18.applyZoneTap(sel, 'downtown', vis);
+  assert.equal(L18.zoneChipState(sel, vis).state, 'none');
+  assert.deepEqual(L18.hoodPanelGroups(sel, chips), [], 'all off: the group leaves the panel');
+  // Groups show for zones in state all or some, in zone order, suburbs included.
+  const mixed = new Set(['SoBro', 'Brentwood', 'Murfreesboro'].concat(zoneHoods('west')));
+  const groups = L18.hoodPanelGroups(mixed, chips);
+  assert.deepEqual(groups.map((g) => g.key), ['downtown', 'west', 'franklin', 'outer']);
+  assert.deepEqual(groups.map((g) => L18.zoneChipState(mixed, g.hoods).state), ['some', 'all', 'some', 'all']);
+});
+
+test('index.html (v1.19): three chip looks, the group control, and the under-map names are labels', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes("var st = L.zoneChipState(state.hoodSelected, stateHoodsOf(zone));"));
+  assert.ok(html.includes("'<span class=\"some-badge\">' + st.on + ' of ' + st.of + '</span>'"));
+  assert.ok(!/\.pill\.partial\s*\{[^}]*dashed/.test(html), 'some is no longer a dashed outline');
+  assert.ok(html.includes('state.hoodSelected = L.applyZoneTap(state.hoodSelected, key, stateHoodsOf(zone));'));
+  assert.ok(html.includes('var ctl = L.hoodGroupControlLabel(state.hoodSelected, g.hoods);'));
+  assert.ok(html.includes("e.target.closest('[data-group-zone]')"));
+  assert.ok(html.includes("'<span class=\"suburb-name\">'"));
+  assert.ok(!/suburb-row[^\n]*hoodPillHtml/.test(html), 'no hood chips under the map');
+  assert.ok(html.includes('var MAP_FILL = { all: 0.55, some: 0.3, none: 0.12 };'));
+});

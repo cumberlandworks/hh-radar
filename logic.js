@@ -1234,6 +1234,36 @@
     });
   }
 
+  // ---- v1.19 C1: three zone-chip states ----
+  // TJ, 2026-10-25 04:33: "not quite looking right here." A zone is 'all', 'some' or 'none'
+  // of its VISIBLE hoods ticked (the chip hoods, v1.16). Hoods without a chip follow their
+  // zone (index.html syncHiddenHoods), so they never decide the state. A zone with one
+  // visible hood can only be all or none.
+  function zoneChipState(selected, visibleHoods) {
+    var of = (visibleHoods || []).length;
+    var on = (visibleHoods || []).filter(function (h) { return selected.has(h); }).length;
+    return { state: of > 0 && on === of ? 'all' : (on === 0 ? 'none' : 'some'), on: on, of: of };
+  }
+  // The tap transition (TJ 04:37): none -> all; some -> all; all -> none. The Neighborhoods
+  // panel's per-group "all"/"none" control is the same transition (it only shows for all/some).
+  function zoneTapTarget(state) {
+    return state === 'all' ? 'none' : 'all';
+  }
+  // A new Set: the whole zone (hidden hoods too) turned on or off. `selected` is untouched.
+  function applyZoneTap(selected, zoneKey, visibleHoods) {
+    var zone = ZONES.filter(function (z) { return z.key === zoneKey; })[0];
+    var next = new Set(selected);
+    if (!zone) return next;
+    var turnOn = zoneTapTarget(zoneChipState(selected, visibleHoods).state) === 'all';
+    zone.hoods.forEach(function (h) { if (turnOn) next.add(h); else next.delete(h); });
+    return next;
+  }
+  // The Neighborhoods group heading's control: "all" while some are ticked, "none" once
+  // every one is.
+  function hoodGroupControlLabel(selected, visibleHoods) {
+    return zoneChipState(selected, visibleHoods).state === 'all' ? 'none' : 'all';
+  }
+
   // Where the hours came from, for the expanded card's one small line. hours_source
   // is free text written by the refresh; the 2026-10-23 refresh uses three shapes:
   //   "researched YYYY-MM-DD (high|med|low confidence): <url> [<url>]"
@@ -2001,6 +2031,10 @@
     venueScheduleParts: venueScheduleParts,
     chipHoodsByZone: chipHoodsByZone,
     hoodPanelGroups: hoodPanelGroups,
+    zoneChipState: zoneChipState,
+    zoneTapTarget: zoneTapTarget,
+    applyZoneTap: applyZoneTap,
+    hoodGroupControlLabel: hoodGroupControlLabel,
     hoursSourceInfo: hoursSourceInfo,
     hasHours: hasHours,
     WINDOW_KINDS: WINDOW_KINDS,

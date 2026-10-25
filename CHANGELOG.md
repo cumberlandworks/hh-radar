@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix19-20261025: v1.19 (zone chips with three clear states, one neighborhood picker)
+
+TJ, 2026-10-25, verbatim:
+
+> 04:33, desktop dark screenshot (only West filled in the zone row, every other zone outlined, while the open
+> Neighborhoods panel showed groups for Downtown, Gulch & Midtown, Germantown & North, East, South, West and Franklin &
+> Brentwood): "not quite looking right here. Also neighborhoods where its at isn't intuitive for the users like just
+> clicking on the button with Brentwood/Franklin on the map if you deslect one on the map the zone greys out"
+
+> 04:37, on the thread's mockup (filled / "2 of 4" partial / outline zone chips; the Neighborhoods panel as the only
+> picker): "lets try that - likely this wont come, up - just trying to make sure we do a full qa before Monday"
+
+### Diagnosis
+A zone with some but not all of its neighborhoods ticked was drawn as a 1px dashed outline. An unticked zone was a 1px
+solid outline. Neither had a fill, so at a glance (and in dark mode especially) the two read as one look, and the zone
+row contradicted the panel. The Franklin & Brentwood / Outer suburbs chips under the map were a second picker on the
+same selection, so unticking Brentwood there quietly turned Franklin & Brentwood partial.
+
+### Changes
+- **C1: three zone-chip looks.** `L.zoneChipState(selection, visibleHoods)` gives `all` / `some` / `none` plus
+  `on`/`of`, over the zone's visible hoods (the ones with a happy hour, v1.16). All: filled in the zone colour with a
+  check, as before. Some: a light tint of the zone colour, the filled look's zone-colour border, no check, and an
+  "n of m" badge; `aria-pressed="mixed"`. None: outline only, as before. A zone with one visible hood (Outer suburbs:
+  Murfreesboro) is only ever all or none. A tap goes none → all, some → all, all → none (`L.zoneTapTarget`,
+  `L.applyZoneTap`, pure). The "Zones:" summary names a partial zone with its count ("Downtown 2 of 4"), and its "+N"
+  now sits outside the part that gets cut short on a phone. The map shades a zone 0.55 (all), 0.30 (some) or 0.12
+  (none). A zone with some neighborhoods ticked no longer dims when it has nothing live, so its label keeps its contrast.
+  Label contrast for "some", every hue: light 13.25–15.60:1, dark 8.33–12.52:1; the badge 4.71–12.24:1.
+- **C2: one neighborhood picker.** The Neighborhoods panel is the only place hoods are toggled. Each group heading has
+  an "all" control (`L.hoodGroupControlLabel`): it turns the zone's visible hoods on, and once they are all on it reads
+  "none" and turns them off. A zone turned off that way leaves the panel, like any unselected zone. Groups show for
+  zones in state all or some, in zone order, Franklin & Brentwood and Outer suburbs included. Under the map, those two
+  lists are now plain labels with counts: not buttons, no hover or focus state, not in the tab order.
+- **C3: QA.** 375 and 1280, light and dark, storage cleared: All; None; one zone; TJ's 04:33 state rebuilt; a "some" zone
+  tapped to all and then to none; a group's all/none control; a reload. In each, the zone row, the panel, the Zones
+  summary, the map and the NOW list were checked against each other in the browser, and all agreed.
+- **C4: v1.19.** `APP_VERSION`, `logic.js?v=1.19`, `venues.json?v=1.19`. `og-preview.png` re-taken (same framing as
+  v1.18), because the suburb chips under its map are now labels. Tests 183 → 187.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix18-20261025: v1.18 (a real Neighborhoods panel, full schedules in "other days", neutral "tap")
 
 TJ, 2026-10-25, verbatim:

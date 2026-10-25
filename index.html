@@ -16,8 +16,8 @@
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
      draws. No venue count in any of this text: it would rot on the next refresh.
-     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.18 at
-     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.18). -->
+     og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.19 at
+     ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.19). -->
 <meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
@@ -68,6 +68,10 @@
     --pill-line: #bdb9b0;
     --pill-on-l: 32%;
     --pill-on-ink: #ffffff;
+    /* v1.19 C1: a zone with some (not all) of its neighborhoods ticked: a light tint of the
+       zone hue behind the body ink, the filled look's border, no check, an "n of m" badge. */
+    --pill-some-s: 58%;
+    --pill-some-l: 91%;
     /* v1.16 C2: actions (All, None, Surprise me, Zones, Map) are neither selected nor
        unselected toggles: a quiet neutral fill, normal-weight label, no check, no amber. */
     --action-bg: #dcd8cf;
@@ -103,6 +107,8 @@
       --pill-line: #3d4a63;
       --pill-on-l: 65%;
       --pill-on-ink: #0f1420;
+      --pill-some-s: 36%;
+      --pill-some-l: 22%;
       --action-bg: #2b3550;
       --action-ink: #eef0f4;
     }
@@ -139,10 +145,15 @@
     border-color: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); color: var(--pill-on-ink); }
   .pill.hue.on .dot { display: none; }
   .pill.hue.on::before { content: "\2713"; font-size: 12px; font-weight: 800; line-height: 1; }
-  .pill.partial { border-style: dashed; border-color: hsl(var(--pill-hue, 35), 58%, 46%); color: var(--text); }
+  /* v1.19 C1 (TJ, 2026-10-25 04:33): "some" was a dashed outline, too close to "none". */
+  .pill.hue.partial { background: hsl(var(--pill-hue, 35), var(--pill-some-s), var(--pill-some-l));
+    border-color: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); color: var(--text); }
+  .pill .some-badge { font-size: 10px; font-weight: 700; line-height: 1; padding: 2px 5px; border-radius: 999px;
+    background: hsl(var(--pill-hue, 35), 58%, var(--pill-on-l)); color: var(--pill-on-ink); }
   /* C2: a zone with nothing live/on-the-day dims instead of showing a "0" badge
-     (v1.15: only while unselected, so a selected chip always reads as selected). */
-  .pill.zero:not(.on) { opacity: 0.5; }
+     (v1.15: only while unselected, so a selected chip always reads as selected;
+     v1.19: "some" counts as selected). */
+  .pill.zero:not(.on):not(.partial) { opacity: 0.5; }
   /* v1.16 C2: action buttons. Same shape as every pill, but filled neutral with the body
      ink at normal weight; no state class ever applies to them (Map says aria-expanded). */
   .pill.action { background: var(--action-bg); border-color: var(--action-bg); color: var(--action-ink);
@@ -170,6 +181,12 @@
   .hood-strip .pill { height: 27px; font-size: 11.5px; padding: 0 9px; }
   .hood-strip .strip-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.05em; color: var(--text-dim); align-self: center; margin-right: 2px; }
+  /* v1.19 C2: the group's "all"/"none" control sits in the heading, a link-styled button. */
+  .hood-strip .group-head { display: inline-flex; align-items: center; gap: 8px; align-self: center; margin-right: 2px; }
+  .hood-strip .group-head .strip-label { margin-right: 0; }
+  .hood-strip .group-all { font: inherit; font-size: 12px; font-weight: 600; color: var(--text); background: none;
+    border: 0; padding: 2px 4px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .hood-strip .group-all:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
   @media (min-width: 900px) { .zone-row .map-toggle-btn { display: none; } }
 
   /* ---- Layout (v1.3 C5): sidebar on wide screens, drawer on phones ---- */
@@ -218,7 +235,9 @@
   .suburb-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
   .suburb-row .strip-label { font-size: 10px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.05em; color: var(--text-dim); width: 100%; margin-bottom: -1px; }
-  .suburb-row .pill { height: 26px; font-size: 11px; padding: 0 9px; }
+  /* v1.19 C2: plain labels with counts. The Neighborhoods panel is the only hood picker. */
+  .suburb-row .suburb-name { font-size: 11px; color: var(--text-dim); margin-right: 8px; }
+  .suburb-row .suburb-name .count { font-weight: 700; color: var(--text); opacity: 0.8; margin-left: 3px; }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
@@ -587,6 +606,7 @@
   .zone-summary .pill { flex: 0 1 auto; min-width: 0; }
   .zone-summary .zone-summary-btn { overflow: hidden; }
   .zone-summary .zone-summary-btn .zs-names { overflow: hidden; text-overflow: ellipsis; }
+  .zone-summary .zone-summary-btn .zs-more { flex: 0 0 auto; }
 
   @media (max-width: 599px) {
     h1 { font-size: 16px; margin-bottom: 8px; }
@@ -604,6 +624,9 @@
     /* v1.16 C1: up to five neighborhood chips per zone. The zone name takes its own line so
        the chips start flush left and wrap in even rows (two rows at 375px). */
     .hood-strip .strip-label { flex: 0 0 100%; margin: 0; }
+    .hood-strip .group-head { flex: 0 0 100%; margin: 0; }
+    .hood-strip .group-head .strip-label { flex: 0 0 auto; }
+    .hood-strip .group-all { min-height: 44px; min-width: 44px; font-size: 13px; }
     /* v1.18 C1: with every zone selected the panel is ~830px of 44px chips, taller than
        the screen. It stops at 55% of the screen and scrolls inside, so the cards stay
        in reach and the Neighborhoods button stays near. */
@@ -658,6 +681,7 @@
     .zone-row .pill, .hood-strip .pill { height: 44px; font-size: 13px; }
     .zone-row .pill, .hood-strip .pill, .zone-summary .pill { min-width: 44px; }
     .hood-strip { max-height: 55vh; overflow-y: auto; }
+    .hood-strip .group-all { min-height: 44px; min-width: 44px; }
     .day-select .pill, .sort-select .pill { height: 44px; }
     .grid-row { height: 45px; }
     .grid-rowlabel a.rowlink { flex: 0 0 44px; width: 44px; }
@@ -800,12 +824,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.18"></script>
+<script src="logic.js?v=1.19"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.18';
+  var APP_VERSION = 'v1.19';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1672,22 +1696,25 @@
   // A zone pill is: dot · label · count. The count badge is dropped entirely when
   // the zone has nothing live/on-the-day and the pill dims instead (`.zero`), so a
   // row of zeros stops shouting. Selected = the zone hue at 0.25 alpha with a 1px
-  // hue border; deselected = a muted 1px border; some-but-not-all hoods = dashed.
+  // hue border; deselected = a muted 1px border.
   // v1.18 C1: no caret any more; a zone pill is a plain toggle. Its hoods are in the
   // Neighborhoods panel.
+  // v1.19 C1 (TJ, 2026-10-25 04:33/04:37): three looks from L.zoneChipState. All = filled
+  // with a check; some = a light tint, the zone-colour border, no check, an "n of m" badge;
+  // none = outline only. aria-pressed is "mixed" for some.
   function zonePillHtml(zone, visibleHoods, counts) {
     // v1.16: selected state is read off the chips (hidden hoods follow them); the count
     // still covers every venue in the zone, hidden hoods included.
-    var chips = chipHoodsOf(zone);
-    var stateHoods = chips.length ? chips : visibleHoods;
-    var selectedCount = stateHoods.filter(function (h) { return state.hoodSelected.has(h); }).length;
-    var allSel = selectedCount === stateHoods.length;
-    var noneSel = selectedCount === 0;
+    var st = L.zoneChipState(state.hoodSelected, stateHoodsOf(zone));
     var count = visibleHoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
-    var cls = 'pill' + (allSel ? ' on' : (noneSel ? '' : ' partial')) + (count === 0 ? ' zero' : '');
+    var cls = 'pill' + (st.state === 'all' ? ' on' : (st.state === 'some' ? ' partial' : '')) + (count === 0 ? ' zero' : '');
     return '<div class="' + cls + ' hue" style="--pill-hue:' + zone.hue + '" role="button" tabindex="0"' +
-      ' aria-pressed="' + allSel + '" data-zone="' + escapeHtml(zone.key) + '">' +
+      ' aria-pressed="' + (st.state === 'all' ? 'true' : (st.state === 'some' ? 'mixed' : 'false')) + '"' +
+      (st.state === 'some' ? ' aria-label="' + escapeHtml(zone.label) + ', ' + st.on + ' of ' + st.of + ' neighborhoods' +
+        (count > 0 ? ', ' + count : '') + '"' : '') +
+      ' data-zone="' + escapeHtml(zone.key) + '">' +
         '<span class="dot"></span>' + escapeHtml(zone.label) +
+        (st.state === 'some' ? '<span class="some-badge">' + st.on + ' of ' + st.of + '</span>' : '') +
         (count > 0 ? '<span class="count">' + count + '</span>' : '') +
       '</div>';
   }
@@ -1698,6 +1725,12 @@
   // v1.16 C1b: the hoods that get a chip — a venue there has a happy hour.
   // v1.18: read off L.chipHoodsByZone, which the Neighborhoods panel uses too.
   function chipHoodsOf(zone) { return CHIP_HOODS[zone.key] || []; }
+  // v1.19 C1: the hoods a zone's state is read off: its chips, or (a zone with no chip at
+  // all) every hood with a venue, which then toggle as one unit.
+  function stateHoodsOf(zone) {
+    var chips = chipHoodsOf(zone);
+    return chips.length ? chips : visibleHoodsOf(zone);
+  }
 
   function renderZoneRow() {
     var counts = hoodCounts();
@@ -1732,10 +1765,16 @@
       return;
     }
     var counts = hoodCounts();
+    // v1.19 C2 (TJ 04:37): each heading carries an "all" control (L.hoodGroupControlLabel):
+    // it reads "none" once the zone is all on, and either way does what the zone chip does.
     el.innerHTML = groups.map(function (g) {
       var zone = zoneByKey(g.key);
+      var ctl = L.hoodGroupControlLabel(state.hoodSelected, g.hoods);
       return '<div class="hood-group" role="group" aria-label="' + escapeHtml(g.label) + ' neighborhoods">' +
-        '<span class="strip-label">' + escapeHtml(g.label) + '</span>' +
+        '<span class="group-head"><span class="strip-label">' + escapeHtml(g.label) + '</span>' +
+        '<button type="button" class="group-all" data-group-zone="' + escapeHtml(g.key) + '"' +
+          ' aria-label="' + (ctl === 'all' ? 'Select every ' : 'Clear every ') + escapeHtml(g.label) + ' neighborhood">' +
+          ctl + '</button></span>' +
         g.hoods.map(function (h) { return hoodPillHtml(h, zone, counts); }).join('') + '</div>';
     }).join('');
   }
@@ -1755,9 +1794,11 @@
 
   // ---- v1.4 C3/C4: the map ----
   // Six hand-authored zone polygons (logic.js ZONE_POLYGONS) over a river line and
-  // three interstate hints. Suburbs are NOT drawn — franklin/outer are chips under
+  // three interstate hints. Suburbs are NOT drawn — franklin/outer are named under
   // the map (C4). Every polygon toggles the same `state.hoodSelected` Set as its
   // pill, so map / pills / hood strip stay three views onto one Set.
+  // v1.19 C2: the names under the map are labels with counts; hoods are only picked in
+  // the Neighborhoods panel.
   var MAP_W = L.MAP_VIEW_W, MAP_H = L.MAP_VIEW_H;
 
   function svgPoint(lat, lon) { return L.projectToView(lat, lon); }
@@ -1775,9 +1816,9 @@
     var zone = zoneByKey(zoneKey);
     return zone.hoods.reduce(function (n, h) { return n + (counts[h] || 0); }, 0);
   }
-  function zoneSelected(zoneKey) {
-    var zone = zoneByKey(zoneKey);
-    return zone.hoods.some(function (h) { return state.hoodSelected.has(h); });
+  // v1.19 C1: 'all' | 'some' | 'none', the zone chip's state.
+  function zoneState(zoneKey) {
+    return L.zoneChipState(state.hoodSelected, stateHoodsOf(zoneByKey(zoneKey))).state;
   }
 
   function renderMap() {
@@ -1785,16 +1826,19 @@
     var parts = [];
 
     // Zone regions. 0.55 alpha selected / 0.12 deselected (C3) — real saturation,
-    // so the coloured sections read at a glance.
+    // so the coloured sections read at a glance. v1.19 C1: some = 0.3, between the two,
+    // with the selected border, like the chip's tint.
+    var MAP_FILL = { all: 0.55, some: 0.3, none: 0.12 };
     parts.push(L.CORE_ZONE_KEYS.map(function (key) {
       var zone = zoneByKey(key);
-      var sel = zoneSelected(key);
+      var zs = zoneState(key);
+      var sel = zs !== 'none';
       var n = zoneCount(key, counts);
-      return '<a class="zone" tabindex="0" role="button" aria-pressed="' + sel + '"' +
+      return '<a class="zone" tabindex="0" role="button" aria-pressed="' + (zs === 'all' ? 'true' : (zs === 'some' ? 'mixed' : 'false')) + '"' +
         ' aria-label="' + escapeHtml(zone.label) + ' — ' + n + (state.currentTab === 'grid' ? ' on ' + DAY_FULL[state.day] : ' live now') + '"' +
         ' data-zone="' + escapeHtml(key) + '">' +
         '<path class="zone-fill" d="' + pathD(L.ZONE_POLYGONS[key], true) + '"' +
-          ' fill="hsl(' + zone.hue + ',58%,46%)" fill-opacity="' + (sel ? 0.55 : 0.12) + '"' +
+          ' fill="hsl(' + zone.hue + ',58%,46%)" fill-opacity="' + MAP_FILL[zs] + '"' +
           ' stroke="hsl(' + zone.hue + ',58%,' + (sel ? 40 : 52) + '%)"></path>' +
         '</a>';
     }).join(''));
@@ -1848,14 +1892,20 @@
       ' preserveAspectRatio="xMidYMid meet" role="group" aria-label="Nashville core zone map">' +
       parts.join('') + '</svg>';
 
-    // C4: the suburbs, as two rows of the same pill component — no solid tiles.
+    // C4: the suburbs, as two rows under the map — no solid tiles. v1.19 C2 (TJ 04:33):
+    // plain labels with counts, not buttons (they were a second picker on the same
+    // selection). Pick them in the Neighborhoods panel.
     var stripHtml = L.ZONES.filter(function (z) {
       return L.CORE_ZONE_KEYS.indexOf(z.key) === -1;
     }).map(function (z) {
       var hoods = chipHoodsOf(z);
       if (!hoods.length) return '';
       return '<div class="suburb-row"><span class="strip-label">' + escapeHtml(z.label) + '</span>' +
-        hoods.map(function (h) { return hoodPillHtml(h, z, counts); }).join('') + '</div>';
+        hoods.map(function (h) {
+          var c = counts[h] || 0;
+          return '<span class="suburb-name">' + escapeHtml(shortHoodLabel(h)) +
+            (c > 0 ? '<span class="count">' + c + '</span>' : '') + '</span>';
+        }).join('') + '</div>';
     }).join('');
 
     document.getElementById('map-panel').innerHTML =
@@ -1909,36 +1959,30 @@
     toggleZone(zoneChip.getAttribute('data-zone'));
   });
   function toggleZone(key) {
-    var zone = L.ZONES.filter(function (z) { return z.key === key; })[0];
+    var zone = zoneByKey(key);
     if (!zone) return;
     // v1.16: on/off is read off the chips, and the whole zone (hidden hoods too) flips.
-    var chips = chipHoodsOf(zone);
-    var allSel = (chips.length ? chips : visibleHoodsOf(zone)).every(function (h) { return state.hoodSelected.has(h); });
-    zone.hoods.forEach(function (h) { if (allSel) state.hoodSelected.delete(h); else state.hoodSelected.add(h); });
+    // v1.19 C1: L.applyZoneTap — none -> all, some -> all, all -> none.
+    state.hoodSelected = L.applyZoneTap(state.hoodSelected, key, stateHoodsOf(zone));
     onHoodSelectionChanged();
   }
 
   document.getElementById('hood-strip').addEventListener('click', function (e) {
+    var groupCtl = e.target.closest('[data-group-zone]');
+    if (groupCtl) { toggleZone(groupCtl.getAttribute('data-group-zone')); return; }
     var hoodChip = e.target.closest('[data-hood]');
     if (!hoodChip) return;
     toggleSetMember(state.hoodSelected, hoodChip.getAttribute('data-hood'));
     onHoodSelectionChanged();
   });
 
-  // The map carries two kinds of target: a zone polygon (toggles the whole zone,
-  // exactly like its pill) and a suburb hood chip (toggles that one hood).
+  // The map's only target is a zone polygon (toggles the whole zone, exactly like its
+  // pill). v1.19 C2: the suburb names under it are labels, not hood chips.
   function handleMapActivate(e) {
     var zoneEl = e.target.closest('[data-zone]');
-    if (zoneEl) {
-      e.preventDefault();
-      toggleZone(zoneEl.getAttribute('data-zone'));
-      return;
-    }
-    var hoodEl = e.target.closest('[data-hood]');
-    if (!hoodEl) return;
+    if (!zoneEl) return;
     e.preventDefault();
-    toggleSetMember(state.hoodSelected, hoodEl.getAttribute('data-hood'));
-    onHoodSelectionChanged();
+    toggleZone(zoneEl.getAttribute('data-zone'));
   }
   document.getElementById('map-panel').addEventListener('click', handleMapActivate);
   document.getElementById('map-panel').addEventListener('keydown', function (e) {
@@ -2419,19 +2463,26 @@
       return z.hoods.some(function (h) { return state.hoodSelected.has(h); });
     });
     var filtered = state.hoodSelected.size !== allKeys.length;
-    var labels = selectedZones.map(function (z) { return L.ZONE_MAP_LABELS[z.key] || z.label; });
+    // v1.19 C1: a zone with some of its neighborhoods ticked says how many.
+    var labels = selectedZones.map(function (z) {
+      var st = L.zoneChipState(state.hoodSelected, stateHoodsOf(z));
+      return (L.ZONE_MAP_LABELS[z.key] || z.label) + (st.state === 'some' ? ' ' + st.on + ' of ' + st.of : '');
+    });
     var plain;
     if (!filtered) plain = 'all';
     else if (!labels.length) plain = 'none';
     else plain = labels.slice(0, 2).join(', ') + (labels.length > 2 ? ' +' + (labels.length - 2) : '');
-    return { filtered: filtered, zoneCount: selectedZones.length, labels: labels, plain: plain };
+    return { filtered: filtered, zoneCount: selectedZones.length, labels: labels, plain: plain,
+      shown: labels.slice(0, 2).join(', '), more: Math.max(0, labels.length - 2) };
   }
   function renderZoneSummary() {
     var sum = zoneFilterSummary();
     document.getElementById('zone-summary').innerHTML =
       '<div class="pill action zone-summary-btn" id="zone-summary-btn" role="button" tabindex="0"' +
         ' aria-expanded="' + (state.zonesOpen ? 'true' : 'false') + '" aria-controls="zone-row">' +
-        'Zones: <span class="zs-names">' + escapeHtml(sum.plain === 'all' ? 'All' : (sum.plain === 'none' ? 'None' : sum.plain)) + '</span>' +
+        // v1.19: "n of m" makes the names longer, so "+N" sits outside the part that is cut short.
+        'Zones: <span class="zs-names">' + escapeHtml(sum.plain === 'all' ? 'All' : (sum.plain === 'none' ? 'None' : sum.shown)) + '</span>' +
+        (sum.plain !== 'all' && sum.plain !== 'none' && sum.more ? '<span class="zs-more">\u00a0+' + sum.more + '</span>' : '') +
         ' \u00b7 ' + (state.zonesOpen ? 'done' : 'edit') + '</div>' +
       '<button type="button" class="pill action" id="map-toggle-sm" aria-controls="sidebar" aria-expanded="' +
         (document.getElementById('sidebar').classList.contains('open') ? 'true' : 'false') + '">Map</button>';
@@ -2842,7 +2893,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.18').then(function (r) {
+  fetch('venues.json?v=1.19').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
