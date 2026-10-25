@@ -17,10 +17,11 @@ links: nothing is fetched until the reader taps one.
 
 Coverage (refresh of 2026-10-23, v1.10; hours corrected in v1.11; 615chuTNey dropped as
 permanently closed in v1.12; a browser pass of Google business listings and venue sites on
-2026-10-25, v1.14): **159** inKind partners in the Nashville metro per inKind's own map API,
-every one researched by hand: hours, happy hour, lunch specials. **149 windows** (99 happy
-hour, 46 special, 4 lunch). **68** venues have a happy hour, **80** were checked and have none,
-and **11** have only a special or lunch window; none is "not checked yet". Hours: 41 venues
+2026-10-25, v1.14; deal text cleaned and two unexplained specials dropped in v1.20): **159** inKind
+partners in the Nashville metro per inKind's own map API, every one researched by hand: hours, happy
+hour, lunch specials. **147 windows** (99 happy hour, 44 special, 4 lunch). **68** venues have a happy
+hour, **78** were checked and have no window at all, and **13** have only a special or lunch window
+(measured on the v1.20 data); none is "not checked yet". Hours: 41 venues
 carry Google-listing hours and 3 their own site's (v1.14), 109 the 2026-10-23 research, 1
 inKind's 2026-09-05 hours; 4 are marked unconfirmed (low confidence) and 5 have none on file.
 One venue (Punk Wok) carries a temporary closure.
@@ -37,8 +38,8 @@ v2 (parked) would fold in non-inKind aggregator listings.
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
-  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.16: light theme, storage cleared,
-  referral bar dismissed, the v1.12 framing).
+  screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.20 for the new subtitle and card
+  lines: light theme, storage cleared, referral bar dismissed, the v1.12 framing).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
 - `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
@@ -226,12 +227,34 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   dash. The price is left out when the text already says it (every number in it appears in
   the text; or, for a wordy price like "half price", the price itself does, ignoring case and
   spacing). A leading minus reads as a discount: "-$2" -> "$2 off".
-- **Window notes** (v1.12). Day lists read as ranges everywhere (`formatDays`: "Mon–Sat",
-  "Mon, Wed–Fri", "Daily"; a pair stays "Sat, Sun"). A lunch card says what it is under the
-  name: "Lunch special · Mon–Sat 11am–2:30pm · dine-in only" (area only when set). When a
-  window has `research_notes`, its `notes` is reader text and shows as a quiet line on the
-  card; otherwise `notes` is research prose and, with the venue's `disagreements`, sits in a
-  closed "Source notes" disclosure in the expanded card. No ⚠ on either.
+- **Window lines** (v1.20 C2, `L.windowLine`). Every card, in every view, prints each deal
+  window's kind, days, times and area on one line directly above that window's deals, in the
+  deal text's colour and weight: "Happy hour · Mon–Fri 4–6pm · bar only", "Lunch special ·
+  Tue–Fri 11am–2pm · dine-in only", "Special · Tue 5–8:30pm". It is the only place a card
+  says when (the old green lunch line and grey schedule line are gone). Day lists read as
+  ranges (`formatDays`: "Mon–Sat", "Mon, Wed–Fri", "Daily"; a pair stays "Sat, Sun").
+- **"close"** (v1.20 C3, `L.windowTimeLabel`). A window that ends at "close" prints the venue's
+  real close for its days ("5–8:30pm", "9pm–2am"); when its days close at different times, or no
+  hours are on file, it says "11am until close" and never invents one. The Day Grid card, its
+  block labels and the "other days" list use the same rule for their one day.
+- **Day Grid card** (v1.20 C4). It describes the selected day: "Tue: open 11am–9pm" (or "Tue:
+  closed"), not the live clock. Only NOW shows "Open · closes 9pm". "Opens…" is never red; red is
+  kept for closed today, hours conflict and outside posted hours.
+- **Source notes** (v1.20 C8, `L.sourceNoteLines`). The expanded card's "Source notes" shows one
+  sentence built from the data: "Checked on <first source's host> · <last_verified>", plus
+  "Sources disagree — check before you go" when the venue has `disagreements`. The research prose
+  (`notes`, `research_notes`, `disagreements`) stays in the data and is not rendered. A window with
+  `research_notes` still shows its reader-facing `notes` as a quiet line under the deals.
+- **Badges** (v1.20 C9). inKind, Special, Lunch, Verify before you go (low confidence or not
+  checked in 60 days; this replaced Unverified), and the red hours warnings. Each explains itself
+  on hover or focus, and a one-line key sits under the NOW list and the Day Grid. "Deal info"
+  (was "HH info") opens the window's best source.
+- **Day Grid marks** (v1.20 C5/C6). A block prints its times inside it ("4:30–6:30") when they fit,
+  otherwise nothing; every day's blocks look alike (only today has the now line). The legend under
+  the grid names every mark with the grid's own swatches.
+- **Location** (v1.20 C7). With no position, Drive / Walk and the Distance sort say "needs location"
+  and are not shown as selected; choosing one shows the "Ask again" prompt, and the choice applies
+  as soon as a position arrives.
 - Debug override: `?now=YYYY-MM-DDTHH:MM` in the URL forces the clock to that literal
   America/Chicago wall-clock time. Ignored unless the param is present.
 - Debug override: `?pos=LAT,LON` forces the reader's position to that point (v1.8), so a

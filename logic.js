@@ -39,7 +39,10 @@
     if (!ranges || ranges.length === 0) return null;
     var maxEnd = -1;
     for (var i = 0; i < ranges.length; i++) {
+      // v1.20 C3: a range that ends past midnight ("17:00"-"00:00") ends after every
+      // range that day; read as its clock time it would lose to a 3pm lunch close.
       var end = parseHM(ranges[i][1]);
+      if (end <= parseHM(ranges[i][0])) end += 1440;
       if (end > maxEnd) maxEnd = end;
     }
     return maxEnd;
@@ -1185,9 +1188,11 @@
     if (x.slice(-2) === y.slice(-2)) x = x.slice(0, -2);
     return x + '–' + y;
   }
-  // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close".
-  function windowWhenLabel(win) {
-    var when = win.end === 'close' ? fmtHM(win.start) + '–close' : fmtRangeHM(win.start, win.end);
+  // "Mon–Sat 11am–2:30pm", "Mon, Wed–Fri 3–6pm", "Daily 4pm–close". v1.20 C3: given the
+  // venue, a "close" end is resolved (windowTimeLabel): "Tue 5–8:30pm", "Sat, Sun 11am until close".
+  function windowWhenLabel(win, venue) {
+    var when = venue ? windowTimeLabel(venue, win)
+      : (win.end === 'close' ? fmtHM(win.start) + '–close' : fmtRangeHM(win.start, win.end));
     return formatDays(win.days) + ' ' + when;
   }
   // One entry per window, happy hours first, then specials, then lunch (each kept in
@@ -1202,13 +1207,86 @@
     });
     var seen = {}, out = [];
     wins.forEach(function (x) {
-      var part = { text: windowWhenLabel(x.w), kind: x.w.kind || 'happy_hour' };
+      var part = { text: windowWhenLabel(x.w, venue), kind: x.w.kind || 'happy_hour' };
       var key = part.kind + '|' + part.text;
       if (seen[key]) return;
       seen[key] = true;
       out.push(part);
     });
     return out;
+  }
+
+  // ---- v1.20 C3: a window that ends at "close" ----
+  // The close the grid draws for `day` (resolveWindow), as "HH:MM", or null when the
+  // hours give none for that day (the 23:59 fallback).
+  function closeHMOn(venue, win, day) {
+    var ivs = resolveWindow(venue, win);
+    for (var i = 0; i < ivs.length; i++) {
+      if (ivs[i].day !== day) continue;
+      if (ivs[i].warnings.indexOf('missing-hours-fallback-2359') !== -1) return null;
+      return hmOf(ivs[i].endAbs);
+    }
+    return null;
+  }
+  // The window's times: "4–6pm"; a "close" end as the real time when every day the
+  // window runs (or just `day`, when given) closes at the same time ("5–8:30pm",
+  // "9pm–2am"); otherwise "11am until close", never an invented time.
+  function windowTimeLabel(venue, win, day) {
+    if (win.end !== 'close') return fmtRangeHM(win.start, win.end);
+    var days = day ? [day] : win.days;
+    var closes = days.map(function (d) { return closeHMOn(venue, win, d); });
+    var same = closes.length > 0 && closes.every(function (c) { return c !== null && c === closes[0]; });
+    return same ? fmtRangeHM(win.start, closes[0]) : fmtHM(win.start) + ' until close';
+  }
+  // The grid block's label: the same times without am/pm ("4:30–6:30", "11–2").
+  function compactRangeHM(a, b) {
+    return fmtHM(a).replace(/[ap]m$/, '') + '–' + fmtHM(b).replace(/[ap]m$/, '');
+  }
+
+  // ---- v1.20 C2: one line per deal window ----
+  // TJ, 2026-10-25 05:08: "it should be just as clear on the description as it is on the
+  // grid what the times are." Every card prints this directly above the window's deals:
+  // "Happy hour · Mon–Fri 4–6pm · bar only", "Lunch special · Tue–Fri 11am–2pm · dine-in only".
+  var KIND_LABEL = { happy_hour: 'Happy hour', special: 'Special', lunch: 'Lunch special' };
+  function windowLine(venue, win) {
+    var bits = [KIND_LABEL[win.kind] || KIND_LABEL.happy_hour, windowWhenLabel(win, venue)];
+    if (win.area) bits.push(win.area);
+    return bits.join(' · ');
+  }
+
+  // ---- v1.20 C4: the Day Grid card describes the day it is under ----
+  // "Tue: open 11am–9pm", "Sun: open 8am–3pm, 5pm–12am", "Mon: closed",
+  // "Tue: closed (temporary)", "Tue: no hours on file". `closed` = the venue's own hours
+  // say closed that day (the only red case here); a temporary closure is too.
+  function dayHoursStatus(venue, day, tempClosed) {
+    var d = DAY_SHORT[day] + ': ';
+    if (tempClosed) return { text: d + 'closed (temporary)', closed: true };
+    if (!hasHours(venue)) return { text: d + 'no hours on file', closed: false, none: true };
+    var ranges = ((venue.hours && venue.hours[day]) || []).slice().sort(function (a, b) {
+      return parseHM(a[0]) - parseHM(b[0]);
+    });
+    if (!ranges.length) return { text: d + 'closed', closed: true };
+    return { text: d + 'open ' + ranges.map(function (r) { return fmtRangeHM(r[0], r[1]); }).join(', '), closed: false };
+  }
+
+  // ---- v1.20 C8: plain-language source notes ----
+  // One sentence per window, built from the data, never the research prose:
+  // "Checked on bluecoastburrito.com · 2025-01-14", plus a warning when sources disagree.
+  function sourceNoteLines(venue, win) {
+    var host = win.sources && win.sources.length ? hostnameOf(win.sources[0]) : null;
+    var out = [(host ? 'Checked on ' + host : 'Checked') + (win.last_verified ? ' · ' + win.last_verified : '')];
+    if (venue.disagreements && venue.disagreements.length) out.push('Sources disagree — check before you go');
+    return out;
+  }
+
+  // ---- v1.20 C10: counts follow the ticks ----
+  // A zone chip's (and the map's "N live") number: every hood in the zone when it is all
+  // or none, only the ticked ones when it is partly on.
+  function zoneCountFor(selected, zoneHoods, stateHoods, counts) {
+    var st = zoneChipState(selected, stateHoods).state;
+    return (zoneHoods || []).reduce(function (n, h) {
+      return n + (st === 'some' && !selected.has(h) ? 0 : (counts[h] || 0));
+    }, 0);
   }
 
   // ---- v1.18 C1: the Neighborhoods panel ----
@@ -1260,8 +1338,9 @@
   }
   // The Neighborhoods group heading's control: "all" while some are ticked, "none" once
   // every one is.
+  // v1.20 C10: "Select all" / "Clear" (TJ's fix19 report: "none" read as a status).
   function hoodGroupControlLabel(selected, visibleHoods) {
-    return zoneChipState(selected, visibleHoods).state === 'all' ? 'none' : 'all';
+    return zoneChipState(selected, visibleHoods).state === 'all' ? 'Clear' : 'Select all';
   }
 
   // Where the hours came from, for the expanded card's one small line. hours_source
@@ -2035,6 +2114,14 @@
     zoneTapTarget: zoneTapTarget,
     applyZoneTap: applyZoneTap,
     hoodGroupControlLabel: hoodGroupControlLabel,
+    closeHMOn: closeHMOn,
+    windowTimeLabel: windowTimeLabel,
+    compactRangeHM: compactRangeHM,
+    KIND_LABEL: KIND_LABEL,
+    windowLine: windowLine,
+    dayHoursStatus: dayHoursStatus,
+    sourceNoteLines: sourceNoteLines,
+    zoneCountFor: zoneCountFor,
     hoursSourceInfo: hoursSourceInfo,
     hasHours: hasHours,
     WINDOW_KINDS: WINDOW_KINDS,

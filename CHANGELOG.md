@@ -1,5 +1,79 @@
 # Changelog
 
+## 2026-10-25 — BLOCK-hh-radar-fix20-20261025: v1.20 (a pre-launch trust pass: deal times as clear as the grid)
+
+TJ, 2026-10-25, verbatim:
+
+> 04:59, three desktop Day Grid screenshots taken Sun ~04:58 while viewing TUE (Blue Coast Burrito - Mount Juliet card
+> "Opens 11am" in red with "Tue 5pm–close"; Single Tree BBQ card "Opens 11am" in red; 360 Bistro card "Opens 5pm" in red
+> above an hours table showing Tue 11am–9pm): "Look at these screen shots and see if you find anything."
+
+> 05:01: "also look at the times and lack of times for these you might need to really look."
+
+> 05:08: "there was a facebook post where I saw the same blue coast post recently - but I'm not against taking these out.
+> - also the text is light on some and darker in others for the actual times in the description. or just not present
+> like the lunch special. it should be just as clear on the description as it is on the grid what the times are."
+
+### The QA pass
+A fresh-eyes Sonnet pass over v1.19, run as a first-time visitor with no code, found no blockers. Its findings are folded in
+below as QA#n: what the page is (QA#1), raw research prose under "Source notes" (QA#2), Drive / Walk / Distance acting
+as if they work with location off (QA#3), grid marks with no legend (QA#4), the Day Grid card reporting the real clock
+(QA#5), the dead-hour message (QA#7), the README link (QA#10), a hood showing a blank count (QA#11, "Dickerson Pike"),
+badges with no explanation (QA#12), the Directions chooser's first-time wording (QA#14) and who reads feedback (QA#16).
+QA#9 (QR on phones) was a false positive: it tested a narrow iframe inside desktop Chrome.
+
+### Diagnosis (TJ 04:59)
+The Day Grid's inline card computed its hours line from the real clock, not the day it sat under. At 4:58am on a Sunday,
+every card under TUE said "Opens 11am" (or "Opens 5pm": 360 Bistro opens at 5pm on Sundays), and "Opens…" was red. A
+window that ends at "close" was printed as the word "close". The day and time of a deal were in three places in three
+looks: a green lunch line under the name, a small grey schedule line in the expanded card only, and the card's status.
+
+### Changes
+- **C1: what this is.** One subtitle line under the title at every width: "Live happy hours at Nashville restaurants on
+  inKind, the dining app that gives you bonus credit." Below 600px " — Nashville inKind" is dropped, so the title is
+  never cut; on a landscape phone the subtitle takes its own short row.
+- **C2: deal times as clear as the grid.** `L.windowLine(venue, win)` prints "Happy hour · Mon–Fri 4–6pm · bar only" on
+  every card, in every view, directly above that window's deals, in the deal text's own colour and weight. Lunch and
+  specials use the same place ("Lunch special · Tue–Fri 11am–2pm · dine-in only", "Special · Tue 5–8:30pm"). The green
+  lunch line and the grey schedule line are gone.
+- **C3: "close" resolved.** `L.windowTimeLabel` prints the real close when every day of the window closes at the same
+  time ("5–8:30pm", "9pm–2am"), otherwise "11am until close"; no hours on file never invents one. The "other days"
+  list, the Day Grid card and the grid's block labels use it too. `lastCloseMinutes` now reads a range ending past
+  midnight ("17:00"–"00:00") as the day's last close; it used to lose to a 3pm lunch close. No current venue hit that.
+- **C4: the Day Grid card describes the selected day.** `L.dayHoursStatus`: "Tue: open 11am–9pm", "Tue: closed",
+  "Tue: closed (temporary)". Its status reads "Tue 5–8:30pm". Only NOW shows live status. "Opens…" and "Closed 3–5pm ·
+  reopens 5pm" are no longer red; red is kept for closed today, hours conflicts and outside posted hours.
+- **C5: times on the grid.** A block prints its times ("4:30–6:30") when the label fits inside it, otherwise nothing.
+  Other-day blocks were already drawn exactly like today's (only today has the now line), so nothing changed there.
+- **C6: a legend.** Under the grid, one row: happy hour (food), happy hour (drink only), special, all-day special,
+  lunch, open hours, hours not confirmed, now. The swatches use the grid's own classes. In drink-first mode, food and
+  drink happy hours share one look, so the legend shows one "Happy hour" entry.
+- **C7: location-dependent controls.** With no position, Drive / Walk and the Distance sort show "needs location" and
+  are not shown as selected (Time is, since that is the order in force). Choosing one shows "Drive and walk times need
+  your location." or "Distance sort needs your location." with Ask again. The choice is kept and applies as soon as a
+  position arrives.
+- **C8: plain-language source notes.** "Source notes" shows "Checked on <host of first source> · <last_verified>"
+  (`L.sourceNoteLines`), plus "Sources disagree — check before you go" when the venue has disagreements. The research
+  prose stays in the data and is not rendered. Reader notes on lunch windows show as before.
+- **C9: badges.** Unverified and Verify before you go are one "Verify before you go" (dashed, not red). Every badge
+  explains itself on hover or focus, and a one-line key ("Labels:") sits under the NOW list and the Day Grid legend.
+  "HH info" is "Deal info".
+- **C10: counts and labels.** A partly-on zone's chip count and the map's "N live" count only the ticked
+  neighborhoods (`L.zoneCountFor`). The Neighborhoods group controls read "Select all" / "Clear". A neighborhood with
+  a happy hour but none on now shows "0", never a blank (chips and the under-map labels).
+- **C11: small ones.** The dead-hour message says "today" when the next start is today and adds "See the Day Grid".
+  The footer README link opens https://github.com/cumberlandworks/hh-radar#readme in a new tab. The Directions
+  chooser asks "Which maps app should open directions?" and says the pick is used for every address from then on. The
+  feedback box says "Notes go to TJ, the person who built this."
+- **C12: data.** `venues.json` = `venues-20261025m.json` byte for byte (md5 5bdd0695fb853845e03cccfc3d021d61), made by
+  `post_20261025m.py` from the v1.19 file. Research leftovers are removed from 4 deal texts (360 Bistro, Pins, The
+  Authentique, Germantown Cafe). 51 North's two wordings of one deal are now one. Slim & Husky's "$12 Tuesday" is
+  removed (Antioch, Buchanan; the source never says what $12 covers). Blue Coast's Tuesday family night is kept on all
+  7, with a note of TJ's recent Facebook sighting. 147 windows (was 149). Both files are in `data-src/refresh-20261023/`.
+- **C13: v1.20.** `APP_VERSION`, `logic.js?v=1.20`, `venues.json?v=1.20`. og-preview.png and the four LinkedIn shots
+  re-taken from the live site. Tests 187 → 194; the two data-coupled counts moved with the data (coverage 76 → 78 none;
+  priced deals 440 → 438, shown 360 → 361).
+
 ## 2026-10-25 — BLOCK-hh-radar-fix19-20261025: v1.19 (zone chips with three clear states, one neighborhood picker)
 
 TJ, 2026-10-25, verbatim:

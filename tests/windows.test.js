@@ -875,8 +875,10 @@ test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   const pick = (c) => ({ onDay: c.onDay, otherDays: c.otherDays, none: c.none, unchecked: c.unchecked });
   // v1.14 (2026-10-25j data): the browser pass added 11 happy-hour windows at 7 venues and
   // verified 5 more as no happy hour, so "not checked yet" is 0.
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 43, none: 76, unchecked: 0 });
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 67, otherDays: 16, none: 76, unchecked: 0 });
+  // v1.20 (2026-10-25m data): both Slim & Husky's lost their only window ("$12 Tuesday"), so
+  // two venues move from "other days" to none (and off Tuesday).
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 41, none: 78, unchecked: 0 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 65, otherDays: 16, none: 78, unchecked: 0 });
 });
 
 test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
@@ -1556,14 +1558,16 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 });
 
 // v1.14: 413/334 on the v1.13 data; the 2026-10-25j windows add 27 priced deals, 26 shown.
-test('dealPriceLabel: measured on venues.json — 440 priced deals, 360 still show a price', () => {
+// v1.20 (2026-10-25m data): the two "$12 Tuesday" deals are gone (440 -> 438), and The Authentique's
+// "Half-price crepes" no longer carries a 50 in its text, so its "50% off" price shows (360 -> 361).
+test('dealPriceLabel: measured on venues.json — 438 priced deals, 361 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 440);
-  assert.equal(shown, 360);
+  assert.equal(priced, 438);
+  assert.equal(shown, 361);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
   assert.deepEqual(dog.windows[0].deals.map(dealPriceLabel), [null, null, null, null, null]);
 });
@@ -1913,7 +1917,8 @@ test('venueScheduleParts (v1.18 C2): East on Saturday — the four "other days" 
   assert.deepEqual(hh('The Authentique'), ['Tue–Thu 5–6:30pm']);
   assert.deepEqual(hh('Two Ten Jack'), ['Mon–Thu 4–6pm']);
   // The count includes specials (hasIntervalOn reads every window), so they are listed, after.
-  assert.deepEqual(got['Pearl Diver'], [{ text: 'Mon–Fri 4–6pm', kind: 'happy_hour' }, { text: 'Wed 4pm–close', kind: 'special' }]);
+  // v1.20 C3: the special's "close" end is resolved from Wednesday's hours.
+  assert.deepEqual(got['Pearl Diver'], [{ text: 'Mon–Fri 4–6pm', kind: 'happy_hour' }, { text: 'Wed 4pm–12am', kind: 'special' }]);
 });
 
 test('venueScheduleParts (v1.18 C2): happy hours first, exact repeats once; time style', () => {
@@ -1925,7 +1930,8 @@ test('venueScheduleParts (v1.18 C2): happy hours first, exact repeats once; time
     win(['SAT', 'SUN'], '12:30', '17:00'),
   ]);
   assert.deepEqual(L18.venueScheduleParts(v).map((p) => p.kind + ' ' + p.text), [
-    'happy_hour Mon–Wed 3–6pm', 'happy_hour Sat, Sun 12:30–5pm', 'special Fri 9pm–close', 'lunch Sat 11am–2:30pm',
+    // v1.20 C3: no hours on file, so the close is never invented.
+    'happy_hour Mon–Wed 3–6pm', 'happy_hour Sat, Sun 12:30–5pm', 'special Fri 9pm until close', 'lunch Sat 11am–2:30pm',
   ]);
   assert.equal(L18.fmtHM('00:00'), '12am');
   assert.equal(L18.fmtRangeHM('11:00', '14:30'), '11am–2:30pm');
@@ -1997,14 +2003,15 @@ test('zoneTapTarget / applyZoneTap (v1.19 C1): none -> all, some -> all, all -> 
 });
 
 // ==================== v1.19 C2: one neighborhood picker ====================
-test('hoodGroupControlLabel (v1.19 C2): the group heading reads "all" while some are ticked, "none" when all are', () => {
+// v1.20 C10: the words are now "Select all" / "Clear".
+test('hoodGroupControlLabel (v1.19 C2): the group heading reads "Select all" while some are ticked, "Clear" when all are', () => {
   const chips = L18.chipHoodsByZone(REAL);
   const vis = chips.downtown;
   let sel = new Set(['SoBro']);
-  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'all');
+  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'Select all');
   sel = L18.applyZoneTap(sel, 'downtown', vis); // the control does what the zone chip does
   assert.equal(L18.zoneChipState(sel, vis).state, 'all');
-  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'none');
+  assert.equal(L18.hoodGroupControlLabel(sel, vis), 'Clear');
   sel = L18.applyZoneTap(sel, 'downtown', vis);
   assert.equal(L18.zoneChipState(sel, vis).state, 'none');
   assert.deepEqual(L18.hoodPanelGroups(sel, chips), [], 'all off: the group leaves the panel');
@@ -2027,4 +2034,124 @@ test('index.html (v1.19): three chip looks, the group control, and the under-map
   assert.ok(html.includes("'<span class=\"suburb-name\">'"));
   assert.ok(!/suburb-row[^\n]*hoodPillHtml/.test(html), 'no hood chips under the map');
   assert.ok(html.includes('var MAP_FILL = { all: 0.55, some: 0.3, none: 0.12 };'));
+});
+
+// ==================== v1.20: a pre-launch trust pass ====================
+// TJ, 2026-10-25 05:08: "it should be just as clear on the description as it is on the grid
+// what the times are."
+const L20 = require('../logic.js');
+const byName = (n) => REAL.find((v) => v.name === n);
+
+test('windowLine (v1.20 C2): kind · days and times · area, one line per window, every kind', () => {
+  const v = venue({ TUE: [['11:00', '20:30']] }, []);
+  assert.equal(L20.windowLine(v, win(['MON', 'TUE', 'WED', 'THU', 'FRI'], '16:00', '18:00', { area: 'bar only' })),
+    'Happy hour · Mon–Fri 4–6pm · bar only');
+  assert.equal(L20.windowLine(v, win(['TUE', 'WED', 'THU', 'FRI'], '11:00', '14:00', { kind: 'lunch', area: 'dine-in only' })),
+    'Lunch special · Tue–Fri 11am–2pm · dine-in only');
+  assert.equal(L20.windowLine(v, win(['TUE'], '17:00', 'close', { kind: 'special' })), 'Special · Tue 5–8:30pm');
+  // TJ's three 04:59 cards, from venues.json.
+  const bc = byName('Blue Coast Burrito - Mount Juliet');
+  assert.equal(L20.windowLine(bc, bc.windows[0]), 'Special · Tue 5–8:30pm');
+  const st = byName('Single Tree BBQ');
+  assert.equal(L20.windowLine(st, st.windows[0]), 'Lunch special · Tue–Fri 11am–2pm · dine-in only');
+  const b360 = byName('360 Bistro');
+  assert.equal(L20.windowLine(b360, b360.windows[0]), 'Happy hour · Mon–Fri 3:30–5:30pm · bar only');
+});
+
+test('windowTimeLabel (v1.20 C3): "close" resolved; past midnight; differing closes say "until close"', () => {
+  // One day, a normal close.
+  const v1 = venue({ TUE: [['11:00', '20:30']] }, []);
+  assert.equal(L20.windowTimeLabel(v1, win(['TUE'], '17:00', 'close')), '5–8:30pm');
+  // A close past midnight is the real time, not 11:59pm.
+  const v2 = venue({ SAT: [['11:00', '02:00']] }, []);
+  assert.equal(L20.windowTimeLabel(v2, win(['SAT'], '21:00', 'close')), '9pm–2am');
+  // A split day whose dinner range ends at midnight: the close is midnight, not the 3pm
+  // lunch close (lastCloseMinutes used to read "00:00" as the earliest end).
+  const v3 = venue({ MON: [['07:00', '15:00'], ['17:00', '00:00']] }, []);
+  assert.equal(L20.closeHMOn(v3, win(['MON'], '17:00', 'close'), 'MON'), '00:00');
+  assert.equal(L20.windowTimeLabel(v3, win(['MON'], '17:00', 'close')), '5pm–12am');
+  // Different closes on different days: never pick one.
+  const v4 = venue({ SAT: [['11:00', '23:00']], SUN: [['11:00', '21:00']] }, []);
+  const w4 = win(['SAT', 'SUN'], '11:00', 'close');
+  assert.equal(L20.windowTimeLabel(v4, w4), '11am until close');
+  // ...but one day of it (the Day Grid card) has one close.
+  assert.equal(L20.windowTimeLabel(v4, w4, 'SUN'), '11am–9pm');
+  // No hours on file: no invented time.
+  assert.equal(L20.windowTimeLabel(venue({}, []), win(['FRI'], '21:00', 'close')), '9pm until close');
+  assert.equal(L20.closeHMOn(venue({}, []), win(['FRI'], '21:00', 'close'), 'FRI'), null);
+  // A numeric end is untouched.
+  assert.equal(L20.windowTimeLabel(v1, win(['TUE'], '16:30', '18:30')), '4:30–6:30pm');
+  assert.equal(L20.compactRangeHM('16:30', '18:30'), '4:30–6:30');
+  assert.equal(L20.compactRangeHM('11:00', '14:00'), '11–2');
+  // Real data: 51 North's weekend all-day happy hour closes 11pm Sat, 9pm Sun.
+  const n51 = byName('51 North Taproom');
+  assert.equal(L20.windowLine(n51, n51.windows.find((w) => w.days.join() === 'SAT,SUN' && w.kind === 'happy_hour')),
+    'Happy hour · Sat, Sun 11am until close');
+});
+
+test('dayHoursStatus (v1.20 C4): the Day Grid card describes the selected day, not the clock', () => {
+  const b360 = byName('360 Bistro');
+  assert.deepEqual(L20.dayHoursStatus(b360, 'TUE'), { text: 'Tue: open 11am–9pm', closed: false });
+  assert.deepEqual(L20.dayHoursStatus(b360, 'SUN'), { text: 'Sun: open 5–9pm', closed: false });
+  const split = venue({ MON: [['17:00', '00:00'], ['07:00', '15:00']] }, []);
+  assert.equal(L20.dayHoursStatus(split, 'MON').text, 'Mon: open 7am–3pm, 5pm–12am', 'sorted by open time');
+  assert.deepEqual(L20.dayHoursStatus(split, 'TUE'), { text: 'Tue: closed', closed: true });
+  assert.deepEqual(L20.dayHoursStatus(b360, 'TUE', { from: 'x', to: 'y' }), { text: 'Tue: closed (temporary)', closed: true });
+  assert.deepEqual(L20.dayHoursStatus(venue({}, []), 'TUE'), { text: 'Tue: no hours on file', closed: false, none: true });
+});
+
+test('index.html (v1.20 C4): grid card passes its day; "Opens…" is never red', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes("var HOURS_CLOSED = { 'closed-today': 1, 'closed-for-the-day': 1 };"));
+  assert.ok(html.includes("return cardHtml(venue, win, statusLabel, 'soon', distanceLabel(venue), cardKey(venue, win), true, null, day);"));
+  assert.ok(html.includes('L.dayHoursStatus(venue, day, L.tempClosedFor(venue, state.now, day, 1))'));
+  assert.ok(!html.includes('lunchLineHtml') && !html.includes('scheduleBlockHtml'), 'one source of truth (C2)');
+  assert.ok(html.includes('windowLineHtml(venue, win) +\n        \'<div class="deals">\''), 'the line sits directly above the deals');
+});
+
+test('zoneCountFor (v1.20 C10): a partly-on zone counts only its ticked neighborhoods', () => {
+  const hoods = ['A', 'B', 'C', 'D'];
+  const counts = { A: 4, B: 3, C: 2, D: 1 };
+  assert.equal(L20.zoneCountFor(new Set(hoods), hoods, hoods, counts), 10, 'all: every hood');
+  assert.equal(L20.zoneCountFor(new Set(), hoods, hoods, counts), 10, 'none: every hood (what you would get)');
+  assert.equal(L20.zoneCountFor(new Set(['A', 'C']), hoods, hoods, counts), 6, 'some: only A and C');
+  // A hidden hood (no chip) follows its zone: off while the zone is partly on.
+  assert.equal(L20.zoneCountFor(new Set(['A']), hoods.concat('H'), hoods, Object.assign({ H: 5 }, counts)), 4);
+  // Real data: Downtown with SoBro and Rutledge Hill ticked.
+  const chips = L20.chipHoodsByZone(REAL);
+  const dt = zoneHoods('downtown');
+  const live = {}; dt.forEach((h, i) => { live[h] = i + 1; });
+  const sel = new Set(['SoBro', 'Rutledge Hill & Rolling Mill Hill']);
+  assert.equal(L20.zoneCountFor(sel, dt, chips.downtown, live), live.SoBro + live['Rutledge Hill & Rolling Mill Hill']);
+});
+
+test('sourceNoteLines (v1.20 C8): a sentence from the data, never the research prose', () => {
+  const st = byName('Single Tree BBQ');
+  assert.deepEqual(L20.sourceNoteLines(st, st.windows[0]),
+    ['Checked on singletreebbq.com · 2026-10-23', 'Sources disagree — check before you go']);
+  const v = venue({}, []);
+  assert.deepEqual(L20.sourceNoteLines(v, win(['MON'], '16:00', '18:00', { sources: ['https://www.example.com/hh'], last_verified: '2026-10-01' })),
+    ['Checked on example.com · 2026-10-01']);
+  assert.deepEqual(L20.sourceNoteLines(v, win(['MON'], '16:00', '18:00', { sources: [] })), ['Checked · 2026-09-05']);
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!/research_notes : win\.notes/.test(html), 'the prose is no longer rendered');
+  assert.ok(html.includes('L.sourceNoteLines(venue, win).map('));
+});
+
+test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify badge, wording', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('<p class="subtitle">Live happy hours at Nashville restaurants on inKind, the dining app that gives you bonus credit.</p>'));
+  assert.ok(html.includes("return state.gridSort === 'distance' && !state.geo ? 'time' : state.gridSort;"), 'Distance never pretends');
+  assert.ok(html.includes("'<span class=\"needs-loc\">needs location</span>'"));
+  assert.ok(!html.includes('>Unverified<') && !html.includes("'Unverified'"), 'Unverified merged into Verify before you go');
+  assert.ok(!html.includes('HH info'), 'HH info is Deal info');
+  assert.ok(html.includes('Deal info ↗'));
+  assert.ok(html.includes('href="https://github.com/cumberlandworks/hh-radar#readme" target="_blank" rel="noopener">README</a>'));
+  assert.ok(html.includes('Notes go to TJ,\n        the person who built this.'));
+  assert.ok(html.includes("(best.next.day === state.now.dayOfWeek ? 'today' : DAY_FULL[best.next.day])"));
+  assert.ok(html.includes('See the Day Grid'));
+  assert.ok(html.includes("var APP_VERSION = 'v1.20';") && html.includes("venues.json?v=1.20") && html.includes('logic.js?v=1.20'));
 });
