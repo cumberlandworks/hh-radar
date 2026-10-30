@@ -1,5 +1,10 @@
 # Nashville inKind Happy Hour Radar
 
+Live happy hours at Nashville restaurants on inKind, the dining app that gives you bonus credit:
+https://cumberlandworks.github.io/hh-radar/
+
+Built by TJ White with an AI assistant.
+
 A phone-usable page that answers "it's 7pm — which inKind partners near me have a
 happy hour now or in the next 2 hours?" Food discounts are the priority; drinks
 secondary.
@@ -49,16 +54,14 @@ v2 (parked) would fold in non-inKind aggregator listings.
   screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.20 for the new subtitle and card
   lines, and in v1.21 for the Blue Coast removal: light theme, storage cleared, referral bar dismissed, the v1.12 framing).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
-- `venmo-qr.svg` — the QR for `TIP_URL` (v1.13), shown on desktop only.
-- `data-src/` — provenance: the inKind recon pull, per-batch research JSON, and the
-  generator scripts. Read-only history, not used at runtime. `data-src/refresh-20261023/`
+- `data-src/` — provenance: per-batch research JSON and the generator scripts. The raw inKind
+  pulls are not published (removed 2026-10-29), so the scripts that read them need a fresh pull to re-run. Read-only history, not used at runtime. `data-src/refresh-20261023/`
   is the worked example of a full refresh (see *Refresh runbook*).
 
 ## Tip link (v1.10, set in v1.13)
 
 `index.html` carries one constant, `TIP_URL`, next to `APP_VERSION`. Since v1.13 it is set
-to TJ's Venmo, `https://venmo.com/u/Tjwhite-` (TJ, 2026-10-23: "I don't mind using my
-personal venmo"). The card it draws (`tipSectionHtml` in logic.js) sits between the
+to TJ's Venmo, `https://venmo.com/u/Tjwhite-` (TJ's call, 2026-10-23). The card it draws (`tipSectionHtml` in logic.js) sits between the
 referral and Feedback in the referral's style: "Enjoying the radar?" (v1.14; "Like the
 radar?" before) / "Tip on Venmo:
 @Tjwhite-", the handle being the url's last path segment, linked in a new tab with
@@ -104,9 +107,8 @@ note with `[liked]` / `[idea]` / `[problem]` so the inbox sorts itself; the tagg
   rows (the `no-cors` response is opaque, so the page cannot detect the failure — which is
   also why "Sent — thank you." is a statement about the request leaving the device, not
   about Google accepting it).
-- Responses land in the private Sheet **"hh-radar feedback inbox"**
-  `https://docs.google.com/spreadsheets/d/1k1sabNdi95VKwQoLj8E6VAEoqeALABE3CgblgnpsykQ/edit`
-  (tab "Form Responses 1"; columns Timestamp · Note · From · Context).
+- Responses land in a private Google Sheet that only TJ can open.
+  Its columns are Timestamp · Note · From · Context.
   **The Sheet's Timestamp column is UTC, not Central** — it reads about five hours ahead of
   the note's own clock. Every note's Context line carries the local time it was written
   (`... · noted YYYY-MM-DD HH:MM local`), so use that when the two disagree. Code cannot
@@ -318,16 +320,17 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
 
 ## Refresh runbook (rewritten in v1.10 from what worked on 2026-10-23)
 
-Worked example: `data-src/refresh-20261023/` (the TSV, the research brief, the four
+Worked example: `data-src/refresh-20261023/` (the research brief, the four
 research batches, the merge script, the hood script and the merge report).
 
 1. In a real browser tab **on `app.inkind.com` itself** (cross-origin fetches are blocked,
    so this runs same-origin from a real tab, never from the published page), make one
    same-origin `GET /api/v5/map`. A pull returning **0 locations is a FETCH BREAK**, not a
    market exit: stop, and never write an empty roster over a good one.
-2. In that page, build the TN rows as tab-separated text (the fields of
-   `data-src/refresh-20261023/inkind-tn-20261023.tsv`; `zip` now comes from
-   `location.zip_code`), take its SHA-256, put the text in the page body, read it back as
+2. In that page, build the TN rows as tab-separated text (fields `location_id`, `name`, `city`,
+   `zip_code`, `address`, `latitude`, `longitude`, `timezone`, `status`, `brand_id`, `brand_slug`,
+   `purchase_page_link`, `venue_style`; `zip` now comes from `location.zip_code`; the 2026-10-23
+   pull itself is not published), take its SHA-256, put the text in the page body, read it back as
    page text, write the file, and compare the hashes. The browser tool truncates script
    return values and blocks base64, and page text turns tabs into spaces, so mark the tabs
    with a placeholder first and restore them after.

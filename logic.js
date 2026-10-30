@@ -1102,7 +1102,7 @@
     return starts;
   }
 
-  // ---- v1.13 C1: the tip card (TJ, 2026-10-23: "I don't mind using my personal venmo") ----
+  // ---- v1.13 C1: the tip card (TJ's Venmo, set 2026-10-23) ----
   // v1.14 C4: the heading is "Enjoying the radar?" (TJ, 2026-10-25: a reader tips after
   // using it for a bit).
   // Empty url = '' (nothing in the DOM). v1.17 C3 (TJ, 2026-10-25: "one QR code - dont

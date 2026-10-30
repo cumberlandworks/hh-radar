@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# The raw inKind roster pull (inkind-tn-20261023.tsv) is not published (removed 2026-10-29),
+# so this script needs a fresh pull to re-run.
 """Merge the 2026-10-23 refresh research into venues.json (schema v2).
 
 Inputs (same folder): venues.json (v1.9, 2026-09-05), inkind-tn-20261023.tsv,

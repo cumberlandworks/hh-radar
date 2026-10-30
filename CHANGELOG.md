@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-10-29 — BLOCK-hh-radar-fix25-20261029 (repo cleanup)
+
+The page's footer links this repo and more people now open it, so the current tree was cleaned up for outside
+readers. No version bump: the page, `venues.json` and every behavior are unchanged, and `logic.js` changes in
+one comment only (its `?v=` is not bumped, since a comment changes nothing a reader runs).
+
+### Removed
+- A personal remark of TJ's about his Venmo account, in three places: the README's tip-link section, the v1.13
+  entry below and the tip-card comment in `logic.js`. `TIP_URL` and the tip card are unchanged.
+- The private feedback Sheet's address from the README. It now says only that responses land in a private Google
+  Sheet that only TJ can open. The Form's address (public by design), the UTC timestamp note and the privacy note
+  stay.
+- The raw inKind pulls: `data-src/inkind-recon-20260905.json` (the 2026-09-05 recon) and
+  `data-src/refresh-20261023/inkind-tn-20261023.tsv` (the 2026-10-23 roster of 191 TN locations). Every script and
+  research file stays; `build_venues_20260905.py`, `merge_20261023.py` and `merge_20261023b.py` now say at the top
+  that they need a fresh pull to re-run, and so does the README's `data-src/` line. The Refresh runbook lists the
+  roster's fields instead of pointing at the removed file.
+- The README's stale `venmo-qr.svg` line (that file was deleted in v1.17).
+- The rest of TJ's answer to question G in the v1 entry, a remark about a tool from another project. Only
+  "all the ones possible" stays.
+
+### Added
+- A plain-language opening under the README's title: what the radar is, its address, and who built it.
+
+### Not changed, by choice
+Git history still holds the old text and both files. This cleanup rewrites no history and was not force-pushed.
+
 ## 2026-10-25 — BLOCK-hh-radar-fix24-20261025, data step: TJ's ruling on the C3 leans (venues.json?v=1.24)
 
 TJ, 2026-10-25, verbatim: "Apply the strongest C3 leans as a data fix: Acme Monday hours, Fortuna open Monday, drop the
@@ -651,7 +678,7 @@ TJ, 2026-10-23, verbatim:
 
 > ~19:29 CDT: "what's next on the schedule including donation options including venmo ."
 
-> ~19:32: "I don't mind using my personal venmo. I have transactions turned off anyway"
+> ~19:32: TJ agreed to use his own Venmo account for tips.
 
 > ~19:35: a screenshot of his Venmo "Venmo me" screen: "Tj White", "@Tjwhite-".
 
@@ -1785,22 +1812,16 @@ browser. Used from then on to create the repo and enable Pages.
 muted=drink-only; dark mode follows system)
 **G. Add venues before v1 ships** — selected "Add venues before v1 ships" (declining
 the block's own default of "No — v2"), then on follow-up:
-> "all the ones possible - also as a suggestion my command center uses what is called
-> a sidecar - a python script that runs locally on a schedule that can look at a
-> sitemap and record details - it uses it for find jobs on carer pages, but it may be
-> helpful here as well. for both the inkind site and for other sites it needs to
-> gather the data, nashvilleguru or whatever- it does run in a way that make it not
-> seem like a bot to make sure it doesn't get shut down."
+> "all the ones possible"
 **H. `?now=` debug override** — left unselected in the "remove it" option → default
 kept (stays in the shipped page).
 
 **Deviation from the block, said out loud:** G expands v1 scope well beyond the
 locked "v1 = the 35 inKind venues only, do not gold-plate v1" decision — TJ's call to
-make, and G's answer overrides it for this build. **Did not** build the suggested
-bot-camouflage sidecar scraper: (1) a direct `curl` to inKind's map API from this
+make, and G's answer overrides it for this build. **Did not** build a separate
+scraper: (1) a direct `curl` to inKind's map API from this
 environment hung/timed out — same-origin browser fetch (the method the original
-recon already used and validated) is what actually works, not a disguise problem to
-solve; (2) for the other ~101 unflagged metro rows (65 distinct brands after
+recon already used and validated) is what actually works; (2) for the other ~101 unflagged metro rows (65 distinct brands after
 dedup), each brand was researched the same way as the original 35 — official site
 first, then Nashville Guru + one more independent source, via ordinary web
 fetches/searches, no special evasion. See the workflow run for the research pass and

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# The raw inKind recon pull (inkind-recon-20260905.json) is not published (removed 2026-10-29),
+# so this script needs a fresh pull to re-run.
 """Consolidate research batches + inKind recon into venues.json (v1, 35 inKind venues).
 Core-thread review corrections are applied here, in code, so the rebuild is reproducible.
 Run: python3 build_venues_20260905.py  (from the hh-radar dir)"""
