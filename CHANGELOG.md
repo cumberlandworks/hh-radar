@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-11-03 — BLOCK-hh-radar-fix27-20261102, follow-up: v2.0.1
+
+TJ, verbatim: "Loosen it, and finish these in this session".
+
+- **Duplicate rule loosened** (`logic.js` `nvDuplicateOf`, used by `validate.js` and `merge_v2zone.py`): a shared
+  street address is a duplicate only when the names are similar too (`L.namesSimilar`: after dropping generic
+  words such as bar, grill, kitchen, social, the names share at least half the words of the shorter one). The
+  same name within 0.15 mi still counts. Tests for both, and for the real Downtown pairs.
+- **Downtown re-merged** as `data-src/refresh-20261102/venues-v2-01-downtown-b.json` (the original is kept) and
+  installed as venues.json. Stateside Kitchen (Dream Hotel, beside Sushi By Bou) and The Hitchcock (530 Church,
+  beside Taste of NY) are in, both on Nashville Guru entries confirmed 2026-10-15 and 2026-08-07. Blue Sushi
+  Sake Grill stays out (same street, similar name: ik-8588). Downtown: 25 added, 9 not added.
+  File: 184 venues (159 inKind, 25 not), 173 windows (139 inKind, 34 not).
+- **Unzoned leads placed** from the address on each venue's own site (`leads/raw/address-overrides.json`, read
+  by `build_leads.js`): Rare Bird → Downtown; Antler Bar at Gathre → Gulch & Midtown; Monday Night Preservation
+  Co. and Sedona Taphouse → Germantown & North; Game Terminal and Reunion → East. Carne Mare stays unzoned (its
+  site is dead). The rebuild also moved Germantown Café and Saint Añejo to the inKind overlap (accents are now
+  folded). Leads: Downtown 35, Gulch & Midtown 47, Germantown & North 16, East 31, South 34, West 15, Franklin 0.
+- `merge_v2zone.py --suffix b` writes a re-merge beside the original.
+- `APP_VERSION`, `logic.js?v=`, `venues.json?v=` and `version.txt`: v2.0.1 (they must move together: a test
+  holds version.txt to APP_VERSION, and the update bar compares them).
+
 ## 2026-11-03 — BLOCK-hh-radar-fix27-20261102: v2.0, every Nashville happy hour with an inKind toggle
 
 TJ, verbatim (2026-11-02 20:08): "I want to expand the happy hour to be all happy hours in Nashville and be able to

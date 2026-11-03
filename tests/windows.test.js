@@ -2193,7 +2193,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.0';") && html.includes("venues.json?v=2.0") && html.includes('logic.js?v=2.0'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.0.1';") && html.includes("venues.json?v=2.0.1") && html.includes('logic.js?v=2.0.1'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2709,11 +2709,23 @@ test('v2.0 A3: no nv- venue duplicates an ik- venue (name within 0.15 mi, or the
   // same name, ~1 mi away: a different location, allowed
   const far = nv27({ name: ik.name, address: '999 Elsewhere Ave', lat: ik.lat + 0.0145, lon: ik.lon });
   assert.ok(!errs27(far, [ik]).some((e) => dup.test(e)));
-  // same street, written differently
-  const street = nv27({ name: 'Totally Different', address: ik.address.replace(/\bStreet\b/, 'St.').replace(/\bAvenue\b/, 'Ave') + ', Suite 110' });
+  // same street, written differently, with a similar name: a duplicate
+  const sameSt = ik.address.replace(/\bStreet\b/, 'St.').replace(/\bAvenue\b/, 'Ave') + ', Suite 110';
+  const street = nv27({ name: ik.name + ' Bar & Grill', address: sameSt, lat: ik.lat + 0.01, lon: ik.lon });
   assert.ok(errs27(street, [ik]).some((e) => dup.test(e)), ik.address);
+  // v2.0.1: same street, unrelated name (a hotel or food hall): not a duplicate
+  const other = nv27({ name: 'Totally Different', address: sameSt });
+  assert.ok(!errs27(other, [ik]).some((e) => dup.test(e)), 'different venue in the same building');
   assert.equal(L27.normName('The Pinewood Social - Nashville'), 'pinewood social');
   assert.equal(L27.normStreet('33 Peabody Street, Suite 2'), L27.normStreet('33 Peabody St.'));
+});
+test('v2.0.1: namesSimilar — the real Downtown cases', () => {
+  assert.equal(L27.namesSimilar('Blue Sushi Sake Grill', 'Blue Sushi - 5th & Broadway'), true);
+  assert.equal(L27.namesSimilar('Stateside Kitchen', 'Sushi By Bou - Nashville'), false);
+  assert.equal(L27.namesSimilar('The Hitchcock', 'Taste of NY - Downtown'), false);
+  assert.equal(L27.namesSimilar('Pinewood Social', 'The Hampton Social - Nashville'), false);
+  assert.equal(L27.namesSimilar('Etch', 'Etch Restaurant'), true);
+  assert.equal(L27.namesSimilar('Verna Café & Bar', 'Verna Cafe'), true);
 });
 test('v2.0 B4: coverage is a string or {text, v2_zones_done}; the note lists done zones in zone order', () => {
   assert.deepEqual(L27.validateVenues(data27([], 'old text')), []);

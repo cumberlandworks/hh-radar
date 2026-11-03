@@ -3,7 +3,7 @@
  "generated": "2026-11-03",
  "generator": "merge_v2zone.py (hh-radar v2 zone runs, refresh-20261102)",
  "coverage": {
-  "text": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed) | v2: 23 non-inKind venues with a happy hour, trust-bar checked, in Downtown (zone runs from 2026-11-03)",
+  "text": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed) | v2: 25 non-inKind venues with a happy hour, trust-bar checked, in Downtown (zone runs from 2026-11-03)",
   "v2_zones_done": [
    "downtown"
   ]
@@ -14951,6 +14951,121 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-stateside-kitchen-210",
+   "name": "Stateside Kitchen",
+   "city": "Nashville",
+   "neighborhood": "Downtown",
+   "hood": "Downtown & Printers Alley",
+   "zone": "downtown",
+   "address": "210 4th Avenue North",
+   "zip": "37219",
+   "lat": 36.1640987,
+   "lon": -86.7791144,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.dreamhotels.com/nashville/dining-nightlife/stateside-kitchen",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "Google listing 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Special happy hour food menu",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 house wines",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$5 select beers",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$8 cocktails",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/stateside-kitchen-at-dream-hotel",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-15"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-15. Check with the venue.",
+     "research_notes": "Venue page (dreamhotels.com) redirects to hyatt.com and the dining page returned 403, so no venue source was readable. Other undated sources disagree: NASHtoday says daily 2-5pm, Only In Your State says 'Golden Hour' 4-7pm weekdays. Used the 2026-confirmed Nashville Guru entry."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-03"
+  },
+  {
    "id": "ik-9525",
    "inkind_id": 9525,
    "name": "Sushi By Bou - Nashville",
@@ -16482,6 +16597,111 @@
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "lunch_checked": false
+  },
+  {
+   "id": "nv-the-hitchcock-530",
+   "name": "The Hitchcock",
+   "city": "Nashville",
+   "neighborhood": "Downtown",
+   "hood": "Downtown & Printers Alley",
+   "zone": "downtown",
+   "address": "530 Church Street",
+   "zip": "37219",
+   "lat": 36.1628093,
+   "lon": -86.781233,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "http://www.hitchcocknashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "Google listing 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 martinis",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/the-hitchcock",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-08-07"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-08-07. Check with the venue.",
+     "research_notes": "Venue site (hitchcocknashville.com) shows no happy hour and its hours are on a separate page not read; no social post found. Guide entry confirmed 2026-08-07 used."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-03"
   },
   {
    "id": "nv-the-listening-room-cafe-618",

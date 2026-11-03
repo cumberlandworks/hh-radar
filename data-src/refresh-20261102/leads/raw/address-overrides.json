@@ -1,0 +1,50 @@
+{
+ "Antler Bar at Gathre": {
+  "address": "1810 Broadway, Nashville, TN 37203",
+  "hood": "Midtown & Music Row",
+  "source_url": "https://www.gathrenashville.com/menu/beverages-copy/",
+  "lat": 36.1514754,
+  "lon": -86.7963769
+ },
+ "Carne Mare": {
+  "address": null,
+  "hood": null,
+  "source_url": "https://www.carnemarenashville.com/",
+  "why": "no address on the venue’s own site (site dead; official site is dead (expired certificate, BentoBox redirect placeholder), no a)"
+ },
+ "Game Terminal": {
+  "address": "201 Terminal Court, Nashville, TN 37210",
+  "hood": "East Bank & Fesslers",
+  "source_url": "https://gameterminal.com/menus/",
+  "lat": 36.1316046,
+  "lon": -86.7454352
+ },
+ "Monday Night Preservation Co.": {
+  "address": "1308 Adams Street, Nashville, TN 37208",
+  "hood": "Germantown",
+  "source_url": "https://mondaynightbrewing.com/location/preservation-co/",
+  "lat": 36.1796341,
+  "lon": -86.7829616
+ },
+ "Rare Bird": {
+  "address": "200 Fourth Avenue N., Nashville, TN 37219",
+  "hood": "Downtown & Printers Alley",
+  "source_url": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "lat": 36.1640054,
+  "lon": -86.7787375
+ },
+ "Reunion": {
+  "address": "105 South 11th Street, Nashville, TN 37206",
+  "hood": "Five Points & Main Street",
+  "source_url": "https://www.reunionnashville.com/bar",
+  "lat": 36.1771714,
+  "lon": -86.7497072
+ },
+ "Sedona Taphouse": {
+  "address": "1120 3rd Ave. North, Nashville, TN 37208",
+  "hood": "Germantown",
+  "source_url": "https://sedonataphouse.com/locations/nashville-tn/",
+  "lat": 36.1761775,
+  "lon": -86.785215
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "Antler Bar at Gathre": {"address": "1810 Broadway, Nashville, TN 37203", "site": "https://www.gathrenashville.com/", "source_url": "https://www.gathrenashville.com/menu/beverages-copy/", "note": "inside Gathre hotel; page text says 1810 Broadway but its map link says 1812 Broadway"},
+  "Carne Mare": {"address": null, "site": "https://www.carnemarenashville.com/", "source_url": "https://www.carnemarenashville.com/", "note": "official site is dead (expired certificate, BentoBox redirect placeholder), no address shown; third-party listings (not the venue's site) suggest it closed; W Nashville hotel, 300 12th Ave S per directories, unverified on venue site"},
+  "Game Terminal": {"address": "201 Terminal Court, Nashville, TN 37210", "site": "https://gameterminal.com/", "source_url": "https://gameterminal.com/menus/", "note": "single location listed"},
+  "Monday Night Preservation Co.": {"address": "1308 Adams Street, Nashville, TN 37208", "site": "https://mondaynightbrewing.com/", "source_url": "https://mondaynightbrewing.com/location/preservation-co/", "note": "Monday Night Brewing's Preservation Co. location page (Germantown)"},
+  "Rare Bird": {"address": "200 Fourth Avenue N., Nashville, TN 37219", "site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/", "source_url": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/", "note": "rooftop bar at the Noelle hotel; address is the hotel's"},
+  "Reunion": {"address": "105 South 11th Street, Nashville, TN 37206", "site": "https://www.reunionnashville.com/", "source_url": "https://www.reunionnashville.com/bar", "note": "site gives street only; zip 37206 taken from the site's own map link"},
+  "Sedona Taphouse": {"address": "1120 3rd Ave. North, Nashville, TN 37208", "site": "https://sedonataphouse.com/", "source_url": "https://sedonataphouse.com/locations/nashville-tn/", "note": "Nashville location page; chain has other locations elsewhere"}
+}

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """fix27 D5: merge one zone run's researched venues into venues.json (hh-radar v2).
 
-Usage: python3 merge_v2zone.py <current venues.json> <zone> <geocoded research JSON> [--date YYYY-MM-DD]
+Usage: python3 merge_v2zone.py <current venues.json> <zone> <geocoded research JSON> [--date YYYY-MM-DD] [--suffix b]
 
 The research JSON is the subagents' {added, not_added} (BRIEF-v2zone.md shape), combined, after
 geocode_v2zone.py (and the D3 hours pass) have filled lat/lon. It:
   - assigns ids (logic.js nvIdFor), hood (the hand-set `hood` if present, else the geocoded point's
     nearest hood) and zone (zoneOf(hood));
-  - dedupes against everything already in the file (logic.js nvDuplicateOf, and the id);
+  - dedupes against everything already in the file (logic.js nvDuplicateOf: the same name within 0.15 mi, or
+    the same street with a similar name (v2.0.1); and the id);
   - validates the result with logic.js validateVenues and refuses to write on any error;
-  - writes venues-v2-<NN>-<zone>.json next to this script (NN = zone run order);
+  - writes venues-v2-<NN>-<zone>.json next to this script (NN = zone run order; --suffix b writes
+    venues-v2-<NN>-<zone>-b.json, for a re-merge that keeps the original);
   - appends the zone to coverage.v2_zones_done, updates generated and the coverage text;
   - writes not-added-<zone>.md: every lead not added, with its reason.
 A venue whose own address puts it in another core zone is still added, in that zone, and listed
@@ -51,6 +53,9 @@ def main():
     date = sys.argv[sys.argv.index('--date') + 1] if '--date' in sys.argv else datetime.date.today().isoformat()
     if '--date' in sys.argv:
         args.remove(date)
+    suffix = sys.argv[sys.argv.index('--suffix') + 1] if '--suffix' in sys.argv else ''
+    if suffix:
+        args.remove(suffix)
     venues_path, zone, research_path = args
     if zone not in ORDER:
         sys.exit('zone must be one of ' + ', '.join(ORDER))
@@ -113,7 +118,7 @@ def main():
     data['generated'] = date
     data['generator'] = 'merge_v2zone.py (hh-radar v2 zone runs, refresh-20261102)'
 
-    out = os.path.join(HERE, 'venues-v2-%02d-%s.json' % (ORDER[zone], zone))
+    out = os.path.join(HERE, 'venues-v2-%02d-%s%s.json' % (ORDER[zone], zone, '-' + suffix if suffix else ''))
     tmp = out + '.tmp'
     json.dump(data, open(tmp, 'w'), indent=1, ensure_ascii=False)
     res = helper('validate', {'path': tmp})

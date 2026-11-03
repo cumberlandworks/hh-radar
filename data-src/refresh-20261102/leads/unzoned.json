@@ -1,19 +1,6 @@
 [
  {
-  "why": "no neighborhood given",
-  "name": "Antler Bar at Gathre",
-  "neighborhood_text": null,
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   }
-  ],
-  "site": "https://www.gathrenashville.com/menu/beverages-copy/"
- },
- {
-  "why": "no neighborhood given",
+  "why": "no address on the venue’s own site (site dead; official site is dead (expired certificate, BentoBox redirect placeholder), no a)",
   "name": "Carne Mare",
   "neighborhood_text": null,
   "address": null,
@@ -23,115 +10,7 @@
     "confirmed": null
    }
   ],
-  "site": "https://www.carnemarenashville.com/menu/happy-hour/"
- },
- {
-  "why": "neighborhood text too vague to place",
-  "name": "Game Terminal",
-  "neighborhood_text": "South Nashville",
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/friday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/monday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/thursday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/tuesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/wednesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
-    "confirmed": "2026-10-20"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
-    "confirmed": "2026-10-20"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
-    "confirmed": "2026-10-20"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
-    "confirmed": "2026-10-20"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
-    "confirmed": "2026-10-20"
-   }
-  ],
-  "site": "https://gameterminal.com/menus/"
- },
- {
-  "why": "no neighborhood given",
-  "name": "Monday Night Preservation Co.",
-  "neighborhood_text": null,
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   }
-  ],
-  "site": null
- },
- {
-  "why": "no neighborhood given",
-  "name": "Rare Bird",
-  "neighborhood_text": null,
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   }
-  ],
-  "site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/"
- },
- {
-  "why": "no neighborhood given",
-  "name": "Reunion",
-  "neighborhood_text": null,
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   }
-  ],
-  "site": "https://www.reunionnashville.com/bar"
- },
- {
-  "why": "no neighborhood given",
-  "name": "Sedona Taphouse",
-  "neighborhood_text": null,
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
-    "confirmed": null
-   }
-  ],
-  "site": "https://sedonataphouse.com/locations/nashville-tn/"
+  "site": "https://www.carnemarenashville.com/menu/happy-hour/",
+  "address_source": "https://www.carnemarenashville.com/"
  }
 ]

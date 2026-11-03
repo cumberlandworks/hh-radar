@@ -1270,6 +1270,21 @@
  {
   "hood_guess": "Downtown & Printers Alley",
   "zone": "downtown",
+  "name": "Rare Bird",
+  "neighborhood_text": null,
+  "address": "200 Fourth Avenue N., Nashville, TN 37219",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "address_source": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/"
+ },
+ {
+  "hood_guess": "Downtown & Printers Alley",
+  "zone": "downtown",
   "name": "Standard Proof Whiskey Co.",
   "neighborhood_text": "Downtown",
   "address": null,

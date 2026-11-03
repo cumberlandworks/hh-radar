@@ -416,6 +416,65 @@
   "site": "https://frothymonkey.com/locations/12south-nashville-tn/"
  },
  {
+  "hood_guess": "East Bank & Fesslers",
+  "zone": "east",
+  "name": "Game Terminal",
+  "neighborhood_text": "South Nashville",
+  "address": "201 Terminal Court, Nashville, TN 37210",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-20"
+   }
+  ],
+  "site": "https://gameterminal.com/menus/",
+  "address_source": "https://gameterminal.com/menus/"
+ },
+ {
   "hood_guess": "Five Points & Main Street",
   "zone": "east",
   "name": "Garage Sale Bar (East)",
@@ -718,6 +777,21 @@
    }
   ],
   "site": "https://www.planejanebar.com/"
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Reunion",
+  "neighborhood_text": null,
+  "address": "105 South 11th Street, Nashville, TN 37206",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.reunionnashville.com/bar",
+  "address_source": "https://www.reunionnashville.com/bar"
  },
  {
   "hood_guess": "Five Points & Main Street",

@@ -1882,13 +1882,30 @@
       .replace(/\b(suite|ste|unit|#)\s*\S+/g, '').replace(/[.#]/g, ' ').replace(/[^a-z0-9 ]+/g, ' ');
     return a.split(/\s+/).filter(Boolean).map(function (w) { return STREET_ABBR[w] || w; }).join(' ');
   }
-  // The nv- venue's duplicate among `others` (by name within 0.15 mi, or by street), or null.
+  // v2.0.1 (TJ: "Loosen it"): a shared street address is a duplicate only when the names
+  // are similar too, since hotels and food halls hold several venues at one address
+  // (Stateside Kitchen and Sushi By Bou at the Dream Hotel). Similar = after dropping
+  // generic words, they share at least half the words of the shorter name.
+  var NAME_GENERIC = { and: 1, the: 1, of: 1, by: 1, at: 1, bar: 1, grill: 1, kitchen: 1, restaurant: 1, cafe: 1,
+    co: 1, company: 1, tavern: 1, lounge: 1, eatery: 1, social: 1, house: 1, nashville: 1, tn: 1 };
+  function nameTokens(name) {
+    return normName(name).split(' ').filter(function (t) { return t && !NAME_GENERIC[t]; });
+  }
+  function namesSimilar(a, b) {
+    if (normName(a) === normName(b)) return true;
+    var ta = nameTokens(a), tb = nameTokens(b);
+    if (!ta.length || !tb.length) return false;
+    var shared = ta.filter(function (t, i) { return ta.indexOf(t) === i && tb.indexOf(t) !== -1; }).length;
+    return shared > 0 && shared * 2 >= Math.min(ta.length, tb.length);
+  }
+  // The nv- venue's duplicate among `others` (the same name within 0.15 mi, or the same
+  // street with a similar name), or null.
   function nvDuplicateOf(v, others) {
     var n = normName(v.name), st = normStreet(v.address);
     for (var i = 0; i < others.length; i++) {
       var o = others[i];
       if (o === v) continue;
-      if (st && st === normStreet(o.address)) return o;
+      if (st && st === normStreet(o.address) && namesSimilar(v.name, o.name)) return o;
       if (n && n === normName(o.name) && typeof v.lat === 'number' && typeof o.lat === 'number' &&
           haversineMiles(v.lat, v.lon, o.lat, o.lon) <= NV_DUP_MILES) return o;
     }
@@ -2433,6 +2450,7 @@
     normName: normName,
     normStreet: normStreet,
     nvDuplicateOf: nvDuplicateOf,
+    namesSimilar: namesSimilar,
     nvIdFor: nvIdFor,
     SCOPE_KEY: SCOPE_KEY,
     scopeVenues: scopeVenues,

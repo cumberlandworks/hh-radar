@@ -1038,64 +1038,6 @@
   "site": "https://www.mercadobtown.com/ramones"
  },
  {
-  "hood_guess": "12 South",
-  "zone": "south",
-  "name": "Saint Añejo",
-  "neighborhood_text": "12 South",
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashvillego.com/happy-hours",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/friday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/monday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/thursday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/tuesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/wednesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
-    "confirmed": "2026-10-26"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
-    "confirmed": "2026-10-26"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
-    "confirmed": "2026-10-26"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
-    "confirmed": "2026-10-26"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
-    "confirmed": "2026-10-26"
-   },
-   {
-    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
-    "confirmed": null
-   }
-  ],
-  "site": "https://www.mstreetnashville.com/saint-anejo"
- },
- {
   "hood_guess": "Green Hills",
   "zone": "south",
   "name": "Santo",

@@ -128,68 +128,6 @@
  {
   "hood_guess": "Germantown",
   "zone": "north",
-  "name": "Germantown Café",
-  "neighborhood_text": "Germantown",
-  "address": null,
-  "guides": [
-   {
-    "url": "https://nashvillego.com/happy-hours",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/friday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/monday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/saturday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/thursday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/tuesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvillego.com/happy-hours/wednesday",
-    "confirmed": null
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
-    "confirmed": "2026-10-23"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
-    "confirmed": "2026-10-23"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
-    "confirmed": "2026-10-23"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
-    "confirmed": "2026-10-23"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
-    "confirmed": "2026-10-23"
-   },
-   {
-    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
-    "confirmed": "2026-10-23"
-   }
-  ],
-  "site": null
- },
- {
-  "hood_guess": "Germantown",
-  "zone": "north",
   "name": "Germantown Pub",
   "neighborhood_text": "Germantown",
   "address": null,
@@ -288,6 +226,21 @@
    }
   ],
   "site": "http://www.henriettared.com"
+ },
+ {
+  "hood_guess": "Germantown",
+  "zone": "north",
+  "name": "Monday Night Preservation Co.",
+  "neighborhood_text": null,
+  "address": "1308 Adams Street, Nashville, TN 37208",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null,
+  "address_source": "https://mondaynightbrewing.com/location/preservation-co/"
  },
  {
   "hood_guess": "Germantown",
@@ -400,6 +353,21 @@
    }
   ],
   "site": "https://greenbrierdistillery.com"
+ },
+ {
+  "hood_guess": "Germantown",
+  "zone": "north",
+  "name": "Sedona Taphouse",
+  "neighborhood_text": null,
+  "address": "1120 3rd Ave. North, Nashville, TN 37208",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://sedonataphouse.com/locations/nashville-tn/",
+  "address_source": "https://sedonataphouse.com/locations/nashville-tn/"
  },
  {
   "hood_guess": "Germantown",

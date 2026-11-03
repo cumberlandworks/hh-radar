@@ -26,7 +26,7 @@ if (cmd === 'place') {
 } else if (cmd === 'dup') {
   const d = L.nvDuplicateOf(input.venue, input.others);
   out = d ? { id: d.id, name: d.name,
-    by: L.normName(d.name) === L.normName(input.venue.name) ? 'name within ' + L.NV_DUP_MILES + ' mi' : 'street address' } : null;
+    by: L.normName(d.name) === L.normName(input.venue.name) ? 'name within ' + L.NV_DUP_MILES + ' mi' : 'street address and a similar name' } : null;
 } else if (cmd === 'validate') {
   const data = JSON.parse(fs.readFileSync(input.path, 'utf8'));
   out = { errors: L.validateVenues(data), warnings: L.lintVenues(data) };

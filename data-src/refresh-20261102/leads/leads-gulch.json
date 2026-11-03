@@ -178,6 +178,21 @@
   "site": "https://amerigo.net/"
  },
  {
+  "hood_guess": "Midtown & Music Row",
+  "zone": "gulch",
+  "name": "Antler Bar at Gathre",
+  "neighborhood_text": null,
+  "address": "1810 Broadway, Nashville, TN 37203",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.gathrenashville.com/menu/beverages-copy/",
+  "address_source": "https://www.gathrenashville.com/menu/beverages-copy/"
+ },
+ {
   "hood_guess": "The Gulch",
   "zone": "gulch",
   "name": "Bar Louie",

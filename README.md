@@ -50,7 +50,7 @@ its coverage line, Surprise me, the empty state, the feedback context line) read
 inKind cards keep their badge and inKind button; non-inKind cards have neither, and their grid row's K column is
 blank. The footer's venue and window counts are the whole file.
 
-**Status** (v2.0, 2026-11-03): Downtown done: 23 non-inKind venues, 32 happy-hour windows (182 venues and 171
+**Status** (v2.0.1, 2026-11-03): Downtown done: 25 non-inKind venues, 34 happy-hour windows (184 venues and 173
 windows in all). The other six zones follow, one zone run each.
 
 **Scope.** The 7 core zones (Downtown, Gulch & Midtown, Germantown & North, East, South, West, Franklin &
@@ -74,7 +74,7 @@ if the venue's own site, menu or socials show the happy hour, or a guide entry t
 2026 does. Guides are leads only. Deals come from a venue or social source, or the window's `notes` say they came
 from a 2026-confirmed guide entry ("Deals as listed by <guide>, confirmed YYYY-MM-DD. Check with the venue.").
 `nv-` ids are unique, and no `nv-` venue may duplicate an `ik-` venue (the same normalized name within 0.15 mi,
-or the same street address). Anything weaker is left out and listed in the zone's not-added file.
+or the same street address with a similar name, since v2.0.1). Anything weaker is left out and listed in the zone's not-added file.
 
 **How a zone run works** (`BLOCK-hh-radar-v2zone-20261102.md`, one per zone after Downtown):
 1. Leads: `refresh-20261102/leads/leads-<zone>.json`, built once by `build_leads.js` from five guides (Nashville
@@ -92,7 +92,7 @@ or the same street address). Anything weaker is left out and listed in the zone'
    fix and re-check another 10. Then the venues file is installed as `venues.json`, byte for byte.
 
 **File chain.** `data-src/refresh-20261023/venues-20261025o.json` (v1.24) →
-`data-src/refresh-20261102/venues-v2-01-downtown.json` (v2.0) → `venues-v2-02-gulch.json` → … →
+`data-src/refresh-20261102/venues-v2-01-downtown.json` (v2.0) → `venues-v2-01-downtown-b.json` (v2.0.1) → `venues-v2-02-gulch.json` → … →
 `venues-v2-07-franklin.json`. Each is the one before plus one zone. The scripts (`build_leads.js`,
 `v2zone_helper.js`, `geocode_v2zone.py`, `merge_v2zone.py`), the brief, the leads and each zone's research JSON
 and not-added file sit beside them. The hood rules they share live in `data-src/hood_zone.js` (split out of
