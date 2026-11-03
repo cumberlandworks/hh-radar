@@ -1,0 +1,384 @@
+[
+ {
+  "hood_guess": "Midtown & Music Row",
+  "zone": "gulch",
+  "name": "Antler Bar at Gathre",
+  "neighborhood_text": null,
+  "address": "1810 Broadway, Nashville, TN 37203",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.gathrenashville.com/menu/beverages-copy/",
+  "address_source": "https://www.gathrenashville.com/menu/beverages-copy/"
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "Brown's Diner",
+  "neighborhood_text": "Hillsboro Village",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-27"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Craig's",
+  "neighborhood_text": "Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-28"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-28"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-28"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-28"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-28"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Fogg Street Lawn Club",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Golden Sound Nashville",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   }
+  ],
+  "site": "https://goldensoundnashville.com/"
+ },
+ {
+  "hood_guess": "West End",
+  "zone": "gulch",
+  "name": "Hi-Fi Clyde’s",
+  "neighborhood_text": "West End/Midtown",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "The Iberian Pig",
+  "neighborhood_text": "The Gulch",
+  "address": "607 Overton St",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.iberianpig.com/nashville"
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Maíz de la Vida",
+  "neighborhood_text": "Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-27"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "Sadie's",
+  "neighborhood_text": "Edgehill",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-27"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Sunda",
+  "neighborhood_text": "The Gulch",
+  "address": "592 12th Ave S",
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-11-02"
+   },
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "https://sundanewasian.com/nashville/"
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "Twenty First",
+  "neighborhood_text": "Hillsboro Village",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-27"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Downtown & Printers Alley",
+  "zone": "downtown",
+  "name": "Rare Bird",
+  "neighborhood_text": null,
+  "address": "200 Fourth Avenue N., Nashville, TN 37219",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "address_source": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/"
+ }
+]

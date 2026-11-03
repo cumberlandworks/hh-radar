@@ -1,0 +1,250 @@
+[
+ {
+  "id": "nv-coa-nashville-920",
+  "name": "COA Nashville",
+  "address": "920 Division Street",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   "Beers",
+   "Frozen cocktails",
+   "Signature cocktails",
+   "House margaritas",
+   "Soft serve margaritas"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/coa"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-09-17. Check with the venue."
+ },
+ {
+  "id": "nv-commons-club-1",
+  "name": "Commons Club",
+  "address": "1 Music Square West",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   "$2 oysters",
+   "$8 wines",
+   "$5 drafts",
+   "$10 classic cocktails",
+   "$9 bites"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/commons-club"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue."
+ },
+ {
+  "id": "nv-stk-nashville-700",
+  "name": "STK Nashville",
+  "address": "700 12th Ave S",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "14:30",
+  "end": "18:30",
+  "deals": [
+   "$3, $6 and $9 drinks",
+   "Bites starting from $3"
+  ],
+  "sources": [
+   "https://stksteakhouse.com/venues/nashville/",
+   "https://stksteakhouse.com/venues/nashville/happy-hour"
+  ],
+  "notes": "Bar, lounge and patio only. Per-item prices not posted."
+ },
+ {
+  "id": "nv-the-gumbo-bros-505",
+  "name": "The Gumbo Bros",
+  "address": "505 12th Avenue South",
+  "window_index": 1,
+  "days": [
+   "TUE"
+  ],
+  "start": "11:00",
+  "end": "close",
+  "deals": [
+   "Draft beer",
+   "Well drinks",
+   "House wine",
+   "Frozen cocktails",
+   "Discounted food"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/gumbo-bros"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue."
+ },
+ {
+  "id": "nv-craigs-611",
+  "name": "Craig's",
+  "address": "611 9th Ave S",
+  "window_index": 1,
+  "days": [
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "17:00",
+  "end": "18:00",
+  "deals": [
+   "$5 beers",
+   "$4 off wines by the glass",
+   "$4 off specialty cocktails",
+   "$12 well cocktails",
+   "Special happy hour food menu"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/craigs"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-28. Check with the venue."
+ },
+ {
+  "id": "nv-del-friscos-grille-1201",
+  "name": "Del Frisco’s Grille",
+  "address": "1201 Demonbreun St",
+  "window_index": 1,
+  "days": [
+   "SAT"
+  ],
+  "start": "14:00",
+  "end": "17:00",
+  "deals": [
+   "Bites",
+   "Cocktails (Moscow Mule, The VIP, Grille Margarita, Old Fashioned)",
+   "Select wines",
+   "Select spirits",
+   "Select bottled and draft beer"
+  ],
+  "sources": [
+   "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/"
+  ],
+  "notes": "Bar only."
+ },
+ {
+  "id": "nv-twenty-first-1602",
+  "name": "Twenty First",
+  "address": "1602 21st Avenue South",
+  "window_index": 1,
+  "days": [
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "19:00",
+  "end": "close",
+  "deals": [
+   "Half-price bottles and glasses of wine",
+   "$7 handcrafted martinis",
+   "$7 old fashioneds",
+   "$3 draft beers"
+  ],
+  "sources": [
+   "https://twentyfirstnashville.com/happy-hours"
+  ],
+  "notes": "Reverse happy hour, bar top only."
+ },
+ {
+  "id": "nv-maiz-de-la-vida-606",
+  "name": "Maíz de la Vida",
+  "address": "606 8th Ave South",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "17:00",
+  "end": "18:00",
+  "deals": [
+   "$8-$10 cocktails",
+   "$6 wine",
+   "$5 beer",
+   "$5-$12 snacks"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/maiz-de-la-vida"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue. Bar and chef's counter only."
+ },
+ {
+  "id": "nv-jaspers-1918",
+  "name": "Jasper’s",
+  "address": "1918 West End Ave.",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   "Queso, chips & rinds, pretzels, or table fries",
+   "Draft beers",
+   "House wines",
+   "Draft and frozen cocktails"
+  ],
+  "sources": [
+   "https://jaspers.restaurant/"
+  ],
+  "notes": "Bar/lounge area only."
+ },
+ {
+  "id": "nv-del-friscos-grille-1201",
+  "name": "Del Frisco’s Grille",
+  "address": "1201 Demonbreun St",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   "Bites",
+   "Cocktails (Moscow Mule, The VIP, Grille Margarita, Old Fashioned)",
+   "Select wines",
+   "Select spirits",
+   "Select bottled and draft beer"
+  ],
+  "sources": [
+   "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/"
+  ],
+  "notes": "Bar only."
+ }
+]

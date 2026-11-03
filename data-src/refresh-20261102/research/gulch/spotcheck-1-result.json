@@ -1,0 +1,222 @@
+[
+ {
+  "id": "nv-coa-nashville-920",
+  "name": "COA Nashville",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Beers",
+    "source_says": "$5 beers",
+    "ok": true
+   },
+   {
+    "deal": "Signature cocktails",
+    "source_says": "$10 signature cocktails",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Thu 4:00pm-6:00pm; last confirmed 09/17/26 (Sat noon-5, Sun all day are separate)",
+  "miss": null
+ },
+ {
+  "id": "nv-commons-club-1",
+  "name": "Commons Club",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$2 oysters",
+    "source_says": "$2 oysters",
+    "ok": true
+   },
+   {
+    "deal": "$8 wines",
+    "source_says": "$8 wines",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Sun 3:00pm-6:00pm; confirmed 10/27/26",
+  "miss": null
+ },
+ {
+  "id": "nv-stk-nashville-700",
+  "name": "STK Nashville",
+  "window_index": 0,
+  "pass": false,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3, $6 and $9 drinks",
+    "source_says": "Source says '$3 | $6 | $9 - Happy Hour' and '$3, $6 and $9 bites alongside signature drinks'; no drink prices listed",
+    "ok": false
+   },
+   {
+    "deal": "Bites starting from $3",
+    "source_says": "Bites starting from just $3",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Fri 2:30pm-6:30pm (Sat-Sun 2:30-5:30 separate)",
+  "miss": "Sample says $3/$6/$9 drinks; source puts the $3/$6/$9 tiers on bites and lists no drink prices"
+ },
+ {
+  "id": "nv-the-gumbo-bros-505",
+  "name": "The Gumbo Bros",
+  "window_index": 1,
+  "pass": false,
+  "days_ok": true,
+  "times_ok": false,
+  "prices_checked": [
+   {
+    "deal": "Draft beer",
+    "source_says": "$6 drafts",
+    "ok": true
+   },
+   {
+    "deal": "Frozen cocktails",
+    "source_says": "$9 frozen cocktails",
+    "ok": true
+   }
+  ],
+  "source_says": "Tuesday: 'all day' (food only 3:00pm-6:00pm); Mon/Wed-Fri 3-6pm",
+  "miss": "Source says all day, not 11:00 to close; no 11:00 start or closing time is posted"
+ },
+ {
+  "id": "nv-craigs-611",
+  "name": "Craig's",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$5 beers",
+    "source_says": "$5 beers",
+    "ok": true
+   },
+   {
+    "deal": "$12 well cocktails",
+    "source_says": "$12 well cocktails",
+    "ok": true
+   }
+  ],
+  "source_says": "Tue-Thu 5:00pm-6:00pm and 8:00pm-close (Mon/Sun 5pm-close); confirmed 10/28/26",
+  "miss": null
+ },
+ {
+  "id": "nv-del-friscos-grille-1201",
+  "name": "Del Frisco’s Grille",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Cocktails",
+    "source_says": "$10 cocktails (Moscow Mule, The VIP, Grille Margarita, Old Fashioned)",
+    "ok": true
+   },
+   {
+    "deal": "Select wines",
+    "source_says": "$10 wine",
+    "ok": true
+   }
+  ],
+  "source_says": "SAT 2:00pm-5:00pm, bar only",
+  "miss": null
+ },
+ {
+  "id": "nv-twenty-first-1602",
+  "name": "Twenty First",
+  "window_index": 1,
+  "pass": false,
+  "days_ok": false,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$7 handcrafted martinis",
+    "source_says": "handcrafted $7 martinis and old fashioneds",
+    "ok": true
+   },
+   {
+    "deal": "$3 draft beers",
+    "source_says": "$3 draft beers",
+    "ok": true
+   }
+  ],
+  "source_says": "Reverse happy hour 'From 7PM to close (Weekends Included!)', bar top only; no specific days listed (weekday HH is Tue-Fri 3-5)",
+  "miss": "Source gives no days for the reverse happy hour, so Tue-Sun is unverifiable"
+ },
+ {
+  "id": "nv-maiz-de-la-vida-606",
+  "name": "Maíz de la Vida",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$6 wine",
+    "source_says": "$6 wine",
+    "ok": true
+   },
+   {
+    "deal": "$5 beer",
+    "source_says": "$5 beer",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Fri 5:00pm-6:00pm, bar and chef's counter; confirmed 10/27/26",
+  "miss": null
+ },
+ {
+  "id": "nv-jaspers-1918",
+  "name": "Jasper’s",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Draft beers",
+    "source_says": "$4 draft beers",
+    "ok": true
+   },
+   {
+    "deal": "House wines",
+    "source_says": "$5 house wines",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Fri 3-6pm, bar/lounge",
+  "miss": null
+ },
+ {
+  "id": "nv-del-friscos-grille-1201",
+  "name": "Del Frisco’s Grille",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Cocktails",
+    "source_says": "$10 cocktails",
+    "ok": true
+   },
+   {
+    "deal": "Select bottled and draft beer",
+    "source_says": "$5 select bottle & draft beer (not explicitly placed under happy hour)",
+    "ok": true
+   }
+  ],
+  "source_says": "Sun-Fri 3:00pm-6:00pm, bar only",
+  "miss": null
+ }
+]

@@ -1168,6 +1168,8 @@
   function dealPriceLabel(deal) {
     var price = deal && deal.price != null ? String(deal.price).trim() : '';
     if (!price) return null;
+    // fix28: v2 zone data stores a plain price as a number (6), v1 data as text ('$6').
+    if (typeof deal.price === 'number') price = '$' + (deal.price % 1 ? deal.price.toFixed(2) : String(deal.price));
     var desc = String(deal.desc || '');
     var nums = numbersIn(price);
     if (nums.length) {

@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-11-03 — BLOCK-hh-radar-fix28: gulch happy hours
+
+v2.1, the second zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=gulch).
+
+- **Gulch & Midtown: 47 leads, 32 added, 15 not added.** 30 of the 32 are in Gulch & Midtown, and 2 are in
+  SoBro (Downtown) by their own address: Tennessee Brew Works and Fogg Street Lawn Club. 48 windows, 46 of them happy hour.
+  - Not added, by reason: 6 no happy hour found, 4 guide not confirmed in 2026, 3 closed / moved (Gertie's
+    Whiskey Bar, Hopsmith Tavern, Joe Muer Seafood), and 2 duplicates: Bar Mar by José Andrés = ik-14147, and
+    Gathre = Antler Bar at Gathre, the same bar at 1810 Broadway. The full list is
+    `data-src/refresh-20261102/not-added-gulch.md`.
+  - The 6 Downtown leads fix27 placed in Gulch & Midtown were already listed, and weren't researched again.
+- **Rare Bird (Downtown addendum),** the late Downtown lead: added as `nv-rare-bird-rooftop-bar-200`, a
+  "Golden Hour" Mon–Thu 2–6pm, from the Noelle's own page. It posts no deals. The merge was
+  `merge_v2zone.py ... downtown ... --suffix c --addendum`, a new flag for a zone already done. It wrote
+  `venues-v2-01-downtown-c.json` and `not-added-downtown-c.md`, and Gulch was merged on top of that file.
+- **Hours:** 10 venues had none posted, so they come from their Google listing (med). Antler Bar has none.
+- **Spot check:** round 1 was 7/10. STK's $3/$6/$9 tiers are on bites, not drinks. Gumbo Bros' all-day
+  Tuesday and Twenty First's reverse-happy-hour days were taken from posted opening hours, and the notes now
+  say so. Round 2, on 10 new windows: **10/10**.
+- **Fixes:** COA and Silo had no official site, so they now carry the Gulch district listing's links
+  (coanashville.com and silonashville.com; both fail SSL today). Silo's address is 920 Division St, not 910.
+- **Map:** Brown's Diner (Hillsboro Village, 2102 Blair Blvd) sits just inside the West polygon. Like Jashan,
+  it is added to `MAP_SEAM_EXCEPTIONS`; the polygons are unchanged.
+- **File:** 217 venues (159 inKind, 58 not) and 222 windows (139 inKind, 83 not). `coverage.v2_zones_done` =
+  downtown, gulch.
+- **Prices on v2 cards:** the zone brief stores a plain price as a number, and cards showed it bare ("Draft beer
+  6"); 55 deals were affected, Downtown's included. `L.dealPriceLabel` now reads a number as dollars ("$6",
+  "$4.50"), with a test.
+- `APP_VERSION`, `logic.js?v=`, `venues.json?v=` and `version.txt` are v2.1.
+
 ## 2026-11-03 — BLOCK-hh-radar-fix27-20261102, follow-up: v2.0.1
 
 TJ, verbatim: "Loosen it, and finish these in this session".

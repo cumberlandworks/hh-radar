@@ -1,0 +1,169 @@
+[
+ {
+  "id": "nv-hops-crafts-319",
+  "name": "Hops + Crafts",
+  "window_index": 4,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$5 wine and cider",
+    "source_says": "$5 Wine and Cider",
+    "ok": true
+   }
+  ],
+  "source_says": "Happy Hour Specials 5pm to 8pm; 'Weekend Wine'd-Up: $5 Wine and Cider' (page does not name the weekend days; Sat/Sun is the ordinary reading)",
+  "miss": null
+ },
+ {
+  "id": "nv-hops-crafts-319",
+  "name": "Hops + Crafts",
+  "window_index": 2,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$5 pints",
+    "source_says": "$5 Pints until we kick the staff picked keg",
+    "ok": true
+   }
+  ],
+  "source_says": "Wednesday, 5pm to 8pm; 'We Call Wednesdays: $5 Pints until we kick the staff picked keg'",
+  "miss": null
+ },
+ {
+  "id": "nv-henley-2023",
+  "name": "Henley",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "source_says": "Daily 3pm - 6pm; no deals or prices posted",
+  "miss": null
+ },
+ {
+  "id": "nv-aladdins-hookah-lounge-and-bar-2206",
+  "name": "Aladdin's",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3 beer",
+    "source_says": "$3 beer",
+    "ok": true
+   },
+   {
+    "deal": "$15 regular hookahs",
+    "source_says": "$15 regular hookahs",
+    "ok": true
+   }
+  ],
+  "source_says": "MON-SUN each: happy hour 3:00pm to 8:00pm; $3 beer, $5-$6 select wine, $15 regular hookahs, $14 refills",
+  "miss": null
+ },
+ {
+  "id": "nv-craigs-611",
+  "name": "Craig's",
+  "window_index": 2,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$5 beers",
+    "source_says": "$5 beers",
+    "ok": true
+   },
+   {
+    "deal": "$12 well cocktails",
+    "source_says": "$12 well cocktails",
+    "ok": true
+   }
+  ],
+  "source_says": "Tue/Wed/Thu 5-6pm and 8pm to close (bar); $5 beers, $12 well cocktails",
+  "miss": null
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "source_says": "Mon-Thu 3-5pm + 8pm-close; Fri-Sat 3-5pm + 9pm-close (bar, cocktail area, patio only); no deals posted",
+  "miss": null
+ },
+ {
+  "id": "nv-silo-920",
+  "name": "Silo",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Draft beer & slice combo ($8)",
+    "source_says": "$8 draft beer & slice combo",
+    "ok": true
+   },
+   {
+    "deal": "Whipped feta ($8)",
+    "source_says": "$8 whipped feta",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Thu 2-6pm and 10-11pm; $8 draft beer & slice combo, $8 whipped feta",
+  "miss": null
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "source_says": "Mon-Thu 8pm-close (Fri-Sat late window is 9pm-close, not in this window); no deals posted",
+  "miss": null
+ },
+ {
+  "id": "nv-hopdoddy-burger-bar-1805",
+  "name": "Hopdoddy Burger Bar",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Half off cocktails, beer and wine",
+    "source_says": "1/2 off cocktails, beer & wine",
+    "ok": true
+   }
+  ],
+  "source_says": "M-Th 3-6PM; 1/2 off cocktails, beer & wine (no dollar prices)",
+  "miss": null
+ },
+ {
+  "id": "nv-stk-nashville-700",
+  "name": "STK Nashville",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3, $6 and $9 bites",
+    "source_says": "$3 | $6 | $9 bites",
+    "ok": true
+   }
+  ],
+  "source_says": "Sat-Sun 2:30pm-5:30pm (Mon-Fri 2:30-6:30); $3, $6 and $9 bites; drink prices not posted",
+  "miss": null
+ }
+]

@@ -1,0 +1,989 @@
+{
+ "added": [
+  {
+   "lead": "Jasper’s",
+   "name": "Jasper’s",
+   "city": "Nashville",
+   "neighborhood": "West End",
+   "address": "1918 West End Ave.",
+   "zip": "37203",
+   "official_site": "https://jaspers.restaurant/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:30"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://jaspers.restaurant/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Queso, chips & rinds, pretzels, or table fries",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Draft beers",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "House wines",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Draft and frozen cocktails",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://jaspers.restaurant/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar/lounge area only.",
+     "research_notes": "Venue home page lists happy hour Mon-Fri 3-6 PM, bar/lounge only."
+    }
+   ]
+  },
+  {
+   "lead": "Del Frisco’s Grille",
+   "name": "Del Frisco’s Grille",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "1201 Demonbreun St, Suite 104",
+   "zip": "37203",
+   "official_site": "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/",
+   "windows": [
+    {
+     "days": [
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Bites",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Cocktails (Moscow Mule, The VIP, Grille Margarita, Old Fashioned)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select wines",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select spirits",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select bottled and draft beer",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar only.",
+     "research_notes": "Venue location page: Sun-Fri 3-6 PM, bar only."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Bites",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Cocktails (Moscow Mule, The VIP, Grille Margarita, Old Fashioned)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select wines",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select spirits",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Select bottled and draft beer",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar only.",
+     "research_notes": "Venue location page: Saturday 2-5 PM, bar only."
+    }
+   ]
+  },
+  {
+   "lead": "Hopdoddy Burger Bar",
+   "name": "Hopdoddy Burger Bar",
+   "city": "Nashville",
+   "neighborhood": "Hillsboro Village",
+   "address": "1805 21st Avenue South",
+   "zip": "37212",
+   "official_site": "https://www.hopdoddy.com/locations/nashvillebelcourt",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.hopdoddy.com/locations/nashvillebelcourt",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off cocktails, beer and wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.hopdoddy.com/locations/nashvillebelcourt",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Dine-in only.",
+     "research_notes": "Belcourt location page: Mon-Thu 3-6 PM, half off cocktails, beer and wine, dine-in only. A web search snippet suggested another Hopdoddy page says M-F; used the location page."
+    }
+   ]
+  },
+  {
+   "lead": "Gathre",
+   "name": "Gathre",
+   "city": "Nashville",
+   "neighborhood": "Midtown",
+   "address": "1810 Broadway",
+   "zip": "37203",
+   "official_site": "https://www.gathrenashville.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Classic cocktails",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "Well spirits",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "House wine",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Craft beer",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "Espresso martini",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Southern queso",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Deviled eggs",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Firecracker cauliflower",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Ambroschetta focaccia",
+       "price": 11
+      },
+      {
+       "type": "food",
+       "desc": "Short rib & grits cake",
+       "price": 14
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.gathrenashville.com/menus",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Dinner menu page (undated) lists Libations and Snacks Tue-Sat 3-6pm, linked as 'Antler Bar Happy Hour'; area 'bar' inferred from that link name. Nashville Guru (confirmed 2026-10-20) agrees on days/times."
+    }
+   ]
+  },
+  {
+   "lead": "Marsh House",
+   "name": "Marsh House",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "401 11th Ave S",
+   "zip": "37203",
+   "official_site": "https://www.marshhouserestaurant.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "08:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.marshhouserestaurant.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Oyster happy hour (prices not posted)",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.marshhouserestaurant.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue site lists Oyster Happy Hour Mon-Fri 5-7 PM with no deals, prices or area. Hours merge brunch, bar & lounge and dinner times on the site; Thanksgiving/Christmas closures not modeled."
+    }
+   ]
+  },
+  {
+   "lead": "888",
+   "name": "888",
+   "city": "Nashville",
+   "neighborhood": "Downtown",
+   "address": "800 Clark Place",
+   "zip": "37203",
+   "official_site": "https://888nashville.com",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://888nashville.com",
+   "windows": [
+    {
+     "days": [
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://888nashville.com",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue site: happy hour Sun-Thu 4-6 PM, bar only; deals are in a PDF menu that could not be read, so none are listed. Nashville Guru hours differ; used the venue's."
+    }
+   ]
+  },
+  {
+   "lead": "The Gumbo Bros",
+   "name": "The Gumbo Bros",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "505 12th Avenue South",
+   "zip": "37203",
+   "official_site": "https://www.thegumbobros.com/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.thegumbobros.com/menu/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Draft beer",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Well drinks",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "House wine",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Frozen cocktails",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Discounted food",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/gumbo-bros",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue happy hour page (/menu/happy-hour/) returned 404 and the menu page links to an unreadable 'Happy Hour & Daily Specials' menu; no social found. Used Nashville Guru business page."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Draft beer",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Well drinks",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "House wine",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Frozen cocktails",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Discounted food",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/gumbo-bros",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Guru lists Tuesday as all day, with food discount 3:00-6:00pm only. Start 11:00 is the venue's posted opening time."
+    }
+   ]
+  },
+  {
+   "lead": "COA Nashville",
+   "name": "COA Nashville",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "920 Division Street",
+   "zip": "37203",
+   "official_site": null,
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Beers",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Frozen cocktails",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "Signature cocktails",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "House margaritas",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Soft serve margaritas",
+       "price": 12
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/coa",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-09-17"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-09-17. Check with the venue.",
+     "research_notes": "Venue site would not load (SSL error) and no social found. Guru also lists an all-day Sunday happy hour and Tue/Wed/Thu food and check specials; not included. Address from Guru page."
+    }
+   ]
+  },
+  {
+   "lead": "Silo",
+   "name": "Silo",
+   "city": "Nashville",
+   "neighborhood": "The Gulch",
+   "address": "910 Division Street",
+   "zip": "37203",
+   "official_site": null,
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Draft beer & slice combo",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Red or white wine feature & slice combo",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Whipped feta",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Calamari",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Crispy Brussels sprouts",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/silo-gulch",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-06-19"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-06-19. Check with the venue.",
+     "research_notes": "No venue site or social found. Address (910 Division St) is from the Guru page; other results say 920 Division St, so verify."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "22:00",
+     "end": "23:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Draft beer & slice combo",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Red or white wine feature & slice combo",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Whipped feta",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Calamari",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Crispy Brussels sprouts",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/silo-gulch",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-06-19"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-06-19. Check with the venue.",
+     "research_notes": "Late-night window listed on the same Guru page."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Bar Louie",
+   "reason": "no happy hour found",
+   "url": "https://www.barlouie.com/menu"
+  },
+  {
+   "lead": "Taco Mama",
+   "reason": "no happy hour found",
+   "url": "https://nashvilleguru.com/businesses/taco-mama"
+  },
+  {
+   "lead": "The Villager Tavern",
+   "reason": "no happy hour found",
+   "url": "https://nashvilleguru.com/businesses/the-villager-tavern"
+  }
+ ]
+}

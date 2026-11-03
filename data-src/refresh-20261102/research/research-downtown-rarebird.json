@@ -1,0 +1,89 @@
+{
+ "added": [
+  {
+   "lead": "Rare Bird",
+   "name": "Rare Bird Rooftop Bar",
+   "city": "Nashville",
+   "neighborhood": "Downtown",
+   "address": "200 Fourth Avenue N.",
+   "zip": "37219",
+   "official_site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "14:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "14:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "14:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "14:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Called Golden Hour; weather permitting.",
+     "research_notes": "Noelle page: Golden Hour Monday through Thursday 2:00 to 6:00 PM, no deals listed. Rare Bird's own site lists Fri-Sat to midnight; Noelle page used for hours."
+    }
+   ]
+  }
+ ],
+ "not_added": []
+}

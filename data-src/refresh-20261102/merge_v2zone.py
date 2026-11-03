@@ -2,6 +2,7 @@
 """fix27 D5: merge one zone run's researched venues into venues.json (hh-radar v2).
 
 Usage: python3 merge_v2zone.py <current venues.json> <zone> <geocoded research JSON> [--date YYYY-MM-DD] [--suffix b]
+       [--addendum]   (fix28: a late lead for a zone already done; needs --suffix, writes not-added-<zone>-<suffix>.md)
 
 The research JSON is the subagents' {added, not_added} (BRIEF-v2zone.md shape), combined, after
 geocode_v2zone.py (and the D3 hours pass) have filled lat/lon. It:
@@ -56,6 +57,9 @@ def main():
     suffix = sys.argv[sys.argv.index('--suffix') + 1] if '--suffix' in sys.argv else ''
     if suffix:
         args.remove(suffix)
+    addendum = '--addendum' in sys.argv
+    if addendum and not suffix:
+        sys.exit('--addendum needs --suffix, so the zone file and its not-added file are kept')
     venues_path, zone, research_path = args
     if zone not in ORDER:
         sys.exit('zone must be one of ' + ', '.join(ORDER))
@@ -65,7 +69,7 @@ def main():
     cov = data.get('coverage')
     if not isinstance(cov, dict):
         cov = {'text': cov or '', 'v2_zones_done': []}
-    if zone in cov['v2_zones_done']:
+    if zone in cov['v2_zones_done'] and not addendum:
         sys.exit('%s is already in coverage.v2_zones_done; nothing to do' % zone)
 
     not_added = [dict(n) for n in research.get('not_added', [])]
@@ -141,7 +145,7 @@ def main():
     if elsewhere:
         lines += ['## Added, but placed in another zone by their own address (%d)' % len(elsewhere)]
         lines += ['- %s → %s (%s)' % e for e in elsewhere] + ['']
-    open(os.path.join(HERE, 'not-added-%s.md' % zone), 'w').write('\n'.join(lines))
+    open(os.path.join(HERE, 'not-added-%s%s.md' % (zone, '-' + suffix if addendum else '')), 'w').write('\n'.join(lines))
 
     print(json.dumps({'out': out, 'added': len(added), 'not_added': len(not_added),
                       'not_added_by_reason': {r: len(v) for r, v in by_reason.items()},

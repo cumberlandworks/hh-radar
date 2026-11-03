@@ -1,0 +1,406 @@
+[
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "888",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Bar Louie",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.barlouie.com/locations/us/tn/nashville/the-gulch"
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "COA Nashville",
+  "neighborhood_text": "Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-09-17"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-09-17"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-09-17"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-09-17"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-09-17"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-09-17"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Del Frisco’s Grille",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.delfriscosgrille.com/location/del-friscos-grille-nashville-tn/"
+ },
+ {
+  "hood_guess": "Midtown & Music Row",
+  "zone": "gulch",
+  "name": "Gathre",
+  "neighborhood_text": "Midtown",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-20"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "The Gumbo Bros",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-27"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-27"
+   }
+  ],
+  "site": "https://www.thegumbobros.com/menu/happy-hour/"
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "Hopdoddy Burger Bar",
+  "neighborhood_text": "Hillsboro Village/Edgehill",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.hopdoddy.com/"
+ },
+ {
+  "hood_guess": "West End",
+  "zone": "gulch",
+  "name": "Jasper’s",
+  "neighborhood_text": "West End",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://jaspers.restaurant/"
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Marsh House",
+  "neighborhood_text": "The Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-20"
+   },
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.marshhouserestaurant.com/"
+ },
+ {
+  "hood_guess": "The Gulch",
+  "zone": "gulch",
+  "name": "Silo",
+  "neighborhood_text": "Gulch",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-06-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-06-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-06-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-06-19"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "Taco Mama",
+  "neighborhood_text": "Hillsboro Village",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Hillsboro Village & Belmont",
+  "zone": "gulch",
+  "name": "The Villager Tavern",
+  "neighborhood_text": "Hillsboro Village/Edgehill",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ }
+]

@@ -1,0 +1,502 @@
+{
+ "Gathre": {
+  "hours": {
+   "MON": [
+    [
+     "07:00",
+     "13:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "13:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "13:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "13:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "13:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "14:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "07:00",
+     "14:00"
+    ]
+   ]
+  },
+  "listing_note": "Google also lists a separate Happy hours row 3-6PM"
+ },
+ "COA Nashville": {
+  "hours": {
+   "MON": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "01:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "12:00",
+     "01:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "12:00",
+     "22:00"
+    ]
+   ]
+  },
+  "listing_note": "Listing is COA Rooftop Bar; separate Brunch sub-hours row not expanded"
+ },
+ "Silo": {
+  "hours": {
+   "MON": [
+    [
+     "06:30",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "06:30",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "06:30",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "06:30",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "06:30",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "06:30",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "06:30",
+     "22:00"
+    ]
+   ]
+  },
+  "listing_note": "Listing is Silo Restaurant; separate Happy hours 2-6PM and Breakfast 6:30-11AM rows exist"
+ },
+ "Aladdin's Hookah Lounge & Bar": {
+  "hours": {
+   "MON": [
+    [
+     "15:00",
+     "01:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "15:00",
+     "01:00"
+    ]
+   ],
+   "WED": [
+    [
+     "15:00",
+     "01:00"
+    ]
+   ],
+   "THU": [
+    [
+     "15:00",
+     "01:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "15:00",
+     "02:30"
+    ]
+   ],
+   "SAT": [
+    [
+     "15:00",
+     "02:30"
+    ]
+   ],
+   "SUN": [
+    [
+     "15:00",
+     "01:00"
+    ]
+   ]
+  },
+  "listing_note": "Google listing re-read with cursor off the table: Mon, Tue, Wed, Thu and Sun close at 1:00 AM; Fri and Sat close at 2:30 AM; no day closes at 2:00 AM. Venue website says Wed-Thu until 2:00 AM and Tue 1:30 AM, which differs from Google."
+ },
+ "Commons Club": {
+  "hours": {
+   "MON": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ]
+  },
+  "listing_note": "Separate Lunch 11-3 and Happy hours 3-6PM rows exist"
+ },
+ "Barcelona Wine Bar": {
+  "hours": {
+   "MON": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ]
+  },
+  "listing_note": "Listing address shows Ste 110 rather than Suite 105"
+ },
+ "Tennessee Brew Works": {
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ]
+  },
+  "listing_note": null
+ },
+ "Zaytinya Nashville": {
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ]
+  },
+  "listing_note": null
+ },
+ "Antler Bar at Gathre": {
+  "hours": null,
+  "listing_note": "Google listing found at this address is Cafe Antler (coffee, 6-11AM weekdays, 6AM-2PM Sat/Sun), not Antler Bar; no Antler Bar listing hours seen"
+ },
+ "Twenty First": {
+  "hours": {
+   "TUE": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "14:00"
+    ],
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "14:00"
+    ],
+    [
+     "17:00",
+     "21:00"
+    ]
+   ]
+  },
+  "listing_note": "Monday shown Closed on listing; separate Brunch and Happy hours 3-5PM rows exist"
+ },
+ "Brown's Diner": {
+  "hours": {
+   "MON": [
+    [
+     "07:30",
+     "21:30"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:30",
+     "21:30"
+    ]
+   ],
+   "WED": [
+    [
+     "07:30",
+     "21:30"
+    ]
+   ],
+   "THU": [
+    [
+     "07:30",
+     "21:30"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:30",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "08:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "09:00",
+     "20:00"
+    ]
+   ]
+  },
+  "listing_note": null
+ }
+}

@@ -1,0 +1,218 @@
+[
+ {
+  "id": "nv-hops-crafts-319",
+  "name": "Hops + Crafts",
+  "address": "319 12th Ave S",
+  "window_index": 4,
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "17:00",
+  "end": "20:00",
+  "deals": [
+   "$5 wine and cider (Weekend Wine'd-Up)"
+  ],
+  "sources": [
+   "https://www.hopscrafts.com/"
+  ],
+  "notes": ""
+ },
+ {
+  "id": "nv-hops-crafts-319",
+  "name": "Hops + Crafts",
+  "address": "319 12th Ave S",
+  "window_index": 2,
+  "days": [
+   "WED"
+  ],
+  "start": "17:00",
+  "end": "20:00",
+  "deals": [
+   "$5 pints until the staff-picked keg runs out"
+  ],
+  "sources": [
+   "https://www.hopscrafts.com/"
+  ],
+  "notes": ""
+ },
+ {
+  "id": "nv-henley-2023",
+  "name": "Henley",
+  "address": "2023 Broadway",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [],
+  "sources": [
+   "https://www.henleynashville.com/hours-location"
+  ],
+  "notes": "Specific deals not posted on the hours page; check the venue."
+ },
+ {
+  "id": "nv-aladdins-hookah-lounge-and-bar-2206",
+  "name": "Aladdin's Hookah Lounge & Bar",
+  "address": "2206 Elliston Place",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "20:00",
+  "deals": [
+   "$3 beer",
+   "$5-$6 select wine",
+   "$15 regular hookahs",
+   "$14 refills"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/aladdins"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue."
+ },
+ {
+  "id": "nv-craigs-611",
+  "name": "Craig's",
+  "address": "611 9th Ave S",
+  "window_index": 2,
+  "days": [
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "20:00",
+  "end": "close",
+  "deals": [
+   "$5 beers",
+   "$4 off wines by the glass",
+   "$4 off specialty cocktails",
+   "$12 well cocktails",
+   "Special happy hour food menu"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/craigs"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-28. Check with the venue."
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [],
+  "sources": [
+   "https://hallscatchnashville.com"
+  ],
+  "notes": "Bar, cocktail area and patio only."
+ },
+ {
+  "id": "nv-silo-920",
+  "name": "Silo",
+  "address": "920 Division Street",
+  "window_index": 1,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "22:00",
+  "end": "23:00",
+  "deals": [
+   "Draft beer & slice combo ($8)",
+   "Red or white wine feature & slice combo ($8)",
+   "Whipped feta ($8)",
+   "Calamari ($8)",
+   "Crispy Brussels sprouts ($8)"
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/silo-gulch"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-06-19. Check with the venue."
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue",
+  "window_index": 1,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "20:00",
+  "end": "close",
+  "deals": [],
+  "sources": [
+   "https://hallscatchnashville.com"
+  ],
+  "notes": "Late-night happy hour. Bar, cocktail area and patio only."
+ },
+ {
+  "id": "nv-hopdoddy-burger-bar-1805",
+  "name": "Hopdoddy Burger Bar",
+  "address": "1805 21st Avenue South",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   "Half off cocktails, beer and wine"
+  ],
+  "sources": [
+   "https://www.hopdoddy.com/locations/nashvillebelcourt"
+  ],
+  "notes": "Dine-in only."
+ },
+ {
+  "id": "nv-stk-nashville-700",
+  "name": "STK Nashville",
+  "address": "700 12th Ave S",
+  "window_index": 1,
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "14:30",
+  "end": "17:30",
+  "deals": [
+   "$3, $6 and $9 bites"
+  ],
+  "sources": [
+   "https://stksteakhouse.com/venues/nashville/",
+   "https://stksteakhouse.com/venues/nashville/happy-hour"
+  ],
+  "notes": "Bar, lounge and patio only. Drink prices not posted."
+ }
+]

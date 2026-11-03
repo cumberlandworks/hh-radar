@@ -438,6 +438,7 @@ const MAP_SEAM_EXCEPTIONS = {
   'ik-20518': 'Chateau West: Gulch & Midtown (West End, 3408 West End Ave) by address, inside West',
   'ik-15740': 'E+ROSE - OneC1ty: Gulch & Midtown (West End, 4 City Blvd) by address, inside West',
   'ik-20959': 'Jashan: Gulch & Midtown (Hillsboro Village, 2100 21st Ave S) by address, inside South',
+  'nv-browns-diner-2102': "Brown's Diner: Gulch & Midtown (Hillsboro Village, 2102 Blair Blvd) by address, inside West",
 };
 // v1.17 C4: the Downtown notch is gone, so koshō (ik-13852) and The Herban Perk & Pantry
 // (ik-18919) sit inside Downtown and are no longer exceptions; the two tests below hold them
@@ -1565,6 +1566,12 @@ test('lint closed-day: the shipped data warns only where the sources disagree', 
 // ==================== v1.12 (fix12) ====================
 
 // ---- C2: dealPriceLabel ----
+test('dealPriceLabel (fix28): a numeric price (v2 zone data) reads as dollars, and is still dropped when the text says it', () => {
+  assert.equal(dealPriceLabel({ desc: 'Draft beer', price: 6 }), '$6');
+  assert.equal(dealPriceLabel({ desc: 'Oyster on the Half Shell', price: 3.5 }), '$3.50');
+  assert.equal(dealPriceLabel({ desc: '$6 house wine', price: 6 }), null);
+  assert.equal(dealPriceLabel({ desc: 'Draft beer', price: '$6' }), '$6');
+});
 test('dealPriceLabel: a price the text already says is dropped (every number in it is in the text)', () => {
   assert.equal(dealPriceLabel({ desc: '$2 off draft beer', price: '-$2' }), null);
   assert.equal(dealPriceLabel({ desc: '$10 12" cheese pizzas and $19 deep dish', price: '$10/$19' }), null);
@@ -2193,7 +2200,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.0.1';") && html.includes("venues.json?v=2.0.1") && html.includes('logic.js?v=2.0.1'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.1';") && html.includes("venues.json?v=2.1") && html.includes('logic.js?v=2.1'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
