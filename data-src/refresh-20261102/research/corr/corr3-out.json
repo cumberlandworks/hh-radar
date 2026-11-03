@@ -1,0 +1,116 @@
+{
+ "windows": [
+  {
+   "id": "east:Lyra",
+   "name": "Lyra",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [
+    {
+     "url": "https://www.lyranashville.com/s/Happy-Hour-Spring-2025.pdf",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Deals are on the venue's Happy Hour menu (PDF); not listed here.",
+   "research_notes": "Homepage lists Happy Hour Mon-Sat 5pm-6pm, matches stored window. Linked menu PDF 'Happy Hour Spring 2025' (https://lyranashville.com/s/Happy-Hour-Spring-2025.pdf, redirects to https://static1.squarespace.com/static/644b09713009f80c939c008c/t/678fe8458c3a0e0e74a07a78/1737484357715/Happy+Hour+Spring+2025.pdf) opened: PDF not readable: https://static1.squarespace.com/static/644b09713009f80c939c008c/t/678fe8458c3a0e0e74a07a78/1737484357715/Happy+Hour+Spring+2025.pdf (image-only, no text layer). Dated before 2026: the file name says Spring 2025 and the Squarespace upload timestamp 1737484357 is 2025-01-21, so even once read it may be stale; the executor should treat its prices as pre-2026. Web search found no other Lyra happy hour price list; Instagram/Facebook not fetched successfully for deals. Lyra's guide entries: none found in the guides checked.",
+   "times_differ": null,
+   "result": "still no deals"
+  },
+  {
+   "id": "east:Plane Jane",
+   "name": "Plane Jane",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [
+    {
+     "url": "https://www.instagram.com/planejane615/",
+     "kind": "social",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "All day: from the 17:00 opening. Deals not posted.",
+   "research_notes": "Instagram bio (as summarized by fetch) says happy hour 5-8pm daily, closed Tuesdays, open 5-10pm Wed, 5-11pm Thu; this disagrees with the homepage (Tue all day, Wed-Sat 5-7, Sun 3-7) and stored hours (Tue open). StyleBlueprint (guide; body says 'Updated May 2024', metadata dateModified 2025-10-15, so not confirmed in 2026) lists Tue-Sat 5-7pm, Sun 3-7pm with $9 cocktails, $6 wine, $3 beer: NOT used (no 2026 confirmation). Nashville Guru business page nashvilleguru.com/businesses/plane-jane has the happy-hour fields blank. Menu page (planejanebar.com/menu) says cocktail specials are posted weekly, no prices; no happy hour section.",
+   "times_differ": "Instagram bio: happy hour 5-8pm daily, closed Tuesdays (Wed 5-10pm, Thu 5-11pm); homepage: Tue all day, Wed-Sat 5-7pm, Sun 3-7pm",
+   "result": "still no deals"
+  },
+  {
+   "id": "east:Plane Jane",
+   "name": "Plane Jane",
+   "window_index": 1,
+   "deals": [],
+   "sources_add": [
+    {
+     "url": "https://www.instagram.com/planejane615/",
+     "kind": "social",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Deals not posted.",
+   "research_notes": "Instagram bio (as summarized by fetch) says happy hour 5-8pm daily, closed Tuesdays, open 5-10pm Wed, 5-11pm Thu; this disagrees with the homepage (Tue all day, Wed-Sat 5-7, Sun 3-7) and stored hours (Tue open). StyleBlueprint (guide; body says 'Updated May 2024', metadata dateModified 2025-10-15, so not confirmed in 2026) lists Tue-Sat 5-7pm, Sun 3-7pm with $9 cocktails, $6 wine, $3 beer: NOT used (no 2026 confirmation). Nashville Guru business page nashvilleguru.com/businesses/plane-jane has the happy-hour fields blank. Menu page (planejanebar.com/menu) says cocktail specials are posted weekly, no prices; no happy hour section.",
+   "times_differ": "Instagram bio: happy hour 5-8pm daily, closed Tuesdays (Wed 5-10pm, Thu 5-11pm); homepage: Tue all day, Wed-Sat 5-7pm, Sun 3-7pm",
+   "result": "still no deals"
+  },
+  {
+   "id": "east:Plane Jane",
+   "name": "Plane Jane",
+   "window_index": 2,
+   "deals": [],
+   "sources_add": [
+    {
+     "url": "https://www.instagram.com/planejane615/",
+     "kind": "social",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Deals not posted.",
+   "research_notes": "Instagram bio (as summarized by fetch) says happy hour 5-8pm daily, closed Tuesdays, open 5-10pm Wed, 5-11pm Thu; this disagrees with the homepage (Tue all day, Wed-Sat 5-7, Sun 3-7) and stored hours (Tue open). StyleBlueprint (guide; body says 'Updated May 2024', metadata dateModified 2025-10-15, so not confirmed in 2026) lists Tue-Sat 5-7pm, Sun 3-7pm with $9 cocktails, $6 wine, $3 beer: NOT used (no 2026 confirmation). Nashville Guru business page nashvilleguru.com/businesses/plane-jane has the happy-hour fields blank. Menu page (planejanebar.com/menu) says cocktail specials are posted weekly, no prices; no happy hour section.",
+   "times_differ": "Instagram bio: happy hour 5-8pm daily, closed Tuesdays (Wed 5-10pm, Thu 5-11pm); homepage: Tue all day, Wed-Sat 5-7pm, Sun 3-7pm",
+   "result": "still no deals"
+  },
+  {
+   "id": "east:Beyond The Edge",
+   "name": "Beyond The Edge",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "2-for-1 beers",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "2-for-1 well drinks",
+     "price": null
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://docs.google.com/document/d/1Xefr42tOMcbAv1rjceFdZ1iUtPMZVXzB/edit?usp=sharing&ouid=113023358665780565588&rtpof=true&sd=true",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Deals from the venue's beverage menu, which is marked DRAFT: 2-for-1 beers and well drinks.",
+   "research_notes": "Homepage lists Mon-Fri Happy Hour 2:00pm-6:00pm, no deals. The linked beverage menu Google doc loaded this time (via its export-as-text URL): 'Happy Hour & Specials: Mon-Fri, 2-6 PM: 2-for-1 beers and well drinks'. Doc is marked DRAFT and undated, so deals may change. Same doc also lists Monday night 2-for-1 Brew of the Month (not added) and a late-night happy hour 11 PM-2 AM with 2-for-1 domestic beers (not added; separate window, out of scope), plus the Tue/Thu/Sun 2-for-1 specials already stored. Times match stored window. Nashville Guru page nashvilleguru.com/businesses/beyond-the-edge has the happy-hour fields blank, so no guide used. /menu page has no happy hour prices.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "east:Reunion",
+   "name": "Reunion",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [],
+   "notes": "Deals not posted.",
+   "research_notes": "Bar page: Happy Hour Monday-Friday 2pm-7pm, matches stored window; no deals. Opened the linked drink menu image (squarespace Screenshot 2026-05-05) but it is an image WebFetch cannot read (stored note from earlier pass says it shows regular prices only); food menu PDF Reunion-X-New-Berlin-Regular-Menu.pdf not opened as it is a regular menu. Nashville Guru page nashvilleguru.com/businesses/reunion has happy-hour fields blank. NASHtoday/6AM City guide snippet (2-for-1 drafts, $6 well, $5 wine, weekdays 2-7) has no confirmed date on the page, and the Nashville Scene opening article is 2023, so neither qualifies under rule 13. Drink menu image could be rendered on the Mac to double-check for happy hour pricing.",
+   "times_differ": null,
+   "result": "still no deals"
+  }
+ ]
+}

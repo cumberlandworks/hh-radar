@@ -1,0 +1,583 @@
+[
+ {
+  "id": "nv-888-800",
+  "name": "888",
+  "city": "Nashville",
+  "neighborhood": "Downtown",
+  "hood": "The Gulch",
+  "zone": "gulch",
+  "address": "800 Clark Place",
+  "zip": "37203",
+  "lat": 36.1558199,
+  "lon": -86.7804542,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://888nashville.com",
+  "status": "open",
+  "hours": {
+   "SUN": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "MON": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "01:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://888nashville.com",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "SUN"
+    ],
+    "start": "16:00",
+    "end": "18:00",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://888nashville.com",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "research_notes": "Venue site: happy hour Sun-Thu 4-6 PM, bar only; deals are in a PDF menu that could not be read, so none are listed. Nashville Guru hours differ; used the venue's."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "city": "Nashville",
+  "neighborhood": "Downtown",
+  "hood": "Nashville Yards & North Gulch",
+  "zone": "gulch",
+  "address": "26 Platform Way South",
+  "zip": "37203",
+  "lat": 36.1599973,
+  "lon": -86.7853179,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://www.earls.ca/locations/nashville-yards",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "01:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "00:00"
+    ]
+   ]
+  },
+  "hours_confidence": "high",
+  "hours_source": "researched 2026-11-03 (high confidence): https://www.earls.ca/locations/nashville-yards",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "15:00",
+    "end": "18:00",
+    "area": "lounge and patio",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.earls.ca/locations/nashville-yards",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Lounge and patio only. Venue lists no prices.",
+    "research_notes": "Venue location page lists daily 3-6 PM and 9 PM to close, lounge and patio only; no deals or prices posted."
+   },
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "21:00",
+    "end": "close",
+    "area": "lounge and patio",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.earls.ca/locations/nashville-yards",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Late-night happy hour, lounge and patio only. Venue lists no prices.",
+    "research_notes": "Venue location page: 9 PM to close daily. An official Nashville Yards listing said 10 PM; used the venue's own page."
+   },
+   {
+    "days": [
+     "SAT",
+     "SUN"
+    ],
+    "start": "10:00",
+    "end": "12:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.earls.ca/locations/nashville-yards",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Brunch happy hour, weekends and holidays, from opening (10am on its posted weekend hours) until noon. Venue lists no prices.",
+    "research_notes": "Venue page: brunch happy hour weekends and holidays from opening until 12 PM; area not stated. Spot check 2026-11-03: the venue writes \"open-12PM\"; 10:00 is its posted Sat/Sun opening on the same page."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "city": "Nashville",
+  "neighborhood": "West End",
+  "hood": "Midtown & Music Row",
+  "zone": "gulch",
+  "address": "1600 West End Avenue",
+  "zip": "37203",
+  "lat": 36.1544933,
+  "lon": -86.7935648,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://hallscatchnashville.com",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://hallscatchnashville.com",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT"
+    ],
+    "start": "15:00",
+    "end": "17:00",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://hallscatchnashville.com",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Bar, cocktail area and patio only.",
+    "research_notes": "Venue page lists times and area but no deals or prices; the guide's deals were not copied because a venue source exists."
+   },
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU"
+    ],
+    "start": "20:00",
+    "end": "close",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://hallscatchnashville.com",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Late-night happy hour. Bar, cocktail area and patio only.",
+    "research_notes": "Venue page: Monday to Thursday 8 pm to close. No deals listed."
+   },
+   {
+    "days": [
+     "FRI",
+     "SAT"
+    ],
+    "start": "21:00",
+    "end": "close",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://hallscatchnashville.com",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Late-night happy hour. Bar, cocktail area and patio only.",
+    "research_notes": "Venue page: Friday and Saturday 9 pm to close. No deals listed."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-jimmy-kellys-217",
+  "name": "Jimmy Kelly's",
+  "city": "Nashville",
+  "neighborhood": "West End",
+  "hood": "Midtown & Music Row",
+  "zone": "gulch",
+  "address": "217 Louise Avenue",
+  "zip": "37203",
+  "lat": 36.151725,
+  "lon": -86.8052492,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "http://www.jimmykellys.com",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "16:00",
+     "20:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): http://www.jimmykellys.com",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT"
+    ],
+    "start": "16:00",
+    "end": "18:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "http://www.jimmykellys.com",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "",
+    "research_notes": "Venue page: happy hour Monday through Saturday 4pm to 6pm, no deals or prices listed; guide deals not copied because a venue source exists. Nashville Guru also lists Sunday 4-6pm (confirmed 10/28/26) but the venue page does not; Sunday omitted."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-rare-bird-rooftop-bar-200",
+  "name": "Rare Bird Rooftop Bar",
+  "city": "Nashville",
+  "neighborhood": "Downtown",
+  "hood": "Downtown & Printers Alley",
+  "zone": "downtown",
+  "address": "200 Fourth Avenue N.",
+  "zip": "37219",
+  "lat": 36.1640054,
+  "lon": -86.7787375,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "14:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "14:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "14:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "14:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "12:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "12:00",
+     "22:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "12:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU"
+    ],
+    "start": "14:00",
+    "end": "18:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Called Golden Hour; weather permitting.",
+    "research_notes": "Noelle page: Golden Hour Monday through Thursday 2:00 to 6:00 PM, no deals listed. Rare Bird's own site lists Fri-Sat to midnight; Noelle page used for hours."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ }
+]

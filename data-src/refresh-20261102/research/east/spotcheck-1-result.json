@@ -1,0 +1,197 @@
+[
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "window_index": 5,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$19 Coors Light buckets",
+    "source_says": "$19 Coors Light buckets",
+    "ok": true
+   },
+   {
+    "deal": "$7.50 Modelo steins",
+    "source_says": "$7.50 Modelo steins",
+    "ok": true
+   }
+  ],
+  "source_says": "Noble's page, Tue Nov 3-Mon Nov 9 (no year): Sat Nov 7 11:00 AM-2:00 AM",
+  "miss": null
+ },
+ {
+  "id": "nv-cherries-839",
+  "name": "Cherries",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$8 cocktails",
+    "source_says": "Cocktails $8: House Marg, Daiquiri #9, Buck Cherry, House Old-Fashioned",
+    "ok": true
+   },
+   {
+    "deal": "Wood-roasted wings $11",
+    "source_says": "wood-roasted wings $11",
+    "ok": true
+   }
+  ],
+  "source_says": "Menu: happy hour daily until 8pm; hours Sat 1pm-12am, Sun 1pm-11pm (Mon-Thu 4pm, Fri 4pm open). Guru: daily until 8pm, confirmed 10/19/26",
+  "miss": null
+ },
+ {
+  "id": "nv-martha-my-dear-2503",
+  "name": "Martha My Dear",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$10 Cocktails",
+    "source_says": "$10 select cocktails",
+    "ok": true
+   },
+   {
+    "deal": "$2 off Wine",
+    "source_says": "$2 off wine",
+    "ok": true
+   }
+  ],
+  "source_says": "Nashville Guru: Mon-Sun 5:00-7:00pm, last confirmed 10/27/26; venue site: Happy Hour Daily, no times, open 5pm-1am",
+  "miss": null
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "window_index": 7,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$7.50 Milagro shots",
+    "source_says": "$7.50 Milagro shots (only one deal stored)",
+    "ok": true
+   }
+  ],
+  "source_says": "Noble's page, Tue Nov 3-Mon Nov 9 (no year): Sun Nov 8 Milagro shots 11:00 AM-2:00 AM",
+  "miss": null
+ },
+ {
+  "id": "nv-up-down-nashville-927",
+  "name": "Up-Down Nashville",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$1 off Tennessee beer on tap",
+    "source_says": "$1 off Tennessee beer on tap, all day (only one deal stored)",
+    "ok": true
+   }
+  ],
+  "source_says": "Guru (confirmed 10/23/26): Tue $1 off Tennessee beer on tap all day; venue hours Mon-Fri open 3pm",
+  "miss": null
+ },
+ {
+  "id": "nv-m-l-rose-neighborhood-pub-melrose-2535",
+  "name": "M.L. Rose Neighborhood Pub - Melrose",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "2-for-1 beer, wine, and wells",
+    "source_says": "2-for-1 beer, wine, and wells",
+    "ok": true
+   },
+   {
+    "deal": "Half-price classic cheeseburgers",
+    "source_says": "Half-price classic cheeseburgers (no modifications), kids too",
+    "ok": true
+   }
+  ],
+  "source_says": "Neighbor Hour Mon-Wed 3pm-6pm (location page and specials page)",
+  "miss": null
+ },
+ {
+  "id": "nv-up-down-nashville-927",
+  "name": "Up-Down Nashville",
+  "window_index": 3,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$2 pizza slices",
+    "source_says": "$2 pizza slices until 8:00 PM (only one priced deal)",
+    "ok": true
+   }
+  ],
+  "source_says": "Guru (confirmed 10/23/26): Fri $2 pizza slices and 20 free tokens first 100, until 8:00 PM; venue open 3pm Mon-Fri",
+  "miss": null
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "window_index": 4,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "Milagro Silver $7",
+    "source_says": "Silver Shot $7",
+    "ok": true
+   },
+   {
+    "deal": "Reposado $9 / Anejo $10",
+    "source_says": "Reposado $9, Anejo $10",
+    "ok": true
+   }
+  ],
+  "source_says": "Noble's page, Tue Nov 3-Mon Nov 9 (no year): Thu Nov 5 6:00 PM-2:00 AM",
+  "miss": null
+ },
+ {
+  "id": "nv-up-down-nashville-927",
+  "name": "Up-Down Nashville",
+  "window_index": 2,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3 domestic tallboys",
+    "source_says": "$3 domestic tall boys, all day (only one deal stored)",
+    "ok": true
+   }
+  ],
+  "source_says": "Guru (confirmed 10/23/26): Wed $3 domestic tall boys all day; venue open 3pm Mon-Fri",
+  "miss": null
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "2-4-1 wells, wine, and drafts",
+    "source_says": "2-4-1 Wells, Wine, & Drafts (no price on page; only one deal stored)",
+    "ok": true
+   }
+  ],
+  "source_says": "Noble's page, Tue Nov 3-Mon Nov 9 (no year): Mon, Tue, Fri 11:00 AM-6:00 PM 2-4-1 Wells, Wine, Drafts (Wed all day, separate)",
+  "miss": null
+ }
+]

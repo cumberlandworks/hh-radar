@@ -18,17 +18,32 @@ const OUT = path.join(__dirname, 'leads');
 const ovPath = path.join(OUT, 'raw', 'address-overrides.json');
 const overrides = fs.existsSync(ovPath) ? JSON.parse(fs.readFileSync(ovPath, 'utf8')) : {};
 
-// A lead matches an inKind venue on the normalized name (leads have no coordinates), or on
-// the street when the guide gave an address.
+// A lead matches an inKind venue on the normalized name (leads have no coordinates), or (fix29)
+// on the merge rule: the same street with a similar name (logic.js namesSimilar), when the lead
+// has an address. Before fix29 any lead on an inKind venue's street matched, whatever its name.
 function ikMatch(lead) {
   const n = L.normName(lead.name);
   const st = lead.address ? L.normStreet(lead.address) : '';
-  return ik.find((v) => L.normName(v.name) === n || (st && L.normStreet(v.address) === st)) || null;
+  return ik.find((v) => L.normName(v.name) === n) ||
+    ik.find((v) => st && L.normStreet(v.address) === st && L.namesSimilar(lead.name, v.name)) || null;
+}
+// fix29: most leads have no address, so the street rule can't see them (fix28: "Bar Mar by José
+// Andrés" vs inKind "Bar Mar - Nashville"). A similar name with no address to compare is only
+// flagged, in inkind-possible.json, for the researcher and the merge (whose street rule decides).
+// namesSimilar alone is too loose with no street to anchor it (19 flags, 3 real), so the flag
+// needs one normalized name to hold the other as whole words ("bar mar" in "bar mar by jose andres").
+function ikPossible(lead) {
+  if (lead.address) return null;
+  const a = ' ' + L.normName(lead.name) + ' ';
+  return ik.find((v) => {
+    const b = ' ' + L.normName(v.name) + ' ';
+    return b.trim() && a.trim() && (a.includes(b) || b.includes(a));
+  }) || null;
 }
 
 const byZone = {};
 L.V2_ZONE_KEYS.forEach((k) => { byZone[k] = []; });
-const overlap = [], crosscheck = [], outer = [], unzoned = [];
+const overlap = [], crosscheck = [], outer = [], unzoned = [], possible = [];
 raw.forEach((lead) => {
   const rec = {
     name: lead.name, neighborhood_text: lead.neighborhood_text || null, address: lead.address || null,
@@ -42,6 +57,8 @@ raw.forEach((lead) => {
     if (m.verified_no_hh === true) crosscheck.push({ lead: rec, venue: m });
     return;
   }
+  const pm = ikPossible(rec);
+  if (pm) possible.push({ lead: rec.name, ik_id: pm.id, ik_name: pm.name, ik_address: pm.address });
   const hood = ov ? ov.hood : hoodFromText(lead.neighborhood_text);
   const zone = hood ? L.zoneOf(hood) : null;
   if (!zone) {
@@ -58,6 +75,7 @@ L.V2_ZONE_KEYS.forEach((k) => dump('leads-' + k + '.json', byZone[k]));
 dump('inkind-overlap.json', overlap);
 dump('outer-skipped.json', outer);
 dump('unzoned.json', unzoned);
+dump('inkind-possible.json', possible);
 fs.writeFileSync(path.join(OUT, 'inkind-crosscheck.md'),
   '# inKind cross-check (fix27 C3)\n\nA guide lists a happy hour for these inKind venues, which venues.json marks ' +
   '`verified_no_hh: true`. Nothing was changed; re-check each at the next inKind refresh.\n\n' +
@@ -68,5 +86,5 @@ fs.writeFileSync(path.join(OUT, 'inkind-crosscheck.md'),
 const counts = {};
 L.V2_ZONE_KEYS.forEach((k) => { counts[k] = byZone[k].length; });
 console.log(JSON.stringify({ raw: raw.length, per_zone: counts, inkind_overlap: overlap.length,
-  crosscheck: crosscheck.length, outer_skipped: outer.length, unzoned: unzoned.length }));
+  inkind_possible: possible.length, crosscheck: crosscheck.length, outer_skipped: outer.length, unzoned: unzoned.length }));
 L.V2_ZONE_KEYS.forEach((k) => { if (byZone[k].length > 80) console.log('NOTE: ' + k + ' has ' + byZone[k].length + ' leads (> 80)'); });

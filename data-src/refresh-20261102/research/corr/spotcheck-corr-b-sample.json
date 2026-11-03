@@ -1,0 +1,269 @@
+[
+ {
+  "id": "nv-henley-2023",
+  "name": "Henley",
+  "address": "2023 Broadway",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [],
+  "sources": [
+   "https://www.henleynashville.com/hours-location"
+  ],
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-jimmy-kellys-217",
+  "name": "Jimmy Kelly's",
+  "address": "217 Louise Avenue",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   "$3 select beer",
+   "$6 select wine",
+   "$7 house level liquor drinks",
+   "$9 select specialty cocktails",
+   "$12 Grey Goose martinis",
+   "$45 martini flights"
+  ],
+  "sources": [
+   "http://www.jimmykellys.com",
+   "https://nashvilleguru.com/businesses/jimmy-kellys"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-28. Check with the venue."
+ },
+ {
+  "id": "nv-lyra-935",
+  "name": "Lyra",
+  "address": "935 W Eastland Ave",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "17:00",
+  "end": "18:00",
+  "deals": [
+   "$8 hummus",
+   "$8 baba ghanoush",
+   "$8 fatayer",
+   "$8 fatteh",
+   "$6 za'atar french fries",
+   "$4 man'oushe",
+   "$7 cocktails",
+   "$7 draft beers",
+   "$6 house wine by the glass"
+  ],
+  "sources": [
+   "https://lyranashville.com/"
+  ],
+  "notes": "Prices from the venue's Spring 2025 happy hour menu, which its site still links. Check with the venue."
+ },
+ {
+  "id": "nv-plane-jane-1315",
+  "name": "Plane Jane",
+  "address": "1315 Dickerson Pike",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "TUE"
+  ],
+  "start": "17:00",
+  "end": "close",
+  "deals": [],
+  "sources": [
+   "https://www.planejanebar.com/"
+  ],
+  "notes": "All day: from the 17:00 opening. Deals not posted."
+ },
+ {
+  "id": "nv-plane-jane-1315",
+  "name": "Plane Jane",
+  "address": "1315 Dickerson Pike",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "17:00",
+  "end": "19:00",
+  "deals": [],
+  "sources": [
+   "https://www.planejanebar.com/"
+  ],
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-plane-jane-1315",
+  "name": "Plane Jane",
+  "address": "1315 Dickerson Pike",
+  "window_index": 2,
+  "kind": "happy_hour",
+  "days": [
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "19:00",
+  "deals": [],
+  "sources": [
+   "https://www.planejanebar.com/"
+  ],
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-puesto-991",
+  "name": "Puesto",
+  "address": "991 Exchange Lane",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [
+   "$5 Snacks: Chicharrones, Esquite, Black Bean Dip, Tempura Cauliflower",
+   "$9 Shares: Classic Guacamole, Potato Taquitos, Chicken Flautas, Passionfruit & Mango Shrimp Ceviche",
+   "Half Off Margaritas: Puesto Perfect, Hot Sauce, Coconut",
+   "$6 local cervezas and michelada"
+  ],
+  "sources": [
+   "https://www.eatpuesto.com/nashville/",
+   "https://www.eatpuesto.com/nashville-menus/"
+  ],
+  "notes": "Dine-in only, bar lounge."
+ },
+ {
+  "id": "nv-puesto-991",
+  "name": "Puesto",
+  "address": "991 Exchange Lane",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [
+   "$5 Snacks: Chicharrones, Tempura Cauliflower",
+   "$9 Shares: Classic Guacamole, Passionfruit & Mango Shrimp Ceviche",
+   "$6 Tacos: Chicken Al Pastor, Mushroom, Carnitas, Tamarindo Shrimp",
+   "Half Off Margaritas: Puesto Perfect, Hot Sauce, Coconut",
+   "$6 local cervezas and michelada"
+  ],
+  "sources": [
+   "https://www.eatpuesto.com/nashville/",
+   "https://www.eatpuesto.com/nashville-menus/"
+  ],
+  "notes": "Late-night happy hour, Wednesday through Monday, 9pm to late, dine-in only in the bar lounge."
+ },
+ {
+  "id": "nv-rare-bird-rooftop-bar-200",
+  "name": "Rare Bird Rooftop Bar",
+  "address": "200 Fourth Avenue N.",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "14:00",
+  "end": "18:00",
+  "deals": [],
+  "sources": [
+   "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/"
+  ],
+  "notes": "Called Golden Hour; weather permitting. Deals not posted."
+ },
+ {
+  "id": "nv-reunion-105",
+  "name": "Reunion",
+  "address": "105 South 11th Street",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "14:00",
+  "end": "19:00",
+  "deals": [],
+  "sources": [
+   "https://www.reunionnashville.com/bar"
+  ],
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-thistle-and-rye-1620",
+  "name": "Thistle & Rye",
+  "address": "1620 West End Ave",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   "$6 draft beer",
+   "$8 Poema Cava sparkling wine",
+   "$10 select cocktails",
+   "$6-$12 select food"
+  ],
+  "sources": [
+   "https://www.thistleandrye.com/",
+   "https://nashvilleguru.com/businesses/thistle-rye"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-26. Check with the venue."
+ }
+]

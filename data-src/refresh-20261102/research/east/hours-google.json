@@ -1,0 +1,10 @@
+{
+ "Turkey and The Wolf Icehouse": {
+  "hours": {"TUE":[["10:00","21:00"]],"THU":[["10:00","21:00"]],"FRI":[["10:00","21:00"]],"SAT":[["10:00","21:00"]],"SUN":[["10:00","21:00"]],"MON":[["10:00","21:00"]]},
+  "listing_note": "Listing 'Turkey and the Wolf Icehouse', 800 Meridian St, Nashville TN 37207. Wednesday shown as Closed (left out). All other days read from screenshot."
+ },
+ "The Treehouse": {
+  "hours": {"MON":[["16:00","22:00"]],"TUE":[["16:00","22:00"]],"WED":[["16:00","22:00"]],"THU":[["16:00","22:00"]],"FRI":[["16:00","23:00"]],"SAT":[["10:00","14:00"],["16:00","23:00"]],"SUN":[["10:00","14:00"],["16:00","21:00"]]},
+  "listing_note": "Listing 'The Treehouse Nashville', 1011 Clearview Ave, Nashville TN 37206. Extra Google rows: Happy hours 4-6PM Mon, Tue, Wed, Thu, Fri (Sat and Sun Closed); Dinner 4-10:45PM (weekly dinner row, per-day not expanded); Brunch shown as Closed. Sat/Sun have a brunch-time range 10AM-2PM plus evening range."
+ }
+}

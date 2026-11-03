@@ -31,7 +31,30 @@ Tools: WebSearch and WebFetch only. Today's date is given in your task; use it f
    Don't go looking.
 7. The address must be the venue's own posted address (street, city, 5-digit zip). Never guess coordinates and
    never return lat/lon.
-8. Return JSON only, and no prose outside `notes` / `research_notes`.
+8. `official_site` is never null (fix29, from fix28). If the venue's own site won't load (SSL error, timeout,
+   parked), use the link to the venue's site that a hotel or district listing gives (e.g. the hotel's dining page,
+   the district's directory entry), and say in `research_notes` that the site itself didn't load. If no listing
+   links one either, use the venue's own social page URL.
+9. "All day" (fix29, from fix28): when a guide or the venue says a happy hour runs "all day", the window starts
+   at the venue's posted opening time for that day and ends at "close", and `notes` says so (e.g. "All day: from
+   the 11:00 opening."). Food deals go in that window only if the source gives them for the whole day; food
+   deals the source limits to certain hours (e.g. "food 3-6pm") go in their own window for exactly those hours.
+10. No listed days (fix29, from fix28): when a special names no days ("weekends", "reverse happy hour 9pm to
+   close"), take its days from the venue's posted open days ("weekends" = the open days among SAT and SUN), and
+   `notes` says how the days were set (e.g. "Days not posted: set to the venue's open days, Tue-Sun.").
+11. Chains (TJ, 2026-11-03): a chain's own happy-hour page that names Tennessee (or says "all locations") is a
+   `venue` source for deals at this location. The window's `notes` says "chain-wide Tennessee pricing" (or
+   "chain-wide pricing, all locations"), and `research_notes` gives the page.
+12. Linked menus (TJ, 2026-11-03): if the deals are in a linked PDF or a separate menu page, open it. Never skip
+   a linked menu. A PDF that WebFetch can't read is listed in `research_notes` as "PDF not readable: <url>", so
+   the executor reads it on the Mac (curl + pdftotext) or has the Chrome agent render it.
+13. Times but no deals (TJ, 2026-11-03): if the venue's own source gives the happy hour's days and times but no
+   deals, deals from a guide entry the guide itself confirmed in 2026 may fill in. Add that guide as a source
+   (with its `confirmed` date), keep the venue source for the times, and the window's `notes` says exactly
+   `Deals as listed by <guide name>, confirmed <YYYY-MM-DD>. Check with the venue.` (the fix27 guide-deals
+   note). The window's confidence stays as the venue source gives it for the times. With no such guide entry,
+   the deals list stays empty and `notes` says "Deals not posted."
+14. Return JSON only, and no prose outside `notes` / `research_notes`.
 
 ## Output: one JSON object
 ```json

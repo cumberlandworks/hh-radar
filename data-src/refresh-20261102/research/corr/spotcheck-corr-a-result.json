@@ -1,0 +1,237 @@
+[
+ {
+  "id": "nv-888-800",
+  "name": "888",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3 oysters",
+    "source_says": "Oysters 3",
+    "ok": true
+   },
+   {
+    "deal": "$8 yuzu margarita",
+    "source_says": "Yuzu Margarita 8",
+    "ok": true
+   }
+  ],
+  "source_says": "Sunday-Thursday 4-6 PM, bar only (site and PDF dated 08.27.26)",
+  "miss": null
+ },
+ {
+  "id": "nv-beyond-the-edge-112",
+  "name": "Beyond The Edge",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "2-for-1 beers and wells",
+    "source_says": "2-for-1 BEERS & WELLS Monday thru Friday 2PM-6PM",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Fri 2-6 PM; beverage menu doc (draft)",
+  "miss": null
+ },
+ {
+  "id": "nv-beyond-the-edge-112",
+  "name": "Beyond The Edge",
+  "window_index": 4,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "2-for-1 domestic beers",
+    "source_says": "LATE NIGHT HAPPY HOUR 11PM-2AM 2-for-1 DOMESTICS",
+    "ok": true
+   }
+  ],
+  "source_says": "Late night 11PM-2AM, no days posted; open daily 11am-3am (notes explain daily)",
+  "miss": null
+ },
+ {
+  "id": "nv-condado-tacos-418",
+  "name": "Condado Tacos",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$4 House Margs",
+    "source_says": "Tennessee: $4 House Margs",
+    "ok": true
+   },
+   {
+    "deal": "3 Street Tacos for $6",
+    "source_says": "Tennessee: 3 Street Tacos for $6",
+    "ok": true
+   }
+  ],
+  "source_says": "Tennessee happy hour weekdays 2-5 pm; location page Mon-Fri 2-5 PM; no home game days/special events",
+  "miss": null
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$3 off Bud Light",
+    "source_says": "Bud Light 3 OFF",
+    "ok": true
+   },
+   {
+    "deal": "$8.50 Corona",
+    "source_says": "Corona 8.5",
+    "ok": true
+   },
+   {
+    "deal": "$16 Petite Steak Frites",
+    "source_says": "Petite Steak Frites 16",
+    "ok": true
+   }
+  ],
+  "source_says": "Daily 3-6 PM (and 9 PM to close), lounge and patio only",
+  "miss": null
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "window_index": 1,
+  "pass": false,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "source_says": "Daily 9 PM to close, lounge and patio only; location page lists no deals",
+  "miss": "Deals empty, but the venue's own menu page (earls.ca/locations/earls-nashville-yards/menu/) has a 'Happy Hour (Drinks and Food)' menu with full prices (e.g. Corona 8.5, Petite Steak Frites 16) that is not tied to specific hours, so it plausibly applies to the 9 PM-close window too. That page is not in this window's sources. Judgment call: days and times are right."
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "window_index": 2,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$12 Aperol Spritz",
+    "source_says": "Aperol Spritz 12",
+    "ok": true
+   },
+   {
+    "deal": "$13 Classic Benedict",
+    "source_says": "Classic Benedict 13",
+    "ok": true
+   },
+   {
+    "deal": "$125 Seafood Tower",
+    "source_says": "Seafood Tower 125",
+    "ok": true
+   }
+  ],
+  "source_says": "Weekend and holiday brunch happy hour, from opening until 12 PM; Sat and Sun open 10 AM",
+  "miss": null
+ },
+ {
+  "id": "nv-fogg-street-lawn-club-648",
+  "name": "Fogg Street Lawn Club",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "source_says": "Monday-Thursday 3-6 PM; no deals or prices on the site or /cocktail-menu text; hours may change with game schedules",
+  "miss": null
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "window_index": 0,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$8 yellowfin tuna (raw, half off)",
+    "source_says": "Yellowfin Tuna $8.00 (half off)",
+    "ok": true
+   },
+   {
+    "deal": "$2 oysters on the half shell, each",
+    "source_says": "Oysters on the Half-Shell $2.00 each",
+    "ok": true
+   },
+   {
+    "deal": "$11 Titan roll (half off)",
+    "source_says": "Titan Roll $11.00 (half off)",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Thu 3-5 pm and 8 pm-close; Fri-Sat 3-5 pm and 9 pm-close; bar, cocktail area, patio only",
+  "miss": null
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "window_index": 1,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$8 yellowfin tuna (raw, half off)",
+    "source_says": "Yellowfin Tuna $8.00 (half off)",
+    "ok": true
+   },
+   {
+    "deal": "$2 oysters on the half shell, each",
+    "source_says": "Oysters on the Half-Shell $2.00 each",
+    "ok": true
+   },
+   {
+    "deal": "$11 Titan roll (half off)",
+    "source_says": "Titan Roll $11.00 (half off)",
+    "ok": true
+   }
+  ],
+  "source_says": "Mon-Thu 8 pm-close",
+  "miss": null
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "window_index": 2,
+  "pass": true,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   {
+    "deal": "$8 yellowfin tuna (raw, half off)",
+    "source_says": "Yellowfin Tuna $8.00 (half off)",
+    "ok": true
+   },
+   {
+    "deal": "$2 oysters on the half shell, each",
+    "source_says": "Oysters on the Half-Shell $2.00 each",
+    "ok": true
+   },
+   {
+    "deal": "$11 Titan roll (half off)",
+    "source_says": "Titan Roll $11.00 (half off)",
+    "ok": true
+   }
+  ],
+  "source_says": "Fri-Sat 9 pm-close",
+  "miss": null
+ }
+]

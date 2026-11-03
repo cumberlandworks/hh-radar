@@ -1,0 +1,11 @@
+[
+{"id":"nv-earls-kitchen-bar-26","name":"Earls Kitchen + Bar","window_index":1,"pass":true,"days_ok":true,"times_ok":true,
+"prices_checked":[{"deal":"$16 Petite Steak Frites","source_says":"Petite Steak Frites 16, Happy Hour Exclusive","ok":true},{"deal":"1/2 price Duckhorn Sauvignon Blanc (750 ml)","source_says":"Duckhorn Sauvignon Blanc 1/2 PRICE 750 ml","ok":true},{"deal":"$3.50 Oyster on the Half Shell","source_says":"Oyster on the Half Shell 3.5","ok":true}],
+"source_says":"Location page: EVERYDAY 3PM-6PM and 9PM-CLOSE (lounge + patio only). Menu page happy hour list has no hours; items/prices match.","miss":null},
+{"id":"nv-thistle-and-rye-1620","name":"Thistle & Rye","window_index":0,"pass":true,"days_ok":true,"times_ok":true,
+"prices_checked":[{"deal":"$6 draft beer","source_says":"Nashville Guru: $6 draft beer","ok":true},{"deal":"$8 Poema Cava sparkling wine","source_says":"Nashville Guru: $8 Poema Cava sparkling wine","ok":true}],
+"source_says":"Nashville Guru: Mon-Sat 4-6pm, $6 draft beer, $8 Poema Cava, $10 select cocktails, $6-$12 select food; last confirmed 10/26/26. Venue site: daily 4-6pm, no prices.","miss":null},
+{"id":"nv-thistle-and-rye-1620","name":"Thistle & Rye","window_index":1,"pass":true,"days_ok":true,"times_ok":true,
+"prices_checked":[],
+"source_says":"Venue site: happy hour daily 4-6pm, no deals posted. Nashville Guru lists Mon-Sat only, no Sunday deals. No Sunday deals found.","miss":null}
+]

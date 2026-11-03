@@ -1,0 +1,40 @@
+{
+ "ml_rose_pin": {
+  "lat": 36.1227936,
+  "lon": -86.7761653,
+  "listing_name": "M.L.Rose Neighborhood Pub - Melrose",
+  "listing_address": "2535 8th Ave S #107, Nashville, TN 37204",
+  "method": "Google Maps place URL (/maps/place/M.L.Rose+Neighborhood+Pub+-+Melrose/...) contained !8m2!3d36.1227936!4d-86.7761653 (the !3d/!4d pin; the @ centre happened to be identical). Listing address matched exactly; plus code shown 46FF+4G; phone (615) 712-8160; mlrose.com. A separate listing 'M.L.Rose Neighborhood Pub - Inglewood' exists and was not used."
+ },
+ "lyra_pdf": {
+  "url": "https://www.lyranashville.com/s/Happy-Hour-Spring-2025.pdf",
+  "printed_date": "none printed besides 'Spring 2025' (only in the filename); PDF Word title 'Microsoft Word - Document1'",
+  "days_times": "Monday – Saturday 5-6",
+  "items": [
+   {"desc": "Hummus / Aleppo oil (Se/Al)", "price_as_printed": "8"},
+   {"desc": "Add chili roasted turnips & onions (D/Al)", "price_as_printed": "2"},
+   {"desc": "Add wood oven roasted jalapeño relish (Ce/Al)", "price_as_printed": "2"},
+   {"desc": "Add lamb merguez & sweet pepper puree (Ce/Al)", "price_as_printed": "3"},
+   {"desc": "Baba Ghanoush / labneh / roasted tomato (Se/D/Al/Ce)", "price_as_printed": "8"},
+   {"desc": "Fatayer / chard / onion / feta (Ce/N/D/Al)", "price_as_printed": "8"},
+   {"desc": "Fatteh / spiced butter / chickpea / tahini labneh (Ce/D)", "price_as_printed": "8"},
+   {"desc": "Add lamb merguez (Ce/Al)", "price_as_printed": "3"},
+   {"desc": "Za'atar French Fries / ghee / garlic toum (Ce/D/Se/N)", "price_as_printed": "6"},
+   {"desc": "Man'oushe (Ce/Se/N)", "price_as_printed": "4"},
+   {"desc": "COCKTAILS (all, header price): Foxy brown - Gin, hibiscus, lemon, ginger beer, cardamom bitters, rocks; WASP - Vodka, sumac, lime, soda, rocks; SOLO - Bourbon, orange, lemon, grenadine, rocks; DOCTOR - Bourbon, simple syrup, cinnamon bitters, rocks or up; MAGNUM - Rum, lime, simple syrup, cardamom bitters, up; ZORRO - Tequila, grapefruit, lime, simple syrup, soda, rocks; DON QUIXOTE - Tequila, Campari, lime, simple syrup, rocks; TINK - Aperitivo, Cava, orange bitters, rocks", "price_as_printed": "COCKTAILS | 7"},
+   {"desc": "Draft Beer: TNBW River Drifter Hazy IPA", "price_as_printed": "7"},
+   {"desc": "Draft Beer: TNBW Urban Hiker Lager", "price_as_printed": "7"},
+   {"desc": "Draft Beer: Wiseacre Tiny Bomb Pilsner", "price_as_printed": "7"},
+   {"desc": "Draft Beer: Nashville Cider Co. Hard Cider", "price_as_printed": "7"},
+   {"desc": "House Wines (glass)", "price_as_printed": "6"}
+  ],
+  "unreadable": [],
+  "notes": "Page 1 = food with header 'Happy Hour / Monday – Saturday 5-6' and allergen footnote; page 2 = cocktails/beer/wine with no days/times printed on it (presumably same happy hour, not stated). PDF redirected to static1.squarespace.com .../Happy+Hour+Spring+2025.pdf. It rendered as text-readable in Chrome's viewer. Superscript allergen codes are in parentheses above."
+ },
+ "reunion_menu": {
+  "url": "https://www.reunionnashville.com/s/Screenshot-2026-05-05-at-44403PM.png",
+  "has_happy_hour_pricing": false,
+  "items": [],
+  "notes": "Image (1522x1896, dated 2026-05-05) is a regular drink menu: COCKTAILS $13; HOWDY SHOTS (1 oz) $6; beer $2-$8; wine by glass/bottle $8-$10/$30-$37; zero proof $5-$9. The words 'happy hour' and any discounted pricing do not appear on the image. (The /bar page text itself says 'Happy Hour Every Monday - Friday 2pm - 7pm' but gives no prices there.)"
+ }
+}

@@ -1,0 +1,916 @@
+{
+ "added": [
+  {
+   "lead": "Duke’s",
+   "name": "Duke's",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1000 Main Street",
+   "zip": "37206",
+   "official_site": "https://www.dukesbarnashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "WED": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "THU": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.dukesbarnashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "12:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off draft beer and well drinks",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.dukesbarnashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue site: Happy Hour Monday through Friday, noon to 7pm; draft beer and well drinks $1 off."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 beer and shot specials",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.dukesbarnashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue site: '$7 beer and shot specials, all the time'; open noon to 3am daily."
+    }
+   ]
+  },
+  {
+   "lead": "Garage Sale Bar (East)",
+   "name": "Garage Sale Bar East Nashville",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "747 Douglas Ave, Suite 101A",
+   "zip": "37207",
+   "official_site": "http://www.garagesalebar.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): http://www.garagesalebar.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Half off food",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$8 beer and shot specials",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://www.garagesalebar.com/happyhour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/garage-sale-bar-east-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": true,
+     "confidence": "high",
+     "research_notes": "Venue /happyhour page: Monday through Friday 3-6 PM, half off food, $8 beer and shot specials. Nashville Guru agrees (confirmed 10/27/26). Guru lists suite 100, venue site lists 101A; venue used."
+    }
+   ]
+  },
+  {
+   "lead": "Noble’s East",
+   "name": "Noble's Kitchen & Beer Hall (East)",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "974 Main Street",
+   "zip": "37206",
+   "official_site": "https://east.noblesbeerhall.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://east.noblesbeerhall.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "FRI"
+     ],
+     "start": "11:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-4-1 wells, wine, and drafts",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9; the schedule can change weekly.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-4-1 wells, wine, and drafts",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day, as posted for the week of Nov 3-9; the schedule can change weekly.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "18:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-4-1 wells",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "18:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 Fernet shots",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$3 Miller Lite drafts",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "18:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Milagro shots: Silver $7, Reposado $9, Añejo $10",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$19 Coors Light buckets",
+       "price": 19
+      },
+      {
+       "type": "drink",
+       "desc": "$7.50 Modelo steins",
+       "price": 7.5
+      },
+      {
+       "type": "drink",
+       "desc": "$22 domestic buckets",
+       "price": 22
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$22 domestic buckets",
+       "price": 22
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7.50 Milagro shots",
+       "price": 7.5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://east.noblesbeerhall.com/nashville-east-nashville-noble-s-east-happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "As posted for the week of Nov 3-9.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00."
+    }
+   ]
+  },
+  {
+   "lead": "Smokers Abbey",
+   "name": "Smokers Abbey",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "604 Gallatin Ave., Suite 102",
+   "zip": "37206",
+   "official_site": "https://smokersabbey.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "low",
+   "hours_source": "researched 2026-11-03 (low confidence): https://cigarfinder.com/lounges/smokers-abbey-nashville",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "11:00",
+     "end": "17:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2 for 1 draft beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off cans",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://smokersabbey.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Posted as 'before 5pm'; start set to the 11:00 opening.",
+     "research_notes": "Venue site: Monday-Friday before 5pm, 2 for 1 draft beers and $1 off cans. Venue site gives no open hours; opening from an unclaimed cigarfinder listing."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off craft and domestic cans",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Make it a double +$3 on all wells",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://smokersabbey.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Posted with no time: set to the day's open hours (12:00 opening to close).",
+     "research_notes": "Venue site Sunday deal, no time posted. Open hours from an unclaimed cigarfinder listing."
+    }
+   ]
+  },
+  {
+   "lead": "Up-Down",
+   "name": "Up-Down Nashville",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "927 Woodland St",
+   "zip": "37206",
+   "official_site": "http://www.updownarcadebar.com/nashville/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://updownarcadebar.com/nashville/",
+   "windows": [
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "15:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select drink deals",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://updownarcadebar.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/up-down-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 3:00 opening. Deals not itemized.",
+     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "15:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off Tennessee beer on tap",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://updownarcadebar.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/up-down-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 3:00 opening.",
+     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "15:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 domestic tallboys",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://updownarcadebar.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/up-down-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 3:00 opening.",
+     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "20:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$2 pizza slices",
+       "price": 2
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://updownarcadebar.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/up-down-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Until 8pm. Also 20 free tokens for the first 100 people.",
+     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$30 six-pack of domestic cans",
+       "price": 30
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://updownarcadebar.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/up-down-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Babo",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  },
+  {
+   "lead": "Chapstick",
+   "reason": "no happy hour found",
+   "url": "https://nashvilleguru.com/?p=162504"
+  },
+  {
+   "lead": "The Lucky Duck Lounge",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  }
+ ]
+}

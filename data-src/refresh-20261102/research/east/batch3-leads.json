@@ -1,0 +1,258 @@
+[
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Bay 6",
+  "neighborhood_text": "East Nashville",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "CHERRIES",
+  "neighborhood_text": "East Nashville",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-19"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-19"
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Folk",
+  "neighborhood_text": "East Nashville",
+  "address": "823 Meridian St",
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.goodasfolk.com"
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Groceries Etc.",
+  "neighborhood_text": "East Nashville",
+  "address": "95 S 16th St",
+  "guides": [
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "http://www.groceriesetc.bar/"
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Lyra",
+  "neighborhood_text": "East Nashville",
+  "address": "935 W Eastland Ave",
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "https://lyranashville.com/"
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "plane jane",
+  "neighborhood_text": "East Nashville",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.planejanebar.com/"
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Strega",
+  "neighborhood_text": "East Nashville",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Five Points & Main Street",
+  "zone": "east",
+  "name": "Village Pub & Beer Garden",
+  "neighborhood_text": "East Nashville",
+  "address": "1308 McGavock Pike",
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.riversidevillagepub.com/"
+ }
+]

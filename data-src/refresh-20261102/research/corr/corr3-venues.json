@@ -1,0 +1,467 @@
+[
+ {
+  "lead": "Lyra",
+  "name": "Lyra",
+  "city": "Nashville",
+  "neighborhood": "East Nashville",
+  "address": "935 W Eastland Ave",
+  "zip": "37216",
+  "official_site": "https://lyranashville.com/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "21:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://lyranashville.com/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT"
+    ],
+    "start": "17:00",
+    "end": "18:00",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://lyranashville.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Deals are on the venue's Happy Hour menu (PDF); not listed here.",
+    "research_notes": "Venue homepage: Happy Hour Monday through Saturday, 5pm-6pm. Deals are in a linked PDF named Happy Hour Spring 2025 which is image-only and could not be read, so no deals recorded. Dinner hours used for open hours (Mon-Thu 5-9, Fri-Sat 5-10, Sun closed); the site's location section says Mon-Sat 5-10, which disagrees."
+   }
+  ],
+  "id": "east:Lyra"
+ },
+ {
+  "lead": "plane jane",
+  "name": "Plane Jane",
+  "city": "Nashville",
+  "neighborhood": "East Nashville",
+  "address": "1315 Dickerson Pike",
+  "zip": "37207",
+  "official_site": "https://www.planejanebar.com/",
+  "status": "open",
+  "hours": {
+   "TUE": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "WED": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "THU": [
+    [
+     "17:00",
+     "00:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "17:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "17:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://www.planejanebar.com/",
+  "windows": [
+   {
+    "days": [
+     "TUE"
+    ],
+    "start": "17:00",
+    "end": "close",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.planejanebar.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "All day: from the 17:00 opening. Deals not posted.",
+    "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+   },
+   {
+    "days": [
+     "WED",
+     "THU",
+     "FRI",
+     "SAT"
+    ],
+    "start": "17:00",
+    "end": "19:00",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.planejanebar.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Deals not posted; check the venue.",
+    "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+   },
+   {
+    "days": [
+     "SUN"
+    ],
+    "start": "15:00",
+    "end": "19:00",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.planejanebar.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Deals not posted; check the venue.",
+    "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+   }
+  ],
+  "id": "east:Plane Jane"
+ },
+ {
+  "lead": "Beyond The Edge",
+  "name": "Beyond The Edge",
+  "city": "Nashville",
+  "neighborhood": "East Nashville",
+  "address": "112 S 11th St",
+  "zip": "37206",
+  "official_site": "https://www.beyondtheedge.net/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "03:00"
+    ]
+   ]
+  },
+  "hours_confidence": "high",
+  "hours_source": "researched 2026-11-03 (high confidence): https://www.beyondtheedge.net/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI"
+    ],
+    "start": "14:00",
+    "end": "18:00",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.beyondtheedge.net/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Specific happy hour deals are not posted.",
+    "research_notes": "Venue homepage lists Monday - Friday Happy Hour 2:00pm - 6:00pm with no deals; beverage menu Google doc would not load. Site says Sat/Sun hours start at 10am in football season; hours stored as 11am-3am."
+   },
+   {
+    "days": [
+     "TUE"
+    ],
+    "start": "18:00",
+    "end": "23:00",
+    "area": null,
+    "kind": "special",
+    "deals": [
+     {
+      "type": "drink",
+      "desc": "2-for-1 Yazoos",
+      "price": null
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://www.beyondtheedge.net/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Trivia at 7:00pm.",
+    "research_notes": null
+   },
+   {
+    "days": [
+     "THU"
+    ],
+    "start": "18:00",
+    "end": "23:00",
+    "area": null,
+    "kind": "special",
+    "deals": [
+     {
+      "type": "drink",
+      "desc": "2-for-1 drafts",
+      "price": null
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://www.beyondtheedge.net/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": null,
+    "research_notes": null
+   },
+   {
+    "days": [
+     "SUN"
+    ],
+    "start": "11:00",
+    "end": "close",
+    "area": null,
+    "kind": "special",
+    "deals": [
+     {
+      "type": "drink",
+      "desc": "2-for-1 beer",
+      "price": null
+     }
+    ],
+    "sources": [
+     {
+      "url": "https://www.beyondtheedge.net/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "All day: from the 11:00 opening.",
+    "research_notes": null
+   }
+  ],
+  "id": "east:Beyond The Edge"
+ },
+ {
+  "lead": "Reunion",
+  "name": "Reunion",
+  "city": "Nashville",
+  "neighborhood": "East Nashville",
+  "address": "105 South 11th Street",
+  "zip": "37206",
+  "official_site": "https://www.reunionnashville.com/bar",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "14:00",
+     "02:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "14:00",
+     "02:00"
+    ]
+   ],
+   "WED": [
+    [
+     "14:00",
+     "02:00"
+    ]
+   ],
+   "THU": [
+    [
+     "14:00",
+     "02:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "14:00",
+     "02:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "02:00"
+    ]
+   ]
+  },
+  "hours_confidence": "high",
+  "hours_source": "researched 2026-11-03 (high confidence): https://www.reunionnashville.com/bar",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI"
+    ],
+    "start": "14:00",
+    "end": "19:00",
+    "area": null,
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.reunionnashville.com/bar",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "high",
+    "notes": "Specific happy hour deals are not posted.",
+    "research_notes": "Bar page: 'Happy Hour Every Monday - Friday 2pm - 7pm'. Drink menu image (May 2026) shows regular prices only, no happy hour pricing."
+   }
+  ],
+  "id": "east:Reunion"
+ }
+]

@@ -1,0 +1,558 @@
+{
+ "windows": [
+  {
+   "id": "nv-888-800",
+   "name": "888",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [
+    {
+     "url": "https://888nashville.com/wp-content/uploads/2026/09/888_Menus_Happy-Hour_08.27.26-1.pdf",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Bar only. Deals are in the venue's happy hour menu PDF, which could not be read; none listed. Check with the venue.",
+   "research_notes": "Venue site 888nashville.com: Sun-Thu 4-6 PM, bar only, no prices on the page; links a Happy Hour menu PDF. PDF not readable: https://888nashville.com/wp-content/uploads/2026/09/888_Menus_Happy-Hour_08.27.26-1.pdf (WebFetch returned compressed data only; executor should read it with curl + pdftotext). Nashville Guru business page nashvilleguru.com/businesses/888 shows no happy hour (no confirmed date), so no guide fill-in; a search snippet of another guide listing was undated for this venue and not used.",
+   "times_differ": null,
+   "result": "still no deals"
+  },
+  {
+   "id": "nv-earls-kitchen-bar-26",
+   "name": "Earls Kitchen + Bar",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "1/2 price Pasqua Lui Cabernet Sauvignon (750 ml)",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Duckhorn Sauvignon Blanc (750 ml)",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Sauvage Blanc de Blancs",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$3 off wine by the glass (8oz)",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$3 off Bud Light",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$3 off Stella Artois",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$3 off Michelob Ultra",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$8.50 Corona",
+     "price": 8.5
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Earls Old Fashioned",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price White Sangria",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Classic Martini (Ketel One or Tanqueray)",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Moscow Mule",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Peach Bellini Margarita",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Earls Lime Margarita (strawberry or mango +$1)",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 price Crush Cocktails",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$12 Nitro Espresso Martini",
+     "price": 12
+    },
+    {
+     "type": "food",
+     "desc": "$3.50 Oyster on the Half Shell",
+     "price": 3.5
+    },
+    {
+     "type": "food",
+     "desc": "$6 Baja Fish Taco",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$6 French Fries",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$6 Chips + Salsa",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$9 Crispy Chili Tofu",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "$9 Sticky Korean Ribs (snack size)",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "$9 Charred Corn + Avocado Dip",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "$9 Truffle Fries",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "$13 Crispy Rice Sushi",
+     "price": 13
+    },
+    {
+     "type": "food",
+     "desc": "$13 Szechuan Shrimp + Pork Dumplings",
+     "price": 13
+    },
+    {
+     "type": "food",
+     "desc": "$13 Hot Crispy Chicken + Pickles Skewers",
+     "price": 13
+    },
+    {
+     "type": "food",
+     "desc": "$16 Jumbo Shrimp Cocktail",
+     "price": 16
+    },
+    {
+     "type": "food",
+     "desc": "$16 Crispy Birria Tacos",
+     "price": 16
+    },
+    {
+     "type": "food",
+     "desc": "$16 Petite Steak Frites",
+     "price": 16
+    },
+    {
+     "type": "food",
+     "desc": "$75 Seafood Platter (make it a tower +$50)",
+     "price": 75
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://earls.ca/locations/earls-nashville-yards/menu/",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Lounge and patio only. Prices as listed on the venue's happy hour menu; the menu page does not say which hours each list applies to.",
+   "research_notes": "Opened the 'View Menu' link from the location page: earls.ca/locations/earls-nashville-yards/menu/ has a Regular Happy Hour drinks and food list (prices copied as shown). The menu page states no days or times; location page times (daily 3-6 PM) match stored. Dollar signs were supplied from the page's plain-number prices.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-earls-kitchen-bar-26",
+   "name": "Earls Kitchen + Bar",
+   "window_index": 1,
+   "deals": [],
+   "sources_add": [],
+   "notes": "Late-night happy hour, lounge and patio only. Deals not posted.",
+   "research_notes": "Checked the location page and its menu page earls.ca/locations/earls-nashville-yards/menu/: the menu page lists Regular and Brunch happy hour menus only and no 9 PM-to-close deals; not assumed to share the afternoon list. Nashville Guru Earls entries seen in search are for the former location, not Nashville Yards; not used.",
+   "times_differ": null,
+   "result": "still no deals"
+  },
+  {
+   "id": "nv-earls-kitchen-bar-26",
+   "name": "Earls Kitchen + Bar",
+   "window_index": 2,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "$12 Aperol Spritz",
+     "price": 12
+    },
+    {
+     "type": "drink",
+     "desc": "$12 Nitro Espresso Martini",
+     "price": 12
+    },
+    {
+     "type": "drink",
+     "desc": "$12 Strawberry Cosmopolitan",
+     "price": 12
+    },
+    {
+     "type": "drink",
+     "desc": "$10 Traditional Bloody Mary",
+     "price": 10
+    },
+    {
+     "type": "drink",
+     "desc": "$10 Mimosa",
+     "price": 10
+    },
+    {
+     "type": "drink",
+     "desc": "$7 Tiny Tiny Espresso Martini",
+     "price": 7
+    },
+    {
+     "type": "drink",
+     "desc": "$40 Cocktail Tower (serves 4; +$25 to serve 8)",
+     "price": 40
+    },
+    {
+     "type": "food",
+     "desc": "$13 Almond Berry Pancake",
+     "price": 13
+    },
+    {
+     "type": "food",
+     "desc": "$13 Classic Benedict",
+     "price": 13
+    },
+    {
+     "type": "food",
+     "desc": "$15 American Breakfast",
+     "price": 15
+    },
+    {
+     "type": "food",
+     "desc": "$15 Avocado Benedict",
+     "price": 15
+    },
+    {
+     "type": "food",
+     "desc": "$15 Tomato + Feta Shakshuka",
+     "price": 15
+    },
+    {
+     "type": "food",
+     "desc": "$17 Hot Crispy Chicken + Waffles",
+     "price": 17
+    },
+    {
+     "type": "food",
+     "desc": "$19 Breakfast Burger",
+     "price": 19
+    },
+    {
+     "type": "food",
+     "desc": "$75 Seafood Platter",
+     "price": 75
+    },
+    {
+     "type": "food",
+     "desc": "$125 Seafood Tower",
+     "price": 125
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://earls.ca/locations/earls-nashville-yards/menu/",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Brunch happy hour, weekends and holidays, from opening (10am on its posted weekend hours) until noon. Prices as listed on the venue's brunch happy hour menu.",
+   "research_notes": "Earls menu page earls.ca/locations/earls-nashville-yards/menu/ has a Brunch Happy Hour section: served weekends and holidays until 12PM. Matches stored days and end time.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-halls-catch-1600",
+   "name": "Halls Catch",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Yellowfin Tuna $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Hamachi $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Tuna Roll $9.00",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Sanchez Roll $10.00",
+     "price": 10
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Catch Signature Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Titan Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Oysters on the Half-Shell $2.00/each",
+     "price": 2
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all wines by the glass",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all signature cocktails",
+     "price": null
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times.",
+   "research_notes": "Venue food menu page (HAPPY HOUR tab) lists the deals; the page has a single list for both the 3-5 PM and late windows. Page says Mon-Thu 3-5 pm + 8 pm-close, Fri-Sat 3-5 pm + 9 pm-close, bar, cocktail area and patio only. Matches stored days/times for this window (stored window 0 covers Mon-Sat 3-5). Drink menu page had no happy hour items. A search snippet of a Nashville Guru entry said 3-6 pm; the venue's own 3-5 is kept.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-halls-catch-1600",
+   "name": "Halls Catch",
+   "window_index": 1,
+   "deals": [
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Yellowfin Tuna $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Hamachi $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Tuna Roll $9.00",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Sanchez Roll $10.00",
+     "price": 10
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Catch Signature Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Titan Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Oysters on the Half-Shell $2.00/each",
+     "price": 2
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all wines by the glass",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all signature cocktails",
+     "price": null
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Late-night happy hour. Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times.",
+   "research_notes": "Venue food menu page (HAPPY HOUR tab) lists the deals; the page has a single list for both the 3-5 PM and late windows. Page says Mon-Thu 3-5 pm + 8 pm-close, Fri-Sat 3-5 pm + 9 pm-close, bar, cocktail area and patio only. Matches stored days/times for this window (stored window 0 covers Mon-Sat 3-5). Drink menu page had no happy hour items. A search snippet of a Nashville Guru entry said 3-6 pm; the venue's own 3-5 is kept.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-halls-catch-1600",
+   "name": "Halls Catch",
+   "window_index": 2,
+   "deals": [
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Yellowfin Tuna $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Raw, 1/2 off regular menu price: Hamachi $8.00",
+     "price": 8
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Tuna Roll $9.00",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Sanchez Roll $10.00",
+     "price": 10
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Catch Signature Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Sushi, 1/2 off regular menu price: Titan Roll $11.00",
+     "price": 11
+    },
+    {
+     "type": "food",
+     "desc": "Oysters on the Half-Shell $2.00/each",
+     "price": 2
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all wines by the glass",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "1/2 off all signature cocktails",
+     "price": null
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Late-night happy hour. Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times.",
+   "research_notes": "Venue food menu page (HAPPY HOUR tab) lists the deals; the page has a single list for both the 3-5 PM and late windows. Page says Mon-Thu 3-5 pm + 8 pm-close, Fri-Sat 3-5 pm + 9 pm-close, bar, cocktail area and patio only. Matches stored days/times for this window (stored window 0 covers Mon-Sat 3-5). Drink menu page had no happy hour items. A search snippet of a Nashville Guru entry said 3-6 pm; the venue's own 3-5 is kept.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-jimmy-kellys-217",
+   "name": "Jimmy Kelly's",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "$3 select beer",
+     "price": 3
+    },
+    {
+     "type": "drink",
+     "desc": "$6 select wine",
+     "price": 6
+    },
+    {
+     "type": "drink",
+     "desc": "$7 house level liquor drinks",
+     "price": 7
+    },
+    {
+     "type": "drink",
+     "desc": "$9 select specialty cocktails",
+     "price": 9
+    },
+    {
+     "type": "drink",
+     "desc": "$12 Grey Goose martinis",
+     "price": 12
+    },
+    {
+     "type": "drink",
+     "desc": "$45 martini flights",
+     "price": 45
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://nashvilleguru.com/businesses/jimmy-kellys",
+     "kind": "guide",
+     "seen": "2026-11-03",
+     "confirmed": "2026-10-28"
+    }
+   ],
+   "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-28. Check with the venue.",
+   "research_notes": "Venue page jimmykellys.com: Mon-Sat 4-6pm, no deals or prices. Opened jimmykellys.com/menus/ and the Cocktails and Dinner PDFs: PDF not readable: https://jimmykellys.com/wp-content/uploads/JimmyKellys-Cocktails.pdf and https://jimmykellys.com/wp-content/uploads/JimmyKellys-Dinner-menu.pdf (compressed, no text); neither is a happy hour menu by title. No venue happy hour deals found, so rule 13 guide fill-in from Nashville Guru business page, which shows every day Mon-Sun 4:00pm-6:00pm and 'Happy hours last confirmed on 10/28/26'. Guide lists Sunday too; venue page does not.",
+   "times_differ": "Nashville Guru business page lists the same 4-6pm happy hour on Sunday as well (all seven days); the venue page says Monday through Saturday. Stored days (Mon-Sat) left unchanged.",
+   "result": "deals found (guide fill-in)"
+  },
+  {
+   "id": "nv-rare-bird-rooftop-bar-200",
+   "name": "Rare Bird Rooftop Bar",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [],
+   "notes": "Called Golden Hour; weather permitting. Deals not posted.",
+   "research_notes": "Checked: noelle-nashville.com Rare Bird page (describes 'signature sunset sips and unbeatable specials', no items/prices), noelle-nashville.com/events/golden-hour-at-rare-bird/ (Mon-Thu 2-6 pm, no prices), rarebirdrooftop.com/nashville and /nashville/menu (no Golden Hour deals). PDF not readable: https://www.noelle-nashville.com/site/assets/files/1/rarebirdnash_spring_menu02_25_2026_1.pdf (compressed data). PDF not readable: https://cdn.noelle-nashville.com/assets/uploads/2018/11/rarebirdmenu3.27.24dynamic.pdf (certificate error on fetch; 2024 menu anyway). Nashville Guru business page nashvilleguru.com/businesses/rare-bird has no happy hour or confirmed date, so no guide fill-in. A search summary said one Noelle page gives Sunday-Thursday; the pages fetched say Mon-Thu.",
+   "times_differ": "A web search summary of a Noelle page said Golden Hour runs Sunday through Thursday until 6 PM; the Noelle Rare Bird page and Golden Hour event page I opened both say Monday through Thursday 2-6 pm. Not confirmed; stored days unchanged.",
+   "result": "still no deals"
+  }
+ ]
+}

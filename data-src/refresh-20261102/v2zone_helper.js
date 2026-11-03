@@ -5,6 +5,9 @@
 //   node v2zone_helper.js ids       {items:[{name, address}]}                       -> ["nv-..."]
 //   node v2zone_helper.js dup       {venue, others:[...]}                          -> {id, name} | null
 //   node v2zone_helper.js validate  {path}                                         -> {errors, warnings}
+//   node v2zone_helper.js polygon   {items:[{lat, lon, hood}]}                     -> [{zone, inside, in_zones}]
+//     (fix29: is the point inside its own zone's map polygon? tests/windows.test.js fails otherwise,
+//      unless the venue is a MAP_SEAM_EXCEPTIONS entry; in_zones = the polygons that do hold it)
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -30,8 +33,15 @@ if (cmd === 'place') {
 } else if (cmd === 'validate') {
   const data = JSON.parse(fs.readFileSync(input.path, 'utf8'));
   out = { errors: L.validateVenues(data), warnings: L.lintVenues(data) };
+} else if (cmd === 'polygon') {
+  out = input.items.map((it) => {
+    const zone = L.zoneOf(it.hood);
+    const core = L.CORE_ZONE_KEYS.indexOf(zone) !== -1 && L.MAP_EXEMPT_HOODS.indexOf(it.hood) === -1;
+    return { zone, checked: core, inside: core ? L.zoneContains(zone, it.lat, it.lon) : null,
+      in_zones: L.CORE_ZONE_KEYS.filter((z) => L.zoneContains(z, it.lat, it.lon)) };
+  });
 } else {
-  console.error('usage: v2zone_helper.js place|ids|dup|validate < json');
+  console.error('usage: v2zone_helper.js place|ids|dup|validate|polygon < json');
   process.exit(2);
 }
 process.stdout.write(JSON.stringify(out));

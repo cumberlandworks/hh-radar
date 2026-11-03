@@ -1,0 +1,100 @@
+[
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window_index": 1,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [
+   "1/2 price Pasqua Lui Cabernet Sauvignon (750 ml)",
+   "1/2 price Duckhorn Sauvignon Blanc (750 ml)",
+   "1/2 price Sauvage Blanc de Blancs",
+   "$3 off wine by the glass (8oz)",
+   "$3 off Bud Light",
+   "$3 off Stella Artois",
+   "$3 off Michelob Ultra",
+   "$8.50 Corona",
+   "1/2 price Earls Old Fashioned",
+   "1/2 price White Sangria",
+   "1/2 price Classic Martini (Ketel One or Tanqueray)",
+   "1/2 price Moscow Mule",
+   "1/2 price Peach Bellini Margarita",
+   "1/2 price Earls Lime Margarita (strawberry or mango +$1)",
+   "1/2 price Crush Cocktails",
+   "$12 Nitro Espresso Martini",
+   "$3.50 Oyster on the Half Shell",
+   "$6 Baja Fish Taco",
+   "$6 French Fries",
+   "$6 Chips + Salsa",
+   "$9 Crispy Chili Tofu",
+   "$9 Sticky Korean Ribs (snack size)",
+   "$9 Charred Corn + Avocado Dip",
+   "$9 Truffle Fries",
+   "$13 Crispy Rice Sushi",
+   "$13 Szechuan Shrimp + Pork Dumplings",
+   "$13 Hot Crispy Chicken + Pickles Skewers",
+   "$16 Jumbo Shrimp Cocktail",
+   "$16 Crispy Birria Tacos",
+   "$16 Petite Steak Frites",
+   "$75 Seafood Platter (make it a tower +$50)"
+  ],
+  "sources": [
+   "https://www.earls.ca/locations/nashville-yards",
+   "https://earls.ca/locations/earls-nashville-yards/menu/"
+  ],
+  "notes": "Late-night happy hour, lounge and patio only. The venue's menu page has one happy hour list and doesn't say which hours it covers, so it is shown for both times."
+ },
+ {
+  "id": "nv-thistle-and-rye-1620",
+  "name": "Thistle & Rye",
+  "address": "1620 West End Ave",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   "$6 draft beer",
+   "$8 Poema Cava sparkling wine",
+   "$10 select cocktails",
+   "$6-$12 select food"
+  ],
+  "sources": [
+   "https://www.thistleandrye.com/",
+   "https://nashvilleguru.com/businesses/thistle-rye"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-26. Check with the venue."
+ },
+ {
+  "id": "nv-thistle-and-rye-1620",
+  "name": "Thistle & Rye",
+  "address": "1620 West End Ave",
+  "window_index": 1,
+  "days": [
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [],
+  "sources": [
+   "https://www.thistleandrye.com/"
+  ],
+  "notes": "Sunday: the venue posts a daily happy hour, but Nashville Guru lists none on Sunday. Deals not posted. Check with the venue."
+ }
+]

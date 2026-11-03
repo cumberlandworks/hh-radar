@@ -1,0 +1,339 @@
+[
+ {
+  "id": "nv-888-800",
+  "name": "888",
+  "address": "800 Clark Place",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   "$3 oysters",
+   "$8 crispy tuna",
+   "$8 kushiyaki",
+   "$8 short rib bao bun",
+   "$8 edamame",
+   "$7 rotating draft beer",
+   "$8 Kiku-Masamune Kimoto Junmai sake (4 oz)",
+   "$8 888 Mule",
+   "$8 yuzu margarita"
+  ],
+  "sources": [
+   "https://888nashville.com",
+   "https://888nashville.com/wp-content/uploads/2026/09/888_Menus_Happy-Hour_08.27.26-1.pdf"
+  ],
+  "notes": "Bar only."
+ },
+ {
+  "id": "nv-beyond-the-edge-112",
+  "name": "Beyond The Edge",
+  "address": "112 S 11th St",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "14:00",
+  "end": "18:00",
+  "deals": [
+   "2-for-1 beers and wells"
+  ],
+  "sources": [
+   "https://www.beyondtheedge.net/",
+   "https://docs.google.com/document/d/1Xefr42tOMcbAv1rjceFdZ1iUtPMZVXzB/edit?usp=sharing&ouid=113023358665780565588&rtpof=true&sd=true"
+  ],
+  "notes": "Deals from the venue's beverage menu, which is marked draft."
+ },
+ {
+  "id": "nv-beyond-the-edge-112",
+  "name": "Beyond The Edge",
+  "address": "112 S 11th St",
+  "window_index": 4,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "23:00",
+  "end": "02:00",
+  "deals": [
+   "2-for-1 domestic beers"
+  ],
+  "sources": [
+   "https://docs.google.com/document/d/1Xefr42tOMcbAv1rjceFdZ1iUtPMZVXzB/edit?usp=sharing&ouid=113023358665780565588&rtpof=true&sd=true"
+  ],
+  "notes": "Late-night happy hour. Days not posted: set to the venue's open days, daily."
+ },
+ {
+  "id": "nv-condado-tacos-418",
+  "name": "Condado Tacos",
+  "address": "418 11th Ave N",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "14:00",
+  "end": "17:00",
+  "deals": [
+   "$4 House Margs",
+   "$4 Garage Beer",
+   "$6 Espolon Shot",
+   "3 Street Tacos for $6",
+   "$6 Half-size Nachos"
+  ],
+  "sources": [
+   "https://locations.condadotacos.com/tn/418-11th-ave-n",
+   "https://condadotacos.com/happyhour/"
+  ],
+  "notes": "Chain-wide Tennessee pricing. Happy Hour does not apply on home game days or special events. Check with the venue."
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   "1/2 price Pasqua Lui Cabernet Sauvignon (750 ml)",
+   "1/2 price Duckhorn Sauvignon Blanc (750 ml)",
+   "1/2 price Sauvage Blanc de Blancs",
+   "$3 off wine by the glass (8oz)",
+   "$3 off Bud Light",
+   "$3 off Stella Artois",
+   "$3 off Michelob Ultra",
+   "$8.50 Corona",
+   "1/2 price Earls Old Fashioned",
+   "1/2 price White Sangria",
+   "1/2 price Classic Martini (Ketel One or Tanqueray)",
+   "1/2 price Moscow Mule",
+   "1/2 price Peach Bellini Margarita",
+   "1/2 price Earls Lime Margarita (strawberry or mango +$1)",
+   "1/2 price Crush Cocktails",
+   "$12 Nitro Espresso Martini",
+   "$3.50 Oyster on the Half Shell",
+   "$6 Baja Fish Taco",
+   "$6 French Fries",
+   "$6 Chips + Salsa",
+   "$9 Crispy Chili Tofu",
+   "$9 Sticky Korean Ribs (snack size)",
+   "$9 Charred Corn + Avocado Dip",
+   "$9 Truffle Fries",
+   "$13 Crispy Rice Sushi",
+   "$13 Szechuan Shrimp + Pork Dumplings",
+   "$13 Hot Crispy Chicken + Pickles Skewers",
+   "$16 Jumbo Shrimp Cocktail",
+   "$16 Crispy Birria Tacos",
+   "$16 Petite Steak Frites",
+   "$75 Seafood Platter (make it a tower +$50)"
+  ],
+  "sources": [
+   "https://www.earls.ca/locations/nashville-yards",
+   "https://earls.ca/locations/earls-nashville-yards/menu/"
+  ],
+  "notes": "Lounge and patio only. Prices as listed on the venue's happy hour menu; the menu page does not say which hours each list applies to."
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [],
+  "sources": [
+   "https://www.earls.ca/locations/nashville-yards"
+  ],
+  "notes": "Late-night happy hour, lounge and patio only. Deals not posted."
+ },
+ {
+  "id": "nv-earls-kitchen-bar-26",
+  "name": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window_index": 2,
+  "kind": "happy_hour",
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "10:00",
+  "end": "12:00",
+  "deals": [
+   "$12 Aperol Spritz",
+   "$12 Nitro Espresso Martini",
+   "$12 Strawberry Cosmopolitan",
+   "$10 Traditional Bloody Mary",
+   "$10 Mimosa",
+   "$7 Tiny Tiny Espresso Martini",
+   "$40 Cocktail Tower (serves 4; +$25 to serve 8)",
+   "$13 Almond Berry Pancake",
+   "$13 Classic Benedict",
+   "$15 American Breakfast",
+   "$15 Avocado Benedict",
+   "$15 Tomato + Feta Shakshuka",
+   "$17 Hot Crispy Chicken + Waffles",
+   "$19 Breakfast Burger",
+   "$75 Seafood Platter",
+   "$125 Seafood Tower"
+  ],
+  "sources": [
+   "https://www.earls.ca/locations/nashville-yards",
+   "https://earls.ca/locations/earls-nashville-yards/menu/"
+  ],
+  "notes": "Brunch happy hour, weekends and holidays, from opening (10am on its posted weekend hours) until noon. Prices as listed on the venue's brunch happy hour menu."
+ },
+ {
+  "id": "nv-fogg-street-lawn-club-648",
+  "name": "Fogg Street Lawn Club",
+  "address": "648 Fogg Street",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [],
+  "sources": [
+   "http://www.foggstreet.com/"
+  ],
+  "notes": "Deals not posted. Venue site lists days and times only; hours subject to change with game schedules."
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [
+   "$8 yellowfin tuna (raw, half off)",
+   "$8 hamachi (raw, half off)",
+   "$9 tuna roll (half off)",
+   "$10 Sanchez roll (half off)",
+   "$11 Catch Signature roll (half off)",
+   "$11 Titan roll (half off)",
+   "$2 oysters on the half shell, each",
+   "Half off wines by the glass",
+   "Half off signature cocktails"
+  ],
+  "sources": [
+   "https://hallscatchnashville.com",
+   "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu"
+  ],
+  "notes": "Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times."
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "20:00",
+  "end": "close",
+  "deals": [
+   "$8 yellowfin tuna (raw, half off)",
+   "$8 hamachi (raw, half off)",
+   "$9 tuna roll (half off)",
+   "$10 Sanchez roll (half off)",
+   "$11 Catch Signature roll (half off)",
+   "$11 Titan roll (half off)",
+   "$2 oysters on the half shell, each",
+   "Half off wines by the glass",
+   "Half off signature cocktails"
+  ],
+  "sources": [
+   "https://hallscatchnashville.com",
+   "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu"
+  ],
+  "notes": "Late-night happy hour. Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times."
+ },
+ {
+  "id": "nv-halls-catch-1600",
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue",
+  "window_index": 2,
+  "kind": "happy_hour",
+  "days": [
+   "FRI",
+   "SAT"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [
+   "$8 yellowfin tuna (raw, half off)",
+   "$8 hamachi (raw, half off)",
+   "$9 tuna roll (half off)",
+   "$10 Sanchez roll (half off)",
+   "$11 Catch Signature roll (half off)",
+   "$11 Titan roll (half off)",
+   "$2 oysters on the half shell, each",
+   "Half off wines by the glass",
+   "Half off signature cocktails"
+  ],
+  "sources": [
+   "https://hallscatchnashville.com",
+   "https://hallscatchnashville.com/nashville-west-end-halls-catch-nashville-food-menu"
+  ],
+  "notes": "Late-night happy hour. Bar, cocktail area and patio only. One happy hour list on the venue's menu page, shown for all happy hour times."
+ }
+]

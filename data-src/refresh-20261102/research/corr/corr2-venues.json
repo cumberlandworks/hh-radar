@@ -1,0 +1,524 @@
+[
+ {
+  "id": "nv-condado-tacos-418",
+  "name": "Condado Tacos",
+  "city": "Nashville",
+  "neighborhood": "The Gulch",
+  "hood": "Nashville Yards & North Gulch",
+  "zone": "gulch",
+  "address": "418 11th Ave N",
+  "zip": "37203",
+  "lat": 36.1628392,
+  "lon": -86.7910469,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://locations.condadotacos.com/tn/418-11th-ave-n",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ]
+  },
+  "hours_confidence": "high",
+  "hours_source": "researched 2026-11-03 (high confidence): https://locations.condadotacos.com/tn/418-11th-ave-n",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI"
+    ],
+    "start": "14:00",
+    "end": "17:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://locations.condadotacos.com/tn/418-11th-ave-n",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Deals vary by location; check with the venue.",
+    "research_notes": "Location page lists happy hour Mon-Fri 14:00-17:00 but no deal list for this store; corporate happy hour page prices are not location-specific so not copied. Guides (Nashville Guru, undated here) show 3-6pm; venue time used."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-fogg-street-lawn-club-648",
+  "name": "Fogg Street Lawn Club",
+  "city": "Nashville",
+  "neighborhood": "SoBro",
+  "hood": "SoBro",
+  "zone": "downtown",
+  "address": "648 Fogg Street",
+  "zip": "37203",
+  "lat": 36.1508714,
+  "lon": -86.7759836,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "http://www.foggstreet.com/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "24:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "10:00",
+     "24:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "10:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): http://www.foggstreet.com/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU"
+    ],
+    "start": "15:00",
+    "end": "18:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "http://www.foggstreet.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Venue site lists days and times only; hours subject to change with game schedules.",
+    "research_notes": "Venue site shows Monday through Thursday, 3-6pm with no deals listed; page undated."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-henley-2023",
+  "name": "Henley",
+  "city": "Nashville",
+  "neighborhood": "West End/Midtown",
+  "hood": "Midtown & Music Row",
+  "zone": "gulch",
+  "address": "2023 Broadway",
+  "zip": "37203",
+  "lat": 36.1485398,
+  "lon": -86.7990679,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://henleynashville.com/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "24:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "24:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "07:00",
+     "15:00"
+    ],
+    [
+     "16:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://www.henleynashville.com/hours-location",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "15:00",
+    "end": "18:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.henleynashville.com/hours-location",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Specific deals not posted on the hours page; check the venue.",
+    "research_notes": "Venue hours page lists Happy Hour daily 3pm-6pm. Venue happy hour menu page rendered no deals. Nashville Guru (older) says 4-6pm; venue used. Hours: bar stays open later than dinner service (bar to 10pm, Fri/Sat midnight); gap 3-4pm between lunch and dinner."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-puesto-991",
+  "name": "Puesto",
+  "city": "Nashville",
+  "neighborhood": "Downtown (Nashville Yards)",
+  "hood": "Nashville Yards & North Gulch",
+  "zone": "gulch",
+  "address": "991 Exchange Lane",
+  "zip": "37203",
+  "lat": 36.1599101,
+  "lon": -86.784558,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://www.eatpuesto.com/nashville/",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "15:00",
+     "00:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "15:00",
+     "00:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "15:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "high",
+  "hours_source": "researched 2026-11-03 (high confidence): https://www.eatpuesto.com/nashville/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "15:00",
+    "end": "17:00",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.eatpuesto.com/nashville/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Dine-in only, bar lounge. Deals not posted on the venue page; check with the venue.",
+    "research_notes": "Venue Nashville page: Happy Hour dine-in only, bar lounge, daily 3-5pm. Page links a happy hour menu that I could not open, so no deals recorded. Venue page says opening Oct 23 at Nashville Yards."
+   },
+   {
+    "days": [
+     "MON",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "21:00",
+    "end": "close",
+    "area": "bar",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.eatpuesto.com/nashville/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Late-night happy hour, Wednesday through Monday, dine-in only in the bar lounge. Deals not posted on the venue page.",
+    "research_notes": "Venue page says Wednesday through Monday, 9pm until late. Nashville Guru (confirmed 10/23/26) lists Mon-Wed instead; venue's own days used."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ },
+ {
+  "id": "nv-thistle-and-rye-1620",
+  "name": "Thistle & Rye",
+  "city": "Nashville",
+  "neighborhood": "Midtown / West End (Conrad Nashville)",
+  "hood": "Midtown & Music Row",
+  "zone": "gulch",
+  "address": "1620 West End Ave",
+  "zip": "37203",
+  "lat": 36.1542184,
+  "lon": -86.7933282,
+  "tz": "America/Chicago",
+  "inkind": false,
+  "official_site": "https://www.thistleandrye.com",
+  "status": "open",
+  "hours": {
+   "MON": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "16:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "16:00",
+     "22:00"
+    ]
+   ]
+  },
+  "hours_confidence": "med",
+  "hours_source": "researched 2026-11-03 (med confidence): https://www.thistleandrye.com/",
+  "windows": [
+   {
+    "days": [
+     "MON",
+     "TUE",
+     "WED",
+     "THU",
+     "FRI",
+     "SAT",
+     "SUN"
+    ],
+    "start": "16:00",
+    "end": "18:00",
+    "kind": "happy_hour",
+    "deals": [],
+    "sources": [
+     {
+      "url": "https://www.thistleandrye.com/",
+      "kind": "venue",
+      "seen": "2026-11-03",
+      "confirmed": null
+     }
+    ],
+    "last_verified": "2026-11-03",
+    "corroborated": false,
+    "confidence": "med",
+    "notes": "Happy Hour With a View. Deals and prices not posted on the venue page; check with the venue.",
+    "research_notes": "Venue home page: Happy Hour daily 4-6pm, no deals or prices listed; page mentions a July 27-31 closure so it may be stale. A search snippet of the Hilton/Conrad page said Mon-Sat 4-6 and all day Sunday, but I could not open it (403), so the venue page was used."
+   }
+  ],
+  "verified_no_hh": false,
+  "checked": "2026-11-03"
+ }
+]

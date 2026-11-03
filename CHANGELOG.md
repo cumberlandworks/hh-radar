@@ -1,5 +1,40 @@
 # Changelog
 
+## 2026-11-03 — BLOCK-hh-radar-fix29: east happy hours
+
+v2.2, the third zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=east), plus a correction for happy hours that
+showed no deals (TJ, 2026-11-03: Condado Tacos showed none, but its chain page lists them).
+
+- **East: 31 leads, 19 added, 12 not added.** 14 of the 19 are in East. 5 are placed elsewhere by their own
+  point: Folk, Turkey and The Wolf Icehouse, Cherries and Plane Jane in Germantown & North (Dickerson Pike),
+  and M.L. Rose Melrose in South (12 South; its pin is from its Google Maps listing, because Nominatim matched
+  only the street).
+  - Not added, by reason: 7 no happy hour found, 4 guide not confirmed in 2026, 1 closed / moved (Bay 6). The
+    full list is `data-src/refresh-20261102/not-added-east.md`. No duplicates and no map seam warnings.
+  - East before → after (All): 14 venues (all inKind) / 12 windows → 28 venues (14 inKind, 14 not) / 43
+    windows.
+- **Empty-deals correction** (`apply_corrections.py`, `research/corr/corrections.json`), applied on top of the
+  merged file as `venues-v2-03-east-corr.json`, which is venues.json. 21 non-inKind happy-hour windows had no
+  deals (15 in Downtown and Gulch, 6 new in East). 13 now have them:
+  - venue sources: 888 (its 08.27.26 happy-hour PDF), Earls ×3 (one happy-hour list for afternoon and late
+    night, plus the brunch list), Halls Catch ×3, Puesto ×2, Beyond The Edge (plus a new late-night 11pm–2am
+    window from the same menu), and Lyra (its Spring 2025 menu, still linked; low);
+  - the chain page: Condado Tacos ("chain-wide Tennessee pricing");
+  - a 2026-confirmed guide: Jimmy Kelly's, and Thistle & Rye Mon–Sat. Thistle & Rye's Sunday is now its own
+    window, because that guide lists no Sunday happy hour.
+  - 8 still show none, now "Deals not posted": Fogg Street Lawn Club, Henley, Plane Jane ×3, Rare Bird,
+    Reunion, and Thistle & Rye's Sunday.
+- **Brief rules** (`BRIEF-v2zone.md` steps 8–13): `official_site` never null; "all day" and no-listed-days
+  rules; a chain's Tennessee page counts as a venue source; linked menus are always opened; guide deals may
+  fill in when the venue gives times only. New shared prompt `BRIEF-hours-chrome.md` (never infer a hidden
+  row). `merge_v2zone.py` warns on a point outside its zone polygon. `build_leads.js` dedupes against inKind on
+  the merge rule and flags look-alike names in `leads/inkind-possible.json`. `RUNBOOK-v2zone.md` holds the
+  standing amendments, including the three-round S5 rule.
+- **Spot check:** 10 random new East windows: **10/10**. The 22 corrected windows: 20/22 (Earls late night,
+  Thistle & Rye's Sunday); both fixed, and the re-check of the 3 changed windows is 3/3.
+- **File:** 236 venues (159 inKind, 77 not) and 264 windows (139 inKind, 125 not). `coverage.v2_zones_done` =
+  downtown, gulch, east.
+
 ## 2026-11-03 — BLOCK-hh-radar-fix28: gulch happy hours
 
 v2.1, the second zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=gulch).

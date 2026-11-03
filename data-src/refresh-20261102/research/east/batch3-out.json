@@ -1,0 +1,550 @@
+{
+ "added": [
+  {
+   "lead": "CHERRIES",
+   "name": "Cherries",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "839 Dickerson Pike",
+   "zip": "37207",
+   "official_site": "https://cherriesnashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "13:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "13:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://cherriesnashville.com/menu",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "20:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 cocktails: House Marg, Daiquiri #9, Buck Cherry, House Old-Fashioned",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$6 house red, house white or house bubbles",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$4 cold snack can",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "Small batch guacamole $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Wood-roasted wings $11",
+       "price": 11
+      },
+      {
+       "type": "food",
+       "desc": "Wood-fired fajita tacos (2) $10",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://cherriesnashville.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/cherries",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-19"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Daily until 8pm; start time is the 4pm opening (not posted).",
+     "research_notes": "Venue menu page says happy hour runs daily until 8pm, no start time posted; start set to the venue's opening time that day. Venue page undated. Nashville Guru business page shows the same days/deals, last confirmed 10/19/26."
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "13:00",
+     "end": "20:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 cocktails: House Marg, Daiquiri #9, Buck Cherry, House Old-Fashioned",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$6 house red, house white or house bubbles",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$4 cold snack can",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "Small batch guacamole $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Wood-roasted wings $11",
+       "price": 11
+      },
+      {
+       "type": "food",
+       "desc": "Wood-fired fajita tacos (2) $10",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://cherriesnashville.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/cherries",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-19"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Daily until 8pm; start time is the 1pm opening (not posted).",
+     "research_notes": "Venue menu page says happy hour runs daily until 8pm, no start time posted; start set to the venue's opening time that day. Venue page undated. Nashville Guru business page shows the same days/deals, last confirmed 10/19/26."
+    }
+   ]
+  },
+  {
+   "lead": "Folk",
+   "name": "Folk",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "823 Meridian St",
+   "zip": "37207",
+   "official_site": "https://www.goodasfolk.com",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.goodasfolk.com/contact",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Pepperoni Pizza sticks $4",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "New York slice $4",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "Giardiniera $4",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "Dates, 'nduja, lime $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Gildas $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Broccoli, caesar, parmesan, sesame $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Chicken wings, chili, hot honey $12",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$4 draft beer: Wiseacre Tiny Bomb Pilsner, Living Waters Kolsch",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails: Apertivo Spritz, Vermouth Spritz, Amaro Spritz, Cafe Apertivo, Martini (gin or vodka)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 wine by the glass: Domini del Leone Pinot Grigio, Corvina +",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.goodasfolk.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.goodasfolk.com/contact",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Called Apero Hour. Menu says every day; days set to the venue's open days, Tue-Sun (Monday not in posted hours).",
+     "research_notes": "Menu page 'Apero Hour: Available Every Day from 5:00 pm - 6:00 pm' with the prices listed; contact page shows no Monday hours. Pages undated."
+    }
+   ]
+  },
+  {
+   "lead": "Lyra",
+   "name": "Lyra",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "935 W Eastland Ave",
+   "zip": "37216",
+   "official_site": "https://lyranashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://lyranashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "17:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://lyranashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals are on the venue's Happy Hour menu (PDF); not listed here.",
+     "research_notes": "Venue homepage: Happy Hour Monday through Saturday, 5pm-6pm. Deals are in a linked PDF named Happy Hour Spring 2025 which is image-only and could not be read, so no deals recorded. Dinner hours used for open hours (Mon-Thu 5-9, Fri-Sat 5-10, Sun closed); the site's location section says Mon-Sat 5-10, which disagrees."
+    }
+   ]
+  },
+  {
+   "lead": "plane jane",
+   "name": "Plane Jane",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1315 Dickerson Pike",
+   "zip": "37207",
+   "official_site": "https://www.planejanebar.com/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.planejanebar.com/",
+   "windows": [
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "17:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.planejanebar.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 17:00 opening. Deals not posted.",
+     "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+    },
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.planejanebar.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted; check the venue.",
+     "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.planejanebar.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted; check the venue.",
+     "research_notes": "Venue homepage lists happy hour days/times; no deals or prices posted (menu page says cocktail specials are posted weekly). Page undated."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Bay 6",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/bay-6"
+  },
+  {
+   "lead": "Groceries Etc.",
+   "reason": "no happy hour found",
+   "url": "http://www.groceriesetc.bar/"
+  },
+  {
+   "lead": "Strega",
+   "reason": "no happy hour found",
+   "url": "http://www.stregabar.com/"
+  },
+  {
+   "lead": "Village Pub & Beer Garden",
+   "reason": "no happy hour found",
+   "url": "https://riversidevillagepub.com/menu/drinks/"
+  }
+ ]
+}

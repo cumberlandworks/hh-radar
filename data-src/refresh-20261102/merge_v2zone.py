@@ -15,6 +15,9 @@ geocode_v2zone.py (and the D3 hours pass) have filled lat/lon. It:
     venues-v2-<NN>-<zone>-b.json, for a re-merge that keeps the original);
   - appends the zone to coverage.v2_zones_done, updates generated and the coverage text;
   - writes not-added-<zone>.md: every lead not added, with its reason.
+fix29: a new venue whose point falls outside its zone's map polygon is a WARNING, not a failure: it is
+printed and listed in the not-added file's "map seam" section, so it can be settled (a MAP_SEAM_EXCEPTIONS
+line in tests/windows.test.js, or a corrected point) before the tests run.
 A venue whose own address puts it in another core zone is still added, in that zone, and listed
 in the not-added file's "placed elsewhere" section; one in an outer suburb is not added.
 """
@@ -111,6 +114,16 @@ def main():
             elsewhere.append((v['name'], vzone, hood))
         added.append(v)
 
+    seam = []
+    if added:
+        poly = helper('polygon', {'items': [{'lat': v['lat'], 'lon': v['lon'], 'hood': v['hood']} for v in added]})
+        for v, pg in zip(added, poly):
+            if pg['checked'] and not pg['inside']:
+                seam.append((v['id'], v['name'], v['address'], v['hood'], pg['zone'], ', '.join(pg['in_zones']) or 'none'))
+                print('WARNING map seam: %s (%s, %s) is %s / %s, but its point is outside that zone polygon (inside: %s)'
+                      % (v['name'], v['id'], v['address'], v['hood'], pg['zone'], ', '.join(pg['in_zones']) or 'none'),
+                      file=sys.stderr)
+
     data['venues'] = sorted(existing + added, key=lambda v: v['name'].lower())
     cov['v2_zones_done'] = [z for z in ORDER if z in cov['v2_zones_done'] or z == zone]
     n_ik = sum(1 for v in data['venues'] if v['inkind'])
@@ -145,11 +158,15 @@ def main():
     if elsewhere:
         lines += ['## Added, but placed in another zone by their own address (%d)' % len(elsewhere)]
         lines += ['- %s → %s (%s)' % e for e in elsewhere] + ['']
+    if seam:
+        lines += ['## Map seam warnings: added, but the point is outside its zone polygon (%d)' % len(seam),
+                  'Settle each before the tests: a MAP_SEAM_EXCEPTIONS line in tests/windows.test.js, or a corrected point.']
+        lines += ['- %s (`%s`), %s: %s / %s; the point is inside: %s' % s_ for s_ in seam] + ['']
     open(os.path.join(HERE, 'not-added-%s%s.md' % (zone, '-' + suffix if addendum else '')), 'w').write('\n'.join(lines))
 
     print(json.dumps({'out': out, 'added': len(added), 'not_added': len(not_added),
                       'not_added_by_reason': {r: len(v) for r, v in by_reason.items()},
-                      'placed_elsewhere': elsewhere, 'venues': len(data['venues']), 'inkind': n_ik, 'non_inkind': n_nv,
+                      'placed_elsewhere': elsewhere, 'map_seam_warnings': [x[1] for x in seam], 'venues': len(data['venues']), 'inkind': n_ik, 'non_inkind': n_nv,
                       'windows': sum(len(v['windows']) for v in data['venues']), 'lint_warnings': len(res['warnings'])}))
 
 

@@ -1,0 +1,633 @@
+{
+ "added": [
+  {
+   "lead": "Cafe Roze",
+   "name": "Cafe Roze",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1115 Porter Road",
+   "zip": "37206",
+   "official_site": "https://www.caferoze.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.caferoze.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$9 martinis",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$7-$8 wines",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$2-$5 select bites",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/cafe-roze",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      },
+      {
+       "url": "https://www.caferoze.com",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue site lists no happy hour (call 615-645-9100); no social post found. Guru business page shows Mon-Fri 4-6pm, last confirmed 10/27/26."
+    }
+   ]
+  },
+  {
+   "lead": "Crazy Gnome Brewery",
+   "name": "Crazy Gnome Brewery",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1005 W. Kirkland Ave",
+   "zip": "37216",
+   "official_site": "http://www.cgbrewing.com/",
+   "status": "open",
+   "hours": {
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): http://www.cgbrewing.com/",
+   "windows": [
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 pints",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/crazy-gnome-brewery",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-28"
+      },
+      {
+       "url": "http://www.cgbrewing.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-28. Check with the venue.",
+     "research_notes": "Venue site shows no happy hour (points to events calendar/Instagram, not checked). Guru business page: Wed-Fri 4-7pm, $5 pints, confirmed 10/28/26."
+    }
+   ]
+  },
+  {
+   "lead": "Game Terminal",
+   "name": "Game Terminal",
+   "city": "Nashville",
+   "neighborhood": "South Nashville",
+   "address": "201 Terminal Court",
+   "zip": "37210",
+   "official_site": "https://gameterminal.com/menus/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://gameterminal.com/menus/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4-$5 draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$8 canned beer",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$9-$11 cocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 jello shots",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/game-terminal",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-20"
+      },
+      {
+       "url": "https://gameterminal.com/menus/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-20. Check with the venue.",
+     "research_notes": "Venue menus page has a Happy Hour Menu only as an image I could not read, so days/times/deals from Guru (Mon-Fri 3-7pm). Venue hours say Monday closed, so Monday dropped (venue hours win)."
+    }
+   ]
+  },
+  {
+   "lead": "Lockeland Table",
+   "name": "Lockeland Table",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1520 Woodland St",
+   "zip": "37206",
+   "official_site": "http://lockelandtable.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): http://lockelandtable.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Drinks (no prices posted)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Snacks (no prices posted)",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://lockelandtable.com",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/lockeland-table",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-15"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Called Community Hour by the venue; a portion of proceeds goes to local school PTOs. Venue posts no prices.",
+     "research_notes": "Venue site: Community Hour Mon-Sat 4-6pm, snacks/drinks/kids menus, no prices. Guru agrees on days/times (confirmed 10/15/26). Venue site gives Mon-Wed close as both 9pm and 10pm; 9pm used."
+    }
+   ]
+  },
+  {
+   "lead": "M.L. Rose \u2013 Melrose",
+   "name": "M.L. Rose Neighborhood Pub - Melrose",
+   "city": "Nashville",
+   "neighborhood": "Melrose",
+   "address": "2535 8th Ave S, #107",
+   "zip": "37204",
+   "official_site": "https://mlrose.com/locations/melrose",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://mlrose.com/locations/melrose",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 beer, wine, and wells",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price classic cheeseburgers (no modifications)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price chicken tenders",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mlrose.com/locations/melrose",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://mlrose.com/specials",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Called Neighbor Hour. Burger and tenders also half price for kids.",
+     "research_notes": "Melrose page: Neighbor Hour 3-6pm Mon-Wed; deals from mlrose.com/specials (chain page)."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 entire drink menu",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mlrose.com/locations/melrose",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Melrose page: 2-for-1 entire drink menu, all day Thursdays. Venue lists no Friday happy hour."
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "14:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 mimosas and bloody marys",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mlrose.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Weekend brunch, until 2pm.",
+     "research_notes": "mlrose.com home page brunch banner; Melrose page confirms Sat/Sun brunch until 2pm."
+    }
+   ]
+  },
+  {
+   "lead": "Turkey and The Wolf Icehouse",
+   "name": "Turkey and The Wolf Icehouse",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "800 Meridian Street",
+   "zip": "37207",
+   "official_site": "http://www.turkeyandthewolf.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$10 frozen margaritas",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$8 glasses of wine",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off wine bottles",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Fernet and Montucky Cold Snacks combo",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/?p=175524",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue site returned 429 on fetch so address came from Guru business page (nashvilleguru.com/businesses/turkey-and-the-wolf-icehouse). Guru also lists Monday as industry happy hour all day; not included. A search snippet of the same page gave slightly different deals (half-off bottled beer); the fetched page was used."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Audrey",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://www.nashville.com/audrey/"
+  },
+  {
+   "lead": "Rosepepper Cantina",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  }
+ ]
+}

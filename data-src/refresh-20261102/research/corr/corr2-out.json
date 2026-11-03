@@ -1,0 +1,192 @@
+{
+ "windows": [
+  {
+   "id": "nv-condado-tacos-418",
+   "name": "Condado Tacos",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "$4 House Margs",
+     "price": 4
+    },
+    {
+     "type": "drink",
+     "desc": "$4 Garage Beer",
+     "price": 4
+    },
+    {
+     "type": "drink",
+     "desc": "$6 Espolon Shot",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "3 Street Tacos for $6",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$6 Half-size Nachos",
+     "price": 6
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://condadotacos.com/happyhour/",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Chain-wide Tennessee pricing. Happy Hour does not apply on home game days or special events. Check with the venue.",
+   "research_notes": "Chain happy hour page https://condadotacos.com/happyhour/ has a Tennessee section: Weekdays 2-5 pm with the five deals listed; matches stored Mon-Fri 14:00-17:00. Footnote on the page: Happy Hour does not apply on home game days or special events. Page does not say 'all locations' but names Tennessee by state.",
+   "times_differ": null,
+   "result": "deals found (chain page)"
+  },
+  {
+   "id": "nv-fogg-street-lawn-club-648",
+   "name": "Fogg Street Lawn Club",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [],
+   "notes": "Deals not posted. Venue site lists days and times only; hours subject to change with game schedules.",
+   "research_notes": "Checked foggstreet.com (Monday - Thursday 3-6pm, no deals), /menu and /cocktail-menu (no prices in text; drink menu appears to be images), foggstreet.squarespace.com (same). Nashville Guru business page nashvilleguru.com/businesses/fogg-street-lawn-club and ?p=148169 show no happy hour section or 'last confirmed' date when fetched, so no guide fill-in. A web search summary mentioned a $6.95 draft pint and $9.95 bites with a 06/02/26 confirmation, but I could not verify it on the page itself, so not used.",
+   "times_differ": null,
+   "result": "still no deals"
+  },
+  {
+   "id": "nv-henley-2023",
+   "name": "Henley",
+   "window_index": 0,
+   "deals": [],
+   "sources_add": [],
+   "notes": "Deals not posted.",
+   "research_notes": "Checked henleynashville.com/hours-location (Happy Hour daily 3pm-6pm, no deals), /menus (links only to /menus/happy-hour), and https://www.henleynashville.com/menus/happy-hour (page shows only the 'Happy Hour' heading, no items or prices; content may be an image or script-rendered, no PDF link seen). Nashville Guru has no confirmed happy hour entry for Henley (businesses/henley 'no happy hour details'; henley-nashville 404). Only undated/old third-party snippets (2019 roundup, undated reviews), which do not qualify.",
+   "times_differ": null,
+   "result": "still no deals"
+  },
+  {
+   "id": "nv-puesto-991",
+   "name": "Puesto",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$5 Snacks: Chicharrones, Esquite, Black Bean Dip, Tempura Cauliflower",
+     "price": 5
+    },
+    {
+     "type": "food",
+     "desc": "$9 Shares: Classic Guacamole, Potato Taquitos, Chicken Flautas, Passionfruit & Mango Shrimp Ceviche",
+     "price": 9
+    },
+    {
+     "type": "drink",
+     "desc": "Half Off Margaritas: Puesto Perfect, Hot Sauce, Coconut",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$6 Cervezas (Little Harpeth, Smith & Lentz, Yazoo, Calfkiller, Hap & Harry's, Bearded Iris, Modelo, Diskin Cider) and Michelada",
+     "price": 6
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://www.eatpuesto.com/nashville-menus/",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Dine-in only, bar lounge.",
+   "research_notes": "Venue's linked Menu page https://www.eatpuesto.com/nashville-menus/ (anchor #nashville-happy-hour): Daily 3-5 pm in bar lounge, dine-in only; matches stored. Also lists non-alcoholic options (Passionfruit Margarita, BERO IPA) with no price given, not included.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-puesto-991",
+   "name": "Puesto",
+   "window_index": 1,
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$5 Snacks: Chicharrones, Tempura Cauliflower",
+     "price": 5
+    },
+    {
+     "type": "food",
+     "desc": "$9 Shares: Classic Guacamole, Passionfruit & Mango Shrimp Ceviche",
+     "price": 9
+    },
+    {
+     "type": "food",
+     "desc": "$6 Tacos: Chicken Al Pastor, Mushroom, Carnitas, Tamarindo Shrimp",
+     "price": 6
+    },
+    {
+     "type": "drink",
+     "desc": "Half Off Margaritas: Puesto Perfect, Hot Sauce, Coconut",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$6 Cervezas (same beers as the daytime happy hour) and Michelada",
+     "price": 6
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://www.eatpuesto.com/nashville-menus/",
+     "kind": "venue",
+     "seen": "2026-11-03",
+     "confirmed": null
+    }
+   ],
+   "notes": "Late-night happy hour, Wednesday through Monday, 9pm to late, dine-in only in the bar lounge.",
+   "research_notes": "Venue's Menu page https://www.eatpuesto.com/nashville-menus/ (anchor #nashville-happy-hour-late-night): Late Night Happy Hour Wednesday - Monday, 9pm - late, bar lounge, dine-in only; matches stored days and time. Non-alcoholic options listed without price, not included.",
+   "times_differ": null,
+   "result": "deals found (venue)"
+  },
+  {
+   "id": "nv-thistle-and-rye-1620",
+   "name": "Thistle & Rye",
+   "window_index": 0,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "$6 draft beer",
+     "price": 6
+    },
+    {
+     "type": "drink",
+     "desc": "$8 Poema Cava sparkling wine",
+     "price": 8
+    },
+    {
+     "type": "drink",
+     "desc": "$10 select cocktails",
+     "price": 10
+    },
+    {
+     "type": "food",
+     "desc": "$6-$12 select food",
+     "price": null
+    }
+   ],
+   "sources_add": [
+    {
+     "url": "https://nashvilleguru.com/businesses/thistle-rye",
+     "kind": "guide",
+     "seen": "2026-11-03",
+     "confirmed": "2026-10-26"
+    }
+   ],
+   "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-26. Check with the venue.",
+   "research_notes": "Venue home page: Happy Hour daily 4-6pm, no deals; /menus has no happy hour content or PDF. Nashville Guru business page thistle-rye: Mon-Sat 4:00-6:00pm, same deals each day, 'Happy hours last confirmed on 10/26/26'. (An earlier search snippet showed 06/25/26 and '$5-$9 select food'; the page itself shows 10/26/26 and '$6-$12 select food', page used.) Hilton dining page timed out; a search snippet said Mon-Sat 4-6 and all day Sunday, unverified.",
+   "times_differ": "Nashville Guru business page lists Mon-Sat 4-6pm and no happy hour on Sunday; stored/venue home page says daily 4-6pm. A Hilton snippet (unopened) said Mon-Sat 4-6 plus all day Sunday.",
+   "result": "deals found (guide fill-in)"
+  }
+ ]
+}

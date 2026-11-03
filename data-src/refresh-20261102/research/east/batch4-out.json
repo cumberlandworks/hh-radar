@@ -1,0 +1,445 @@
+{
+ "added": [
+  {
+   "lead": "Beyond The Edge",
+   "name": "Beyond The Edge",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "112 S 11th St",
+   "zip": "37206",
+   "official_site": "https://www.beyondtheedge.net/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.beyondtheedge.net/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.beyondtheedge.net/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Specific happy hour deals are not posted.",
+     "research_notes": "Venue homepage lists Monday - Friday Happy Hour 2:00pm - 6:00pm with no deals; beverage menu Google doc would not load. Site says Sat/Sun hours start at 10am in football season; hours stored as 11am-3am."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "18:00",
+     "end": "23:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 Yazoos",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.beyondtheedge.net/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Trivia at 7:00pm.",
+     "research_notes": null
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "18:00",
+     "end": "23:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 drafts",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.beyondtheedge.net/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": null,
+     "research_notes": null
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.beyondtheedge.net/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": null
+    }
+   ]
+  },
+  {
+   "lead": "Martha My Dear",
+   "name": "Martha My Dear",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "2503 Gallatin Avenue",
+   "zip": "37206",
+   "official_site": "http://www.marthasnashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): http://www.marthasnashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$10 Cocktails",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off Wine",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off Beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://www.marthasnashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/martha-my-dear",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue homepage says 'Happy Hour Daily! $10 Cocktails, $2 off Wine, $1 off Beer' but posts no times; times (5:00-7:00pm, daily) come from Nashville Guru business page (last confirmed 10/27/26). Guru says 'select' cocktails; venue wording used. Venue hours 5PM-1AM daily."
+    }
+   ]
+  },
+  {
+   "lead": "Reunion",
+   "name": "Reunion",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "105 South 11th Street",
+   "zip": "37206",
+   "official_site": "https://www.reunionnashville.com/bar",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.reunionnashville.com/bar",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.reunionnashville.com/bar",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Specific happy hour deals are not posted.",
+     "research_notes": "Bar page: 'Happy Hour Every Monday - Friday 2pm - 7pm'. Drink menu image (May 2026) shows regular prices only, no happy hour pricing."
+    }
+   ]
+  },
+  {
+   "lead": "The Treehouse",
+   "name": "The Treehouse",
+   "city": "Nashville",
+   "neighborhood": "East Nashville",
+   "address": "1011 Clearview Avenue",
+   "zip": "37206",
+   "official_site": "https://treehousenashville.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 cocktails",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$8 house wine",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/the-treehouse",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-20"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-20. Check with the venue.",
+     "research_notes": "Venue site treehousenashville.com returned 403 to fetch, so the site itself didn't load; no venue or social happy hour source found. Used Nashville Guru business page (last confirmed 10/20/26). An older undated Guru page listed different deals; ignored."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Coral Club",
+   "reason": "no happy hour found",
+   "url": "https://www.thecoral.club"
+  },
+  {
+   "lead": "Frothy Monkey",
+   "reason": "no happy hour found",
+   "url": "https://frothymonkey.com/locations/east-nashville-tn/"
+  },
+  {
+   "lead": "Lakeside Lounge",
+   "reason": "no happy hour found",
+   "url": "https://www.lakesideloungebna.com/"
+  }
+ ]
+}
