@@ -1,5 +1,52 @@
 # Changelog
 
+## 2026-11-03 — BLOCK-hh-radar-fix27-20261102: v2.0, every Nashville happy hour with an inKind toggle
+
+TJ, verbatim (2026-11-02 20:08): "I want to expand the happy hour to be all happy hours in Nashville and be able to
+select InKind or all". His picks on the thread's four questions: Scope "The 7 core zones (Recommended)"; default view
+"All, renamed (Recommended)"; trust bar "Venue's own source (Recommended)"; timing "All zones this week".
+
+### A. Schema and validation (v2)
+- Non-inKind venues: `"inkind": false`, id `nv-<slug>` (lowercased name plus street number, accents folded:
+  `L.nvIdFor`), no `inkind_id` / `inkind_url`, `official_site` required, the same hours / hood / zone / address
+  fields as inKind venues, at least one `happy_hour` window, `verified_no_hh` false. `schema_version` stays 2.
+- Sources on non-inKind windows are typed `{url, kind: venue|social|guide, seen, confirmed}`. inKind venues keep
+  their plain URL strings (not converted: 212 strings, and every reader goes through the new `L.sourceUrl`).
+- `validate.js` (via `L.validateVenues`) enforces the trust bar on every non-inKind happy hour (a venue or social
+  source, or a guide confirmed on or after 2026-01-01); guide-only deals need a note naming the guide and its
+  2026 confirmed date; `nv-` ids are unique; no `nv-` venue may duplicate an `ik-` venue (same normalized name
+  within 0.15 mi, or the same street address). `coverage` may be `{text, v2_zones_done}`. 11 new tests.
+
+### B. App (v2.0)
+- "All" / "inKind only" toggle in the Food-first / Drink-first row (wraps on phones), default All, saved as
+  `hhradar-scope`. One function (`L.scopeVenues`) sets `state.venues`; every view reads it. fix24's agreement
+  test now runs in both scopes. The footer counts the whole file.
+- Non-inKind cards: no inKind badge or button; Deal info opens the window's first venue or social source; the
+  grid's K column is blank on desktop.
+- Renamed "Nashville Happy Hour Radar" (`<title>`, manifest `name`, README H1; `og:title` already said it). The
+  visible header tag "— Nashville inKind" is now "— Nashville". New `og:description`, meta description and
+  subtitle: "Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit."
+- The Day Grid's coverage line adds "Every happy hour so far: Downtown. Other areas show inKind restaurants for
+  now." in All, from `coverage.v2_zones_done`; it disappears once all 7 zones are done.
+- `hours_source` "Google listing YYYY-MM-DD" reads as "Hours from Google listing".
+- The measured-on-venues.json tests now measure the file's inKind-only scope, so zone runs don't move them.
+- `APP_VERSION`, `logic.js?v=`, `venues.json?v=` and `version.txt`: v2.0.
+
+### C. Leads for the 7 zones
+204 leads from five guides (names, neighborhoods, guide URLs and confirmed dates only; no deal text). After
+removing 22 that are already inKind venues: Downtown 34, Gulch & Midtown 46, Germantown & North 15, East 29,
+South 35, West 15, Franklin & Brentwood **0** (none of the five guides covers it). 1 outer-suburb lead skipped,
+7 unplaceable from their text. 1 inKind cross-check item (The Fox Bar & Cocktail Club). The hood rules moved to
+`data-src/hood_zone.js`.
+
+### D. Downtown, researched (venues-v2-01-downtown.json)
+34 leads: **23 added** (32 happy-hour windows; 25 on the venue's own page, 7 on a 2026-confirmed Nashville Guru
+entry), 17 in Downtown and 6 that their own address puts in Gulch & Midtown (Alligator Bar, Earls, Prime + Proper,
+The Finch, Puesto, Thistle & Rye). **11 not added**: 4 guide not confirmed in 2026, 3 duplicate an inKind venue
+(same street address), 2 closed / moved, 2 no happy hour found. Hours: 16 from the venue's site, 7 from the Google
+listing (2026-11-03). Spot check: 8/10, fixed, 8/10, fixed, then 10/10 on a third set of 10.
+File: 182 venues (159 inKind, 23 not), 171 windows (139 inKind, 32 not).
+
 ## 2026-10-29 — BLOCK-hh-radar-fix25-20261029 (repo cleanup)
 
 The page's footer links this repo and more people now open it, so the current tree was cleaned up for outside

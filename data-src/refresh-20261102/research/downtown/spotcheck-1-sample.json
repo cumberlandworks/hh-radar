@@ -1,0 +1,250 @@
+[
+ {
+  "venue": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [],
+  "source": "https://www.earls.ca/locations/nashville-yards",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Boqueria Fifth + Broadway",
+  "address": "5005 Broadway Place",
+  "window": 1,
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$8 Classic Mini Martini",
+    "price": 8
+   },
+   {
+    "desc": "$8 Dirty Mini Martini",
+    "price": 8
+   }
+  ],
+  "source": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Yolan",
+  "address": "403 4th Avenue South",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "desc": "Spritzes, highballs, and cocktails",
+    "price": null
+   }
+  ],
+  "source": "https://www.yolannashville.com/menus",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Tin Roof Broadway",
+  "address": "316 Broadway",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "11:00",
+  "end": "16:00",
+  "deals": [
+   {
+    "desc": "50% off appetizers",
+    "price": null
+   },
+   {
+    "desc": "50% off beers",
+    "price": null
+   }
+  ],
+  "source": "https://www.tinroofbroadway.com",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window": 1,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [],
+  "source": "https://www.earls.ca/locations/nashville-yards",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Pinewood Social",
+  "address": "33 Peabody Street",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "desc": "$8-$10 select cocktails",
+    "price": null
+   },
+   {
+    "desc": "$6 select glasses of wine",
+    "price": 6
+   }
+  ],
+  "source": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday",
+  "source_kind": "guide",
+  "confirmed": "2026-10-20"
+ },
+ {
+  "venue": "The Finch",
+  "address": "111 10th Ave S #310",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "Adult Happy Meal: mini Caesar salad, slider with fries and a Classic Martini",
+    "price": 25
+   },
+   {
+    "desc": "Martini & Frites: Classic Martini with beef tallow shoestring fries",
+    "price": 15
+   }
+  ],
+  "source": "https://www.thefinchnashville.com/menus/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Tin Roof Broadway",
+  "address": "316 Broadway",
+  "window": 1,
+  "days": [
+   "FRI"
+  ],
+  "start": "10:00",
+  "end": "16:00",
+  "deals": [
+   {
+    "desc": "50% off appetizers",
+    "price": null
+   },
+   {
+    "desc": "50% off beers",
+    "price": null
+   }
+  ],
+  "source": "https://www.tinroofbroadway.com",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Black Rabbit",
+  "address": "218 3rd Avenue North",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$6 cocktails",
+    "price": 6
+   },
+   {
+    "desc": "$6 wine",
+    "price": 6
+   }
+  ],
+  "source": "https://nashvilleguru.com/businesses/black-rabbit",
+  "source_kind": "guide",
+  "confirmed": "2026-10-19"
+ },
+ {
+  "venue": "Lona",
+  "address": "200 4th Ave N",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "SUN"
+  ],
+  "start": "17:00",
+  "end": "19:00",
+  "deals": [
+   {
+    "desc": "Handcrafted cocktails, margaritas, and tequila and mezcal pours",
+    "price": null
+   },
+   {
+    "desc": "Chef-inspired Mexican bites start at 8.00",
+    "price": null
+   }
+  ],
+  "source": "https://www.lonanashville.com/happy-hour",
+  "source_kind": "venue",
+  "confirmed": null
+ }
+]

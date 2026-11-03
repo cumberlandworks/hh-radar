@@ -719,7 +719,9 @@ test('surprisePools: the service day runs to 03:00, so 01:00 SAT is still Friday
 });
 
 // ---- (a)-(d): measured against the real venues.json, the way the page runs ----
-const REAL = require(path.join(__dirname, '..', 'venues.json')).venues;
+// v2.0: the measured tests below pin the inKind set (v1 data). Zone runs add non-inKind venues
+// to the same file, so REAL is the file's inKind-only scope, the list the toggle shows.
+const REAL = require('../logic.js').scopeVenues(require(path.join(__dirname, '..', 'venues.json')).venues, 'inkind');
 
 test('(a) 16:30 TUE: Now is deep, Later is non-trivial and holds nothing live or soon', () => {
   const pools = surprisePools(REAL, dt('TUE', 16, 30));
@@ -871,7 +873,7 @@ test('dayCoverageCounts: the four groups partition the roster on EVERY day', () 
 });
 
 test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
-  const venues = require(path.join(__dirname, '..', 'venues.json')).venues;
+  const venues = REAL; // v2.0: the inKind set
   const pick = (c) => ({ onDay: c.onDay, otherDays: c.otherDays, none: c.none, unchecked: c.unchecked });
   // v1.14 (2026-10-25j data): the browser pass added 11 happy-hour windows at 7 venues and
   // verified 5 more as no happy hour, so "not checked yet" is 0.
@@ -2180,7 +2182,7 @@ test('sourceNoteLines (v1.20 C8): a sentence from the data, never the research p
 test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify badge, wording', () => {
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  assert.ok(html.includes('<p class="subtitle">Live happy hours at Nashville restaurants on inKind, the dining app that gives you bonus credit.</p>'));
+  assert.ok(html.includes('<p class="subtitle">Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.</p>'));
   assert.ok(html.includes("return state.gridSort === 'distance' && !state.geo ? 'time' : state.gridSort;"), 'Distance never pretends');
   assert.ok(html.includes("'<span class=\"needs-loc\">needs location</span>'"));
   assert.ok(!html.includes('>Unverified<') && !html.includes("'Unverified'"), 'Unverified merged into Verify before you go');
@@ -2191,7 +2193,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v1.24';") && html.includes("venues.json?v=1.24") && html.includes('logic.js?v=1.24'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.0';") && html.includes("venues.json?v=2.0") && html.includes('logic.js?v=2.0'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2615,4 +2617,175 @@ test('index.html (v1.24): one live list, no red badges, --bad only for #fatal an
   html.replace(/([^{}]+)\{[^{}]*var\(--bad\)[^{}]*\}/g, (m, sel) => { users.push(sel.trim().split('\n').pop().trim()); return m; });
   assert.deepEqual(users.sort(), ['#fatal', '.debug-pos']);
   assert.ok(!/(^|[^-])--bad[^:)]/m.test(html.replace(/var\(--bad\)/g, '')), 'no other --bad use');
+});
+
+// ==================== v2.0 (fix27): every happy hour, with an inKind toggle ====================
+const L27 = require('../logic.js');
+const VENUES27 = JSON.parse(require('node:fs').readFileSync(path.join(__dirname, '..', 'venues.json'), 'utf8')).venues;
+function src27(kind, extra) {
+  return Object.assign({ url: 'https://example-bar.com/happy-hour', kind, seen: '2026-11-03', confirmed: null }, extra || {});
+}
+function nv27(over, winOver) {
+  const w = Object.assign({
+    days: ['MON', 'TUE', 'WED', 'THU', 'FRI'], start: '16:00', end: '18:00', area: 'bar', kind: 'happy_hour',
+    deals: [{ type: 'drink', desc: '$6 house wine', price: 6 }], sources: [src27('venue')],
+    last_verified: '2026-11-03', corroborated: false, confidence: 'high',
+  }, winOver || {});
+  return Object.assign({
+    id: 'nv-example-bar-100', name: 'Example Bar', city: 'Nashville', neighborhood: 'SoBro', hood: 'SoBro', zone: 'downtown',
+    address: '100 Example Street', zip: '37203', lat: 36.15, lon: -86.77, tz: 'America/Chicago', inkind: false,
+    official_site: 'https://example-bar.com/', status: 'open', hours: { MON: [['11:00', '23:00']] },
+    hours_confidence: 'high', hours_source: 'researched 2026-11-03 (high confidence): https://example-bar.com/',
+    windows: [w], verified_no_hh: false,
+  }, over || {});
+}
+function data27(venues, coverage) {
+  return { schema_version: 2, generated: '2026-11-03', coverage, venues };
+}
+function errs27(v, others) { return L27.validateVenues(data27((others || []).concat([v]))); }
+
+test('v2.0 A1: a well-formed non-inKind venue validates next to the real inKind venues', () => {
+  assert.deepEqual(errs27(nv27(), VENUES27), []);
+});
+test('v2.0 A1: non-inKind shape — nv- id, official_site, no inKind fields, a happy_hour window, verified_no_hh false', () => {
+  const has = (v, re) => assert.ok(errs27(v).some((e) => re.test(e)), re + ' in ' + errs27(v).join(' | '));
+  has(nv27({ id: 'ik-123' }), /id must match nv-<slug>/);
+  has(nv27({ id: 'nv-Bad Slug' }), /id must match nv-<slug>/);
+  has(nv27({ official_site: undefined }), /official_site required/);
+  has(nv27({ inkind_url: 'https://x.inkind.com/' }), /no inkind_id or inkind_url/);
+  has(nv27({ inkind_id: 5 }), /no inkind_id or inkind_url/);
+  has(nv27({ zip: '372' }), /zip must be 5 digits/);
+  has(nv27({ hours_confidence: undefined }), /hours_confidence required/);
+  has(nv27({}, { kind: 'special' }), /only with a happy_hour window/);
+  has(nv27({ verified_no_hh: true }), /verified_no_hh must be false/);
+  // and inKind venues still need ik-<int>
+  const ik = Object.assign({}, VENUES27[0], { id: 'nv-312-pizza' });
+  assert.ok(L27.validateVenues(data27([ik])).some((e) => /id must match ik-<int>/.test(e)));
+});
+test('v2.0 A2: sources — typed objects on non-inKind windows; strings stay valid on inKind ones', () => {
+  assert.deepEqual(L27.validateVenues(data27([VENUES27[0]])), [], 'string sources on an inKind venue');
+  const has = (v, re) => assert.ok(errs27(v).some((e) => re.test(e)), re + ' in ' + errs27(v).join(' | '));
+  has(nv27({}, { sources: ['https://example-bar.com/hh'] }), /needs typed sources/);
+  has(nv27({}, { sources: [src27('blog')] }), /must be \{url, kind/);
+  has(nv27({}, { sources: [src27('venue', { seen: '11/3/2026' })] }), /must be \{url, kind/);
+  has(nv27({}, { sources: [src27('guide', { confirmed: 'May 2026' })] }), /must be \{url, kind/);
+  assert.equal(L27.sourceUrl(src27('social')), 'https://example-bar.com/happy-hour');
+  assert.equal(L27.sourceUrl('https://a.com/'), 'https://a.com/');
+});
+test('v2.0 A3: the trust bar — venue or social passes; a guide passes only if it confirmed the entry in 2026', () => {
+  const guideNote = 'Deals as listed by Nashville Guru, confirmed 2026-05-01. Check with the venue.';
+  assert.deepEqual(errs27(nv27({}, { sources: [src27('social')] })), []);
+  assert.deepEqual(errs27(nv27({}, { sources: [src27('guide', { confirmed: '2026-05-01' })], notes: guideNote, research_notes: '' })), []);
+  const bar = /trust bar: needs a venue or social source/;
+  assert.ok(errs27(nv27({}, { sources: [src27('guide', { confirmed: '2025-12-31' })], notes: guideNote })).some((e) => bar.test(e)));
+  assert.ok(errs27(nv27({}, { sources: [src27('guide')] })).some((e) => bar.test(e)), 'an undated guide');
+  // specials and lunch are not held to the bar (they need a venue source anyway, per the brief)
+  const v = nv27();
+  v.windows.push(Object.assign({}, v.windows[0], { kind: 'special', sources: [src27('guide')] }));
+  assert.deepEqual(errs27(v), []);
+});
+test('v2.0 A3: deals come from a venue/social source, or the notes name the 2026-confirmed guide', () => {
+  const g = [src27('guide', { confirmed: '2026-03-10' })];
+  const deals = /deals without a venue or social source need notes/;
+  assert.ok(errs27(nv27({}, { sources: g })).some((e) => deals.test(e)), 'no note');
+  assert.ok(errs27(nv27({}, { sources: g, notes: 'Deals from a guide.' })).some((e) => deals.test(e)), 'no date');
+  assert.deepEqual(errs27(nv27({}, { sources: g, notes: 'Deals as listed by NashvilleGo, confirmed 2026-03-10.' })), []);
+  assert.deepEqual(errs27(nv27({}, { sources: g, deals: [] })), [], 'times only, no deals: nothing to attribute');
+});
+test('v2.0 A3: nv- ids are unique', () => {
+  const a = nv27(), b = nv27({ name: 'Other Bar', address: '200 Other Street', lat: 36.10, lon: -86.70 });
+  assert.ok(L27.validateVenues(data27([a, b])).some((e) => /duplicate id nv-example-bar-100/.test(e)));
+  assert.equal(L27.nvIdFor('Pinewood Social', '33 Peabody Street'), 'nv-pinewood-social-33');
+  assert.equal(L27.nvIdFor("Rolf & Daughters", '700 Taylor St'), 'nv-rolf-and-daughters-700');
+  assert.equal(L27.nvIdFor('The Listening Room Café', '618 4th Avenue South'), 'nv-the-listening-room-cafe-618');
+  assert.equal(L27.normName('Verna Café & Bar'), L27.normName('Verna Cafe and Bar'));
+});
+test('v2.0 A3: no nv- venue duplicates an ik- venue (name within 0.15 mi, or the same street address)', () => {
+  const ik = VENUES27.find((v) => v.address);
+  const dup = /duplicates inKind venue/;
+  // same name, ~0.1 mi away
+  const near = nv27({ name: ik.name + ' - Nashville', address: '999 Elsewhere Ave', lat: ik.lat + 0.0014, lon: ik.lon });
+  assert.ok(errs27(near, [ik]).some((e) => dup.test(e)));
+  // same name, ~1 mi away: a different location, allowed
+  const far = nv27({ name: ik.name, address: '999 Elsewhere Ave', lat: ik.lat + 0.0145, lon: ik.lon });
+  assert.ok(!errs27(far, [ik]).some((e) => dup.test(e)));
+  // same street, written differently
+  const street = nv27({ name: 'Totally Different', address: ik.address.replace(/\bStreet\b/, 'St.').replace(/\bAvenue\b/, 'Ave') + ', Suite 110' });
+  assert.ok(errs27(street, [ik]).some((e) => dup.test(e)), ik.address);
+  assert.equal(L27.normName('The Pinewood Social - Nashville'), 'pinewood social');
+  assert.equal(L27.normStreet('33 Peabody Street, Suite 2'), L27.normStreet('33 Peabody St.'));
+});
+test('v2.0 B4: coverage is a string or {text, v2_zones_done}; the note lists done zones in zone order', () => {
+  assert.deepEqual(L27.validateVenues(data27([], 'old text')), []);
+  assert.deepEqual(L27.validateVenues(data27([], { text: 't', v2_zones_done: ['downtown'] })), []);
+  assert.ok(L27.validateVenues(data27([], { text: 't', v2_zones_done: ['outer'] })).length);
+  assert.ok(L27.validateVenues(data27([], { text: 't', v2_zones_done: ['east', 'east'] })).length);
+  assert.equal(L27.v2CoverageNote({ v2_zones_done: ['downtown'] }),
+    'Every happy hour so far: Downtown. Other areas show inKind restaurants for now.');
+  assert.equal(L27.v2CoverageNote({ v2_zones_done: ['east', 'downtown', 'gulch'] }),
+    'Every happy hour so far: Downtown, Gulch & Midtown, East. Other areas show inKind restaurants for now.');
+  assert.equal(L27.v2CoverageNote({ v2_zones_done: L27.V2_ZONE_KEYS.slice() }), '', 'gone once all 7 are done');
+});
+test('v2.0 B1: scopeVenues — All is every venue, inKind only is inkind true', () => {
+  const all = VENUES27.concat([nv27()]);
+  assert.equal(L27.scopeVenues(all, 'all').length, all.length);
+  assert.equal(L27.scopeVenues(all, 'inkind').length, VENUES27.filter((v) => v.inkind === true).length);
+  assert.ok(L27.scopeVenues(all, 'inkind').every((v) => v.inkind === true));
+  assert.equal(L27.normalizeScope('junk'), 'all');
+  assert.equal(L27.normalizeScope('inkind'), 'inkind');
+  assert.equal(L27.SCOPE_KEY, 'hhradar-scope');
+});
+test('v2.0 B2: a non-inKind card\'s Deal info is its first venue or social source, never a guide', () => {
+  const v = nv27({}, { sources: [src27('guide', { url: 'https://guide.com/x', confirmed: '2026-02-02' }),
+    src27('social', { url: 'https://instagram.com/examplebar' }), src27('venue', { url: 'https://example-bar.com/menu' })] });
+  assert.equal(L27.bestSourceUrl(v, v.windows[0]), 'https://instagram.com/examplebar');
+  assert.equal(L27.sourceNoteLines(v, v.windows[0])[0], 'Checked on guide.com · 2026-11-03');
+  assert.equal(L27.hoursSourceInfo({ hours_source: 'Google listing 2026-11-03', hours_confidence: 'med' }).from, 'Google listing');
+});
+test('v2.0 B5: a non-inKind card with an hours caveat gets the same sentence and Verify badge rule', () => {
+  const v = nv27({ hours: { MON: [['17:00', '23:00']] } }, { days: ['MON'] });
+  assert.equal(L27.hoursCaveat(v, v.windows[0]),
+    'Heads up: posted hours on Mon are 5–11pm, which don’t cover this happy hour. Call ahead.');
+  assert.equal(L27.hasHoursCaveat(v, v.windows[0]), true);
+  assert.equal(L27.onlyBadgeFor(v.windows[0], 'food'), 'drinks-only');
+});
+test('v2.0 B1: "Live now (N)" = the Where sheet = the chip sum, in All and in inKind only', () => {
+  // The real file, plus one synthetic non-inKind venue live Fri 17:30 in SoBro, so All
+  // and inKind only always differ even where no zone run has added venues yet.
+  const all = VENUES27.concat([nv27()]);
+  const fri = at24('FRI', 17, 30);
+  const totals = {};
+  ['all', 'inkind'].forEach((scope) => {
+    const venues = L27.scopeVenues(all, scope);
+    const zones = zonesAsPage(venues);
+    const none = new Set();
+    const selections = { all: new Set(L27.hoodKeys()) };
+    zones.forEach((z) => { selections[z.key + ' only'] = L27.applyZoneTap(none, z.key, z.stateHoods); });
+    [at24('SUN', 14, 14), at24('MON', 16, 45), fri, at24('THU', 22, 15)].forEach((now) => {
+      const counts = L27.liveCountsByHood(venues, now);
+      Object.keys(selections).forEach((name) => {
+        const sel = selections[name];
+        const heading = L27.nowEntries(L27.applyHoodFilter(venues, { selected: sel }), now).live.length;
+        const chips = zones.reduce((n, z) => (L27.zoneChipState(sel, z.stateHoods).state === 'none' ? n
+          : n + L27.zoneCountFor(sel, z.visible, z.stateHoods, counts)), 0);
+        assert.equal(chips, heading, `${scope} / ${name} at ${now.dayOfWeek} ${now.hour}:${now.minute}`);
+      });
+    });
+    totals[scope] = L27.nowEntries(venues, fri).live.length;
+  });
+  assert.ok(totals.all > totals.inkind, 'All shows more than inKind only on Friday 5:30');
+});
+test('index.html (v2.0 B1): the scope toggle, one scoping function, and every view reading state.venues', () => {
+  const html = require('node:fs').readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('id="btn-scope-all">All</button>') && html.includes('id="btn-scope-inkind">inKind only</button>'));
+  const assigns = html.match(/state\.venues = [^;]+;/g);
+  assert.deepEqual(assigns, ['state.venues = L.scopeVenues(state.allVenues, state.scope);',
+    'state.venues = L.scopeVenues(state.allVenues, state.scope);']);
+  assert.ok(html.includes("state.scope = L.normalizeScope(lsGet(L.SCOPE_KEY, 'all'));"));
+  assert.ok(html.includes("bits.push(state.scope === 'inkind' ? 'inKind only' : 'All');"), 'feedback context');
+  assert.ok(html.includes("(venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) : '')"), 'badge only on inKind');
+  assert.ok(html.includes('<title>Nashville Happy Hour Radar</title>'));
+  const manifest = JSON.parse(require('node:fs').readFileSync(path.join(__dirname, '..', 'manifest.json'), 'utf8'));
+  assert.equal(manifest.name, 'Nashville Happy Hour Radar');
+  assert.equal(manifest.short_name, 'HH Radar');
 });

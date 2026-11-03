@@ -1,0 +1,373 @@
+{
+  "added": [
+    {
+      "lead": "Alligator Bar",
+      "name": "Alligator Bar",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "1001 Broadway",
+      "zip": "37203",
+      "official_site": "https://www.unionstationhotelnashville.com/happening/happy-hour-at-alligator-bar/",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU"],
+          "start": "16:00",
+          "end": "19:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [{"type": "drink", "desc": "The $7 Seven", "price": 7}],
+          "sources": [{"url": "https://www.unionstationhotelnashville.com/happening/happy-hour-at-alligator-bar/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "Alligator Bar at Union Station Hotel, beneath the Broadway Bridge.",
+          "research_notes": "Venue page lists Mon-Thu 4-7 PM and 'The $7 Seven' only; individual items are in a menu PDF not read. Page undated. Nashville Guru (confirmed 2026-10-27) agrees on 4-7 PM."
+        }
+      ]
+    },
+    {
+      "lead": "Boqueria",
+      "name": "Boqueria Fifth + Broadway",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "5005 Broadway Place",
+      "zip": "37203",
+      "official_site": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "22:00"]],
+        "TUE": [["11:00", "22:00"]],
+        "WED": [["11:00", "22:00"]],
+        "THU": [["11:00", "22:00"]],
+        "FRI": [["11:00", "22:00"]],
+        "SAT": [["11:00", "22:00"]],
+        "SUN": [["11:00", "22:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-03 (med confidence): https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$8 Classic Mini Martini", "price": 8},
+            {"type": "drink", "desc": "$8 Dirty Mini Martini", "price": 8},
+            {"type": "drink", "desc": "$9 Mini Espresso Martini", "price": 9},
+            {"type": "food", "desc": "$2 Pan con Tomate (per piece)", "price": 2},
+            {"type": "food", "desc": "$6 Croquetas de Jamon", "price": 6},
+            {"type": "food", "desc": "$6 Patatas Bravas", "price": 6},
+            {"type": "food", "desc": "$12 Angus Beef Sliders", "price": 12},
+            {"type": "food", "desc": "$8 Serrano Ham Grilled Cheese", "price": 8},
+            {"type": "drink", "desc": "$35 El Chupito (Octo-Shot for six, free Patatas Bravas)", "price": 35}
+          ],
+          "sources": [{"url": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "",
+          "research_notes": "Venue page, undated: Mon-Fri 3-6 PM."
+        },
+        {
+          "days": ["SAT", "SUN"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$8 Classic Mini Martini", "price": 8},
+            {"type": "drink", "desc": "$8 Dirty Mini Martini", "price": 8},
+            {"type": "drink", "desc": "$9 Mini Espresso Martini", "price": 9},
+            {"type": "food", "desc": "$2 Pan con Tomate (per piece)", "price": 2},
+            {"type": "food", "desc": "$6 Croquetas de Jamon", "price": 6},
+            {"type": "food", "desc": "$6 Patatas Bravas", "price": 6},
+            {"type": "food", "desc": "$12 Angus Beef Sliders", "price": 12},
+            {"type": "food", "desc": "$8 Serrano Ham Grilled Cheese", "price": 8},
+            {"type": "drink", "desc": "$35 El Chupito (Octo-Shot for six, free Patatas Bravas)", "price": 35}
+          ],
+          "sources": [{"url": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "",
+          "research_notes": "Venue page, undated: Sat-Sun 4-6 PM."
+        }
+      ]
+    },
+    {
+      "lead": "Earls",
+      "name": "Earls Kitchen + Bar",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "26 Platform Way South",
+      "zip": "37203",
+      "official_site": "https://www.earls.ca/locations/nashville-yards",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "00:00"]],
+        "TUE": [["11:00", "00:00"]],
+        "WED": [["11:00", "01:00"]],
+        "THU": [["11:00", "01:00"]],
+        "FRI": [["11:00", "02:00"]],
+        "SAT": [["10:00", "02:00"]],
+        "SUN": [["10:00", "00:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.earls.ca/locations/nashville-yards",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "lounge and patio",
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [{"url": "https://www.earls.ca/locations/nashville-yards", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Lounge and patio only. Venue lists no prices.",
+          "research_notes": "Venue location page lists daily 3-6 PM and 9 PM to close, lounge and patio only; no deals or prices posted."
+        },
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "21:00",
+          "end": "close",
+          "area": "lounge and patio",
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [{"url": "https://www.earls.ca/locations/nashville-yards", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Late-night happy hour, lounge and patio only. Venue lists no prices.",
+          "research_notes": "Venue location page: 9 PM to close daily. An official Nashville Yards listing said 10 PM; used the venue's own page."
+        },
+        {
+          "days": ["SAT", "SUN"],
+          "start": "10:00",
+          "end": "12:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [{"url": "https://www.earls.ca/locations/nashville-yards", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Brunch happy hour, weekends and holidays. Venue lists no prices.",
+          "research_notes": "Venue page: brunch happy hour weekends and holidays from opening until 12 PM; area not stated."
+        }
+      ]
+    },
+    {
+      "lead": "Friends in Low Places",
+      "name": "Friends in Low Places Bar & Honky-Tonk",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "411 Broadway",
+      "zip": "37203",
+      "official_site": "https://friendsbarnashville.com/menu/lunch-dinner",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "$5 Pizza Dough Pretzel Bites", "price": 5},
+            {"type": "food", "desc": "$6 Chilled Corn Salsa & Chips", "price": 6},
+            {"type": "food", "desc": "$7 Jack's Smoked Wings (four)", "price": 7},
+            {"type": "drink", "desc": "$7.77 Busch Light", "price": 7.77},
+            {"type": "drink", "desc": "$8 PBR", "price": 8},
+            {"type": "drink", "desc": "$10 Jamaican Mule", "price": 10},
+            {"type": "drink", "desc": "$10 Plantation Rum Punch", "price": 10}
+          ],
+          "sources": [{"url": "https://friendsbarnashville.com/menu/lunch-dinner", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": "",
+          "research_notes": "Venue menu page, undated: Mon-Thu 3-6 PM. Nashville Guru (confirmed 2026-10-19) agrees. General open hours not on the page."
+        }
+      ]
+    },
+    {
+      "lead": "The Hitchcock",
+      "name": "The Hitchcock",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "530 Church Street",
+      "zip": "37219",
+      "official_site": "http://www.hitchcocknashville.com/",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "17:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$5 martinis", "price": 5},
+            {"type": "drink", "desc": "$10 cocktails", "price": 10}
+          ],
+          "sources": [{"url": "https://nashvilleguru.com/businesses/the-hitchcock", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-08-07"}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-08-07. Check with the venue.",
+          "research_notes": "Venue site (hitchcocknashville.com) shows no happy hour and its hours are on a separate page not read; no social post found. Guide entry confirmed 2026-08-07 used."
+        }
+      ]
+    },
+    {
+      "lead": "The Listening Room Café",
+      "name": "The Listening Room Café",
+      "city": "Nashville",
+      "neighborhood": "SoBro",
+      "address": "618 4th Avenue South",
+      "zip": "37210",
+      "official_site": "https://listeningroomcafe.com/nashville",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["THU", "FRI"],
+          "start": "16:00",
+          "end": "17:00",
+          "area": "front bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$2 off bottled beer", "price": null},
+            {"type": "drink", "desc": "$6 house wine", "price": 6},
+            {"type": "drink", "desc": "$5 draft beer", "price": 5},
+            {"type": "food", "desc": "Discounted bites", "price": null}
+          ],
+          "sources": [{"url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-27"}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+          "research_notes": "Venue site (listeningroomcafe.com/nashville and late-night menu) shows no happy hour; no social post found. Guide lists it on Thursday and Friday pages only, front bar. Site hours looked unreliable (4 AM opening) so not recorded."
+        }
+      ]
+    },
+    {
+      "lead": "Standard Proof Whiskey Co.",
+      "name": "Standard Proof Whiskey Co.",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "219 Rep John Lewis Way N",
+      "zip": "37219",
+      "official_site": "https://www.standardproofwhiskey.com/nashville",
+      "status": "open",
+      "hours": {
+        "MON": [["12:00", "21:00"]],
+        "TUE": [["12:00", "21:00"]],
+        "WED": [["12:00", "21:00"]],
+        "THU": [["12:00", "21:00"]],
+        "FRI": [["12:00", "23:00"]],
+        "SAT": [["12:00", "23:00"]],
+        "SUN": [["12:00", "21:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-03 (med confidence): https://www.standardproofwhiskey.com/nashville",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "16:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$17 whiskey flight (regularly $27), plus $10 off a bottle with a flight", "price": 17}
+          ],
+          "sources": [{"url": "https://www.standardproofwhiskey.com/nashville", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "21 and over.",
+          "research_notes": "Venue Nashville page, undated: Mon-Fri 4-7 PM, flight of eight half-ounce pours. Guide lists more cocktail prices; not copied."
+        }
+      ]
+    },
+    {
+      "lead": "Tin Roof",
+      "name": "Tin Roof Broadway",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "316 Broadway",
+      "zip": "37201",
+      "official_site": "https://www.tinroofbroadway.com",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "03:00"]],
+        "TUE": [["11:00", "03:00"]],
+        "WED": [["11:00", "03:00"]],
+        "THU": [["11:00", "03:00"]],
+        "FRI": [["10:00", "03:00"]],
+        "SAT": [["10:00", "03:00"]],
+        "SUN": [["10:00", "03:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-03 (med confidence): https://www.tinroofbroadway.com",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU"],
+          "start": "11:00",
+          "end": "16:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "50% off appetizers", "price": null},
+            {"type": "drink", "desc": "50% off beers", "price": null},
+            {"type": "drink", "desc": "50% off well drinks and call brand liquors", "price": null}
+          ],
+          "sources": [{"url": "https://www.tinroofbroadway.com", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Opens to 4 PM.",
+          "research_notes": "Venue site, undated: Mon-Fri open until 4 PM. Lead's guide entries may refer to the separate Demonbreun Tin Roof; this is the downtown Broadway location. Other sources (Infatuation, atly) give different times; used the venue's."
+        },
+        {
+          "days": ["FRI"],
+          "start": "10:00",
+          "end": "16:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "50% off appetizers", "price": null},
+            {"type": "drink", "desc": "50% off beers", "price": null},
+            {"type": "drink", "desc": "50% off well drinks and call brand liquors", "price": null}
+          ],
+          "sources": [{"url": "https://www.tinroofbroadway.com", "kind": "venue", "seen": "2026-11-03", "confirmed": null}],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Opens to 4 PM.",
+          "research_notes": "Venue site, undated: Friday opening listed as 10 AM."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "Play Playground", "reason": "guide not confirmed in 2026", "url": "https://nashvillego.com/happy-hours"}
+  ]
+}

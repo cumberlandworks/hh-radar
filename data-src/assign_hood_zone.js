@@ -22,31 +22,7 @@ const L = require('../logic.js');
 
 const VENUES_PATH = path.join(__dirname, '..', 'venues.json');
 
-const OUTLIER_OVERRIDES = {
-  'ik-11286': 'Dickson',    // Just Love Coffee - Dickson; neighborhood field says "Bellevue"
-  'ik-19233': 'Lewisburg',  // The Coffee House Lewisburg; neighborhood field says "Franklin/Cool Springs"
-};
-
-// v1.16 (fix16 C1): the aliases that only pointed at pre-v1.16 hood names
-// ('Downtown/SoBro', 'Sylvan Park/Charlotte', 'Belle Meade / West Nashville', ...) are
-// gone with those names. Only the two Franklin spellings still resolve to a live key.
-const HAND_SET_ALIASES = {
-  'Franklin (McEwen)': 'Franklin/Cool Springs',
-  'Franklin (Cool Springs)': 'Franklin/Cool Springs',
-};
-
-const CENTROID_NAMES = new Set(L.NEIGHBORHOOD_CENTROIDS.map((c) => c.name));
-
-function computeHood(venue, warnings) {
-  // v1.16: hoods are set by hand from the street address; a valid one is never recomputed.
-  if (L.zoneOf(venue.hood)) return venue.hood;
-  if (OUTLIER_OVERRIDES[venue.id]) return OUTLIER_OVERRIDES[venue.id];
-  if (HAND_SET_ALIASES[venue.neighborhood]) return HAND_SET_ALIASES[venue.neighborhood];
-  if (CENTROID_NAMES.has(venue.neighborhood)) return venue.neighborhood;
-  const nearest = L.nearestNeighborhood(venue.lat, venue.lon);
-  warnings.push(venue.name + ': neighborhood "' + venue.neighborhood + '" unmapped -> nearestNeighborhood ' + nearest);
-  return nearest;
-}
+const { computeHood } = require('./hood_zone.js');
 
 function main() {
   const raw = fs.readFileSync(VENUES_PATH, 'utf8');

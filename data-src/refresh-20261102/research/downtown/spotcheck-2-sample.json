@@ -1,0 +1,237 @@
+[
+ {
+  "venue": "Standard Proof Whiskey Co.",
+  "address": "219 Rep John Lewis Way N",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "19:00",
+  "deals": [
+   {
+    "desc": "$17 whiskey flight (regularly $27), plus $10 off a bottle with a flight",
+    "price": 17
+   }
+  ],
+  "source": "https://www.standardproofwhiskey.com/nashville",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Puesto",
+  "address": "991 Exchange Lane",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [],
+  "source": "https://www.eatpuesto.com/nashville/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Earls Kitchen + Bar",
+  "address": "26 Platform Way South",
+  "window": 2,
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "10:00",
+  "end": "12:00",
+  "deals": [],
+  "source": "https://www.earls.ca/locations/nashville-yards",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Friends in Low Places Bar & Honky-Tonk",
+  "address": "411 Broadway",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$5 Pizza Dough Pretzel Bites",
+    "price": 5
+   },
+   {
+    "desc": "$6 Chilled Corn Salsa & Chips",
+    "price": 6
+   }
+  ],
+  "source": "https://friendsbarnashville.com/menu/lunch-dinner",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Lona",
+  "address": "200 4th Ave N",
+  "window": 1,
+  "days": [
+   "FRI",
+   "SAT"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "Handcrafted cocktails, margaritas, and tequila and mezcal pours",
+    "price": null
+   },
+   {
+    "desc": "Chef-inspired Mexican bites start at 8.00",
+    "price": null
+   }
+  ],
+  "source": "https://www.lonanashville.com/happy-hour",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Thistle & Rye",
+  "address": "1620 West End Ave",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [],
+  "source": "https://www.thistleandrye.com/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Prime + Proper",
+  "address": "1000 Broadway",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "close",
+  "deals": [
+   {
+    "desc": "$15 Veuve Clicquot Brut by the glass",
+    "price": 15
+   },
+   {
+    "desc": "Half off 1 oz caviar selections, starting at $45",
+    "price": null
+   }
+  ],
+  "source": "https://nashvilleguru.com/businesses/prime-proper",
+  "source_kind": "guide",
+  "confirmed": "2026-10-27"
+ },
+ {
+  "venue": "Hard Rock Cafe Nashville",
+  "address": "100 Broadway",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "12:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "desc": "Specially priced appetizers",
+    "price": null
+   },
+   {
+    "desc": "Specially priced beverages",
+    "price": null
+   }
+  ],
+  "source": "https://cafe.hardrock.com/nashville/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Boqueria Fifth + Broadway",
+  "address": "5005 Broadway Place",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$8 Classic Mini Martini",
+    "price": 8
+   },
+   {
+    "desc": "$8 Dirty Mini Martini",
+    "price": 8
+   }
+  ],
+  "source": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "The Listening Room Café",
+  "address": "618 4th Avenue South",
+  "window": 0,
+  "days": [
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "desc": "$2 off bottled beer",
+    "price": null
+   },
+   {
+    "desc": "$6 house wine",
+    "price": 6
+   }
+  ],
+  "source": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+  "source_kind": "guide",
+  "confirmed": "2026-10-27"
+ }
+]

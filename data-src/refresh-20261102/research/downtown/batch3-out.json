@@ -1,0 +1,315 @@
+{
+  "added": [
+    {
+      "lead": "Black Rabbit",
+      "name": "Black Rabbit",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "218 3rd Avenue North",
+      "zip": "37201",
+      "official_site": "https://www.blackrabbittn.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["16:00","22:00"]],
+        "TUE": [["16:00","22:00"]],
+        "WED": [["16:00","22:00"]],
+        "THU": [["16:00","22:00"]],
+        "FRI": [["16:00","24:00"]],
+        "SAT": [["10:00","24:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.blackrabbittn.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$6 cocktails", "price": 6},
+            {"type": "drink", "desc": "$6 wine", "price": 6},
+            {"type": "drink", "desc": "$2 off beer", "price": null},
+            {"type": "food", "desc": "Select food items discounted", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/black-rabbit", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-19"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-19. Check with the venue.",
+          "research_notes": "Venue site blackrabbittn.com lists address and hours but no happy hour; no venue or social happy hour source found. OpenTable text (undated) also says 4-6 PM with $6 Old Fashioneds."
+        },
+        {
+          "days": ["SAT"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$6 cocktails", "price": 6},
+            {"type": "drink", "desc": "$6 wine", "price": 6},
+            {"type": "drink", "desc": "$2 off beer", "price": null},
+            {"type": "food", "desc": "Select food items discounted", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/black-rabbit", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-19"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-19. Check with the venue.",
+          "research_notes": "Guide lists Saturday 10 AM to 6 PM with food specials only 4-6 PM; the drink deals may apply all day, so the window uses the 4-6 PM span common to the weekday listing."
+        }
+      ]
+    },
+    {
+      "lead": "Etch",
+      "name": "Etch",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "303 Demonbreun St.",
+      "zip": "37201",
+      "official_site": "https://etchrestaurant.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","14:00"],["16:30","22:00"]],
+        "TUE": [["11:00","14:00"],["16:30","22:00"]],
+        "WED": [["11:00","14:00"],["16:30","22:00"]],
+        "THU": [["11:00","14:00"],["16:30","22:00"]],
+        "FRI": [["11:00","14:00"],["16:30","22:30"]],
+        "SAT": [["16:30","22:30"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://etchrestaurant.com/nashville/menu/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "16:00",
+          "end": "18:30",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Fried Brussels Sprouts $8", "price": 8},
+            {"type": "food", "desc": "Tempura Mushrooms $8", "price": 8},
+            {"type": "food", "desc": "Bread & Butter $5", "price": 5},
+            {"type": "food", "desc": "Chips & Dip $4", "price": 4},
+            {"type": "food", "desc": "Roasted Cauliflower $10", "price": 10},
+            {"type": "drink", "desc": "$5 draft beer (rotating local selections)", "price": 5},
+            {"type": "drink", "desc": "$7 featured wines (rotating)", "price": 7},
+            {"type": "drink", "desc": "$9 featured cocktails (black manhattan, new style, water lily)", "price": 9}
+          ],
+          "sources": [
+            {"url": "https://etchrestaurant.com/nashville/menu/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Lounge area only.",
+          "research_notes": "Etch Nashville menu page: happy hour Mon-Fri 4:00-6:30 PM, lounge area only."
+        },
+        {
+          "days": ["SAT"],
+          "start": "16:00",
+          "end": "17:30",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Fried Brussels Sprouts $8", "price": 8},
+            {"type": "food", "desc": "Tempura Mushrooms $8", "price": 8},
+            {"type": "food", "desc": "Bread & Butter $5", "price": 5},
+            {"type": "food", "desc": "Chips & Dip $4", "price": 4},
+            {"type": "food", "desc": "Roasted Cauliflower $10", "price": 10},
+            {"type": "drink", "desc": "$5 draft beer (rotating local selections)", "price": 5},
+            {"type": "drink", "desc": "$7 featured wines (rotating)", "price": 7},
+            {"type": "drink", "desc": "$9 featured cocktails (black manhattan, new style, water lily)", "price": 9}
+          ],
+          "sources": [
+            {"url": "https://etchrestaurant.com/nashville/menu/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Lounge area only.",
+          "research_notes": "Etch Nashville menu page: happy hour Saturday 4:00-5:30 PM, lounge area only."
+        }
+      ]
+    },
+    {
+      "lead": "Hard Rock Cafe",
+      "name": "Hard Rock Cafe Nashville",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "100 Broadway",
+      "zip": "37201",
+      "official_site": "https://cafe.hardrock.com/nashville/",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "12:00",
+          "end": "17:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Specially priced appetizers", "price": null},
+            {"type": "drink", "desc": "Specially priced beverages", "price": null}
+          ],
+          "sources": [
+            {"url": "https://cafe.hardrock.com/nashville/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Bar and 2nd Ave patio only.",
+          "research_notes": "Venue page lists Mon-Fri 12-5 PM, bar and 2nd Ave patio, no prices. Venue page gives no street address; 100 Broadway, 37201 comes from search listings."
+        },
+        {
+          "days": ["FRI","SAT"],
+          "start": "16:00",
+          "end": "20:00",
+          "area": "rooftop patio",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$5 beers, seltzers, wells, and shots", "price": 5}
+          ],
+          "sources": [
+            {"url": "https://cafe.hardrock.com/nashville/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Rooftop patio with live music.",
+          "research_notes": "Venue page lists Fri and Sat 4-8 PM rooftop patio with live music and $5 beers, seltzers, wells, and shots."
+        }
+      ]
+    },
+    {
+      "lead": "JWB Grill",
+      "name": "JWB Grill",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "425 Rep. John Lewis Way S",
+      "zip": "37203",
+      "official_site": "https://www.margaritavilleresorts.com/margaritaville-hotel-nashville/experiences/destination-guide/event-calendar/happy-hour-at-jwb-grill",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$12 specialty cocktails", "price": 12},
+            {"type": "drink", "desc": "$5 all beers", "price": 5},
+            {"type": "drink", "desc": "$10 Fins Up Margarita", "price": 10},
+            {"type": "drink", "desc": "$12 by the glass (*)", "price": 12}
+          ],
+          "sources": [
+            {"url": "https://www.margaritavilleresorts.com/margaritaville-hotel-nashville/experiences/destination-guide/event-calendar/happy-hour-at-jwb-grill", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Offers and promotions cannot be combined.",
+          "research_notes": "Margaritaville Hotel Nashville page for JWB Grill happy hour; page is undated and gives no general operating hours."
+        }
+      ]
+    },
+    {
+      "lead": "Modern Love",
+      "name": "Modern Love",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "401 Union Street",
+      "zip": "37219",
+      "official_site": "https://fairlanehotel.com/happy-hour",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$4 off cocktails", "price": null},
+            {"type": "drink", "desc": "30% off house red wine, house white wine, and draft beer", "price": null},
+            {"type": "food", "desc": "Deviled Eggs $5.00", "price": 5},
+            {"type": "food", "desc": "Truffle Fries $5.00", "price": 5},
+            {"type": "food", "desc": "House Burger $12.00", "price": 12},
+            {"type": "food", "desc": "Charcuterie $20.00", "price": 20}
+          ],
+          "sources": [
+            {"url": "https://fairlanehotel.com/happy-hour", "kind": "venue", "seen": "2026-11-03", "confirmed": null},
+            {"url": "https://nashvilleguru.com/businesses/modern-love", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-27"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": true,
+          "confidence": "med",
+          "notes": null,
+          "research_notes": "Fairlane Hotel (Modern Love's host) happy hour page: daily 4-7 PM; Nashville Guru, confirmed 2026-10-27, agrees. Page is undated, so med. Address 401 Union St from guide/listings."
+        }
+      ]
+    },
+    {
+      "lead": "Puckett's",
+      "name": "Puckett's Restaurant",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "500 Church St.",
+      "zip": "37219",
+      "official_site": "https://www.puckettsrestaurant.com/nashville",
+      "status": "open",
+      "hours": {
+        "MON": [["07:00","22:00"]],
+        "TUE": [["07:00","22:00"]],
+        "WED": [["07:00","22:00"]],
+        "THU": [["07:00","22:00"]],
+        "FRI": [["07:00","23:00"]],
+        "SAT": [["07:00","23:00"]],
+        "SUN": [["07:00","22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.puckettsrestaurant.com/nashville",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$2 off all draft and bottle beers", "price": null},
+            {"type": "drink", "desc": "$7 A. Marshall Family Wines", "price": 7},
+            {"type": "drink", "desc": "$2 off all other wines and Puckett's Cocktails", "price": null},
+            {"type": "food", "desc": "$8 bar bites: Fried Pickles, Fried Green Beans, Smoked Sliders (two brisket, two pulled pork), 1/2 Dozen Cherrywood-Smoked Wings", "price": 8}
+          ],
+          "sources": [
+            {"url": "https://www.puckettsrestaurant.com/nashville", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": null,
+          "research_notes": "Puckett's Nashville page: Mon-Fri 3-6 PM. Lead site puckettsgro.com redirects to puckettsrestaurant.com."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "Deacon's New South", "reason": "closed / moved", "url": "https://www.visitmusiccity.com/media/press-release/2026/a-marshall-hospitality-announces-closure-deacons-new-south"},
+    {"lead": "Stationairy", "reason": "no happy hour found", "url": "https://stationairynashville.com/event/neighborhood-nights-at-stationairy-2/2026-10-20/"}
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "name": "Nashville inKind Happy Hour Radar",
+  "name": "Nashville Happy Hour Radar",
   "short_name": "HH Radar",
-  "description": "Which inKind partners near you have a happy hour now or in the next 2 hours.",
+  "description": "Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

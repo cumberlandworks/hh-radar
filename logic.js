@@ -233,8 +233,20 @@
   function hostnameOf(url) {
     try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return null; }
   }
+  // v2.0 (fix27 A2): a source is a plain URL string (inKind venues, v1) or a typed
+  // object {url, kind, seen, confirmed} (every non-inKind window). Read both through this.
+  function sourceUrl(s) {
+    return s && typeof s === 'object' ? s.url : s;
+  }
   function bestSourceUrl(venue, win) {
-    var sources = (win && win.sources) || [];
+    var sources = ((win && win.sources) || []).map(sourceUrl);
+    // v2.0 B2: a non-inKind card's Deal info is the window's first venue or social source.
+    if (venue && venue.inkind === false) {
+      var typed = (win && win.sources) || [];
+      for (var t = 0; t < typed.length; t++) {
+        if (typed[t] && (typed[t].kind === 'venue' || typed[t].kind === 'social')) return typed[t].url;
+      }
+    }
     var officialHost = venue && venue.official_site ? hostnameOf(venue.official_site) : null;
     if (officialHost) {
       for (var i = 0; i < sources.length; i++) {
@@ -1371,7 +1383,7 @@
   // One sentence per window, built from the data, never the research prose:
   // "Checked on bluecoastburrito.com · 2025-01-14", plus a warning when sources disagree.
   function sourceNoteLines(venue, win) {
-    var host = win.sources && win.sources.length ? hostnameOf(win.sources[0]) : null;
+    var host = win.sources && win.sources.length ? hostnameOf(sourceUrl(win.sources[0])) : null;
     var out = [(host ? 'Checked on ' + host : 'Checked') + (win.last_verified ? ' · ' + win.last_verified : '')];
     if (venue.disagreements && venue.disagreements.length) out.push('Sources disagree — check before you go');
     return out;
@@ -1569,6 +1581,7 @@
     var urlM = src.match(/https?:\/\/\S+/);
     var from;
     if (/^inKind/i.test(src)) from = 'inKind listing';
+    else if (/^Google listing/i.test(src)) from = 'Google listing'; // v2.0 D3
     else if (urlM) from = hostnameOf(urlM[0]) || 'researched';
     else if (/^none found/i.test(src)) from = 'none found';
     else if (/^researched/i.test(src)) from = 'researched';
@@ -1819,6 +1832,103 @@
     return (venue.windows || []).some(function (w) { return w && w.kind === 'happy_hour'; });
   }
 
+  // ==================== v2.0 (fix27): every happy hour, inKind or not ====================
+  // A non-inKind venue: inkind false, id nv-<slug>, an official_site, no inKind fields, and
+  // at least one happy_hour window. Its windows carry typed sources, and each happy_hour
+  // window must clear the trust bar: the venue's own site or socials, or a guide entry the
+  // guide itself confirmed in 2026. Guides are leads only; anything weaker is not added.
+  var SOURCE_KINDS = ['venue', 'social', 'guide'];
+  var TRUST_GUIDE_FROM = '2026-01-01';
+  var NV_DUP_MILES = 0.15;
+  // Deals copied from a guide (no venue or social source) must say so in the reader note,
+  // naming the guide's confirmed date: "Deals as listed by <guide>, confirmed 2026-05-01."
+  var GUIDE_DEALS_NOTE_RE = /\bguide\b|listed by\b/i;
+  var GUIDE_DEALS_DATE_RE = /\bconfirmed 2026-\d{2}-\d{2}\b/;
+
+  function isTypedSource(s) {
+    return !!s && typeof s === 'object' && typeof s.url === 'string' && /^https?:\/\//.test(s.url) &&
+      SOURCE_KINDS.indexOf(s.kind) !== -1 && typeof s.seen === 'string' && YMD_RE.test(s.seen) &&
+      (s.confirmed === null || (typeof s.confirmed === 'string' && YMD_RE.test(s.confirmed)));
+  }
+  function trustedSources(win) {
+    return ((win && win.sources) || []).filter(function (s) {
+      if (!s || typeof s !== 'object') return false;
+      if (s.kind === 'venue' || s.kind === 'social') return true;
+      return s.kind === 'guide' && typeof s.confirmed === 'string' && s.confirmed >= TRUST_GUIDE_FROM;
+    });
+  }
+  function passesTrustBar(win) { return trustedSources(win).length > 0; }
+  function hasVenueSource(win) {
+    return ((win && win.sources) || []).some(function (s) { return s && (s.kind === 'venue' || s.kind === 'social'); });
+  }
+  function guideDealsNoted(win) {
+    var text = String((win && win.notes) || '');
+    return GUIDE_DEALS_NOTE_RE.test(text) && GUIDE_DEALS_DATE_RE.test(text);
+  }
+
+  // Name and street compare, for the nv-/ik- duplicate check (and merge_v2zone.py's).
+  // "Café" -> "cafe": accents are dropped, never the letter.
+  function foldAccents(t) { return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  function normName(name) {
+    return foldAccents(name).toLowerCase().replace(/&/g, ' and ')
+      .replace(/\s+[-–—]\s+.*$/, '')            // "Puttshack - Nashville" -> "puttshack"
+      .replace(/[’'`]/g, '').replace(/[^a-z0-9]+/g, ' ')
+      .replace(/^the /, '').replace(/ (nashville|tn)$/, '').trim();
+  }
+  var STREET_ABBR = { street: 'st', avenue: 'ave', boulevard: 'blvd', road: 'rd', drive: 'dr', pike: 'pike',
+    lane: 'ln', place: 'pl', court: 'ct', parkway: 'pkwy', highway: 'hwy', north: 'n', south: 's', east: 'e', west: 'w' };
+  function normStreet(address) {
+    var a = String(address || '').toLowerCase().split(',')[0]
+      .replace(/\b(suite|ste|unit|#)\s*\S+/g, '').replace(/[.#]/g, ' ').replace(/[^a-z0-9 ]+/g, ' ');
+    return a.split(/\s+/).filter(Boolean).map(function (w) { return STREET_ABBR[w] || w; }).join(' ');
+  }
+  // The nv- venue's duplicate among `others` (by name within 0.15 mi, or by street), or null.
+  function nvDuplicateOf(v, others) {
+    var n = normName(v.name), st = normStreet(v.address);
+    for (var i = 0; i < others.length; i++) {
+      var o = others[i];
+      if (o === v) continue;
+      if (st && st === normStreet(o.address)) return o;
+      if (n && n === normName(o.name) && typeof v.lat === 'number' && typeof o.lat === 'number' &&
+          haversineMiles(v.lat, v.lon, o.lat, o.lon) <= NV_DUP_MILES) return o;
+    }
+    return null;
+  }
+  // "nv-pinewood-social-33": lowercased name plus street number.
+  function nvIdFor(name, address) {
+    var num = (String(address || '').match(/^\s*(\d+)/) || [])[1];
+    var slug = foldAccents(name).toLowerCase().replace(/&/g, ' and ').replace(/[’'`]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return 'nv-' + slug + (num ? '-' + num : '');
+  }
+
+  // ---- B1: the All / inKind only scope. Every view reads the list this returns. ----
+  var SCOPE_KEY = 'hhradar-scope';
+  function scopeVenues(venues, scope) {
+    if (scope !== 'inkind') return venues || [];
+    return (venues || []).filter(function (v) { return v.inkind === true; });
+  }
+  function normalizeScope(s) { return s === 'inkind' ? 'inkind' : 'all'; }
+
+  // ---- B4: honest coverage while the zone runs roll out ----
+  // coverage is {text, v2_zones_done: [zone keys]} since v2.0 (a plain string before).
+  var V2_ZONE_KEYS = ['downtown', 'gulch', 'north', 'east', 'south', 'west', 'franklin'];
+  function v2ZonesDone(coverage) {
+    var done = coverage && typeof coverage === 'object' && Array.isArray(coverage.v2_zones_done) ? coverage.v2_zones_done : [];
+    return V2_ZONE_KEYS.filter(function (k) { return done.indexOf(k) !== -1; });
+  }
+  function v2CoverageNote(coverage) {
+    if (!coverage || typeof coverage !== 'object') return ''; // a v1 file: inKind only, no note
+    var done = v2ZonesDone(coverage);
+    if (done.length === V2_ZONE_KEYS.length) return '';
+    if (!done.length) return 'Every happy hour: not yet. All areas show inKind restaurants for now.';
+    var labels = done.map(function (k) {
+      for (var i = 0; i < ZONES.length; i++) if (ZONES[i].key === k) return ZONES[i].label;
+      return k;
+    });
+    return 'Every happy hour so far: ' + labels.join(', ') + '. Other areas show inKind restaurants for now.';
+  }
+
   function validateVenues(data) {
     var errors = [];
     function fail(msg) { errors.push(msg); }
@@ -1828,6 +1938,19 @@
     // `lunch` kind; the one semantic change is what verified_no_hh is allowed to mean.
     if (data.schema_version !== 2) fail('schema_version must be 2');
     if (typeof data.generated !== 'string') fail('generated must be a string');
+    // v2.0 B4: coverage is a string (v1) or {text, v2_zones_done}.
+    if (data.coverage !== undefined && typeof data.coverage !== 'string') {
+      var cov = data.coverage;
+      if (!cov || typeof cov !== 'object') fail('coverage must be a string or an object');
+      else {
+        if (typeof cov.text !== 'string') fail('coverage.text must be a string');
+        if (!Array.isArray(cov.v2_zones_done)) fail('coverage.v2_zones_done must be an array');
+        else cov.v2_zones_done.forEach(function (k, ki) {
+          if (V2_ZONE_KEYS.indexOf(k) === -1) fail('coverage.v2_zones_done[' + ki + ']: not a core zone key: ' + k);
+          if (cov.v2_zones_done.indexOf(k) !== ki) fail('coverage.v2_zones_done: duplicate ' + k);
+        });
+      }
+    }
     if (!Array.isArray(data.venues)) { fail('venues must be an array'); return errors; }
 
     var seenIds = {};
@@ -1839,7 +1962,12 @@
       var p = 'venues[' + vi + '] (' + (v && v.name) + ')';
 
       if (!v || typeof v !== 'object') { fail(p + ': not an object'); continue; }
-      if (typeof v.id !== 'string' || !/^ik-\d+$/.test(v.id)) fail(p + ': id must match ik-<int>');
+      // v2.0: ik-<int> for inKind venues, nv-<slug> for the rest.
+      if (v.inkind === true) {
+        if (typeof v.id !== 'string' || !/^ik-\d+$/.test(v.id)) fail(p + ': id must match ik-<int>');
+      } else if (typeof v.id !== 'string' || !/^nv-[a-z0-9]+(-[a-z0-9]+)*$/.test(v.id)) {
+        fail(p + ': id must match nv-<slug>');
+      }
       if (seenIds[v.id]) fail(p + ': duplicate id ' + v.id);
       seenIds[v.id] = true;
       if (typeof v.name !== 'string' || !v.name) fail(p + ': name required');
@@ -1849,10 +1977,24 @@
       else if (typeof v.zone !== 'string' || v.zone !== zoneOf(v.hood)) fail(p + ': zone must equal zoneOf(hood)');
       if (v.tz !== 'America/Chicago') fail(p + ': tz must be America/Chicago');
       seenTz[v.tz] = true;
-      if (v.inkind !== true) fail(p + ': inkind must be true in v1');
+      if (v.inkind !== true && v.inkind !== false) fail(p + ': inkind must be true or false');
       if (v.status !== 'open') fail(p + ': status must be "open"');
       if (!Array.isArray(v.windows)) { fail(p + ': windows must be an array'); continue; }
       if (typeof v.verified_no_hh !== 'boolean') fail(p + ': verified_no_hh must be boolean');
+      // v2.0 A1: the non-inKind venue shape.
+      if (v.inkind === false) {
+        if (v.inkind_id !== undefined || v.inkind_url !== undefined) fail(p + ': a non-inKind venue has no inkind_id or inkind_url');
+        if (typeof v.official_site !== 'string' || !/^https?:\/\//.test(v.official_site)) fail(p + ': official_site required (a URL)');
+        if (typeof v.address !== 'string' || !v.address) fail(p + ': address required');
+        if (typeof v.zip !== 'string' || !/^\d{5}$/.test(v.zip)) fail(p + ': zip must be 5 digits');
+        if (!v.hours || typeof v.hours !== 'object' || Array.isArray(v.hours)) fail(p + ': hours must be an object');
+        if (v.hours_confidence === undefined) fail(p + ': hours_confidence required');
+        if (typeof v.hours_source !== 'string') fail(p + ': hours_source required');
+        if (!hasHappyHourWindow(v)) fail(p + ': a non-inKind venue is added only with a happy_hour window');
+        if (v.verified_no_hh !== false) fail(p + ': verified_no_hh must be false on a non-inKind venue');
+        var dup = nvDuplicateOf(v, data.venues.filter(function (o) { return o && o.inkind === true; }));
+        if (dup) fail(p + ': duplicates inKind venue ' + dup.id + ' (' + dup.name + ')');
+      }
       // v1.10 (schema 2): `windows: []` no longer implies "checked, none". With
       // verified_no_hh false it means "happy hour not checked yet", and a venue whose
       // only windows are lunch/special can still be verified no-HH. The one thing that
@@ -1919,6 +2061,23 @@
           }
         }
         if (!Array.isArray(w.sources) || w.sources.length === 0) fail(wp + ': sources must be non-empty');
+        else {
+          // v2.0 A2: a source is a URL string (inKind venues only) or a typed object.
+          w.sources.forEach(function (s, si) {
+            if (typeof s === 'string') {
+              if (v.inkind === false) fail(wp + '.sources[' + si + ']: a non-inKind window needs typed sources {url, kind, seen, confirmed}');
+            } else if (!isTypedSource(s)) {
+              fail(wp + '.sources[' + si + ']: must be {url, kind: venue|social|guide, seen: YYYY-MM-DD, confirmed: YYYY-MM-DD|null}');
+            }
+          });
+          // v2.0 A3: the trust bar, on every non-inKind happy hour.
+          if (v.inkind === false && w.kind === 'happy_hour') {
+            if (!passesTrustBar(w)) fail(wp + ': trust bar: needs a venue or social source, or a guide confirmed in 2026');
+            else if (Array.isArray(w.deals) && w.deals.length && !hasVenueSource(w) && !guideDealsNoted(w)) {
+              fail(wp + ': trust bar: deals without a venue or social source need notes naming the 2026-confirmed guide');
+            }
+          }
+        }
         if (w.confidence !== 'high' && w.confidence !== 'med' && w.confidence !== 'low') {
           fail(wp + ': confidence invalid');
         }
@@ -2264,6 +2423,23 @@
     isAllDay: isAllDay,
     bestSourceUrl: bestSourceUrl,
     haversineMiles: haversineMiles,
+    sourceUrl: sourceUrl,
+    SOURCE_KINDS: SOURCE_KINDS,
+    TRUST_GUIDE_FROM: TRUST_GUIDE_FROM,
+    NV_DUP_MILES: NV_DUP_MILES,
+    isTypedSource: isTypedSource,
+    passesTrustBar: passesTrustBar,
+    guideDealsNoted: guideDealsNoted,
+    normName: normName,
+    normStreet: normStreet,
+    nvDuplicateOf: nvDuplicateOf,
+    nvIdFor: nvIdFor,
+    SCOPE_KEY: SCOPE_KEY,
+    scopeVenues: scopeVenues,
+    normalizeScope: normalizeScope,
+    V2_ZONE_KEYS: V2_ZONE_KEYS,
+    v2ZonesDone: v2ZonesDone,
+    v2CoverageNote: v2CoverageNote,
     nearestNeighborhood: nearestNeighborhood,
     NEIGHBORHOOD_CENTROIDS: NEIGHBORHOOD_CENTROIDS,
     lintDealDesc: lintDealDesc,

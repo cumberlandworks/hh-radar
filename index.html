@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>Nashville inKind Happy Hour Radar</title>
+<title>Nashville Happy Hour Radar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- v1.5 C2: iOS holds on to a home-screen app's index.html for days. Pages serves
      it with max-age=600, but the standalone web-app shell re-uses whatever it has
@@ -19,16 +19,16 @@
      draws. No venue count in any of this text: it would rot on the next refresh.
      og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.21 at
      ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.21). -->
-<meta name="description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
+<meta name="description" content="Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nashville Happy Hour Radar">
-<meta property="og:description" content="Which inKind restaurants near you have a happy hour right now? Hand-checked, food first.">
+<meta property="og:description" content="Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.">
 <meta property="og:url" content="https://cumberlandworks.github.io/hh-radar/">
 <meta property="og:image" content="https://cumberlandworks.github.io/hh-radar/og-preview.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
-<meta property="og:image:alt" content="The radar's Now view: a list of Nashville inKind restaurants with a happy hour live right now, food deals first.">
+<meta property="og:image:alt" content="The radar's Now view: a list of Nashville restaurants and bars with a happy hour live right now, food deals first.">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
@@ -509,6 +509,8 @@
   #fatal { display: none; margin: 16px; padding: 16px; border: 1px solid var(--bad); border-radius: 12px; color: var(--bad); background: var(--panel); }
 
   /* ==================== v1.5 C4: grid coverage footer ==================== */
+  /* v2.0 B4: the "so far" note gets its own line under the counts. */
+  .v2-note { display: block; margin-top: 4px; }
   #grid-note b { color: var(--text); }
   details.cov-pop { display: inline; }
   /* v1.6 C2: this was display:inline-block, which made the summary an atomic box.
@@ -829,9 +831,9 @@
 </div>
 
 <header>
-  <h1><span class="h1-name">🍸 Happy Hour Radar<span class="h1-tag"> — Nashville inKind</span></span><a class="hdr-fb" href="#feedback" id="hdr-fb">Feedback</a></h1>
+  <h1><span class="h1-name">🍸 Happy Hour Radar<span class="h1-tag"> — Nashville</span></span><a class="hdr-fb" href="#feedback" id="hdr-fb">Feedback</a></h1>
   <!-- v1.20 C1 (QA#1): what this is, in one line, at every width. -->
-  <p class="subtitle">Live happy hours at Nashville restaurants on inKind, the dining app that gives you bonus credit.</p>
+  <p class="subtitle">Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.</p>
   <nav class="tabs">
     <button id="tab-now" class="active">Now</button>
     <button id="tab-grid">Day Grid</button>
@@ -845,6 +847,11 @@
   <div class="toggle" id="food-toggle" role="group" aria-label="Food or drink first">
     <button type="button" class="pill on" id="btn-food">🍽 Food-first</button>
     <button type="button" class="pill" id="btn-drink">🍹 Drink-first</button>
+  </div>
+  <!-- v2.0 B1: which venues every view shows. Default All; saved per browser (hhradar-scope). -->
+  <div class="toggle" id="scope-toggle" role="group" aria-label="Show every happy hour or inKind restaurants only">
+    <button type="button" class="pill on" id="btn-scope-all">All</button>
+    <button type="button" class="pill" id="btn-scope-inkind">inKind only</button>
   </div>
   <div class="toggle" id="travel-toggle" role="group" aria-label="Drive or walk for the time estimate">
     <button type="button" class="pill on" id="btn-drive">🚗 Drive</button>
@@ -974,12 +981,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=1.24"></script>
+<script src="logic.js?v=2.0"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v1.24';
+  var APP_VERSION = 'v2.0';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1101,6 +1108,8 @@
     } catch (e) { return fallback; }
   }
 
+  state.scope = L.normalizeScope(lsGet(L.SCOPE_KEY, 'all'));
+  state.allVenues = [];
   var savedPriority = lsGet('hhradar-priority', null);
   if (savedPriority === 'food' || savedPriority === 'drink') state.priority = savedPriority;
   var savedSort = lsGet('hhradar-gridsort', null);
@@ -1382,7 +1391,7 @@
         hoursLineHtml(venue, day) +
         verdictLineHtml(travel) +
         addressLinkHtml(venue, 'card-addr') +
-        '<div class="badges">' + badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) +
+        '<div class="badges">' + (venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) : '') +
           (only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '') + renderBadges(venue, win) + '</div>' +
         hoursCaveatHtml(venue, win) +
         windowLineHtml(venue, win) +
@@ -1629,6 +1638,9 @@
       out += '<a class="rowlink ink" href="' + escapeHtml(venue.inkind_url) + '" target="_blank" rel="noopener"' +
         ' title="inKind listing — ' + escapeHtml(venue.name) + '" aria-label="inKind listing for ' + escapeHtml(venue.name) + '"' +
         ' onclick="event.stopPropagation()">K</a>';
+    } else {
+      // v2.0 B2: a non-inKind row keeps the K column, blank, so names line up on desktop.
+      out += '<a class="rowlink blank" aria-hidden="true" tabindex="-1"></a>';
     }
     return out;
   }
@@ -1767,6 +1779,13 @@
       lg('<span class="sw-now"></span>', 'Now') + '</div>';
   }
 
+  // v2.0 B4: while some core zones have no non-inKind research yet, say which are done.
+  // Driven by coverage.v2_zones_done in venues.json; gone once all 7 are done, and not
+  // shown under inKind only (that list is complete everywhere).
+  function v2NoteHtml() {
+    var text = state.scope === 'all' ? L.v2CoverageNote(state.coverage) : '';
+    return text ? '<span class="v2-note" id="v2-note"> ' + escapeHtml(text) + '</span>' : '';
+  }
   function gridCoverageHtml(visibleVenues, day, rowsDrawn) {
     var cov = L.dayCoverageCounts(visibleVenues, day);
     // The grid draws a row for exactly the onDay group; if these ever disagree the
@@ -1813,7 +1832,8 @@
         '<ul class="cov-list">' + unchecked + '</ul></details>';
     }
     return prefix + '<b>' + cov.onDay + ' venue' + (cov.onDay === 1 ? '' : 's') + '</b> with happy hours on ' +
-      DAY_FULL[day] + SEP + otherPart + SEP + cov.none + ' have no happy hour at all' + uncheckedPart + '.' + mismatch;
+      DAY_FULL[day] + SEP + otherPart + SEP + cov.none + ' have no happy hour at all' + uncheckedPart + '.' + mismatch +
+      v2NoteHtml();
   }
 
   // Grid uses a two-level sticky stack (app header, then day/sort tabs) ahead of
@@ -2305,6 +2325,7 @@
     bits.push('zones: ' + zoneFilterSummary().plain);
     if (state.currentTab === 'grid') bits.push('sort: ' + state.gridSort);
     bits.push(state.priority === 'food' ? 'Food-first' : 'Drink-first');
+    bits.push(state.scope === 'inkind' ? 'inKind only' : 'All');
     var override = new URLSearchParams(location.search).get('now');
     if (override) bits.push('?now=' + override);
     bits.push('card: ' + (state.lastExpanded || 'none'));
@@ -2968,8 +2989,8 @@
   // CAPTURE listener covers every view — the links live in NOW cards, grid inline
   // cards and the Surprise card, all of which re-render underneath it.
   function venueById(id) {
-    for (var i = 0; i < state.venues.length; i++) {
-      if (String(state.venues[i].id) === String(id)) return state.venues[i];
+    for (var i = 0; i < state.allVenues.length; i++) {
+      if (String(state.allVenues[i].id) === String(id)) return state.allVenues[i];
     }
     return null;
   }
@@ -3177,6 +3198,28 @@
     renderGridIfVisible();
   }
   setPriority(state.priority);
+  // v2.0 B1: All / inKind only. One function decides the list (L.scopeVenues); every
+  // view re-reads state.venues, so NOW and its counts, the Where sheet and chips, the
+  // map, the Day Grid and its coverage line, Surprise me and the empty state all follow.
+  document.getElementById('btn-scope-all').addEventListener('click', function () { setScope('all'); });
+  document.getElementById('btn-scope-inkind').addEventListener('click', function () { setScope('inkind'); });
+  function renderScopeToggle() {
+    document.getElementById('btn-scope-all').classList.toggle('on', state.scope === 'all');
+    document.getElementById('btn-scope-inkind').classList.toggle('on', state.scope === 'inkind');
+  }
+  function setScope(s) {
+    state.scope = L.normalizeScope(s);
+    lsSet(L.SCOPE_KEY, state.scope);
+    renderScopeToggle();
+    if (!state.allVenues.length) return; // before the data loads, the boot applies it
+    state.venues = L.scopeVenues(state.allVenues, state.scope);
+    computeHoodTotals();
+    renderNow();
+    renderGridIfVisible();
+    renderHoodChips();
+    renderMap();
+  }
+  renderScopeToggle();
   window.addEventListener('resize', function () {
     updateStickyOffsets();
     renderGridIfVisible();
@@ -3294,7 +3337,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=1.24').then(function (r) {
+  fetch('venues.json?v=2.0').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
@@ -3303,14 +3346,17 @@
       fatal(errors.length + ' problem(s) in venues.json:\n' + errors.slice(0, 8).join('\n'));
       return;
     }
-    state.venues = data.venues;
+    // v2.0 B1: state.allVenues is the file; state.venues is the scoped list every view reads.
+    state.allVenues = data.venues;
+    state.coverage = data.coverage;
+    state.venues = L.scopeVenues(state.allVenues, state.scope);
     state.generated = data.generated;
     state.now = getNowInChicago();
     state.day = state.now.dayOfWeek;
 
     // v1.10 C6: the credit line is last. v1.13 C1: the tip is its own card (renderTip).
     document.getElementById('footer').innerHTML = '<span class="foot-line">Data generated ' + escapeHtml(state.generated) + ' · ' +
-      state.venues.length + ' venues · ' + state.venues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
+      state.allVenues.length + ' venues · ' + state.allVenues.reduce(function (n, v) { return n + v.windows.length; }, 0) + ' windows · ' +
       escapeHtml(APP_VERSION) + ' · <a href="https://github.com/cumberlandworks/hh-radar#readme" target="_blank" rel="noopener">README</a></span>' +
       '<span class="foot-line">Built by TJ White · ' +
         '<a href="https://www.linkedin.com/in/tjwhite19" target="_blank" rel="noopener">LinkedIn</a> · ' +

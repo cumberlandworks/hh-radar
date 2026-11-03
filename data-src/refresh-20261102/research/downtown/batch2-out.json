@@ -1,0 +1,277 @@
+{
+  "added": [
+    {
+      "lead": "The Ariston",
+      "name": "The Ariston",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "508 Church Street",
+      "zip": "37219",
+      "official_site": "http://thearistonbar.com",
+      "status": "open",
+      "hours": {
+        "MON": [["12:00", "00:00"]],
+        "TUE": [["12:00", "00:00"]],
+        "WED": [["12:00", "00:00"]],
+        "THU": [["12:00", "00:00"]],
+        "FRI": [["12:00", "00:00"]],
+        "SAT": [["12:00", "00:00"]],
+        "SUN": [["12:00", "00:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): http://thearistonbar.com",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU"],
+          "start": "14:00",
+          "end": "17:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$12 house cocktails", "price": 12},
+            {"type": "drink", "desc": "$2 off wines by the glass", "price": null},
+            {"type": "drink", "desc": "$2 off beer", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/the-ariston", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-27"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+          "research_notes": "Venue site thearistonbar.com shows hours (daily 12pm-12am) but no happy hour; no social source found. Nashville Guru lists Mon-Thu only, none Fri-Sun."
+        }
+      ]
+    },
+    {
+      "lead": "Junie's",
+      "name": "Junie's",
+      "city": "Nashville",
+      "neighborhood": "SoBro",
+      "address": "311 3rd Avenue South",
+      "zip": "37201",
+      "official_site": "http://www.juniesnashville.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["07:00", "22:00"]],
+        "TUE": [["07:00", "22:00"]],
+        "WED": [["07:00", "22:00"]],
+        "THU": [["07:00", "22:00"]],
+        "FRI": [["07:00", "23:00"]],
+        "SAT": [["07:00", "23:00"]],
+        "SUN": [["07:00", "22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): http://www.juniesnashville.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$10 classic cocktails", "price": 10},
+            {"type": "drink", "desc": "$8 house wines", "price": 8},
+            {"type": "drink", "desc": "$6 beers", "price": 6},
+            {"type": "food", "desc": "Discounted small plates", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/junies", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-08-18"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-08-18. Check with the venue.",
+          "research_notes": "Venue site and menus page show no happy hour (menus page only notes bites between meals 2pm-4pm daily). Guide calls it Grazing Hour, daily 4-6pm. A Nashville Guru Monday roundup (confirmed 2026-06-09) said noon-5pm bar and patio; OpenTable also says 4-6pm daily. Used the 2026-08-18 entry."
+        }
+      ]
+    },
+    {
+      "lead": "Lona",
+      "name": "Lona",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "200 4th Ave N",
+      "zip": "37219",
+      "official_site": "https://www.lonanashville.com/",
+      "status": "open",
+      "hours": {
+        "SUN": [["11:00", "14:00"], ["17:00", "22:00"]],
+        "MON": [["17:00", "22:00"]],
+        "TUE": [["17:00", "22:00"]],
+        "WED": [["17:00", "22:00"]],
+        "THU": [["17:00", "22:00"]],
+        "FRI": [["16:00", "23:00"]],
+        "SAT": [["11:00", "14:00"], ["16:00", "23:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-03 (med confidence): https://www.lonanashville.com/",
+      "windows": [
+        {
+          "days": ["SUN", "MON", "TUE", "WED", "THU"],
+          "start": "17:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Handcrafted cocktails, margaritas, and tequila and mezcal pours", "price": null},
+            {"type": "food", "desc": "Chef-inspired Mexican bites start at 8.00", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.lonanashville.com/happy-hour", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": null,
+          "research_notes": "Venue happy hour page lists Sunday-Thursday 5-7 PM; drink prices not posted."
+        },
+        {
+          "days": ["FRI", "SAT"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Handcrafted cocktails, margaritas, and tequila and mezcal pours", "price": null},
+            {"type": "food", "desc": "Chef-inspired Mexican bites start at 8.00", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.lonanashville.com/happy-hour", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": null,
+          "research_notes": "Venue happy hour page lists Friday-Saturday 4-6 PM; drink prices not posted."
+        }
+      ]
+    },
+    {
+      "lead": "Prime + Proper",
+      "name": "Prime + Proper",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "1000 Broadway",
+      "zip": "37203",
+      "official_site": "https://primeandproperrestaurants.com/nashville/",
+      "status": "open",
+      "hours": {
+        "SUN": [["17:00", "22:00"]],
+        "MON": [["17:00", "22:00"]],
+        "TUE": [["17:00", "22:00"]],
+        "WED": [["17:00", "22:00"]],
+        "THU": [["17:00", "22:00"]],
+        "FRI": [["16:30", "23:00"]],
+        "SAT": [["16:30", "23:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://primeandproperrestaurants.com/nashville/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "16:00",
+          "end": "close",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$15 Veuve Clicquot Brut by the glass", "price": 15},
+            {"type": "food", "desc": "Half off 1 oz caviar selections, starting at $45", "price": null},
+            {"type": "drink", "desc": "$8 cocktail sippers", "price": 8}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/prime-proper", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-27"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+          "research_notes": "Venue page says the bar opens at 4pm daily but posts no happy hour days, times or deals; its bar menu link was not readable. No social source found. OpenTable lists happy hour as an amenity. Zip 37203 from the guide listing; venue page omits it."
+        }
+      ]
+    },
+    {
+      "lead": "Stateside Kitchen",
+      "name": "Stateside Kitchen",
+      "city": "Nashville",
+      "neighborhood": "Downtown",
+      "address": "210 4th Avenue North",
+      "zip": "37219",
+      "official_site": "https://www.dreamhotels.com/nashville/dining-nightlife/stateside-kitchen",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Special happy hour food menu", "price": null},
+            {"type": "drink", "desc": "$5 house wines", "price": 5},
+            {"type": "drink", "desc": "$5 select beers", "price": 5},
+            {"type": "drink", "desc": "$8 cocktails", "price": 8}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/stateside-kitchen-at-dream-hotel", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-15"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-15. Check with the venue.",
+          "research_notes": "Venue page (dreamhotels.com) redirects to hyatt.com and the dining page returned 403, so no venue source was readable. Other undated sources disagree: NASHtoday says daily 2-5pm, Only In Your State says 'Golden Hour' 4-7pm weekdays. Used the 2026-confirmed Nashville Guru entry."
+        }
+      ]
+    },
+    {
+      "lead": "Yolan",
+      "name": "Yolan",
+      "city": "Nashville",
+      "neighborhood": "SoBro",
+      "address": "403 4th Avenue South",
+      "zip": "37201",
+      "official_site": "https://www.yolannashville.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["06:00", "22:00"]],
+        "TUE": [["06:00", "22:00"]],
+        "WED": [["06:00", "22:00"]],
+        "THU": [["06:00", "22:00"]],
+        "FRI": [["06:00", "22:00"]],
+        "SAT": [["06:00", "22:00"]],
+        "SUN": [["06:00", "22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.yolannashville.com/menus",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Spritzes, highballs, and cocktails", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.yolannashville.com/menus", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Listed by the venue as Afternoon Aperitivo; no prices posted.",
+          "research_notes": "Venue menus page lists Aperitivo 3-5 pm daily with spritzes, highballs and cocktails; no prices. Nashville Guru (confirmed 2026-11-02) calls it happy hour, same window. The venue does not use the words happy hour."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "Cliff's Lounge & Oyster Bar", "reason": "closed / moved", "url": "https://whatnow.com/?p=446884"},
+    {"lead": "Ellington’s Mid Way Bar & Grill", "reason": "guide not confirmed in 2026", "url": "https://ellingtonsnashville.com/"},
+    {"lead": "Garage Sale Vintage (Downtown)", "reason": "no happy hour found", "url": "https://nashvilleguru.com/businesses/garage-sale-vintage-east-nashville"}
+  ]
+}

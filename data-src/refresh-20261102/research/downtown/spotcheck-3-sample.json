@@ -1,0 +1,258 @@
+[
+ {
+  "venue": "Puesto",
+  "address": "991 Exchange Lane",
+  "window": 1,
+  "days": [
+   "MON",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "21:00",
+  "end": "close",
+  "deals": [],
+  "source": "https://www.eatpuesto.com/nashville/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Alligator Bar",
+  "address": "1001 Broadway",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "16:00",
+  "end": "19:00",
+  "deals": [
+   {
+    "desc": "The $7 Seven",
+    "price": 7
+   }
+  ],
+  "source": "https://www.unionstationhotelnashville.com/happening/happy-hour-at-alligator-bar/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "The Ariston",
+  "address": "508 Church Street",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "14:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "desc": "$12 house cocktails",
+    "price": 12
+   },
+   {
+    "desc": "$2 off wines by the glass",
+    "price": null
+   }
+  ],
+  "source": "https://nashvilleguru.com/businesses/the-ariston",
+  "source_kind": "guide",
+  "confirmed": "2026-10-27"
+ },
+ {
+  "venue": "Puckett's Restaurant",
+  "address": "500 Church St.",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$2 off all draft and bottle beers",
+    "price": null
+   },
+   {
+    "desc": "$7 A. Marshall Family Wines",
+    "price": 7
+   }
+  ],
+  "source": "https://www.puckettsrestaurant.com/nashville",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Harper's Steakhouse",
+  "address": "2 Lea Avenue",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "Martini (Wheatley Vodka or Beefeater Gin)",
+    "price": 8
+   },
+   {
+    "desc": "Margarita (Corazon Blanco)",
+    "price": 8
+   }
+  ],
+  "source": "https://www.harpersnashville.com/menu/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Etch",
+  "address": "303 Demonbreun St.",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "18:30",
+  "deals": [
+   {
+    "desc": "Fried Brussels Sprouts $8",
+    "price": 8
+   },
+   {
+    "desc": "Tempura Mushrooms $8",
+    "price": 8
+   }
+  ],
+  "source": "https://etchrestaurant.com/nashville/menu/",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Modern Love",
+  "address": "401 Union Street",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "19:00",
+  "deals": [
+   {
+    "desc": "$4 off cocktails",
+    "price": null
+   },
+   {
+    "desc": "30% off house red wine, house white wine, and draft beer",
+    "price": null
+   }
+  ],
+  "source": "https://fairlanehotel.com/happy-hour",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Black Rabbit",
+  "address": "218 3rd Avenue North",
+  "window": 1,
+  "days": [
+   "SAT"
+  ],
+  "start": "10:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$6 cocktails",
+    "price": 6
+   },
+   {
+    "desc": "$6 wine",
+    "price": 6
+   }
+  ],
+  "source": "https://nashvilleguru.com/businesses/black-rabbit",
+  "source_kind": "guide",
+  "confirmed": "2026-10-19"
+ },
+ {
+  "venue": "JWB Grill",
+  "address": "425 Rep. John Lewis Way S",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$12 specialty cocktails",
+    "price": 12
+   },
+   {
+    "desc": "$5 all beers",
+    "price": 5
+   }
+  ],
+  "source": "https://www.margaritavilleresorts.com/margaritaville-hotel-nashville/experiences/destination-guide/event-calendar/happy-hour-at-jwb-grill",
+  "source_kind": "venue",
+  "confirmed": null
+ },
+ {
+  "venue": "Junie's",
+  "address": "311 3rd Avenue South",
+  "window": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "desc": "$10 classic cocktails",
+    "price": 10
+   },
+   {
+    "desc": "$8 house wines",
+    "price": 8
+   }
+  ],
+  "source": "https://nashvilleguru.com/businesses/junies",
+  "source_kind": "guide",
+  "confirmed": "2026-08-18"
+ }
+]

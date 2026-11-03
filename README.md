@@ -1,11 +1,11 @@
-# Nashville inKind Happy Hour Radar
+# Nashville Happy Hour Radar
 
-Live happy hours at Nashville restaurants on inKind, the dining app that gives you bonus credit:
+Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.
 https://cumberlandworks.github.io/hh-radar/
 
 Built by TJ White with an AI assistant.
 
-A phone-usable page that answers "it's 7pm — which inKind partners near me have a
+A phone-usable page that answers "it's 7pm — which places near me have a
 happy hour now or in the next 2 hours?" Food discounts are the priority; drinks
 secondary.
 
@@ -38,7 +38,65 @@ hour, **85** were checked and have no window at all, and **6** have only a speci
 carry Google-listing hours and 3 their own site's (v1.14), 109 the 2026-10-23 research, 1
 inKind's 2026-09-05 hours; 4 are marked unconfirmed (low confidence) and 5 have none on file.
 One venue (Punk Wok) carries a temporary closure.
-v2 (parked) would fold in non-inKind aggregator listings.
+Since v2.0 the page also lists non-inKind venues, zone by zone: see *v2: all happy hours* below.
+
+## v2: all happy hours (since v2.0, BLOCK-hh-radar-fix27)
+
+TJ, 2026-11-02: "I want to expand the happy hour to be all happy hours in Nashville and be able to select InKind
+or all". The page defaults to **All**, with an **inKind only** toggle next to Food-first / Drink-first (saved per
+browser as `hhradar-scope`). One function, `L.scopeVenues`, decides the list; the page keeps the file in
+`state.allVenues` and every view (NOW and its counts, the Where sheet and zone chips, the map, the Day Grid and
+its coverage line, Surprise me, the empty state, the feedback context line) reads the scoped `state.venues`.
+inKind cards keep their badge and inKind button; non-inKind cards have neither, and their grid row's K column is
+blank. The footer's venue and window counts are the whole file.
+
+**Status** (v2.0, 2026-11-03): Downtown done: 23 non-inKind venues, 32 happy-hour windows (182 venues and 171
+windows in all). The other six zones follow, one zone run each.
+
+**Scope.** The 7 core zones (Downtown, Gulch & Midtown, Germantown & North, East, South, West, Franklin &
+Brentwood). Outer suburbs stay inKind only.
+
+**Schema additions** (`schema_version` stays 2; the file is a superset):
+- A non-inKind venue has `"inkind": false`, an id `nv-<slug>` (the lowercased name plus the street number, e.g.
+  `nv-pinewood-social-33`; `L.nvIdFor`), no `inkind_id` / `inkind_url`, a required `official_site`, and
+  `status`, `hours`, `hours_confidence`, `hours_source`, `hood`, `zone`, `lat`, `lon`, `address`, `zip` as for
+  inKind venues. It is added only with at least one `happy_hour` window, so `verified_no_hh` is always false.
+- Its windows' sources are typed: `{ "url", "kind": "venue" | "social" | "guide", "seen": "YYYY-MM-DD",
+  "confirmed": "YYYY-MM-DD" | null }` (`confirmed` is a guide's own "confirmed" date). inKind venues keep plain
+  URL strings; `L.sourceUrl` reads both.
+- `coverage` is `{ "text", "v2_zones_done": [zone keys] }` (a string before v2.0). While some core zones are not
+  done, the Day Grid's coverage line says "Every happy hour so far: <zones>. Other areas show inKind restaurants
+  for now." (All only); it disappears once all 7 are listed.
+- `hours_source` may be `Google listing YYYY-MM-DD` (hours read off the Google listing, confidence med).
+
+**The trust bar** (`validate.js` enforces it on every `inkind: false` happy_hour window). A venue is listed only
+if the venue's own site, menu or socials show the happy hour, or a guide entry the guide itself confirmed in
+2026 does. Guides are leads only. Deals come from a venue or social source, or the window's `notes` say they came
+from a 2026-confirmed guide entry ("Deals as listed by <guide>, confirmed YYYY-MM-DD. Check with the venue.").
+`nv-` ids are unique, and no `nv-` venue may duplicate an `ik-` venue (the same normalized name within 0.15 mi,
+or the same street address). Anything weaker is left out and listed in the zone's not-added file.
+
+**How a zone run works** (`BLOCK-hh-radar-v2zone-20261102.md`, one per zone after Downtown):
+1. Leads: `refresh-20261102/leads/leads-<zone>.json`, built once by `build_leads.js` from five guides (Nashville
+   Guru's day pages, NashvilleGo, The Infatuation, StyleBlueprint, NASHtoday): names, neighborhoods, guide URLs
+   and confirmed dates only, deduped against the inKind venues (`inkind-overlap.json`; `inkind-crosscheck.md`
+   lists inKind venues marked no-happy-hour that a guide lists).
+2. Research: up to 4 subagents, each with `BRIEF-v2zone.md` unchanged, return `{added, not_added}`.
+3. Hours gaps: the Google listing, read in a browser (cap 30).
+4. Geocode: `geocode_v2zone.py` (Nominatim, 1 request/s, User-Agent `hh-radar-build/2.0`); a point whose zone
+   differs from its address's neighborhood is listed and settled by hand. Coordinates are never guessed.
+5. Merge: `merge_v2zone.py <venues.json> <zone> <research JSON>` assigns ids, hood and zone, dedupes against the
+   whole file, validates, writes `venues-v2-<NN>-<zone>.json` and `not-added-<zone>.md`, and appends the zone to
+   `coverage.v2_zones_done`.
+6. Spot check: 10 random new windows re-opened at their source (days, times, two prices each); below 9 of 10,
+   fix and re-check another 10. Then the venues file is installed as `venues.json`, byte for byte.
+
+**File chain.** `data-src/refresh-20261023/venues-20261025o.json` (v1.24) →
+`data-src/refresh-20261102/venues-v2-01-downtown.json` (v2.0) → `venues-v2-02-gulch.json` → … →
+`venues-v2-07-franklin.json`. Each is the one before plus one zone. The scripts (`build_leads.js`,
+`v2zone_helper.js`, `geocode_v2zone.py`, `merge_v2zone.py`), the brief, the leads and each zone's research JSON
+and not-added file sit beside them. The hood rules they share live in `data-src/hood_zone.js` (split out of
+`assign_hood_zone.js`).
 
 ## Files
 

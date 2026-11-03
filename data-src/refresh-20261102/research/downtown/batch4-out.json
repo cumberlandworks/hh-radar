@@ -1,0 +1,300 @@
+{
+  "added": [
+    {
+      "lead": "Blue Sushi Sake Grill",
+      "name": "Blue Sushi Sake Grill",
+      "city": "Nashville",
+      "neighborhood": "Downtown (Fifth + Broadway)",
+      "address": "5036 Broadway Pl., Suite 220",
+      "zip": "37203",
+      "official_site": "https://www.bluesushisakegrill.com",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "22:00"]],
+        "TUE": [["11:00", "22:00"]],
+        "WED": [["11:00", "22:00"]],
+        "THU": [["11:00", "22:00"]],
+        "FRI": [["11:00", "22:00"]],
+        "SAT": [["11:00", "22:00"]],
+        "SUN": [["12:00", "21:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.bluesushisakegrill.com/locations",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
+          "start": "11:00",
+          "end": "18:30",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Happy hour beer and seltzer: Michelob Ultra Draft, Kirin Ichiban, Kirin Draft, Suntory -196 Lemon Seltzer", "price": null},
+            {"type": "drink", "desc": "Happy hour house wines: Chardonnay, Cabernet Sauvignon, Pinot Grigio", "price": null},
+            {"type": "drink", "desc": "Happy hour sake and house cocktails (Lime Margarita, Raspberry Mojito, Sangria Spritz, China Doll, Bluetini)", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.bluesushisakegrill.com/happy-hour", "kind": "venue", "seen": "2026-11-03", "confirmed": null},
+            {"url": "https://www.bluesushisakegrill.com", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Dine-in and to-go; prices not posted on the venue page. Check with the venue.",
+          "research_notes": "Venue site lists happy hour Mon-Sat open to 6:30pm, Sunday all day dine-in only. The venue happy-hour page is chain-wide with no prices or Nashville-specific times; start time taken as the posted Nashville opening time (11:00). Guide prices not copied."
+        },
+        {
+          "days": ["SUN"],
+          "start": "12:00",
+          "end": "21:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Happy hour beer, wine, sake and house cocktails (prices not posted)", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.bluesushisakegrill.com", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Sunday all day, dine-in only.",
+          "research_notes": "Venue site says Sunday all day (dine-in only); window set to the Nashville Sunday open hours 12:00-21:00 from the locations page."
+        }
+      ]
+    },
+    {
+      "lead": "The Finch",
+      "name": "The Finch",
+      "city": "Nashville",
+      "neighborhood": "Downtown (Union Station)",
+      "address": "111 10th Ave S #310",
+      "zip": "37203",
+      "official_site": "https://www.thefinchnashville.com",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "22:00"]],
+        "TUE": [["11:00", "22:00"]],
+        "WED": [["11:00", "22:00"]],
+        "THU": [["11:00", "22:00"]],
+        "FRI": [["11:00", "23:00"]],
+        "SAT": [["10:00", "23:00"]],
+        "SUN": [["10:00", "22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.thefinchnashville.com/location/the-finch-nashville/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Adult Happy Meal: mini Caesar salad, slider with fries and a Classic Martini", "price": 25},
+            {"type": "drink", "desc": "Martini & Frites: Classic Martini with beef tallow shoestring fries", "price": 15},
+            {"type": "food", "desc": "Lite Bites: Volcano Rock Shrimp, Wagyu Meatballs, Tuna Crispy Rice and more", "price": 10},
+            {"type": "food", "desc": "Oyster on the Half Shell", "price": 3},
+            {"type": "drink", "desc": "House wine: sparkling, red or white", "price": 10},
+            {"type": "drink", "desc": "Specialty cocktails: Purple Rain, Moonlight in Vermont, Zephyr Song, Getaway Car", "price": 10}
+          ],
+          "sources": [
+            {"url": "https://www.thefinchnashville.com/menus/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "",
+          "research_notes": "Venue happy hour menu page, Monday-Friday 3-6 p.m.; page is undated and gives no area. Address and hours from the venue location page."
+        }
+      ]
+    },
+    {
+      "lead": "Harper's Steakhouse",
+      "name": "Harper's Steakhouse",
+      "city": "Nashville",
+      "neighborhood": "Downtown (Peabody / SoBro)",
+      "address": "2 Lea Avenue",
+      "zip": "37210",
+      "official_site": "https://www.harpersnashville.com",
+      "status": "open",
+      "hours": {
+        "MON": [["16:00", "22:00"]],
+        "TUE": [["16:00", "22:00"]],
+        "WED": [["16:00", "22:00"]],
+        "THU": [["16:00", "22:00"]],
+        "FRI": [["16:00", "23:00"]],
+        "SAT": [["10:00", "23:00"]],
+        "SUN": [["10:00", "22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.harpersnashville.com/location/harpers-nashville/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Martini (Wheatley Vodka or Beefeater Gin)", "price": 8},
+            {"type": "drink", "desc": "Margarita (Corazon Blanco)", "price": 8},
+            {"type": "drink", "desc": "The Drinking Class", "price": 8},
+            {"type": "drink", "desc": "Red wine, white wine, or bubbles", "price": 8},
+            {"type": "drink", "desc": "Domestic beer", "price": 5},
+            {"type": "food", "desc": "Oysters on the Half Shell, each", "price": 3},
+            {"type": "food", "desc": "Bison Sliders", "price": 21},
+            {"type": "food", "desc": "Mini Philly", "price": 19},
+            {"type": "food", "desc": "Martini & Frites", "price": 25},
+            {"type": "food", "desc": "Lobster Arancini", "price": 18},
+            {"type": "food", "desc": "Wagyu Steak Skewers", "price": 25},
+            {"type": "food", "desc": "Chips & Caviar", "price": 25}
+          ],
+          "sources": [
+            {"url": "https://www.harpersnashville.com/menu/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Bartop only.",
+          "research_notes": "Venue menu page (carries 2026 Thanksgiving hours): Bartop happy hour Monday to Friday 4pm to 6pm; prices exactly as posted."
+        }
+      ]
+    },
+    {
+      "lead": "Puesto Nashville",
+      "name": "Puesto",
+      "city": "Nashville",
+      "neighborhood": "Downtown (Nashville Yards)",
+      "address": "991 Exchange Lane",
+      "zip": "37203",
+      "official_site": "https://www.eatpuesto.com/nashville/",
+      "status": "open",
+      "hours": {
+        "MON": [["15:00", "22:00"]],
+        "TUE": [["15:00", "22:00"]],
+        "WED": [["15:00", "22:00"]],
+        "THU": [["15:00", "22:00"]],
+        "FRI": [["15:00", "00:00"]],
+        "SAT": [["15:00", "00:00"]],
+        "SUN": [["15:00", "22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-03 (high confidence): https://www.eatpuesto.com/nashville/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://www.eatpuesto.com/nashville/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Dine-in only, bar lounge. Deals not posted on the venue page; check with the venue.",
+          "research_notes": "Venue Nashville page: Happy Hour dine-in only, bar lounge, daily 3-5pm. Page links a happy hour menu that I could not open, so no deals recorded. Venue page says opening Oct 23 at Nashville Yards."
+        },
+        {
+          "days": ["MON", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "21:00",
+          "end": "close",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://www.eatpuesto.com/nashville/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Late-night happy hour, Wednesday through Monday, dine-in only in the bar lounge. Deals not posted on the venue page.",
+          "research_notes": "Venue page says Wednesday through Monday, 9pm until late. Nashville Guru (confirmed 10/23/26) lists Mon-Wed instead; venue's own days used."
+        }
+      ]
+    },
+    {
+      "lead": "Thistle & Rye",
+      "name": "Thistle & Rye",
+      "city": "Nashville",
+      "neighborhood": "Midtown / West End (Conrad Nashville)",
+      "address": "1620 West End Ave",
+      "zip": "37203",
+      "official_site": "https://www.thistleandrye.com",
+      "status": "open",
+      "hours": {
+        "MON": [["16:00", "22:00"]],
+        "TUE": [["16:00", "22:00"]],
+        "WED": [["16:00", "22:00"]],
+        "THU": [["16:00", "22:00"]],
+        "FRI": [["16:00", "23:00"]],
+        "SAT": [["16:00", "23:00"]],
+        "SUN": [["16:00", "22:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-03 (med confidence): https://www.thistleandrye.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "16:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://www.thistleandrye.com/", "kind": "venue", "seen": "2026-11-03", "confirmed": null}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Happy Hour With a View. Deals and prices not posted on the venue page; check with the venue.",
+          "research_notes": "Venue home page: Happy Hour daily 4-6pm, no deals or prices listed; page mentions a July 27-31 closure so it may be stale. A search snippet of the Hilton/Conrad page said Mon-Sat 4-6 and all day Sunday, but I could not open it (403), so the venue page was used."
+        }
+      ]
+    },
+    {
+      "lead": "Pinewood Social",
+      "name": "Pinewood Social",
+      "city": "Nashville",
+      "neighborhood": "Downtown (SoBro)",
+      "address": "33 Peabody Street",
+      "zip": "37210",
+      "official_site": "https://pinewoodsocial.com",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-03",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "17:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$8-$10 select cocktails", "price": null},
+            {"type": "drink", "desc": "$6 select glasses of wine", "price": 6},
+            {"type": "drink", "desc": "$25 select bottles of wine", "price": 25},
+            {"type": "drink", "desc": "$5 select drafts", "price": 5},
+            {"type": "drink", "desc": "$5 select bottled beer", "price": 5},
+            {"type": "food", "desc": "Discounted bites", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/saturday", "kind": "guide", "seen": "2026-11-03", "confirmed": "2026-10-20"}
+          ],
+          "last_verified": "2026-11-03",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-20. Check with the venue.",
+          "research_notes": "Venue site (pinewoodsocial.com, menu page) returned HTTP 429 on every try, so no venue source was readable. Nashville Guru Saturday page lists 3-5pm Social Hour confirmed Oct 20, 2026 (Guru SoBro page says every day). A search snippet of OpenTable said 3-6pm daily; guide time used."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "The Diner", "reason": "guide not confirmed in 2026", "url": "https://nashvillego.com/happy-hours/tuesday"},
+    {"lead": "Liberty Common", "reason": "guide not confirmed in 2026", "url": "https://www.liberty-common.com/"}
+  ]
+}
