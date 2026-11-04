@@ -1,0 +1,2912 @@
+{
+ "added": [
+  {
+   "lead": "12 South Taproom & Grill",
+   "name": "12 South Taproom & Grill",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2318 12th Ave S",
+   "zip": "37204",
+   "official_site": "https://www.12southtaproom.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off drafts, wine, cocktails, well drinks, N/A beers and mocktails",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue menu page (drink section, text): \"HAPPY HOUR (M. W. TR. F. SUN. 2-6PM) $1 OFF Drafts, Wine, Cocktails, Wells, N/A Beers + Mocktails\". Page has no date. Open hours on the site: Mon-Sat 11am to 'late(ish)', Sun 11am-10pm; no closing time for Mon-Sat, so hours left empty. fix31: the executor downloaded the page's five menu images; they are the regular food menu (burgers, entrees, sides, kids) and the logo, no happy hour."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off drafts, wine, cocktails, well drinks, N/A beers and mocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$4 Beermosas",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$5 mimosas",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 Bloody Marys",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Venue menu page: \"SUNDAY Happy Hour all day & $4 Beermosas, $5 Mimosas & $7 Bloody Marys\"; opening 11am Sunday per the site. fix31: the Sunday drink prices added by the executor from the same page."
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 margaritas",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Monday special '$5 margaritas all day' on the venue menu page."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 mules",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Wednesday special '$5 mules all day' on the venue menu page."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off cans",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Saturday special '$1 off cans all day' on the venue menu page."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 drafts ($7 and under), house wine and double tall wells",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$5 queso or hummus",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Times not posted: set to the 11:00 opening to close.",
+     "research_notes": "Venue menu page: \"TUESDAY 2-4-1's (drafts $7 & less, house wine and double tall well drinks) & $5 Queso or Hummus\". fix31: added by the executor (brief step 6)."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 beer and a shot (any domestic can + any well)",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.12southtaproom.com/lead-collection",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Times not posted: set to the 11:00 opening to close.",
+     "research_notes": "Venue menu page: \"THURSDAY Beer & A Shot $8 (Any Domestic Can + Any Well Liquor)\". fix31: added by the executor (brief step 6)."
+    }
+   ]
+  },
+  {
+   "lead": "Bottle Cap",
+   "name": "Bottle Cap",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2403 12th Avenue South",
+   "zip": "37204",
+   "official_site": "https://bottlecapnashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://bottlecapnashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off all drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$15 domestic buckets (5 beers)",
+       "price": 15
+      },
+      {
+       "type": "drink",
+       "desc": "$7 mules and fruit crushes",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://bottlecapnashville.com/food-drink/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://bottlecapnashville.com/special-events/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue pages: Happy Hour Mon-Fri 3pm-7pm. Nashville Guru (confirmed 2026-10-19) agrees on times and deals. fix31: the executor read the June 2026 menu PDF on the Mac (no text layer, so rendered with sips): \"HAPPY HOUR MONDAY THRU FRIDAY 3PM - 7PM, ALL DAY WEDNESDAY\", draft beer $1 off, domestic buckets $15, fruit crushes & mules $7. Matches the deals above."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off all drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$15 domestic buckets (5 beers)",
+       "price": 15
+      },
+      {
+       "type": "drink",
+       "desc": "$7 mules and fruit crushes",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://bottlecapnashville.com/special-events/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Venue special-events page: happy hour all day Wednesday. fix31: the June 2026 menu PDF (read on the Mac, sips render) says \"ALL DAY WEDNESDAY\" with the same three deals."
+    }
+   ]
+  },
+  {
+   "lead": "Embers Ski Lodge",
+   "name": "Embers Ski Lodge",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2410 12th Avenue South",
+   "zip": "37204",
+   "official_site": "https://embersskilodge.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 bottles",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$6 select wines by the glass",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Large pours on all whiskeys",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/embers-ski-lodge",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue site embersskilodge.com would not load (certificate expired, http also failed); Instagram profile page showed no happy hour or hours. Nashville Guru business page lists daily 3-7pm, confirmed 10/27/26. NashvilleGo and StyleBlueprint carry no 2026 date."
+    }
+   ]
+  },
+  {
+   "lead": "Gordo's Taqueria",
+   "name": "Gordo's Taqueria",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "515B Merritt Ave",
+   "zip": "37203",
+   "official_site": "http://www.gordosnashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "12:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): http://www.gordosnashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7-$8 select cocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$10 beer and shot combo",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$3 can beers",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/gordos-taqueria",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue site gordosnashville.com (home page) mentions no happy hour; its menu pages are linked but carry no happy hour per the home page. Nashville Guru business page lists daily 3-6pm, confirmed 10/27/26. No Gordo's social post found."
+    }
+   ]
+  },
+  {
+   "lead": "bartaco",
+   "name": "bartaco",
+   "city": "Nashville",
+   "neighborhood": "12South",
+   "address": "2526 12th Avenue South",
+   "zip": "37204",
+   "official_site": "https://bartaco.com/location/nashville-tn/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://bartaco.com/location/nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "High tide happy hour at the bar, weekdays 3-6pm. Deals not posted. The venue also says Mon-Thu it includes the last 1.5 hours before close, but no closing time is posted, so that part is not listed.",
+     "research_notes": "Venue location page: 'high tide happy hour' at the bar weekdays 3-6pm; Mon-Thu also the last 1.5 hours before close. The linked High Tide page (bartaco.com/nashvillehightidehour/) has no days, times or deals. Site says only '11am - late, daily' for hours. No guide confirmed in 2026 lists bartaco deals. fix31: the executor read the printable menu PDF (dated 2026_10_06 in its name) on the Mac: the regular menu, no happy-hour section or prices."
+    }
+   ]
+  },
+  {
+   "lead": "Burger Up",
+   "name": "Burger Up",
+   "city": "Nashville",
+   "neighborhood": "12South",
+   "address": "2901 12th Avenue South",
+   "zip": "37204",
+   "official_site": "https://www.burger-up.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.burger-up.com/",
+   "windows": [
+    {
+     "days": [
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Tennessee mule (Picker's vodka, Corsair gin, or Nelson Green Briar Tennessee whiskey)",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Classic cocktails (old fashioned, daiquiri, margarita)",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Well drinks (any well liquor with one mixer)",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Boilermaker (well shot and Montucky can)",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Select drafts",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Stiegl Paloma",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "Root & Roses",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "House red or house white wine",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "Beef slider duo (any two burger sets); Benton's bacon +$3 each",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Fry flight (house, sweet, truffle fries with trio of sauces)",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "Fried pickles",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "Burger UP nachos; add chili +$1 or chicken +$1",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.burger-up.com/menu?location=12th+Avenue+South&menu=happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.burger-up.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Sun-Fri 4-6pm; no Saturday happy hour.",
+     "research_notes": "Opened the venue's 12th Avenue South happy hour menu (linked from the Menus tab): 'Available Sun-Fri 4:00-6:00 pm', prices as listed. Home page confirms Sun-Fri 4-6pm and hours daily 11 AM-9 PM. No bar-only restriction stated."
+    }
+   ]
+  },
+  {
+   "lead": "Dos Santos",
+   "name": "Dos Santos",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "475 Gray Street, Suite 102",
+   "zip": "37203",
+   "official_site": "http://dossantostacos.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): http://dossantostacos.com",
+   "windows": [
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "07:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 house margaritas",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 house lager",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 basil limeade",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$7 poke bites",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$7 tinga chips",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://dossantostacos.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.dossantostacos.com/menu/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day Monday: from the 7:00 opening.",
+     "research_notes": "Venue home page: 'Three to six every day, and all day on Mondays', $7 house margaritas, house lager, basil limeade, poke bites, tinga chips. The page is the multi-city Dos Santos site and does not name Nashville in the happy hour text; its location table lists Nashville at 475 Gray St with Mon-Sat 7 AM-10 PM, Sun 7 AM-9 PM. The happy hour menu page lists items without prices. Nashville Guru (confirmed 10/15/26) agrees on days and $7 prices but lists Nashville opening at 11:00 (7:00 is the walk-up window)."
+    },
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 house margaritas",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 house lager",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 basil limeade",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$7 poke bites",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$7 tinga chips",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://dossantostacos.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.dossantostacos.com/menu/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "3-6pm Tuesday through Sunday.",
+     "research_notes": "Same venue home page as the Monday window ('Three to six every day'). Happy hour menu page opened: items listed without prices."
+    }
+   ]
+  },
+  {
+   "lead": "Never Never",
+   "name": "Never Never",
+   "city": "Nashville",
+   "neighborhood": "WeHo",
+   "address": "413 Houston Street",
+   "zip": "37203",
+   "official_site": "http://nevernevernashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "12:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "14:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): http://nevernevernashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "20:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 domestic beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off well liquors",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Shot and beer special",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/never-never",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-16"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-16. Check with the venue.",
+     "research_notes": "Venue site (nevernevernashville.com) loads with address and hours but shows no happy hour. Only guide: Nashville Guru business page lists Mon-Fri 4:00-8:00pm, confirmed 10/16/26, no closed notice. NashvilleGo pages are undated and not used."
+    }
+   ]
+  },
+  {
+   "lead": "Postino WineCafé",
+   "name": "Postino 12 South",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2317 12th Ave South",
+   "zip": "37204",
+   "official_site": "https://www.postino.com/locations/postino-12-south",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "17:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 glasses of wine",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$6 pitchers of beer",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.postino.com/locations/postino-12-south",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Daily until 5pm. Start set to the 11:00 opening shown on the location page; per-day hours are not posted.",
+     "research_notes": "Venue location page: 'Daily until 5 PM', $6 glasses of wine and $6 pitchers of beer. Page shows only the current day's hours (11 AM-11 PM). Nashville Guru (confirmed 10/27/26) agrees on $6 wine and pitchers. fix31: the executor read the beverage and main menu PDFs (P10_TN_Bev / P10_TN_Main, 10.08.26) on the Mac: regular menus, no happy-hour section. The brunch PDF is a brunch menu."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE"
+     ],
+     "start": "20:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Bruschetta board and a bottle of wine for $25",
+       "price": 25
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.postino.com/locations/postino-12-south",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "After 8pm Monday and Tuesday.",
+     "research_notes": "Same venue location page: board of bruschetta and a bottle of wine for $25 after 8 PM Mon and Tue."
+    }
+   ]
+  },
+  {
+   "lead": "WeHo Provisions Co",
+   "name": "WeHo Provisions Co",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "601 Merritt Ave",
+   "zip": "37203",
+   "official_site": "https://wehoprovisionsco.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://wehoprovisionsco.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 beers and ciders",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://wehoprovisionsco.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Called Patio Prime Time on the venue's site. Onsite consumption only; show ID.",
+     "research_notes": "Venue site: 2-for-1 beers and ciders daily during Patio Prime Time, 3pm-6pm, onsite, ID required; hours 8am-8pm every day on the fall/winter schedule. Street address from the venue; zip 37203 from Nashville Guru (its listing, confirmed 10/27/26, agrees on 3-6pm 2-for-1 beers). The Guru's 8-9am 2-for-1 breakfast sammies is not on the venue page, so not added."
+    }
+   ]
+  },
+  {
+   "lead": "Bastion",
+   "name": "Bastion",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "434 Houston St",
+   "zip": "37203",
+   "official_site": "http://www.bastionnashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "17:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.bastionnashville.com/bigbar",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "17:00",
+     "end": "19:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.bastionnashville.com/bigbar",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Big Bar. Deals not posted.",
+     "research_notes": "Venue's Big Bar page gives Mon-Fri 5pm-7pm with no deals. Nashville Guru listing for Bastion was last confirmed 10/24/25 (pre-2026) so not used for deals. Hours are Big Bar hours (restaurant itself is Wed-Sat 5:30-9pm, reservations)."
+    }
+   ]
+  },
+  {
+   "lead": "Char",
+   "name": "Char",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "3988 Hillsboro Pike",
+   "zip": "37215",
+   "official_site": "https://nashville.charrestaurant.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://nashville.charrestaurant.com/",
+   "windows": [
+    {
+     "days": [
+      "SUN",
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "lounge",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$8 onion rings",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "$10 tenderloin tip skewers",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "$12 pil pil shrimp",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "$12 loaded potato skins",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "$12 fritto misto",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "$15 crab fritters",
+       "price": 15
+      },
+      {
+       "type": "food",
+       "desc": "$15 french dip sliders",
+       "price": 15
+      },
+      {
+       "type": "food",
+       "desc": "$16 char burger",
+       "price": 16
+      },
+      {
+       "type": "drink",
+       "desc": "Draft beer $5",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Wine $7",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$9 cocktails",
+       "price": 9
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashville.charrestaurant.com/happy-hour/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashville.charrestaurant.com/nashville-happy-hour-pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Sunday through Thursday, in the lounge.",
+     "research_notes": "Venue happy-hour page lists Sun-Thu 3-6pm in the lounge with all deals. fix31: the executor read the happy-hour PDF on the Mac (pdf2txt.swift; one column, each price on its item's line): the same eight bites and \"$5 DRAFT BEERS | $7 WINES | $9 COCKTAILS\"; it gives no days."
+    }
+   ]
+  },
+  {
+   "lead": "Doughbird",
+   "name": "Doughbird",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "4031 Hillsboro Pike, Ste 901",
+   "zip": "37215",
+   "official_site": "https://www.eatdoughbird.com/locations/nashville-tn/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.eatdoughbird.com/locations/nashville-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 select cocktails",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$6 glasses of Sangria",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$18 pitchers of Sangria",
+       "price": 18
+      },
+      {
+       "type": "drink",
+       "desc": "$5 draft pints",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$5 zero-proof drinks",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Select discounted bites",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.eatdoughbird.com/locations/nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/doughbird",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-23. Check with the venue.",
+     "research_notes": "Venue page gives Mon-Fri 3-6pm at the bar, no deals. Nashville Guru business page (confirmed 10/23/26) supplies deals and says bar and patio; venue says bar, used the venue's. fix31: the executor read the linked main-menu PDF on the Mac: the regular menu, no happy-hour section."
+    }
+   ]
+  },
+  {
+   "lead": "Emmy Squared",
+   "name": "Emmy Squared Pizza",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "3821 Green Hills Village Dr",
+   "zip": "37215",
+   "official_site": "https://emmysquaredpizza.com/news-item/green-hills/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://emmysquaredpizza.com/news-item/green-hills/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Select Beer $5",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "House Wine $7",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "Well Cocktails $9",
+       "price": 9
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://emmysquaredpizza.com/green-hills-menus",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue Green Hills menus page lists Mon-Fri 3-6pm and these deals; location page gives address and hours."
+    }
+   ]
+  },
+  {
+   "lead": "The Greenhouse Bar",
+   "name": "The GreenHouse Bar",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "2211 Bandywood Dr",
+   "zip": "37215",
+   "official_site": "https://www.greenhousenash.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:00",
+      "01:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "03:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "03:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "03:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "03:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.greenhousenash.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE"
+     ],
+     "start": "10:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 Jello shots (5 for $12)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "$3 GreenHouse shots, rum melon (5 for $12)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "PBR tallboy bucket, 3 for $18",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.greenhousenash.com/greenhouse-bar",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 10:00 opening. Happy All Day drink menu, every day. Other drinks on the list have no posted price.",
+     "research_notes": "Venue bar page: 'Happy All Day Drink Menu available all day every day'. Price text only for the items with a price; none inferred. Site's /menus page was opened and shows no happy hour days, times or prices. fix31: the executor kept only the priced items as deals; the list's other drinks (Lynchburg 75, Double Jack Honey, Tipsy Tea, Roberta's Margarita, Sangria, Ranch Water, Fish Bowl) show no price, and the page's \"$3 for $18\" after Ranch Water is ambiguous, so it is not used."
+    },
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "08:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 Jello shots (5 for $12)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "$3 GreenHouse shots, rum melon (5 for $12)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "PBR tallboy bucket, 3 for $18",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.greenhousenash.com/greenhouse-bar",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 08:00 opening. Happy All Day drink menu, every day. Other drinks on the list have no posted price.",
+     "research_notes": "Venue bar page: 'Happy All Day Drink Menu available all day every day'. Price text only for the items with a price; none inferred. Site's /menus page was opened and shows no happy hour days, times or prices. fix31: the executor kept only the priced items as deals; the list's other drinks (Lynchburg 75, Double Jack Honey, Tipsy Tea, Roberta's Margarita, Sangria, Ranch Water, Fish Bowl) show no price, and the page's \"$3 for $18\" after Ranch Water is ambiguous, so it is not used."
+    }
+   ]
+  },
+  {
+   "lead": "North Italia",
+   "name": "North Italia",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "2159 Green Hills Village Dr",
+   "zip": "37215",
+   "official_site": "https://www.northitalia.com/locations/nashville-tn/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.northitalia.com/locations/nashville-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$8 zucca chips",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "$12 cacio e pepe arancini",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "$14 Italian meatballs",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "$10 garlic knot sliders",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "$18 Margherita or cacio e pepe pizza",
+       "price": 18
+      },
+      {
+       "type": "food",
+       "desc": "$18 chef's board",
+       "price": 18
+      },
+      {
+       "type": "drink",
+       "desc": "Wine or red sangria $8 glass, $30 bottle",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$12 craft cocktails",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$5.50 all beers",
+       "price": 5.5
+      },
+      {
+       "type": "drink",
+       "desc": "$44 bottle of featured wine and a pizza or board",
+       "price": 44
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.northitalia.com/locations/nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.northitalia.com/wp-content/uploads/2025/08/NOR_HH_SPRING-2026-NMRO_V3.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "In the bar. Half-off bottles of wine all day Monday (excludes reserve).",
+     "research_notes": "Venue location page gives Mon-Fri 3-6pm in the bar. fix31: the executor read the happy-hour PDF (NOR_HH_SPRING-2026, V3) on the Mac with pdf2txt.swift and a sips render: \"Happy Hour served in the bar MONDAY - FRIDAY 3 P.M. - 6 P.M.\", the food list with prices, page 2 Wine & Sangria 8/30, Craft Cocktails 12, Zero Proof 8, Beer 5.5, Bottle & Board 44. These venue deals replace the Nashville Guru list the researcher used."
+    }
+   ]
+  },
+  {
+   "lead": "Ramone’s Oyster Bar & Citrus Club",
+   "name": "Ramone's Oyster Bar & Citrus Club",
+   "city": "Nashville",
+   "neighborhood": "Wedgewood-Houston",
+   "address": "625 Hamilton Ave",
+   "zip": "37203",
+   "official_site": "https://www.mercadobtown.com/ramones",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.mercadobtown.com/ramones",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "House Salsas & Chips $5",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Queso $8 small, $12 large",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Chips & Guac $9",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Brisket Nachos $14",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "Pork Riblets $14",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "French Fries $5",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Girl Dinner $21",
+       "price": 21
+      },
+      {
+       "type": "food",
+       "desc": "Tacos two for $10, or three for $14",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Smoked Brisket Sandwich with fries $12",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "Burger with fries $12",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "Margarita de Casa $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Paloma de Casa $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Gin & Tonic $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Daiquiri $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Dirty Martini $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Old-Fashioned $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Select Cerveza $5",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Pitcher of Cerveza $20",
+       "price": 20
+      },
+      {
+       "type": "drink",
+       "desc": "Margarita or Paloma Carafe $33",
+       "price": 33
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.mercadobtown.com/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "4th-floor rooftop; the Mercado happy hour specials apply here too.",
+     "research_notes": "Venue happy-hour page (Mercado) lists Mon-Thu 4-6pm and Sat 1-4pm, and says the specials also apply at Ramone's rooftop. Fri and Sun not listed. Page highlights mention $2 Blue Point oysters and $5 Carne Asada Tacos but the menu detail does not, so they are left out. Ramone's own page shows Mon-Sat 4-10pm, so the Saturday 1-4pm window is a Mercado hour."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "13:00",
+     "end": "16:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "House Salsas & Chips $5",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Queso $8 small, $12 large",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Chips & Guac $9",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Brisket Nachos $14",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "Pork Riblets $14",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "French Fries $5",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Girl Dinner $21",
+       "price": 21
+      },
+      {
+       "type": "food",
+       "desc": "Tacos two for $10, or three for $14",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Smoked Brisket Sandwich with fries $12",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "Burger with fries $12",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "Margarita de Casa $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Paloma de Casa $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Gin & Tonic $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Daiquiri $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Dirty Martini $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Old-Fashioned $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Select Cerveza $5",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Wine by the glass $6",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "Pitcher of Cerveza $20",
+       "price": 20
+      },
+      {
+       "type": "drink",
+       "desc": "Margarita or Paloma Carafe $33",
+       "price": 33
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.mercadobtown.com/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Posted on the Mercado happy-hour page; the rooftop itself is listed open Mon-Sat from 4pm.",
+     "research_notes": "Venue happy-hour page (Mercado) lists Mon-Thu 4-6pm and Sat 1-4pm, and says the specials also apply at Ramone's rooftop. Fri and Sun not listed. Page highlights mention $2 Blue Point oysters and $5 Carne Asada Tacos but the menu detail does not, so they are left out. Ramone's own page shows Mon-Sat 4-10pm, so the Saturday 1-4pm window is a Mercado hour."
+    }
+   ]
+  },
+  {
+   "lead": "Cilantro Mexican Grill",
+   "name": "Cilantro Mexican Grill",
+   "city": "Nashville",
+   "neighborhood": "8th Ave.",
+   "address": "2330 8th Ave S",
+   "zip": "37204",
+   "official_site": "https://www.cilantronashville.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Specials on margaritas and draft beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.cilantronashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "8th Ave location. Prices not posted.",
+     "research_notes": "Venue home page lists 8th Ave happy hour Mon-Thu 3-6 PM with margarita and draft beer specials, no prices. Specials page and location page have no deal details; menu link cilantro-mexican-grill.com does not resolve. Zip 37204 from Nashville Guru listing (site gives no zip). Site also lists a separate Gulch location (daily 2-6), not used."
+    }
+   ]
+  },
+  {
+   "lead": "etc.",
+   "name": "etc.",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "3790 Bedford Ave",
+   "zip": "37215",
+   "official_site": "https://etc.restaurant/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://etc.restaurant/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:00",
+     "end": "18:30",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 draft beers",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 select wines",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$9 select craft cocktails",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$5 bites",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://etc.restaurant/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://etc.restaurant/menus/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar only.",
+     "research_notes": "Venue home page and menus page agree on Mon-Sat 4:00-6:30 at the bar. Site shows Sunday brunch yet Sunday closed in hours; hours taken from the hours section. fix31: the executor read the four linked PDFs (drink, mid-day, dinner, lunch) on the Mac: regular menus with no happy-hour section; the drink menu mentions \"rotating cocktail and wine specials\" and the mid-day menu is served Mon-Fri 2-4pm (a menu, not a happy hour)."
+    }
+   ]
+  },
+  {
+   "lead": "Hearts",
+   "name": "Hearts",
+   "city": "Nashville",
+   "neighborhood": "12 South",
+   "address": "2701 12th Ave South, Suite B",
+   "zip": "37204",
+   "official_site": "https://heartsnashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "WED": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "THU": [
+     [
+      "08:00",
+      "15:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "08:00",
+      "17:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://heartsnashville.com/locations",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$10 spritz or glass of wine",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$35 spritz pitcher or bottle of wine",
+       "price": 35
+      },
+      {
+       "type": "drink",
+       "desc": "$8 Narragansett and a shot of bourbon",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "$7 Vegemite pimento cheese and toast",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$4 chicken salt fries",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://heartsnashville.com/locations",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://heartsnashville.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "research_notes": "Venue locations page: happy hour 2PM to close, every day (matches Nashville Guru, confirmed 10/27/26). Posted hours end at 3PM/5PM, which conflicts with \"to close\"; both as posted. fix31: the venue menu page's happy-hour image (HappyHour_draft_website.jpg) was downloaded and read by the executor: $10 spritz or glass of wine, $35 spritz pitcher or bottle, $8 Narragansett + shot of bourbon, $7 Vegemite pimento cheese + toast, $4 chicken salt fries. These venue deals replace the guide's list."
+    }
+   ]
+  },
+  {
+   "lead": "Melrose Billiard Parlor",
+   "name": "Melrose Billiard Parlor",
+   "city": "Nashville",
+   "neighborhood": "8th Ave.",
+   "address": "2600 8th Ave S #109",
+   "zip": "37204",
+   "official_site": "https://www.dirtymelrose.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.dirtymelrose.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "20:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4 all beer",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$4 well liquor",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.dirtymelrose.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Daily happy hour 4-8pm.",
+     "research_notes": "Venue home page. Hours 4pm-2am daily. No menu or PDF linked (only Instagram, Facebook, Maps)."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4 all beer",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$4 well liquor",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.dirtymelrose.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Cheap Ass Wednesday: happy hour all day, from the 4:00 opening. Liquor specials end at 10pm.",
+     "research_notes": "Venue home page. Hours 4pm-2am daily. "
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "20:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off all local beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Green Briar Whiskey shots",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.dirtymelrose.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Melrose Monday. Liquor specials end at 10pm.",
+     "research_notes": "Venue home page. Hours 4pm-2am daily. "
+    }
+   ]
+  },
+  {
+   "lead": "Santo",
+   "name": "Santo",
+   "city": "Nashville",
+   "neighborhood": "Green Hills",
+   "address": "3998 Hillsboro Pike",
+   "zip": "37215",
+   "official_site": "https://www.santonashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.santonashville.com/contact",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$9 wine (white, red, rosé, or bubbles)",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Töst non-alcoholic rosé",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Highland Pilsner",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Berry Styles Mocktail",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$10 French 75",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Manhattan",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Martini",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Spicy Margarita",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Oysters with lemon pith mignonette",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Whipped Feta Dip",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Hummus",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Kalamata Dust Frites with aioli",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.santonashville.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.santonashville.com/menushappyhourcocktialwinebarnashville",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.santonashville.com/contact",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Snack prices not posted.",
+     "research_notes": "Venue home page and happy hour menu page agree on Mon-Sat 4-6. Menu page has no PDF. Site gives no street address; 3998 Hillsboro Pike, 37215 comes from OpenTable and a business directory (Vertis Green Hills building, per site)."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Crows Nest",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  },
+  {
+   "lead": "Josephine",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/josephine-nashville"
+  },
+  {
+   "lead": "NashHouse Southern Spoon & Saloon",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  },
+  {
+   "lead": "Party Fowl",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/party-fowl"
+  },
+  {
+   "lead": "Smokin’ Thighs",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/smokin-thighs"
+  },
+  {
+   "lead": "Emery Wood Fired",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/emery"
+  },
+  {
+   "lead": "Green Hills Grille",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://www.ghgrille.com/"
+  },
+  {
+   "lead": "Las Palmas",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://www.laspalmasnashville.com/las-palmas-locations/"
+  },
+  {
+   "lead": "MAFIAoZA’s",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  },
+  {
+   "lead": "Big Machine Distillery & Tavern",
+   "reason": "no happy hour found",
+   "url": "https://nashvilleguru.com/businesses/big-machine-distillery-tavern"
+  },
+  {
+   "lead": "Edley’s Bar-B-Que",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://nashvilleguru.com/businesses/edleys-bar-b-que"
+  },
+  {
+   "lead": "Pancho & Lefty’s Cantina",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/pancho-and-leftys"
+  }
+ ]
+}

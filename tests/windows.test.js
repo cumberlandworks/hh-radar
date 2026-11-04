@@ -28,6 +28,7 @@ const {
   outsideHoursDays, lintOutsideHours, gridAxisStart, gridBlockStarts, tipSectionHtml,
   REFBAR_KEY, refBarDismissed, dismissRefBar, followRefBar,
 } = require('../logic.js');
+const { countVerb } = require('../logic.js');
 const path = require('node:path');
 
 function dt(dayOfWeek, hour, minute, ymd) {
@@ -439,6 +440,9 @@ const MAP_SEAM_EXCEPTIONS = {
   'ik-15740': 'E+ROSE - OneC1ty: Gulch & Midtown (West End, 4 City Blvd) by address, inside West',
   'ik-20959': 'Jashan: Gulch & Midtown (Hillsboro Village, 2100 21st Ave S) by address, inside South',
   'nv-browns-diner-2102': "Brown's Diner: Gulch & Midtown (Hillsboro Village, 2102 Blair Blvd) by address, inside West",
+  // fix31 (v2.4): Nominatim's house-number point for 3790 Bedford Ave (OSM: Green Hills, 37215) sits just west of
+  // the drawn South edge at Hillsboro Pike.
+  'nv-etc-3790': 'etc.: South (Green Hills, 3790 Bedford Ave) by address, inside West',
 };
 // v1.17 C4: the Downtown notch is gone, so koshō (ik-13852) and The Herban Perk & Pantry
 // (ik-18919) sit inside Downtown and are no longer exceptions; the two tests below hold them
@@ -2200,7 +2204,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.3';") && html.includes("venues.json?v=2.3") && html.includes('logic.js?v=2.3'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.4';") && html.includes("venues.json?v=2.4") && html.includes('logic.js?v=2.4'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2807,4 +2811,17 @@ test('index.html (v2.0 B1): the scope toggle, one scoping function, and every vi
   const manifest = JSON.parse(require('node:fs').readFileSync(path.join(__dirname, '..', 'manifest.json'), 'utf8'));
   assert.equal(manifest.name, 'Nashville Happy Hour Radar');
   assert.equal(manifest.short_name, 'HH Radar');
+});
+
+test('grid note (v2.4, fix31): a count of 1 takes "has", any other count "have"', () => {
+  assert.equal(countVerb(1), 'has');
+  assert.equal(countVerb(0), 'have');
+  assert.equal(countVerb(2), 'have');
+  assert.equal(countVerb(22), 'have');
+  const fs = require('node:fs');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(!/' have them other days/.test(html), 'the "other days" count uses countVerb');
+  assert.ok(!/' have no happy hour at all/.test(html), 'the "no happy hour" count uses countVerb');
+  assert.match(html, /L\.countVerb\(cov\.otherDays\) \+ ' them other days/);
+  assert.match(html, /L\.countVerb\(cov\.none\) \+ ' no happy hour at all/);
 });

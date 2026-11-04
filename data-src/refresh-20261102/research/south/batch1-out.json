@@ -1,0 +1,243 @@
+{
+  "added": [
+    {
+      "lead": "12 South Taproom & Grill",
+      "name": "12 South Taproom & Grill",
+      "city": "Nashville",
+      "neighborhood": "12 South",
+      "address": "2318 12th Ave S",
+      "zip": "37204",
+      "official_site": "https://www.12southtaproom.com/",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-04",
+      "windows": [
+        {
+          "days": ["MON", "WED", "THU", "FRI"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$1 off drafts, wine, cocktails, well drinks, N/A beers and mocktails", "price": null}
+          ],
+          "sources": [{"url": "https://www.12southtaproom.com/lead-collection", "kind": "venue", "seen": "2026-11-04", "confirmed": null}],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "",
+          "research_notes": "Venue menu page lists happy hour 2-6 PM Mon, Wed, Thu, Fri, Sun. Page has no date. Open hours on the site: Mon-Sat 11am to 'late(ish)', Sun 11am-10pm; no closing time for Mon-Sat, so hours left empty. Food menu is images, not readable."
+        },
+        {
+          "days": ["SUN"],
+          "start": "11:00",
+          "end": "close",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$1 off drafts, wine, cocktails, well drinks, N/A beers and mocktails", "price": null}
+          ],
+          "sources": [{"url": "https://www.12southtaproom.com/lead-collection", "kind": "venue", "seen": "2026-11-04", "confirmed": null}],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "All day: from the 11:00 opening.",
+          "research_notes": "Venue menu page lists Sunday as all-day happy hour; opening 11am Sunday per the site."
+        },
+        {
+          "days": ["MON"],
+          "start": "11:00",
+          "end": "close",
+          "area": null,
+          "kind": "special",
+          "deals": [{"type": "drink", "desc": "$5 margaritas", "price": 5}],
+          "sources": [{"url": "https://www.12southtaproom.com/lead-collection", "kind": "venue", "seen": "2026-11-04", "confirmed": null}],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "All day: from the 11:00 opening.",
+          "research_notes": "Monday special '$5 margaritas all day' on the venue menu page."
+        },
+        {
+          "days": ["WED"],
+          "start": "11:00",
+          "end": "close",
+          "area": null,
+          "kind": "special",
+          "deals": [{"type": "drink", "desc": "$5 mules", "price": 5}],
+          "sources": [{"url": "https://www.12southtaproom.com/lead-collection", "kind": "venue", "seen": "2026-11-04", "confirmed": null}],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "All day: from the 11:00 opening.",
+          "research_notes": "Wednesday special '$5 mules all day' on the venue menu page."
+        },
+        {
+          "days": ["SAT"],
+          "start": "11:00",
+          "end": "close",
+          "area": null,
+          "kind": "special",
+          "deals": [{"type": "drink", "desc": "$1 off cans", "price": null}],
+          "sources": [{"url": "https://www.12southtaproom.com/lead-collection", "kind": "venue", "seen": "2026-11-04", "confirmed": null}],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "All day: from the 11:00 opening.",
+          "research_notes": "Saturday special '$1 off cans all day' on the venue menu page."
+        }
+      ]
+    },
+    {
+      "lead": "Bottle Cap",
+      "name": "Bottle Cap",
+      "city": "Nashville",
+      "neighborhood": "12 South",
+      "address": "2403 12th Avenue South",
+      "zip": "37204",
+      "official_site": "https://bottlecapnashville.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "23:00"]],
+        "TUE": [["11:00", "23:00"]],
+        "WED": [["11:00", "23:00"]],
+        "THU": [["11:00", "23:00"]],
+        "FRI": [["10:00", "00:00"]],
+        "SAT": [["10:00", "00:00"]],
+        "SUN": [["10:00", "23:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://bottlecapnashville.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "THU", "FRI"],
+          "start": "15:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$1 off all drafts", "price": null},
+            {"type": "drink", "desc": "$15 domestic buckets (5 beers)", "price": 15},
+            {"type": "drink", "desc": "$7 mules and fruit crushes", "price": 7}
+          ],
+          "sources": [
+            {"url": "https://bottlecapnashville.com/food-drink/", "kind": "venue", "seen": "2026-11-04", "confirmed": null},
+            {"url": "https://bottlecapnashville.com/special-events/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "",
+          "research_notes": "Venue pages: Happy Hour Mon-Fri 3pm-7pm. Linked menu PDF not readable: https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf (PDF not readable: https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf). Nashville Guru (confirmed 2026-10-19) agrees on times and deals."
+        },
+        {
+          "days": ["WED"],
+          "start": "11:00",
+          "end": "close",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$1 off all drafts", "price": null},
+            {"type": "drink", "desc": "$15 domestic buckets (5 beers)", "price": 15},
+            {"type": "drink", "desc": "$7 mules and fruit crushes", "price": 7}
+          ],
+          "sources": [
+            {"url": "https://bottlecapnashville.com/special-events/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "All day: from the 11:00 opening.",
+          "research_notes": "Venue special-events page: happy hour all day Wednesday. Deals taken as the standard happy hour deals on the same page. PDF not readable: https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf"
+        }
+      ]
+    },
+    {
+      "lead": "Embers Ski Lodge",
+      "name": "Embers Ski Lodge",
+      "city": "Nashville",
+      "neighborhood": "12 South",
+      "address": "2410 12th Avenue South",
+      "zip": "37204",
+      "official_site": "https://embersskilodge.com/",
+      "status": "open",
+      "hours": {},
+      "hours_confidence": "low",
+      "hours_source": "none found 2026-11-04",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "2-for-1 drafts", "price": null},
+            {"type": "drink", "desc": "2-for-1 bottles", "price": null},
+            {"type": "drink", "desc": "$6 select wines by the glass", "price": 6},
+            {"type": "drink", "desc": "Large pours on all whiskeys", "price": null}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/embers-ski-lodge", "kind": "guide", "seen": "2026-11-04", "confirmed": "2026-10-27"}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+          "research_notes": "Venue site embersskilodge.com would not load (certificate expired, http also failed); Instagram profile page showed no happy hour or hours. Nashville Guru business page lists daily 3-7pm, confirmed 10/27/26. NashvilleGo and StyleBlueprint carry no 2026 date."
+        }
+      ]
+    },
+    {
+      "lead": "Gordo's Taqueria",
+      "name": "Gordo's Taqueria",
+      "city": "Nashville",
+      "neighborhood": "Wedgewood-Houston",
+      "address": "515B Merritt Ave",
+      "zip": "37203",
+      "official_site": "http://www.gordosnashville.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00", "21:00"]],
+        "TUE": [["11:00", "21:00"]],
+        "WED": [["11:00", "21:00"]],
+        "THU": [["11:00", "21:00"]],
+        "FRI": [["11:00", "21:00"]],
+        "SAT": [["11:00", "21:00"]],
+        "SUN": [["12:00", "20:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): http://www.gordosnashville.com/",
+      "windows": [
+        {
+          "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$7-$8 select cocktails", "price": null},
+            {"type": "drink", "desc": "$10 beer and shot combo", "price": 10},
+            {"type": "drink", "desc": "$3 can beers", "price": 3}
+          ],
+          "sources": [
+            {"url": "https://nashvilleguru.com/businesses/gordos-taqueria", "kind": "guide", "seen": "2026-11-04", "confirmed": "2026-10-27"}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+          "research_notes": "Venue site gordosnashville.com (home page) mentions no happy hour; its menu pages are linked but carry no happy hour per the home page. Nashville Guru business page lists daily 3-6pm, confirmed 10/27/26. No Gordo's social post found."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "Crows Nest", "reason": "guide not confirmed in 2026", "url": "https://styleblueprint.com/everyday/best-happy-hours/"},
+    {"lead": "Josephine", "reason": "closed / moved", "url": "https://nashvilleguru.com/businesses/josephine-nashville"},
+    {"lead": "NashHouse Southern Spoon & Saloon", "reason": "guide not confirmed in 2026", "url": "https://styleblueprint.com/everyday/best-happy-hours/"},
+    {"lead": "Party Fowl", "reason": "closed / moved", "url": "https://nashvilleguru.com/businesses/party-fowl"},
+    {"lead": "Smokin’ Thighs", "reason": "closed / moved", "url": "https://nashvilleguru.com/businesses/smokin-thighs"}
+  ]
+}

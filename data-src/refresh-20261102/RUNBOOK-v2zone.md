@@ -3,6 +3,30 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix30, made lasting in fix31 (2026-11-04)
+- **Versions:** fix31 is v2.4 (P2's previous file was `venues-v2-04-north-corr.json`, by the `-corr` rule).
+  South venues an earlier run already placed in South (M.L. Rose Neighborhood Pub - Melrose) count as already
+  listed.
+- **Linked menus are opened, or the merge refuses (tooling):** `merge_v2zone.py` now exits before writing
+  anything if the run's research has a `notes`/`research_notes`/`hours_notes` that says a menu, PDF or link was
+  "not opened", "could not open/read", "not readable" or similar (`research_problems()`; a venue site that
+  "didn't load", brief step 8, is not matched). Open each one (`pdf2txt.swift`, a `sips` render, or the Chrome
+  Sonnet agent), record what it shows in the combine step, reword the note to what was read, then re-run. The
+  brief's step 12 says the same to the researchers.
+- **PDF layout (new rule):** when a PDF's extracted text is ambiguous (columns, tables, a day list beside a deal
+  list, prices not on their item's line), render the page and read the image before recording days or deals:
+  `sips -s format png --resampleHeightWidthMax 2000 <file>.pdf --out <file>.png` (page 1; for other pages, split
+  with `pdf2txt.swift`'s page count and render each, or open in Preview). fix30's Sedona Thursday-only window was
+  a text-only misread of a "Weekly Specials" column.
+- **Midnight is "00:00" (brief step 5 and the field rules; `BRIEF-hours-chrome.md`):** never 24:00, never 25:00
+  or later. `merge_v2zone.py` refuses any 24:00-or-later time in the run's own research (window start/end and
+  hours), so normalize in the combine step. The 13 24:00 ends already in venues.json stay as they are.
+- **App:** the Day Grid note's counts take their verb from `countVerb()` in logic.js ("1 has them other days",
+  "1 has no happy hour at all"), with a test (v2.4).
+- **Refresh watchlist:** `refresh-watchlist.md` (this folder) lists every window from a week-specific post or a
+  pre-2026 menu, with the week or the menu's date. Each zone run appends its own; the monthly refresh checks
+  those first.
+
 ## From fix29, made lasting in fix30 (2026-11-03)
 - **Versions:** fix30 is v2.3 (P2's previous file was `venues-v2-03-east-corr.json`: a `-corr` file is the
   last of its NN, so it is the one P2 compares).

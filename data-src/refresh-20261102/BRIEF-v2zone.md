@@ -24,7 +24,8 @@ Tools: WebSearch and WebFetch only. Today's date is given in your task; use it f
 4. Closed venues: if the venue's site is gone, or anything from 2026 says it closed or moved, list it as
    not_added with reason `closed / moved`.
 5. Hours: the posted open hours from the venue's own site, as `{"MON": [["11:00","22:00"]], ...}` (24h, a day
-   with no key is closed; a range past midnight ends at e.g. "02:00"), with `hours_confidence` high/med/low and
+   with no key is closed; a range past midnight ends at e.g. "02:00"; midnight itself is "00:00", never
+   "24:00", and never write "25:00" or later (fix31)), with `hours_confidence` high/med/low and
    `hours_source` `"researched <today> (<high|med|low> confidence): <url>"`. If none are found, `"hours": {}`,
    `"hours_confidence": "low"`, `"hours_source": "none found <today>"`.
 6. Lunch specials and other specials: add `lunch` / `special` windows only if the SAME venue source shows them.
@@ -47,7 +48,10 @@ Tools: WebSearch and WebFetch only. Today's date is given in your task; use it f
    "chain-wide pricing, all locations"), and `research_notes` gives the page.
 12. Linked menus (TJ, 2026-11-03): if the deals are in a linked PDF or a separate menu page, open it. Never skip
    a linked menu. A PDF that WebFetch can't read is listed in `research_notes` as "PDF not readable: <url>", so
-   the executor reads it on the Mac (curl + pdftotext) or has the Chrome agent render it.
+   the executor reads it on the Mac (pdf2txt.swift) or has the Chrome agent render it. Never leave a linked
+   menu, PDF or link "not opened" (fix31: the merge refuses any research whose `notes` or `research_notes` say a
+   menu, PDF or link was "not opened", "could not open" or similar, and the executor must open it and re-run).
+   The one hand-off phrase is "PDF not readable: <url>"; the executor replaces it once the PDF is read.
 13. Times but no deals (TJ, 2026-11-03): if the venue's own source gives the happy hour's days and times but no
    deals, deals from a guide entry the guide itself confirmed in 2026 may fill in. Add that guide as a source
    (with its `confirmed` date), keep the venue source for the times, and the window's `notes` says exactly
@@ -104,7 +108,8 @@ Tools: WebSearch and WebFetch only. Today's date is given in your task; use it f
 }
 ```
 Rules for the fields:
-- `days` in week order MON..SUN, no repeats. `start` "HH:MM" 24h; `end` "HH:MM" or "close".
+- `days` in week order MON..SUN, no repeats. `start` "HH:MM" 24h; `end` "HH:MM" or "close". Midnight is
+  "00:00" (fix31); never "24:00", never "25:00" or later.
 - `kind`: `happy_hour`, `special` or `lunch`. A venue goes in `added` only with at least one `happy_hour` window.
 - `deals[].type` is `food` or `drink`; `desc` is short and as posted ("$5 draft beers", "Half-price oysters");
   `price` is a number when the deal is one plain price, else null.

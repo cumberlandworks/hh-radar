@@ -1201,6 +1201,10 @@
     return parts.join(', ');
   }
 
+  // ---- v2.4 (fix31): the grid note's counts agree with their verb ----
+  // "1 has them other days", "2 have them other days" (the fix30 note read "1 have them other days").
+  function countVerb(n) { return n === 1 ? 'has' : 'have'; }
+
   // ---- v1.18 C2: a venue's whole schedule, for the grid's "other days" list ----
   // "16:00" -> "4pm", "17:30" -> "5:30pm". The page's time style (moved here from index.html).
   function fmtHM(hm) {
@@ -2531,6 +2535,7 @@
     fmtRangeHM: fmtRangeHM,
     windowWhenLabel: windowWhenLabel,
     venueScheduleParts: venueScheduleParts,
+    countVerb: countVerb,
     chipHoodsByZone: chipHoodsByZone,
     hoodPanelGroups: hoodPanelGroups,
     zoneChipState: zoneChipState,

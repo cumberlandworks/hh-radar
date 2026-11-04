@@ -981,12 +981,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=2.3"></script>
+<script src="logic.js?v=2.4"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v2.3';
+  var APP_VERSION = 'v2.4';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1812,7 +1812,7 @@
         '<span class="cov-when">' + when + '</span></li>';
     }).join('');
     var otherPart = cov.otherDays > 0
-      ? '<details class="cov-pop"><summary>' + cov.otherDays + ' have them other days</summary>' +
+      ? '<details class="cov-pop"><summary>' + cov.otherDays + ' ' + L.countVerb(cov.otherDays) + ' them other days</summary>' +
         '<ul class="cov-list">' + others + '</ul></details>'
       : '0 have them other days';
     // v1.6 C2: NBSP before each "\u00b7" (regular space after it). A plain space
@@ -1832,7 +1832,7 @@
         '<ul class="cov-list">' + unchecked + '</ul></details>';
     }
     return prefix + '<b>' + cov.onDay + ' venue' + (cov.onDay === 1 ? '' : 's') + '</b> with happy hours on ' +
-      DAY_FULL[day] + SEP + otherPart + SEP + cov.none + ' have no happy hour at all' + uncheckedPart + '.' + mismatch +
+      DAY_FULL[day] + SEP + otherPart + SEP + cov.none + ' ' + L.countVerb(cov.none) + ' no happy hour at all' + uncheckedPart + '.' + mismatch +
       v2NoteHtml();
   }
 
@@ -3337,7 +3337,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=2.3').then(function (r) {
+  fetch('venues.json?v=2.4').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

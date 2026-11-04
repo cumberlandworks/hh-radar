@@ -1,0 +1,7 @@
+{
+ "12 South Taproom & Grill": {"hours": null, "listing_note": "Google listing '12 South Taproom and Grill' at 2318 12th Ave S shows Permanently closed; no hours shown"},
+ "Embers Ski Lodge": {"hours": {"MON": [["15:00","22:00"]], "TUE": [["15:00","22:00"]], "WED": [["15:00","22:00"]], "THU": [["15:00","23:00"]], "FRI": [["15:00","00:00"]], "SAT": [["11:00","00:00"]], "SUN": [["11:00","22:00"]]}, "listing_note": "Address 2410 12th Ave S matches"},
+ "bartaco": {"hours": {"MON": [["11:00","23:00"]], "TUE": [["11:00","23:00"]], "WED": [["11:00","23:00"]], "THU": [["11:00","23:00"]], "FRI": [["11:00","00:00"]], "SAT": [["11:00","00:00"]], "SUN": [["11:00","22:00"]]}, "listing_note": "Address 2526 12th Ave S matches. Separate Happy hours row 3-6PM (per-day detail not expanded)"},
+ "Postino 12 South": {"hours": {"MON": [["11:00","23:00"]], "TUE": [["11:00","23:00"]], "WED": [["11:00","23:00"]], "THU": [["11:00","23:00"]], "FRI": [["10:00","00:00"]], "SAT": [["10:00","00:00"]], "SUN": [["10:00","22:00"]]}, "listing_note": "Address 2317 12th Ave S matches"},
+ "Cilantro Mexican Grill": {"hours": {"MON": [["11:00","21:00"]], "TUE": [["11:00","22:00"]], "WED": [["11:00","22:00"]], "THU": [["11:00","22:00"]], "FRI": [["11:00","22:30"]], "SAT": [["11:00","22:30"]], "SUN": [["11:00","21:00"]]}, "listing_note": "Address 2330 8th Ave S matches"}
+}

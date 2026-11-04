@@ -1,0 +1,553 @@
+[
+ {
+  "id": "nv-bartaco-2526",
+  "name": "bartaco",
+  "address": "2526 12th Avenue South",
+  "official_site": "https://bartaco.com/location/nashville-tn/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "confidence": "med",
+  "deals": [],
+  "sources": [
+   "https://bartaco.com/location/nashville-tn/"
+  ],
+  "notes": "High tide happy hour at the bar, weekdays 3-6pm. Deals not posted. The venue also says Mon-Thu it includes the last 1.5 hours before close, but no closing time is posted, so that part is not listed."
+ },
+ {
+  "id": "nv-melrose-billiard-parlor-2600",
+  "name": "Melrose Billiard Parlor",
+  "address": "2600 8th Ave S #109",
+  "official_site": "https://www.dirtymelrose.com/",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "WED"
+  ],
+  "start": "16:00",
+  "end": "close",
+  "confidence": "high",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$4 all beer",
+    "price": 4
+   },
+   {
+    "type": "drink",
+    "desc": "$4 well liquor",
+    "price": 4
+   }
+  ],
+  "sources": [
+   "https://www.dirtymelrose.com/"
+  ],
+  "notes": "Cheap Ass Wednesday: happy hour all day, from the 4:00 opening. Liquor specials end at 10pm."
+ },
+ {
+  "id": "nv-bottle-cap-2403",
+  "name": "Bottle Cap",
+  "address": "2403 12th Avenue South",
+  "official_site": "https://bottlecapnashville.com/",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "WED"
+  ],
+  "start": "11:00",
+  "end": "close",
+  "confidence": "high",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$1 off all drafts",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$15 domestic buckets (5 beers)",
+    "price": 15
+   },
+   {
+    "type": "drink",
+    "desc": "$7 mules and fruit crushes",
+    "price": 7
+   }
+  ],
+  "sources": [
+   "https://bottlecapnashville.com/special-events/",
+   "https://bottlecapnashville.com/wp-content/uploads/2026/06/Menu-Food-Drink-June-2026.pdf"
+  ],
+  "notes": "All day: from the 11:00 opening."
+ },
+ {
+  "id": "nv-gordos-taqueria-515",
+  "name": "Gordo's Taqueria",
+  "address": "515B Merritt Ave",
+  "official_site": "http://www.gordosnashville.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "confidence": "low",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$7-$8 select cocktails",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$10 beer and shot combo",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$3 can beers",
+    "price": 3
+   }
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/gordos-taqueria"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue."
+ },
+ {
+  "id": "nv-char-3988",
+  "name": "Char",
+  "address": "3988 Hillsboro Pike",
+  "official_site": "https://nashville.charrestaurant.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "confidence": "high",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$8 onion rings",
+    "price": 8
+   },
+   {
+    "type": "food",
+    "desc": "$10 tenderloin tip skewers",
+    "price": 10
+   },
+   {
+    "type": "food",
+    "desc": "$12 pil pil shrimp",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "$12 loaded potato skins",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "$12 fritto misto",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "$15 crab fritters",
+    "price": 15
+   },
+   {
+    "type": "food",
+    "desc": "$15 french dip sliders",
+    "price": 15
+   },
+   {
+    "type": "food",
+    "desc": "$16 char burger",
+    "price": 16
+   },
+   {
+    "type": "drink",
+    "desc": "Draft beer $5",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "Wine $7",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$9 cocktails",
+    "price": 9
+   }
+  ],
+  "sources": [
+   "https://nashville.charrestaurant.com/happy-hour/",
+   "https://nashville.charrestaurant.com/nashville-happy-hour-pdf"
+  ],
+  "notes": "Sunday through Thursday, in the lounge."
+ },
+ {
+  "id": "nv-ramones-oyster-bar-and-citrus-club-625",
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "address": "625 Hamilton Ave",
+  "official_site": "https://www.mercadobtown.com/ramones",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "confidence": "high",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "House Salsas & Chips $5",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "Queso $8 small, $12 large",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Chips & Guac $9",
+    "price": 9
+   },
+   {
+    "type": "food",
+    "desc": "Brisket Nachos $14",
+    "price": 14
+   },
+   {
+    "type": "food",
+    "desc": "Pork Riblets $14",
+    "price": 14
+   },
+   {
+    "type": "food",
+    "desc": "French Fries $5",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "Girl Dinner $21",
+    "price": 21
+   },
+   {
+    "type": "food",
+    "desc": "Tacos two for $10, or three for $14",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Smoked Brisket Sandwich with fries $12",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "Burger with fries $12",
+    "price": 12
+   },
+   {
+    "type": "drink",
+    "desc": "Margarita de Casa $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Paloma de Casa $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Gin & Tonic $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Daiquiri $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Dirty Martini $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Old-Fashioned $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Select Cerveza $5",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "Wine by the glass $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Pitcher of Cerveza $20",
+    "price": 20
+   },
+   {
+    "type": "drink",
+    "desc": "Margarita or Paloma Carafe $33",
+    "price": 33
+   }
+  ],
+  "sources": [
+   "https://www.mercadobtown.com/happy-hour"
+  ],
+  "notes": "4th-floor rooftop; the Mercado happy hour specials apply here too."
+ },
+ {
+  "id": "nv-bastion-434",
+  "name": "Bastion",
+  "address": "434 Houston St",
+  "official_site": "http://www.bastionnashville.com",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "17:00",
+  "end": "19:00",
+  "confidence": "med",
+  "deals": [],
+  "sources": [
+   "https://www.bastionnashville.com/bigbar"
+  ],
+  "notes": "Big Bar. Deals not posted."
+ },
+ {
+  "id": "nv-ramones-oyster-bar-and-citrus-club-625",
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "address": "625 Hamilton Ave",
+  "official_site": "https://www.mercadobtown.com/ramones",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "SAT"
+  ],
+  "start": "13:00",
+  "end": "16:00",
+  "confidence": "high",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "House Salsas & Chips $5",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "Queso $8 small, $12 large",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Chips & Guac $9",
+    "price": 9
+   },
+   {
+    "type": "food",
+    "desc": "Brisket Nachos $14",
+    "price": 14
+   },
+   {
+    "type": "food",
+    "desc": "Pork Riblets $14",
+    "price": 14
+   },
+   {
+    "type": "food",
+    "desc": "French Fries $5",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "Girl Dinner $21",
+    "price": 21
+   },
+   {
+    "type": "food",
+    "desc": "Tacos two for $10, or three for $14",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Smoked Brisket Sandwich with fries $12",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "Burger with fries $12",
+    "price": 12
+   },
+   {
+    "type": "drink",
+    "desc": "Margarita de Casa $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Paloma de Casa $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Gin & Tonic $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Daiquiri $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Dirty Martini $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Old-Fashioned $8",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "Select Cerveza $5",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "Wine by the glass $6",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "Pitcher of Cerveza $20",
+    "price": 20
+   },
+   {
+    "type": "drink",
+    "desc": "Margarita or Paloma Carafe $33",
+    "price": 33
+   }
+  ],
+  "sources": [
+   "https://www.mercadobtown.com/happy-hour"
+  ],
+  "notes": "Saturday 1-4pm is the Mercado's happy hour (the specials also apply on Ramone's rooftop); Ramone's own posted hours start at 4pm, so check before you go."
+ },
+ {
+  "id": "nv-the-greenhouse-bar-2211",
+  "name": "The GreenHouse Bar",
+  "address": "2211 Bandywood Dr",
+  "official_site": "https://www.greenhousenash.com",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE"
+  ],
+  "start": "10:00",
+  "end": "close",
+  "confidence": "med",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$3 Jello shots (5 for $12)",
+    "price": 3
+   },
+   {
+    "type": "drink",
+    "desc": "$3 GreenHouse shots, rum melon (5 for $12)",
+    "price": 3
+   },
+   {
+    "type": "drink",
+    "desc": "PBR tallboy bucket, 3 for $18",
+    "price": null
+   }
+  ],
+  "sources": [
+   "https://www.greenhousenash.com/greenhouse-bar"
+  ],
+  "notes": "All day: from the 10:00 opening. Happy All Day drink menu, every day. Other drinks on the list have no posted price."
+ },
+ {
+  "id": "nv-never-never-413",
+  "name": "Never Never",
+  "address": "413 Houston Street",
+  "official_site": "http://nevernevernashville.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "20:00",
+  "confidence": "low",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "2-for-1 domestic beers",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$2 off well liquors",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "Shot and beer special",
+    "price": null
+   }
+  ],
+  "sources": [
+   "https://nashvilleguru.com/businesses/never-never"
+  ],
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-16. Check with the venue."
+ }
+]

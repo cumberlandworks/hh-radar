@@ -1,0 +1,126 @@
+[
+ {
+  "name": "bartaco",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Venue: high tide happy hour at bar weekdays 3-6pm; no deals posted; Mon-Thu last-1.5-hours-before-close not listed (no closing time). Med ok."
+ },
+ {
+  "name": "Melrose Billiard Parlor",
+  "window_index": 1,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "$4 all beer: ok (page: $4 ALL beer in 444 happy hour; Wednesday is happy hour all day)",
+   "$4 well liquor: ok ($4 well liquor; liquor specials end 10pm)"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Cheap Ass Wednesday happy hour all day; opens 4pm daily. Wednesday-specific prices are not itemized, taken from the happy hour listing."
+ },
+ {
+  "name": "Bottle Cap",
+  "window_index": 1,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "$15 domestic buckets (5 beers): ok",
+   "$7 mules and fruit crushes: ok ($7 Mules & Crushes)"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Special-events page: All Day Wednesday; $1 off drafts ok; Mon-Thu hours 11am-11pm so start 11:00 ok. June 2026 menu PDF could not be read by WebFetch; judged from the venue page."
+ },
+ {
+  "name": "Gordo's Taqueria",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "$10 beer and shot combo: ok (Nashville Guru)",
+   "$3 can beers: ok (Nashville Guru)"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Guide-only, low correct. Nashville Guru: daily 3-6pm, confirmed 10/27/26. Venue site posts no happy hour (so no contradiction)."
+ },
+ {
+  "name": "Char",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "$8 onion rings: ok",
+   "$5 draft beer: ok"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Venue page: SUN-THURS 3-6pm in the lounge; $7 wine, $9 cocktails, $16 burger also match. PDF could not be read by WebFetch; judged from the HTML page."
+ },
+ {
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "Margarita de Casa $6: ok",
+   "Brisket Nachos $14: ok"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Mercado page: Mon-Thu 4-6pm, same specials on Ramone's rooftop."
+ },
+ {
+  "name": "Bastion",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Big Bar page: Mon-Fri 5pm-7pm, no deals posted. Med ok."
+ },
+ {
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "window_index": 1,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "Chips & Guac $9: ok",
+   "Pitcher of Cerveza $20: ok"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Mercado page: Saturday 1-4pm; Ramone's rooftop page itself lists Mon-Sat from 4pm (already flagged in notes). Confidence high acceptable."
+ },
+ {
+  "name": "The GreenHouse Bar",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "$3 Jello shots (5 for $12): ok",
+   "$3 GreenHouse shot rum melon (5 for $12): ok"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Happy All Day menu every day; Mon & Tue open 10AM-1AM so 10:00 start ok. PBR bucket source text reads '$3 for $18' (sample says 3 for $18), not counted against it."
+ },
+ {
+  "name": "Never Never",
+  "window_index": 0,
+  "days_ok": true,
+  "times_ok": true,
+  "prices_checked": [
+   "2-for-1 domestic beers: ok (Nashville Guru)",
+   "$2 off well liquors: ok (Nashville Guru)"
+  ],
+  "confidence_ok": true,
+  "pass": true,
+  "note": "Guide-only, low correct. Nashville Guru Mon-Fri 4-8pm, confirmed 10/16/26. Venue site posts no happy hour."
+ }
+]

@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-11-04 — BLOCK-hh-radar-fix31: south happy hours
+
+v2.4, the fifth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=south), with the fix30 notes made lasting.
+
+- **South: 34 leads, 20 added, 14 not added.** All 20 are in South (12 South, Wedgewood-Houston, Green Hills; none
+  placed elsewhere).
+  - Not added, by reason: 7 closed / moved (Emery Wood Fired, Josephine, Pancho & Lefty's Cantina, Party Fowl,
+    Smokin' Thighs, plus 12 South Taproom & Grill (closed May 2026) and Burger Up (closed Aug 1, 2026), both
+    researched as open from their still-live sites and caught by the Chrome hours pass and news); 6 guide not
+    confirmed in 2026 (Crows Nest, Edley's Bar-B-Que, Green Hills Grille, Las Palmas, MAFIAoZA's, NashHouse);
+    1 no happy hour found (Big Machine Distillery & Tavern). No duplicates. The full list is
+    `data-src/refresh-20261102/not-added-south.md`.
+  - Already listed in South from an earlier run: M.L. Rose Neighborhood Pub - Melrose (its windows have deals).
+  - South before → after (All): 12 venues (11 inKind, 1 not) / 9 windows → 32 venues (11 inKind, 21 not) / 36
+    windows.
+- **Linked menus, all opened.** 11 menu PDFs and 2 image menus read on the Mac: Bottle Cap (image-only June 2026
+  PDF, rendered), North Italia (its Spring 2026 happy-hour PDF, rendered; venue deals replace a guide's), Hearts (its
+  happy-hour image; venue deals replace a guide's), Char (matches), and bartaco, Postino, Doughbird and etc. (regular
+  menus, no happy-hour section). 12 South Taproom's Tue/Thu/Sun specials were added from its menu page before it
+  was found closed.
+- **Empty-deals pass:** bartaco and Bastion stay "Deals not posted" (venue times only; no chain page, no
+  2026-confirmed guide). Non-inKind happy hours with no deals: 9 → 11.
+- **Spot check:** 10/10 (seed 31, 10 random of the 27 new windows: days, times, two prices each, confidence).
+- **App:** the Day Grid note's counts agree with their verb ("1 has them other days", "1 has no happy hour at
+  all"), via `countVerb()` in logic.js, with a test.
+- **Tooling (fix30 notes):** `merge_v2zone.py` refuses research that leaves a menu, PDF or link "not opened" (or
+  similar) and any 24:00-or-later time; the briefs say midnight is "00:00"; the runbook adds the PDF render rule;
+  `refresh-watchlist.md` lists the week-specific and pre-2026-menu windows for the monthly refresh. The coverage
+  text keeps "zone runs from 2026-11-03".
+- Map seam: etc. (3790 Bedford Ave, Green Hills) is a named exception; its point sits just inside West.
+- Totals: 250 → 270 venues (159 inKind, 111 not), 282 → 309 windows.
+
 ## 2026-11-03 — BLOCK-hh-radar-fix30: north happy hours
 
 v2.3, the fourth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=north), with this zone's empty-deals pass done

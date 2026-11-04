@@ -32,4 +32,5 @@ Return JSON only, one object keyed by the venue name exactly as given:
 }
 ```
 24-hour times; a day with no key is closed or unreadable (say which in the note); a range past midnight ends at
-e.g. "02:00"; two ranges in a day are two pairs. `hours` is `null` if no listing for this venue was found.
+e.g. "02:00"; two ranges in a day are two pairs. Midnight ("12 AM") is "00:00", never "24:00"; never write
+"25:00" or later (fix31). `hours` is `null` if no listing for this venue was found.

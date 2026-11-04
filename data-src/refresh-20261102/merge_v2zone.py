@@ -44,6 +44,39 @@ def norm_window(w):
     return out
 
 
+# fix31 (from the fix30 notes): research the merge refuses until the executor fixes it.
+import re  # noqa: E402
+UNOPENED = re.compile(r"\bnot (been )?(opened|read)\b|\b(could ?n[o']t|cannot|can ?not|unable to|did ?n[o']t|failed to)"
+                      r" (be )?(open|read)\b|\bnot readable\b|\bunopened\b", re.I)
+# A venue site that "didn't load" (brief step 8) is not a linked menu, so "load" is not matched.
+
+
+def research_problems(research):
+    """Every unopened linked menu/PDF/link note and every 24:00-or-later time in the run's own research.
+    Midnight is "00:00"; the 13 24:00 ends already in venues.json predate this rule and are not checked."""
+    probs = []
+    for c in research.get('added', []):
+        name = c.get('name') or c.get('lead')
+        texts = [('notes', c.get('notes')), ('hours_notes', c.get('hours_notes'))]
+        for i, w in enumerate(c.get('windows', [])):
+            texts += [('windows[%d].notes' % i, w.get('notes')), ('windows[%d].research_notes' % i, w.get('research_notes'))]
+            for k in ('start', 'end'):
+                t = w.get(k)
+                if isinstance(t, str) and re.match(r'^\d\d:\d\d$', t) and int(t[:2]) >= 24:
+                    probs.append('%s: windows[%d].%s is %s (midnight is 00:00; past it, 01:00...)' % (name, i, k, t))
+        for d, rs in (c.get('hours') or {}).items():
+            for r in rs:
+                for t in r:
+                    if isinstance(t, str) and re.match(r'^\d\d:\d\d$', t) and int(t[:2]) >= 24:
+                        probs.append('%s: hours %s has %s (midnight is 00:00)' % (name, d, t))
+        for where, t in texts:
+            m = t and UNOPENED.search(t)
+            if m:
+                probs.append('%s: %s says "%s": open the menu/PDF/link (pdf2txt.swift, a sips render, or the '
+                             'Chrome agent), record what it shows, then re-run' % (name, where, m.group(0)))
+    return probs
+
+
 def helper(cmd, payload):
     r = subprocess.run(['node', os.path.join(HERE, 'v2zone_helper.js'), cmd], input=json.dumps(payload),
                        capture_output=True, text=True)
@@ -68,6 +101,9 @@ def main():
         sys.exit('zone must be one of ' + ', '.join(ORDER))
     data = json.load(open(venues_path))
     research = json.load(open(research_path))
+    probs = research_problems(research)
+    if probs:
+        sys.exit('merge refused (fix31 checks):\n  ' + '\n  '.join(probs))
 
     cov = data.get('coverage')
     if not isinstance(cov, dict):
@@ -129,8 +165,11 @@ def main():
     n_ik = sum(1 for v in data['venues'] if v['inkind'])
     n_nv = len(data['venues']) - n_ik
     base = cov['text'].split(' | v2: ')[0]
+    # fix31: "zone runs from" keeps the first zone run's date (fix30's file said 2026-11-03; fix31's merge had moved it).
+    prev = re.search(r'\(zone runs from (\d{4}-\d\d-\d\d)\)', cov['text'])
+    since = prev.group(1) if prev else date
     cov['text'] = base + ' | v2: %d non-inKind venues with a happy hour, trust-bar checked, in %s (zone runs from %s)' % (
-        n_nv, ', '.join(ZONE_LABEL[z] for z in cov['v2_zones_done']), date)
+        n_nv, ', '.join(ZONE_LABEL[z] for z in cov['v2_zones_done']), since)
     data['coverage'] = cov
     data['generated'] = date
     data['generator'] = 'merge_v2zone.py (hh-radar v2 zone runs, refresh-20261102)'
