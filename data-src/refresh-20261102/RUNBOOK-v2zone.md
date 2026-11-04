@@ -3,6 +3,27 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix29, made lasting in fix30 (2026-11-03)
+- **Versions:** fix30 is v2.3 (P2's previous file was `venues-v2-03-east-corr.json`: a `-corr` file is the
+  last of its NN, so it is the one P2 compares).
+- **Already listed from an earlier zone:** a venue an earlier run placed in this zone by its own point (fix29 put
+  Folk, Turkey and The Wolf, Cherries and Plane Jane in North) counts as already listed in this zone, not as a
+  duplicate. Report them under their own heading; they are part of this zone's empty-deals pass below.
+- **Empty-deals pass before the merge is final (S4b):** after the merge, take every non-inKind `happy_hour`
+  window in this zone with an empty deals list (the run's own and any already listed) and run brief steps 11-13
+  on it (one Sonnet subagent, WebSearch/WebFetch; linked PDFs read on the Mac with `pdf2txt.swift`, image-only
+  ones by the Chrome agent). Apply the result with `apply_corrections.py` to make `venues-v2-<NN>-<zone>-corr.json`,
+  which is installed as venues.json. With no corrections, skip the `-corr` file. The zone ships with deals filled
+  wherever a source exists.
+- **Times but no deals stay (TJ's call, 2026-11-03):** a venue-sourced happy hour with no posted deals is kept;
+  the card says "Deals not posted, ask at the bar". Not a reason for `not_added`.
+- **Dated or stale sources (TJ, 2026-11-03; brief step 14):** a window from a week-specific post, or with deals
+  only from a pre-2026 venue menu, is `confidence: "low"` (the card shows "Verify before you go"), and its notes
+  name the post's week or the menu's date. The S5 checker flags any such window still above low. Applied in
+  fix30 to Noble's Kitchen & Beer Hall (East, week of Nov 3-9) and Lyra (East, Spring 2025 menu).
+- **Previews:** serve from the session scratchpad. Don't add entries to `~/Documents/Claude/.claude/launch.json`
+  (fix30 removed the three `hh-radar*` ones; that file is otherwise left byte for byte).
+
 ## From fix28, made lasting in fix29 (2026-11-03)
 - **Shared prompts.** S1 gives each researcher `BRIEF-v2zone.md` unchanged. S2 gives the Chrome subagent
   `BRIEF-hours-chrome.md` unchanged (never infer a hidden row; mouse off the table, then read a screenshot; leave

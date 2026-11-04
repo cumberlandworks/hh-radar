@@ -1,0 +1,1625 @@
+{
+ "added": [
+  {
+   "lead": "Barrel Proof",
+   "name": "Barrel Proof",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1010 4th Ave N",
+   "zip": "37219",
+   "official_site": "https://www.barrelproofnash.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.barrelproofnash.com/menu",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 mini frozen margaritas",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 daiquiris",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 old fashioneds",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 scotch highballs",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.barrelproofnash.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue Food + Drink page lists happy hour every day, 4-6 PM. Site barrelproofnashville.com redirects to barrelproofnash.com. Page is undated. Bar opens 4pm Mon-Thu and 11am Fri-Sun; kitchen open until 1am daily. Closing time for the bar is not posted, so hours end is taken from the kitchen's 1am."
+    }
+   ]
+  },
+  {
+   "lead": "The Goat",
+   "name": "The Goat (Germantown)",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1220 2nd Avenue North",
+   "zip": "37208",
+   "official_site": "https://www.lcgoat.com/locations/germantown/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.lcgoat.com/locations/germantown/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$7.99 buffalo cauliflower",
+       "price": 7.99
+      },
+      {
+       "type": "food",
+       "desc": "$8.99 Italian pizza rolls",
+       "price": 8.99
+      },
+      {
+       "type": "food",
+       "desc": "$6.99 fried green tomatoes",
+       "price": 6.99
+      },
+      {
+       "type": "food",
+       "desc": "$9.99 whipped feta and honey",
+       "price": 9.99
+      },
+      {
+       "type": "food",
+       "desc": "$8.99 crispy Brussels and sweet potatoes",
+       "price": 8.99
+      },
+      {
+       "type": "food",
+       "desc": "$11.99 Bianca or Dueling Pepperoni pizza",
+       "price": 11.99
+      },
+      {
+       "type": "drink",
+       "desc": "$6 house wines",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$7 cocktails",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off all drafts",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.lcgoat.com/locations/germantown/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.lcgoat.com/s/Goat-New-Happy-Hour-Menu-kred.pdf",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue location page lists Happy Hour every day, 3 PM to 6 PM. Address and hours from the same page. fix30: the linked Happy Hour Menu PDF (WebFetch could not read it; created 2026-08-18) was read on the Mac (pdf2txt.swift and a rendered image): \"EVERY DAY | 3PM - 6PM\", five shareables and two pizzas with prices, $6 house wines, $7 cocktails (Blueberry Mule, Classic Margarita, Goat Smash, Strawberry Mojito), $2 off all drafts."
+    }
+   ]
+  },
+  {
+   "lead": "Nelson’s Green Brier Distillery",
+   "name": "Nelson's Green Brier Distillery",
+   "city": "Nashville",
+   "neighborhood": "Marathon Village",
+   "address": "1414 Clinton St",
+   "zip": "37203",
+   "official_site": "https://greenbrierdistillery.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "18:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "18:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.greenbrierdistillery.com/visit/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 Old Fashioned",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 Cold Fashioned",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 TN Mule",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$10 shot of TN Whiskey and a Beer",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.greenbrierdistillery.com/visit/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Hours are those of the distillery bar. The venue's Visit page says the distillery is closed Nov 9 and 11.",
+     "research_notes": "Visit page shows Monday-Friday 3-5 PM with these deals and bar hours by day. Nashville Guru business page (confirmed 10/20/26) agrees. A search summary of the venue's club-member and restaurant pages agreed on 3-5 PM Mon-Fri, but those pages returned 429 and were not opened. The same search summary said the Visit page advertised a Wednesday special of 11am-5pm with a $5 Old Fashioned, $10 Cold Fashioned, $8 beer and shot; that text did not appear when the Visit page was fetched, so it is not included."
+    }
+   ]
+  },
+  {
+   "lead": "Streetcar Taps and Garden",
+   "name": "Streetcar Taps and Garden (Germantown)",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1325 3rd Ave N",
+   "zip": "37208",
+   "official_site": "http://germantown.streetcartaps.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): http://germantown.streetcartaps.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half-priced draft beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Garden Maggies (margaritas)",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Espresso Martinis",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$10 wines",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "$10 wings",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://germantown.streetcartaps.com/specials",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/streetcar-taps-and-garden-germantown",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-26"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-26. Check with the venue. Schedule as posted for specific dates (Nov 3-6 and Nov 9) on the venue's specials page.",
+     "research_notes": "Venue specials page lists Happy Hour 3:00-6:00 PM only for dated days (Tue Nov 3 - Fri Nov 6, Mon Nov 9) with no deals, so it is week-specific. Nashville Guru business page shows Monday-Friday 3-6 PM with the deals above (last confirmed 10/26/26), used for the weekday set and deals. The venue's home page lists no happy hour. Hours from the home page. The venue's drink-menu page was not opened."
+    }
+   ]
+  },
+  {
+   "lead": "Butchertown Hall",
+   "name": "Butchertown Hall",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1416 4th Avenue North",
+   "zip": "37208",
+   "official_site": "https://www.butchertownhall.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-03 (med confidence): https://www.butchertownhall.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$5 house salsas",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Queso $8 small, $12 large",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$9 chips and guac",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$14 brisket nachos",
+       "price": 14
+      },
+      {
+       "type": "food",
+       "desc": "$5 french fries",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Tacos: two for $10, three for $14",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$12 sandwiches with fries (BBQ pork, smoked brisket, cheeseburger)",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$21 'Girl Dinner': Bombay dirty martini, fries, Caesar salad",
+       "price": 21
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.butchertownhall.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.butchertownhall.com/s/NEWHappyWeb.pdf",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue site lists happy hour Sunday through Friday, 4-6 PM. Deals are in the linked happy hour PDF (https://www.butchertownhall.com/s/NEWHappyWeb.pdf, redirects to https://static1.squarespace.com/static/53ac74f4e4b07ac785324b57/t/6aac63102f86777aa13632d0/1789682448044/NEWHappyWeb.pdf). PDF (WebFetch could not read it): https://static1.squarespace.com/static/53ac74f4e4b07ac785324b57/t/6aac63102f86777aa13632d0/1789682448044/NEWHappyWeb.pdf. No guide entry for Butchertown Hall was confirmed in 2026 on the venue-side pages I could check, so no guide deals were used. Address: the site's catering link shows 1416 4th Ave N, while its parking map link mentions 1524 4th Ave N; I used 1416. Hours are dinner Mon-Thu 4-9, Fri-Sat 4-10, Sun 4-8, plus brunch Fri 11-3, Sat-Sun 10-3, merged into one range per day. fix30: the executor read the PDF on the Mac (pdf2txt.swift and a rendered image; Squarespace upload stamp 2026-09-17): \"HAPPY HOUR 4P-6P SUN-FRI\", food items with prices as listed; no drink list beyond the Girl Dinner."
+    }
+   ]
+  },
+  {
+   "lead": "Henrietta Red",
+   "name": "Henrietta Red",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1200 4th Avenue North",
+   "zip": "37208",
+   "official_site": "http://www.henriettared.com",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "17:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "14:00"
+     ],
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): http://www.henriettared.com",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "17:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$2 oysters (chef's choice)",
+       "price": 2
+      },
+      {
+       "type": "drink",
+       "desc": "$10 classic cocktails",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$7 cava",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 white, red or rose wine",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 rotating draft",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://www.henriettared.com",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.henriettared.com/menu",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://henriettared.com/s/HRBeverageBook1002.pdf",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Closed Mondays; the menu says \"every day\" for the days the restaurant is open.",
+     "research_notes": "Venue site and menu page state a daily happy hour Tuesday through Sunday, 5 to 6 PM, with no prices. The only linked drinks document is the beverage book (https://henriettared.com/s/HRBeverageBook1002.pdf), which has no separate happy hour PDF and was not opened; the guides listed for this lead (StyleBlueprint, The Infatuation) carry no 2026 confirmed date, so no guide deals used. Closed Mondays. fix30: the executor opened the beverage book on the Mac (PDF created 2026-10-02, pdf2txt.swift): page 3 \"HAPPY HOUR | 5-6PM EVERY DAY\" with $2 oysters, $10 cocktails (Vesper, Tommy's Margarita, Old Fashioned, Daiquiri, Gold Rush, French 75), $7 cava, $7 white/red/rose, $7 rotating draft."
+    }
+   ]
+  },
+  {
+   "lead": "Sedona Taphouse",
+   "name": "Sedona Taphouse",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1120 3rd Avenue North",
+   "zip": "37208",
+   "official_site": "https://sedonataphouse.com/locations/nashville-tn/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://sedonataphouse.com/locations/nashville-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:30",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "50% off all drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "50% off select craft beer bottles and cans",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "50% off house wine by the glass",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$6 red or white sangria by the glass",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$8 craft cocktails and martinis",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "$7 truffle fries and flatbreads",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$9 canyon nachos or spicy Thai shrimp",
+       "price": 9
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://sedonataphouse.com/locations/nashville-tn/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://sedonataphouse.com/menu/nashville-tennessee",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://sedonataphouse.com/wp-content/uploads/2019/01/HappyHourMenu_Nashville_3.17.26.pdf",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue pages state happy hour Mon-Fri 3pm-6:30pm and link the happy-hour PDF (dated 3.17.26 in its file name). fix30: the executor read the PDF on the Mac (pdf2txt.swift, then a rendered image, since the text columns interleave): \"STH Steals, Monday - Friday 3pm - 6:30pm\" with Beer + Wine 50% off, $6 sangria, $8 craft cocktails + martinis (Paloma, BYO Mule, STH Spritz, Lemon Drop, Pomegranate Margarita Spritzer), $7 bites (truffle fries, five flatbreads), $9 canyon nachos / spicy Thai shrimp. The day-by-day column beside it is \"Weekly Specials\" (Mon dine-out for charity, Tue $5 brut or old fashioned, Wed half-off wine bottles), not happy hour, so the researcher's Thursday-only window was a misread and is folded into Mon-Fri."
+    }
+   ]
+  },
+  {
+   "lead": "Tailor Nashville",
+   "name": "Tailor",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "620 Taylor Street",
+   "zip": "37208",
+   "official_site": "http://www.tailornashville.com",
+   "status": "open",
+   "hours": {
+    "THU": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "low",
+   "hours_source": "researched 2026-11-03 (low confidence): http://www.tailornashville.com",
+   "windows": [
+    {
+     "days": [
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:30",
+     "end": "close",
+     "area": "Living Room",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/tailor-nashville",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-21"
+      },
+      {
+       "url": "http://www.tailornashville.com",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Happy hour as listed by Nashville Guru, confirmed 2026-10-21, in the Living Room; it names no prices (full bar, rotating seasonal bar snacks). Deals not posted. Check with the venue.",
+     "research_notes": "Venue site does not mention a happy hour; it shows the Living Room (cocktails and small plates, walk-ins) open Thursday-Sunday from 4:30 PM, restaurant 5:00-10:00 PM. Its footer shows different hours (6:00-10:30 PM Thu-Sun); the 4:30 PM Living Room start and the 10:00 PM close were used for hours (low confidence). Nashville Guru business page lists Thu-Sun starting 4:30 PM with no end time, so the end is set to close. No prices posted anywhere. fix30 empty-deals pass: Guru lists \"Full bar and rotating seasonal bar snacks\" with no prices and no end time; the venue home page mentions the Living Room (specialty cocktails, snacks) but no happy hour or discount. The two non-price items were removed from deals."
+    }
+   ]
+  },
+  {
+   "lead": "Sidecar Bar",
+   "name": "Sidecar Bar",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1318 6th Ave N",
+   "zip": "37208",
+   "official_site": "https://sidecarbarnash.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "01:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://sidecarbarnash.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off wines",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off well drinks",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beers",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://sidecarbarnash.com/drinks",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue's own drinks page lists Mon-Fri 4-7pm, $2 off wines, wells and drafts (page undated, so med). Nashville Guru business page (nashvilleguru.com/businesses/sidecar-bar, confirmed 10/27/26) agrees but was not used as a source. The venue's home page itself lists no happy hour. Hours as posted on the home page: bar Mon-Wed 4PM-midnight, Thu to 1AM, Fri to 2AM, Sat 11AM-2AM, Sun 11AM-midnight; end times past midnight are written as 25:00 and 26:00 here, convert to 01:00 and 02:00 if the schema needs that form."
+    }
+   ]
+  },
+  {
+   "lead": "Von Elrod’s Beer Hall & Kitchen",
+   "name": "Von Elrod's Beer Hall & Kitchen",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1004 4th Ave N",
+   "zip": "37219",
+   "official_site": "https://vonelrods.com/",
+   "status": "open",
+   "hours": {
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://vonelrods.com/",
+   "windows": [
+    {
+     "days": [
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 1/2-liter steins",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$5 wines by the glass",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$5 \"Big Ass\" cocktails",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "$5 select food",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://vonelrods.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue home page lists Wed-Fri 3-6pm with the deals above. The page does not say which food items are the $5 select food; vonelrods.com/food/ lists no happy hour, and the only linked PDF is a Core Brunch menu (not opened). Nashville Guru Germantown happy hour page agrees on days, times and deals (it shows no confirmed date)."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$10 Big Stein",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://vonelrods.com/",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Big Stein Thursdays, 4pm until close.",
+     "research_notes": "Venue home page: $10 Big Stein Thursdays, 4pm until close, on any big stein."
+    }
+   ]
+  },
+  {
+   "lead": "Germantown Pub",
+   "name": "Germantown Pub",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "708 Monroe Street",
+   "zip": "37208",
+   "official_site": "https://www.thegermantownpub.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.thegermantownpub.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off well liquor and select draft beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "BOGO well tequila margaritas, lemon drops and green tea shots",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "6 wings for $8.95",
+       "price": 8.95
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.thegermantownpub.com/nashville-germantown-germantown-pub-happy-hours-specials",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Schedule as posted for the week of Nov 3-9.",
+     "research_notes": "Venue specials page is headed 'week of Nov 3-9'. Hours from the home page (708 Monroe Street, Nashville, TN 37208). Midnight close is written as 00:00."
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off well liquor and select draft beers",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.thegermantownpub.com/nashville-germantown-germantown-pub-happy-hours-specials",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Schedule as posted for the week of Nov 3-9. The BOGO drinks and wing deal do not apply on Friday.",
+     "research_notes": "Same venue specials page, Friday-specific line."
+    }
+   ]
+  },
+  {
+   "lead": "Neighbors",
+   "name": "Neighbors (Germantown)",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "313 Jefferson Street",
+   "zip": "37208",
+   "official_site": "https://neighborsnashville.com/german-town/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-03",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off bottles, pints, pitchers, well drinks, seltzers and house wines",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/neighbors-germantown",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-23"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-23. Check with the venue.",
+     "research_notes": "Venue site (neighborsnashville.com/german-town/) loaded with only a title, no happy hour, address or hours found; no venue or social source located. Used the Nashville Guru business page (Mon-Fri 3-7pm, last confirmed 10/23/26). Address from that page. Guide also mentions a late-night happy hour 10pm-close in a search snippet (confirmed 06/08/26) that I did not add."
+    }
+   ]
+  },
+  {
+   "lead": "Sonny’s Patio Pub & Refuge",
+   "name": "Sonny's Patio Pub & Refuge",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1322 6th Ave N",
+   "zip": "37208",
+   "official_site": "https://www.sonnysnashville.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://www.sonnysnashville.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 Sonny's Selects",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$5 draft beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$4 wines by the glass",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "$5 good mood food",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/sonnys",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Venue's Daily Specials page (sonnysnashville.com/dailyspecials) shows specials only as images, nothing readable, so no usable venue source; the guide cites that page as its source. Home page and specials page give the address and hours. Guide also lists Tequila Tuesday all-day specials, not added."
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "10:00",
+     "end": "14:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 mimosas",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$6 spritzes",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Bloody Marys",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/sonnys",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "Brunch happy hour as shown on the Nashville Guru business page; venue source images unreadable."
+    }
+   ]
+  },
+  {
+   "lead": "Waldo’s Chicken & Beer",
+   "name": "Waldo's Chicken & Beer (Germantown)",
+   "city": "Nashville",
+   "neighborhood": "Germantown",
+   "address": "1120 4th Ave North, Suite 103",
+   "zip": "37208",
+   "official_site": "https://waldoschicken.com/germantown",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-03 (high confidence): https://waldoschicken.com/germantown",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-4-1 draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Waldo-Ritas",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://waldoschicken.com/germantown",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "3pm-6pm; all day on Tuesday and Sunday.",
+     "research_notes": "Venue's Germantown page: 'Happy Hour: 2-4-1 Draft Beer + $5 Waldo-Ritas Daily 3pm - 6pm All Day Tuesday + Sunday'. Menu page had no happy hour detail."
+    },
+    {
+     "days": [
+      "TUE",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-4-1 draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Waldo-Ritas",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://waldoschicken.com/germantown",
+       "kind": "venue",
+       "seen": "2026-11-03",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/waldos-chicken-and-beer",
+       "kind": "guide",
+       "seen": "2026-11-03",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-03",
+     "corroborated": true,
+     "confidence": "high",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Venue's Germantown page: 'Happy Hour: 2-4-1 Draft Beer + $5 Waldo-Ritas Daily 3pm - 6pm All Day Tuesday + Sunday' (one happy hour, one deal list). fix30 empty-deals pass: Nashville Guru's business page (confirmed 10/27/26) lists Tue and Sun as all day with the same 2-for-1 drafts and $5 Waldo-Ritas. The daily window is set to the other five days so the two don't overlap."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Geist",
+   "reason": "no happy hour found",
+   "url": "https://www.geistnashville.com/"
+  },
+  {
+   "lead": "Monday Night Preservation Co.",
+   "reason": "no happy hour found",
+   "url": "https://mondaynightbrewing.com/location/preservation-co/"
+  }
+ ]
+}

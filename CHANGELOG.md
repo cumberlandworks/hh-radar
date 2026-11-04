@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-11-03 — BLOCK-hh-radar-fix30: north happy hours
+
+v2.3, the fourth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=north), with this zone's empty-deals pass done
+before shipping, and a new rule for dated or stale sources.
+
+- **Germantown & North: 16 leads, 14 added, 2 not added.** 13 of the 14 are in North. Nelson's Green Brier
+  Distillery (1414 Clinton St, Marathon Village) is placed in Gulch & Midtown (Nashville Yards & North Gulch) by
+  its own point.
+  - Not added, by reason: 2 no happy hour found (Geist, Monday Night Preservation Co.). No duplicates, no
+    guide-only rejections, no closed venues and no map seam warnings. The full list is
+    `data-src/refresh-20261102/not-added-north.md`.
+  - Already listed in North from the East run, not counted as duplicates: Folk, Turkey and The Wolf Icehouse,
+    Cherries and Plane Jane.
+  - North before → after (All): 18 venues (14 inKind, 4 not) / 22 windows → 31 venues (14 inKind, 17 not) / 39
+    windows.
+- **Empty-deals pass (brief steps 11–13), before shipping.** Linked menus read on the Mac fill Sedona Taphouse
+  (its 3.17.26 happy-hour PDF: one Mon–Fri 3–6:30 list; the day-by-day column beside it is weekly specials, not
+  happy hour), Butchertown Hall (Sun–Fri 4–6 food list), Henrietta Red (its 2026-10-02 beverage book, $2 oysters
+  and $10 cocktails) and The Goat (its happy-hour PDF, with food prices). Waldo's all-day Tuesday and Sunday now
+  carry the same deals as its daily 3–6, which a 2026-confirmed guide also lists. Still "Deals not posted": Tailor
+  (a guide-only entry that names no prices) and Plane Jane ×3 (re-checked; the venue posts times only).
+- **Dated or stale sources (brief step 14, new).** A window from a week-specific post, or whose deals come only
+  from a pre-2026 venue menu, is low confidence ("Verify before you go"), with a note naming the week or the
+  menu's date. Applied to Noble's Kitchen & Beer Hall (East): its 8 windows, still posted for the week of
+  Nov 3–9, are now low (`venues-v2-04-north-corr.json`). Lyra was already low with its Spring 2025 menu named.
+  New North windows under the rule: Germantown Pub ×2 and Streetcar Taps (week-specific).
+- **Spot check:** 10/10 (seed 30, 10 random new windows: days, times and two prices each, plus the confidence rule).
+- Totals: 236 → 250 venues (159 inKind, 91 not), 264 → 282 windows. Non-inKind happy hours with no deals: 8 → 9
+  (Tailor is the new one).
+
 ## 2026-11-03 — BLOCK-hh-radar-fix29: east happy hours
 
 v2.2, the third zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=east), plus a correction for happy hours that

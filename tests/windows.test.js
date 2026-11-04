@@ -2200,7 +2200,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.2';") && html.includes("venues.json?v=2.2") && html.includes('logic.js?v=2.2'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.3';") && html.includes("venues.json?v=2.3") && html.includes('logic.js?v=2.3'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----

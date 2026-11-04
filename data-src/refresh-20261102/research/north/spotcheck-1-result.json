@@ -1,0 +1,11 @@
+{"score": "10/10", "seed": 30, "checker": "fresh Sonnet subagent, WebSearch/WebFetch, 2026-11-03", "results": [
+{"name":"Waldo's Chicken & Beer (Germantown)","window_index":1,"pass":true,"note":"Official site and Nashville Guru (confirmed 10/27/26) both list all day Tue and Sun; 2-4-1 drafts and $5 Waldo-Ritas match."},
+{"name":"Sonny's Patio Pub & Refuge","window_index":0,"pass":true,"note":"Guru Mon-Fri 3-6; $6 Sonny's Selects, $5 good mood food match; low correct."},
+{"name":"Barrel Proof","window_index":0,"pass":true,"note":"Menu page every day 4-6; $7 mini frozen margaritas, $7 scotch highballs match."},
+{"name":"Waldo's Chicken & Beer (Germantown)","window_index":0,"pass":true,"note":"3-6pm; Tue and Sun are all day in the other window."},
+{"name":"Sonny's Patio Pub & Refuge","window_index":1,"pass":true,"note":"Sat-Sun 10-2 per Guru; $6 mimosas, $6 Bloody Marys match."},
+{"name":"Germantown Pub","window_index":1,"pass":true,"note":"Week-specific (Nov 3-9); Fri 2-6, half off wells and select drafts; low as required."},
+{"name":"Henrietta Red","window_index":0,"pass":true,"note":"Menu page Tue-Sun 5-6; PDF not readable by WebFetch, prices checked against the executor's PDF reading."},
+{"name":"Von Elrod's Beer Hall & Kitchen","window_index":1,"pass":true,"note":"$10 Big Stein Thursday 4pm-close."},
+{"name":"Nelson's Green Brier Distillery","window_index":0,"pass":true,"note":"Mon-Fri 3-5; $7 Old Fashioned, $10 shot and a beer match."},
+{"name":"Von Elrod's Beer Hall & Kitchen","window_index":0,"pass":true,"note":"Wed-Fri 3-6; $5 steins, $5 select food match."}]}

@@ -1,0 +1,382 @@
+[
+ {
+  "id": "nv-waldos-chicken-and-beer-germantown-1120",
+  "name": "Waldo's Chicken & Beer (Germantown)",
+  "address": "1120 4th Ave North",
+  "official_site": "https://waldoschicken.com/germantown",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "TUE",
+   "SUN"
+  ],
+  "start": "11:00",
+  "end": "close",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "2-4-1 draft beer",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$5 Waldo-Ritas",
+    "price": 5
+   }
+  ],
+  "confidence": "high",
+  "notes": "All day: from the 11:00 opening.",
+  "sources": [
+   "https://waldoschicken.com/germantown",
+   "https://nashvilleguru.com/businesses/waldos-chicken-and-beer"
+  ]
+ },
+ {
+  "id": "nv-sonnys-patio-pub-and-refuge-1322",
+  "name": "Sonny's Patio Pub & Refuge",
+  "address": "1322 6th Ave N",
+  "official_site": "https://www.sonnysnashville.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$6 Sonny's Selects",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "$5 draft beer",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "$4 wines by the glass",
+    "price": 4
+   },
+   {
+    "type": "food",
+    "desc": "$5 good mood food",
+    "price": 5
+   }
+  ],
+  "confidence": "low",
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+  "sources": [
+   "https://nashvilleguru.com/businesses/sonnys"
+  ]
+ },
+ {
+  "id": "nv-barrel-proof-1010",
+  "name": "Barrel Proof",
+  "address": "1010 4th Ave N",
+  "official_site": "https://www.barrelproofnash.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$7 mini frozen margaritas",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 daiquiris",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 old fashioneds",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 scotch highballs",
+    "price": 7
+   }
+  ],
+  "confidence": "med",
+  "notes": null,
+  "sources": [
+   "https://www.barrelproofnash.com/menu"
+  ]
+ },
+ {
+  "id": "nv-waldos-chicken-and-beer-germantown-1120",
+  "name": "Waldo's Chicken & Beer (Germantown)",
+  "address": "1120 4th Ave North",
+  "official_site": "https://waldoschicken.com/germantown",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "2-4-1 draft beer",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$5 Waldo-Ritas",
+    "price": 5
+   }
+  ],
+  "confidence": "high",
+  "notes": "3pm-6pm; all day on Tuesday and Sunday.",
+  "sources": [
+   "https://waldoschicken.com/germantown"
+  ]
+ },
+ {
+  "id": "nv-sonnys-patio-pub-and-refuge-1322",
+  "name": "Sonny's Patio Pub & Refuge",
+  "address": "1322 6th Ave N",
+  "official_site": "https://www.sonnysnashville.com/",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "SAT",
+   "SUN"
+  ],
+  "start": "10:00",
+  "end": "14:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$6 mimosas",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "$6 spritzes",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "$6 Bloody Marys",
+    "price": 6
+   }
+  ],
+  "confidence": "low",
+  "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+  "sources": [
+   "https://nashvilleguru.com/businesses/sonnys"
+  ]
+ },
+ {
+  "id": "nv-germantown-pub-708",
+  "name": "Germantown Pub",
+  "address": "708 Monroe Street",
+  "official_site": "https://www.thegermantownpub.com/",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "FRI"
+  ],
+  "start": "14:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "Half off well liquor and select draft beers",
+    "price": null
+   }
+  ],
+  "confidence": "low",
+  "notes": "Schedule as posted for the week of Nov 3-9. The BOGO drinks and wing deal do not apply on Friday.",
+  "sources": [
+   "https://www.thegermantownpub.com/nashville-germantown-germantown-pub-happy-hours-specials"
+  ]
+ },
+ {
+  "id": "nv-henrietta-red-1200",
+  "name": "Henrietta Red",
+  "address": "1200 4th Avenue North",
+  "official_site": "http://www.henriettared.com",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "17:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$2 oysters (chef's choice)",
+    "price": 2
+   },
+   {
+    "type": "drink",
+    "desc": "$10 classic cocktails",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$7 cava",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 white, red or rose wine",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 rotating draft",
+    "price": 7
+   }
+  ],
+  "confidence": "high",
+  "notes": "Closed Mondays; the menu says \"every day\" for the days the restaurant is open.",
+  "sources": [
+   "http://www.henriettared.com",
+   "https://www.henriettared.com/menu",
+   "https://henriettared.com/s/HRBeverageBook1002.pdf"
+  ]
+ },
+ {
+  "id": "nv-von-elrods-beer-hall-and-kitchen-1004",
+  "name": "Von Elrod's Beer Hall & Kitchen",
+  "address": "1004 4th Ave N",
+  "official_site": "https://vonelrods.com/",
+  "window_index": 1,
+  "kind": "special",
+  "days": [
+   "THU"
+  ],
+  "start": "16:00",
+  "end": "close",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$10 Big Stein",
+    "price": 10
+   }
+  ],
+  "confidence": "high",
+  "notes": "Big Stein Thursdays, 4pm until close.",
+  "sources": [
+   "https://vonelrods.com/"
+  ]
+ },
+ {
+  "id": "nv-nelsons-green-brier-distillery-1414",
+  "name": "Nelson's Green Brier Distillery",
+  "address": "1414 Clinton St",
+  "official_site": "https://greenbrierdistillery.com",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$7 Old Fashioned",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 Cold Fashioned",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$7 TN Mule",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$10 shot of TN Whiskey and a Beer",
+    "price": 10
+   }
+  ],
+  "confidence": "high",
+  "notes": "Hours are those of the distillery bar. The venue's Visit page says the distillery is closed Nov 9 and 11.",
+  "sources": [
+   "https://www.greenbrierdistillery.com/visit/"
+  ]
+ },
+ {
+  "id": "nv-von-elrods-beer-hall-and-kitchen-1004",
+  "name": "Von Elrod's Beer Hall & Kitchen",
+  "address": "1004 4th Ave N",
+  "official_site": "https://vonelrods.com/",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$5 1/2-liter steins",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "$5 wines by the glass",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "$5 \"Big Ass\" cocktails",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "$5 select food",
+    "price": 5
+   }
+  ],
+  "confidence": "high",
+  "notes": null,
+  "sources": [
+   "https://vonelrods.com/"
+  ]
+ }
+]
