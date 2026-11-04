@@ -8,6 +8,10 @@ new in this run), and either:
   - `window_index` + `set` (fields to replace in that window: deals, notes, research_notes,
     confidence, days, start, end) + optional `sources_add` (appended, duplicates skipped); or
   - `add_window` (a whole new window, in the brief's shape).
+  - `remove` (fix32): take the venue out (a confirmed closure, or the all-day rule leaving a non-inKind venue
+    with no happy hour). Needs `reason` and `url`; printed for the report, and the coverage text's non-inKind
+    count is updated.
+fix32: `kind` is settable (TJ's all-day rule: an everyday menu the venue itself calls "all day" is a `special`).
 Every entry may carry `why` (for the report; never written to the data). The venue's `checked`
 and each touched window's `last_verified` become the date. The result is validated with logic.js
 (v2zone_helper.js validate) and nothing is written on an error. Prints a before/after table.
@@ -18,7 +22,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from merge_v2zone import norm_window, helper  # noqa: E402
 
-SETTABLE = {'deals', 'notes', 'research_notes', 'confidence', 'days', 'start', 'end', 'area'}
+SETTABLE = {'deals', 'notes', 'research_notes', 'confidence', 'days', 'start', 'end', 'area', 'kind'}
+import re  # noqa: E402
 
 
 def label(w):
@@ -39,6 +44,12 @@ def main():
         if len(hits) != 1:
             sys.exit('correction %r matches %d venues' % (c.get('id') or c.get('name'), len(hits)))
         v = hits[0]
+        if c.get('remove'):
+            if not (c.get('reason') and c.get('url')):
+                sys.exit('remove %s needs reason and url' % v['id'])
+            data['venues'].remove(v)
+            rows.append((v['id'], v['name'], '-', 'REMOVED', c['reason'], 0, c.get('why', '') + ' ' + c['url']))
+            continue
         if 'add_window' in c:
             w = dict(c['add_window'], last_verified=date)
             v['windows'].append(norm_window(w))
@@ -50,7 +61,7 @@ def main():
             if bad:
                 sys.exit('not settable: %s' % bad)
             w.update(c.get('set', {}))
-            have = {s['url'] for s in w.get('sources', [])}
+            have = {s['url'] if isinstance(s, dict) else s for s in w.get('sources', [])}  # inKind sources are plain URLs
             for s in c.get('sources_add', []):
                 if s['url'] not in have:
                     w.setdefault('sources', []).append(s)
@@ -60,6 +71,10 @@ def main():
             rows.append((v['id'], v['name'], c['window_index'], '%d deals' % before, label(w), len(w.get('deals') or []), c.get('why', '')))
         v['checked'] = date
     data['generated'] = date
+    cov = data.get('coverage')
+    if isinstance(cov, dict):
+        n_nv = sum(1 for v in data['venues'] if not v['inkind'])
+        cov['text'] = re.sub(r'v2: \d+ non-inKind venues', 'v2: %d non-inKind venues' % n_nv, cov['text'])
     tmp = out + '.tmp'
     json.dump(data, open(tmp, 'w'), indent=1, ensure_ascii=False)
     res = helper('validate', {'path': tmp})
@@ -68,7 +83,7 @@ def main():
         sys.exit('validate failed, nothing written:\n  ' + '\n  '.join(res['errors'][:40]))
     os.replace(tmp, out)
     for r in rows:
-        print('%s | %s | w%s | before %s | %s | after %d deals | %s' % r)
+        print('%s | %s | w%s | before %s | %s | after %s deals | %s' % r)
     print('lint warnings: %d' % len(res['warnings']))
 
 

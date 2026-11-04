@@ -1,0 +1,490 @@
+{
+ "added": [
+  {
+   "lead": "answer.",
+   "name": "answer.",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park/The Nations",
+   "address": "132 46th Avenue North",
+   "zip": "37209",
+   "official_site": "https://www.answerrestaurant.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.answerrestaurant.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:15",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.answerrestaurant.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Bar top seating only. Deals not posted.",
+     "research_notes": "Venue home page (undated) lists happy hour Mon-Sat 4:15-6:00pm, bar top seating only, and dinner Mon-Sat 4:30-10:00pm. Linked happy hour menu PDF not readable: https://www.answerrestaurant.com/s/HH-2020-n8bf.pdf (redirects to https://static1.squarespace.com/static/582a3172ebbd1af7fed292c6/t/67c773f0400c4068c678e307/1741124593876/HH+2020.pdf; file is titled 'HH Menu 2020 to Print', created 2020-09-01, last modified 2025-03-04, so it may be a pre-2026 menu). No 2026-confirmed guide entry found. Closure search found nothing for 2026."
+    }
+   ]
+  },
+  {
+   "lead": "Avo",
+   "name": "AVO",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park/The Nations",
+   "address": "4 City Blvd #104",
+   "zip": "37209",
+   "official_site": "https://www.eatavo.com/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "11:30",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:30",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:30",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:30",
+      "20:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:30",
+      "20:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:30",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.eatavo.com/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.eatavo.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue home page (undated, shows Fall/Winter hours) lists happy hour Tue-Fri 3-6pm; no deals posted on the home page or on https://www.eatavo.com/menu (menu shows only brunch cocktails). Home page lists Tue-Sat 11:30am-8:30pm and Sun 11:30am-8pm, Mon closed; its footer shows different hours (Tue-Sat 11-9, Sun 11-8). StyleBlueprint guide is undated so it does not fill deals. Closure search found no closure report; a May 2026 event listing shows it operating."
+    }
+   ]
+  },
+  {
+   "lead": "Fat Bottom Brewing",
+   "name": "Fat Bottom Brewing",
+   "city": "Nashville",
+   "neighborhood": "The Nations",
+   "address": "800 44th Ave N",
+   "zip": "37209",
+   "official_site": "https://fatbottombrewing.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "19:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://fatbottombrewing.com/",
+   "windows": [
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "15:00",
+     "end": "close",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4 drafts",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://fatbottombrewing.com/taproom",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/fat-bottom-brewing",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-15"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Day-long Monday special with no time posted: from the 3:00pm opening to close.",
+     "research_notes": "Taproom page Specials section lists 'Monday: $4 drafts' with no time; the page does not use the term 'happy hour'. Nashville Guru business page agrees (confirmed 10/15/26)."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "19:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4 select beers during trivia",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://fatbottombrewing.com/taproom",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/fat-bottom-brewing",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-15"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Thursday trivia at 7pm; end time 9:00pm per Nashville Guru, not posted on the venue page.",
+     "research_notes": "Taproom page: 'Thursday: Trivia at 7 PM, with $4 select beers during trivia' (no end time). Nashville Guru business page gives 7:00-9:00pm, $4 drafts (confirmed 10/15/26). Used the venue wording for the deal and Guru for the end time."
+    },
+    {
+     "days": [
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "21:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Select apps $8",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Music City Light pitchers $8",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://fatbottombrewing.com/taproom",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/fat-bottom-brewing",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-15"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Fat Bottom Fridays, 4-9pm.",
+     "research_notes": "Taproom page: 'Fat Bottom Fridays 4-9 PM, select apps for $8 and Music City Light pitchers for $8'. Nashville Guru agrees (confirmed 10/15/26)."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "18:30",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$15 light beer pitchers",
+       "price": 15
+      },
+      {
+       "type": "drink",
+       "desc": "$15 Bravazzi pitchers",
+       "price": 15
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://fatbottombrewing.com/taproom",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Survey Slam at 6:30pm.",
+     "research_notes": "Taproom page Tuesday: Survey Slam at 6:30 PM with $15 light beer pitchers and Bravazzi pitchers."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "10:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 frozen slushies",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://fatbottombrewing.com/taproom",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "No time posted: from the 10:00am Sunday opening to close.",
+     "research_notes": "Taproom page Sunday: $5 frozen slushies, no time listed."
+    }
+   ]
+  },
+  {
+   "lead": "Five Points Pizza",
+   "name": "Five Points Pizza (West Nashville)",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "4100 Charlotte Avenue",
+   "zip": "37209",
+   "official_site": "http://fivepointspizza.com/west-nashville",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): http://fivepointspizza.com/west-nashville",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Any slice + any draft $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Cheese or pepperoni slice + High Life or PBR $5",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "http://fivepointspizza.com/west-nashville",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Weekdays 2-6pm.",
+     "research_notes": "West Nashville page (undated) lists happy hour weekdays 2:00-6:00pm with those two combos. Linked current menu PDF (https://fivepointspizza.com/wp-content/uploads/2026/03/CURRENT-MENU-CAESAR-2026.pdf) was not needed for the deals, which the page states. Closure search found no 2026 closure of this location."
+    }
+   ]
+  }
+ ],
+ "not_added": []
+}

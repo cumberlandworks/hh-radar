@@ -3,6 +3,45 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix31, made lasting in fix32 (2026-11-04)
+- **Versions:** fix32 is v2.5 (P2's previous file was `venues-v2-05-south.json`).
+- **Closure check (S3b, a standing step between S3 and S4):** a live website is not proof a venue is open (fix31:
+  12 South Taproom and Burger Up closed in 2026 with their sites still up).
+  - One Sonnet subagent (WebSearch/WebFetch) runs `BRIEF-closure-check.md`, unchanged, on every venue the run
+    would add (`research/<zone>/closure-todo.json`).
+  - The Google banner is read in the S2 Chrome pass: `BRIEF-hours-chrome.md` step 6 records `listing_status`
+    ("Permanently closed", "Temporarily closed", "Relocated" or "open") for every venue the run would add.
+  - Since fix32 the S2 todo holds every venue the run would add, with `need_hours` marking the ones that need hours.
+    `apply_google_hours.py` prints any non-open status as CLOSURE and takes no hours from it.
+  - **Confirmed closed** = a dated 2026 closure source, or Google "Permanently closed". The venue goes to
+    not_added "closed / moved" with that source, via the zone's `finish_<zone>.py` CLOSED map.
+  - **Unclear** (no closure source, no dated 2026 activity) stays added and is listed in the report.
+- **Closure backfill (fix32, once):** the same check ran on all 111 non-inKind venues from Downtown, Gulch, East,
+  North and South (3 Sonnet agents; then the Chrome banner on every "unclear" one).
+  - Files: `research/closure-backfill/` (batches, `web-results.json`, the Chrome files).
+  - Confirmed closures leave through the zone run's `-corr` file. The report lists each with its source.
+- **All-day rule (TJ, 2026-11-04):** when the venue itself calls an everyday menu "all day" (The GreenHouse Bar's
+  "Happy All Day", Playdate's "$8 all day"), it is recorded as an all-day special (`kind: "special"`), not a happy
+  hour, with a note.
+  - The validator rule stands: a non-inKind venue still needs a happy hour to be listed. So a non-inKind venue
+    whose only "happy hour" is such a menu is not added ("all-day menu, no happy hour"), as The GreenHouse Bar was
+    in fix32.
+  - A venue that posts real happy-hour times that merely start at or before its posted opening keeps its happy
+    hour (Prime + Proper, Tailor). It goes on `refresh-watchlist.md` under "Hours mismatch".
+  - Researchers: a researched "all day" happy hour (brief step 9) is still recorded as researched. The executor
+    applies this rule in the combine step.
+- **Tooling:**
+  - `merge_v2zone.py` `research_warnings()` WARNS (never refuses) on notes that mention "image", "no extractable
+    text" or "no text layer". The executor opens each, records what it shows and rewords the note.
+  - `geocode_v2zone.py` retries a NO HIT with the street's final suffix spelled out (Dr → Drive, Ave → Avenue,
+    Pk → Pike, St → Street, …; a trailing N/S/E/W is kept). Only the last suffix word changes, so "St Clair St"
+    keeps its first "St".
+  - `apply_corrections.py` can set a window's `kind` and `remove` a venue (needs `reason` and `url`). It updates
+    the coverage text's non-inKind count, and it accepts inKind windows' plain-URL sources.
+- **inkind-possible.json has no zone field:** match its `lead` names against the zone's leads file, not a zone
+  string. fix32 first missed Nicky's Coal Fired this way. The merge's street rule caught it as a duplicate of
+  `ik-5323`, as designed.
+
 ## From fix30, made lasting in fix31 (2026-11-04)
 - **Versions:** fix31 is v2.4 (P2's previous file was `venues-v2-04-north-corr.json`, by the `-corr` rule).
   South venues an earlier run already placed in South (M.L. Rose Neighborhood Pub - Melrose) count as already

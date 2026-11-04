@@ -7,7 +7,8 @@ curl from the Mac, 1 request per second, User-Agent hh-radar-build/2.0. Adds to 
 `lat`, `lon` and `geocode` {query, display_name, osm_hood, point_hood, addr_hood, match}. The
 point's hood is logic.js's nearestNeighborhood; the address's hood is the OSM neighbourhood /
 suburb (else the venue's neighborhood text) through hood_zone.js. A zone mismatch, or no hit,
-is printed for the report and must be settled by hand (set `hood`, or `lat`/`lon` from the
+is printed for the report (fix32: after a retry with the street suffix spelled out,
+Dr -> Drive, Ave -> Avenue, Pk -> Pike) and must be settled by hand (set `hood`, or `lat`/`lon` from the
 official site's map link) before merge_v2zone.py runs. Coordinates are never guessed.
 """
 import json, os, re, subprocess, sys, time, urllib.parse
@@ -28,6 +29,25 @@ def nominatim(params):
     return hits[0] if hits else None
 
 
+# fix32: street suffixes spelled out for the retry (Dr -> Drive, Ave -> Avenue, Pk -> Pike, ...).
+SUFFIX = {'dr': 'Drive', 'ave': 'Avenue', 'av': 'Avenue', 'pk': 'Pike', 'pke': 'Pike', 'st': 'Street', 'rd': 'Road',
+          'blvd': 'Boulevard', 'ln': 'Lane', 'ct': 'Court', 'pl': 'Place', 'cir': 'Circle', 'hwy': 'Highway',
+          'pkwy': 'Parkway', 'ter': 'Terrace', 'trl': 'Trail', 'sq': 'Square', 'aly': 'Alley', 'xing': 'Crossing'}
+
+
+def spell_out_suffix(street):
+    """'2159 Green Hills Village Dr' -> '2159 Green Hills Village Drive'; '343 53rd Ave. N' -> '343 53rd Avenue N'.
+    Only the street's last suffix word is spelled out (a trailing N/S/E/W is skipped), so 'St Clair St' keeps
+    its first 'St'. A trailing period is dropped."""
+    w = street.split()
+    i = len(w) - 1
+    if i > 1 and w[i].rstrip('.').upper() in ('N', 'S', 'E', 'W', 'NE', 'NW', 'SE', 'SW'):
+        i -= 1
+    if i > 1 and w[i].rstrip('.').lower() in SUFFIX:
+        w[i] = SUFFIX[w[i].rstrip('.').lower()]
+    return ' '.join(w)
+
+
 def helper(cmd, payload):
     r = subprocess.run(['node', os.path.join(HERE, 'v2zone_helper.js'), cmd], input=json.dumps(payload),
                        capture_output=True, text=True, check=True)
@@ -46,6 +66,13 @@ def main():
         query = street
         if not hit:
             hit = nominatim({'q': '%s, %s, TN %s' % (street, v.get('city') or 'Nashville', v.get('zip', ''))})
+        long_street = spell_out_suffix(street)
+        if not hit and long_street != street:
+            # fix32 (fix31 note): Nominatim misses some abbreviated suffixes ("Green Hills Village Dr"); retry spelled out.
+            query = long_street
+            hit = nominatim({'street': long_street, 'city': v.get('city') or 'Nashville', 'state': 'TN', 'postalcode': v.get('zip', '')})
+            if not hit:
+                hit = nominatim({'q': '%s, %s, TN %s' % (long_street, v.get('city') or 'Nashville', v.get('zip', ''))})
         if not hit:
             v['geocode'] = {'query': query, 'match': 'no hit'}
             report.append((v['name'], v['address'], 'NO HIT'))

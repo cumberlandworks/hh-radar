@@ -1,7 +1,9 @@
 # BRIEF-hours-chrome: read Google-listing hours in TJ's Chrome (hh-radar v2, fix27 D3)
 
 Shared prompt for the S2 hours pass of every zone run (written in fix29 from fix27/fix28). Give it to one Sonnet
-subagent, unchanged, with the zone's `research/<zone>/hours-todo.json` (name + address, cap 30) and today's date.
+subagent, unchanged, with the zone's `research/<zone>/hours-todo.json` (name + address, cap 30) and today's date. Since fix32 the
+todo list holds every venue the run would add (for the closure banner, step 6), and `need_hours` marks the ones
+with no researched hours; read hours only for those.
 
 You drive TJ's real Chrome with the Claude in Chrome tools. Work in a new tab of your own; never touch TJ's
 other tabs, never sign in or out, never accept anything, never click an ad. If a CAPTCHA or a sign-in wall
@@ -21,12 +23,18 @@ For each venue in the todo list:
    left out, and `listing_note` says it's closed.
 5. Ignore "Holiday hours" / "hours might differ" banners, and copy the normal weekly hours. Separate rows such as
    "Happy hours" or "Kitchen" go in `listing_note`, not in `hours`.
+6. **Closure banner (fix32).** Read the listing's status line and record it in `listing_status`: "Permanently
+   closed", "Temporarily closed", "Relocated" (with the new address it gives, in `listing_note`) or "open" (no such
+   banner). This is the closure check's Google step (`BRIEF-closure-check.md`), so read it for every venue in the
+   list, even one that shows no hours. Don't copy hours from a closed listing: `hours` is `null` for "Permanently
+   closed" and "Relocated".
 
 Return JSON only, one object keyed by the venue name exactly as given:
 ```json
 {
   "<name>": {
     "hours": {"MON": [["11:00", "22:00"]], "FRI": [["11:00", "02:00"]]},
+    "listing_status": "open",
     "listing_note": "<optional: listing name/address differences, extra rows, days not readable>"
   }
 }

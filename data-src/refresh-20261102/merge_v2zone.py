@@ -18,6 +18,8 @@ geocode_v2zone.py (and the D3 hours pass) have filled lat/lon. It:
 fix29: a new venue whose point falls outside its zone's map polygon is a WARNING, not a failure: it is
 printed and listed in the not-added file's "map seam" section, so it can be settled (a MAP_SEAM_EXCEPTIONS
 line in tests/windows.test.js, or a corrected point) before the tests run.
+fix32: notes mentioning "image" or "no extractable text" are printed as WARNINGs (research_warnings), not
+refused: the executor opens each and records what it shows.
 A venue whose own address puts it in another core zone is still added, in that zone, and listed
 in the not-added file's "placed elsewhere" section; one in an outer suburb is not added.
 """
@@ -77,6 +79,27 @@ def research_problems(research):
     return probs
 
 
+# fix32 (fix31 note 3): an image menu ("image", "no extractable text") is a WARNING, not a refusal: the executor
+# opens each one (download it and read it, or the Chrome agent) and records what it shows. Harmless wording also
+# matches, which is why it only warns.
+IMAGE_MENU = re.compile(r"\bimages?\b|\bno extractable text\b|\bno text layer\b", re.I)
+
+
+def research_warnings(research):
+    """Notes that mention an image or no extractable text: printed for the executor to open, never fatal."""
+    warns = []
+    for c in research.get('added', []):
+        name = c.get('name') or c.get('lead')
+        texts = [('notes', c.get('notes')), ('hours_notes', c.get('hours_notes'))]
+        for i, w in enumerate(c.get('windows', [])):
+            texts += [('windows[%d].notes' % i, w.get('notes')), ('windows[%d].research_notes' % i, w.get('research_notes'))]
+        for where, t in texts:
+            m = t and IMAGE_MENU.search(t)
+            if m:
+                warns.append('%s: %s mentions "%s": open it and record what it shows' % (name, where, m.group(0)))
+    return warns
+
+
 def helper(cmd, payload):
     r = subprocess.run(['node', os.path.join(HERE, 'v2zone_helper.js'), cmd], input=json.dumps(payload),
                        capture_output=True, text=True)
@@ -104,6 +127,9 @@ def main():
     probs = research_problems(research)
     if probs:
         sys.exit('merge refused (fix31 checks):\n  ' + '\n  '.join(probs))
+    warns = research_warnings(research)
+    for w_ in warns:
+        print('WARNING image menu: ' + w_, file=sys.stderr)
 
     cov = data.get('coverage')
     if not isinstance(cov, dict):
@@ -206,7 +232,8 @@ def main():
     print(json.dumps({'out': out, 'added': len(added), 'not_added': len(not_added),
                       'not_added_by_reason': {r: len(v) for r, v in by_reason.items()},
                       'placed_elsewhere': elsewhere, 'map_seam_warnings': [x[1] for x in seam], 'venues': len(data['venues']), 'inkind': n_ik, 'non_inkind': n_nv,
-                      'windows': sum(len(v['windows']) for v in data['venues']), 'lint_warnings': len(res['warnings'])}))
+                      'windows': sum(len(v['windows']) for v in data['venues']), 'lint_warnings': len(res['warnings']),
+                      'image_menu_warnings': len(warns)}))
 
 
 if __name__ == '__main__':

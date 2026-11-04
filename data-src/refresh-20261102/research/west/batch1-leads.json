@@ -1,0 +1,158 @@
+[
+ {
+  "hood_guess": "Sylvan Park",
+  "zone": "west",
+  "name": "answer.",
+  "neighborhood_text": "Sylvan Park/The Nations",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.answerrestaurant.com/"
+ },
+ {
+  "hood_guess": "Sylvan Park",
+  "zone": "west",
+  "name": "Avo",
+  "neighborhood_text": "Sylvan Park/The Nations",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.eatavo.com/"
+ },
+ {
+  "hood_guess": "The Nations",
+  "zone": "west",
+  "name": "Fat Bottom Brewing",
+  "neighborhood_text": "The Nations",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/saturday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/sunday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/sunday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-15"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-15"
+   }
+  ],
+  "site": "https://fatbottombrewing.com/"
+ },
+ {
+  "hood_guess": "Sylvan Park",
+  "zone": "west",
+  "name": "Five Points Pizza",
+  "neighborhood_text": "Sylvan Park",
+  "address": "4100 Charlotte Ave",
+  "guides": [
+   {
+    "url": "https://nashtoday.6amcity.com/happy-hour-guide-nashville-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/friday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/monday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/thursday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/tuesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvillego.com/happy-hours/wednesday",
+    "confirmed": null
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/friday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/monday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/thursday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/tuesday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://nashvilleguru.com/best-nashville-happy-hours-and-specials/wednesday",
+    "confirmed": "2026-10-21"
+   },
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "http://fivepointspizza.com/west-nashville"
+ }
+]

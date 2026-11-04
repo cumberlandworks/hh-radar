@@ -2,7 +2,8 @@
 
 Started 2026-11-04 in fix31 (BLOCK-hh-radar-fix31, from the fix30 notes). The monthly refresh checks these
 windows FIRST: each comes from a week-specific post or a pre-2026 menu (brief step 14), so it is
-`confidence: "low"` and goes stale on its own. Each zone run appends its new ones (none from South, fix31).
+`confidence: "low"` and goes stale on its own. Each zone run appends its new ones (none from South, fix31; West, fix32: answer.'s 2020 menu, plus the new
+"Hours mismatch" section).
 When a refresh re-checks one, update its row (or remove it if the source is no longer dated) and say so in the
 CHANGELOG.
 
@@ -33,6 +34,25 @@ Posted week: Noble's and Germantown Pub, Nov 3–9, 2026; Streetcar, dated days 
 
 Menu date: Lyra, the Spring 2025 happy-hour PDF (`Happy-Hour-Spring-2025.pdf`), still linked from its site
 (re-checked 2026-11-03).
+
+## Pre-2026 menus (fix32, West)
+
+| Venue | Zone | id | Window # | Days / times | Dated by |
+|---|---|---|---|---|---|
+| answer. | west | nv-answer-132 | 0 | MON,TUE,WED,THU,FRI,SAT 16:15–18:00 | Deals from the venue's "HH Menu 2020 to Print" PDF (modified 2025-03-04), still linked from its site |
+
+## Hours mismatch (fix32, TJ 2026-11-04)
+
+A happy hour that starts before the venue's posted opening, or that runs from the opening to close every open day.
+These keep their happy hours (they post real happy-hour times; TJ's all-day rule applies only where the venue
+itself calls an everyday menu "all day"). Re-check the opening time and the happy-hour times together.
+
+| Venue | Zone | id | Window # | Happy hour | Posted hours |
+|---|---|---|---|---|---|
+| Prime + Proper | gulch | nv-prime-proper-1000 | 0 | daily 16:00–close (Nashville Guru, confirmed 2026-10-27) | Sun–Thu 17:00–22:00, Fri–Sat 16:30–23:00: the happy hour covers every open hour |
+| Tailor | north | nv-tailor-620 | 0 | THU–SUN 16:30–close (Nashville Guru, confirmed 2026-10-21) | THU–SUN 16:30–22:00: the happy hour covers every open hour |
+| answer. | west | nv-answer-132 | 0 | MON–SAT 16:15–18:00, bar top | MON–SAT 16:30–22:00 (dinner hours) |
+| Miel Restaurant | west | nv-miel-restaurant-343 | 0 | TUE–FRI 16:30–18:00 | TUE–THU 17:30–21:00, FRI–SAT 17:30–22:00 |
 
 ## Near misses (not low, but worth a look)
 

@@ -1,0 +1,48 @@
+[
+ {
+  "hood_guess": "Belle Meade",
+  "zone": "west",
+  "name": "Sam’s Place",
+  "neighborhood_text": "Belle Meade",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.samsplace.net/belle-meade-promos/"
+ },
+ {
+  "hood_guess": "Belle Meade",
+  "zone": "west",
+  "name": "Sperry’s",
+  "neighborhood_text": "Belle Meade",
+  "address": "5107 Harding Pike",
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.theinfatuation.com/nashville/guides/best-happy-hours-nashville",
+    "confirmed": null
+   }
+  ],
+  "site": "http://www.sperrys.com"
+ },
+ {
+  "hood_guess": "Belle Meade",
+  "zone": "west",
+  "name": "Sportsman’s Grille",
+  "neighborhood_text": "Belle Meade",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://styleblueprint.com/everyday/best-happy-hours/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://sportsmansgrilletn.com/"
+ }
+]

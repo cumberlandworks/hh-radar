@@ -1,0 +1,298 @@
+[
+ {
+  "name": "Butchertown Hall",
+  "address": "1416 4th Avenue North",
+  "zip": "37208",
+  "official_site": "https://www.butchertownhall.com/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Cherries",
+  "address": "839 Dickerson Pike",
+  "zip": "37207",
+  "official_site": "https://cherriesnashville.com",
+  "zone": "north",
+  "hood": "Dickerson Pike"
+ },
+ {
+  "name": "Folk",
+  "address": "823 Meridian St",
+  "zip": "37207",
+  "official_site": "https://www.goodasfolk.com",
+  "zone": "north",
+  "hood": "Dickerson Pike"
+ },
+ {
+  "name": "Germantown Pub",
+  "address": "708 Monroe Street",
+  "zip": "37208",
+  "official_site": "https://www.thegermantownpub.com/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Henrietta Red",
+  "address": "1200 4th Avenue North",
+  "zip": "37208",
+  "official_site": "http://www.henriettared.com",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Neighbors (Germantown)",
+  "address": "313 Jefferson Street",
+  "zip": "37208",
+  "official_site": "https://neighborsnashville.com/german-town/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Plane Jane",
+  "address": "1315 Dickerson Pike",
+  "zip": "37207",
+  "official_site": "https://www.planejanebar.com/",
+  "zone": "north",
+  "hood": "Dickerson Pike"
+ },
+ {
+  "name": "Sedona Taphouse",
+  "address": "1120 3rd Avenue North",
+  "zip": "37208",
+  "official_site": "https://sedonataphouse.com/locations/nashville-tn/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Sidecar Bar",
+  "address": "1318 6th Ave N",
+  "zip": "37208",
+  "official_site": "https://sidecarbarnash.com",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Sonny's Patio Pub & Refuge",
+  "address": "1322 6th Ave N",
+  "zip": "37208",
+  "official_site": "https://www.sonnysnashville.com/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Streetcar Taps and Garden (Germantown)",
+  "address": "1325 3rd Ave N",
+  "zip": "37208",
+  "official_site": "http://germantown.streetcartaps.com/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Tailor",
+  "address": "620 Taylor Street",
+  "zip": "37208",
+  "official_site": "http://www.tailornashville.com",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "The Goat (Germantown)",
+  "address": "1220 2nd Avenue North",
+  "zip": "37208",
+  "official_site": "https://www.lcgoat.com/locations/germantown/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Turkey and The Wolf Icehouse",
+  "address": "800 Meridian Street",
+  "zip": "37207",
+  "official_site": "http://www.turkeyandthewolf.com/",
+  "zone": "north",
+  "hood": "Dickerson Pike"
+ },
+ {
+  "name": "Von Elrod's Beer Hall & Kitchen",
+  "address": "1004 4th Ave N",
+  "zip": "37219",
+  "official_site": "https://vonelrods.com/",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Waldo's Chicken & Beer (Germantown)",
+  "address": "1120 4th Ave North",
+  "zip": "37208",
+  "official_site": "https://waldoschicken.com/germantown",
+  "zone": "north",
+  "hood": "Germantown"
+ },
+ {
+  "name": "Bastion",
+  "address": "434 Houston St",
+  "zip": "37203",
+  "official_site": "http://www.bastionnashville.com",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "Bottle Cap",
+  "address": "2403 12th Avenue South",
+  "zip": "37204",
+  "official_site": "https://bottlecapnashville.com/",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "Char",
+  "address": "3988 Hillsboro Pike",
+  "zip": "37215",
+  "official_site": "https://nashville.charrestaurant.com/",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "Cilantro Mexican Grill",
+  "address": "2330 8th Ave S",
+  "zip": "37204",
+  "official_site": "https://www.cilantronashville.com/",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "Dos Santos",
+  "address": "475 Gray Street",
+  "zip": "37203",
+  "official_site": "http://dossantostacos.com",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "Doughbird",
+  "address": "4031 Hillsboro Pike",
+  "zip": "37215",
+  "official_site": "https://www.eatdoughbird.com/locations/nashville-tn/",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "Embers Ski Lodge",
+  "address": "2410 12th Avenue South",
+  "zip": "37204",
+  "official_site": "https://embersskilodge.com/",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "Emmy Squared Pizza",
+  "address": "3821 Green Hills Village Dr",
+  "zip": "37215",
+  "official_site": "https://emmysquaredpizza.com/news-item/green-hills/",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "Gordo's Taqueria",
+  "address": "515B Merritt Ave",
+  "zip": "37203",
+  "official_site": "http://www.gordosnashville.com/",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "Hearts",
+  "address": "2701 12th Ave South",
+  "zip": "37204",
+  "official_site": "https://heartsnashville.com",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "M.L. Rose Neighborhood Pub - Melrose",
+  "address": "2535 8th Ave S",
+  "zip": "37204",
+  "official_site": "https://mlrose.com/locations/melrose",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "Melrose Billiard Parlor",
+  "address": "2600 8th Ave S #109",
+  "zip": "37204",
+  "official_site": "https://www.dirtymelrose.com/",
+  "zone": "south",
+  "hood": "Berry Hill"
+ },
+ {
+  "name": "Never Never",
+  "address": "413 Houston Street",
+  "zip": "37203",
+  "official_site": "http://nevernevernashville.com/",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "North Italia",
+  "address": "2159 Green Hills Village Dr",
+  "zip": "37215",
+  "official_site": "https://www.northitalia.com/locations/nashville-tn/",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "Postino 12 South",
+  "address": "2317 12th Ave South",
+  "zip": "37204",
+  "official_site": "https://www.postino.com/locations/postino-12-south",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "address": "625 Hamilton Ave",
+  "zip": "37203",
+  "official_site": "https://www.mercadobtown.com/ramones",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "Santo",
+  "address": "3998 Hillsboro Pike",
+  "zip": "37215",
+  "official_site": "https://www.santonashville.com/",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "The GreenHouse Bar",
+  "address": "2211 Bandywood Dr",
+  "zip": "37215",
+  "official_site": "https://www.greenhousenash.com",
+  "zone": "south",
+  "hood": "Green Hills"
+ },
+ {
+  "name": "WeHo Provisions Co",
+  "address": "601 Merritt Ave",
+  "zip": "37203",
+  "official_site": "https://wehoprovisionsco.com",
+  "zone": "south",
+  "hood": "Wedgewood-Houston"
+ },
+ {
+  "name": "bartaco",
+  "address": "2526 12th Avenue South",
+  "zip": "37204",
+  "official_site": "https://bartaco.com/location/nashville-tn/",
+  "zone": "south",
+  "hood": "12 South"
+ },
+ {
+  "name": "etc.",
+  "address": "3790 Bedford Ave",
+  "zip": "37215",
+  "official_site": "https://etc.restaurant/",
+  "zone": "south",
+  "hood": "Green Hills"
+ }
+]

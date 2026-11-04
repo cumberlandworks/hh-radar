@@ -1,0 +1,96 @@
+{
+ "answer.": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Searched closed/closing 2026 and fetched the official site. No closure news, and WSMV's June 2026 closure list doesn't name it. The site has no 2026 content (footer says 2017). A MapQuest 'Closed' tag has no date and is only a hint."
+ },
+ "AVO": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.eatavo.com/",
+    "date": "2026-11-12",
+    "quote": "Lil AVO plant-based pop-up dinner, Nov 12 reservation link"
+   }
+  ],
+  "note": "The official site, fetched today, lists the 4 City Blvd #104 address and upcoming Lil AVO dinners starting 2026-11-12. The year is inferred from the reservation link. No closure news. A single undated HappyCow comment says it 'moved down the street', which is unverified."
+ },
+ "Fat Bottom Brewing": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.beeradvocate.com/beer/profile/29685/",
+    "date": "2026-05-23",
+    "quote": "Beer ratings dated 05-23-2026"
+   },
+   {
+    "url": "https://www.opentable.com.mx/r/fat-bottom-brewing-co-nashville-2",
+    "date": "2026-04-05",
+    "quote": "Diner review dated April 5, 2026"
+   }
+  ],
+  "note": "No closure news found, and the official site has no closure notice. The 2026 activity is a diner review and beer ratings, which is indirect and not recent (latest May 2026). MapQuest shows 'Closed', probably just current hours."
+ },
+ "Five Points Pizza (West Nashville)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. The 2026 WSMV story about Sir Pizza at 5418 Charlotte concerns a different restaurant. The latest activity found is a Yelp review from 2025-12-05, so nothing dated 2026 for this location."
+ },
+ "Lions Share Tavern": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/lions-share-tavern-nashville",
+    "date": "2026-09-13",
+    "quote": "restaurant reply dated September 13, 2026; diner visit August 28, 2026"
+   },
+   {
+    "url": "https://www.visitmusiccity.com/media/press-release/2026/lions-share-tavern-unveils-next-chapter-storied-sylvan-park-corner",
+    "date": "2026-04-21",
+    "quote": "Lions Share Tavern now open under its new direction"
+   }
+  ],
+  "note": "Opened April 2026 in the former McCabe Pub space at 4410 Murphy Rd. Dated reviews and replies run through mid-September 2026. No closure news."
+ },
+ "Lola Spanish Restaurant and Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. The official site has no dated content. OpenTable pages are undated in the results. A MapQuest 'Closed' tag has no date and is only a hint."
+ },
+ "Maggie's Place": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/?p=183526",
+    "date": "2026-04-06",
+    "quote": "happy hours last confirmed on 04/06/26"
+   }
+  ],
+  "note": "Opened 2025-12-04 in the former Field House Tavern space. Nashville Guru last confirmed it 2026-04-06. No closure news. The closed Harding House Brewing at 904 51st Ave N is a different business."
+ },
+ "Miel Restaurant": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news, and it is not on WSMV's June 2026 closure list. Listings are undated. MapQuest and Trip.com 'Closed' tags are probably just hours status. No dated 2026 activity found."
+ },
+ "Nicky's Coal Fired": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. Listings are undated and 'Closed now' labels look like hours status. No dated 2026 activity found."
+ },
+ "Otto's Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. Offline says Otto's stopped being an Offline partner in October 2025, which is not a closure. Listings are undated and no dated 2026 activity was found."
+ },
+ "PennePazze": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. Nashville Guru lists it without a closed flag, at 3820 Charlotte versus the given 3826. The 2026 items found concern other PennePazze locations. No dated 2026 activity for this address."
+ },
+ "Sportsman's Grille": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news for 5405 Harding Pike. The official site lists the Harding Pike location and says open 7 days a week, but the footer is 2021 and nothing is dated 2026. Nashville Guru's 'permanently closed' entry is the Hillsboro Village location (1601 21st Ave S), not this one."
+ }
+}

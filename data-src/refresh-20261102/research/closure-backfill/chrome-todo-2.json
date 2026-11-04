@@ -1,0 +1,157 @@
+[
+ {
+  "name": "STK Nashville",
+  "address": "700 12th Ave S, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Sadie's",
+  "address": "1200 Villa Place, Nashville, TN 37212",
+  "need_hours": false
+ },
+ {
+  "name": "Silo",
+  "address": "920 Division Street, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Sunda New Asian",
+  "address": "592 12th Ave S, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "The Gumbo Bros",
+  "address": "505 12th Avenue South, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "The Slider House",
+  "address": "1907 Division Street, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Twenty First",
+  "address": "1602 21st Avenue South, Nashville, TN 37212",
+  "need_hours": false
+ },
+ {
+  "name": "Butchertown Hall",
+  "address": "1416 4th Avenue North, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Folk",
+  "address": "823 Meridian St, Nashville, TN 37207",
+  "need_hours": false
+ },
+ {
+  "name": "Germantown Pub",
+  "address": "708 Monroe Street, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Henrietta Red",
+  "address": "1200 4th Avenue North, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Neighbors (Germantown)",
+  "address": "313 Jefferson Street, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Plane Jane",
+  "address": "1315 Dickerson Pike, Nashville, TN 37207",
+  "need_hours": false
+ },
+ {
+  "name": "Sidecar Bar",
+  "address": "1318 6th Ave N, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Sonny's Patio Pub & Refuge",
+  "address": "1322 6th Ave N, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Streetcar Taps and Garden (Germantown)",
+  "address": "1325 3rd Ave N, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Waldo's Chicken & Beer (Germantown)",
+  "address": "1120 4th Ave North, Nashville, TN 37208",
+  "need_hours": false
+ },
+ {
+  "name": "Bastion",
+  "address": "434 Houston St, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Bottle Cap",
+  "address": "2403 12th Avenue South, Nashville, TN 37204",
+  "need_hours": false
+ },
+ {
+  "name": "Dos Santos",
+  "address": "475 Gray Street, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Doughbird",
+  "address": "4031 Hillsboro Pike, Nashville, TN 37215",
+  "need_hours": false
+ },
+ {
+  "name": "Embers Ski Lodge",
+  "address": "2410 12th Avenue South, Nashville, TN 37204",
+  "need_hours": false
+ },
+ {
+  "name": "Emmy Squared Pizza",
+  "address": "3821 Green Hills Village Dr, Nashville, TN 37215",
+  "need_hours": false
+ },
+ {
+  "name": "Hearts",
+  "address": "2701 12th Ave South, Nashville, TN 37204",
+  "need_hours": false
+ },
+ {
+  "name": "M.L. Rose Neighborhood Pub - Melrose",
+  "address": "2535 8th Ave S, Nashville, TN 37204",
+  "need_hours": false
+ },
+ {
+  "name": "Melrose Billiard Parlor",
+  "address": "2600 8th Ave S #109, Nashville, TN 37204",
+  "need_hours": false
+ },
+ {
+  "name": "Never Never",
+  "address": "413 Houston Street, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Ramone's Oyster Bar & Citrus Club",
+  "address": "625 Hamilton Ave, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Santo",
+  "address": "3998 Hillsboro Pike, Nashville, TN 37215",
+  "need_hours": false
+ },
+ {
+  "name": "The GreenHouse Bar",
+  "address": "2211 Bandywood Dr, Nashville, TN 37215",
+  "need_hours": false
+ },
+ {
+  "name": "WeHo Provisions Co",
+  "address": "601 Merritt Ave, Nashville, TN 37203",
+  "need_hours": false
+ }
+]

@@ -1,0 +1,415 @@
+{
+ "added": [
+  {
+   "lead": "Lions Share Tavern",
+   "name": "Lions Share Tavern",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "4410 Murphy Road",
+   "zip": "37209",
+   "official_site": "https://www.lionssharetavern.com",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.lionssharetavern.com",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$2 oysters",
+       "price": 2
+      },
+      {
+       "type": "food",
+       "desc": "Half-price fish and chips",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$8 wine pours",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.lionssharetavern.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.lionssharetavern.com/menus",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar opens at 4 pm; dining room opens at 5 pm.",
+     "research_notes": "Venue homepage (2026 copyright) lists Tue-Sat 4-6pm with these deals; the menus page confirms the same days and times. The menus page links a happy-hour PDF: PDF not readable: https://www.lionssharetavern.com/menus (happy-hour.pdf link; the guessed path /happy-hour.pdf returned 404). A June 17, 2026 press release (visitmusiccity.com) described a different daily 4-5:30pm 'Tiny 'Tinis' bar happy hour ($8 minis, wine, spritz, $6 Wiseacre Tiny Bomb); the venue's own current site shows Tue-Sat 4-6 and closed Sun/Mon, so the venue's site was used. Closure search for 2026 found no closure; OpenTable shows a venue reply dated 2026-09-13."
+    }
+   ]
+  },
+  {
+   "lead": "Lola",
+   "name": "Lola Spanish Restaurant and Bar",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "4401 Murphy Rd",
+   "zip": "37209",
+   "official_site": "https://www.lolanashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "21:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "21:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.lolanashville.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 My Best Friend Ginger (non-alcoholic)",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Paloma (non-alcoholic)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$5 NA beer (rotating)",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$8 Ghia (sparkling aperitif)",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Gin and Tonic (traditional or savory)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Old Fashioned",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Margarita",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Cosmo",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Estrella Beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$10 Wines",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "$8 Papas Bravas",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "$3 Veggie Gildas",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.lolanashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.lolanashville.com/menu-",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Called Social Hour on the venue's menu: '4-6pm everyday that we're open.'",
+     "research_notes": "Homepage lists happy hour daily 4-6 PM; the /menu- page lists the Social Hour deals (undated page, no PDF link). Hours are the homepage's dinner hours, daily 4-9, Fri/Sat to 9:30; a third-party listing shows different hours, the venue's were used. No closure found in a 2026 closure search."
+    }
+   ]
+  },
+  {
+   "lead": "Maggie's Place",
+   "name": "Maggie's Place",
+   "city": "Nashville",
+   "neighborhood": "The Nations",
+   "address": "905 51st Avenue North",
+   "zip": "37209",
+   "official_site": "https://www.maggiesplacenashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.maggiesplacenashville.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 16oz Montucky",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 select wines",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$20 32oz margarita pitchers",
+       "price": 20
+      },
+      {
+       "type": "drink",
+       "desc": "$36 60oz margarita pitchers",
+       "price": 36
+      },
+      {
+       "type": "food",
+       "desc": "5 mini tacos for $8",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/maggies-place",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-23"
+      },
+      {
+       "url": "https://www.maggiesplacenashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-23. Check with the venue.",
+     "research_notes": "Venue homepage and /specials page show no happy hour days, times or prices (only 2-for-1 tacos all day on Taco Tuesday; specials appear to be in images with no readable text; Instagram/Facebook not checked). Used Nashville Guru business page (lists each day, last confirmed 10/23/26) for the Mon, Wed, Thu, Fri 3-7pm window. Hours from the venue's homepage. No closure found in a 2026 closure search (opened Dec 2025)."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "22:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "2-for-1 tacos all day (Taco Tuesday)",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.maggiesplacenashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day Taco Tuesday: from the 11:00 opening.",
+     "research_notes": "Venue homepage lists 2-for-1 tacos all day on Taco Tuesday. Nashville Guru lists Tuesday with no time window (BOGO tacos, $5 select drafts, $18 32oz and $34 60oz margarita pitchers), so Tuesday is not given a happy_hour window."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Hathorne",
+   "reason": "closed / moved",
+   "url": "https://nashvilleguru.com/businesses/hathorne"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "passed": 9,
+ "of": 10,
+ "results": [
+  {
+   "venue": "Fat Bottom Brewing",
+   "window_index": 0,
+   "pass": true,
+   "checked": "Taproom page: Monday $4 Drafts with no time posted. Monday hours are 3-9 PM, so 15:00 to close matches the all-day rule. Confidence med is right for an undated page.",
+   "miss": null
+  },
+  {
+   "venue": "Fat Bottom Brewing",
+   "window_index": 4,
+   "pass": true,
+   "checked": "Taproom page: Sunday $5 Frozen Slushies with no time posted. Sunday opens at 10 AM, so 10:00 to close matches. Confidence med.",
+   "miss": null
+  },
+  {
+   "venue": "Fat Bottom Brewing",
+   "window_index": 2,
+   "pass": true,
+   "checked": "Taproom page: Fat Bottom Fridays, 4-9 PM, select apps $8, Music City Light pitchers $8. Days, times, both prices and med confidence match.",
+   "miss": null
+  },
+  {
+   "venue": "Lola Spanish Restaurant and Bar",
+   "window_index": 0,
+   "pass": true,
+   "checked": "Menu page: Social Hour 4-6 PM every day the restaurant is open, and it is open 7 days. Checked $6 ginger, $8 Papas Bravas, $3 Veggie Gildas, $10 Margarita and $5 Estrella. All match. Confidence med.",
+   "miss": null
+  },
+  {
+   "venue": "Five Points Pizza (West Nashville)",
+   "window_index": 0,
+   "pass": true,
+   "checked": "West Nashville page: weekdays 2-6 PM. Any slice + draft $8 and cheese/pepperoni slice + High Life/PBR $5 both match. Confidence med.",
+   "miss": null
+  },
+  {
+   "venue": "Otto's Bar",
+   "window_index": 2,
+   "pass": true,
+   "checked": "Site: Martini Monday, $7 teeny martinis, all day. Monday opens at 4 PM, so 16:00 to close matches. Confidence med.",
+   "miss": null
+  },
+  {
+   "venue": "answer.",
+   "window_index": 0,
+   "pass": true,
+   "checked": "Site: Mon-Sat 4:15-6:00 PM, bar top only, with a link to the HH-2020 PDF. The PDF could not be read by fetch, so the prices come from the executor's reading: everything $6 across snacks, draft beer, cocktail and wine. The deals come only from the 2020 menu, so confidence low is right under step 14.",
+   "miss": null
+  },
+  {
+   "venue": "Maggie's Place",
+   "window_index": 1,
+   "pass": false,
+   "checked": "Homepage: Tuesday 2-for-1 tacos all day. Tuesday opens at 11 AM. The days, the 11:00 start and the deal match, but the 22:00 end is questionable. Monday-Thursday hours end at 10 PM, so 22:00 is consistent with posted hours. The /specials page contains only images and no Taco Tuesday text or dates. Confidence is the problem.",
+   "miss": "Confidence is high, but the source is an undated venue page with no 2026 date. Brief confidence rule: high = the venue's own page or menu this year; med = a venue page with no date. It should be med."
+  },
+  {
+   "venue": "Otto's Bar",
+   "window_index": 3,
+   "pass": true,
+   "checked": "Site: Taco Tuesday, 2 for $5 tacos (dine-in only) plus half-price margaritas. Tuesday opens at 4 PM, so 16:00 to close matches. Confidence med.",
+   "miss": null
+  },
+  {
+   "venue": "AVO",
+   "window_index": 0,
+   "pass": true,
+   "checked": "Site: happy hour Tuesday-Friday, 3-6 PM, with no deals or prices posted. The empty deals list is confirmed. Confidence med.",
+   "miss": null
+  }
+ ]
+}

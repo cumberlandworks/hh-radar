@@ -1,0 +1,76 @@
+{
+ "added": [
+  {
+   "lead": "Sportsman’s Grille",
+   "name": "Sportsman's Grille",
+   "city": "Nashville",
+   "neighborhood": "Belle Meade",
+   "address": "5405 Harding Pike",
+   "zip": "37205",
+   "official_site": "https://sportsmansgrilletn.com/",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half-off well and liquor drinks",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off house wines",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://sportsmansgrilletn.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Posted on the venue's homepage as 'Happy Hour (2-6 PM daily)'; the page does not tie it to a specific location (Nashville or Brentwood).",
+     "research_notes": "Homepage text: 'Happy Hour (2-6 PM daily)', 'Half-off: Well & Liquor, Draft Beer, and House Wines'. Page undated; no prices posted. The homepage lists two locations (Nashville 5405 Harding Pike 37205; Brentwood 1640 Westgate Circle) and the hours list could not be mapped to days or to a location, so hours left empty. The venue's Nashville menu PDF (https://sportsmansgrilletn.com/wp-content/uploads/2025/05/SG-MENU-5-25.pdf) was opened but WebFetch returned only binary data. PDF not readable: https://sportsmansgrilletn.com/wp-content/uploads/2025/05/SG-MENU-5-25.pdf. The locations page and menu page show no happy hour text. StyleBlueprint (https://styleblueprint.com/everyday/best-happy-hours/) agrees (daily 2-6, half-off well/liquor, draft beer, house wines); it has no per-venue confirmed date. Searched 'Sportsman's Grille Nashville closed 2026': no 2026 closure found (the Hillsboro Village location closed years ago; MapQuest 'Closed' tag on Brentwood is unverified, and the venue site is live)."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Sam’s Place",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  },
+  {
+   "lead": "Sperry’s",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://styleblueprint.com/everyday/best-happy-hours/"
+  }
+ ]
+}

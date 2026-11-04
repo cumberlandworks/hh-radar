@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-11-04 — BLOCK-hh-radar-fix32: west happy hours
+
+v2.5, the sixth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=west), with the fix31 notes made lasting.
+
+- **West: 15 leads, 11 added, 4 not added.** 10 are in West (Sylvan Park, The Nations, Belle Meade). AVO (4 City
+  Blvd at oneC1TY) is placed in Gulch & Midtown (West End) by its point, with a map-seam exception like E+ROSE's.
+  - Not added, by reason: 2 guide not confirmed in 2026 (Sam's Place, Sperry's); 1 closed / moved (Hathorne);
+    1 duplicate (Nicky's Coal Fired = inKind Nicky's Coal Fired Pizza, `ik-5323`, same street, similar name).
+  - West before → after (All): 10 venues (10 inKind) / 18 windows → 20 venues (10 inKind, 10 not) / 39 windows.
+- **Linked menus, all opened:** answer.'s happy-hour PDF (a 2020 menu, so low, and on the watchlist), Lions Share's
+  happy-hour PDF (rendered; its prices added), Sportsman's May 2025 menu (ties the daily 2-6 to Belle Meade),
+  Maggie's happy-hour graphic (now a venue source, med) and Nicky's menu graphics (no happy-hour section).
+- **Closure check, now a standing step (`BRIEF-closure-check.md`; the Chrome pass reads Google's closure banner):**
+  none of West's 12 would-be adds was closed (4 open, 8 unclear on the web; all 12 open on Google).
+- **Closure backfill:** all 111 non-inKind venues in Downtown, Gulch, East, North and South were checked (3 Sonnet
+  agents, then the Google banner for the 62 unclear ones). **None confirmed closed**: 49 open on dated 2026
+  evidence; the other 62 show no Google closure banner but have no dated 2026 activity (listed in the fix32
+  report). Ramone's has no Google listing of its own (it is inside Mercado).
+- **All-day rule (TJ):** an everyday menu the venue itself calls "all day" is an all-day special, not a happy hour.
+  Playdate's "$8 all day" windows are now specials (its 2:30-7 BOGO happy hour stays). The GreenHouse Bar
+  ("Happy All Day") has no real happy hour left, so it is removed: "all-day menu, no happy hour" (Google still
+  lists it open). Prime + Proper and Tailor keep their happy hours and go on the watchlist as hours mismatches.
+  These are in `venues-v2-06-west-corr.json`.
+- **Empty-deals pass:** AVO stays "Deals not posted" (venue times only; no social or 2026-confirmed guide deals).
+- **Spot check:** 9/10 (seed 32). The miss, Maggie's Taco Tuesday at high from an undated page, was fixed to med.
+- **Tooling:** the merge warns on "image" / "no extractable text" notes; the geocoder retries with the street
+  suffix spelled out; `apply_corrections.py` can set `kind` and remove a venue; the Chrome brief records the
+  closure banner; `refresh-watchlist.md` gains an "Hours mismatch" section.
+- Before → after (All): 270 venues (159 inKind, 111 not) / 309 windows → **280 venues (159 inKind, 121 not) / 329
+  windows**.
+
 ## 2026-11-04 — BLOCK-hh-radar-fix31: south happy hours
 
 v2.4, the fifth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=south), with the fix30 notes made lasting.

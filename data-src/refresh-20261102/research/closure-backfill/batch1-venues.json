@@ -1,0 +1,298 @@
+[
+ {
+  "name": "Black Rabbit",
+  "address": "218 3rd Avenue North",
+  "zip": "37201",
+  "official_site": "https://www.blackrabbittn.com/",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Boqueria Fifth + Broadway",
+  "address": "5005 Broadway Place",
+  "zip": "37203",
+  "official_site": "https://boqueriarestaurant.com/tapas-bar-nashville-fifth-and-broadway/",
+  "zone": "downtown",
+  "hood": "Lower Broadway"
+ },
+ {
+  "name": "Etch",
+  "address": "303 Demonbreun St.",
+  "zip": "37201",
+  "official_site": "https://etchrestaurant.com/",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Fogg Street Lawn Club",
+  "address": "648 Fogg Street",
+  "zip": "37203",
+  "official_site": "http://www.foggstreet.com/",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Friends in Low Places Bar & Honky-Tonk",
+  "address": "411 Broadway",
+  "zip": "37203",
+  "official_site": "https://friendsbarnashville.com/menu/lunch-dinner",
+  "zone": "downtown",
+  "hood": "Lower Broadway"
+ },
+ {
+  "name": "Hard Rock Cafe Nashville",
+  "address": "100 Broadway",
+  "zip": "37201",
+  "official_site": "https://cafe.hardrock.com/nashville/",
+  "zone": "downtown",
+  "hood": "Lower Broadway"
+ },
+ {
+  "name": "Harper's Steakhouse",
+  "address": "2 Lea Avenue",
+  "zip": "37210",
+  "official_site": "https://www.harpersnashville.com",
+  "zone": "downtown",
+  "hood": "Rutledge Hill & Rolling Mill Hill"
+ },
+ {
+  "name": "JWB Grill",
+  "address": "425 Rep. John Lewis Way S",
+  "zip": "37203",
+  "official_site": "https://www.margaritavilleresorts.com/margaritaville-hotel-nashville/experiences/destination-guide/event-calendar/happy-hour-at-jwb-grill",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Junie's",
+  "address": "311 3rd Avenue South",
+  "zip": "37201",
+  "official_site": "http://www.juniesnashville.com/",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Lona",
+  "address": "200 4th Ave N",
+  "zip": "37219",
+  "official_site": "https://www.lonanashville.com/",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Modern Love",
+  "address": "401 Union Street",
+  "zip": "37219",
+  "official_site": "https://fairlanehotel.com/happy-hour",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Pinewood Social",
+  "address": "33 Peabody Street",
+  "zip": "37210",
+  "official_site": "https://pinewoodsocial.com",
+  "zone": "downtown",
+  "hood": "Rutledge Hill & Rolling Mill Hill"
+ },
+ {
+  "name": "Puckett's Restaurant",
+  "address": "500 Church St.",
+  "zip": "37219",
+  "official_site": "https://www.puckettsrestaurant.com/nashville",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Rare Bird Rooftop Bar",
+  "address": "200 Fourth Avenue N.",
+  "zip": "37219",
+  "official_site": "https://www.noelle-nashville.com/dine-drink/rare-bird-rooftop-bar/",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Standard Proof Whiskey Co.",
+  "address": "219 Rep John Lewis Way N",
+  "zip": "37219",
+  "official_site": "https://www.standardproofwhiskey.com/nashville",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Stateside Kitchen",
+  "address": "210 4th Avenue North",
+  "zip": "37219",
+  "official_site": "https://www.dreamhotels.com/nashville/dining-nightlife/stateside-kitchen",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "Tennessee Brew Works",
+  "address": "809 Ewing Ave",
+  "zip": "37203",
+  "official_site": "https://www.tnbrew.com/",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "The Ariston",
+  "address": "508 Church Street",
+  "zip": "37219",
+  "official_site": "http://thearistonbar.com",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "The Hitchcock",
+  "address": "530 Church Street",
+  "zip": "37219",
+  "official_site": "http://www.hitchcocknashville.com/",
+  "zone": "downtown",
+  "hood": "Downtown & Printers Alley"
+ },
+ {
+  "name": "The Listening Room Café",
+  "address": "618 4th Avenue South",
+  "zip": "37210",
+  "official_site": "https://listeningroomcafe.com/nashville",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Tin Roof Broadway",
+  "address": "316 Broadway",
+  "zip": "37201",
+  "official_site": "https://www.tinroofbroadway.com",
+  "zone": "downtown",
+  "hood": "Lower Broadway"
+ },
+ {
+  "name": "Yolan",
+  "address": "403 4th Avenue South",
+  "zip": "37201",
+  "official_site": "https://www.yolannashville.com/",
+  "zone": "downtown",
+  "hood": "SoBro"
+ },
+ {
+  "name": "Beyond The Edge",
+  "address": "112 S 11th St",
+  "zip": "37206",
+  "official_site": "https://www.beyondtheedge.net/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Cafe Roze",
+  "address": "1115 Porter Road",
+  "zip": "37206",
+  "official_site": "https://www.caferoze.com",
+  "zone": "east",
+  "hood": "Gallatin Avenue & Eastwood"
+ },
+ {
+  "name": "Crazy Gnome Brewery",
+  "address": "1005 W. Kirkland Ave",
+  "zip": "37216",
+  "official_site": "http://www.cgbrewing.com/",
+  "zone": "east",
+  "hood": "Inglewood & Riverside"
+ },
+ {
+  "name": "Duke's",
+  "address": "1000 Main Street",
+  "zip": "37206",
+  "official_site": "https://www.dukesbarnashville.com/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Game Terminal",
+  "address": "201 Terminal Court",
+  "zip": "37210",
+  "official_site": "https://gameterminal.com/menus/",
+  "zone": "east",
+  "hood": "East Bank & Fesslers"
+ },
+ {
+  "name": "Garage Sale Bar East Nashville",
+  "address": "747 Douglas Ave",
+  "zip": "37207",
+  "official_site": "http://www.garagesalebar.com/",
+  "zone": "east",
+  "hood": "Gallatin Avenue & Eastwood"
+ },
+ {
+  "name": "Lockeland Table",
+  "address": "1520 Woodland St",
+  "zip": "37206",
+  "official_site": "http://lockelandtable.com",
+  "zone": "east",
+  "hood": "Gallatin Avenue & Eastwood"
+ },
+ {
+  "name": "Lyra",
+  "address": "935 W Eastland Ave",
+  "zip": "37216",
+  "official_site": "https://lyranashville.com/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Martha My Dear",
+  "address": "2503 Gallatin Avenue",
+  "zip": "37206",
+  "official_site": "http://www.marthasnashville.com/",
+  "zone": "east",
+  "hood": "Gallatin Avenue & Eastwood"
+ },
+ {
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "address": "974 Main Street",
+  "zip": "37206",
+  "official_site": "https://east.noblesbeerhall.com/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Reunion",
+  "address": "105 South 11th Street",
+  "zip": "37206",
+  "official_site": "https://www.reunionnashville.com/bar",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Smokers Abbey",
+  "address": "604 Gallatin Ave.",
+  "zip": "37206",
+  "official_site": "https://smokersabbey.com/",
+  "zone": "east",
+  "hood": "Gallatin Avenue & Eastwood"
+ },
+ {
+  "name": "The Treehouse",
+  "address": "1011 Clearview Avenue",
+  "zip": "37206",
+  "official_site": "https://treehousenashville.com/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "Up-Down Nashville",
+  "address": "927 Woodland St",
+  "zip": "37206",
+  "official_site": "http://www.updownarcadebar.com/nashville/",
+  "zone": "east",
+  "hood": "Five Points & Main Street"
+ },
+ {
+  "name": "888",
+  "address": "800 Clark Place",
+  "zip": "37203",
+  "official_site": "https://888nashville.com",
+  "zone": "gulch",
+  "hood": "The Gulch"
+ }
+]

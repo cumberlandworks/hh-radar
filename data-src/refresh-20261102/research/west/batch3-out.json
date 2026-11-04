@@ -1,0 +1,598 @@
+{
+ "added": [
+  {
+   "lead": "Miel Restaurant",
+   "name": "Miel Restaurant",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "343 53rd Avenue North",
+   "zip": "37209",
+   "official_site": "https://www.mielrestaurant.com/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "17:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "17:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "17:30",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:30",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.mielrestaurant.com/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:30",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Red & White Wine Selection $8 (ask for current offering)",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "Miel's Old Fashioned $9",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "Rocks Cocktails $7 (Prairie Vodka, Brokers Gin, or Old Forester Bourbon, with soda)",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "Bell's 2 Hearted IPA $6",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "Small plates: rotating menu",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Miel Cheeseburger and oysters $2 each",
+       "price": 2
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.mielrestaurant.com/thebar",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Venue's page is undated. Its home page lists dinner opening at 5:30pm, which is after this 4:30pm start; check with the venue.",
+     "research_notes": "Venue page /thebar lists 'Happy Hour: Tuesday through Friday, 4:30 to 6:00' with the deals as posted. The home page hours (Tue-Thu 5:30-9pm, Fri-Sat 5:30-10pm) disagree with NashvilleGo/Pearl (Tue-Fri 4:30pm). Used the venue's own home page for hours. Searched 'Miel Restaurant Nashville closed 2026': no closure report found."
+    }
+   ]
+  },
+  {
+   "lead": "Nicky's Coal Fired",
+   "name": "Nicky's Coal Fired",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "5026 Centennial Blvd",
+   "zip": "37209",
+   "official_site": "https://nickysnashville.com",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "MON": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "17:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "17:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://nickysnashville.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "17:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$5 and $10 select bites",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 and $10 select drinks",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://nashvilleguru.com/businesses/nickys-coal-fired-coming-soon",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-27"
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-27. Check with the venue.",
+     "research_notes": "The venue's site (nickysnashville.com) claims 'the best happy hour in the Nations' but posts no days, times or deals, and its menu is images. Used the Nashville Guru business page (lists Mon-Fri 5:00-6:00pm, no Sat/Sun; last confirmed 10/27/26). Other guides list different times (e.g. Mon noon-5pm, Tue 4-6pm); only the Guru business page was used. Searched 'Nicky's Coal Fired Nashville closed 2026': no closure report found."
+    }
+   ]
+  },
+  {
+   "lead": "Otto’s",
+   "name": "Otto's Bar",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "4210 Charlotte Ave",
+   "zip": "37209",
+   "official_site": "https://ottosnashville.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "02:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "15:00",
+      "02:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "15:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://ottosnashville.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 teeny martinis",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$5 house wines",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off well spirits",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue home page: 'Mon-Fri 4-6pm and Sun 9-11pm' with these deals. Venue page is undated."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "21:00",
+     "end": "23:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$7 teeny martinis",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$5 house wines",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off well spirits",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue home page lists Sun 9-11pm."
+    },
+    {
+     "days": [
+      "MON"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Martini Monday: $7 teeny martinis, all day",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 4:00 opening.",
+     "research_notes": "Venue home page Weekly Specials."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Taco Tuesday: 2 tacos for $5 (same build, no modifications, dine-in only)",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Half-price margaritas",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 4:00 opening.",
+     "research_notes": "Venue home page Weekly Specials."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Wine Wednesday: $5 house wines, all day",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 4:00 opening.",
+     "research_notes": "Venue home page Weekly Specials."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "16:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Thirsty Thursday: half-price alternators, all day",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://ottosnashville.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 4:00 opening.",
+     "research_notes": "Venue home page Weekly Specials. Searched 'Otto's Bar Nashville closed 2026': no closure report found; only an unrelated end of an Offline app partnership in Oct 2025."
+    }
+   ],
+   "hours_note": "Mon-Thu 4pm-12am, Sun 3-11pm, Fri 4pm and Sat 3pm from the venue site (which says 'late'); the 02:00 Fri/Sat close is from NashvilleGo (https://nashvillego.com/eat-and-drink/bars/ottos-bar), which the search snippet shows as Fri 4pm-2am and Sat 3pm-2am."
+  },
+  {
+   "lead": "PennePazze",
+   "name": "PennePazze",
+   "city": "Nashville",
+   "neighborhood": "Sylvan Park",
+   "address": "3826 Charlotte Ave",
+   "zip": "37209",
+   "official_site": "https://pennepazze.net",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://pennepazze.net/contact-us/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "17:30",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Buy one, get one free on glasses of beer and wine",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Buy one, get one 50% off on bottles of wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://pennepazze.net/weekly-happenings/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue Specials page lists Happy Hour Tue-Sun 2:00-5:30 PM with these deals; the page is undated and gives no address, so it may apply to both locations. Address and hours from https://pennepazze.net/contact-us/ (Nashville: 3826 Charlotte Ave; Nashville Guru lists 3820). Nashville Guru also lists the same 2:00-5:30pm window, matching. Searched 'PennePazze Nashville closed 2026': no closure report found."
+    },
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "15:30",
+     "area": null,
+     "kind": "lunch",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Free soda or coffee with the purchase of your meal",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://pennepazze.net/weekly-happenings/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue Specials page lunch special, Tue-Thu 11:00 AM-3:30 PM."
+    }
+   ]
+  }
+ ],
+ "not_added": []
+}

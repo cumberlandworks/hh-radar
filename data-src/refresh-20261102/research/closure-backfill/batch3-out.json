@@ -1,0 +1,265 @@
+{
+ "Butchertown Hall": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. Its site has no dated 2026 content, only a Resy link prefilled for 2026-10-31. MapQuest shows an undated 'Closed' tag, which is an aggregator hint only."
+ },
+ "Cherries": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.atly.com/united-states/tennessee/nashville/talbot-s-corner/best-bar-cool",
+    "date": "2026-05",
+    "quote": "Happy hour runs every day until 8 PM"
+   }
+  ],
+  "note": "The search snippet describes the Atly guide as May 2026; I did not open the page. No closure news found. Its own site has no dated content, and one MapQuest snapshot shows 'Closed', which is an aggregator hint. The evidence is weak."
+ },
+ "Folk": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, but no dated 2026 activity either. The site has no dates and the searches found nothing 2026-specific."
+ },
+ "Germantown Pub": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. A Pearl listing was reported to show hours 'as of July 2026'; I did not open it. The site's NBA and holiday-party banners are undated."
+ },
+ "Henrietta Red": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. A Pearl listing was reported to cite Opinionated About Dining 2026, but I did not open it. The latest dated item on its site is a Dec 2025 booking-link parameter."
+ },
+ "Neighbors (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No 2026 closure or activity found. MapQuest shows an undated 'Closed' tag (aggregator hint only); NashvilleGo lists it as operating, undated. The site fetch returned no content."
+ },
+ "Plane Jane": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer reads (c) 2023 and has no dated 2026 content."
+ },
+ "Sedona Taphouse": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://sedonataphouse.com/locations/nashville-tn/",
+    "date": "2026-03-17",
+    "quote": "HappyHourMenu_Nashville_3.17.26.pdf"
+   }
+  ],
+  "note": "The Nashville page shows spring/summer menus dated 3/16/26 and a 2026 copyright. No closure news found. The evidence is the menu file names only."
+ },
+ "Sidecar Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2024 and shows no dated 2026 content. Only image-ID timestamps point to mid-2026, which is not reliable."
+ },
+ "Sonny's Patio Pub & Refuge": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2023 and has no dated 2026 content. It was not searched individually beyond the Germantown closure queries."
+ },
+ "Streetcar Taps and Garden (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, and Nashville Guru shows no 'permanently closed' tag. There is no dated 2026 activity on its site, and the 'Happenings' events page was not fetched."
+ },
+ "Tailor": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "http://www.tailornashville.com",
+    "date": "2026",
+    "quote": "EATER, THE 38 BEST RESTAURANTS IN NASHVILLE, 2026"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a 2026 Eater list link, and a 2026 listing shows dinner hours Thursday through Sunday. No closure news found. A Chefs Dish item about a supper-club concept in the back room is undated and not a closure."
+ },
+ "The Goat (Germantown)": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.lcgoat.com/locations/germantown/",
+    "date": "2026-11-09",
+    "quote": "FRIENDSGIVING THEMED TRIVIA"
+   }
+  ],
+  "note": "The location page lists trivia events on Nov 9 and Dec 14, 2026, and a Fall 2026 menu PDF. No closure news found."
+ },
+ "Turkey and The Wolf Icehouse": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvillelifestyles.com/events/turkey-wolf-icehouse-hosts-patti-fest/",
+    "date": "2026-04-12",
+    "quote": "Patti Fest at the Icehouse on Sunday, April 12"
+   }
+  ],
+  "note": "April 12 falls on a Sunday in 2026, but the page shows no year, so the year is inferred from the weekday. No closure news found. MapQuest shows an undated 'Closed' tag (aggregator hint only). The site returned HTTP 429."
+ },
+ "Von Elrod's Beer Hall & Kitchen": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://vonelrods.com/",
+    "date": "2026-07-04",
+    "quote": "Join us on Saturday, July 4th"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a July 4th promotion that matches 2026 (a Saturday). No closure news found."
+ },
+ "Waldo's Chicken & Beer (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is the site's copyright footer, which is not evidence of activity. A StyleBlueprint closure article mentions Waldo's only as a neighbor of a closed shop."
+ },
+ "Bastion": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The Michelin star dates to Nov 2025 (WSMV, 2025-11-04). The newest dated item on its site is an Oct 2025 image, with no 2026 content."
+ },
+ "Bottle Cap": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2024 and has no dated 2026 content. Only image-ID timestamps point to 2026, which is not reliable."
+ },
+ "Char": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashville.charrestaurant.com/",
+    "date": "2026-05",
+    "quote": "Kids Menu PDF uploaded May 2026"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a kids-menu PDF whose file path is /2026/05. No closure news found. The evidence is weak, since it is only a file path."
+ },
+ "Cilantro Mexican Grill": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.cilantronashville.com/",
+    "date": "2026",
+    "quote": "FIFA WORLD CUP 2026 IS HERE"
+   }
+  ],
+  "note": "The site runs World Cup 2026 drink specials at the 8th Ave location. No closure news found."
+ },
+ "Dos Santos": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is a copyright footer, which is not evidence of activity."
+ },
+ "Doughbird": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is a copyright footer. The latest uploads are dated 2025."
+ },
+ "Embers Ski Lodge": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. MapQuest shows an undated 'Closed' tag (aggregator hint only). The official site failed with an expired certificate, so no dated activity could be checked."
+ },
+ "Emmy Squared Pizza": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The Green Hills page lists hours with no closure notice and no dated 2026 content."
+ },
+ "Gordo's Taqueria": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "http://www.gordosnashville.com/",
+    "date": "2026",
+    "quote": "Nashville Scene Best of Nashville 2026 badge"
+   }
+  ],
+  "note": "The site carries a Best of Nashville 2026 'Best Burrito' badge. No closure news found. The evidence is weak, since it is only a badge."
+ },
+ "Hearts": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found for the 12 South location at 2701 12th Ave S. The site has no dated 2026 content, only Nov 2025 image uploads."
+ },
+ "M.L. Rose Neighborhood Pub - Melrose": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site shows recurring hours and a 'Now Open' notice for another location, with no dated 2026 content."
+ },
+ "Melrose Billiard Parlor": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "A Nashville Scene article about Melrose Billiards closing at the end of September is undated, and 2022 coverage said the Parlor would stay open. A personal photographer page calls it 'the late, great Melrose Billiards', also undated. The site shows a 2023 copyright. I could not establish the timeline or any 2026 activity."
+ },
+ "Never Never": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. Nashville Guru shows no 'permanently closed' tag. The site has no dated 2026 content; its menu link is a 2025 PDF."
+ },
+ "North Italia": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.northitalia.com/locations/nashville-tn/",
+    "date": "2026-10",
+    "quote": "North-Italia-Allergen-Pages-Fall-2026-Final.pdf"
+   }
+  ],
+  "note": "The Green Hills page links Fall 2026 menus, with an Oct 2026 upload path. No closure news found."
+ },
+ "Postino 12 South": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.postino.com/locations/postino-12-south",
+    "date": "2026-10-08",
+    "quote": "P10_TN_Main_10.08.26.pdf"
+   }
+  ],
+  "note": "The page shows menus dated 10.08.26 and a holiday gift-card promotion, and lists the location as open today. No closure news found."
+ },
+ "Ramone's Oyster Bar & Citrus Club": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. It is the rooftop bar at Mercado, and the Mercado page shows only a 2025 reservation-link date with no 2026 content."
+ },
+ "Santo": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, and nothing 2026-specific. The site's only date is a 2024 reservation-link parameter."
+ },
+ "The GreenHouse Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No dated source says it closed. Groupon and MapQuest show an undated 'Closed' tag. Listings put The Food Co. at the same address, 2211 Bandywood Dr, and one health-inspection listing names 'The Food Co. - Greenhouse Bar' there (last inspection May 8, 2025). That suggests a rebrand or shared operation, not a different tenant. The site is live with a Thanksgiving catering banner, brunch Wed-Sun and bar hours. These are undated, so I treated them as weak. No news, dated social posts or 2026 tenant record found, so I left it unclear. The Chrome hours pass should check the Google listing banner."
+ },
+ "WeHo Provisions Co": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site shows only undated fall/winter hours and no 2026 content."
+ },
+ "bartaco": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://bartaco.com/location/nashville-tn/",
+    "date": "2026-10-06",
+    "quote": "2026_10_06 menu PDF"
+   }
+  ],
+  "note": "The page has a 2026 copyright, a menu PDF dated 2026_10_06, and lists the Nashville location as open 11am to late daily. No closure news found."
+ },
+ "etc.": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://etc.restaurant/",
+    "date": "2026-09",
+    "quote": "wine menu images in 2026/09 upload folder"
+   }
+  ],
+  "note": "The site has a 2026 copyright and wine menu images in a 2026/09 upload path. No closure news found. The evidence is weak, since it is only a file path."
+ }
+}

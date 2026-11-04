@@ -1,0 +1,157 @@
+[
+ {
+  "name": "Black Rabbit",
+  "address": "218 3rd Avenue North, Nashville, TN 37201",
+  "need_hours": false
+ },
+ {
+  "name": "Harper's Steakhouse",
+  "address": "2 Lea Avenue, Nashville, TN 37210",
+  "need_hours": false
+ },
+ {
+  "name": "Standard Proof Whiskey Co.",
+  "address": "219 Rep John Lewis Way N, Nashville, TN 37219",
+  "need_hours": false
+ },
+ {
+  "name": "Tennessee Brew Works",
+  "address": "809 Ewing Ave, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "The Ariston",
+  "address": "508 Church Street, Nashville, TN 37219",
+  "need_hours": false
+ },
+ {
+  "name": "The Hitchcock",
+  "address": "530 Church Street, Nashville, TN 37219",
+  "need_hours": false
+ },
+ {
+  "name": "Yolan",
+  "address": "403 4th Avenue South, Nashville, TN 37201",
+  "need_hours": false
+ },
+ {
+  "name": "Beyond The Edge",
+  "address": "112 S 11th St, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Crazy Gnome Brewery",
+  "address": "1005 W. Kirkland Ave, Nashville, TN 37216",
+  "need_hours": false
+ },
+ {
+  "name": "Duke's",
+  "address": "1000 Main Street, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Game Terminal",
+  "address": "201 Terminal Court, Nashville, TN 37210",
+  "need_hours": false
+ },
+ {
+  "name": "Lockeland Table",
+  "address": "1520 Woodland St, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Lyra",
+  "address": "935 W Eastland Ave, Nashville, TN 37216",
+  "need_hours": false
+ },
+ {
+  "name": "Noble's Kitchen & Beer Hall (East)",
+  "address": "974 Main Street, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Smokers Abbey",
+  "address": "604 Gallatin Ave., Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "The Treehouse",
+  "address": "1011 Clearview Avenue, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Up-Down Nashville",
+  "address": "927 Woodland St, Nashville, TN 37206",
+  "need_hours": false
+ },
+ {
+  "name": "Aladdin's Hookah Lounge & Bar",
+  "address": "2206 Elliston Place, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Amerigo",
+  "address": "1920 West End Ave, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Antler Bar at Gathre",
+  "address": "1810 Broadway, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "COA Nashville",
+  "address": "920 Division Street, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Condado Tacos",
+  "address": "418 11th Ave N, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Del Frisco’s Grille",
+  "address": "1201 Demonbreun St, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Giovanni Ristorante",
+  "address": "909 20th Ave S, Nashville, TN 37212",
+  "need_hours": false
+ },
+ {
+  "name": "Halls Catch",
+  "address": "1600 West End Avenue, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Henley",
+  "address": "2023 Broadway, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Hopdoddy Burger Bar",
+  "address": "1805 21st Avenue South, Nashville, TN 37212",
+  "need_hours": false
+ },
+ {
+  "name": "Hops + Crafts",
+  "address": "319 12th Ave S, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Jimmy Kelly's",
+  "address": "217 Louise Avenue, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Otaku Ramen",
+  "address": "1104 Division St, Nashville, TN 37203",
+  "need_hours": false
+ },
+ {
+  "name": "Puesto",
+  "address": "991 Exchange Lane, Nashville, TN 37203",
+  "need_hours": false
+ }
+]

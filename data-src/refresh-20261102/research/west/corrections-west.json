@@ -1,0 +1,29 @@
+[
+ {
+  "id": "ik-14442",
+  "window_index": 1,
+  "set": {
+   "kind": "special",
+   "notes": "All-day special: all drinks $8 all day, as the venue posts it. Thursday opens at 11am.",
+   "research_notes": "fix32 (TJ, 2026-11-04): the venue calls it \"$8 all day\", an everyday menu covering all its open hours, so it is an all-day special, not a happy hour. The 2:30-7 BOGO happy hour stays."
+  },
+  "why": "TJ's all-day rule: the venue's own '$8 all day' menu is an all-day special; the BOGO happy hour stays"
+ },
+ {
+  "id": "ik-14442",
+  "window_index": 2,
+  "set": {
+   "kind": "special",
+   "notes": "All-day special: all drinks $8 all day, as the venue posts it. Fri-Sun open at 9am; $8 cocktails also during Saturday's 4-8pm DJ party.",
+   "research_notes": "fix32 (TJ, 2026-11-04): the venue calls it \"$8 all day\", an everyday menu covering all its open hours, so it is an all-day special, not a happy hour. The 2:30-7 BOGO happy hour stays."
+  },
+  "why": "TJ's all-day rule (Fri-Sun window)"
+ },
+ {
+  "id": "nv-the-greenhouse-bar-2211",
+  "remove": true,
+  "reason": "all-day menu, no happy hour",
+  "url": "https://www.greenhousenash.com/greenhouse-bar",
+  "why": "TJ's all-day rule (2026-11-04): its 'Happy All Day' list is its everyday menu, so it has no real happy hour, and a non-inKind venue needs one. Closure check: no dated closure; Google lists 'Greenhouse Bar' open with no banner, next to The Food Company at the same address; Groupon/MapQuest 'Closed' tags are undated."
+ }
+]

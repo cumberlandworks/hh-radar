@@ -1,0 +1,871 @@
+{
+ "Black Rabbit": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag exists (aggregator hint only), and a Nashville Post item says the building is for sale (undated). The only 2026 sign is an OpenTable review dated 2026-05-07, which is not enough to call it open."
+ },
+ "Boqueria Fifth + Broadway": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.it/r/boqueria-nashville",
+    "date": "2026-06-01",
+    "quote": "diner reviews dated late May and early June 2026"
+   }
+  ],
+  "note": "No closure reports found. OpenTable showed reviews from late May and early June 2026 and live bookings. The evidence is review-based and about five months old."
+ },
+ "Etch": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/etch-nashville",
+    "date": "2026-06-09",
+    "quote": "restaurant responded to a review on 9 June 2026"
+   }
+  ],
+  "note": "No closure reports found. OpenTable shows a restaurant reply dated 2026-06-09 and a March 2026 collaborative dinner listing. This is the downtown 303 Demonbreun location, not the Franklin one."
+ },
+ "Fogg Street Lawn Club": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://songkick.com/concerts/43322284-laszewo-at-fogg-street-lawn-club",
+    "date": "2026-09-18",
+    "quote": "Łaszewo Nashville Tickets, Fogg Street Lawn Club, 18 Sep 2026"
+   }
+  ],
+  "note": "No closure reports found. Songkick lists 2026-2027 shows at the venue, and a NASHtoday piece (undated) calls it a go-to spot with live music most nights."
+ },
+ "Friends in Low Places Bar & Honky-Tonk": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://garthbrooks.com/news/friends-in-low-places-marks-second-anniversary-with-monthlong-march-gladness-celebration",
+    "date": "2026-03-01",
+    "quote": "Marks Second Anniversary With Monthlong March Gladness Celebration"
+   },
+   {
+    "url": "https://ma.to/event/cma-fest-friends-in-low-places-05-june-2026",
+    "date": "2026-06-05",
+    "quote": "CMA Fest Friends in Low Places 05 June 2026"
+   }
+  ],
+  "note": "No closure reports found. The venue's own news item and CMA Fest event listings show 2026 activity at 411 Broadway."
+ },
+ "Hard Rock Cafe Nashville": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.co.uk/hard-rock-cafe-nashville",
+    "date": "2026-09-11",
+    "quote": "restaurant replies dated 11 September 2026 at 100 Broadway"
+   }
+  ],
+  "note": "A renovation-closure article (Sept. 14, three months) turned out to be from 2009, so it does not apply. A Hard Rock closure at 2050 Parkway is Pigeon Forge. No closure found for Nashville."
+ },
+ "Harper's Steakhouse": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found and it is absent from the 2026 closure lists. A MapQuest 'Closed' tag is an aggregator hint. A closure of Harper's Dallas and of Layer Cake downtown is a different venue. Its site had no dated 2026 content, so there is no dated 2026 activity."
+ },
+ "JWB Grill": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/jwb-grill-nashville",
+    "date": "2026-10-19",
+    "quote": "newest reviews are dated October 2026"
+   }
+  ],
+  "note": "No closure reports found. OpenTable is still taking bookings, with a review dated 2026-10-19 and earlier 2026 reviews."
+ },
+ "Junie's": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/?p=189856",
+    "date": "2026-08-18",
+    "quote": "Happy hours last confirmed on 08/18/26"
+   },
+   {
+    "url": "https://www.wsmv.com/video/2026/06/24/junies-restaurant-bringing-fresh-dining-experience-downtown-nashville/",
+    "date": "2026-06-24",
+    "quote": "Junie's restaurant bringing fresh dining experience downtown Nashville"
+   }
+  ],
+  "note": "No closure found. Nashville Guru shows a late-summer 2026 confirmation and WSMV covered it in June 2026."
+ },
+ "Lona": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://engine.com/hotels/nashville-tn/noelle-P0000000000000273770",
+    "date": "2026-07-01",
+    "quote": "July 2026 guest review mentions staff at the Lona restaurant"
+   }
+  ],
+  "note": "No closure report found, and it is not on the WSMV June 2026 closure list. A MapQuest 'Closed' tag is an aggregator hint. Evidence is a July 2026 hotel guest review and the Noelle property page, so it is weak."
+ },
+ "Modern Love": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.travelzoo.com/hotel-booking/hotel/9177/fairlane-hotel/",
+    "date": "2026-03-01",
+    "quote": "guest review from March 2026 praised the food at Modern Love"
+   }
+  ],
+  "note": "No closure reports found for the Fairlane Hotel or Modern Love. Evidence is a March 2026 guest review plus an October 2026 hotel listing, so it is weak and older than I would like."
+ },
+ "Pinewood Social": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.ae/pinewood-social",
+    "date": "2026-06-26",
+    "quote": "2026 events including a June 26 live event and July 4 celebration"
+   }
+  ],
+  "note": "No closure reports found. A MapQuest 'Closed' tag is an aggregator hint. The OpenTable listing shows June 2026 events and reviews."
+ },
+ "Puckett's Restaurant": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://songkick.com/concerts/43336982-kaylyn-sahs-at-pucketts-grocery-nashville",
+    "date": "2026-11-03",
+    "quote": "Kaylyn Sahs Nashville Tickets, Puckett's Grocery - Nashville, 03 Nov 2026"
+   }
+  ],
+  "note": "Sister restaurant Deacon's New South closed in Oct 2026 (a different venue). Reports say Puckett's continues at 500 Church St. A temporary closure in Aug 2025 (ceiling collapse) ended with a reopening."
+ },
+ "Rare Bird Rooftop Bar": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://engine.com/hotels/nashville-tn/noelle-P0000000000000273770",
+    "date": "2026-07-04",
+    "quote": "rooftop was closed July 4 for a private event"
+   }
+  ],
+  "note": "No closure reports found. Guest reviews from June and July 2026 describe using the rooftop bar. The July 4 closure was a one-day private event."
+ },
+ "Standard Proof Whiskey Co.": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint. The venue's site had no dated 2026 content, and I found no other dated 2026 activity."
+ },
+ "Stateside Kitchen": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://engine.com/hotels/nashville/dream-nashville-by-hyatt-P0000000000000940554",
+    "date": "2026-07-01",
+    "quote": "reviews from June and July 2026 mention the food and brunch"
+   }
+  ],
+  "note": "No closure reports found. The Dream Nashville site still lists the restaurant, and June and July 2026 hotel reviews mention it. Evidence is mostly hotel-controlled pages."
+ },
+ "Tennessee Brew Works": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint. The official site shows no dated 2026 events or news, only an image filename dated 2026-07-29. The Toast ordering page may be stale."
+ },
+ "The Ariston": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint, and a CigarFinder profile conflicts with it. I found no dated 2026 activity."
+ },
+ "The Hitchcock": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A Nashville Downtown guide entry is undated, and I found no dated 2026 activity."
+ },
+ "The Listening Room Café": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://ma.to/event/alex-lambert-friends-listening-room-30-jul-2026",
+    "date": "2026-07-30",
+    "quote": "alex lambert friends listening room 30 jul 2026"
+   },
+   {
+    "url": "https://www.hometowncountrymusic.com/?p=49950",
+    "date": "2026-03-03",
+    "quote": "20th Anniversary Show"
+   }
+  ],
+  "note": "No closure reports found. The Roadtrippers 'Closed Now' label is just daily hours. The official site still lists 618 4th Ave S and a '20 Years of TLR' banner."
+ },
+ "Tin Roof Broadway": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://ma.to/event/live-music-at-tin-roof-23-jul-2026",
+    "date": "2026-07-23",
+    "quote": "live music at tin roof 23 jul 2026"
+   }
+  ],
+  "note": "No closure reports found. Multiple event listings run through at least 2026-07-30 at 316 Broadway."
+ },
+ "Yolan": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint, and it also has early January 2026 reviews. A separate Cafe Yolan listing at 401 Korean Veterans Blvd is permanently closed, which is a different address. The only 2026 evidence is that Jan 2026 review."
+ },
+ "Beyond The Edge": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found, and it is not on the March 2026 bar-closure roundups. The newest source was a City Cast guide dated 2025-09-30, so there is no dated 2026 activity."
+ },
+ "Cafe Roze": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com.au/r/cafe-roze-nashville",
+    "date": "2026-07-29",
+    "quote": "diners reviewing a visit on 29 July 2026"
+   }
+  ],
+  "note": "No closure reports found. A Forkgrade health inspection dated 2026-03-27 is another sign of operation. A MapQuest 'Closed' tag is an aggregator hint, probably hours-related."
+ },
+ "Crazy Gnome Brewery": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "The brewery moved from Main Street to 1005 W. Kirkland Ave in 2025, so the listed address is the new location. No closure report found. A Cyanide Cider article says its taproom would fold into the Kirkland site, but the year is not shown. No dated 2026 activity confirmed."
+ },
+ "Duke's": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A Nashville Post sale listing for the building at 1000 Main St is undated. Closures of Duke's in Milwaukee and elsewhere are different venues. The Nashville Guru page showed no status or dates."
+ },
+ "Game Terminal": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint, and the same page has January 2026 reviews. A Kineticist profile is flagged stale (Sept 2025). No dated 2026 activity."
+ },
+ "Garage Sale Bar East Nashville": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/businesses/garage-sale-bar-east-nashville",
+    "date": "2026-06-25",
+    "quote": "happy hour specials last confirmed on 06/25/26"
+   }
+  ],
+  "note": "No closure reports found for 747 Douglas Ave. Golden Pony at 757 Douglas Ave is permanently closed, which is a different business."
+ },
+ "Lockeland Table": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. 'Closed' labels in directory listings are daily-hours artifacts. I found no reliable dated 2026 activity."
+ },
+ "Lyra": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint, probably hours-related. The newest sources are from 2025, and the official site had no dated content."
+ },
+ "Martha My Dear": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/businesses/martha-my-dear",
+    "date": "2026-10-27",
+    "quote": "Happy hours last confirmed on 10/27/26"
+   }
+  ],
+  "note": "No closure reports found. Nearby Gallatin Ave closures (Pelican & Pig, Jane's Hideaway) are different businesses."
+ },
+ "Noble's Kitchen & Beer Hall (East)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A MapQuest 'Closed' tag is an aggregator hint. The Nashville Guru page has no status or confirmation date, and I found no dated 2026 activity."
+ },
+ "Reunion": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://engine.com/hotels/nashville-tn/reunion-hotel-P0000000000001013482",
+    "date": "2026-04-01",
+    "quote": "fun bar downstairs with regular events"
+   },
+   {
+    "url": "https://www.reunionnashville.com/bar",
+    "date": "2026-05-05",
+    "quote": "drink menu file dated 2026-05-05"
+   }
+  ],
+  "note": "No closure reports found. Evidence is weak: an April 2026 hotel review and a bar-site drink menu filename dated 2026-05-05."
+ },
+ "Smokers Abbey": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. A Pelican & Pig closure on Gallatin Ave is a different business. I found no dated 2026 activity, only older cigar-lounge listings."
+ },
+ "The Treehouse": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. Sources are listings and older coverage. The newest dated item is an OpenTable owner response from 2025-09-25, and a directory with early-2026 reviews looked unreliable."
+ },
+ "Up-Down Nashville": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. The newest source was a Kineticist page last updated June 2024, and the hours listed conflict across sources. No dated 2026 activity."
+ },
+ "888": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://888nashville.com",
+    "date": "2026-09-03",
+    "quote": "Dinner & Sushi menu file dated 9/3/26"
+   }
+  ],
+  "note": "No closure reports found. The site links menus dated 2026-08-27 through 2026-09-12. Evidence is menu filenames, not a written post. 404 Kitchen and Sambuca closures in the Gulch are different venues."
+ },
+ "Aladdin's Hookah Lounge & Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure report found. Nashville Guru's Elliston Place pages and directories still list it, but none has a 2026 date. An unrelated Nashville Post caption from spring 2026 does not mention it."
+ },
+ "Alligator Bar": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.wsmv.com/2026/04/09/alligator-bar-opens-nashville-yards-inspired-by-union-stations-gator-history",
+    "date": "2026-04-09",
+    "quote": "The Alligator Bar opens at Nashville Yards"
+   }
+  ],
+  "note": "Opened spring 2026 under the Union Station hotel at 1001 Broadway. A later WSMV video (2026-05-08) also covers it. No closure sign."
+ },
+ "Amerigo": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Searched closed 2026. No closure news, and the 2026 closure roundups do not name it. Only undated directory listings and Nashville Guru West End pages were found."
+ },
+ "Antler Bar at Gathre": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Searches found nothing on the Antler Bar. The Gathre site fetched with no mention of it, no 2026 posts and no closure notice. The hotel may be open, but the bar is unverified."
+ },
+ "Barcelona Wine Bar": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.exploretock.com/barcelona-wine-bar-nashville/",
+    "date": "2026-11-14",
+    "quote": "$65 wine celebration, Saturday Nov 14, 2026"
+   }
+  ],
+  "note": "Tock lists an upcoming 2026 ticketed event, and Pearl cites Star Wine List 2026. MapQuest shows 'Closed' with no date, and Sluurpy asks users to confirm closure. Both are aggregator hints only. No news of closure."
+ },
+ "Brown's Diner": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.songkick.com/concerts/43335106-alex-hall-at-browns-diner",
+    "date": "2026-08-04",
+    "quote": "Alex Hall, Brown's Diner, 04 Aug 2026"
+   }
+  ],
+  "note": "Sold to a new owner after a 47-year run (Nashville Scene, undated), but no closure found. The only 2026 evidence is a Songkick concert listing for Aug 4, 2026. That is a listing rather than confirmation the show happened, so the evidence is weak."
+ },
+ "COA Nashville": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Rooftop at Canopy by Hilton, 920 Division St. No closure found. One guide's happy-hour details were 'confirmed 06/19/26', but I could not tie that to a specific page."
+ },
+ "Commons Club": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/201626/magic-mixers-at-virgin-hotels-nashville",
+    "date": "2026-10-17",
+    "quote": "Magic & Mixers at Commons Club, October 3, 10, 17"
+   }
+  ],
+  "note": "Nashville Guru lists fall 2026 events at Commons Club. The hotel events page lists a Thanksgiving dinner on Nov 27 and weekly live music. No closure sign."
+ },
+ "Condado Tacos": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. MapQuest shows 'Closed' with no date, which is an aggregator hint. The Condado location page for 418 11th Ave N is still live but I found no 2026-dated activity."
+ },
+ "Craig's": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/craigs-nashville",
+    "date": "2026-09-20",
+    "quote": "OpenTable diner review, dined 20 September 2026, 5.0"
+   }
+  ],
+  "note": "OpenTable shows diner reviews dated Apr and Sep 2026. No closure news."
+ },
+ "Del Frisco’s Grille": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No Nashville closure found. The closures I found were other Del Frisco's Grille locations (Palm Beach, Phoenix, DC). Pearl cites a Wine Spectator 2026 mention for the Gulch location, and OpenTable shows hours, but I found no clearly dated 2026 activity."
+ },
+ "Earls Kitchen + Bar": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/193756/a-look-inside-earls-nashville",
+    "date": "2026-04-16",
+    "quote": "officially opened to the public April 16, 2026"
+   }
+  ],
+  "note": "New in 2026 at Nashville Yards, with OpenTable ratings from roughly 280 reviews. No closure sign."
+ },
+ "Giovanni Ristorante": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. MapQuest shows 'Closed' with no date, which is an aggregator hint. OpenTable still takes reservations but I found no dated 2026 activity. An OpenTable fetch timed out."
+ },
+ "Halls Catch": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Opened Oct 2024 at 1600 West End Ave. No closure news, but I found no dated 2026 activity. The Braggin' Rights 2026 date was not set."
+ },
+ "Henley": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. MapQuest shows 'Closed' with an address of 2021 Broadway and no date, which is an aggregator hint. OpenTable pages are undated, and a fetch of the OpenTable page timed out."
+ },
+ "Hopdoddy Burger Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. The official Belcourt location page is live with hours and happy hour but has no 2026 date; its footer says 2023. Nashville Guru does not mark it closed."
+ },
+ "Hops + Crafts": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "A June 2026 closures roundup (Nashville Parent) lists Bar Otaku at 505 12th Ave S in the Gulch but not Hops + Crafts. No closure found and no 2026 activity found."
+ },
+ "Jasper’s": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/jaspers-nashville",
+    "date": "2026-01",
+    "quote": "OpenTable diner complaint about online reservation for party of 10"
+   }
+  ],
+  "note": "An OpenTable review is dated January 2026. No closure news. The evidence is a single customer review from January 2026."
+ },
+ "Jimmy Kelly's": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure found. The newest dated item was a June 2025 review. Listings still show hours and valet, and Sluurpy only has a generic 'confirm closure' prompt."
+ },
+ "Marsh House": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://styleblueprint.com/events/valentines-day-special/",
+    "date": "2026-02-14",
+    "quote": "Valentine's Day special at Marsh House"
+   }
+  ],
+  "note": "A Valentine's Day 2026 event is listed, and Pearl cites a 2026 Wine Spectator award (unconfirmed elsewhere). The evidence is early 2026 and no closure was found."
+ },
+ "Maíz de la Vida": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/maiz-de-la-vida-nashville",
+    "date": "2026-06-21",
+    "quote": "Father's Day event June 21, 2026"
+   }
+  ],
+  "note": "OpenTable lists a Guest Chef Series installment (April 2026), a Paseo block party on May 2, 2026 and a Father's Day event on June 21, 2026. No closure found."
+ },
+ "Nelson's Green Brier Distillery": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.exploretock.com/greenbrierdistillery/event/568097",
+    "date": "2026-09-18",
+    "quote": "Western AF revue, Friday Sep 18, 2026, 1414 Clinton Street"
+   }
+  ],
+  "note": "Tock lists a ticketed event at the distillery for Sep 18, 2026. No closure found."
+ },
+ "Otaku Ramen": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "The East (late 2024) and West (June 2025) Otaku locations closed, but 1104 Division in the Gulch was reported still open. Those reports are not dated 2026. Bar Otaku at 505 12th Ave S is a different, long-closed venue."
+ },
+ "Prime + Proper": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvillelifestyles.com/dining/prime-proper-officially-makes-its-nashville-debut/",
+    "date": "2026-02-23",
+    "quote": "Prime + Proper officially makes its Nashville debut"
+   }
+  ],
+  "note": "New at 1000 Broadway, with an opening release dated Feb 23 and an NCVC 'New in Nashville 2026' listing. I did not see the article date itself, so I inferred 2026. No closure sign."
+ },
+ "Puesto": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "An announcement said it would open at Nashville Yards in summer 2026. One headline says it opened, but I could not open the article or confirm the address. The Nashville Yards news page showed no Puesto item."
+ },
+ "STK Nashville": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure found. Listings (OpenTable, STK site, Tripleseat) are undated or from 2024. I found no clearly dated 2026 activity."
+ },
+ "Sadie's": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news. Mapquest and Trip.com 'Closed' text appears to be a time-of-day status. The newest dated item was an OpenTable reply from Apr 2025, with no 2026 activity found."
+ },
+ "Silo": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "Restaurant at Canopy by Hilton, 920 Division St. No closure found. One guide's happy-hour details were 'confirmed 06/19/26', but I could not tie that to a specific page."
+ },
+ "Sunda New Asian": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure found. OpenTable has about 2,500 reviews and the sundanewasian.com page is live, but I found no clearly dated 2026 item."
+ },
+ "The Finch": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/the-finch-nashville",
+    "date": "2026-06",
+    "quote": "OpenTable reviews June 2026; Easter brunch 5 April 2026"
+   }
+  ],
+  "note": "OpenTable shows diner reviews from June 2026 and an Easter brunch on Apr 5, 2026. No closure found."
+ },
+ "The Gumbo Bros": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "505 12th Ave S is the former Bar Otaku building (Bar Otaku closed in 2020-21). No Gumbo Bros closure found, but OpenTable and Toast pages are undated and I found no 2026 activity."
+ },
+ "The Iberian Pig": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/iberian-pig-nashville",
+    "date": "2026-05-10",
+    "quote": "Mother's Day menu, May 10, 2026, 4:00 to 8:30 PM"
+   }
+  ],
+  "note": "OpenTable lists a Mother's Day 2026 menu at 607 Overton St. No closure found."
+ },
+ "The Slider House": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure found. MapQuest shows Open with a Yelp review dated 11/11/2025 (not 2026). Sluurpy has a generic 'confirm closure' prompt. Not named in the 2026 closure roundups (WSMV, Vanderbilt Hustler)."
+ },
+ "Thistle & Rye": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/200673/october-writers-round-at-thistle-and-rye",
+    "date": "2026-10-15",
+    "quote": "October Writers' Round at Thistle and Rye"
+   }
+  ],
+  "note": "Nashville Guru lists an Oct 15 writers' round and a Rosé and Rye menu through Oct 31. It also lists a Dec 17 Holiday Writers' Round and a Dec 31 New Year's Eve party. I treated these listings as 2026, but their year is inferred."
+ },
+ "Twenty First": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure found. OpenTable, The Infatuation and Pearl list it with a 4.6 rating, but none of the pages I saw was dated 2026."
+ },
+ "Zaytinya Nashville": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.opentable.com/r/zaytinya-nashville",
+    "date": "2026-08",
+    "quote": "Recent reviews dated through August 2026"
+   }
+  ],
+  "note": "Opened Feb 12 at W Nashville, 300 12th Ave S. OpenTable shows reviews through Aug 2026. The Feb 12 opening is stated without a year. No closure found."
+ },
+ "Barrel Proof": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvilleguru.com/businesses/barrel-proof",
+    "date": "2026-03-05",
+    "quote": "Health inspection Mar 5, 2026, score 90"
+   }
+  ],
+  "note": "A food-safety listing shows a health inspection on Mar 5, 2026. This is a weak signal, since it is a food-safety listing rather than a news or venue post. No closure news."
+ },
+ "Butchertown Hall": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. Its site has no dated 2026 content, only a Resy link prefilled for 2026-10-31. MapQuest shows an undated 'Closed' tag, which is an aggregator hint only."
+ },
+ "Cherries": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.atly.com/united-states/tennessee/nashville/talbot-s-corner/best-bar-cool",
+    "date": "2026-05",
+    "quote": "Happy hour runs every day until 8 PM"
+   }
+  ],
+  "note": "The search snippet describes the Atly guide as May 2026; I did not open the page. No closure news found. Its own site has no dated content, and one MapQuest snapshot shows 'Closed', which is an aggregator hint. The evidence is weak."
+ },
+ "Folk": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, but no dated 2026 activity either. The site has no dates and the searches found nothing 2026-specific."
+ },
+ "Germantown Pub": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. A Pearl listing was reported to show hours 'as of July 2026'; I did not open it. The site's NBA and holiday-party banners are undated."
+ },
+ "Henrietta Red": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. A Pearl listing was reported to cite Opinionated About Dining 2026, but I did not open it. The latest dated item on its site is a Dec 2025 booking-link parameter."
+ },
+ "Neighbors (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No 2026 closure or activity found. MapQuest shows an undated 'Closed' tag (aggregator hint only); NashvilleGo lists it as operating, undated. The site fetch returned no content."
+ },
+ "Plane Jane": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer reads (c) 2023 and has no dated 2026 content."
+ },
+ "Sedona Taphouse": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://sedonataphouse.com/locations/nashville-tn/",
+    "date": "2026-03-17",
+    "quote": "HappyHourMenu_Nashville_3.17.26.pdf"
+   }
+  ],
+  "note": "The Nashville page shows spring/summer menus dated 3/16/26 and a 2026 copyright. No closure news found. The evidence is the menu file names only."
+ },
+ "Sidecar Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2024 and shows no dated 2026 content. Only image-ID timestamps point to mid-2026, which is not reliable."
+ },
+ "Sonny's Patio Pub & Refuge": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2023 and has no dated 2026 content. It was not searched individually beyond the Germantown closure queries."
+ },
+ "Streetcar Taps and Garden (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, and Nashville Guru shows no 'permanently closed' tag. There is no dated 2026 activity on its site, and the 'Happenings' events page was not fetched."
+ },
+ "Tailor": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "http://www.tailornashville.com",
+    "date": "2026",
+    "quote": "EATER, THE 38 BEST RESTAURANTS IN NASHVILLE, 2026"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a 2026 Eater list link, and a 2026 listing shows dinner hours Thursday through Sunday. No closure news found. A Chefs Dish item about a supper-club concept in the back room is undated and not a closure."
+ },
+ "The Goat (Germantown)": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.lcgoat.com/locations/germantown/",
+    "date": "2026-11-09",
+    "quote": "FRIENDSGIVING THEMED TRIVIA"
+   }
+  ],
+  "note": "The location page lists trivia events on Nov 9 and Dec 14, 2026, and a Fall 2026 menu PDF. No closure news found."
+ },
+ "Turkey and The Wolf Icehouse": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashvillelifestyles.com/events/turkey-wolf-icehouse-hosts-patti-fest/",
+    "date": "2026-04-12",
+    "quote": "Patti Fest at the Icehouse on Sunday, April 12"
+   }
+  ],
+  "note": "April 12 falls on a Sunday in 2026, but the page shows no year, so the year is inferred from the weekday. No closure news found. MapQuest shows an undated 'Closed' tag (aggregator hint only). The site returned HTTP 429."
+ },
+ "Von Elrod's Beer Hall & Kitchen": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://vonelrods.com/",
+    "date": "2026-07-04",
+    "quote": "Join us on Saturday, July 4th"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a July 4th promotion that matches 2026 (a Saturday). No closure news found."
+ },
+ "Waldo's Chicken & Beer (Germantown)": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is the site's copyright footer, which is not evidence of activity. A StyleBlueprint closure article mentions Waldo's only as a neighbor of a closed shop."
+ },
+ "Bastion": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The Michelin star dates to Nov 2025 (WSMV, 2025-11-04). The newest dated item on its site is an Oct 2025 image, with no 2026 content."
+ },
+ "Bottle Cap": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site footer says (c) 2024 and has no dated 2026 content. Only image-ID timestamps point to 2026, which is not reliable."
+ },
+ "Char": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://nashville.charrestaurant.com/",
+    "date": "2026-05",
+    "quote": "Kids Menu PDF uploaded May 2026"
+   }
+  ],
+  "note": "The site has a 2026 copyright and a kids-menu PDF whose file path is /2026/05. No closure news found. The evidence is weak, since it is only a file path."
+ },
+ "Cilantro Mexican Grill": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.cilantronashville.com/",
+    "date": "2026",
+    "quote": "FIFA WORLD CUP 2026 IS HERE"
+   }
+  ],
+  "note": "The site runs World Cup 2026 drink specials at the 8th Ave location. No closure news found."
+ },
+ "Dos Santos": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is a copyright footer, which is not evidence of activity."
+ },
+ "Doughbird": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The only 2026 item is a copyright footer. The latest uploads are dated 2025."
+ },
+ "Embers Ski Lodge": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. MapQuest shows an undated 'Closed' tag (aggregator hint only). The official site failed with an expired certificate, so no dated activity could be checked."
+ },
+ "Emmy Squared Pizza": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The Green Hills page lists hours with no closure notice and no dated 2026 content."
+ },
+ "Gordo's Taqueria": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "http://www.gordosnashville.com/",
+    "date": "2026",
+    "quote": "Nashville Scene Best of Nashville 2026 badge"
+   }
+  ],
+  "note": "The site carries a Best of Nashville 2026 'Best Burrito' badge. No closure news found. The evidence is weak, since it is only a badge."
+ },
+ "Hearts": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found for the 12 South location at 2701 12th Ave S. The site has no dated 2026 content, only Nov 2025 image uploads."
+ },
+ "M.L. Rose Neighborhood Pub - Melrose": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site shows recurring hours and a 'Now Open' notice for another location, with no dated 2026 content."
+ },
+ "Melrose Billiard Parlor": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "A Nashville Scene article about Melrose Billiards closing at the end of September is undated, and 2022 coverage said the Parlor would stay open. A personal photographer page calls it 'the late, great Melrose Billiards', also undated. The site shows a 2023 copyright. I could not establish the timeline or any 2026 activity."
+ },
+ "Never Never": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. Nashville Guru shows no 'permanently closed' tag. The site has no dated 2026 content; its menu link is a 2025 PDF."
+ },
+ "North Italia": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.northitalia.com/locations/nashville-tn/",
+    "date": "2026-10",
+    "quote": "North-Italia-Allergen-Pages-Fall-2026-Final.pdf"
+   }
+  ],
+  "note": "The Green Hills page links Fall 2026 menus, with an Oct 2026 upload path. No closure news found."
+ },
+ "Postino 12 South": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://www.postino.com/locations/postino-12-south",
+    "date": "2026-10-08",
+    "quote": "P10_TN_Main_10.08.26.pdf"
+   }
+  ],
+  "note": "The page shows menus dated 10.08.26 and a holiday gift-card promotion, and lists the location as open today. No closure news found."
+ },
+ "Ramone's Oyster Bar & Citrus Club": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. It is the rooftop bar at Mercado, and the Mercado page shows only a 2025 reservation-link date with no 2026 content."
+ },
+ "Santo": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found, and nothing 2026-specific. The site's only date is a 2024 reservation-link parameter."
+ },
+ "The GreenHouse Bar": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No dated source says it closed. Groupon and MapQuest show an undated 'Closed' tag. Listings put The Food Co. at the same address, 2211 Bandywood Dr, and one health-inspection listing names 'The Food Co. - Greenhouse Bar' there (last inspection May 8, 2025). That suggests a rebrand or shared operation, not a different tenant. The site is live with a Thanksgiving catering banner, brunch Wed-Sun and bar hours. These are undated, so I treated them as weak. No news, dated social posts or 2026 tenant record found, so I left it unclear. The Chrome hours pass should check the Google listing banner."
+ },
+ "WeHo Provisions Co": {
+  "status": "unclear",
+  "evidence": [],
+  "note": "No closure news found. The site shows only undated fall/winter hours and no 2026 content."
+ },
+ "bartaco": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://bartaco.com/location/nashville-tn/",
+    "date": "2026-10-06",
+    "quote": "2026_10_06 menu PDF"
+   }
+  ],
+  "note": "The page has a 2026 copyright, a menu PDF dated 2026_10_06, and lists the Nashville location as open 11am to late daily. No closure news found."
+ },
+ "etc.": {
+  "status": "open",
+  "evidence": [
+   {
+    "url": "https://etc.restaurant/",
+    "date": "2026-09",
+    "quote": "wine menu images in 2026/09 upload folder"
+   }
+  ],
+  "note": "The site has a 2026 copyright and wine menu images in a 2026/09 upload path. No closure news found. The evidence is weak, since it is only a file path."
+ }
+}

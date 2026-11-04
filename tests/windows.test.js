@@ -443,6 +443,8 @@ const MAP_SEAM_EXCEPTIONS = {
   // fix31 (v2.4): Nominatim's house-number point for 3790 Bedford Ave (OSM: Green Hills, 37215) sits just west of
   // the drawn South edge at Hillsboro Pike.
   'nv-etc-3790': 'etc.: South (Green Hills, 3790 Bedford Ave) by address, inside West',
+  // fix32 (v2.5): AVO shares E+ROSE's building at oneC1TY (4 City Blvd); Nominatim's AVO point is West End by hood.
+  'nv-avo-4': 'AVO: Gulch & Midtown (West End, 4 City Blvd at oneC1TY) by address, inside West',
 };
 // v1.17 C4: the Downtown notch is gone, so koshō (ik-13852) and The Herban Perk & Pantry
 // (ik-18919) sit inside Downtown and are no longer exceptions; the two tests below hold them
@@ -2204,7 +2206,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.4';") && html.includes("venues.json?v=2.4") && html.includes('logic.js?v=2.4'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.5';") && html.includes("venues.json?v=2.5") && html.includes('logic.js?v=2.5'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----

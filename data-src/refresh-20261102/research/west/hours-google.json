@@ -1,0 +1,105 @@
+{
+ "answer.": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps, not the Search knowledge panel (none appeared). Listing 'answer. restaurant', 132 46th Ave N, matches. Hours not requested."
+ },
+ "AVO": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (4 City Blvd #104, in oneC1TY). Hours not requested."
+ },
+ "Fat Bottom Brewing": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing 'Fat Bottom Brewing Co.', 800 44th Ave N, matches. Hours not requested."
+ },
+ "Five Points Pizza (West Nashville)": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing 'Five Points Pizza West', 4100 Charlotte Ave, matches. Hours not requested."
+ },
+ "Lions Share Tavern": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (4410 Murphy Rd). Hours not requested."
+ },
+ "Lola Spanish Restaurant and Bar": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing 'Lola', 4401 Murphy Rd, matches. Hours not requested."
+ },
+ "Maggie's Place": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing 'Maggies Place', 905 51st Ave N, matches. Hours not requested."
+ },
+ "Miel Restaurant": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (343 53rd Ave N). Hours not requested."
+ },
+ "Nicky's Coal Fired": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (5026 Centennial Blvd, in Stocking 51). Hours not requested."
+ },
+ "Otto's Bar": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (4210 Charlotte Ave). Hours not requested."
+ },
+ "PennePazze": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing 'PennePazze Nashville', 3826 Charlotte Ave (Floor -1, L & L Market), matches. Hours not requested."
+ },
+ "Sportsman's Grille": {
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "20:00"
+    ]
+   ]
+  },
+  "listing_status": "open",
+  "listing_note": "Read on Google Maps. Listing matches (5405 Harding Pike). All seven days read from the expanded table with the mouse moved off it."
+ }
+}
