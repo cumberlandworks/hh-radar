@@ -1,5 +1,41 @@
 # Changelog
 
+## 2026-11-04 — BLOCK-hh-radar-fix33: franklin happy hours
+
+v2.6, the seventh and last zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=franklin), with the fix32 notes made
+lasting. **All 7 core zones are now done**, so the Day Grid's "Every happy hour so far" line is gone.
+
+- **Leads, new for this zone** (the five Nashville guides list no Franklin venue): built fix27-C1 style, leads only,
+  from FranklinIs's happy-hour guides (Franklin, The Factory, Brentwood: 22 + 6 + 11), OpenTable's Franklin
+  happy-hour page (12 in Franklin & Brentwood; 4 outer-suburb ones to `outer-skipped.json`), Williamson Scene's
+  "Top 10 happy hours in Brentwood" (10), baselocal's Franklin guide (7, from search extracts: the page itself now
+  serves baselocal's homepage) and Happy Hopper's Franklin and Brentwood directories (24 + 4, the cards with posted
+  deals). Hand-merged to **66 leads**; 5 are inKind (Blue Sushi McEwen, Vintage Vine 100, Saffire, Karrington
+  Rowe, Cajun Steamer), so **61 researched**. The paste's FranklinIs link (`?p=296470`) is a 404; its three live
+  happy-hour posts were used. Method and counts: `leads/raw/franklin/fetch-log-franklin.md`.
+- **Franklin & Brentwood: 61 leads, 33 added, 28 not added.**
+  - Not added, by reason: 15 guide not confirmed in 2026; 8 closed / moved (Condado Tacos and Twin Peaks after
+    research, plus Curio, Kokomo, The Tin Roof 2, Granite City, Ludlow & Prime and MAFIAoZA's); 5 no happy hour
+    found (including Corner Pub - Franklin, whose deals came only from its expired website).
+  - Franklin & Brentwood before → after (All): 20 venues (20 inKind) / 20 windows → 53 venues (20 inKind, 33 not)
+    / 68 windows.
+- **Linked menus, all opened:** Perry's Social Hour insert, Bonefish's Tennessee Social Hour menu (it sets 3-6:30
+  daily, replacing the researcher's "4 PM to close" placeholder), Carrabba's Tennessee happy-hour menu (days read,
+  not inferred), Twin Peaks' flyer, Brixx's and Sportsman's (Cool Springs) menus (no happy hour), and, in Chrome,
+  Mojo's, Mere Bulles', Cheesecake Factory's and Otaku's happy-hour pages.
+- **Closure check (TJ's rule, 2026-11-04):** "unclear" on the web plus an open Google listing passes; removal
+  needs a dated closure source or Google "Permanently closed" / "Relocated". Two would-be adds were removed:
+  Twin Peaks Cool Springs (Williamson Source, June 2026) and Condado Tacos Franklin (Google "Permanently closed").
+  The rule is in `BRIEF-closure-check.md` and the runbook.
+- **Empty-deals pass:** deals filled for Burger Up, Drake's (both windows), Jonathan's and The Cheesecake Factory;
+  Culinary Dropout, Hop House and Otaku stay "Deals not posted".
+- **Spot check:** 10/10 (seed 33). Mere Bulles was then set to med (its page is undated).
+- **Tooling:** `apply_corrections.py` appends every removal to that zone's `not-added-<zone>.md` (The GreenHouse
+  Bar backfilled into South's); `build_leads.js` reads `leads-raw-franklin.json` beside the Nashville leads;
+  `hood_zone.js` maps "Franklin", "Cool Springs" and "Brentwood". Three data tests now pick an inKind venue
+  explicitly ("1799 Kitchen & Bar Room" now sorts first in the file).
+- **Version:** `version.txt`, `APP_VERSION`, `venues.json?v=` and `logic.js?v=` are v2.6 (`logic.js` unchanged).
+
 ## 2026-11-04 — BLOCK-hh-radar-fix32: west happy hours
 
 v2.5, the sixth zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=west), with the fix31 notes made lasting.

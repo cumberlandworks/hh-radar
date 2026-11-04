@@ -718,5 +718,95 @@
    }
   ],
   "site": "https://www.mstreetnashville.com/virago"
+ },
+ {
+  "ik_id": "ik-8589",
+  "ik_name": "Blue Sushi - McEwen Northside",
+  "name": "Blue Sushi Sake Grill - McEwen Northside",
+  "neighborhood_text": "Franklin",
+  "address": "5001 Aspen Grove Dr Ste 142, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/franklin",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.bluesushisakegrill.com/locations/mcewen-northside"
+ },
+ {
+  "ik_id": "ik-13745",
+  "ik_name": "Vintage Vine 100",
+  "name": "Vintage Vine 100",
+  "neighborhood_text": "Franklin",
+  "address": "4051 Aspen Grove Dr, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://baselocal.com/?p=13964",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.vintagevine100.com/"
+ },
+ {
+  "ik_id": "ik-16088",
+  "ik_name": "Saffire Restaurant",
+  "name": "Saffire",
+  "neighborhood_text": "Franklin",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://franklinis.com/happy-hour-at-the-factory-at-franklin-where-to-sip-snack-and-unwind/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.saffirerestaurant.com/"
+ },
+ {
+  "ik_id": "ik-13244",
+  "ik_name": "Karrington Rowe",
+  "name": "Karrington Rowe",
+  "neighborhood_text": "Brentwood",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": "https://karringtonrowe.com/"
+ },
+ {
+  "ik_id": "ik-13452",
+  "ik_name": "Cajun Steamer - Franklin",
+  "name": "Cajun Steamer Bar & Grill",
+  "neighborhood_text": "Franklin",
+  "address": "1175 Meridian Blvd #108, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/franklin",
+    "confirmed": null
+   }
+  ],
+  "site": null
  }
 ]

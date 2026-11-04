@@ -47,3 +47,13 @@ and both were researched as open. A live website is NOT evidence that a venue is
 ```
 Every `closed`, `closing`, `moved` and `temporarily_closed` needs at least one evidence item with a date.
 Never mark a venue closed on an aggregator tag alone. Never guess: if you can't tell, it is `unclear`.
+
+## How the executor uses the result (closure rule, TJ 2026-11-04; for the executor, not the researcher)
+- **`unclear` plus a Google listing that shows open with no banner passes.** The venue stays added. It is not
+  listed as a doubt in the report beyond the count.
+- **A venue is removed (or not added) only on:** a dated closure source (`closed`, or `moved` / `closing` with
+  a date that has passed), or the Google listing's "Permanently closed" or "Relocated" banner.
+- "Temporarily closed" on Google, or `temporarily_closed` here, is not a removal: list it in the report and on
+  `refresh-watchlist.md`.
+- `unclear` with no Google listing found at all is listed in the report by name (as Ramone's and Antler Bar
+  were in fix32), and stays.

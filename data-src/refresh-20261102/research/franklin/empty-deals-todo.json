@@ -1,0 +1,165 @@
+[
+ {
+  "id": "nv-burger-up-franklin-401",
+  "name": "Burger Up Franklin",
+  "address": "401 Cool Springs Blvd Suite B",
+  "official_site": "https://burgerupfranklin.com/",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "17:00",
+  "sources": [
+   "https://burgerupfranklin.com/",
+   "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-happy-hours-specials"
+  ],
+  "research_notes": "Venue home page: happy hour Mon-Fri 3-5 PM at the bar. Its specials page lists the same bar happy hour on dated weekdays but no deals."
+ },
+ {
+  "id": "nv-culinary-dropout-4020",
+  "name": "Culinary Dropout",
+  "address": "4020 Aspen Grove Dr",
+  "official_site": "https://www.culinarydropout.com/",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "sources": [
+   "https://www.culinarydropout.com/locations/franklin-tn/",
+   "https://www.culinarydropout.com/menus/?location=franklin-tn"
+  ],
+  "research_notes": "Venue location page lists happy hour Mon-Fri 3-6pm with no deals. Opened the linked Franklin main menu PDF (CDO-FRANK_Menu_Main_08.17.2026_TAR_v1.pdf) and read it: no happy hour section. OpenTable guide has no confirmed date, so its deals were not used. Closed-2026 search found no closure."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "name": "Drake's Cool Springs",
+  "address": "553 Cool Springs Blvd",
+  "official_site": "https://drakescomeplay.com/nashville/",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "sources": [
+   "https://drakescomeplay.com/nashville/"
+  ],
+  "research_notes": "Venue page: 'Available Mon-Fri from 3-6pm & 9-11pm'; no deals listed."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "name": "Drake's Cool Springs",
+  "address": "553 Cool Springs Blvd",
+  "official_site": "https://drakescomeplay.com/nashville/",
+  "window_index": 1,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "21:00",
+  "end": "23:00",
+  "sources": [
+   "https://drakescomeplay.com/nashville/"
+  ],
+  "research_notes": "Same venue line: Mon-Fri 9-11pm; no deals listed."
+ },
+ {
+  "id": "nv-hop-house-tennessee-taps-117",
+  "name": "Hop House Tennessee Taps",
+  "address": "117 5th Ave N Suite B",
+  "official_site": "https://www.hophousetntaps.com",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "14:00",
+  "end": "17:00",
+  "sources": [
+   "https://www.hophousetntaps.com"
+  ],
+  "research_notes": "Venue site line 'HAPPY HOUR M - TH FROM 2PM - 5PM'. Linked menu PDF opened (https://www.hophousetntaps.com/_files/ugd/82619d_b9f0a12e2e2d41a29707005dc17630bc.pdf): regular prices, no happy hour deals. No hours posted on the site. An undated third-party guide says 4-7 pm; venue used."
+ },
+ {
+  "id": "nv-jonathans-grille-7135",
+  "name": "Jonathan's Grille",
+  "address": "7135 S Springs Dr",
+  "official_site": "https://www.jonathansgrille.com/",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT"
+  ],
+  "start": "15:00",
+  "end": "19:00",
+  "sources": [
+   "https://www.jonathansgrille.com/daily-specials-1"
+  ],
+  "research_notes": "Daily specials page gives times only for Mon, Wed-Sat 3-7 PM. The home page says daily 2-for-1 beers, $8 appetizers and $7 mimosas but gives no times; those are listed in their own windows only where the specials page times them. Address from /locations (no zip posted; 37067 from the lead). Hours are site-wide, not per location. Closed-search: no 2026 closure found."
+ },
+ {
+  "id": "nv-otaku-ramen-230",
+  "name": "Otaku Ramen",
+  "address": "230 Franklin Rd",
+  "official_site": "https://factoryatfranklin.com/?p=1218",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SAT",
+   "SUN"
+  ],
+  "start": "16:00",
+  "end": "19:00",
+  "sources": [
+   "https://factoryatfranklin.com/?p=1218"
+  ],
+  "research_notes": "The Factory at Franklin's Otaku Ramen listing says Happy Hour everyday 4:00-7:00 pm with no deals. The only deals found (hot chicken bun and Sapporo, $2 off draft cocktails) are for the Gulch location, so they are not used. Otaku's own site was not found; the Factory listing is used as official_site. The listing shows weekend hours as '11:00 pm - 9:00 pm' (typo); 11:00 am assumed, so hours are med confidence. Closed-2026 search: no closure of the Franklin location."
+ },
+ {
+  "id": "nv-the-cheesecake-factory-1800",
+  "name": "The Cheesecake Factory",
+  "address": "1800 Galleria Blvd #1166",
+  "official_site": "https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+  "window_index": 0,
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "16:00",
+  "end": "18:00",
+  "sources": [
+   "https://locations.thecheesecakefactory.com/tn/franklin-182.html"
+  ],
+  "research_notes": "Venue location page: happy hour Mon-Fri 4-6 PM in the bar area; no deals listed."
+ }
+]

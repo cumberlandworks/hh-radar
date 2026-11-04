@@ -3,6 +3,38 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix32, made lasting in fix33 (2026-11-04)
+- **Versions:** fix33 is v2.6 (P2's previous file was `venues-v2-06-west-corr.json`). Franklin is the last of
+  the 7 core zones; with it `coverage.v2_zones_done` holds all 7 and the coverage line drops "so far" (S7).
+- **Closure rule (TJ, 2026-11-04; replaces fix32's "Unclear stays added and is listed"):**
+  - "unclear" (no closure source, no dated 2026 activity) **plus a Google listing that shows open with no
+    banner passes**. It stays added and is counted, not listed, in the report.
+  - **Remove (or don't add) only on a dated closure source, or Google "Permanently closed" or "Relocated".**
+  - Google "Temporarily closed" is not a removal: report it and put it on `refresh-watchlist.md`.
+  - An "unclear" venue with no Google listing of its own is still named in the report, and stays.
+  - The same text is in `BRIEF-closure-check.md`, section "How the executor uses the result".
+- **Removals reach the zone's not-added file (tooling):** `apply_corrections.py` appends every `remove` to
+  `not-added-<zone>.md` (the venue's own zone), under "## Removed after the merge (correction files)", with the
+  reason, date, URL and `why`. It skips a venue id already there, so re-running a chain doesn't duplicate.
+  Since `merge_v2zone.py` rewrites that file, run the chain in order (merge, then `apply_corrections.py`).
+  The GreenHouse Bar (fix32) was backfilled into `not-added-south.md`.
+- **Franklin's leads (a zone with no Nashville guide coverage):** built in fix33 from Franklin & Brentwood
+  guides into `leads/raw/leads-raw-franklin.json` (hand-merged by `leads/raw/franklin/make_franklin_raw.py`;
+  method and per-source counts in `leads/raw/franklin/fetch-log-franklin.md`). `build_leads.js` reads it after
+  `leads-raw.json` without merging the two by name (55 South, Sportsman's and others have Nashville and Franklin
+  locations). A lead with `outer_city` goes straight to `outer-skipped.json`. `hood_zone.js` maps the guide
+  text "Franklin", "Cool Springs" and "Brentwood". Re-running `build_leads.js` leaves the other zones' lead
+  files byte for byte as they were.
+- **Researchers' own "closed / moved" calls get the same check (fix33):** put them in the S3b web list and the S2
+  Chrome todo too (`researcher_said`). In fix33 one rested on a story about another location (MAFIAoZA's 12South)
+  and two were only "Temporarily closed" (Kokomo, Granite City); the not-added detail now names what was found.
+- **S2 over 30 venues:** split the todo into Chrome passes of 30 at most (`hours-todo-1/2.json`, run one after
+  the other), with every `need_hours` venue in the first.
+- **Briefs say "Nashville":** `BRIEF-v2zone.md` (city "Nashville", "outside Nashville core zones") and
+  `BRIEF-closure-check.md` (searches "<name> Nashville closed") are Nashville-worded. For Franklin the S1 and
+  S3b task lines said the zone is Franklin & Brentwood, the city is the venue's own, and the closure search
+  uses the town. The briefs stay unchanged, as the block asks.
+
 ## From fix31, made lasting in fix32 (2026-11-04)
 - **Versions:** fix32 is v2.5 (P2's previous file was `venues-v2-05-south.json`).
 - **Closure check (S3b, a standing step between S3 and S4):** a live website is not proof a venue is open (fix31:

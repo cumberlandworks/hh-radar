@@ -1,0 +1,1024 @@
+{
+ "added": [
+  {
+   "lead": "Drake's Cool Springs",
+   "name": "Drake's Cool Springs",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "address": "553 Cool Springs Blvd",
+   "zip": "37067",
+   "official_site": "https://drakescomeplay.com/nashville/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://drakescomeplay.com/nashville/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://drakescomeplay.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue page: 'Available Mon-Fri from 3-6pm & 9-11pm'; no deals listed."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "21:00",
+     "end": "23:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://drakescomeplay.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Deals not posted.",
+     "research_notes": "Same venue line: Mon-Fri 9-11pm; no deals listed."
+    }
+   ]
+  },
+  {
+   "lead": "Burger Up Franklin",
+   "name": "Burger Up Franklin",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "address": "401 Cool Springs Blvd Suite B",
+   "zip": "37067",
+   "official_site": "https://burgerupfranklin.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://burgerupfranklin.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://burgerupfranklin.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-happy-hours-specials",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue home page: happy hour Mon-Fri 3-5 PM at the bar. Its specials page lists the same bar happy hour on dated weekdays but no deals."
+    }
+   ]
+  },
+  {
+   "lead": "Coal Town Public House",
+   "name": "Coal Town Public House",
+   "city": "Franklin",
+   "neighborhood": "Westhaven",
+   "address": "187 Front St Suite 103",
+   "zip": "37064",
+   "official_site": "https://www.coaltownpublichouse.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.coaltownpublichouse.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 Aperol Spritz, Hugo Spritz, PH Margarita, Vodka Martini, Gin Martini, Old Fashioned",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$6 spirits, 5 oz pour",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$5 wine by the glass",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$4 drafts: Bud Light, Michelob ULTRA, Buena Cerveza Mexican Lager",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.coaltownpublichouse.com/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Ask your server for the current PH Selects list. Venue lists suite 103; lead had 103B.",
+     "research_notes": "Venue happy-hour page, no date shown. Home page hours: Mon-Thu 11-10, Fri-Sat 11-11, Sun brunch 11-3 then dinner 3-9."
+    }
+   ]
+  },
+  {
+   "lead": "Mellow Mushroom Franklin",
+   "name": "Mellow Mushroom Franklin",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "address": "317 Main St Ste 100",
+   "zip": "37064",
+   "official_site": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half-price select draft beers",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price cheese bread & hummus",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue location page (undated) 'Local Specials': Mon, Tue, Wed, Thu, Sun 3-6 PM. Friday shows no specials."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "15:00",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$4.20 small cheese pizza",
+       "price": 4.2
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Same venue page: Tuesday 11 AM-3 PM."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off canned and bottled beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Same venue page: Saturday all day."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "area": null,
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 Bloody Marys & mimosas",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Same venue page: Sunday all day."
+    }
+   ]
+  },
+  {
+   "lead": "Carrabba's Italian Grill (Franklin)",
+   "name": "Carrabba's Italian Grill",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "address": "533 Cool Springs Blvd",
+   "zip": "37067",
+   "official_site": "https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://CarrabbasProd-esdja5eaccfgfnc7.a02.azurefd.net/assets/menus/HH-4-7-TN_0926.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals not posted on the page; see the linked Tennessee happy hour menu. Days set to daily per the chain's C Bar happy hour announcement; confirm with the venue.",
+     "research_notes": "Venue location page links a Tennessee happy hour menu PDF named HH-4-7-TN_0926 (4-7 PM). PDF not readable: https://CarrabbasProd-esdja5eaccfgfnc7.a02.azurefd.net/assets/menus/HH-4-7-TN_0926.pdf. Days are not stated on the page; daily and bar area come from a trade-press report of Carrabba's C Bar happy hour, so the executor should confirm from the PDF."
+    }
+   ]
+  },
+  {
+   "lead": "Condado Tacos (Franklin)",
+   "name": "Condado Tacos",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "address": "4031 Aspen Grove Dr #108",
+   "zip": "37067",
+   "official_site": "https://locations.condadotacos.com/tn/4031-aspen-grove-dr",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:30",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://locations.condadotacos.com/tn/4031-aspen-grove-dr",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$4 House Margs",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$4 Garage Beer",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Espolon Shot",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "3 Street Tacos for $6",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "$6 Half-size Nachos",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://condadotacos.com/happyhour/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://locations.condadotacos.com/tn/4031-aspen-grove-dr",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Chain-wide Tennessee pricing. Happy Hour does not apply on home game days or special events.",
+     "research_notes": "Chain happy hour page names Tennessee: weekdays 2-5 pm with the listed deals. The Franklin location page also shows 2-5 PM Mon-Fri and 10:30 AM-11:00 PM hours (read from search excerpt)."
+    }
+   ]
+  },
+  {
+   "lead": "The Cheesecake Factory (Franklin)",
+   "name": "The Cheesecake Factory",
+   "city": "Franklin",
+   "neighborhood": "CoolSprings Galleria",
+   "address": "1800 Galleria Blvd #1166",
+   "zip": "37067",
+   "official_site": "https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue location page: happy hour Mon-Fri 4-6 PM in the bar area; no deals listed."
+    }
+   ]
+  },
+  {
+   "lead": "Hop House Tennessee Taps",
+   "name": "Hop House Tennessee Taps",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "address": "117 5th Ave N Suite B",
+   "zip": "37064",
+   "official_site": "https://www.hophousetntaps.com",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.hophousetntaps.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue site line 'HAPPY HOUR M - TH FROM 2PM - 5PM'. Linked menu PDF opened (https://www.hophousetntaps.com/_files/ugd/82619d_b9f0a12e2e2d41a29707005dc17630bc.pdf): regular prices, no happy hour deals. No hours posted on the site. An undated third-party guide says 4-7 pm; venue used."
+    }
+   ]
+  },
+  {
+   "lead": "Corner Pub - Franklin",
+   "name": "Corner Pub",
+   "city": "Franklin",
+   "neighborhood": "Franklin",
+   "address": "1916 Columbia Ave",
+   "zip": "37064",
+   "official_site": "https://www.cornerpubtn.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.cornerpubtn.com/locations",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half-off draft beers",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$5 snacks",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off wine by the glass",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 well drinks",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$6 house margaritas and Wheatley Mules",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.cornerpubtn.com/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.cornerpubtn.com/locations",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Corner Pub's happy hour page does not name a location.",
+     "research_notes": "Venue happy-hour page content (weekdays 2-7 pm) was read from the search-result excerpt because direct fetches of cornerpubtn.com subpages returned 404. Hours from the venue's locations page, same excerpt. Health inspection Feb 2026 shows the Franklin store operating."
+    }
+   ]
+  },
+  {
+   "lead": "Twin Peaks (Brentwood)",
+   "name": "Twin Peaks Cool Springs",
+   "city": "Brentwood",
+   "neighborhood": "Cool Springs",
+   "address": "1634 Galleria Blvd",
+   "zip": "37027",
+   "official_site": "https://twinpeaksrestaurant.com/locations/cool-springs-tn",
+   "status": "open",
+   "hours": {},
+   "hours_confidence": "low",
+   "hours_source": "none found 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "19:00",
+     "area": null,
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://twinpeaksrestaurant.com/locations/cool-springs-tn",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://api.twinpeaksrestaurant.com/wp-content/uploads/lo109523_TP_Promo_CoolSprings-10.7.25.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "low",
+     "notes": "Deals not posted. Schedule from the venue's October 2025 promo flyer.",
+     "research_notes": "Venue flyer dated 10.7.25 gives happy hour Mon-Fri 2PM-7PM at 1634 Galleria Blvd. PDF not readable: https://api.twinpeaksrestaurant.com/wp-content/uploads/lo109523_TP_Promo_CoolSprings-10.7.25.pdf. The location page showed 'Sorry, We're Closed' with no reason or date when fetched, which may only be an hours state; no 2026 closure report found (parent company in Chapter 11, Jan 2026). Hours not posted."
+    }
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "lead": "Nacho's Mexican Restaurant - Franklin",
+   "reason": "guide not confirmed in 2026",
+   "url": "https://baselocal.com/?p=13964"
+  },
+  {
+   "lead": "Corner Pub Cool Springs",
+   "reason": "no happy hour found",
+   "url": "https://www.cornerpubtn.com/happy-hour"
+  },
+  {
+   "lead": "Kokomo Trading Company",
+   "reason": "closed / moved",
+   "url": "https://kokomotradingco.com"
+  },
+  {
+   "lead": "The Tin Roof 2",
+   "reason": "closed / moved",
+   "url": "https://whatnow.com/?p=445497"
+  },
+  {
+   "lead": "Buffalo Wild Wings (Franklin)",
+   "reason": "no happy hour found",
+   "url": "https://www.buffalowildwings.com/happy-hour/"
+  }
+ ]
+}

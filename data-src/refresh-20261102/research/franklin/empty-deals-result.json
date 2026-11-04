@@ -1,0 +1,120 @@
+[
+ {
+  "id": "nv-burger-up-franklin-401",
+  "name": "Burger Up Franklin",
+  "window_index": 0,
+  "found": true,
+  "deals": [
+   {"type": "drink", "desc": "$6 well drinks (well vodka, tequila or whiskey with mixer)", "price": 6},
+   {"type": "drink", "desc": "$2 off all drafts", "price": null},
+   {"type": "drink", "desc": "$6.50 select wines (house red or house white)", "price": 6.5}
+  ],
+  "sources_add": [
+   {"url": "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-drink-menu", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+  ],
+  "notes": "",
+  "why": "The venue's drink menu page shows 'Happy Hour (at the bar, Monday through Friday, 3pm-5pm)' with the three deals above; days and times match the window. Food menu page has no happy hour deals. No PDFs linked."
+ },
+ {
+  "id": "nv-culinary-dropout-4020",
+  "name": "Culinary Dropout",
+  "window_index": 0,
+  "found": false,
+  "deals": [],
+  "sources_add": [],
+  "notes": "Deals not posted.",
+  "why": "Franklin location page (Mon-Fri 3-6PM) lists no deals; menus page already read (main menu PDF has no happy hour section); no chain happy hour page found (culinarydropout.com/happy-hour/ is 404); search found only an undated OpenTable guest review and an old Scottsdale price, neither usable. No 2026-confirmed guide entry."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "name": "Drake's Cool Springs",
+  "window_index": 0,
+  "found": true,
+  "deals": [
+   {"type": "food", "desc": "$2 Mini Cheeseburger (limit 10)", "price": 2},
+   {"type": "food", "desc": "$5 Chips & Queso", "price": 5},
+   {"type": "food", "desc": "$6 Fried Pickles", "price": 6},
+   {"type": "food", "desc": "$7 Half Order BLT Tots", "price": 7},
+   {"type": "food", "desc": "$10 Southwest Eggrolls", "price": 10},
+   {"type": "drink", "desc": "$2 Busch Light", "price": 2},
+   {"type": "drink", "desc": "$3 Drake's All American Lager (16oz)", "price": 3},
+   {"type": "drink", "desc": "$4 House Wine", "price": 4},
+   {"type": "drink", "desc": "$5 Tito's or Jack Daniel's", "price": 5},
+   {"type": "drink", "desc": "$6 Pixy Stix Martini", "price": 6}
+  ],
+  "sources_add": [
+   {"url": "https://drakescomeplay.com/event/happy-hour-5/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+  ],
+  "notes": "chain-wide pricing, deals posted for participating locations",
+  "why": "Drake's own happy hour page (linked from the Cool Springs page) lists these deals 'at participating locations' and names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm', matching this window. The page does not say per-item that Cool Springs participates, so it is the chain's page naming this location (step 11). Menu PDFs: none linked. Thursday '2-4-6' and Tuesday pint night are separate recurring specials, not included."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "name": "Drake's Cool Springs",
+  "window_index": 1,
+  "found": true,
+  "deals": [
+   {"type": "food", "desc": "$2 Mini Cheeseburger (limit 10)", "price": 2},
+   {"type": "food", "desc": "$5 Chips & Queso", "price": 5},
+   {"type": "food", "desc": "$6 Fried Pickles", "price": 6},
+   {"type": "food", "desc": "$7 Half Order BLT Tots", "price": 7},
+   {"type": "food", "desc": "$10 Southwest Eggrolls", "price": 10},
+   {"type": "drink", "desc": "$2 Busch Light", "price": 2},
+   {"type": "drink", "desc": "$3 Drake's All American Lager (16oz)", "price": 3},
+   {"type": "drink", "desc": "$4 House Wine", "price": 4},
+   {"type": "drink", "desc": "$5 Tito's or Jack Daniel's", "price": 5},
+   {"type": "drink", "desc": "$6 Pixy Stix Martini", "price": 6}
+  ],
+  "sources_add": [
+   {"url": "https://drakescomeplay.com/event/happy-hour-5/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+  ],
+  "notes": "chain-wide pricing, deals posted for participating locations",
+  "why": "Same Drake's happy hour page: Cool Springs (Franklin), TN is listed under 'Mon-Fri, 3-6pm & 9-11pm', matching the 9-11pm window. The page gives one deal list for the whole happy hour, not split by window."
+ },
+ {
+  "id": "nv-hop-house-tennessee-taps-117",
+  "name": "Hop House Tennessee Taps",
+  "window_index": 0,
+  "found": false,
+  "deals": [],
+  "sources_add": [],
+  "notes": "Deals not posted.",
+  "why": "Venue home page (M-Th 2-5PM) lists no deals; menu PDF (82619d_b9f0a12e2e2d41a29707005dc17630bc.pdf) already read, regular prices only; beers-on-tap page has no happy hour deals. Guide: Atly page (atly.com/location/HopHouseTennesseeTaps) says only 'discounted local brews', no date shown, so it does not qualify; a search snippet mentioning 2-for-1 beers and 4-7pm is undated and disagrees with the venue's 2-5pm. No venue social post found."
+ },
+ {
+  "id": "nv-jonathans-grille-7135",
+  "name": "Jonathan's Grille",
+  "window_index": 0,
+  "found": true,
+  "deals": [
+   {"type": "drink", "desc": "Two-for-one beer", "price": null},
+   {"type": "food", "desc": "Select appetizers $8 (3-6PM Mon, Wed-Fri; late night menu marks Fried Pickles and Queso)", "price": 8}
+  ],
+  "sources_add": [
+   {"url": "https://www.jonathansgrille.com/", "kind": "venue", "seen": "2026-11-04", "confirmed": null},
+   {"url": "https://www.jonathansgrille.com/late-night-menu", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+  ],
+  "notes": "Select appetizers $8 run 3-6PM (not Saturday); the home page lists the 2-for-1 beer as a daily happy hour deal and does not time it. Specials are the same for all Jonathan's locations.",
+  "why": "Home page lists 'Happy Hour (daily)': Ladies' Night, two-for-one beer, $8 appetizers, $7 mimosas. Daily specials page (already used for days/times) gives Mon, Wed-Sat 3-7PM and 'Select Appetizers $8, 3PM-6PM' Mon/Wed/Thu/Fri; it says specials vary slightly by state and is not Franklin-specific, though Tennessee is named. Late night menu marks Fried Pickles $11 and Queso $11 with '*Select appetizers are $8 during happy hour'. Mimosas $7 (11AM-10PM Sat) fall outside the window and were left out; Ladies' Night (Wed 4-7PM) is a separate special and was left out. Prices for the beers not posted."
+ },
+ {
+  "id": "nv-otaku-ramen-230",
+  "name": "Otaku Ramen",
+  "window_index": 0,
+  "found": false,
+  "deals": [],
+  "sources_add": [],
+  "notes": "Deals not posted.",
+  "why": "Factory at Franklin listing (4-7pm daily) has no deals; otakuramen.com/franklin/ says it has a happy hour section but the text is not in the fetched content; otakuramen.com/franklin/happy-hour is 404. Nashville Guru page (nashvilleguru.com/?p=21738) covers only the Gulch location, so its deals (confirmed 07/08/26) do not apply to Franklin. A search snippet claims 4-6pm at the Franklin opening, conflicting with the 4-7pm window; days/times unchanged. No Franklin-specific deals found."
+ },
+ {
+  "id": "nv-the-cheesecake-factory-1800",
+  "name": "The Cheesecake Factory",
+  "window_index": 0,
+  "found": false,
+  "deals": [],
+  "sources_add": [],
+  "notes": "Deals not posted.",
+  "why": "Location page (Mon-Fri 4-6PM, bar area, 'select food and drink specials') lists no items. It links a Happy Hour Menu page that WebFetch returned empty (script-rendered): PDF not readable: https://menu.thecheesecakefactory.com/tn/franklin-182/happy-hour . The executor should open it on the Mac. Search found no current prices; no 2026-confirmed guide entry."
+ }
+]

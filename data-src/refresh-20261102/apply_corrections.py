@@ -11,6 +11,9 @@ new in this run), and either:
   - `remove` (fix32): take the venue out (a confirmed closure, or the all-day rule leaving a non-inKind venue
     with no happy hour). Needs `reason` and `url`; printed for the report, and the coverage text's non-inKind
     count is updated.
+    fix33: every removal is also appended to the zone's `not-added-<zone>.md` (in this folder), under
+    "## Removed after the merge", with its reason, date, URL and why. A venue already listed there (by id)
+    is not added again, so re-running the chain does not duplicate it.
 fix32: `kind` is settable (TJ's all-day rule: an everyday menu the venue itself calls "all day" is a `special`).
 Every entry may carry `why` (for the report; never written to the data). The venue's `checked`
 and each touched window's `last_verified` become the date. The result is validated with logic.js
@@ -26,6 +29,25 @@ SETTABLE = {'deals', 'notes', 'research_notes', 'confidence', 'days', 'start', '
 import re  # noqa: E402
 
 
+REMOVED_HEAD = '## Removed after the merge (correction files)'
+
+
+def record_removal(zone, v, c, date, folder=HERE):
+    """fix33: append a removal to not-added-<zone>.md, once per venue id. Returns the file path."""
+    path = os.path.join(folder, 'not-added-%s.md' % zone)
+    text = open(path).read() if os.path.exists(path) else '# Not added: %s\n' % zone
+    if '(`%s`)' % v['id'] in text.split(REMOVED_HEAD, 1)[-1] and REMOVED_HEAD in text:
+        return path
+    why = (' ' + c['why']) if c.get('why') else ''
+    line = '- %s (`%s`) = %s, removed %s.%s — %s\n' % (v['name'], v['id'], c['reason'], date, why, c['url'])
+    if REMOVED_HEAD not in text:
+        text = text.rstrip('\n') + '\n\n' + REMOVED_HEAD + '\n' + \
+            'Added by an earlier zone run, then taken out by a later `-corr` file (apply_corrections.py).\n'
+    text = text.rstrip('\n') + '\n' + line
+    open(path, 'w').write(text)
+    return path
+
+
 def label(w):
     return '%s %s-%s' % (','.join(w['days']), w['start'], w['end'])
 
@@ -39,6 +61,7 @@ def main():
     data = json.load(open(src))
     corr = json.load(open(corr_path))
     rows = []
+    removed = []
     for c in corr:
         hits = [v for v in data['venues'] if (c.get('id') and v['id'] == c['id']) or (c.get('name') and v['name'] == c['name'])]
         if len(hits) != 1:
@@ -48,6 +71,7 @@ def main():
             if not (c.get('reason') and c.get('url')):
                 sys.exit('remove %s needs reason and url' % v['id'])
             data['venues'].remove(v)
+            removed.append((v, c))
             rows.append((v['id'], v['name'], '-', 'REMOVED', c['reason'], 0, c.get('why', '') + ' ' + c['url']))
             continue
         if 'add_window' in c:
@@ -82,6 +106,8 @@ def main():
         os.remove(tmp)
         sys.exit('validate failed, nothing written:\n  ' + '\n  '.join(res['errors'][:40]))
     os.replace(tmp, out)
+    for v, c in removed:
+        print('not-added: %s' % record_removal(v['zone'], v, c, date))
     for r in rows:
         print('%s | %s | w%s | before %s | %s | after %s deals | %s' % r)
     print('lint warnings: %d' % len(res['warnings']))

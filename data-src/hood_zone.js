@@ -63,6 +63,10 @@ const GUIDE_TEXT_HOODS = {
   'berry hill': 'Berry Hill',
   'music valley': 'Donelson & Opry Mills',
   'south nashville': null,
+  // fix33: the Franklin & Brentwood guides name the town (leads/raw/leads-raw-franklin.json).
+  'franklin': 'Franklin/Cool Springs',
+  'cool springs': 'Franklin/Cool Springs',
+  'brentwood': 'Brentwood',
 };
 function hoodFromText(text) {
   const t = String(text || '').trim();

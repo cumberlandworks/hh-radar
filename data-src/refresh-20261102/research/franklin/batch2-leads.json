@@ -1,0 +1,264 @@
+[
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "The Rutledge",
+  "neighborhood_text": "Franklin",
+  "address": "105 International Dr, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.therutledge.co/"
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "etch Franklin",
+  "neighborhood_text": "Franklin",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://franklinis.com/happy-hour-at-the-factory-at-franklin-where-to-sip-snack-and-unwind/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Bonefish Grill (Franklin)",
+  "neighborhood_text": "Franklin",
+  "address": "3010 A Mallory Ln, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/franklin",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Otaku Ramen (The Factory)",
+  "neighborhood_text": "Franklin",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://franklinis.com/happy-hour-at-the-factory-at-franklin-where-to-sip-snack-and-unwind/",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Mojo's Tacos (The Factory)",
+  "neighborhood_text": "Franklin",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://franklinis.com/happy-hour-at-the-factory-at-franklin-where-to-sip-snack-and-unwind/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://mojostacos.com/"
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Serrato's Steakhouse",
+  "neighborhood_text": "Franklin",
+  "address": "3046 Columbia Ave #102, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/franklin",
+    "confirmed": null
+   }
+  ],
+  "site": "https://serratossteakhouse.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Del Frisco's Grille (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "207 Franklin Rd, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "55 South (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "7031 Executive Center Dr Suite 101, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.eat55.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Mere Bulles",
+  "neighborhood_text": "Brentwood",
+  "address": "5201 Maryland Way, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/brentwood",
+    "confirmed": null
+   }
+  ],
+  "site": "https://merebulles.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Firebirds Wood Fired Grill - Brentwood",
+  "neighborhood_text": "Brentwood",
+  "address": "700 Old Hickory Blvd, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": "https://firebirdsrestaurants.com/brentwood"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Amerigo Italian Restaurant (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "1656 Westgate Cir, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://amerigo.net/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Cinco de Mayo Mexican Restaurant (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "4944 Thoroughbred Ln, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.cincodemayomexicanrestaurant.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Uncle Julio's Brentwood",
+  "neighborhood_text": "Brentwood",
+  "address": "209 Franklin Rd, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": "https://unclejulios.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Sportsman's Grille (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "1640 Westgate Cir, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/brentwood",
+    "confirmed": null
+   }
+  ],
+  "site": "https://sportsmansgrilletn.com/"
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Sip & Sound",
+  "neighborhood_text": "Brentwood",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/",
+    "confirmed": null
+   }
+  ],
+  "site": "https://www.sipandsound.com/"
+ }
+]

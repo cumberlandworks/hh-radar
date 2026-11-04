@@ -1,0 +1,498 @@
+{
+  "added": [
+    {
+      "lead": "etch Franklin",
+      "name": "etch Franklin",
+      "city": "Franklin",
+      "neighborhood": "The Factory at Franklin",
+      "address": "230 Franklin Rd Ste 1300",
+      "zip": "37064",
+      "official_site": "https://etchrestaurant.com/franklin/",
+      "status": "open",
+      "hours": {
+        "TUE": [["11:00","21:00"]],
+        "WED": [["11:00","21:00"]],
+        "THU": [["11:00","21:00"]],
+        "FRI": [["11:00","22:00"]],
+        "SAT": [["11:00","22:00"]],
+        "SUN": [["10:00","21:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://etchrestaurant.com/franklin/menu/",
+      "windows": [
+        {
+          "days": ["TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Cheese plate $17", "price": 17},
+            {"type": "food", "desc": "Roasted cauliflower $10", "price": 10},
+            {"type": "food", "desc": "Tempura mushrooms $8", "price": 8},
+            {"type": "food", "desc": "Bread & butter $6", "price": 6},
+            {"type": "food", "desc": "Fried Brussels sprouts $8", "price": 8},
+            {"type": "food", "desc": "Seasoned fries $4", "price": 4},
+            {"type": "food", "desc": "Add chicken $7 or shrimp $8 to any item", "price": null},
+            {"type": "drink", "desc": "$5 draft beer", "price": 5},
+            {"type": "drink", "desc": "$7 featured wine", "price": 7},
+            {"type": "drink", "desc": "$9 featured cocktails (bartender's selection and well spirits)", "price": 9}
+          ],
+          "sources": [
+            {"url": "https://etchrestaurant.com/franklin/menu/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "At the bar. Franklin location only; closed Mondays.",
+          "research_notes": "Franklin Happy Hour block on etchrestaurant.com/franklin/menu/ shows Tue-Sun 2-6pm at the bar with the prices above. A FranklinIs roundup said 2-5pm; the venue's own 2-6pm is used. Closed-2026 search found no closure."
+        }
+      ]
+    },
+    {
+      "lead": "Bonefish Grill (Franklin)",
+      "name": "Bonefish Grill Cool Springs",
+      "city": "Franklin",
+      "neighborhood": "Cool Springs",
+      "address": "3010 A Mallory Ln",
+      "zip": "37067",
+      "official_site": "https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane",
+      "status": "open",
+      "hours": {
+        "MON": [["15:00","22:00"]],
+        "TUE": [["15:00","22:00"]],
+        "WED": [["15:00","22:00"]],
+        "THU": [["15:00","22:00"]],
+        "FRI": [["15:00","23:00"]],
+        "SAT": [["11:00","23:00"]],
+        "SUN": [["11:00","21:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "close",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Hand-crafted cocktails starting at $7", "price": null}
+          ],
+          "sources": [
+            {"url": "https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "low",
+          "notes": "Social Hour, every day from 4 PM. The location page posts no end time and says times may vary by location; the end is set to close as a placeholder. Call to confirm.",
+          "research_notes": "Location page: Social Hour daily, starts 4 PM, no end time, cocktails starting at $7. The chain Social Hour page (bonefishgrill.com/social-hour) does not name Tennessee, so it was not used as a chain-wide source; it lists $1 off draft beer but without a location scope. Closed-2026 search: OpenTable reviews dated Feb and May 2026, no closure."
+        }
+      ]
+    },
+    {
+      "lead": "Otaku Ramen (The Factory)",
+      "name": "Otaku Ramen",
+      "city": "Franklin",
+      "neighborhood": "The Factory at Franklin",
+      "address": "230 Franklin Rd",
+      "zip": "37064",
+      "official_site": "https://factoryatfranklin.com/?p=1218",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","15:00"],["16:00","21:00"]],
+        "TUE": [["11:00","15:00"],["16:00","21:00"]],
+        "WED": [["11:00","15:00"],["16:00","21:00"]],
+        "THU": [["11:00","15:00"],["16:00","21:00"]],
+        "FRI": [["11:00","15:00"],["16:00","21:00"]],
+        "SAT": [["11:00","21:00"]],
+        "SUN": [["11:00","21:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-04 (med confidence): https://factoryatfranklin.com/?p=1218",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "16:00",
+          "end": "19:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://factoryatfranklin.com/?p=1218", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Deals not posted.",
+          "research_notes": "The Factory at Franklin's Otaku Ramen listing says Happy Hour everyday 4:00-7:00 pm with no deals. The only deals found (hot chicken bun and Sapporo, $2 off draft cocktails) are for the Gulch location, so they are not used. Otaku's own site was not found; the Factory listing is used as official_site. The listing shows weekend hours as '11:00 pm - 9:00 pm' (typo); 11:00 am assumed, so hours are med confidence. Closed-2026 search: no closure of the Franklin location."
+        }
+      ]
+    },
+    {
+      "lead": "Mojo's Tacos (The Factory)",
+      "name": "Mojo's Tacos",
+      "city": "Franklin",
+      "neighborhood": "The Factory at Franklin",
+      "address": "230 Franklin Rd",
+      "zip": "37064",
+      "official_site": "https://mojostacos.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["10:30","21:00"]],
+        "TUE": [["10:30","21:00"]],
+        "WED": [["10:30","21:00"]],
+        "THU": [["10:30","21:00"]],
+        "FRI": [["10:30","21:00"]],
+        "SAT": [["09:00","21:00"]],
+        "SUN": [["09:00","20:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-04 (med confidence): https://mojostacos.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://mojostacos.com/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Deals not posted.",
+          "research_notes": "mojostacos.com home page (Franklin Rd address) lists Happy Hour Monday-Friday 3-6 PM and links a 'Happy Hour Specials' menu. PDF not readable: https://mojostacos.com/drink-menu?menu_id=1166624 (page loads without the specials text via WebFetch; executor to read it). Home page does not say which location the 3-6 times apply to, so confidence is med. Closed-2026 search: no closure found."
+        }
+      ]
+    },
+    {
+      "lead": "Serrato's Steakhouse",
+      "name": "Serrato's Steakhouse",
+      "city": "Franklin",
+      "neighborhood": "Franklin",
+      "address": "3046 Columbia Ave Suite 102",
+      "zip": "37064",
+      "official_site": "https://serratossteakhouse.com/serratos-steakhouse-franklin-tn/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","21:00"]],
+        "TUE": [["11:00","21:00"]],
+        "WED": [["11:00","21:00"]],
+        "THU": [["11:00","21:00"]],
+        "FRI": [["11:00","22:00"]],
+        "SAT": [["11:00","22:00"]],
+        "SUN": [["11:00","21:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://serratossteakhouse.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "15:30",
+          "end": "17:30",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$2 off wines by the glass", "price": null},
+            {"type": "drink", "desc": "$2 off House Old Fashioned", "price": null},
+            {"type": "drink", "desc": "$2 off signature cocktails", "price": null},
+            {"type": "drink", "desc": "$8 off bottled wine", "price": null},
+            {"type": "drink", "desc": "$2 off draft beers", "price": null},
+            {"type": "food", "desc": "Fish Tacos $12", "price": 12},
+            {"type": "food", "desc": "Filet Mignon Bruschetta Bites $13", "price": 13},
+            {"type": "food", "desc": "Sticky Ribs $13", "price": 13},
+            {"type": "food", "desc": "Truffle Parmesan Fries $9", "price": 9},
+            {"type": "food", "desc": "Loaded Fries $10", "price": 10},
+            {"type": "food", "desc": "Black Hawk Sliders $12", "price": 12},
+            {"type": "food", "desc": "Cajun Shrimp $11", "price": 11},
+            {"type": "food", "desc": "Crispy Calamari $14", "price": 14}
+          ],
+          "sources": [
+            {"url": "https://serratossteakhouse.com/serratos-steakhouse-franklin-tn/happy-hour-menu/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Bar and patio only.",
+          "research_notes": "Franklin happy hour menu page on serratossteakhouse.com. Hours are the site's all-locations hours (Sun-Thu 11-9, Fri-Sat 11-10). Home page lists Suite 102 at 3046 Columbia Ave. Closed-2026 search: no closure; still described as operating in 2026."
+        }
+      ]
+    },
+    {
+      "lead": "Del Frisco's Grille (Brentwood)",
+      "name": "Del Frisco's Grille",
+      "city": "Brentwood",
+      "neighborhood": "Brentwood",
+      "address": "207 Franklin Rd",
+      "zip": "37027",
+      "official_site": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+      "status": "open",
+      "hours": {
+        "SUN": [["11:00","21:15"]],
+        "MON": [["11:00","21:15"]],
+        "TUE": [["11:00","21:15"]],
+        "WED": [["11:00","21:15"]],
+        "THU": [["11:00","22:00"]],
+        "FRI": [["11:00","22:00"]],
+        "SAT": [["11:00","22:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SUN"],
+          "start": "15:00",
+          "end": "18:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "$10 bites (cheesesteak eggrolls, roasted buffalo wings, ahi tacos)", "price": 10},
+            {"type": "drink", "desc": "$10 cocktails (Moscow Mule, Grille Margarita, Old Fashioned)", "price": 10},
+            {"type": "drink", "desc": "$10 wine by the glass", "price": 10},
+            {"type": "drink", "desc": "$10 spirits", "price": 10}
+          ],
+          "sources": [
+            {"url": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Bar only. Sunday through Friday 3-6 PM.",
+          "research_notes": "Brentwood location page lists Happy Hour Sun-Fri 3-6 PM and Sat 2-5 PM, bar only, with the $10 deals above. The page also lists select bottled and draft beer at $5 on the general beer list but does not tie it to happy hour, so it is left out. The page's holiday hours run through New Year's, so it is current. Closed-2026 search: no closure."
+        },
+        {
+          "days": ["SAT"],
+          "start": "14:00",
+          "end": "17:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "$10 bites (cheesesteak eggrolls, roasted buffalo wings, ahi tacos)", "price": 10},
+            {"type": "drink", "desc": "$10 cocktails (Moscow Mule, Grille Margarita, Old Fashioned)", "price": 10},
+            {"type": "drink", "desc": "$10 wine by the glass", "price": 10},
+            {"type": "drink", "desc": "$10 spirits", "price": 10}
+          ],
+          "sources": [
+            {"url": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Bar only. Saturday hours are 2-5 PM.",
+          "research_notes": "Same Brentwood location page; Saturday window is 2-5 PM."
+        }
+      ]
+    },
+    {
+      "lead": "55 South (Brentwood)",
+      "name": "55 South",
+      "city": "Brentwood",
+      "neighborhood": "Brentwood",
+      "address": "7031 Executive Center Dr Suite 101",
+      "zip": "37027",
+      "official_site": "https://www.eat55.com/brentwood",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","21:00"]],
+        "TUE": [["11:00","21:00"]],
+        "WED": [["11:00","21:00"]],
+        "THU": [["11:00","21:00"]],
+        "FRI": [["11:00","21:00"]],
+        "SAT": [["10:00","14:30"],["15:00","21:00"]],
+        "SUN": [["10:00","14:30"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://www.eat55.com/brentwood",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$2 off well liquor", "price": null},
+            {"type": "drink", "desc": "$2 off wines", "price": null},
+            {"type": "drink", "desc": "1/2 off draft beer", "price": null},
+            {"type": "drink", "desc": "$1 off bottles and cans of beer", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.eat55.com/brentwood", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "At the bar.",
+          "research_notes": "Brentwood page on eat55.com lists Happy Hour Mon-Fri 2-6pm at the bar, and Sunday all day, with the four drink deals above. The page carries the Brentwood holiday-closure note (12/23 close), so it is current. Closed-2026 search: no closure."
+        },
+        {
+          "days": ["SUN"],
+          "start": "10:00",
+          "end": "close",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "$2 off well liquor", "price": null},
+            {"type": "drink", "desc": "$2 off wines", "price": null},
+            {"type": "drink", "desc": "1/2 off draft beer", "price": null},
+            {"type": "drink", "desc": "$1 off bottles and cans of beer", "price": null}
+          ],
+          "sources": [
+            {"url": "https://www.eat55.com/brentwood", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "All day: from the 10:00 opening. Brentwood is closed Sunday evenings (brunch only, until 2:30 PM). The page does not say whether the Sunday deals are bar-only.",
+          "research_notes": "Same Brentwood page: 'Sunday: All day'. Sunday hours on that page are brunch 10am-2:30pm, closed Sunday evenings. Area set to bar to match the weekday listing; the page does not say for Sunday."
+        }
+      ]
+    },
+    {
+      "lead": "Mere Bulles",
+      "name": "Mere Bulles",
+      "city": "Brentwood",
+      "neighborhood": "Maryland Farms",
+      "address": "5201 Maryland Way",
+      "zip": "37027",
+      "official_site": "https://merebulles.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","20:30"]],
+        "TUE": [["11:00","20:30"]],
+        "WED": [["11:00","20:30"]],
+        "THU": [["11:00","20:30"]],
+        "FRI": [["11:00","21:30"]],
+        "SAT": [["16:30","21:30"]],
+        "SUN": [["16:30","20:30"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://merebulles.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [],
+          "sources": [
+            {"url": "https://merebulles.com/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "Deals not posted. The venue's page says special pricing on select cocktails, wine, beer and small bites.",
+          "research_notes": "merebulles.com home page: Happy Hour Monday-Friday 2-6 PM. Drink menu page (https://merebulles.com/drink-menu) is images only and shows no happy hour text; PDF not readable: https://merebulles.com/drink-menu. Home page also lists 50% off bottled wine daily and 20% off Whiskey Wednesdays, which are not happy hour and are left out. Closed-2026 search: Lantern listing updated April 2026, no closure."
+        }
+      ]
+    },
+    {
+      "lead": "Firebirds Wood Fired Grill - Brentwood",
+      "name": "Firebirds Wood Fired Grill",
+      "city": "Brentwood",
+      "neighborhood": "Seven Springs",
+      "address": "700 Old Hickory Blvd",
+      "zip": "37027",
+      "official_site": "https://firebirdsrestaurants.com/brentwood",
+      "status": "open",
+      "hours": {
+        "SUN": [["10:00","22:00"]],
+        "MON": [["11:00","22:00"]],
+        "TUE": [["11:00","22:00"]],
+        "WED": [["11:00","22:00"]],
+        "THU": [["11:00","22:00"]],
+        "FRI": [["11:00","23:00"]],
+        "SAT": [["10:00","23:00"]]
+      },
+      "hours_confidence": "high",
+      "hours_source": "researched 2026-11-04 (high confidence): https://firebirdsrestaurants.com/brentwood",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": "bar",
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "food", "desc": "Prime Rib Sliders $9.60", "price": 9.6},
+            {"type": "food", "desc": "Crispy Cauliflower $6.10", "price": 6.1},
+            {"type": "food", "desc": "Roasted Garlic Parmesan Fries $6.10", "price": 6.1},
+            {"type": "food", "desc": "Chicken Chile Nachos $6.88", "price": 6.88},
+            {"type": "food", "desc": "Fired Up Shrimp $7.38", "price": 7.38},
+            {"type": "food", "desc": "Beef Sliders $7.13", "price": 7.13},
+            {"type": "drink", "desc": "Double Black Diamond Martini $6.85", "price": 6.85},
+            {"type": "drink", "desc": "Cherry Old Fashioned $6.85", "price": 6.85},
+            {"type": "drink", "desc": "Charred Orange Margarita $6.85", "price": 6.85},
+            {"type": "drink", "desc": "Lemonade Drop $6.15", "price": 6.15},
+            {"type": "drink", "desc": "Dirty Bird $7.25", "price": 7.25},
+            {"type": "drink", "desc": "Siesta Sangria $6.95", "price": 6.95},
+            {"type": "drink", "desc": "Firebirds Perfect Margarita $7.10 (upgrade to Milagro Reposado +$1.00)", "price": 7.1}
+          ],
+          "sources": [
+            {"url": "https://firebirdsrestaurants.com/brentwood/menu/firebar", "kind": "venue", "seen": "2026-11-04", "confirmed": null},
+            {"url": "https://firebirdsrestaurants.com/brentwood", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "high",
+          "notes": "In the FIREBAR and on the patio. Bar bites are available only there.",
+          "research_notes": "FIREBAR menu page lists Mon-Fri 2-6 PM with half-price pricing on the items above. The location page says 'Happy Hour Monday' in its intro but Monday-Friday 2-6PM in the schedule; the schedule is used. Closed-2026 search: no closure."
+        }
+      ]
+    },
+    {
+      "lead": "Sportsman's Grille (Brentwood)",
+      "name": "Sportsman's Grille",
+      "city": "Brentwood",
+      "neighborhood": "Brentwood",
+      "address": "1640 Westgate Cir",
+      "zip": "37027",
+      "official_site": "https://sportsmansgrilletn.com/",
+      "status": "open",
+      "hours": {
+        "MON": [["11:00","20:00"]],
+        "TUE": [["11:00","20:00"]],
+        "WED": [["11:00","20:00"]],
+        "THU": [["11:00","20:00"]],
+        "FRI": [["11:00","21:00"]],
+        "SAT": [["11:00","21:00"]],
+        "SUN": [["11:00","20:00"]]
+      },
+      "hours_confidence": "med",
+      "hours_source": "researched 2026-11-04 (med confidence): https://sportsmansgrilletn.com/",
+      "windows": [
+        {
+          "days": ["MON","TUE","WED","THU","FRI","SAT","SUN"],
+          "start": "14:00",
+          "end": "18:00",
+          "area": null,
+          "kind": "happy_hour",
+          "deals": [
+            {"type": "drink", "desc": "Half off well and liquor", "price": null},
+            {"type": "drink", "desc": "Half off draft beer", "price": null},
+            {"type": "drink", "desc": "Half off house wines", "price": null}
+          ],
+          "sources": [
+            {"url": "https://sportsmansgrilletn.com/", "kind": "venue", "seen": "2026-11-04", "confirmed": null}
+          ],
+          "last_verified": "2026-11-04",
+          "corroborated": false,
+          "confidence": "med",
+          "notes": "Daily 2-6 PM.",
+          "research_notes": "Home page lists Happy Hour daily 2-6 PM: half off well and liquor, draft beer, and house wines. The page's hours list is not labeled by day (read in Mon-Sun order: 11-8, Fri/Sat 11-9), so hours are med. Menu PDFs linked from the page (https://sportsmansgrilletn.com/our-menu/) show no happy hour text via WebFetch: PDF not readable: https://sportsmansgrilletn.com/our-menu/. Closed-2026 search: Brentwood location not reported closed (the closed Sportsman's is the Hillsboro Village one)."
+        }
+      ]
+    }
+  ],
+  "not_added": [
+    {"lead": "The Rutledge", "reason": "guide not confirmed in 2026", "url": "https://franklinis.com/a-toast-to-top-happy-hours-in-franklin-tennessee/"},
+    {"lead": "Amerigo Italian Restaurant (Brentwood)", "reason": "guide not confirmed in 2026", "url": "https://franklinis.com/cheers-to-the-best-happy-hours-in-brentwood-tennessee/"},
+    {"lead": "Cinco de Mayo Mexican Restaurant (Brentwood)", "reason": "guide not confirmed in 2026", "url": "https://www.cincodemayomexicanrestaurant.com/locations/"},
+    {"lead": "Uncle Julio's Brentwood", "reason": "guide not confirmed in 2026", "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html"},
+    {"lead": "Sip & Sound", "reason": "no happy hour found", "url": "https://www.sipandsound.com/"}
+  ]
+}

@@ -50,8 +50,24 @@ its coverage line, Surprise me, the empty state, the feedback context line) read
 inKind cards keep their badge and inKind button; non-inKind cards have neither, and their grid row's K column is
 blank. The footer's venue and window counts are the whole file.
 
-**Status** (v2.0.1, 2026-11-03): Downtown done: 25 non-inKind venues, 34 happy-hour windows (184 venues and 173
-windows in all). The other six zones follow, one zone run each.
+**Status** (v2.6, 2026-11-04): **all 7 core zones are done**, so the Day Grid's "so far" line is gone. 154
+non-inKind venues with a happy hour sit next to the 159 inKind ones (313 venues, 377 windows in all).
+
+| Zone run | Block run | Added in the run | Non-inKind in the zone now | Their happy-hour windows |
+|---|---|---|---|---|
+| Downtown | fix27 (v2.0); Rare Bird addendum in fix28 | 25 + 1 | 22 | 28 |
+| Gulch & Midtown | fix28 (v2.1) | 32 | 38 | 56 |
+| East | fix29 (v2.2) | 19 | 14 | 27 |
+| Germantown & North | fix30 (v2.3) | 14 | 17 | 23 |
+| South | fix31 (v2.4) | 20 | 20 | 25 |
+| West | fix32 (v2.5) | 11 | 10 | 13 |
+| Franklin & Brentwood | fix33 (v2.6) | 33 | 33 | 40 |
+
+"Added in the run" is each zone file's own count (`not-added-<zone>.md`, first line); "now" counts venues by the
+zone their own point puts them in, so a venue a run added but placed in a neighbouring zone (AVO, West → Gulch;
+Folk, Plane Jane and others, East → North) counts there. The one later removal is The GreenHouse Bar (South,
+fix32: all-day menu, no happy hour). Franklin's leads came from Franklin & Brentwood guides, not the five
+Nashville ones (`leads/raw/franklin/fetch-log-franklin.md`).
 
 **Scope.** The 7 core zones (Downtown, Gulch & Midtown, Germantown & North, East, South, West, Franklin &
 Brentwood). Outer suburbs stay inKind only.

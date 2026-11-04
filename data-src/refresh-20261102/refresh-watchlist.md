@@ -58,3 +58,13 @@ itself calls an everyday menu "all day"). Re-check the opening time and the happ
 
 - Grandpa Bar (North, inKind, `ik-11135`): its menus page shows the happy hour only as an image; days, times and
   prices were carried over from the 2026-09-05 pass (image + Nashville Lifestyles 2025-07). Confidence med.
+
+## Temporarily closed (fix33, Franklin & Brentwood)
+Not added: the Google listing says "Temporarily closed". Re-check at the next refresh; research the happy hour if one reopens.
+- Kokomo Trading Company, 158 Front St #100, Franklin: the venue's site and Facebook say "temporarily closed" (undated); Google "Temporarily closed".
+- Granite City Food & Brewery, 1864 W McEwen Dr, Franklin: fire July 5, 2025 (Williamson Source); gcfb.com and Google "Temporarily closed".
+- Curio Brewing Company, 216 Noah Dr #140, Franklin: closed the Noah Drive taproom July 29, 2026 and promises a new location (no address yet); Google still says "Temporarily closed". Research the new address when it is posted.
+
+## Near misses (fix33, Franklin & Brentwood)
+- Mojo's Tacos (The Factory, `nv-mojos-tacos-230`): the home page's "Happy Hour Monday-Friday 3-6" doesn't name a location (Mojo's also has East Nashville); med.
+- Sportsman's Grille (Brentwood): the home page's "Happy Hour (2-6 PM daily)" sits under "Locations in Brentwood & Nashville"; the Brentwood menu PDF (May 2025) has no happy-hour page, the Belle Meade one does. Med.

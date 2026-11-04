@@ -51,5 +51,61 @@
    }
   ],
   "site": "https://bavarianbierhaus.com/nashville-opry-mills-bavarian-bierhaus-happy-hours-specials"
+ },
+ {
+  "hood": "Murfreesboro",
+  "outer_city": "Murfreesboro",
+  "name": "Firebirds Wood Fired Grill - Murfreesboro",
+  "neighborhood_text": "Murfreesboro",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood": "Murfreesboro",
+  "outer_city": "Murfreesboro",
+  "name": "BJ's Restaurant & Brewhouse - Murfreesboro",
+  "neighborhood_text": "Murfreesboro",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood": "Mt. Juliet",
+  "outer_city": "Mt. Juliet",
+  "name": "Calabria Italian Kitchen",
+  "neighborhood_text": "Mt. Juliet",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood": null,
+  "outer_city": "Goodlettsville",
+  "name": "Calabria Brickoven Pizzeria Goodlettsville",
+  "neighborhood_text": "Goodlettsville",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
  }
 ]

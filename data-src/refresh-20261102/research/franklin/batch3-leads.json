@@ -1,0 +1,216 @@
+[
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Culinary Dropout - Franklin",
+  "neighborhood_text": "Franklin",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "North Italia - Franklin",
+  "neighborhood_text": "Franklin",
+  "address": "4041 Aspen Grove Dr #100, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "P.F. Chang's - Cool Springs",
+  "neighborhood_text": "Franklin",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Connors Steak & Seafood - Cool Springs",
+  "neighborhood_text": "Franklin",
+  "address": "1916 Galleria Blvd, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Granite City Food & Brewery - Franklin",
+  "neighborhood_text": "Franklin",
+  "address": "1864 W McEwen Dr, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Brewhouse South & Sauced Pizza Kitchen",
+  "neighborhood_text": "Franklin",
+  "address": "1855 Galleria Blvd, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://www.opentable.com/features/best-happy-hour-restaurants-franklin-tennessee-tn",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Corner Pub - Brentwood",
+  "neighborhood_text": "Brentwood",
+  "address": "710 Old Hickory Blvd, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   },
+   {
+    "url": "https://happyhopper.app/restaurant-directory/tennessee/brentwood",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Esquina Cantina",
+  "neighborhood_text": "Brentwood",
+  "address": "710 Old Hickory Blvd Suite 302, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Chili's Grill & Bar (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "107 Creekside Crossing, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Ludlow & Prime",
+  "neighborhood_text": "Brentwood",
+  "address": "330 Franklin Rd Suite 226B, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Brentwood",
+  "zone": "franklin",
+  "name": "Jefferson's (Brentwood)",
+  "neighborhood_text": "Brentwood",
+  "address": "214 Ward Cir Suite 1200, Brentwood, TN 37027",
+  "guides": [
+   {
+    "url": "https://www.williamsonscene.com/brentwood/top-10-happy-hours-in-brentwood/article_02f548f8-0203-11ed-9551-d7d7922094f3.html",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Dolan's Bar & Grill",
+  "neighborhood_text": "Franklin",
+  "address": "4140 Carothers Pkwy #2, Franklin, TN 37067",
+  "guides": [
+   {
+    "url": "https://baselocal.com/?p=13964",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "Benchmark Sports Pub + Eatery",
+  "neighborhood_text": "Franklin",
+  "address": "5000 Hughes Crossing #115, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://baselocal.com/?p=13964",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "MAFIAoZA'S Franklin",
+  "neighborhood_text": "Franklin",
+  "address": "230 Franklin Rd Building 1, Franklin, TN 37064",
+  "guides": [
+   {
+    "url": "https://baselocal.com/?p=13964",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ },
+ {
+  "hood_guess": "Franklin/Cool Springs",
+  "zone": "franklin",
+  "name": "M.L.Rose (Franklin, per guide)",
+  "neighborhood_text": "Franklin",
+  "address": null,
+  "guides": [
+   {
+    "url": "https://baselocal.com/?p=13964",
+    "confirmed": null
+   }
+  ],
+  "site": null
+ }
+]

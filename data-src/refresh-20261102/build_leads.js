@@ -14,6 +14,13 @@ const { hoodFromText } = require(path.join(REPO, 'data-src', 'hood_zone.js'));
 const venuesPath = process.argv[2] || path.join(REPO, 'venues.json');
 const ik = JSON.parse(fs.readFileSync(venuesPath, 'utf8')).venues.filter((v) => v.inkind === true);
 const raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'leads', 'raw', 'leads-raw.json'), 'utf8'));
+// fix33: Franklin & Brentwood came from their own guides (leads/raw/franklin/, fetch-log-franklin.md),
+// merged by hand into leads-raw-franklin.json. They are read after the Nashville leads and never merged
+// with them by name (55 South, Sportsman's Grille and others have a Nashville and a Franklin location).
+// A lead with `outer_city` is outside Franklin & Brentwood and goes straight to outer-skipped.json.
+const rawFrPath = path.join(__dirname, 'leads', 'raw', 'leads-raw-franklin.json');
+const rawFr = fs.existsSync(rawFrPath) ? JSON.parse(fs.readFileSync(rawFrPath, 'utf8')) : [];
+raw.push(...rawFr);
 const OUT = path.join(__dirname, 'leads');
 const ovPath = path.join(OUT, 'raw', 'address-overrides.json');
 const overrides = fs.existsSync(ovPath) ? JSON.parse(fs.readFileSync(ovPath, 'utf8')) : {};
@@ -49,6 +56,9 @@ raw.forEach((lead) => {
     name: lead.name, neighborhood_text: lead.neighborhood_text || null, address: lead.address || null,
     guides: lead.guides, site: lead.site || null,
   };
+  if (lead.outer_city) {
+    outer.push(Object.assign({ hood: hoodFromText(lead.outer_city), outer_city: lead.outer_city }, rec)); return;
+  }
   const ov = overrides[lead.name];
   if (ov) { rec.address = ov.address; rec.address_source = ov.source_url; }
   const m = ikMatch(lead);
@@ -85,6 +95,6 @@ fs.writeFileSync(path.join(OUT, 'inkind-crosscheck.md'),
 
 const counts = {};
 L.V2_ZONE_KEYS.forEach((k) => { counts[k] = byZone[k].length; });
-console.log(JSON.stringify({ raw: raw.length, per_zone: counts, inkind_overlap: overlap.length,
+console.log(JSON.stringify({ raw: raw.length, raw_franklin: rawFr.length, per_zone: counts, inkind_overlap: overlap.length,
   inkind_possible: possible.length, crosscheck: crosscheck.length, outer_skipped: outer.length, unzoned: unzoned.length }));
 L.V2_ZONE_KEYS.forEach((k) => { if (byZone[k].length > 80) console.log('NOTE: ' + k + ' has ' + byZone[k].length + ' leads (> 80)'); });

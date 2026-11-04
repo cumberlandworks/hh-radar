@@ -1,0 +1,446 @@
+[
+ {
+  "id": "nv-north-italia-4041",
+  "name": "North Italia",
+  "address": "4041 Aspen Grove Dr, Franklin, TN 37067",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": "bar",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$10 bites: zucca chips, arancini, meatballs, flatbreads and more",
+    "price": 10
+   },
+   {
+    "type": "food",
+    "desc": "$12 bites: White Truffle Garlic Bread, Smoked Salmon Avocado Toast, Fritto Misto, Prosciutto di Parma, Baked Burrata alla Diavola",
+    "price": 12
+   },
+   {
+    "type": "food",
+    "desc": "Spritz & Snacks: a spritz with zucca chips, campari-glazed nuts and marinated olives, $15",
+    "price": 15
+   },
+   {
+    "type": "drink",
+    "desc": "Sangria Social: margherita or pepperoni flatbread plus a pitcher of red sangria, $30",
+    "price": 30
+   },
+   {
+    "type": "drink",
+    "desc": "$10 wine by the glass ($35 bottle)",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$12 craft cocktails",
+    "price": 12
+   },
+   {
+    "type": "drink",
+    "desc": "$10 spritzes",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$8 zero-proof drinks",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "$5.50 beer",
+    "price": 5.5
+   }
+  ],
+  "sources": [
+   "https://www.northitalia.com/locations/franklin-tn/",
+   "https://www.northitalia.com/locations/franklin-tn/menus/happy-hour-menu/"
+  ],
+  "confidence": "high",
+  "notes": "Served in the bar."
+ },
+ {
+  "id": "nv-culinary-dropout-4020",
+  "name": "Culinary Dropout",
+  "address": "4020 Aspen Grove Dr, Franklin, TN 37067",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": null,
+  "deals": [],
+  "sources": [
+   "https://www.culinarydropout.com/locations/franklin-tn/",
+   "https://www.culinarydropout.com/menus/?location=franklin-tn"
+  ],
+  "confidence": "high",
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-pucketts-restaurant-120",
+  "name": "Puckett's Restaurant",
+  "address": "120 4th Ave S, Franklin, TN 37064",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": null,
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$2 off draft and bottled beers",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$7 A. Marshall Family Wines",
+    "price": 7
+   },
+   {
+    "type": "drink",
+    "desc": "$2 off other wines",
+    "price": null
+   },
+   {
+    "type": "drink",
+    "desc": "$2 off Puckett's cocktails",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Bar bites $8 each: fried pickles, fried green beans, smoked sliders (two brisket and two pulled pork), or half dozen cherrywood-smoked wings",
+    "price": 8
+   }
+  ],
+  "sources": [
+   "https://www.puckettsrestaurant.com/franklin"
+  ],
+  "confidence": "high",
+  "notes": "Wings in dry, BBQ, hot, medium, mild or hot honey."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "name": "Drake's Cool Springs",
+  "address": "553 Cool Springs Blvd, Franklin, TN 37067",
+  "window_index": 1,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "21:00",
+  "end": "23:00",
+  "area": null,
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$2 Mini Cheeseburger (limit 10)",
+    "price": 2
+   },
+   {
+    "type": "food",
+    "desc": "$5 Chips & Queso",
+    "price": 5
+   },
+   {
+    "type": "food",
+    "desc": "$6 Fried Pickles",
+    "price": 6
+   },
+   {
+    "type": "food",
+    "desc": "$7 Half Order BLT Tots",
+    "price": 7
+   },
+   {
+    "type": "food",
+    "desc": "$10 Southwest Eggrolls",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$2 Busch Light",
+    "price": 2
+   },
+   {
+    "type": "drink",
+    "desc": "$3 Drake's All American Lager (16oz)",
+    "price": 3
+   },
+   {
+    "type": "drink",
+    "desc": "$4 House Wine",
+    "price": 4
+   },
+   {
+    "type": "drink",
+    "desc": "$5 Tito's or Jack Daniel's",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "$6 Pixy Stix Martini",
+    "price": 6
+   }
+  ],
+  "sources": [
+   "https://drakescomeplay.com/nashville/",
+   "https://drakescomeplay.com/event/happy-hour-5/"
+  ],
+  "confidence": "high",
+  "notes": "Chain-wide pricing at participating locations; the page names Cool Springs (Franklin)."
+ },
+ {
+  "id": "nv-hop-house-tennessee-taps-117",
+  "name": "Hop House Tennessee Taps",
+  "address": "117 5th Ave N Suite B, Franklin, TN 37064",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU"
+  ],
+  "start": "14:00",
+  "end": "17:00",
+  "area": null,
+  "deals": [],
+  "sources": [
+   "https://www.hophousetntaps.com"
+  ],
+  "confidence": "med",
+  "notes": "Deals not posted."
+ },
+ {
+  "id": "nv-mellow-mushroom-franklin-317",
+  "name": "Mellow Mushroom Franklin",
+  "address": "317 Main St Ste 100, Franklin, TN 37064",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": null,
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "Half-price select draft beers",
+    "price": null
+   },
+   {
+    "type": "food",
+    "desc": "Half-price cheese bread & hummus",
+    "price": null
+   }
+  ],
+  "sources": [
+   "https://mellowmushroom.com/locations/tn/franklin/317-main-st"
+  ],
+  "confidence": "med",
+  "notes": null
+ },
+ {
+  "id": "nv-scouts-pub-158",
+  "name": "Scout's Pub",
+  "address": "158 Front St #120, Franklin, TN 37064",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": null,
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$8 Scout's Sangria",
+    "price": 8
+   },
+   {
+    "type": "drink",
+    "desc": "$5 Puckett's Brew & Featured Beer",
+    "price": 5
+   },
+   {
+    "type": "drink",
+    "desc": "$7 A. Marshall Wine",
+    "price": 7
+   },
+   {
+    "type": "food",
+    "desc": "$8 each Bar Bites: Gringo Tacos, Fried Cheese Curds, Korean Meatballs, Mini Margherita or Pepperoni Flatbread, Loaded House Chips",
+    "price": 8
+   }
+  ],
+  "sources": [
+   "https://www.scoutspub.com/bar-menu",
+   "https://www.scoutspub.com/"
+  ],
+  "confidence": "med",
+  "notes": "Ask your server for more details."
+ },
+ {
+  "id": "nv-mere-bulles-5201",
+  "name": "Mere Bulles",
+  "address": "5201 Maryland Way, Brentwood, TN 37027",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI"
+  ],
+  "start": "14:00",
+  "end": "18:00",
+  "area": null,
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$6 small bites: salads, truffle fries, tacos, desserts",
+    "price": 6
+   },
+   {
+    "type": "food",
+    "desc": "$9 small bites: she-crab bisque, bruschetta, cheeseburger and more",
+    "price": 9
+   },
+   {
+    "type": "food",
+    "desc": "$12 crab cake, shrimp cocktail or Angus rib rolls",
+    "price": 12
+   },
+   {
+    "type": "drink",
+    "desc": "$10 cocktails: bramble mule, spritz, tiny tinis and more",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$6 wine (red, white, bubbles)",
+    "price": 6
+   },
+   {
+    "type": "drink",
+    "desc": "$5 beer",
+    "price": 5
+   }
+  ],
+  "sources": [
+   "https://merebulles.com/",
+   "https://merebulles.com/food-menu?menu_id=212830"
+  ],
+  "confidence": "high",
+  "notes": "Dine-in only."
+ },
+ {
+  "id": "nv-mellow-mushroom-franklin-317",
+  "name": "Mellow Mushroom Franklin",
+  "address": "317 Main St Ste 100, Franklin, TN 37064",
+  "window_index": 3,
+  "kind": "special",
+  "days": [
+   "SUN"
+  ],
+  "start": "11:00",
+  "end": "close",
+  "area": null,
+  "deals": [
+   {
+    "type": "drink",
+    "desc": "$5 Bloody Marys & mimosas",
+    "price": 5
+   }
+  ],
+  "sources": [
+   "https://mellowmushroom.com/locations/tn/franklin/317-main-st"
+  ],
+  "confidence": "med",
+  "notes": "All day: from the 11:00 opening."
+ },
+ {
+  "id": "nv-del-friscos-grille-207",
+  "name": "Del Frisco's Grille",
+  "address": "207 Franklin Rd, Brentwood, TN 37027",
+  "window_index": 0,
+  "kind": "happy_hour",
+  "days": [
+   "MON",
+   "TUE",
+   "WED",
+   "THU",
+   "FRI",
+   "SUN"
+  ],
+  "start": "15:00",
+  "end": "18:00",
+  "area": "bar",
+  "deals": [
+   {
+    "type": "food",
+    "desc": "$10 bites: cheesesteak eggrolls, buffalo wings, ahi tacos",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$10 cocktails: Moscow Mule, Grille Margarita, Old Fashioned",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$10 wine by the glass",
+    "price": 10
+   },
+   {
+    "type": "drink",
+    "desc": "$10 spirits",
+    "price": 10
+   }
+  ],
+  "sources": [
+   "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/"
+  ],
+  "confidence": "high",
+  "notes": "Bar only. Sunday through Friday 3-6 PM."
+ }
+]

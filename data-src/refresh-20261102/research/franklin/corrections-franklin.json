@@ -1,0 +1,252 @@
+[
+ {
+  "id": "nv-burger-up-franklin-401",
+  "window_index": 0,
+  "set": {
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "$6 well drinks: vodka, tequila or whiskey with a mixer",
+     "price": 6
+    },
+    {
+     "type": "drink",
+     "desc": "$2 off all drafts",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$6.50 select wines (house red or house white)",
+     "price": 6.5
+    }
+   ],
+   "notes": "At the bar.",
+   "research_notes": "Venue location page: happy hour Mon-Fri 3-5pm at the bar. fix33 S4b: the venue's drink menu page (burgerupfranklin.com) lists the deals: $6 well drinks, $2 off all drafts, $6.50 house red or white. Undated, med. The 12South Burger Up's 2026 closure is a different location."
+  },
+  "sources_add": [
+   {
+    "url": "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-drink-menu",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   }
+  ],
+  "why": "S4b: the venue's drink menu page: 'Happy Hour (at the bar, Monday through Friday, 3pm-5pm)', three deals."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "window_index": 0,
+  "set": {
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$2 Mini Cheeseburger (limit 10)",
+     "price": 2
+    },
+    {
+     "type": "food",
+     "desc": "$5 Chips & Queso",
+     "price": 5
+    },
+    {
+     "type": "food",
+     "desc": "$6 Fried Pickles",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$7 Half Order BLT Tots",
+     "price": 7
+    },
+    {
+     "type": "food",
+     "desc": "$10 Southwest Eggrolls",
+     "price": 10
+    },
+    {
+     "type": "drink",
+     "desc": "$2 Busch Light",
+     "price": 2
+    },
+    {
+     "type": "drink",
+     "desc": "$3 Drake's All American Lager (16oz)",
+     "price": 3
+    },
+    {
+     "type": "drink",
+     "desc": "$4 House Wine",
+     "price": 4
+    },
+    {
+     "type": "drink",
+     "desc": "$5 Tito's or Jack Daniel's",
+     "price": 5
+    },
+    {
+     "type": "drink",
+     "desc": "$6 Pixy Stix Martini",
+     "price": 6
+    }
+   ],
+   "notes": "Chain-wide pricing at participating locations; the page names Cool Springs (Franklin).",
+   "research_notes": "Venue location page: happy hour Mon-Fri 3-6pm and 9-11pm. fix33 S4b: Drake's own happy hour page (drakescomeplay.com/event/happy-hour-5/) lists one deal list 'at participating locations' and names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm' (brief step 11)."
+  },
+  "sources_add": [
+   {
+    "url": "https://drakescomeplay.com/event/happy-hour-5/",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   }
+  ],
+  "why": "S4b: Drake's own happy hour page names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm'."
+ },
+ {
+  "id": "nv-drakes-cool-springs-553",
+  "window_index": 1,
+  "set": {
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$2 Mini Cheeseburger (limit 10)",
+     "price": 2
+    },
+    {
+     "type": "food",
+     "desc": "$5 Chips & Queso",
+     "price": 5
+    },
+    {
+     "type": "food",
+     "desc": "$6 Fried Pickles",
+     "price": 6
+    },
+    {
+     "type": "food",
+     "desc": "$7 Half Order BLT Tots",
+     "price": 7
+    },
+    {
+     "type": "food",
+     "desc": "$10 Southwest Eggrolls",
+     "price": 10
+    },
+    {
+     "type": "drink",
+     "desc": "$2 Busch Light",
+     "price": 2
+    },
+    {
+     "type": "drink",
+     "desc": "$3 Drake's All American Lager (16oz)",
+     "price": 3
+    },
+    {
+     "type": "drink",
+     "desc": "$4 House Wine",
+     "price": 4
+    },
+    {
+     "type": "drink",
+     "desc": "$5 Tito's or Jack Daniel's",
+     "price": 5
+    },
+    {
+     "type": "drink",
+     "desc": "$6 Pixy Stix Martini",
+     "price": 6
+    }
+   ],
+   "notes": "Chain-wide pricing at participating locations; the page names Cool Springs (Franklin).",
+   "research_notes": "Venue location page: happy hour Mon-Fri 3-6pm and 9-11pm. fix33 S4b: Drake's own happy hour page (drakescomeplay.com/event/happy-hour-5/) lists one deal list 'at participating locations' and names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm' (brief step 11)."
+  },
+  "sources_add": [
+   {
+    "url": "https://drakescomeplay.com/event/happy-hour-5/",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   }
+  ],
+  "why": "S4b: Drake's own happy hour page names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm'."
+ },
+ {
+  "id": "nv-jonathans-grille-7135",
+  "window_index": 0,
+  "set": {
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "Two-for-one beer",
+     "price": null
+    }
+   ],
+   "research_notes": "Venue daily specials page: happy hour Mon, Wed-Sat 3-7PM. fix33 S4b: the home page's 'Happy Hour' list gives two-for-one beer (untimed); $8 select appetizers run 3-6PM and have their own window. Specials are the same at all Jonathan's locations (Tennessee named)."
+  },
+  "sources_add": [
+   {
+    "url": "https://www.jonathansgrille.com/",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   },
+   {
+    "url": "https://www.jonathansgrille.com/late-night-menu",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   }
+  ],
+  "why": "S4b: the home page's 'Happy Hour (daily)' lists two-for-one beer; the $8 select appetizers already have their own Mon-Fri 3-6 window, so they are not repeated here."
+ },
+ {
+  "id": "nv-the-cheesecake-factory-1800",
+  "window_index": 0,
+  "set": {
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$10.95 appetizers: sliders, avocado eggrolls, calamari, nachos and more",
+     "price": 10.95
+    },
+    {
+     "type": "food",
+     "desc": "$9.95 small plates: street corn, taquitos, crab bites and more",
+     "price": 9.95
+    },
+    {
+     "type": "drink",
+     "desc": "$8.50 specialty cocktails: mojito, margarita, Long Island and more",
+     "price": 8.5
+    },
+    {
+     "type": "drink",
+     "desc": "$8.50 select well drinks or wines by the glass",
+     "price": 8.5
+    },
+    {
+     "type": "drink",
+     "desc": "$4.95 select draft beers",
+     "price": 4.95
+    },
+    {
+     "type": "drink",
+     "desc": "$3.95 select bottled beers",
+     "price": 3.95
+    }
+   ],
+   "notes": "In the bar.",
+   "research_notes": "Location page: happy hour Mon-Fri 4-6PM in the bar. fix33 S4b: the executor opened its Happy Hour menu page (script-rendered) in Chrome: 'Monday - Friday 4:00 p.m. - 6:00 p.m. in Our Bar', 13 appetizers $10.95, 11 small plates $9.95, 5 specialty cocktails $8.50, select well drinks and wines $8.50, drafts $4.95, bottles $3.95. Franklin-specific menu (c) 2026, med."
+  },
+  "sources_add": [
+   {
+    "url": "https://menu.thecheesecakefactory.com/tn/franklin-182/happy-hour/",
+    "kind": "venue",
+    "seen": "2026-11-04",
+    "confirmed": null
+   }
+  ],
+  "why": "S4b: the location's Happy Hour menu page (script-rendered, read in Chrome)."
+ }
+]

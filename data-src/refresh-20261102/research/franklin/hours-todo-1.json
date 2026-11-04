@@ -1,0 +1,152 @@
+[
+ {
+  "name": "Hop House Tennessee Taps",
+  "address": "117 5th Ave N Suite B, Franklin, TN 37064",
+  "need_hours": true
+ },
+ {
+  "name": "Twin Peaks Cool Springs",
+  "address": "1634 Galleria Blvd, Brentwood, TN 37027",
+  "need_hours": true
+ },
+ {
+  "name": "Tony's Eat and Drink",
+  "address": "1000 Meridian Blvd Suite 100, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Jonathan's Grille",
+  "address": "7135 S Springs Dr, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Puckett's Restaurant",
+  "address": "120 4th Ave S, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "The White Alligator",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "McCreary's Irish Pub & Eatery",
+  "address": "414 Main St, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Scout's Pub",
+  "address": "158 Front St #120, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "The Skylight",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Perry's Steakhouse & Grille - Cool Springs",
+  "address": "5028 Aspen Grove Dr, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "1799 Kitchen & Bar Room",
+  "address": "130 2nd Ave N, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "JJs Wine Bar",
+  "address": "206 E Main St, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "etch Franklin",
+  "address": "230 Franklin Rd Ste 1300, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Bonefish Grill Cool Springs",
+  "address": "3010 A Mallory Ln, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Otaku Ramen",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Mojo's Tacos",
+  "address": "230 Franklin Rd, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Serrato's Steakhouse",
+  "address": "3046 Columbia Ave Suite 102, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Del Frisco's Grille",
+  "address": "207 Franklin Rd, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "55 South",
+  "address": "7031 Executive Center Dr Suite 101, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "Mere Bulles",
+  "address": "5201 Maryland Way, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "Firebirds Wood Fired Grill",
+  "address": "700 Old Hickory Blvd, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "Sportsman's Grille",
+  "address": "1640 Westgate Cir, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "Culinary Dropout",
+  "address": "4020 Aspen Grove Dr, Suite 101, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "North Italia",
+  "address": "4041 Aspen Grove Dr, Suite 100, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "P.F. Chang's",
+  "address": "439 Cool Springs Blvd, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Connors Steak & Seafood",
+  "address": "1916 Galleria Blvd, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Jefferson's",
+  "address": "214 Ward Circle, Suite 1200, Brentwood, TN 37027",
+  "need_hours": false
+ },
+ {
+  "name": "M.L.Rose",
+  "address": "3084 Columbia Ave, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Drake's Cool Springs",
+  "address": "553 Cool Springs Blvd, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Burger Up Franklin",
+  "address": "401 Cool Springs Blvd Suite B, Franklin, TN 37067",
+  "need_hours": false
+ }
+]

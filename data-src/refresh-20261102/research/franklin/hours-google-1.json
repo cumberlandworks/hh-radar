@@ -1,0 +1,171 @@
+{
+ "Tony's Eat and Drink": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Jonathan's Grille": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Panel found on 'Jonathan's Grille Franklin TN' search (name-only; address not visible); no banner."
+ },
+ "Puckett's Restaurant": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "The White Alligator": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "McCreary's Irish Pub & Eatery": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Scout's Pub": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "The Skylight": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing 'The Skylight' (cocktail bar); address not visible in panel."
+ },
+ "Perry's Steakhouse & Grille - Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "1799 Kitchen & Bar Room": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "JJs Wine Bar": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "etch Franklin": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing 'etch - Franklin', 230 Franklin Rd Ste 1300; no closure banner."
+ },
+ "Bonefish Grill Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Otaku Ramen": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Mojo's Tacos": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Serrato's Steakhouse": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Del Frisco's Grille": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "55 South": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Mere Bulles": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing named 'Mere Bulles Restaurant & Events', 5201 Maryland Way."
+ },
+ "Firebirds Wood Fired Grill": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Sportsman's Grille": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Panel address 1640 Westgate Cir, Brentwood; no banner."
+ },
+ "Culinary Dropout": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "North Italia": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "P.F. Chang's": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Connors Steak & Seafood": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Jefferson's": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "M.L.Rose": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Drake's Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Burger Up Franklin": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Hop House Tennessee Taps": {
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ]
+  },
+  "listing_status": "open"
+ },
+ "Twin Peaks Cool Springs": {
+  "hours": null,
+  "listing_status": "no listing found",
+  "listing_note": "Google panel for this search showed Sportsman's Grille (1640 Westgate Cir), not Twin Peaks. No Twin Peaks panel. Search results: Williamson Source (Jun 27, 2026) says Twin Peaks in Cool Springs closed after 14 years; Yelp says CLOSED."
+ }
+}

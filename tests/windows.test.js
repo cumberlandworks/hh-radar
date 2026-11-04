@@ -2206,7 +2206,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.5';") && html.includes("venues.json?v=2.5") && html.includes('logic.js?v=2.5'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.6';") && html.includes("venues.json?v=2.6") && html.includes('logic.js?v=2.6'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2635,6 +2635,9 @@ test('index.html (v1.24): one live list, no red badges, --bad only for #fatal an
 // ==================== v2.0 (fix27): every happy hour, with an inKind toggle ====================
 const L27 = require('../logic.js');
 const VENUES27 = JSON.parse(require('node:fs').readFileSync(path.join(__dirname, '..', 'venues.json'), 'utf8')).venues;
+// fix33: the real file's first venue is no longer inKind ("1799 Kitchen & Bar Room" sorts first), so the tests
+// that need an inKind venue take one explicitly.
+const IK27 = VENUES27.filter((v) => v.inkind === true);
 function src27(kind, extra) {
   return Object.assign({ url: 'https://example-bar.com/happy-hour', kind, seen: '2026-11-03', confirmed: null }, extra || {});
 }
@@ -2672,11 +2675,11 @@ test('v2.0 A1: non-inKind shape — nv- id, official_site, no inKind fields, a h
   has(nv27({}, { kind: 'special' }), /only with a happy_hour window/);
   has(nv27({ verified_no_hh: true }), /verified_no_hh must be false/);
   // and inKind venues still need ik-<int>
-  const ik = Object.assign({}, VENUES27[0], { id: 'nv-312-pizza' });
+  const ik = Object.assign({}, IK27[0], { id: 'nv-312-pizza' });
   assert.ok(L27.validateVenues(data27([ik])).some((e) => /id must match ik-<int>/.test(e)));
 });
 test('v2.0 A2: sources — typed objects on non-inKind windows; strings stay valid on inKind ones', () => {
-  assert.deepEqual(L27.validateVenues(data27([VENUES27[0]])), [], 'string sources on an inKind venue');
+  assert.deepEqual(L27.validateVenues(data27([IK27[0]])), [], 'string sources on an inKind venue');
   const has = (v, re) => assert.ok(errs27(v).some((e) => re.test(e)), re + ' in ' + errs27(v).join(' | '));
   has(nv27({}, { sources: ['https://example-bar.com/hh'] }), /needs typed sources/);
   has(nv27({}, { sources: [src27('blog')] }), /must be \{url, kind/);
@@ -2714,7 +2717,7 @@ test('v2.0 A3: nv- ids are unique', () => {
   assert.equal(L27.normName('Verna Café & Bar'), L27.normName('Verna Cafe and Bar'));
 });
 test('v2.0 A3: no nv- venue duplicates an ik- venue (name within 0.15 mi, or the same street address)', () => {
-  const ik = VENUES27.find((v) => v.address);
+  const ik = IK27.find((v) => v.address);
   const dup = /duplicates inKind venue/;
   // same name, ~0.1 mi away
   const near = nv27({ name: ik.name + ' - Nashville', address: '999 Elsewhere Ave', lat: ik.lat + 0.0014, lon: ik.lon });

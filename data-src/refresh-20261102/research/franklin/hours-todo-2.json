@@ -1,0 +1,63 @@
+[
+ {
+  "name": "Coal Town Public House",
+  "address": "187 Front St Suite 103, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Mellow Mushroom Franklin",
+  "address": "317 Main St Ste 100, Franklin, TN 37064",
+  "need_hours": false
+ },
+ {
+  "name": "Carrabba's Italian Grill",
+  "address": "533 Cool Springs Blvd, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Condado Tacos",
+  "address": "4031 Aspen Grove Dr #108, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "The Cheesecake Factory",
+  "address": "1800 Galleria Blvd #1166, Franklin, TN 37067",
+  "need_hours": false
+ },
+ {
+  "name": "Curio Brewing Company",
+  "address": "216 Noah Dr #140, Franklin, TN 37064",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ },
+ {
+  "name": "Kokomo Trading Company",
+  "address": "158 Front St #100, Franklin, TN 37064",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ },
+ {
+  "name": "The Tin Roof 2",
+  "address": "9135 Carothers Pkwy #100, Franklin, TN 37067",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ },
+ {
+  "name": "Granite City Food & Brewery - Franklin",
+  "address": "1864 W McEwen Dr, Franklin, TN 37067",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ },
+ {
+  "name": "Ludlow & Prime",
+  "address": "330 Franklin Rd Suite 226B, Brentwood, TN 37027",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ },
+ {
+  "name": "MAFIAoZA'S Franklin",
+  "address": "230 Franklin Rd Building 1, Franklin, TN 37064",
+  "need_hours": false,
+  "researcher_said": "closed / moved"
+ }
+]

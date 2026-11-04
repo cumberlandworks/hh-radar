@@ -25,3 +25,7 @@
 ## Map seam warnings: added, but the point is outside its zone polygon (1)
 Settle each before the tests: a MAP_SEAM_EXCEPTIONS line in tests/windows.test.js, or a corrected point.
 - nv-etc-3790 (`etc.`), 3790 Bedford Ave: Green Hills / south; the point is inside: west
+
+## Removed after the merge (correction files)
+Added by an earlier zone run, then taken out by a later `-corr` file (apply_corrections.py).
+- The GreenHouse Bar (`nv-the-greenhouse-bar-2211`) = all-day menu, no happy hour, removed 2026-11-04. TJ's all-day rule (2026-11-04): its 'Happy All Day' list is its everyday menu, so it has no real happy hour, and a non-inKind venue needs one. Closure check: no dated closure; Google lists 'Greenhouse Bar' open with no banner, next to The Food Company at the same address; Groupon/MapQuest 'Closed' tags are undated. — https://www.greenhousenash.com/greenhouse-bar

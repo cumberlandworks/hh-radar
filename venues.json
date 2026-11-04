@@ -3,17 +3,161 @@
  "generated": "2026-11-04",
  "generator": "merge_v2zone.py (hh-radar v2 zone runs, refresh-20261102)",
  "coverage": {
-  "text": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed) | v2: 121 non-inKind venues with a happy hour, trust-bar checked, in Downtown, Gulch & Midtown, East, Germantown & North, South, West (zone runs from 2026-11-03)",
+  "text": "159 inKind partners in the Nashville metro per inKind map API 2026-10-23; every venue re-researched 2026-10-23; 615chuTNey dropped (permanently closed) | v2: 154 non-inKind venues with a happy hour, trust-bar checked, in Downtown, Gulch & Midtown, East, Germantown & North, South, West, Franklin & Brentwood (zone runs from 2026-11-03)",
   "v2_zones_done": [
    "downtown",
    "gulch",
    "east",
    "north",
    "south",
-   "west"
+   "west",
+   "franklin"
   ]
  },
  "venues": [
+  {
+   "id": "nv-1799-kitchen-and-bar-room-130",
+   "name": "1799 Kitchen & Bar Room",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "130 2nd Ave N",
+   "zip": "37064",
+   "lat": 35.9265574,
+   "lon": -86.8678833,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.1799franklin.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.1799franklin.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 wines by the glass",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$6 select draft beers",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$9 signature cocktails",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Snacks: Roasted Garlic Fries, French Dip Sandwich, Prime Beef Steak Skewers (prices not posted)",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.1799franklin.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Bar Room, Sunday through Thursday.",
+     "research_notes": "Venue home page; the page says the prices come from a social media post. Hours are Bar Room hours. Closed-search: OpenTable shows a diner visit Oct 2026; directory 'Closed' tags look stale."
+    },
+    {
+     "days": [
+      "WED"
+     ],
+     "start": "18:00",
+     "end": "22:00",
+     "area": "bar",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Burger with a featured bourbon pour $30",
+       "price": 30
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.1799franklin.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Whiskey Flights and the Barrel Aged Old Fashioned are also discounted (amounts not posted).",
+     "research_notes": "Venue home page, Wednesday 6-10 PM."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
   {
    "id": "ik-7491",
    "inkind_id": 7491,
@@ -638,6 +782,168 @@
    "hours_confidence": "med",
    "hours_notes": "Hours shown are bar hours. Kitchen: Mon-Thu 11-21, Fri-Sat 11-22, Sun 11-21. The /specials page header lists later closes on some days (Mon/Wed/Thu 11pm, Sat 11:30pm) that disagree with the homepage; homepage used.",
    "lunch_checked": true
+  },
+  {
+   "id": "nv-55-south-7031",
+   "name": "55 South",
+   "city": "Brentwood",
+   "neighborhood": "Brentwood",
+   "hood": "Brentwood",
+   "zone": "franklin",
+   "address": "7031 Executive Center Dr Suite 101",
+   "zip": "37027",
+   "lat": 36.029912,
+   "lon": -86.7901624,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.eat55.com/brentwood",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "14:30"
+     ],
+     [
+      "15:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "14:30"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.eat55.com/brentwood",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off well liquor",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off wines",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "1/2 off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off bottles and cans of beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.eat55.com/brentwood",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "At the bar.",
+     "research_notes": "Brentwood page on eat55.com lists Happy Hour Mon-Fri 2-6pm at the bar, and Sunday all day, with the four drink deals above. The page carries the Brentwood holiday-closure note (12/23 close), so it is current. Closed-2026 search: no closure."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "10:00",
+     "end": "close",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off well liquor",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off wines",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "1/2 off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off bottles and cans of beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.eat55.com/brentwood",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "All day: from the 10:00 opening. Brentwood is closed Sunday evenings (brunch only, until 2:30 PM). The page does not say whether the Sunday deals are bar-only.",
+     "research_notes": "Same Brentwood page: 'Sunday: All day'. Sunday hours on that page are brunch 10am-2:30pm, closed Sunday evenings. Area set to bar to match the weekday listing; the page does not say for Sunday."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-888-800",
@@ -4185,6 +4491,142 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-bonefish-grill-cool-springs-3010",
+   "name": "Bonefish Grill Cool Springs",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "3010 A Mallory Ln",
+   "zip": "37067",
+   "lat": 35.9492845,
+   "lon": -86.8196499,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "15:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "15:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:30",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$9 ahi tuna wonton crisps",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$9 shrimp toast",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$7 pickle chips, Bang Bang chicken bites or crispy cauliflower",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$7 cocktails: mango bourbon sour, lemon drop, margarita and more",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$6 house wine, 6 oz",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$7 select spirits (single-liquor mixed drinks)",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$1 off draft beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://locations.bonefishgrill.com/tennessee/franklin/3010-a.-mallory-lane",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://bonefishgrill-d8cba7f0a6b8gwd7.a02.azurefd.net/menu/BSH-1-TN_0626.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Social Hour, every day. Chain-wide Tennessee pricing.",
+     "research_notes": "fix33: the executor opened the location page's 'Social Hour Menu' link, the Tennessee menu BSH-1-TN_0626.pdf (June 2026), and read it on the Mac: '3:00 PM - 6:30 PM | EVERY. SINGLE. DAY.', bites $7-$9, $7 cocktails, $6/$9 house wine, $9/$13 premium wine, $1 off drafts, $7 select spirits. The researcher had a 4 PM start and no end from the page text. Location hours: Mon-Thu 3-10, Fri 3-11, Sat 11-11, Sun 11-9. No 2026 closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-boqueria-fifth-broadway-5005",
    "name": "Boqueria Fifth + Broadway",
    "city": "Nashville",
@@ -5092,6 +5534,127 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-burger-up-franklin-401",
+   "name": "Burger Up Franklin",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "401 Cool Springs Blvd Suite B",
+   "zip": "37067",
+   "lat": 35.9456562,
+   "lon": -86.828373,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://burgerupfranklin.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://burgerupfranklin.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 well drinks: vodka, tequila or whiskey with a mixer",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off all drafts",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$6.50 select wines (house red or house white)",
+       "price": 6.5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://burgerupfranklin.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-happy-hours-specials",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://burgerupfranklin.com/franklin-cool-springs-burger-up-franklin-drink-menu",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "At the bar.",
+     "research_notes": "Venue location page: happy hour Mon-Fri 3-5pm at the bar. fix33 S4b: the venue's drink menu page (burgerupfranklin.com) lists the deals: $6 well drinks, $2 off all drafts, $6.50 house red or white. Undated, med. The 12South Burger Up's 2026 closure is a different location."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-18503",
    "inkind_id": 18503,
    "name": "Butcher & Bee",
@@ -5822,6 +6385,148 @@
    "hours_confidence": "high",
    "hours_notes": "Atmosfy listing shows older/different hours (Mon-Thu to 22:00, Fri-Sat to 23:00, Sun to 21:00); not used.",
    "lunch_checked": true
+  },
+  {
+   "id": "nv-carrabbas-italian-grill-533",
+   "name": "Carrabba's Italian Grill",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "533 Cool Springs Blvd",
+   "zip": "37067",
+   "lat": 35.9462955,
+   "lon": -86.8238856,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$5 spinach arancini or zucchini fritte",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "$7 lasagne dip, mezzaluna fritte or shrimp focaccia bites",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$9 calamari, meatball sliders or Calabrian wings",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$5 red sangria or blood orange margarita",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 rose sangria, pomegranate martini, limoncello spritz or Italian buck",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$9 blackberry sangria, espresso martini or Italian old fashioned",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "House wines $5, $7 or $9 (6 oz)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 Michelob Ultra draft",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://locations.carrabbas.com/tennessee/franklin/533-cool-springs-blvd",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://CarrabbasProd-esdja5eaccfgfnc7.a02.azurefd.net/assets/menus/HH-4-7-TN_0926.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "In the bar area. Chain-wide Tennessee pricing.",
+     "research_notes": "Location page links the Tennessee happy-hour menu HH-4-7-TN_0926. fix33: the executor read it on the Mac (pdf2txt.swift): 'ENJOY IN THE BAR AREA 4-7PM DAILY', bites $5/$7/$9, cocktails and sangrias $5/$7/$9, wines $5/$7/$9, drafts from $3. Days are from the PDF (the researcher had inferred them). No 2026 closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-char-3988",
@@ -6765,6 +7470,119 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-coal-town-public-house-187",
+   "name": "Coal Town Public House",
+   "city": "Franklin",
+   "neighborhood": "Westhaven",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "187 Front St Suite 103",
+   "zip": "37064",
+   "lat": 35.929215,
+   "lon": -86.9197488,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.coaltownpublichouse.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.coaltownpublichouse.com",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 Aperol Spritz, Hugo Spritz, PH Margarita, Vodka Martini, Gin Martini, Old Fashioned",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$6 spirits, 5 oz pour",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$5 wine by the glass",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$4 drafts: Bud Light, Michelob ULTRA, Buena Cerveza Mexican Lager",
+       "price": 4
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.coaltownpublichouse.com/happy-hour",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Ask your server for the current PH Selects list. Venue lists suite 103; lead had 103B.",
+     "research_notes": "Venue happy-hour page, no date shown. Home page hours: Mon-Thu 11-10, Fri-Sat 11-11, Sun brunch 11-3 then dinner 3-9."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-9590",
    "inkind_id": 9590,
    "name": "Common Ground - Berry Hill",
@@ -7282,6 +8100,203 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-connors-steak-and-seafood-1916",
+   "name": "Connors Steak & Seafood",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs Galleria",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "1916 Galleria Blvd",
+   "zip": "37067",
+   "lat": 35.9540933,
+   "lon": -86.8150766,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.connorsrestaurant.com/franklin-tn-steakhouse",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.connorsrestaurant.com/franklin-tn-steakhouse",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:30",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$9 Tito's martinis",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$10 craft cocktails",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off draft beer, house wine and well liquor",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off all other glasses of wine and cocktails",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Bar bites: oven roasted meatballs $10.5",
+       "price": 10.5
+      },
+      {
+       "type": "food",
+       "desc": "Bar bites: ahi tuna tacos $10.5",
+       "price": 10.5
+      },
+      {
+       "type": "food",
+       "desc": "Bar bites: rattlesnake cheeseburger $10.5",
+       "price": 10.5
+      },
+      {
+       "type": "food",
+       "desc": "Bar bites: crispy truffle fries $7.5",
+       "price": 7.5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.connorsrestaurant.com/franklin-tn-steakhouse",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.connorsrestaurant.com/pdf/cool-springs-social-hour.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.connorsrestaurant.com/pdf/cool-springs-bar-bites.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Exclusive to the bar and lounge. Bar bites served Mon-Fri only.",
+     "research_notes": "Venue page lists Mon-Fri 3-6:30pm. Opened both linked PDFs (social hour, modified Dec 2025; bar bites): social hour deals read; bar bites PDF text read for four items (meatballs, ahi tuna tacos, rattlesnake cheeseburger, truffle fries); the venue page also mentions prime rib sliders, not confirmed in the PDF text. Closed-2026 search found no closure."
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "18:30",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$9 Tito's martinis",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$10 craft cocktails",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "Half-off draft beer, house wine and well liquor",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$3 off all other glasses of wine and cocktails",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.connorsrestaurant.com/franklin-tn-steakhouse",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.connorsrestaurant.com/pdf/cool-springs-social-hour.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Exclusive to the bar and lounge.",
+     "research_notes": "Venue page and social hour PDF list Sat-Sun 11am-6:30pm."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-craigs-611",
    "name": "Craig's",
    "city": "Nashville",
@@ -7596,6 +8611,263 @@
    ],
    "verified_no_hh": false,
    "checked": "2026-11-03"
+  },
+  {
+   "id": "nv-culinary-dropout-4020",
+   "name": "Culinary Dropout",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs / McEwen Northside",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "4020 Aspen Grove Dr",
+   "zip": "37067",
+   "lat": 35.9428952,
+   "lon": -86.827042,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.culinarydropout.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.culinarydropout.com/locations/franklin-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.culinarydropout.com/locations/franklin-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.culinarydropout.com/menus/?location=franklin-tn",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue location page lists happy hour Mon-Fri 3-6pm with no deals. Opened the linked Franklin main menu PDF (CDO-FRANK_Menu_Main_08.17.2026_TAR_v1.pdf) and read it: no happy hour section. OpenTable guide has no confirmed date, so its deals were not used. Closed-2026 search found no closure."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-del-friscos-grille-207",
+   "name": "Del Frisco's Grille",
+   "city": "Brentwood",
+   "neighborhood": "Brentwood",
+   "hood": "Brentwood",
+   "zone": "franklin",
+   "address": "207 Franklin Rd",
+   "zip": "37027",
+   "lat": 36.0329128,
+   "lon": -86.7890844,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:15"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$10 bites: cheesesteak eggrolls, buffalo wings, ahi tacos",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails: Moscow Mule, Grille Margarita, Old Fashioned",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 wine by the glass",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 spirits",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar only. Sunday through Friday 3-6 PM.",
+     "research_notes": "Brentwood location page lists Happy Hour Sun-Fri 3-6 PM and Sat 2-5 PM, bar only, with the $10 deals above. The page also lists select bottled and draft beer at $5 on the general beer list but does not tie it to happy hour, so it is left out. The page's holiday hours run through New Year's, so it is current. Closed-2026 search: no closure."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$10 bites: cheesesteak eggrolls, buffalo wings, ahi tacos",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails: Moscow Mule, Grille Margarita, Old Fashioned",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 wine by the glass",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$10 spirits",
+       "price": 10
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.delfriscosgrille.com/location/del-friscos-grille-brentwood-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar only. Saturday hours are 2-5 PM.",
+     "research_notes": "Same Brentwood location page; Saturday window is 2-5 PM."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-del-friscos-grille-1201",
@@ -8399,6 +9671,238 @@
      "confidence": "med",
      "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-23. Check with the venue.",
      "research_notes": "Venue page gives Mon-Fri 3-6pm at the bar, no deals. Nashville Guru business page (confirmed 10/23/26) supplies deals and says bar and patio; venue says bar, used the venue's. fix31: the executor read the linked main-menu PDF on the Mac: the regular menu, no happy-hour section."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-drakes-cool-springs-553",
+   "name": "Drake's Cool Springs",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "553 Cool Springs Blvd",
+   "zip": "37067",
+   "lat": 35.9472505,
+   "lon": -86.8216067,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://drakescomeplay.com/nashville/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://drakescomeplay.com/nashville/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$2 Mini Cheeseburger (limit 10)",
+       "price": 2
+      },
+      {
+       "type": "food",
+       "desc": "$5 Chips & Queso",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "$6 Fried Pickles",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "$7 Half Order BLT Tots",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$10 Southwest Eggrolls",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$2 Busch Light",
+       "price": 2
+      },
+      {
+       "type": "drink",
+       "desc": "$3 Drake's All American Lager (16oz)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "$4 House Wine",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Tito's or Jack Daniel's",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Pixy Stix Martini",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://drakescomeplay.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://drakescomeplay.com/event/happy-hour-5/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Chain-wide pricing at participating locations; the page names Cool Springs (Franklin).",
+     "research_notes": "Venue location page: happy hour Mon-Fri 3-6pm and 9-11pm. fix33 S4b: Drake's own happy hour page (drakescomeplay.com/event/happy-hour-5/) lists one deal list 'at participating locations' and names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm' (brief step 11)."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "21:00",
+     "end": "23:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$2 Mini Cheeseburger (limit 10)",
+       "price": 2
+      },
+      {
+       "type": "food",
+       "desc": "$5 Chips & Queso",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "$6 Fried Pickles",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "$7 Half Order BLT Tots",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$10 Southwest Eggrolls",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$2 Busch Light",
+       "price": 2
+      },
+      {
+       "type": "drink",
+       "desc": "$3 Drake's All American Lager (16oz)",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "$4 House Wine",
+       "price": 4
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Tito's or Jack Daniel's",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$6 Pixy Stix Martini",
+       "price": 6
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://drakescomeplay.com/nashville/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://drakescomeplay.com/event/happy-hour-5/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Chain-wide pricing at participating locations; the page names Cool Springs (Franklin).",
+     "research_notes": "Venue location page: happy hour Mon-Fri 3-6pm and 9-11pm. fix33 S4b: Drake's own happy hour page (drakescomeplay.com/event/happy-hour-5/) lists one deal list 'at participating locations' and names 'Cool Springs (Franklin), TN' under 'Mon-Fri, 3-6pm & 9-11pm' (brief step 11)."
     }
    ],
    "verified_no_hh": false,
@@ -10411,6 +11915,145 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-etch-franklin-230",
+   "name": "etch Franklin",
+   "city": "Franklin",
+   "neighborhood": "The Factory at Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "230 Franklin Rd Ste 1300",
+   "zip": "37064",
+   "lat": 35.9324788,
+   "lon": -86.8605434,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://etchrestaurant.com/franklin/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://etchrestaurant.com/franklin/menu/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Cheese plate $17",
+       "price": 17
+      },
+      {
+       "type": "food",
+       "desc": "Roasted cauliflower $10",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Tempura mushrooms $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Bread & butter $6",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "Fried Brussels sprouts $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Seasoned fries $4",
+       "price": 4
+      },
+      {
+       "type": "food",
+       "desc": "Add chicken $7 or shrimp $8 to any item",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$5 draft beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 featured wine",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$9 featured cocktails (bartender's selection and well spirits)",
+       "price": 9
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://etchrestaurant.com/franklin/menu/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "At the bar. Franklin location only; closed Mondays.",
+     "research_notes": "Franklin Happy Hour block on etchrestaurant.com/franklin/menu/ shows Tue-Sun 2-6pm at the bar with the prices above. A FranklinIs roundup said 2-5pm; the venue's own 2-6pm is used. Closed-2026 search found no closure."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-18504",
    "inkind_id": 18504,
    "name": "Fancypants",
@@ -10693,6 +12336,171 @@
      "confidence": "med",
      "notes": "No time posted: from the 10:00am Sunday opening to close.",
      "research_notes": "Taproom page Sunday: $5 frozen slushies, no time listed."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-firebirds-wood-fired-grill-700",
+   "name": "Firebirds Wood Fired Grill",
+   "city": "Brentwood",
+   "neighborhood": "Seven Springs",
+   "hood": "Brentwood",
+   "zone": "franklin",
+   "address": "700 Old Hickory Blvd",
+   "zip": "37027",
+   "lat": 36.0406354,
+   "lon": -86.7706923,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://firebirdsrestaurants.com/brentwood",
+   "status": "open",
+   "hours": {
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://firebirdsrestaurants.com/brentwood",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Prime Rib Sliders $9.60",
+       "price": 9.6
+      },
+      {
+       "type": "food",
+       "desc": "Crispy Cauliflower $6.10",
+       "price": 6.1
+      },
+      {
+       "type": "food",
+       "desc": "Roasted Garlic Parmesan Fries $6.10",
+       "price": 6.1
+      },
+      {
+       "type": "food",
+       "desc": "Chicken Chile Nachos $6.88",
+       "price": 6.88
+      },
+      {
+       "type": "food",
+       "desc": "Fired Up Shrimp $7.38",
+       "price": 7.38
+      },
+      {
+       "type": "food",
+       "desc": "Beef Sliders $7.13",
+       "price": 7.13
+      },
+      {
+       "type": "drink",
+       "desc": "Double Black Diamond Martini $6.85",
+       "price": 6.85
+      },
+      {
+       "type": "drink",
+       "desc": "Cherry Old Fashioned $6.85",
+       "price": 6.85
+      },
+      {
+       "type": "drink",
+       "desc": "Charred Orange Margarita $6.85",
+       "price": 6.85
+      },
+      {
+       "type": "drink",
+       "desc": "Lemonade Drop $6.15",
+       "price": 6.15
+      },
+      {
+       "type": "drink",
+       "desc": "Dirty Bird $7.25",
+       "price": 7.25
+      },
+      {
+       "type": "drink",
+       "desc": "Siesta Sangria $6.95",
+       "price": 6.95
+      },
+      {
+       "type": "drink",
+       "desc": "Firebirds Perfect Margarita $7.10 (upgrade to Milagro Reposado +$1.00)",
+       "price": 7.1
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://firebirdsrestaurants.com/brentwood/menu/firebar",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://firebirdsrestaurants.com/brentwood",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "In the FIREBAR and on the patio. Bar bites are available only there.",
+     "research_notes": "FIREBAR menu page lists Mon-Fri 2-6 PM with half-price pricing on the items above. The location page says 'Happy Hour Monday' in its intro but Monday-Friday 2-6PM in the schedule; the schedule is used. Closed-2026 search: no closure."
     }
    ],
    "verified_no_hh": false,
@@ -13624,6 +15432,97 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-hop-house-tennessee-taps-117",
+   "name": "Hop House Tennessee Taps",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "117 5th Ave N Suite B",
+   "zip": "37064",
+   "lat": 35.924524,
+   "lon": -86.8721785,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.hophousetntaps.com",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "Google listing 2026-11-04",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://www.hophousetntaps.com",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted.",
+     "research_notes": "Venue site line 'HAPPY HOUR M - TH FROM 2PM - 5PM'. Linked menu PDF opened (https://www.hophousetntaps.com/_files/ugd/82619d_b9f0a12e2e2d41a29707005dc17630bc.pdf): regular prices, no happy hour deals. No hours posted on the site. An undated third-party guide says 4-7 pm; venue used."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-hopdoddy-burger-bar-1805",
    "name": "Hopdoddy Burger Bar",
    "city": "Nashville",
@@ -14437,6 +16336,108 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-jeffersons-214",
+   "name": "Jefferson's",
+   "city": "Brentwood",
+   "neighborhood": "Brentwood",
+   "hood": "Brentwood",
+   "zone": "franklin",
+   "address": "214 Ward Circle",
+   "zip": "37027",
+   "lat": 36.0313891,
+   "lon": -86.8025109,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://jeffersons.com/all-locations/brentwood",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://jeffersons.com/all-locations/brentwood",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "17:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$3 domestic pints",
+       "price": 3
+      },
+      {
+       "type": "drink",
+       "desc": "$3 domestic bottles",
+       "price": 3
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://jeffersons.com/all-locations/brentwood",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "research_notes": "Venue's Brentwood page lists Happy Hour Mon-Fri 2-5pm, $3 domestic pints and bottles. Opened the linked Brentwood food and drink menu PDFs: no happy hour text. 2022 Williamson Scene guide lists different times/deals; used the venue's own. Closed-2026 search found no closure."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-19673",
    "inkind_id": 19673,
    "name": "Jimmy Buffett's Margaritaville - Nashville",
@@ -14830,6 +16831,91 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-jjs-wine-bar-206",
+   "name": "JJs Wine Bar",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "206 E Main St",
+   "zip": "37064",
+   "lat": 35.9258328,
+   "lon": -86.8678087,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.jjswinebar.com/",
+   "status": "open",
+   "hours": {
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "23:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.jjswinebar.com/",
+   "windows": [
+    {
+     "days": [
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "All wines in the wine-dispensing machines 25% off",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jjswinebar.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Sunday and Monday are private events only.",
+     "research_notes": "Venue home page, Tue-Fri 4-6; page undated. Address from the venue's welcome page (206 E. Main St.); zip not posted, 37064 from the lead. Closed-search: no closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-14947",
    "inkind_id": 14947,
    "name": "JoJo's Fish House",
@@ -14933,6 +17019,287 @@
    "hours_confidence": "high",
    "hours_notes": "Official site says 11am-9pm every day; the 2026-09-05 inKind data had Sun to 8pm and Fri/Sat to 11pm. Official site used.",
    "lunch_checked": false
+  },
+  {
+   "id": "nv-jonathans-grille-7135",
+   "name": "Jonathan's Grille",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "7135 S Springs Dr",
+   "zip": "37067",
+   "lat": 35.9533403,
+   "lon": -86.8151601,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.jonathansgrille.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "01:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.jonathansgrille.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Two-for-one beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.jonathansgrille.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.jonathansgrille.com/late-night-menu",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Deals not posted. Dine-in only. Wednesday also has Ladies' Night 4-7 PM (no details posted).",
+     "research_notes": "Venue daily specials page: happy hour Mon, Wed-Sat 3-7PM. fix33 S4b: the home page's 'Happy Hour' list gives two-for-one beer (untimed); $8 select appetizers run 3-6PM and have their own window. Specials are the same at all Jonathan's locations (Tennessee named)."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "22:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Two-for-one bottled and draft beer all day",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Two-for-one 12\" pizzas all day",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening to 10 PM as posted. Dine-in only.",
+     "research_notes": "Tuesday happy hour posted as 11 AM-10 PM."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Select appetizers $8",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Food deal 3-6 PM weekdays. Dine-in only.",
+     "research_notes": "Specials page: select appetizers $8 from 3-6 PM Mon-Fri."
+    },
+    {
+     "days": [
+      "SAT",
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "22:00",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Bloody Marys and mimosas $7",
+       "price": 7
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Dine-in only.",
+     "research_notes": "Specials page, Sat and Sun 11 AM-10 PM."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Two-for-one bottled and draft beer all day",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Half-price select bottles of wine all day",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening. Dine-in only.",
+     "research_notes": "Sunday has no 'happy hour' label on the specials page; all-day deals listed."
+    },
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "22:00",
+     "end": "close",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Two-for-one bottled and draft beer",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "12\" one-topping pizzas $8",
+       "price": 8
+      },
+      {
+       "type": "food",
+       "desc": "Select appetizers $8",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.jonathansgrille.com/daily-specials-1",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Late night, 10 PM to close daily. Dine-in only.",
+     "research_notes": "Specials page, late night 10 PM to close daily."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-junies-311",
@@ -17355,6 +19722,152 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-m-l-rose-3084",
+   "name": "M.L.Rose",
+   "city": "Franklin",
+   "neighborhood": "Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "3084 Columbia Ave",
+   "zip": "37064",
+   "lat": 35.8919617,
+   "lon": -86.8778183,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://mlrose.com/franklin",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://mlrose.com/franklin",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 beer, wine and well drinks",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price classic cheeseburgers (unmodified)",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price chicken tenders",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mlrose.com/franklin",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://mlrose.com/specials/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Called 'Neighbor Hour' by the venue. Deals from M.L.Rose's specials page, which is undated and does not name Franklin.",
+     "research_notes": "Franklin page lists Neighbor Hour Mon-Wed 3-6pm; mlrose.com/specials lists the deals (no dollar prices). Older 2024 opening article said Mon-Fri 3-6 with $4 beer; used the venue's current pages. Opened the Food & Drink page and its linked menu PDFs list: no happy hour section on it. Closed-2026 search found no closure."
+    },
+    {
+     "days": [
+      "THU"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2-for-1 entire drink menu",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mlrose.com/franklin",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://mlrose.com/specials/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day Thursday: from the 11:00 opening.",
+     "research_notes": "Franklin page and specials page list 2-for-1 on the entire drink menu Thursdays, all day."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-maggies-place-905",
    "name": "Maggie's Place",
    "city": "Nashville",
@@ -17866,6 +20379,343 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-mccrearys-irish-pub-and-eatery-414",
+   "name": "McCreary's Irish Pub & Eatery",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "414 Main St",
+   "zip": "37064",
+   "lat": 35.9245017,
+   "lon": -86.8706152,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://mccrearyspub.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "09:00",
+      "15:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://mccrearyspub.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2 for 1 draft beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off glasses of wine",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "$2 off select appetizers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off well liquor",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mccrearyspub.com/specials",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Mon-Sat 3-6 PM.",
+     "research_notes": "Venue specials page (shows dated Nov 2026 daily specials). Closed-search: no closure found."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "12:00",
+     "end": "15:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "2 for 1 draft beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off glasses of wine",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off well liquor",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mccrearyspub.com/specials",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Sunday happy hour 12-3 PM.",
+     "research_notes": "Venue specials page."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-mellow-mushroom-franklin-317",
+   "name": "Mellow Mushroom Franklin",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "317 Main St Ste 100",
+   "zip": "37064",
+   "lat": 35.9246998,
+   "lon": -86.869675,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "SUN"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half-price select draft beers",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Half-price cheese bread & hummus",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Venue location page (undated) 'Local Specials': Mon, Tue, Wed, Thu, Sun 3-6 PM. Friday shows no specials."
+    },
+    {
+     "days": [
+      "TUE"
+     ],
+     "start": "11:00",
+     "end": "15:00",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$4.20 small cheese pizza",
+       "price": 4.2
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Same venue page: Tuesday 11 AM-3 PM."
+    },
+    {
+     "days": [
+      "SAT"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off canned and bottled beer",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Same venue page: Saturday all day."
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "11:00",
+     "end": "close",
+     "kind": "special",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$5 Bloody Marys & mimosas",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mellowmushroom.com/locations/tn/franklin/317-main-st",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "All day: from the 11:00 opening.",
+     "research_notes": "Same venue page: Sunday all day."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-melrose-billiard-parlor-2600",
    "name": "Melrose Billiard Parlor",
    "city": "Nashville",
@@ -18030,6 +20880,135 @@
      "confidence": "high",
      "notes": "Melrose Monday. Liquor specials end at 10pm.",
      "research_notes": "Venue home page. Hours 4pm-2am daily. "
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-mere-bulles-5201",
+   "name": "Mere Bulles",
+   "city": "Brentwood",
+   "neighborhood": "Maryland Farms",
+   "hood": "Brentwood",
+   "zone": "franklin",
+   "address": "5201 Maryland Way",
+   "zip": "37027",
+   "lat": 36.034525,
+   "lon": -86.803004,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://merebulles.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:30"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:30"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:30",
+      "21:30"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:30",
+      "20:30"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://merebulles.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$6 small bites: salads, truffle fries, tacos, desserts",
+       "price": 6
+      },
+      {
+       "type": "food",
+       "desc": "$9 small bites: she-crab bisque, bruschetta, cheeseburger and more",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$12 crab cake, shrimp cocktail or Angus rib rolls",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$10 cocktails: bramble mule, spritz, tiny tinis and more",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$6 wine (red, white, bubbles)",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$5 beer",
+       "price": 5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://merebulles.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://merebulles.com/food-menu?menu_id=212830",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Dine-in only.",
+     "research_notes": "Home page: Happy Hour Monday-Friday 2-6 PM. fix33: the drink menu (handed off as unreadable) is plain text with no happy-hour section; the executor found the HAPPY HOUR tab on the food menu (menu_id=212830) and read it in Chrome: 'Monday - Friday 2:00 - 6:00 pm | Dine-in ONLY', small bites $6/$9/$12, cocktails $10, wine $6, beer $5. Daily 50% off bottled wine and Whiskey Wednesday are not happy hour and are left out. Undated, so med. No 2026 closure found."
     }
    ],
    "verified_no_hh": false,
@@ -18345,6 +21324,149 @@
    ],
    "verified_no_hh": false,
    "checked": "2026-11-03"
+  },
+  {
+   "id": "nv-mojos-tacos-230",
+   "name": "Mojo's Tacos",
+   "city": "Franklin",
+   "neighborhood": "The Factory at Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "230 Franklin Rd",
+   "zip": "37064",
+   "lat": 35.9324788,
+   "lon": -86.8605434,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://mojostacos.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "09:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "09:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://mojostacos.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 house lime margarita",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$7 blackberry or strawberry margarita",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$8 skinny margarita",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$7 passionfruit sangria",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$8 house red or white wine",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$5 draft beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$10 pint and a shot",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$25 margarita pitcher",
+       "price": 25
+      },
+      {
+       "type": "drink",
+       "desc": "$20 beer pitcher",
+       "price": 20
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://mojostacos.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://mojostacos.com/drink-menu?menu_id=1166624",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "research_notes": "Home page (Franklin Rd address): Happy Hour Monday-Friday 3-6 PM. fix33: the executor read the 'happy hour specials' tab of the drink menu in Chrome (menu_id=1166624, the active tab): margaritas $6-$8, sangria $7, house wine $8, drafts $5, pint & a shot $10, pitchers $25/$20. Undated, and the home page doesn't say which location the times apply to, so med. No 2026 closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "ik-17565",
@@ -20279,6 +23401,151 @@
    "checked": "2026-11-04"
   },
   {
+   "id": "nv-north-italia-4041",
+   "name": "North Italia",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs / Aspen Grove",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "4041 Aspen Grove Dr",
+   "zip": "37067",
+   "lat": 35.9428952,
+   "lon": -86.827042,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.northitalia.com/locations/franklin-tn/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.northitalia.com/locations/franklin-tn/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$10 bites: zucca chips, arancini, meatballs, flatbreads and more",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "$12 bites: White Truffle Garlic Bread, Smoked Salmon Avocado Toast, Fritto Misto, Prosciutto di Parma, Baked Burrata alla Diavola",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "Spritz & Snacks: a spritz with zucca chips, campari-glazed nuts and marinated olives, $15",
+       "price": 15
+      },
+      {
+       "type": "drink",
+       "desc": "Sangria Social: margherita or pepperoni flatbread plus a pitcher of red sangria, $30",
+       "price": 30
+      },
+      {
+       "type": "drink",
+       "desc": "$10 wine by the glass ($35 bottle)",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$12 craft cocktails",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$10 spritzes",
+       "price": 10
+      },
+      {
+       "type": "drink",
+       "desc": "$8 zero-proof drinks",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$5.50 beer",
+       "price": 5.5
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.northitalia.com/locations/franklin-tn/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.northitalia.com/locations/franklin-tn/menus/happy-hour-menu/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Served in the bar.",
+     "research_notes": "Location page and Franklin happy hour menu page read: Mon-Fri 3-6pm, served in the bar. Hours from location page (lunch Mon-Fri 11-4, brunch Sat-Sun 10-4, dinner Sun-Thu 4-10, Fri-Sat 4-11). Closed-2026 search found no closure."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "ik-19205",
    "inkind_id": 19205,
    "name": "NoWhere Special",
@@ -20682,6 +23949,126 @@
    "checked": "2026-11-03"
   },
   {
+   "id": "nv-otaku-ramen-230",
+   "name": "Otaku Ramen",
+   "city": "Franklin",
+   "neighborhood": "The Factory at Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "230 Franklin Rd Ste 11-T",
+   "zip": "37064",
+   "lat": 35.9324788,
+   "lon": -86.8605434,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://otakuramen.com/locations/franklin",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "15:00"
+     ],
+     [
+      "16:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://otakuramen.com/locations/franklin",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      {
+       "url": "https://otakuramen.com/locations/franklin",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://factoryatfranklin.com/?p=1218",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": true,
+     "confidence": "med",
+     "notes": "Happy hour drinks: sake, batch cocktails, beer, frozen drinks and boba. Prices not posted.",
+     "research_notes": "fix33: the executor found Otaku's own Franklin page (the researcher had not) and read it in Chrome: 'HAPPY HOUR EVERYDAY 4-7PM | Sake, batch cocktails, beer, frozen drinks & boba', no prices; hours Mon-Fri 11am-3pm, 4pm-9pm, Sat-Sun 11am-9pm. The Factory at Franklin's tenant listing agrees on 4-7 daily. The site's Happy Hour link with deals is the Gulch location's only. Undated, so med. No 2026 closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-ottos-bar-4210",
    "name": "Otto's Bar",
    "city": "Nashville",
@@ -20948,6 +24335,124 @@
      "confidence": "med",
      "notes": "All day: from the 4:00 opening.",
      "research_notes": "Venue home page Weekly Specials. Searched 'Otto's Bar Nashville closed 2026': no closure report found; only an unrelated end of an Offline app partnership in Oct 2025."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-p-f-changs-439",
+   "name": "P.F. Chang's",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "439 Cool Springs Blvd",
+   "zip": "37067",
+   "lat": 35.9449946,
+   "lon": -86.8279401,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://locations.pfchangs.com/us/tn/franklin/439-cool-springs-blvd/9914-cool-springs.html",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://locations.pfchangs.com/us/tn/franklin/439-cool-springs-blvd/9914-cool-springs.html",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$6 beer and wine",
+       "price": 6
+      },
+      {
+       "type": "drink",
+       "desc": "$9 cocktails and sake",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "$12 appetizers",
+       "price": 12
+      },
+      {
+       "type": "drink",
+       "desc": "$12 Japanese whiskey",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "$15 sushi and sips",
+       "price": 15
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://locations.pfchangs.com/us/tn/franklin/439-cool-springs-blvd/9914-cool-springs.html",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Not offered Sat-Sun.",
+     "research_notes": "This location's own P.F. Chang's page lists Happy Hour 3-6pm Mon-Fri with these prices (page notes happy hour is at participating locations). Closed-2026 search found no closure."
     }
    ],
    "verified_no_hh": false,
@@ -21424,6 +24929,128 @@
      "corroborated": false,
      "confidence": "med",
      "research_notes": "Venue Specials page lunch special, Tue-Thu 11:00 AM-3:30 PM."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-perrys-steakhouse-and-grille-cool-springs-5028",
+   "name": "Perry's Steakhouse & Grille - Cool Springs",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "5028 Aspen Grove Dr",
+   "zip": "37067",
+   "lat": 35.9428952,
+   "lon": -86.827042,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://perryssteakhouse.com/locations/tn/nashville/cool-springs/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "10:30",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "16:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "16:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://perryssteakhouse.com/locations/tn/nashville/cool-springs/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:30",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$9 bar bites: pork chop bites, filet lettuce wraps, filet sliders and more",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$9 mixology cocktails (7 choices)",
+       "price": 9
+      },
+      {
+       "type": "drink",
+       "desc": "$9 wine, 5 oz pour (7 choices)",
+       "price": 9
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://perryssteakhouse.com/specials/social-hour-79-at-perrys-bar-79/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://perryssteakhouse.com/locations/tn/nashville/cool-springs/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://perryssteakhouse.com/wp-content/uploads/2026/09/26PER05-024-Social-Hour-Insert_Main-1.pdf",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Social Hour in Bar 79 only, not in the main dining room.",
+     "research_notes": "Venue Social Hour page: Sun-Fri 4:00-6:30 PM, Bar 79. fix33: the executor read the linked Social Hour insert PDF (dated 09.02.26) on the Mac: 'SOCIAL HOUR 7 SELECTIONS FOR $9 EACH, SUNDAY - FRIDAY 4 - 6:30 PM', seven bar bites, seven mixology cocktails, seven 5 oz wines; not offered in main dining, on promotional holidays, for private events or to-go. No 2026 closure found."
     }
    ],
    "verified_no_hh": false,
@@ -22834,6 +26461,124 @@
    ],
    "verified_no_hh": false,
    "checked": "2026-11-03"
+  },
+  {
+   "id": "nv-pucketts-restaurant-120",
+   "name": "Puckett's Restaurant",
+   "city": "Franklin",
+   "neighborhood": "Downtown Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "120 4th Ave S",
+   "zip": "37064",
+   "lat": 35.9237555,
+   "lon": -86.8699754,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.puckettsrestaurant.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "07:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "07:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.puckettsrestaurant.com/franklin",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off draft and bottled beers",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$7 A. Marshall Family Wines",
+       "price": 7
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off other wines",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off Puckett's cocktails",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Bar bites $8 each: fried pickles, fried green beans, smoked sliders (two brisket and two pulled pork), or half dozen cherrywood-smoked wings",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.puckettsrestaurant.com/franklin",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Wings in dry, BBQ, hot, medium, mild or hot honey.",
+     "research_notes": "Venue Franklin page (shows Nov 2026 events). Closed-search: June 2026 notice of 20th anniversary at downtown Franklin; no closure."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-puesto-991",
@@ -24961,6 +28706,125 @@
    "checked": "2026-11-04"
   },
   {
+   "id": "nv-scouts-pub-158",
+   "name": "Scout's Pub",
+   "city": "Franklin",
+   "neighborhood": "Westhaven",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "158 Front St #120",
+   "zip": "37064",
+   "lat": 35.9286985,
+   "lon": -86.9205723,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://www.scoutspub.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://www.scoutspub.com/visit",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$8 Scout's Sangria",
+       "price": 8
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Puckett's Brew & Featured Beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "$7 A. Marshall Wine",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "$8 each Bar Bites: Gringo Tacos, Fried Cheese Curds, Korean Meatballs, Mini Margherita or Pepperoni Flatbread, Loaded House Chips",
+       "price": 8
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://www.scoutspub.com/bar-menu",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://www.scoutspub.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Ask your server for more details.",
+     "research_notes": "Bar menu page and home page agree on Mon-Fri 3-6 PM; pages undated. Closed-search: June 2026 item describes it as operating."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-sedona-taphouse-1120",
    "name": "Sedona Taphouse",
    "city": "Nashville",
@@ -25098,6 +28962,165 @@
    ],
    "verified_no_hh": false,
    "checked": "2026-11-03"
+  },
+  {
+   "id": "nv-serratos-steakhouse-3046",
+   "name": "Serrato's Steakhouse",
+   "city": "Franklin",
+   "neighborhood": "Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "3046 Columbia Ave Suite 102",
+   "zip": "37064",
+   "lat": 35.894033,
+   "lon": -86.8782627,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://serratossteakhouse.com/serratos-steakhouse-franklin-tn/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://serratossteakhouse.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "15:30",
+     "end": "17:30",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off wines by the glass",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off House Old Fashioned",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off signature cocktails",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$8 off bottled wine",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off draft beers",
+       "price": null
+      },
+      {
+       "type": "food",
+       "desc": "Fish Tacos $12",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "Filet Mignon Bruschetta Bites $13",
+       "price": 13
+      },
+      {
+       "type": "food",
+       "desc": "Sticky Ribs $13",
+       "price": 13
+      },
+      {
+       "type": "food",
+       "desc": "Truffle Parmesan Fries $9",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Loaded Fries $10",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Black Hawk Sliders $12",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "Cajun Shrimp $11",
+       "price": 11
+      },
+      {
+       "type": "food",
+       "desc": "Crispy Calamari $14",
+       "price": 14
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://serratossteakhouse.com/serratos-steakhouse-franklin-tn/happy-hour-menu/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Bar and patio only.",
+     "research_notes": "Franklin happy hour menu page on serratossteakhouse.com. Hours are the site's all-locations hours (Sun-Thu 11-9, Fri-Sat 11-10). Home page lists Suite 102 at 3046 Columbia Ave. Closed-2026 search: no closure; still described as operating in 2026."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-sidecar-bar-1318",
@@ -26240,6 +30263,116 @@
      "confidence": "med",
      "notes": "Daily 2-6pm at the Belle Meade location.",
      "research_notes": "Homepage (undated): 'Happy Hour (2-6 PM daily)', half-off well and liquor, draft beer and house wines. fix32: the executor read the venue's May 2025 menu PDF on the Mac (pdf2txt.swift). Page 4: 'BELLE MEADE HAPPY HOUR 2 to 6 DAILY', $1.00 off pints, half off well liquor, half off house wines. That ties the daily 2-6 to this location. The homepage's half-off draft beer is kept over the 2025 menu's $1 off pints. StyleBlueprint (undated) agrees on 2-6 daily. Closure search for 2026: nothing for 5405 Harding Pike."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
+   "id": "nv-sportsmans-grille-1640",
+   "name": "Sportsman's Grille",
+   "city": "Brentwood",
+   "neighborhood": "Brentwood",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "1640 Westgate Cir",
+   "zip": "37027",
+   "lat": 35.9686027,
+   "lon": -86.8058481,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://sportsmansgrilletn.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://sportsmansgrilletn.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "Half off well and liquor",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Half off draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Half off house wines",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://sportsmansgrilletn.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Daily 2-6pm, as the venue posts it for its Brentwood and Nashville locations.",
+     "research_notes": "Home page (undated), under 'Locations in Brentwood & Nashville': 'Happy Hour (2-6 PM daily) Half-off: Well & Liquor, Draft Beer, and House Wines', not tied to one location. fix33: the executor read the Cool Springs (Brentwood) menu PDF, SL-MENU-5-25, on the Mac: no happy-hour section. Med. The closed Sportsman's is the Hillsboro Village one; nothing for 1640 Westgate Cir."
     }
    ],
    "verified_no_hh": false,
@@ -27820,6 +31953,136 @@
    "hours_confidence": "high",
    "hours_notes": "Select Sundays have a limited-seating omakase (not regular service).",
    "lunch_checked": true
+  },
+  {
+   "id": "nv-the-cheesecake-factory-1800",
+   "name": "The Cheesecake Factory",
+   "city": "Franklin",
+   "neighborhood": "CoolSprings Galleria",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "1800 Galleria Blvd #1166",
+   "zip": "37067",
+   "lat": 35.9573531,
+   "lon": -86.8139062,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "10:00",
+      "22:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "area": "bar",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$10.95 appetizers: sliders, avocado eggrolls, calamari, nachos and more",
+       "price": 10.95
+      },
+      {
+       "type": "food",
+       "desc": "$9.95 small plates: street corn, taquitos, crab bites and more",
+       "price": 9.95
+      },
+      {
+       "type": "drink",
+       "desc": "$8.50 specialty cocktails: mojito, margarita, Long Island and more",
+       "price": 8.5
+      },
+      {
+       "type": "drink",
+       "desc": "$8.50 select well drinks or wines by the glass",
+       "price": 8.5
+      },
+      {
+       "type": "drink",
+       "desc": "$4.95 select draft beers",
+       "price": 4.95
+      },
+      {
+       "type": "drink",
+       "desc": "$3.95 select bottled beers",
+       "price": 3.95
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://locations.thecheesecakefactory.com/tn/franklin-182.html",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://menu.thecheesecakefactory.com/tn/franklin-182/happy-hour/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "In the bar.",
+     "research_notes": "Location page: happy hour Mon-Fri 4-6PM in the bar. fix33 S4b: the executor opened its Happy Hour menu page (script-rendered) in Chrome: 'Monday - Friday 4:00 p.m. - 6:00 p.m. in Our Bar', 13 appetizers $10.95, 11 small plates $9.95, 5 specialty cocktails $8.50, select well drinks and wines $8.50, drafts $4.95, bottles $3.95. Franklin-specific menu (c) 2026, med."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "ik-19232",
@@ -29940,6 +34203,115 @@
    "lunch_checked": true
   },
   {
+   "id": "nv-the-skylight-230",
+   "name": "The Skylight",
+   "city": "Franklin",
+   "neighborhood": "The Factory at Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "230 Franklin Rd",
+   "zip": "37064",
+   "lat": 35.9324788,
+   "lon": -86.8605434,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://theskylight.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "12:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "12:00",
+      "22:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "22:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ]
+   },
+   "hours_confidence": "high",
+   "hours_source": "researched 2026-11-04 (high confidence): https://theskylight.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "13:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$1 off all draft beer",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$2 off all wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://theskylight.com/event/happy-hour-2/2026-11-05/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      },
+      {
+       "url": "https://theskylight.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "high",
+     "notes": "Daily themes, prices not posted: Mon Mule Monday (Moscow, Tennessee, Mexican mules); Tue Tequila Tuesday (top shelf house margaritas, palomas); Wed Whiskey Wednesday (flight of three); Thu Tini Thursday (espresso, cosmo, lemon drop, dry or dirty martinis).",
+     "research_notes": "Venue event page for 2026-11-05 and home page, Mon-Fri 1-6 PM. A local guide's Mon-Thu 2-6 PM disagrees; venue used. Closed-search: no closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
+  },
+  {
    "id": "nv-the-slider-house-1907",
    "name": "The Slider House",
    "city": "Nashville",
@@ -30421,6 +34793,164 @@
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "lunch_checked": false
+  },
+  {
+   "id": "nv-the-white-alligator-230",
+   "name": "The White Alligator",
+   "city": "Franklin",
+   "neighborhood": "The Factory at Franklin",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "230 Franklin Rd",
+   "zip": "37064",
+   "lat": 35.9324788,
+   "lon": -86.8605434,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://thewhitealligator.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "16:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://thewhitealligator.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI"
+     ],
+     "start": "14:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "food",
+       "desc": "Alligator Bites $9",
+       "price": 9
+      },
+      {
+       "type": "food",
+       "desc": "Fried Pickles $5",
+       "price": 5
+      },
+      {
+       "type": "food",
+       "desc": "Boudin Balls $7",
+       "price": 7
+      },
+      {
+       "type": "food",
+       "desc": "Fried Oyster Basket $10",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "Shrimp Cocktail $10",
+       "price": 10
+      },
+      {
+       "type": "food",
+       "desc": "BBQ Shrimp with French Bread $12",
+       "price": 12
+      },
+      {
+       "type": "food",
+       "desc": "The Cajun Trio (jambalaya, gumbo, red beans & rice) $16",
+       "price": 16
+      },
+      {
+       "type": "food",
+       "desc": "Buffalo Oysters $13",
+       "price": 13
+      },
+      {
+       "type": "food",
+       "desc": "Cheeseburger Sliders (two, with fries) $13",
+       "price": 13
+      },
+      {
+       "type": "drink",
+       "desc": "$5 Abita Amber, Yazoo Hop Perfect IPA, Music City Light, or seasonal beer",
+       "price": 5
+      },
+      {
+       "type": "drink",
+       "desc": "Wines by the glass $7 to $12",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Cocktails $9 to $14: French 75, Sazerac, Hurricane and more",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "Dessert martinis: Banana Fosters $9, Key Lime Pie $9, Praline $10",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://thewhitealligator.com/franklin-the-white-alligator-happy-hours-specials",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Page calls these 'Specials'. It does not say whether the prices apply only during 2-6 PM.",
+     "research_notes": "Venue happy hours/specials page, grouped under Monday-Friday 2-6 PM; page undated. Closed-search: no closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-thistle-and-rye-1620",
@@ -30962,6 +35492,126 @@
    ],
    "verified_no_hh": false,
    "checked": "2026-11-03"
+  },
+  {
+   "id": "nv-tonys-eat-and-drink-1000",
+   "name": "Tony's Eat and Drink",
+   "city": "Franklin",
+   "neighborhood": "Cool Springs",
+   "hood": "Franklin/Cool Springs",
+   "zone": "franklin",
+   "address": "1000 Meridian Blvd Suite 100",
+   "zip": "37067",
+   "lat": 35.9510718,
+   "lon": -86.8072027,
+   "tz": "America/Chicago",
+   "inkind": false,
+   "official_site": "https://tonyseatanddrink.com/",
+   "status": "open",
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "00:00"
+     ]
+    ]
+   },
+   "hours_confidence": "med",
+   "hours_source": "researched 2026-11-04 (med confidence): https://tonyseatanddrink.com/",
+   "windows": [
+    {
+     "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+     ],
+     "start": "14:00",
+     "end": "19:00",
+     "kind": "happy_hour",
+     "deals": [
+      {
+       "type": "drink",
+       "desc": "$2 off all draft beer (24 oz tall, 16 oz small, 64 oz pitcher)",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 High Noon",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 house margaritas",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 well drinks",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 house wine",
+       "price": null
+      }
+     ],
+     "sources": [
+      {
+       "url": "https://tonyseatanddrink.com/",
+       "kind": "venue",
+       "seen": "2026-11-04",
+       "confirmed": null
+      }
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Daily. The site names no separate happy hour area.",
+     "research_notes": "Venue home page lists the happy hour. The menu page's Happy Hour tab text did not load, so only the home page was used. FranklinIs (undated) also lists half-off nachos; not on the venue page, so not included. Closed-search: no 2026 closure found."
+    }
+   ],
+   "verified_no_hh": false,
+   "checked": "2026-11-04"
   },
   {
    "id": "ik-6336",

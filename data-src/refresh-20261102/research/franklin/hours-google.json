@@ -1,0 +1,226 @@
+{
+ "Tony's Eat and Drink": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Jonathan's Grille": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Panel found on 'Jonathan's Grille Franklin TN' search (name-only; address not visible); no banner."
+ },
+ "Puckett's Restaurant": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "The White Alligator": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "McCreary's Irish Pub & Eatery": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Scout's Pub": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "The Skylight": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing 'The Skylight' (cocktail bar); address not visible in panel."
+ },
+ "Perry's Steakhouse & Grille - Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "1799 Kitchen & Bar Room": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "JJs Wine Bar": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "etch Franklin": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing 'etch - Franklin', 230 Franklin Rd Ste 1300; no closure banner."
+ },
+ "Bonefish Grill Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Otaku Ramen": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Mojo's Tacos": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Serrato's Steakhouse": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Del Frisco's Grille": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "55 South": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Mere Bulles": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Listing named 'Mere Bulles Restaurant & Events', 5201 Maryland Way."
+ },
+ "Firebirds Wood Fired Grill": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Sportsman's Grille": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Panel address 1640 Westgate Cir, Brentwood; no banner."
+ },
+ "Culinary Dropout": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "North Italia": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "P.F. Chang's": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Connors Steak & Seafood": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Jefferson's": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "M.L.Rose": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Drake's Cool Springs": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Burger Up Franklin": {
+  "hours": null,
+  "listing_status": "open"
+ },
+ "Hop House Tennessee Taps": {
+  "hours": {
+   "MON": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "TUE": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "WED": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "THU": [
+    [
+     "11:00",
+     "22:00"
+    ]
+   ],
+   "FRI": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SAT": [
+    [
+     "11:00",
+     "23:00"
+    ]
+   ],
+   "SUN": [
+    [
+     "11:00",
+     "21:00"
+    ]
+   ]
+  },
+  "listing_status": "open"
+ },
+ "Twin Peaks Cool Springs": {
+  "hours": null,
+  "listing_status": "no listing found",
+  "listing_note": "Google panel for this search showed Sportsman's Grille (1640 Westgate Cir), not Twin Peaks. No Twin Peaks panel. Search results: Williamson Source (Jun 27, 2026) says Twin Peaks in Cool Springs closed after 14 years; Yelp says CLOSED."
+ },
+ "Coal Town Public House": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Hours not requested (need_hours false). Listing address 187 Front St Ste 103B, Franklin, TN 37064; no closure banner."
+ },
+ "Mellow Mushroom Franklin": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Hours not requested (need_hours false). Listing address 317 Main St Ste 100, Franklin, TN 37064; no closure banner."
+ },
+ "Carrabba's Italian Grill": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Hours not requested (need_hours false). Listing address 533 Cool Springs Blvd, Franklin, TN 37067 (Thoroughbred Village); no closure banner (showed Closed, Opens 11 AM, only because of time of day)."
+ },
+ "Condado Tacos": {
+  "hours": null,
+  "listing_status": "Permanently closed",
+  "listing_note": "Google listing at 4031 Aspen Grove Dr #108, Franklin, TN 37067 (McEwen Northside) shows a Permanently closed banner. Yelp also shows CLOSED. No relocation address given."
+ },
+ "The Cheesecake Factory": {
+  "hours": null,
+  "listing_status": "open",
+  "listing_note": "Hours not requested (need_hours false). Listing address 1800 Galleria Blvd, Franklin, TN 37067 (CoolSprings Galleria; suite number partly hidden by the cursor, site results show Suite 1166); no closure banner."
+ },
+ "Curio Brewing Company": {
+  "hours": null,
+  "listing_status": "Temporarily closed",
+  "listing_note": "Google listing at 216 Noah Dr #140, Franklin, TN 37064 shows a Temporarily closed banner (not Permanently closed), no hours listed, no relocation address. Search results outside the listing say the Noah Drive facility and taproom closed effective July 29, 2026 (Instagram, Williamson Source) with a 'new chapter' promised; curiobrewing.com says the Noah Drive location is closed."
+ },
+ "Kokomo Trading Company": {
+  "hours": null,
+  "listing_status": "Temporarily closed",
+  "listing_note": "Google listing at 158 Front St #100, Franklin, TN 37064 shows a Temporarily closed banner (not Permanently closed), no hours listed, no relocation address. Facebook snippet also says Temporarily Closed."
+ },
+ "The Tin Roof 2": {
+  "hours": null,
+  "listing_status": "Permanently closed",
+  "listing_note": "Google listing at 9135 Carothers Pkwy #100, Franklin, TN 37067 shows a Permanently closed banner, no relocation address. Search results outside the listing: WKRN (Oct 9, 2026) reports it closing; WhatNow (Oct 16, 2026) says it rebranded as The Rafters under new ownership at the same address."
+ },
+ "Granite City Food & Brewery - Franklin": {
+  "hours": null,
+  "listing_status": "Temporarily closed",
+  "listing_note": "Google listing 'Granite City Food & Brewery' at 1864 W McEwen Dr, Franklin, TN 37067 (Drury Plaza Hotel Nashville Franklin) shows a Temporarily closed banner (not Permanently closed), no hours listed, no relocation address."
+ },
+ "Ludlow & Prime": {
+  "hours": null,
+  "listing_status": "Permanently closed",
+  "listing_note": "Google listing at 330 Franklin Rd Ste 226B, Brentwood, TN 37027 (Brentwood Place) is titled 'Moved to Franklin' and shows a Permanently closed banner; the expanded banner reads 'Moved to Franklin is permanently closed' and gives no new address. Google shows no Relocated banner. A different business (Big Bad Breakfast) announces a Nov 5 grand opening at this address."
+ },
+ "MAFIAoZA'S Franklin": {
+  "hours": null,
+  "listing_status": "Permanently closed",
+  "listing_note": "Google listing 'MAFIAoZA'S Franklin' at 230 Franklin Rd Bldg 1, Franklin, TN 37064 (The Factory at Franklin) shows a Permanently closed banner, no relocation address. The restaurant's own site (mafiaozas.com/franklin) and a Facebook snippet still show this address as open."
+ }
+}
