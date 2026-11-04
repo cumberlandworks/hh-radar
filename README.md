@@ -126,7 +126,8 @@ and not-added file sit beside them. The hood rules they share live in `data-src/
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
   screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.20 for the new subtitle and card
-  lines, and in v1.21 for the Blue Coast removal: light theme, storage cleared, referral bar dismissed, the v1.12 framing).
+  lines, and in v1.21 for the Blue Coast removal: light theme, storage cleared, referral bar dismissed, the v1.12 framing;
+  last re-taken from the live v2.6 site, all 7 zones: Live now 192).
 - `inkind-referral-qr.svg` — the QR for the inKind referral link, shown on desktop only.
 - `data-src/` — provenance: per-batch research JSON and the generator scripts. The raw inKind
   pulls are not published (removed 2026-10-29), so the scripts that read them need a fresh pull to re-run. Read-only history, not used at runtime. `data-src/refresh-20261023/`
