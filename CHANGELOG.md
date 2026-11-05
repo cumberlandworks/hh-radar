@@ -5,13 +5,14 @@
 **TJ, verbatim:** "also how do i get this found on seaarches" and "create a code block to help with the Google/bing searches".
 
 - **C1, page basics:** canonical link; new title and a 154-character description, with `og:title` and `og:description` in step;
-  `WebApplication` JSON-LD; a static About section above the footer, in the markup so crawlers read it without running the
+  `WebApplication` JSON-LD (`areaServed` sits on the Offer, because schema.org doesn't allow it on WebApplication); a static About section above the footer, in the markup so crawlers read it without running the
   app. The on-page subtitle is unchanged. The `<h1>` was already a real one, so it's unchanged too. The description's "300+"
   is a floor, and a test fails if the data drops below it.
 - **C2, sitemap:** `sitemap.xml` with `<lastmod>` = `generated`, a test that holds them together, and a runbook step.
 - **C3, root site:** new public repo `cumberlandworks/cumberlandworks.github.io` with `robots.txt` and a redirect to
   `/hh-radar/`, so the bare domain stops returning 404.
-- **C4, Google Search Console:** URL-prefix property, HTML-tag verification in `index.html`.
+- **C4, Google Search Console:** URL-prefix property, HTML-tag verification in `index.html`. The page now has literal
+  `<html>`, `<head>` and `<body>` tags: Search Console said the tag wasn't in the head while the head was only implied.
 - **C5, Bing Webmaster Tools:** set up in the same Chrome session. Status is in the thread's fix36 report.
 - **C6, IndexNow:** key file at the repo root; one ping per data release (the curl is in README "Search").
 - **C7, housekeeping:** `v2zone_helper.js` and `build_leads.js` find the repo from their own folder, so `node --test` passes

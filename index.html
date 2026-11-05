@@ -1,5 +1,9 @@
 <!doctype html>
+<html>
+<head>
 <meta charset="utf-8">
+<!-- v2.8: explicit <head>. Search Console refused the tag below while the head was only implied. Keep this tag. -->
+<meta name="google-site-verification" content="KBJlVk4lRNZVNhSEG6QB1phklrW0lgkVU7uxYDAaMTI">
 <title>Nashville Happy Hour Radar: live happy hours near you</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- v1.5 C2: iOS holds on to a home-screen app's index.html for days. Pages serves
@@ -36,7 +40,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- v2.8 C1: search basics. The canonical and this JSON-LD say what the page is without running the app. -->
 <link rel="canonical" href="https://cumberlandworks.github.io/hh-radar/">
-<meta name="google-site-verification" content="KBJlVk4lRNZVNhSEG6QB1phklrW0lgkVU7uxYDAaMTI">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,8 +49,10 @@
   "description": "Live happy hours across Nashville right now: 300+ bars and restaurants by neighborhood, with deals, times and inKind restaurants marked. Free, no sign-up.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "areaServed": { "@type": "City", "name": "Nashville, TN" },
+  "offers": {
+    "@type": "Offer", "price": "0", "priceCurrency": "USD",
+    "areaServed": { "@type": "City", "name": "Nashville, TN" }
+  },
   "author": { "@type": "Person", "name": "TJ White", "url": "https://www.linkedin.com/in/tjwhite19/" }
 }
 </script>
@@ -873,6 +878,8 @@
     .icon-btn { min-height: 44px; }
   }
 </style>
+</head>
+<body>
 
 <!-- v1.14 C2 (TJ pick A, 2026-10-25): a thin dismissible bar. It only scrolls to the
      referral card (never opens inKind itself), so the card's disclosure is always seen
@@ -3522,3 +3529,5 @@
   });
 })();
 </script>
+</body>
+</html>

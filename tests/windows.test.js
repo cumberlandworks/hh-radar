@@ -3144,6 +3144,9 @@ test('search (v2.8): page basics are in the static markup', () => {
   assert.equal(/<meta property="og:title" content="([^"]+)">/.exec(html)[1], /<title>([^<]+)<\/title>/.exec(html)[1]);
   const ld = JSON.parse(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/.exec(html)[1]);
   assert.equal(ld['@type'], 'WebApplication');
+  // Search Console refused the verification tag while the head was only implied.
+  const head = html.slice(html.indexOf('<head>'), html.indexOf('</head>'));
+  assert.ok(html.indexOf('<head>') > 0 && head.includes('name="google-site-verification"'), 'verification tag inside a literal head');
   assert.equal(ld.description, desc);
   assert.ok(html.indexOf('<section class="about"') < html.indexOf('<footer id="footer">'), 'About sits above the footer');
   // The description's "300+" is a floor; below it, the wording has to change.
