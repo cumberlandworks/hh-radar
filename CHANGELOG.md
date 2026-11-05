@@ -1,5 +1,55 @@
 # Changelog
 
+## 2026-11-04 — BLOCK-hh-radar-fix35: v2.7, the fresh-eyes fixes
+
+From the fix34 QA report. **TJ's calls, verbatim:** Now list: "Top 20, then Show more". Map tap: "Show just that zone".
+Week-specific posts: "Drop badge for this week". Earlier (fix33 follow-up): temporary closures with no reopening date
+get open-ended ranges, so the card says "Temporarily closed" with no made-up date.
+
+**A. Data and validator** (`venues-v2-07-franklin-corr2.json`, from `research/franklin/corrections-franklin-corr2.json`;
+readings in the thread's `fix35-chrome-20261104.md`)
+- **Validator:** every source, `official_site` and `inkind_url` must be an http(s) URL. A null `official_site` stays legal
+  on an inKind venue.
+- **LinQ:** no source shows the old Friday 4–9pm. The venue's dated posts (Instagram Oct 23 and Oct 2, Facebook Jul 10)
+  say 5–10pm, so the window is now Fri 5–10pm with the Oct 23 post's deals, confidence med. `official_site` added.
+- **inKind links:** Kayne Prime, Moto, Saint Anejo, Virago and Brugada are all on inKind's roster, Open and selling. The
+  roster's own `purchase_page_link` is the link that lands on the generic download page, and no venue page exists to
+  point at, so `inkind_url` is unchanged and they stay inKind. Brugada gets a real `last_verified` (2026-11-04).
+- **Silo, COA:** Google listings Open with no banner. `official_site` → silogulch.com, coagulch.com.
+- **Links:** Connie's → `/backbar`; Tiff's Treats (6) → cookiedelivery.com; Stateside Kitchen → the Hyatt page; Commons Club
+  → the new path; Embers → its Instagram page (http fails in Chrome, BRIEF step 8); Vintage Vine 100 → `/happy-hour`, which
+  has no content yet, so the window goes to low and keeps its Sep 5 date.
+- **JoJo's:** re-researched. Nov 2 post: 2-for-1 beer, 2–5pm, "call to confirm"; no days posted, so its open days; low.
+  Hours from the venue's page (Fri–Sat to 11pm, Sun to 8pm).
+- **Dos Santos Monday:** starts at 11:00, the restaurant's opening; 7:00–10:30 is the walk-up window (Nashville Guru). **Up-Down
+  Wednesday:** already right under the all-day rule, re-confirmed.
+
+**B. Banner and speed**
+- The bar says "New to inKind? $25 off your first $50+ meal · I get a credit too", and so does the footer card.
+- A tap opens the offer in place: a small panel under the bar with the button and terms. No scrolling. `followRefBar` is
+  gone. × dismisses, and so does taking the offer.
+- `<link rel="preload">` for venues.json. The Now list draws first and the rest after it can paint. The slim
+  venues.json wasn't needed.
+
+**C. Cards, grid, map, closures**
+- **Now list:** each section draws its first 20 cards in its current order, then "Show N more" draws the rest in place.
+  Headings and counts stay the full number; lunch & specials count within the 20; the expanded state isn't saved.
+- **Verify reasons:** every badge has a one-line reason on the card face (`L.verifyInfo`). 32 older windows whose `notes`
+  are research prose get a written `verify_reason`. `posted_week` on Noble's (8), Germantown Pub (2) and Streetcar (1), low → med,
+  still on the watchlist: no badge in the week and "Posted for the week of Nov 3–9"; after it, the badge and "Posted schedule was for Nov 3–9".
+- **Phone Day Grid:** a small K mark after inKind names, a one-line "Key ▾" above the rows, a tapped row's card scrolls into
+  view, and "◂ 8am" at the edge for a window that starts left of the axis.
+- **Map tap:** from All, selects only that zone (`L.mapTapSelection`); any other state toggles as before.
+- **Open-ended closures:** `temp_closed` may omit `to`; then `seen` (a dated source) is required. The card says "Temporarily
+  closed". The grid note's count and the Where button now leave out any venue closed on that date, dated ranges too.
+  `apply_corrections.py` gains `temp_closed`, plus `annotate`, `venue_set` and `remove_window`; the runbook's manual-edit note is gone.
+
+**D. Polish:** one line under the toggles ("inKind: pay through the app, get bonus credit back."); "Show 0 live now" is disabled;
+Surprise me says "from N happy hours that fit your filters"; Food-first and Drink-first tips; the name has its own line, so
+card buttons sit in the same place. "Cuts it close" unchanged.
+
+**Docs:** BRIEF step 14, the runbook, the watchlist and the README follow.
+
 ## 2026-11-04 — BLOCK-hh-radar-fix33: franklin happy hours
 
 v2.6, the seventh and last zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=franklin), with the fix32 notes made

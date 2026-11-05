@@ -824,6 +824,66 @@
     return win.confidence === 'low';
   }
 
+  // ---- v2.7 C2: why a "Verify before you go" badge fired ----
+  // QA fix34 #9: the badge said nothing on the card face. Returns:
+  //   badge:  the badge shows
+  //   reason: the one line under the badges, or '' (an hours caveat alone has its own sentence)
+  //   posted: the line for a week-specific post that still holds (TJ: "Drop badge for this week")
+  //   noteIsReason: the window's reader note says the same thing, so the card drops the note
+  var MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function shortDate(ymd, today) {
+    var p = String(ymd).split('-').map(Number);
+    var s = MONTHS_SHORT[p[1] - 1] + ' ' + p[2];
+    return today && today.year === p[0] ? s : s + ', ' + p[0];
+  }
+  // "Nov 3–9", "Nov 30–Dec 6".
+  function postedRangeLabel(pw) {
+    var a = pw.from.split('-').map(Number), b = pw.to.split('-').map(Number);
+    return MONTHS_SHORT[a[1] - 1] + ' ' + a[2] + '–' + (a[1] === b[1] ? '' : MONTHS_SHORT[b[1] - 1] + ' ') + b[2];
+  }
+  var GUIDE_NOTE_RE = /^(?:Deals|Happy hour) as listed by (.+?), confirmed (\d{4}-\d{2}-\d{2})\b/;
+  function guideOnlyReason(win, today) {
+    var src = win.sources || [];
+    var allGuide = src.length > 0 && src.every(function (s) { return s && s.kind === 'guide'; });
+    if (!allGuide) return '';
+    var m = GUIDE_NOTE_RE.exec(win.notes || '');
+    var host = hostnameOf(src[0].url);
+    var name = m ? m[1] : (host || 'a guide');
+    var date = m ? m[2] : src[0].confirmed;
+    return 'From ' + name + (date ? ', confirmed ' + shortDate(date, today) : '');
+  }
+  function lastCheckedLine(win, today) {
+    return win.last_verified ? 'Last checked ' + shortDate(win.last_verified, today) : 'No recent check on record';
+  }
+  function verifyInfo(venue, win, today) {
+    var out = { badge: false, reason: '', posted: '', noteIsReason: false };
+    var pw = win.posted_week, ymd = ymdOf(today);
+    if (pw && ymd) {
+      if (ymd >= pw.from && ymd <= pw.to) {
+        out.posted = 'Posted for the week of ' + postedRangeLabel(pw);
+        out.badge = hasHoursCaveat(venue, win);
+        return out;
+      }
+      out.badge = true;
+      out.reason = (ymd > pw.to ? 'Posted schedule was for ' : 'Posted schedule is for ') + postedRangeLabel(pw);
+      return out;
+    }
+    var low = isUnverified(win), stale = isStale(win.last_verified, today);
+    out.badge = low || stale || hasHoursCaveat(venue, win);
+    if (!low && !stale) return out;
+    if (low && win.verify_reason) out.reason = win.verify_reason;
+    else if (low && guideOnlyReason(win, today)) {
+      out.reason = guideOnlyReason(win, today);
+      // The guide sentence is now the reason line; whatever the note says beyond it stays.
+      var rest = (win.notes || '').replace(/^Deals as listed by .+?, confirmed \d{4}-\d{2}-\d{2}\. Check with the venue\.\s*/, '');
+      if (rest !== (win.notes || '')) { out.noteIsReason = !rest; if (rest) out.noteRest = rest; }
+    } else if (low && typeof win.research_notes === 'string' && win.notes) {
+      out.reason = win.notes; // reader text since v1.12, already the window's own reason
+      out.noteIsReason = true;
+    } else out.reason = lastCheckedLine(win, today);
+    return out;
+  }
+
   function windowWarnings(venue, win) {
     var intervals = resolveWindow(venue, win);
     var set = {};
@@ -874,15 +934,20 @@
   // verified_no_hh true is "checked, no happy hour" (none); with it false it is
   // "happy hour not checked yet" (unchecked, listed in uncheckedList) and must not
   // be counted as a verified no. The four groups still partition the list.
-  function dayCoverageCounts(venues, day) {
-    var onDay = 0, none = 0, otherList = [], uncheckedList = [];
+  // v2.7 C5: with `now` given, a venue temporarily closed on the date this weekday stands
+  // for leaves onDay and is counted in `closed`; its row stays, labelled. Five groups then.
+  function dayCoverageCounts(venues, day, now) {
+    var onDay = 0, none = 0, closed = 0, otherList = [], uncheckedList = [];
     for (var i = 0; i < venues.length; i++) {
       var v = venues[i];
       if (!v.windows || v.windows.length === 0) {
         if (v.verified_no_hh === false) uncheckedList.push(v); else none++;
         continue;
       }
-      if (hasIntervalOn(v, day)) { onDay++; continue; }
+      if (hasIntervalOn(v, day)) {
+        if (now && tempClosedFor(v, now, day, 1)) closed++; else onDay++;
+        continue;
+      }
       var nextDay = null;
       for (var k = 1; k <= 7; k++) {
         var d = DAYS[(DAY_INDEX[day] + k) % 7];
@@ -895,6 +960,7 @@
       onDay: onDay,
       otherDays: otherList.length,
       none: none,
+      closed: closed,
       unchecked: uncheckedList.length,
       otherList: otherList,
       uncheckedList: uncheckedList,
@@ -965,6 +1031,7 @@
 
   function hoursStatus(venue, nowChicago) {
     var tc = tempClosureOn(venue, ymdOf(nowChicago));
+    if (tc && !tc.to) return { state: 'temp-closed', until: null, untilDay: null, note: tc.note || '' }; // v2.7 C5
     if (tc) return { state: 'temp-closed', until: addDaysYMD(tc.to, 1), untilDay: weekdayOfYMD(addDaysYMD(tc.to, 1)), note: tc.note || '' };
     if (!hasHours(venue)) return { state: 'no-hours' };
     var t = nowChicago.hour * 60 + nowChicago.minute;
@@ -1035,7 +1102,8 @@
     var list = venue && venue.temp_closed;
     if (!ymd || !Array.isArray(list)) return null;
     for (var i = 0; i < list.length; i++) {
-      if (list[i] && list[i].from <= ymd && ymd <= list[i].to) return list[i];
+      // v2.7 C5: no `to` = open-ended (no posted reopening date).
+      if (list[i] && list[i].from <= ymd && (!list[i].to || ymd <= list[i].to)) return list[i];
     }
     return null;
   }
@@ -1114,6 +1182,12 @@
     return starts;
   }
 
+  // v2.7 C3: a window that starts left of the axis (Two Hands' 8am on a 10am axis) names its
+  // start at the edge. '' when it starts on the axis. `start` is the window's own "HH:MM".
+  function gridEdgeLabel(startMin, axisStart, start) {
+    return startMin < axisStart ? '◂ ' + fmtHM(start) : '';
+  }
+
   // ---- v1.13 C1: the tip card (TJ's Venmo, set 2026-10-23) ----
   // v1.14 C4: the heading is "Enjoying the radar?" (TJ, 2026-10-25: a reader tips after
   // using it for a bit).
@@ -1144,16 +1218,6 @@
       storage.setItem(REFBAR_KEY, '1');
       return true;
     } catch (e) { return false; }
-  }
-  // v1.15 C2 (TJ, 2026-10-25): tapping the bar's text also dismisses it, so it is not
-  // there when the reader scrolls back up. The key is written and the bar hidden before
-  // the scroll starts (hiding it first keeps the card's landing spot steady). Returns
-  // whether the key was saved; a blocked storage still hides the bar for this visit.
-  function followRefBar(storage, hideBar, goToCard) {
-    var saved = dismissRefBar(storage);
-    hideBar();
-    goToCard();
-    return saved;
   }
 
   // ---- v1.12 C2: the price a deal line shows, or null ----
@@ -1360,6 +1424,14 @@
   }
   // Live cards per hood, over the venues given (the page passes all of them, so a chip's
   // number doesn't move when another chip is toggled).
+  // v2.7 C1 (TJ: "Top 20, then Show more"): one section's cut, in its current order.
+  var NOW_LIST_LIMIT = 20;
+  function nowListCut(list, showAll) {
+    var all = list || [];
+    if (showAll || all.length <= NOW_LIST_LIMIT) return { shown: all, hidden: 0, more: '' };
+    var hidden = all.length - NOW_LIST_LIMIT;
+    return { shown: all.slice(0, NOW_LIST_LIMIT), hidden: hidden, more: 'Show ' + hidden + ' more' };
+  }
   function liveCountsByHood(venues, dateInTz) {
     var counts = {};
     nowEntries(venues, dateInTz).live.forEach(function (e) {
@@ -1451,6 +1523,16 @@
     var turnOn = zoneTapTarget(zoneChipState(selected, visibleHoods).state) === 'all';
     zone.hoods.forEach(function (h) { if (turnOn) next.add(h); else next.delete(h); });
     return next;
+  }
+  // v2.7 C4 (TJ: "Show just that zone"): with every zone on, a map tap selects only that
+  // zone. In any other state it toggles as a chip does. zoneHoods: {zoneKey: hoods the state
+  // is read from}; a zone with none is not part of "every zone".
+  function mapTapSelection(selected, zoneKey, zoneHoods) {
+    var keys = Object.keys(zoneHoods || {}).filter(function (k) { return zoneHoods[k].length > 0; });
+    var everyOn = keys.length > 0 && keys.every(function (k) { return zoneChipState(selected, zoneHoods[k]).state === 'all'; });
+    var zone = ZONES.filter(function (z) { return z.key === zoneKey; })[0];
+    if (everyOn && zone) return new Set(zone.hoods);
+    return applyZoneTap(selected, zoneKey, (zoneHoods || {})[zoneKey] || []);
   }
   // The Neighborhoods group heading's control: "all" while some are ticked, "none" once
   // every one is.
@@ -1952,6 +2034,11 @@
     return 'Every happy hour so far: ' + labels.join(', ') + '. Other areas show inKind restaurants for now.';
   }
 
+  // v2.7 A2: every link a card can open. LinQ's source was the text "Google result: ...",
+  // which the page resolved against its own path: a GitHub 404.
+  var HTTP_URL_RE = /^https?:\/\/[^\s]+$/;
+  function isHttpUrl(u) { return typeof u === 'string' && HTTP_URL_RE.test(u); }
+
   function validateVenues(data) {
     var errors = [];
     function fail(msg) { errors.push(msg); }
@@ -2002,6 +2089,8 @@
       seenTz[v.tz] = true;
       if (v.inkind !== true && v.inkind !== false) fail(p + ': inkind must be true or false');
       if (v.status !== 'open') fail(p + ': status must be "open"');
+      if (v.official_site !== undefined && v.official_site !== null && !isHttpUrl(v.official_site)) fail(p + ': official_site must be an http(s) URL');
+      if (v.inkind_url !== undefined && !isHttpUrl(v.inkind_url)) fail(p + ': inkind_url must be an http(s) URL');
       if (!Array.isArray(v.windows)) { fail(p + ': windows must be an array'); continue; }
       if (typeof v.verified_no_hh !== 'boolean') fail(p + ': verified_no_hh must be boolean');
       // v2.0 A1: the non-inKind venue shape.
@@ -2038,9 +2127,12 @@
           var tp = p + '.temp_closed[' + ti + ']';
           if (!tc || typeof tc !== 'object') { fail(tp + ': not an object'); return; }
           var okFrom = typeof tc.from === 'string' && YMD_RE.test(tc.from);
+          // v2.7 C5: `to` may be omitted (open-ended), but then the source must be dated.
+          var openEnded = tc.to === undefined;
           var okTo = typeof tc.to === 'string' && YMD_RE.test(tc.to);
           if (!okFrom) fail(tp + ': from must be YYYY-MM-DD');
-          if (!okTo) fail(tp + ': to must be YYYY-MM-DD');
+          if (!okTo && !openEnded) fail(tp + ': to must be YYYY-MM-DD');
+          if (openEnded && !(typeof tc.seen === 'string' && YMD_RE.test(tc.seen))) fail(tp + ': an open-ended closure needs a dated source (seen: YYYY-MM-DD)');
           if (okFrom && okTo && tc.from > tc.to) fail(tp + ': from must be <= to');
           if (typeof tc.note !== 'string') fail(tp + ': note must be a string');
           if (typeof tc.source !== 'string' || !/^https?:\/\//.test(tc.source)) fail(tp + ': source must be a URL');
@@ -2087,6 +2179,7 @@
         else {
           // v2.0 A2: a source is a URL string (inKind venues only) or a typed object.
           w.sources.forEach(function (s, si) {
+            if (!isHttpUrl(sourceUrl(s))) fail(wp + '.sources[' + si + ']: must be an http(s) URL');
             if (typeof s === 'string') {
               if (v.inkind === false) fail(wp + '.sources[' + si + ']: a non-inKind window needs typed sources {url, kind, seen, confirmed}');
             } else if (!isTypedSource(s)) {
@@ -2107,6 +2200,16 @@
         if (typeof w.corroborated !== 'boolean') fail(wp + ': corroborated must be boolean');
         // v1.12: when present, `notes` is reader text and this holds the research prose.
         if (w.research_notes !== undefined && typeof w.research_notes !== 'string') fail(wp + ': research_notes must be a string');
+        // v2.7 C2: reader text, on the card face.
+        if (w.verify_reason !== undefined && (typeof w.verify_reason !== 'string' || !w.verify_reason || /\btoday\b/i.test(w.verify_reason))) {
+          fail(wp + ': verify_reason must be a non-empty string that does not say "today"');
+        }
+        if (w.posted_week !== undefined) {
+          var pw = w.posted_week;
+          if (!pw || typeof pw.from !== 'string' || !YMD_RE.test(pw.from) || typeof pw.to !== 'string' || !YMD_RE.test(pw.to)) {
+            fail(wp + ': posted_week needs from and to as YYYY-MM-DD');
+          } else if (pw.from > pw.to) fail(wp + ': posted_week from must be <= to');
+        }
       }
     }
 
@@ -2526,7 +2629,6 @@
     REFBAR_KEY: REFBAR_KEY,
     refBarDismissed: refBarDismissed,
     dismissRefBar: dismissRefBar,
-    followRefBar: followRefBar,
     GRID_DEFAULT_START: GRID_DEFAULT_START,
     GRID_EARLIEST_START: GRID_EARLIEST_START,
     dealPriceLabel: dealPriceLabel,
@@ -2588,5 +2690,12 @@
     isNavApp: isNavApp,
     navUrl: navUrl,
     defaultNavApp: defaultNavApp,
+    verifyInfo: verifyInfo,
+    postedRangeLabel: postedRangeLabel,
+    nowListCut: nowListCut,
+    NOW_LIST_LIMIT: NOW_LIST_LIMIT,
+    gridEdgeLabel: gridEdgeLabel,
+    mapTapSelection: mapTapSelection,
+    isHttpUrl: isHttpUrl,
   };
 });

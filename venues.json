@@ -2448,7 +2448,6 @@
      ],
      "start": "11:00",
      "end": "23:00",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -2463,7 +2462,9 @@
      "last_verified": "2026-09-05",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Single low-confidence do615 listing (Tuesday $3 tequila shots). Not found on official site, Guru, or in today's fetches; kept as unconfirmed, last_verified unchanged. Earlier unsourced '$4 Taco Tuesday' claim remains unverified."
+     "notes": "Single low-confidence do615 listing (Tuesday $3 tequila shots). Not found on official site, Guru, or in today's fetches; kept as unconfirmed, last_verified unchanged. Earlier unsourced '$4 Taco Tuesday' claim remains unverified.",
+     "verify_reason": "Only one do615 listing shows this; not on the venue's site.",
+     "area": null
     },
     {
      "days": [
@@ -3520,7 +3521,6 @@
      ],
      "start": "16:00",
      "end": "19:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -3571,7 +3571,9 @@
      "last_verified": "2023-12-04",
      "corroborated": true,
      "confidence": "low",
-     "notes": "Not found on the venue's own site today (location page has no happy hour text). Last explicit confirmation is the Dec 2023 press coverage. A different reading (Mon-Fri 3-6pm) appears on Nashville Guru; see disagreements. Needs a call before it goes live without a caveat."
+     "notes": "Not found on the venue's own site today (location page has no happy hour text). Last explicit confirmation is the Dec 2023 press coverage. A different reading (Mon-Fri 3-6pm) appears on Nashville Guru; see disagreements. Needs a call before it goes live without a caveat.",
+     "verify_reason": "Last confirmed in Dec 2023 press; Nashville Guru gives different times.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -5226,7 +5228,6 @@
      ],
      "start": "16:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -5253,10 +5254,12 @@
      "sources": [
       "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
      ],
-     "last_verified": null,
+     "last_verified": "2026-11-04",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Official site (fetched today) mentions no happy hour. Only the undated Tripadvisor/aggregator claim remains. Tue-Thu opens 4:30pm per the site, so a 4-6pm window would not start at 4:00 as recorded."
+     "notes": "Official site (fetched today) mentions no happy hour. Only the undated Tripadvisor/aggregator claim remains. Tue-Thu opens 4:30pm per the site, so a 4-6pm window would not start at 4:00 as recorded.",
+     "verify_reason": "Times match Google's listing; the venue's site doesn't mention a happy hour. Prices from an undated Tripadvisor listing.",
+     "area": null
     },
     {
      "days": [
@@ -5266,7 +5269,6 @@
      ],
      "start": "14:30",
      "end": "16:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -5293,14 +5295,16 @@
      "sources": [
       "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
      ],
-     "last_verified": null,
+     "last_verified": "2026-11-04",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Official site mentions no happy hour; Fri-Sun opens at 10am so 2:30-4pm is plausible but only aggregator-sourced."
+     "notes": "Official site mentions no happy hour; Fri-Sun opens at 10am so 2:30-4pm is plausible but only aggregator-sourced.",
+     "verify_reason": "Google's listing shows Fri–Sat 3–5pm and Sun 4–6pm, not these times. Call ahead.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [
     "Tue-Thu happy hour recorded as 4:00-6:00pm but the site's Tue-Thu opening is 4:30pm."
    ],
@@ -5947,7 +5951,6 @@
      ],
      "start": "16:00",
      "end": "23:00",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -5967,7 +5970,9 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "W Nashville events page lists it Aug 24, 2026 to Mar 16, 2027, 4:00-11:00 PM daily; page does not state recurrence and its price field reads N/A. Not on butterflybyjose.com."
+     "notes": "W Nashville events page lists it Aug 24, 2026 to Mar 16, 2027, 4:00-11:00 PM daily; page does not state recurrence and its price field reads N/A. Not on butterflybyjose.com.",
+     "verify_reason": "The hotel's events page lists this through Mar 2027 with no price.",
+     "area": null
     },
     {
      "days": [
@@ -5979,7 +5984,6 @@
      ],
      "start": "16:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [],
      "sources": [
@@ -5988,7 +5992,9 @@
      "last_verified": "2026-10-25",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Sunset Sips on venue site: specially priced sips and bites, no prices shown. Page does not name Nashville; Google snippet separately says 4-11 PM with a $22 taco deal."
+     "notes": "Sunset Sips on venue site: specially priced sips and bites, no prices shown. Page does not name Nashville; Google snippet separately says 4-11 PM with a $22 taco deal.",
+     "verify_reason": "The venue's page shows no prices and doesn't name Nashville.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -7365,7 +7371,7 @@
    "lon": -86.7816601,
    "tz": "America/Chicago",
    "inkind": false,
-   "official_site": "https://www.coanashville.com/",
+   "official_site": "https://www.coagulch.com/",
    "status": "open",
    "hours": {
     "MON": [
@@ -7467,7 +7473,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-11-03"
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-coal-town-public-house-187",
@@ -7738,7 +7744,7 @@
    "lon": -86.7933205,
    "tz": "America/Chicago",
    "inkind": false,
-   "official_site": "http://virginhotels.com/nashville/dine-and-drink/the-commons-club/",
+   "official_site": "https://virginhotels.com/nashville/eat-drink/commons-club/",
    "status": "open",
    "hours": {
     "MON": [
@@ -7843,7 +7849,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-11-03"
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-condado-tacos-418",
@@ -7984,7 +7990,7 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://vernaconnies.inkind.com/",
-   "official_site": "https://www.vernanashville.com/connies",
+   "official_site": "https://www.vernanashville.com/backbar",
    "status": "open",
    "hours": {
     "MON": [
@@ -8092,7 +8098,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Verna cafe side has its own separate happy hour Thu-Mon 3-6pm (not this venue). Backbar events: Thu trivia 7pm, Sun open mic comedy. No food deal in the happy hour. First-visit question: Not settled by research: whether inKind credit under the 'Connie's Upscale Dive' row works at The Backbar needs TJ to confirm at the venue. Same address and operator; the vernanashville.com/connies page no longer loads.",
    "hours_confidence": "high",
@@ -9428,7 +9434,7 @@
      "days": [
       "MON"
      ],
-     "start": "07:00",
+     "start": "11:00",
      "end": "close",
      "kind": "happy_hour",
      "deals": [
@@ -9470,13 +9476,19 @@
        "kind": "venue",
        "seen": "2026-11-04",
        "confirmed": null
+      },
+      {
+       "url": "https://nashvilleguru.com/businesses/dos-santos",
+       "kind": "guide",
+       "seen": "2026-11-04",
+       "confirmed": "2026-10-15"
       }
      ],
      "last_verified": "2026-11-04",
      "corroborated": false,
      "confidence": "med",
-     "notes": "All day Monday: from the 7:00 opening.",
-     "research_notes": "Venue home page: 'Three to six every day, and all day on Mondays', $7 house margaritas, house lager, basil limeade, poke bites, tinga chips. The page is the multi-city Dos Santos site and does not name Nashville in the happy hour text; its location table lists Nashville at 475 Gray St with Mon-Sat 7 AM-10 PM, Sun 7 AM-9 PM. The happy hour menu page lists items without prices. Nashville Guru (confirmed 10/15/26) agrees on days and $7 prices but lists Nashville opening at 11:00 (7:00 is the walk-up window)."
+     "notes": "All day Monday: from the 11:00 opening. 7:00–10:30 is the walk-up window.",
+     "research_notes": "fix35: venue home page: three to six every day, all day Monday, $7 items; its menu page lists items without prices. It doesn't state Nashville's hours. Nashville Guru (confirmed 10/15/26): Mon-Fri 11:00am-10:00pm, with a 7:00am-10:30am walk-up window. Google lists 7AM-10PM as one block. So under fix29's all-day rule the happy hour starts when the restaurant opens, 11:00."
     },
     {
      "days": [
@@ -11378,7 +11390,7 @@
    "lon": -86.7894596,
    "tz": "America/Chicago",
    "inkind": false,
-   "official_site": "https://embersskilodge.com/",
+   "official_site": "https://www.instagram.com/embersskilodge/",
    "status": "open",
    "hours": {
     "MON": [
@@ -13724,7 +13736,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Monday end time disagrees. Official site footer says Mon-Fri 3:30-6:30pm; Guru (confirmed 10/23/26) says Monday 3:30pm to 9:00pm in the bar. Recorded the official 18:30 end here; Guru reading is in disagreements. Previously split off as a Mon-Fri window."
+     "notes": "Monday end time disagrees. Official site footer says Mon-Fri 3:30-6:30pm; Guru (confirmed 10/23/26) says Monday 3:30pm to 9:00pm in the bar. Recorded the official 18:30 end here; Guru reading is in disagreements. Previously split off as a Mon-Fri window.",
+     "verify_reason": "The venue and Nashville Guru disagree on the Monday end time."
     },
     {
      "days": [
@@ -13763,7 +13776,8 @@
      "last_verified": "2026-10-23",
      "corroborated": true,
      "confidence": "low",
-     "notes": "Official site: 'Sat 7:30-9pm'. Guru (10/23/26): Saturday 7:30pm to 9:30pm, bar area only, same $7/$7/$4 deals. Start agrees; end differs by 30 minutes. Deals now filled in from Guru (the official site gives none); previous record had empty deals."
+     "notes": "Official site: 'Sat 7:30-9pm'. Guru (10/23/26): Saturday 7:30pm to 9:30pm, bar area only, same $7/$7/$4 deals. Start agrees; end differs by 30 minutes. Deals now filled in from Guru (the official site gives none); previous record had empty deals.",
+     "verify_reason": "The venue and Nashville Guru disagree on the Saturday end time."
     }
    ],
    "verified_no_hh": false,
@@ -13875,9 +13889,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "Schedule as posted for the week of Nov 3-9.",
-     "research_notes": "Venue specials page is headed 'week of Nov 3-9'. Hours from the home page (708 Monroe Street, Nashville, TN 37208). Midnight close is written as 00:00."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue specials page is headed 'week of Nov 3-9'. Hours from the home page (708 Monroe Street, Nashville, TN 37208). Midnight close is written as 00:00.",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -13903,9 +13921,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "Schedule as posted for the week of Nov 3-9. The BOGO drinks and wing deal do not apply on Friday.",
-     "research_notes": "Same venue specials page, Friday-specific line."
+     "confidence": "med",
+     "notes": "The BOGO drinks and wing deal do not apply on Friday.",
+     "research_notes": "Same venue specials page, Friday-specific line.",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     }
    ],
    "verified_no_hh": false,
@@ -15883,7 +15905,6 @@
      ],
      "start": "11:00",
      "end": "16:00",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -15898,7 +15919,9 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Named on the hours block; price and terms not on the fetched page."
+     "notes": "Named on the hours block; price and terms not on the fetched page.",
+     "verify_reason": "Named on the venue's hours; price and terms aren't posted.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -16298,7 +16321,8 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "OpenTable lists football specials during college football and NFL games including Sunday Ticket. Venue site only has a FOOTBALL tile linking to reservations. Days and times are game dependent; 11:00 start is a placeholder."
+     "notes": "OpenTable lists football specials during college football and NFL games including Sunday Ticket. Venue site only has a FOOTBALL tile linking to reservations. Days and times are game dependent; 11:00 start is a placeholder.",
+     "verify_reason": "From OpenTable; days and times depend on the game schedule."
     },
     {
      "days": [
@@ -16307,7 +16331,6 @@
      ],
      "start": "10:00",
      "end": "14:00",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -16322,7 +16345,9 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "OpenTable: Saturdays and Sundays 10 AM-2 PM, $55 per person, 21+. Set-price brunch package rather than a discount. Venue site has a BRUNCH tile only."
+     "notes": "OpenTable: Saturdays and Sundays 10 AM-2 PM, $55 per person, 21+. Set-price brunch package rather than a discount. Venue site has a BRUNCH tile only.",
+     "verify_reason": "From OpenTable, not the venue's own page.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -16960,64 +16985,63 @@
     "FRI": [
      [
       "11:00",
-      "21:00"
+      "23:00"
      ]
     ],
     "SAT": [
      [
       "11:00",
-      "21:00"
+      "23:00"
      ]
     ],
     "SUN": [
      [
       "11:00",
-      "21:00"
+      "20:00"
      ]
     ]
    },
-   "hours_source": "researched 2026-10-23 (high confidence): https://jojosfishhouse.com/hours",
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.jojosfishhouse.com/hours",
    "windows": [
     {
      "days": [
+      "MON",
+      "TUE",
       "WED",
       "THU",
       "FRI",
-      "SAT"
+      "SAT",
+      "SUN"
      ],
      "start": "14:00",
-     "end": "19:00",
-     "area": "whole restaurant",
+     "end": "17:00",
      "kind": "happy_hour",
      "deals": [
       {
        "type": "drink",
-       "desc": "2-for-1 (BOGO) beers",
+       "desc": "2-for-1 beer, bottles and draft",
        "price": null
-      },
-      {
-       "type": "drink",
-       "desc": "$2 off daiquiris",
-       "price": "$2 off"
       }
      ],
      "sources": [
-      "https://jojosfishhouse.com/murfreesboro-jojo-s-fish-house-happy-hours-specials"
+      "https://www.instagram.com/p/DfPau4nASTq/"
      ],
-     "last_verified": "2026-09-05",
+     "last_verified": "2026-11-04",
      "corroborated": false,
-     "confidence": "med",
-     "notes": "Official site today only shows a photo captioned 'happy hour board' at the bar and lists 'Late Night Eats', 'MTSU Daily Specials', 'Weekly Wing and Tender Specials (Wing Wednesday)', 'Community Day Specials' with no details. The events page and the happy-hours-specials URL gave no readable deal text in today's fetches. The 2pm-7pm Wed-Sat window cannot be confirmed; it also runs past the 9pm close pattern only if Fri/Sat late hours are real, which the site now contradicts."
+     "confidence": "low",
+     "notes": "From the venue's Instagram post of Nov 2, which says to call to confirm. Days not posted: set to the venue's open days.",
+     "research_notes": "fix35 under BRIEF steps 1 and 10: the old happy-hours page redirects home and the site shows no happy hour (home, hours, events). Instagram Nov 2, 2026: 2-for-1 beer, 2-5 p.m., bottles and draft, 'call to confirm'. The old Wed-Sat 2-7pm BOGO and $2-off daiquiris match only a post about a year old. Checkle (Oct 2026): none found. A Facebook snippet ('2 to 6 pm, $2.50 domestic draft, $3 house wine', about 3 weeks old) was not opened. Low because the venue itself says to confirm.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [
     "Hours: official site 11-9 daily vs inKind Fri/Sat to 11pm, Sun to 8pm."
    ],
    "notes": "Specials pages render without deal content, so weekday MTSU/wing/community-day specials could not be read. Lunch special status unknown.",
    "hours_confidence": "high",
-   "hours_notes": "Official site says 11am-9pm every day; the 2026-09-05 inKind data had Sun to 8pm and Fri/Sat to 11pm. Official site used.",
+   "hours_notes": "The venue's hours page, read 2026-11-04.",
    "lunch_checked": false
   },
   {
@@ -18424,7 +18448,7 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://jcchospitalitygroupf0ian.inkind.com/",
-   "official_site": null,
+   "official_site": "https://www.linqsocialkitchen.com/",
    "status": "open",
    "hours": {
     "TUE": [
@@ -18464,24 +18488,47 @@
      "days": [
       "FRI"
      ],
-     "start": "16:00",
-     "end": "21:00",
-     "area": null,
+     "start": "17:00",
+     "end": "22:00",
      "kind": "happy_hour",
-     "deals": [],
-     "sources": [
-      "Google result: LinQ Instagram post snippet"
+     "deals": [
+      {
+       "type": "food",
+       "desc": "$1 wings",
+       "price": "$1"
+      },
+      {
+       "type": "food",
+       "desc": "$2 tacos",
+       "price": "$2"
+      },
+      {
+       "type": "drink",
+       "desc": "2-for-1 drinks",
+       "price": null
+      },
+      {
+       "type": "drink",
+       "desc": "$150 bottles",
+       "price": "$150"
+      }
      ],
-     "last_verified": "2026-10-25",
+     "sources": [
+      "https://www.instagram.com/p/De17qWvlBYq/",
+      "https://www.instagram.com/p/Dd_-SI1kU68/"
+     ],
+     "last_verified": "2026-11-04",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "Snippet: every Friday 4PM-9PM, food and drink specials, $20 hookah; other posts mention 4-for-1 drinks. Menu specifics not seen."
+     "confidence": "med",
+     "notes": "From the venue's Instagram post of Oct 23.",
+     "research_notes": "fix35: the old window (Fri 4-9pm, from a search snippet with no URL) was not found as a post. Venue posts: Instagram Oct 23, 2026 (Happy Hour 5PM-10PM, the deals here); Instagram Oct 2, 2026 (FULL Happy Hour 5PM-10PM, every Friday); Facebook Jul 10, 2026 (Friday-Sunday 5PM-10PM). Google listing Friday 5PM-3AM. Search snippets mention an Apr 2026 stop-work order and an Oct 2026 shooting; articles not read; posts continue and the listing shows Open.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
-   "notes": "Nothing reachable for this venue. Same operator as Noir (shared inKind account). Needs a manual look. Happy hour not yet confirmed (2026-10-23). Still operating? Not confirmed 2026-10-23.",
+   "notes": "Same operator as Noir (shared inKind account). The venue posts its Friday happy hour on Instagram; its site lists no happy hour. Google listing Open with no banner 2026-11-04.",
    "hours_confidence": "high",
    "lunch_checked": false
   },
@@ -18695,7 +18742,6 @@
      ],
      "start": "16:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -18739,10 +18785,12 @@
       "https://www.instagram.com/thelocalnash/",
       "https://www.instagram.com/liveoaknashville/"
      ],
-     "last_verified": null,
      "corroborated": true,
      "confidence": "low",
-     "notes": "Venue site still has no happy hour text. Nashville Guru (undated) says 'Happy hour until 6:00pm' and lists the deals above. Earlier record: Instagram post 'HAPPY HOUR MON-FRI TILL 6 PM' and The Local Nash 'starts at 4pm (Mon-Thur) 11am on Fridays'. Instagram could not be fetched today. Deals are new detail from Guru; Guru has no confirmed-on date."
+     "notes": "Venue site still has no happy hour text. Nashville Guru (undated) says 'Happy hour until 6:00pm' and lists the deals above. Earlier record: Instagram post 'HAPPY HOUR MON-FRI TILL 6 PM' and The Local Nash 'starts at 4pm (Mon-Thur) 11am on Fridays'. Instagram could not be fetched today. Deals are new detail from Guru; Guru has no confirmed-on date.",
+     "verify_reason": "Nashville Guru lists this with no date; not on the venue's site.",
+     "area": null,
+     "last_verified": null
     },
     {
      "days": [
@@ -18750,7 +18798,6 @@
      ],
      "start": "11:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -18793,10 +18840,12 @@
       "https://www.instagram.com/thelocalnash/",
       "https://www.instagram.com/liveoaknashville/"
      ],
-     "last_verified": null,
      "corroborated": false,
      "confidence": "low",
-     "notes": "From the earlier record's Instagram evidence only (Mon-Fri until 6 PM; Fridays from 11am). Not re-checked today. Deals assumed same as Guru's list."
+     "notes": "From the earlier record's Instagram evidence only (Mon-Fri until 6 PM; Fridays from 11am). Not re-checked today. Deals assumed same as Guru's list.",
+     "verify_reason": "From older Instagram posts; deals assumed from the Nashville Guru list.",
+     "area": null,
+     "last_verified": null
     }
    ],
    "verified_no_hh": false,
@@ -19333,7 +19382,8 @@
      "last_verified": "2025-12-24",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Listing says \"monday / all night\" and the wording is unclear (it also mentions mimosas across the weekend). End set to Monday close."
+     "notes": "Listing says \"monday / all night\" and the wording is unclear (it also mentions mimosas across the weekend). End set to Monday close.",
+     "verify_reason": "From a do615 listing dated Dec 2025, and its wording is unclear."
     },
     {
      "days": [
@@ -21598,7 +21648,6 @@
      ],
      "start": "17:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -21620,10 +21669,12 @@
      "sources": [
       "https://nashvilleguru.com/businesses/moto"
      ],
-     "last_verified": null,
      "corroborated": false,
      "confidence": "low",
-     "notes": "The official /events/happy-hour page loaded today but showed only the restaurant hours, with no happy hour text (it did on 2026-09-05 per the earlier record). Only the undated Guru line remains: 'Happy hour from 5:00pm to 6:00pm includes $9 select wines, $9 select cocktails, and 40% off all bottles under $100.' Days WED-FRI come from the earlier record's reading of the official page."
+     "notes": "The official /events/happy-hour page loaded today but showed only the restaurant hours, with no happy hour text (it did on 2026-09-05 per the earlier record). Only the undated Guru line remains: 'Happy hour from 5:00pm to 6:00pm includes $9 select wines, $9 select cocktails, and 40% off all bottles under $100.' Days WED-FRI come from the earlier record's reading of the official page.",
+     "verify_reason": "The venue's page no longer shows this; Nashville Guru lists it with no date.",
+     "area": null,
+     "last_verified": null
     }
    ],
    "verified_no_hh": false,
@@ -21711,7 +21762,6 @@
      ],
      "start": "16:00",
      "end": "close",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -21761,7 +21811,9 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Items and prices re-read today on the NASHVILLE location's Dinner Specials page; they match the record. The Franklin Dinner Specials page shows the heading only (items did not load), so applying it to Franklin is unconfirmed. The page states no days and no times; the 16:00 start is an assumption from the \"Dinner\" label and is not sourced."
+     "notes": "Items and prices re-read today on the NASHVILLE location's Dinner Specials page; they match the record. The Franklin Dinner Specials page shows the heading only (items did not load), so applying it to Franklin is unconfirmed. The page states no days and no times; the 16:00 start is an assumption from the \"Dinner\" label and is not sourced.",
+     "verify_reason": "Read on the Nashville location's page; not confirmed for Franklin. Start time assumed.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -21984,7 +22036,6 @@
      ],
      "start": "16:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [],
      "sources": [
@@ -21994,7 +22045,9 @@
      "last_verified": "2026-05-14",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Article dated 2026-05-14 (modified 05-19): happy hour Monday through Friday, 4:00 PM to 6:00 PM. No deals itemized anywhere. OpenTable disagrees (every day, 3:00-6:00 PM). The article's version used because it is dated 2026."
+     "notes": "Article dated 2026-05-14 (modified 05-19): happy hour Monday through Friday, 4:00 PM to 6:00 PM. No deals itemized anywhere. OpenTable disagrees (every day, 3:00-6:00 PM). The article's version used because it is dated 2026.",
+     "verify_reason": "From a May 2026 article; OpenTable gives different times.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -22129,7 +22182,8 @@
      "last_verified": "2025-02-10",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Only the do615 listing for a Feb 2025 event ('Mondays through Thursdays, from 3 - 6 p.m., guests can enjoy a variety of items priced at $8 and under at the bar!') with itemized prices. The Nacho Daddy site and Nashville page list no happy hour. Yelp Q&A (Mon-Fri) is robots-blocked. Previously corroborated:true off the Yelp Q&A; not re-confirmable today."
+     "notes": "Only the do615 listing for a Feb 2025 event ('Mondays through Thursdays, from 3 - 6 p.m., guests can enjoy a variety of items priced at $8 and under at the bar!') with itemized prices. The Nacho Daddy site and Nashville page list no happy hour. Yelp Q&A (Mon-Fri) is robots-blocked. Previously corroborated:true off the Yelp Q&A; not re-confirmable today.",
+     "verify_reason": "Only a Feb 2025 do615 listing shows this; not on the venue's site."
     },
     {
      "days": [
@@ -22155,10 +22209,11 @@
      "sources": [
       "https://do615.com/events/weekly/sat/late-night-happy-hour-at-nacho-daddy-tickets"
      ],
-     "last_verified": null,
      "corroborated": false,
      "confidence": "low",
-     "notes": "do615 (page metadata date 2026-06-06): 'Late Night Happy Hour is BACK at Nacho Daddy - Friday & Saturday from 10PM-2AM! Score all your favorites for $8 & under - house margs, mini nachos, tacos, and more.' The same page's event details say 'Every Sat 10:00PM-3:00AM'. Not on the official site. Prior Instagram source not re-fetched. Area changed from bar only to unspecified."
+     "notes": "do615 (page metadata date 2026-06-06): 'Late Night Happy Hour is BACK at Nacho Daddy - Friday & Saturday from 10PM-2AM! Score all your favorites for $8 & under - house margs, mini nachos, tacos, and more.' The same page's event details say 'Every Sat 10:00PM-3:00AM'. Not on the official site. Prior Instagram source not re-fetched. Area changed from bar only to unspecified.",
+     "verify_reason": "From a June 2026 do615 listing, which also gives different hours.",
+     "last_verified": null
     }
    ],
    "verified_no_hh": false,
@@ -22765,7 +22820,6 @@
      ],
      "start": "17:00",
      "end": "close",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -22781,7 +22835,9 @@
      "last_verified": "2026-06-22",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Guru (confirmed 06/22/26) still lists Nicky's Family Night Monday 5-8:30pm, kids 12 and under eat free."
+     "notes": "Guru (confirmed 06/22/26) still lists Nicky's Family Night Monday 5-8:30pm, kids 12 and under eat free.",
+     "verify_reason": "From Nashville Guru, confirmed Jun 22.",
+     "area": null
     },
     {
      "days": [
@@ -22789,7 +22845,6 @@
      ],
      "start": "17:00",
      "end": "close",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -22804,7 +22859,9 @@
      "last_verified": "2026-06-22",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Guru (confirmed 06/22/26) still lists date night dinner special Thursday 5-8:30pm, $30 per person."
+     "notes": "Guru (confirmed 06/22/26) still lists date night dinner special Thursday 5-8:30pm, $30 per person.",
+     "verify_reason": "From Nashville Guru, confirmed Jun 22.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -22906,9 +22963,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9; the schedule can change weekly.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "The schedule can change weekly.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -22934,9 +22995,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "All day, as posted for the week of Nov 3-9; the schedule can change weekly.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "All day. The schedule can change weekly.",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -22962,9 +23027,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -22995,9 +23064,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -23023,9 +23096,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -23061,9 +23138,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -23089,9 +23170,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     },
     {
      "days": [
@@ -23117,9 +23202,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "As posted for the week of Nov 3-9.",
-     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14)."
+     "confidence": "med",
+     "notes": "",
+     "research_notes": "Venue happy hour page, week of Nov 3-9 2026; schedule is posted per date and may rotate. Site says open daily 11 AM-2 AM but some posted windows run to 3 AM; hours taken as the posted 11:00-02:00. fix30: re-checked 2026-11-03, the page still shows Tue Nov 3 - Mon Nov 9 (no year); confidence set to low per the week-specific rule (brief step 14).",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     }
    ],
    "verified_no_hh": false,
@@ -23200,7 +23289,6 @@
      ],
      "start": "14:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -23240,7 +23328,9 @@
      "last_verified": "2026-10-25",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Aggregator and Nashville Guru snippet say 2-6 PM daily; a Facebook post snippet says Mon-Thu 4-7 PM. Venue site lists a Happy Hour Menu PDF but it was not opened."
+     "notes": "Aggregator and Nashville Guru snippet say 2-6 PM daily; a Facebook post snippet says Mon-Thu 4-7 PM. Venue site lists a Happy Hour Menu PDF but it was not opened.",
+     "verify_reason": "Listings disagree on days and times; the venue's menu wasn't read.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -24642,7 +24732,8 @@
      "last_verified": "2026-06-16",
      "corroborated": true,
      "confidence": "low",
-     "notes": "Saturday appears on the official homepage ('Happy Hour | Mon - Sat: 4-6pm') and on Guru (Mon-Sat, confirmed 06/16/26), but the official happy hour menu page says Monday - Friday only. Kept as a separate low-confidence window; see disagreements."
+     "notes": "Saturday appears on the official homepage ('Happy Hour | Mon - Sat: 4-6pm') and on Guru (Mon-Sat, confirmed 06/16/26), but the official happy hour menu page says Monday - Friday only. Kept as a separate low-confidence window; see disagreements.",
+     "verify_reason": "The venue's pages disagree on whether Saturday is included."
     }
    ],
    "verified_no_hh": false,
@@ -24779,7 +24870,6 @@
      ],
      "start": "16:00",
      "end": "close",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -24794,7 +24884,9 @@
      "last_verified": "2026-10-23",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Specials page lists it under Wednesday, October 21 only; unclear whether it recurs every week."
+     "notes": "Specials page lists it under Wednesday, October 21 only; unclear whether it recurs every week.",
+     "verify_reason": "Posted for one Wednesday only; it may not repeat weekly.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -26010,16 +26102,17 @@
      ],
      "start": "16:00",
      "end": "17:30",
-     "area": null,
      "kind": "happy_hour",
      "deals": [],
      "sources": [
       "https://www.liveinthepresenttense.com/eat"
      ],
-     "last_verified": null,
      "corroborated": false,
      "confidence": "low",
-     "notes": "Site says only \"Happy Hour 4-530\", no days given and no deals. Days Thu-Sun carried over from the earlier pass. Site copyright is 2023, before the March 2026 reopening. Sunday opens 17:00 per OpenTable and the site, so a 16:00 Sunday start is doubtful. Guru listing has no HH text. Ask on arrival."
+     "notes": "Site says only \"Happy Hour 4-530\", no days given and no deals. Days Thu-Sun carried over from the earlier pass. Site copyright is 2023, before the March 2026 reopening. Sunday opens 17:00 per OpenTable and the site, so a 16:00 Sunday start is doubtful. Guru listing has no HH text. Ask on arrival.",
+     "verify_reason": "The venue posts only \"Happy Hour 4-530\"; days carried over, and Sunday opens at 5.",
+     "area": null,
+     "last_verified": null
     }
    ],
    "verified_no_hh": false,
@@ -27891,7 +27984,6 @@
      ],
      "start": "11:00",
      "end": "close",
-     "area": null,
      "kind": "special",
      "deals": [
       {
@@ -27906,7 +27998,9 @@
      "last_verified": "2026-09-05",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Homepage today only says 'Live music accompanying Wine Down Wednesday is paused for the winter season.' The half-price bottle wording was not found today, so the deal itself could not be re-confirmed. Last confirmation date is the earlier 09-05 read."
+     "notes": "Homepage today only says 'Live music accompanying Wine Down Wednesday is paused for the winter season.' The half-price bottle wording was not found today, so the deal itself could not be re-confirmed. Last confirmation date is the earlier 09-05 read.",
+     "verify_reason": "The venue's site no longer shows this deal.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -29242,7 +29336,7 @@
    "lon": -86.7816972,
    "tz": "America/Chicago",
    "inkind": false,
-   "official_site": "https://www.silonashville.com/",
+   "official_site": "https://www.silogulch.com/",
    "status": "open",
    "hours": {
     "MON": [
@@ -29395,7 +29489,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-11-03"
+   "checked": "2026-11-04"
   },
   {
    "id": "ik-20960",
@@ -30591,7 +30685,7 @@
    "lon": -86.7791144,
    "tz": "America/Chicago",
    "inkind": false,
-   "official_site": "https://www.dreamhotels.com/nashville/dining-nightlife/stateside-kitchen",
+   "official_site": "https://www.hyatt.com/dream-hotels/en-US/bnadz-dream-nashville/dining",
    "status": "open",
    "hours": {
     "MON": [
@@ -30691,7 +30785,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-11-03"
+   "checked": "2026-11-04"
   },
   {
    "id": "nv-stk-nashville-700",
@@ -30948,9 +31042,13 @@
      ],
      "last_verified": "2026-11-03",
      "corroborated": false,
-     "confidence": "low",
+     "confidence": "med",
      "notes": "Deals as listed by Nashville Guru, confirmed 2026-10-26. Check with the venue. Schedule as posted for specific dates (Nov 3-6 and Nov 9) on the venue's specials page.",
-     "research_notes": "Venue specials page lists Happy Hour 3:00-6:00 PM only for dated days (Tue Nov 3 - Fri Nov 6, Mon Nov 9) with no deals, so it is week-specific. Nashville Guru business page shows Monday-Friday 3-6 PM with the deals above (last confirmed 10/26/26), used for the weekday set and deals. The venue's home page lists no happy hour. Hours from the home page. The venue's drink-menu page was not opened."
+     "research_notes": "Venue specials page lists Happy Hour 3:00-6:00 PM only for dated days (Tue Nov 3 - Fri Nov 6, Mon Nov 9) with no deals, so it is week-specific. Nashville Guru business page shows Monday-Friday 3-6 PM with the deals above (last confirmed 10/26/26), used for the weekday set and deals. The venue's home page lists no happy hour. Hours from the home page. The venue's drink-menu page was not opened.",
+     "posted_week": {
+      "from": "2026-11-03",
+      "to": "2026-11-09"
+     }
     }
    ],
    "verified_no_hh": false,
@@ -33197,7 +33295,6 @@
      ],
      "start": "15:00",
      "end": "close",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -33219,7 +33316,9 @@
      "last_verified": "2026-09-05",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Could not re-fetch Facebook, Instagram or Yelp today (robots disallowed or blocked). Earlier read: 'happy hour starts at 3pm for 15% off everything in the store' on Fridays, a business self-posted claim, likely one cross-posted announcement. The venue trades as The Herban Underground; inKind calls it The Herban Perk & Pantry."
+     "notes": "Could not re-fetch Facebook, Instagram or Yelp today (robots disallowed or blocked). Earlier read: 'happy hour starts at 3pm for 15% off everything in the store' on Fridays, a business self-posted claim, likely one cross-posted announcement. The venue trades as The Herban Underground; inKind calls it The Herban Perk & Pantry.",
+     "verify_reason": "From one older social post, last read Sep 5.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -34159,7 +34258,6 @@
      ],
      "start": "15:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -34189,7 +34287,9 @@
      "last_verified": "2026-09-05",
      "corroborated": false,
      "confidence": "low",
-     "notes": "The Events page still embeds a happy hour flyer image, but the image has no alt text and cannot be read by the fetch tool, so the days, times and prices could not be re-read today. Details are from the 2026-09-05 read of the flyer: \"MON-THURS 3-6PM, 50% OFF APPETIZERS, $4 DRAFTS, $5 HOUSE WINES, $7 WELL DRINKS\". Single source, no second source found. Tuesday may be closed (no Tuesday hours anywhere)."
+     "notes": "The Events page still embeds a happy hour flyer image, but the image has no alt text and cannot be read by the fetch tool, so the days, times and prices could not be re-read today. Details are from the 2026-09-05 read of the flyer: \"MON-THURS 3-6PM, 50% OFF APPETIZERS, $4 DRAFTS, $5 HOUSE WINES, $7 WELL DRINKS\". Single source, no second source found. Tuesday may be closed (no Tuesday hours anywhere).",
+     "verify_reason": "From one flyer image, last read Sep 5; Tuesday may be closed.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -35109,13 +35209,13 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {},
    "hours_source": "none found 2026-10-23",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Bellevue (7657 Hwy 70 S Suite 119) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window. Could not confirm this store is open: no store page, listing or review for it was reachable. Still operating? Not confirmed 2026-10-23.",
    "hours_confidence": "low",
@@ -35137,13 +35237,13 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {},
    "hours_source": "none found 2026-10-23",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Franklin (3046 Columbia Ave Suite 115) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window.",
    "hours_confidence": "low",
@@ -35165,13 +35265,13 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {},
    "hours_source": "none found 2026-10-23",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Gulch (137 12th Ave N) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window. Could not confirm this store is open: no store page, listing or review for it was reachable. Still operating? Not confirmed 2026-10-23.",
    "hours_confidence": "low",
@@ -35193,7 +35293,7 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {
     "MON": [
@@ -35242,7 +35342,7 @@
    "hours_source": "researched 2026-10-23 (low confidence): https://www.ezcater.com/catering/tiffs-treats-mt-juliet",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Mt. Juliet (64 Belinda Parkway) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window.",
    "hours_confidence": "low",
@@ -35264,7 +35364,7 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {
     "MON": [
@@ -35313,7 +35413,7 @@
    "hours_source": "researched 2026-10-23 (low confidence): https://www.ezcater.com/catering/tiffs-treats-murfreesboro",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Murfreesboro (452 North Thompson Ln) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window.",
    "hours_confidence": "low",
@@ -35335,13 +35435,13 @@
    "tz": "America/Chicago",
    "inkind": true,
    "inkind_url": "https://tiffstreatsd9ian.inkind.com/",
-   "official_site": "https://www.tiffstreats.com/",
+   "official_site": "https://www.cookiedelivery.com/",
    "status": "open",
    "hours": {},
    "hours_source": "none found 2026-10-23",
    "windows": [],
    "verified_no_hh": true,
-   "checked": "2026-10-25",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Tiff's Treats Nolensville (7240 Nolensville Rd Suite 103) is a warm-cookie delivery and pickup shop. No happy hour, recurring special or lunch special found on the brand site, press release or ezCater. The new-customer first-order discount (50% off, or 20% off for email signup) is a sign-up offer, not a recurring deal, so it is not recorded as a window. Could not confirm this store is open: no store page, listing or review for it was reachable. Still operating? Not confirmed 2026-10-23.",
    "hours_confidence": "low",
@@ -36468,7 +36568,6 @@
      ],
      "start": "16:00",
      "end": "18:00",
-     "area": null,
      "kind": "happy_hour",
      "deals": [
       {
@@ -36509,7 +36608,9 @@
      "last_verified": "2022-02-17",
      "corroborated": true,
      "confidence": "low",
-     "notes": "Nashville Scene (published 2022-02-17): 'from 4 to 6 p.m. Monday through Thursday', edamame $3, tuna on crispy rice tots $5, shochu $5. do615 (page metadata 2020-05-06): 'Happy Hour Monday - Thursday from 4:00pm - 6:00'. Both are old; neither the official site (JS-only) nor Guru (no happy hour text) confirms it today. Beer 2-for-1 and $5 wine/punch items carried from the prior record."
+     "notes": "Nashville Scene (published 2022-02-17): 'from 4 to 6 p.m. Monday through Thursday', edamame $3, tuna on crispy rice tots $5, shochu $5. do615 (page metadata 2020-05-06): 'Happy Hour Monday - Thursday from 4:00pm - 6:00'. Both are old; neither the official site (JS-only) nor Guru (no happy hour text) confirms it today. Beer 2-for-1 and $5 wine/punch items carried from the prior record.",
+     "verify_reason": "Only 2020 and 2022 listings show this; not confirmed by the venue.",
+     "area": null
     }
    ],
    "verified_no_hh": false,
@@ -36746,11 +36847,11 @@
        "confirmed": "2026-10-23"
       }
      ],
-     "last_verified": "2026-11-03",
+     "last_verified": "2026-11-04",
      "corroborated": false,
      "confidence": "med",
      "notes": "All day: from the 3:00 opening.",
-     "research_notes": "Venue site lists these specials but its day tabs did not load as text; day assignment from Nashville Guru business page (confirmed 10/23/26). Venue hours: Mon-Fri 3pm-3am, Sat-Sun 11am-3am."
+     "research_notes": "fix35: Nashville Guru (confirmed 10/23/26): Wednesday specials all day, $3 domestic tallboys. Venue site: Wednesday tab $3 Domestic Tallboys with no time; Mon-Fri 3:00pm-3:00am. All-day rule: starts at the 3:00 opening, already the data."
     },
     {
      "days": [
@@ -36822,7 +36923,7 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-11-03"
+   "checked": "2026-11-04"
   },
   {
    "id": "ik-13144",
@@ -37426,13 +37527,14 @@
       }
      ],
      "sources": [
-      "https://www.vintagevine100.com/happy-hour-franklin-tn",
+      "https://vintagevine100.com/happy-hour",
       "https://www.vintagevine100.com/menu"
      ],
      "last_verified": "2026-09-05",
      "corroborated": true,
-     "confidence": "med",
-     "notes": "Official happy hour page and homepage are robots-blocked today; searches returned no readable snippet. Earlier read (2026-09-05) of the official page showed Tuesday-Friday 3-6pm; keep. last_verified unchanged."
+     "confidence": "low",
+     "notes": "Official happy hour page and homepage are robots-blocked today; searches returned no readable snippet. Earlier read (2026-09-05) of the official page showed Tuesday-Friday 3-6pm; keep. last_verified unchanged.",
+     "verify_reason": "The venue's happy-hour page is empty for now; these were last read Sep 5."
     }
    ],
    "verified_no_hh": false,
@@ -37576,10 +37678,11 @@
       "https://do615.com/events/weekly/fri/virago-daily-happy-hour",
       "https://www.totalhappyhour.com/happy-hour-for-virago-in-nashville-tn-37203/"
      ],
-     "last_verified": null,
      "corroborated": false,
      "confidence": "low",
-     "notes": "Not on the official site, and Guru (confirmed 10/14/26) lists only the Monday deal. do615 listing says 'Every Fri 5:00PM - 7:00PM' with page metadata dated 2016-10-28; totalhappyhour.com (undated) says 'Everyday 17:00 thru 19:00, $6 Cocktails and Wine by the glass' but shows the old address 1126 McGavock St. Likely stale. Downgraded from corroborated:true because both sources look old."
+     "notes": "Not on the official site, and Guru (confirmed 10/14/26) lists only the Monday deal. do615 listing says 'Every Fri 5:00PM - 7:00PM' with page metadata dated 2016-10-28; totalhappyhour.com (undated) says 'Everyday 17:00 thru 19:00, $6 Cocktails and Wine by the glass' but shows the old address 1126 McGavock St. Likely stale. Downgraded from corroborated:true because both sources look old.",
+     "verify_reason": "Only old listings show this; it isn't on the venue's site.",
+     "last_verified": null
     }
    ],
    "verified_no_hh": false,
@@ -38274,7 +38377,8 @@
      "last_verified": "2026-10-25",
      "corroborated": false,
      "confidence": "low",
-     "notes": "Times and days disagree across official pages: /Nashville says Monday-Friday 4-6pm; /nashville/ says Tuesday-Friday 5-7pm (FAQ: happy hour and dinner at the bar). Guru (undated, no confirmed-on date) says 4-6pm with the deals listed here, days not stated. Deals come from the Guru meta text only; official pages list no deals or prices. TJ ruling 2026-10-25 (fix24 C3 lean): Tue-Fri 5-7pm, the official /nashville/ reading; it fits the posted 5pm opening and Monday closed."
+     "notes": "Times and days disagree across official pages: /Nashville says Monday-Friday 4-6pm; /nashville/ says Tuesday-Friday 5-7pm (FAQ: happy hour and dinner at the bar). Guru (undated, no confirmed-on date) says 4-6pm with the deals listed here, days not stated. Deals come from the Guru meta text only; official pages list no deals or prices. TJ ruling 2026-10-25 (fix24 C3 lean): Tue-Fri 5-7pm, the official /nashville/ reading; it fits the posted 5pm opening and Monday closed.",
+     "verify_reason": "The venue's pages disagree; deals come from an undated Nashville Guru listing."
     }
    ],
    "verified_no_hh": false,

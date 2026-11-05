@@ -2,7 +2,7 @@
 
 Started 2026-11-04 in fix31 (BLOCK-hh-radar-fix31, from the fix30 notes). The monthly refresh checks these
 windows FIRST: each comes from a week-specific post or a pre-2026 menu (brief step 14), so it is
-`confidence: "low"` and goes stale on its own. Each zone run appends its new ones (none from South, fix31; West, fix32: answer.'s 2020 menu, plus the new
+`confidence: "low"` (week posts: `posted_week`, since fix35) and goes stale on its own. Each zone run appends its new ones (none from South, fix31; West, fix32: answer.'s 2020 menu, plus the new
 "Hours mismatch" section).
 When a refresh re-checks one, update its row (or remove it if the source is no longer dated) and say so in the
 CHANGELOG.
@@ -25,6 +25,10 @@ CHANGELOG.
 
 Posted week: Noble's and Germantown Pub, Nov 3–9, 2026; Streetcar, dated days Nov 3–6 and Nov 9, 2026
 (all seen 2026-11-03).
+
+fix35 (TJ: "Drop badge for this week"): these windows now carry `posted_week` (2026-11-03 to 2026-11-09) at
+`confidence: "med"`. No badge inside that week; after Nov 9 the badge returns with "Posted schedule was for Nov 3–9",
+and they stay on this list. On re-check, update `posted_week` to the week then posted.
 
 ## Pre-2026 menus
 

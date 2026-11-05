@@ -1,0 +1,682 @@
+[
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": "The schedule can change weekly."
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": "All day. The schedule can change weekly."
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 2,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 3,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 4,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 5,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 6,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-nobles-kitchen-and-beer-hall-east-974",
+  "window_index": 7,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-germantown-pub-708",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": ""
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-germantown-pub-708",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med",
+   "notes": "The BOGO drinks and wing deal do not apply on Friday."
+  },
+  "why": "TJ: Drop badge for this week"
+ },
+ {
+  "id": "nv-streetcar-taps-and-garden-germantown-1325",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "posted_week": {
+    "from": "2026-11-03",
+    "to": "2026-11-09"
+   },
+   "confidence": "med"
+  },
+  "why": "TJ: Drop badge for this week. Its posted dates are Nov 3-6 and Nov 9."
+ },
+ {
+  "id": "ik-2562",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Only one do615 listing shows this; not on the venue's site."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-12184",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Last confirmed in Dec 2023 press; Nashville Guru gives different times."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-14146",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The hotel's events page lists this through Mar 2027 with no price."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-14146",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue's page shows no prices and doesn't name Nashville."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-13246",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue and Nashville Guru disagree on the Monday end time."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-13246",
+  "window_index": 2,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue and Nashville Guru disagree on the Saturday end time."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-19203",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Named on the venue's hours; price and terms aren't posted."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-14440",
+  "window_index": 2,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From OpenTable; days and times depend on the game schedule."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-14440",
+  "window_index": 3,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From OpenTable, not the venue's own page."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-12245",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Nashville Guru lists this with no date; not on the venue's site."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-12245",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From older Instagram posts; deals assumed from the Nashville Guru list."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-12246",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From a do615 listing dated Dec 2025, and its wording is unclear."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-16870",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Read on the Nashville location's page; not confirmed for Franklin. Start time assumed."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-18564",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From a May 2026 article; OpenTable gives different times."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-15771",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Only a Feb 2025 do615 listing shows this; not on the venue's site."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-15771",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From a June 2026 do615 listing, which also gives different hours."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-5323",
+  "window_index": 2,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From Nashville Guru, confirmed Jun 22."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-5323",
+  "window_index": 3,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From Nashville Guru, confirmed Jun 22."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-19731",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Listings disagree on days and times; the venue's menu wasn't read."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-13245",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue's pages disagree on whether Saturday is included."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-20004",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Posted for one Wednesday only; it may not repeat weekly."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-10507",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue posts only \"Happy Hour 4-530\"; days carried over, and Sunday opens at 5."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-16088",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue's site no longer shows this deal."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-18919",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From one older social post, last read Sep 5."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-17384",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "From one flyer image, last read Sep 5; Tuesday may be closed."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-17673",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Only 2020 and 2022 listings show this; not confirmed by the venue."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-19427",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue's pages disagree; deals come from an undated Nashville Guru listing."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-21369",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-21493",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-21448",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-21469",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-21351",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-21489",
+  "venue_set": {
+   "official_site": "https://www.cookiedelivery.com/"
+  },
+  "why": "tiffstreats.com moved; cookiedelivery.com is Tiff's Treats (Chrome read)"
+ },
+ {
+  "id": "ik-19732",
+  "venue_set": {
+   "official_site": "https://www.linqsocialkitchen.com/",
+   "notes": "Same operator as Noir (shared inKind account). The venue posts its Friday happy hour on Instagram; its site lists no happy hour. Google listing Open with no banner 2026-11-04."
+  },
+  "window_index": 0,
+  "set": {
+   "days": [
+    "FRI"
+   ],
+   "start": "17:00",
+   "end": "22:00",
+   "deals": [
+    {
+     "type": "food",
+     "desc": "$1 wings",
+     "price": "$1"
+    },
+    {
+     "type": "food",
+     "desc": "$2 tacos",
+     "price": "$2"
+    },
+    {
+     "type": "drink",
+     "desc": "2-for-1 drinks",
+     "price": null
+    },
+    {
+     "type": "drink",
+     "desc": "$150 bottles",
+     "price": "$150"
+    }
+   ],
+   "sources": [
+    "https://www.instagram.com/p/De17qWvlBYq/",
+    "https://www.instagram.com/p/Dd_-SI1kU68/"
+   ],
+   "confidence": "med",
+   "notes": "From the venue's Instagram post of Oct 23.",
+   "research_notes": "fix35: the old window (Fri 4-9pm, from a search snippet with no URL) was not found as a post. Venue posts: Instagram Oct 23, 2026 (Happy Hour 5PM-10PM, the deals here); Instagram Oct 2, 2026 (FULL Happy Hour 5PM-10PM, every Friday); Facebook Jul 10, 2026 (Friday-Sunday 5PM-10PM). Google listing Friday 5PM-3AM. Search snippets mention an Apr 2026 stop-work order and an Oct 2026 shooting; articles not read; posts continue and the listing shows Open."
+  },
+  "why": "A1: no 4-9pm source; venue posts say 5-10pm"
+ },
+ {
+  "id": "ik-9475",
+  "window_index": 0,
+  "set": {
+   "verify_reason": "Times match Google's listing; the venue's site doesn't mention a happy hour. Prices from an undated Tripadvisor listing."
+  },
+  "why": "A3: real last_verified"
+ },
+ {
+  "id": "ik-9475",
+  "window_index": 1,
+  "set": {
+   "verify_reason": "Google's listing shows Fri–Sat 3–5pm and Sun 4–6pm, not these times. Call ahead."
+  },
+  "why": "A3: real last_verified; the times conflict, not changed"
+ },
+ {
+  "id": "ik-9316",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "verify_reason": "The venue's page no longer shows this; Nashville Guru lists it with no date."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "ik-9318",
+  "window_index": 1,
+  "annotate": true,
+  "set": {
+   "verify_reason": "Only old listings show this; it isn't on the venue's site."
+  },
+  "why": "C2 reason line"
+ },
+ {
+  "id": "nv-silo-920",
+  "venue_set": {
+   "official_site": "https://www.silogulch.com/"
+  },
+  "why": "A4: Google listing Open, no banner; its site link loads"
+ },
+ {
+  "id": "nv-coa-nashville-920",
+  "venue_set": {
+   "official_site": "https://www.coagulch.com/"
+  },
+  "why": "A4: Google listing Open, no banner; its site link loads"
+ },
+ {
+  "id": "ik-11237",
+  "venue_set": {
+   "official_site": "https://www.vernanashville.com/backbar"
+  },
+  "why": "A5: /connies is a 404"
+ },
+ {
+  "id": "ik-13745",
+  "window_index": 0,
+  "annotate": true,
+  "set": {
+   "sources": [
+    "https://vintagevine100.com/happy-hour",
+    "https://www.vintagevine100.com/menu"
+   ],
+   "confidence": "low",
+   "verify_reason": "The venue's happy-hour page is empty for now; these were last read Sep 5."
+  },
+  "why": "A5: the old page is a 404; the new one has no content yet, so nothing re-confirmed"
+ },
+ {
+  "id": "ik-14947",
+  "venue_set": {
+   "hours": {
+    "MON": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "TUE": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "WED": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "THU": [
+     [
+      "11:00",
+      "21:00"
+     ]
+    ],
+    "FRI": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SAT": [
+     [
+      "11:00",
+      "23:00"
+     ]
+    ],
+    "SUN": [
+     [
+      "11:00",
+      "20:00"
+     ]
+    ]
+   },
+   "hours_source": "researched 2026-11-04 (high confidence): https://www.jojosfishhouse.com/hours",
+   "hours_confidence": "high",
+   "hours_notes": "The venue's hours page, read 2026-11-04."
+  },
+  "window_index": 0,
+  "set": {
+   "days": [
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "SUN"
+   ],
+   "start": "14:00",
+   "end": "17:00",
+   "area": null,
+   "deals": [
+    {
+     "type": "drink",
+     "desc": "2-for-1 beer, bottles and draft",
+     "price": null
+    }
+   ],
+   "sources": [
+    "https://www.instagram.com/p/DfPau4nASTq/"
+   ],
+   "confidence": "low",
+   "notes": "From the venue's Instagram post of Nov 2, which says to call to confirm. Days not posted: set to the venue's open days.",
+   "research_notes": "fix35 under BRIEF steps 1 and 10: the old happy-hours page redirects home and the site shows no happy hour (home, hours, events). Instagram Nov 2, 2026: 2-for-1 beer, 2-5 p.m., bottles and draft, 'call to confirm'. The old Wed-Sat 2-7pm BOGO and $2-off daiquiris match only a post about a year old. Checkle (Oct 2026): none found. A Facebook snippet ('2 to 6 pm, $2.50 domestic draft, $3 house wine', about 3 weeks old) was not opened. Low because the venue itself says to confirm."
+  },
+  "why": "A5: JoJo re-researched"
+ },
+ {
+  "id": "nv-stateside-kitchen-210",
+  "venue_set": {
+   "official_site": "https://www.hyatt.com/dream-hotels/en-US/bnadz-dream-nashville/dining"
+  },
+  "why": "A5: dreamhotels.com moved to Hyatt"
+ },
+ {
+  "id": "nv-commons-club-1",
+  "venue_set": {
+   "official_site": "https://virginhotels.com/nashville/eat-drink/commons-club/"
+  },
+  "why": "A5: new path"
+ },
+ {
+  "id": "nv-embers-ski-lodge-2410",
+  "venue_set": {
+   "official_site": "https://www.instagram.com/embersskilodge/"
+  },
+  "why": "A5: https has a self-signed cert and http fails in Chrome, so BRIEF step 8's social page"
+ },
+ {
+  "id": "nv-dos-santos-475",
+  "window_index": 0,
+  "set": {
+   "start": "11:00",
+   "notes": "All day Monday: from the 11:00 opening. 7:00–10:30 is the walk-up window.",
+   "research_notes": "fix35: venue home page: three to six every day, all day Monday, $7 items; its menu page lists items without prices. It doesn't state Nashville's hours. Nashville Guru (confirmed 10/15/26): Mon-Fri 11:00am-10:00pm, with a 7:00am-10:30am walk-up window. Google lists 7AM-10PM as one block. So under fix29's all-day rule the happy hour starts when the restaurant opens, 11:00."
+  },
+  "sources_add": [
+   {
+    "url": "https://nashvilleguru.com/businesses/dos-santos",
+    "kind": "guide",
+    "seen": "2026-11-04",
+    "confirmed": "2026-10-15"
+   }
+  ],
+  "why": "A6"
+ },
+ {
+  "id": "nv-up-down-nashville-927",
+  "window_index": 2,
+  "set": {
+   "research_notes": "fix35: Nashville Guru (confirmed 10/23/26): Wednesday specials all day, $3 domestic tallboys. Venue site: Wednesday tab $3 Domestic Tallboys with no time; Mon-Fri 3:00pm-3:00am. All-day rule: starts at the 3:00 opening, already the data."
+  },
+  "why": "A6: already right, confirmed"
+ }
+]

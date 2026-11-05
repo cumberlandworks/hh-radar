@@ -144,18 +144,17 @@ radar?" before) / "Tip on Venmo:
 dont hide"); the referral card's is the page's only one. Set `TIP_URL = ''` and nothing
 renders and nothing is in the DOM.
 
-## Referral bar and card (v1.10, bar v1.14, tap-to-dismiss v1.15)
+## Referral bar and card (v1.10, bar v1.14, in-place offer v2.7)
 
 The inKind referral card ("New to inKind?") sits between Settings and the tip card. Since
 v1.14 it is tinted with the amber tokens in both themes and its link is a "Get $25 off"
 button (new tab, `rel="noopener"`); desktop keeps the QR beside it, captioned "Scan for $25
-off" since v1.17. A thin bar above the
-header ("New to inKind? $25 off your first $50+ meal →") only scrolls to that card and rings
-it for a moment; it never opens inKind itself, so the card's disclosure is always seen
-first. Its × (aria-label "Dismiss") hides it and writes `hhradar-refbar-dismissed`; since
-v1.15 tapping the text does the same (`followRefBar`), so the bar is gone when the reader
-scrolls back up. When storage is blocked the bar simply shows again next visit
-(`refBarDismissed` / `dismissRefBar` in logic.js). No referral card, no bar.
+off" since v1.17. A thin bar above the header ("New to inKind? $25 off your first $50+ meal ·
+I get a credit too") says the disclosure itself. Since v2.7 tapping it opens a small panel
+under the bar with the button and "Terms apply", so the page doesn't move. Its × (aria-label
+"Dismiss") hides it and writes `hhradar-refbar-dismissed`, and so does taking the offer. When
+storage is blocked the bar simply shows again next visit (`refBarDismissed` / `dismissRefBar`
+in logic.js). No referral card, no bar.
 
 ## Feedback inbox (v1.5, rewritten for strangers in v1.6)
 
@@ -211,8 +210,9 @@ venue: {
   hours_confidence?: "high"|"med"|"low",               // optional (v2); "low" shows as "unconfirmed"
   hours_notes?: str,                                   // optional (v2); research notes on the hours
   lunch_checked?: bool,                                // optional (v2); lunch specials were looked for
-  temp_closed?: [ { from: "YYYY-MM-DD", to: "YYYY-MM-DD", note: str, source: url } ],
-                                                       // optional (v1.12); both dates inclusive, from <= to
+  temp_closed?: [ { from: "YYYY-MM-DD", to?: "YYYY-MM-DD", note: str, source: url, seen?: "YYYY-MM-DD" } ],
+                                                       // optional (v1.12); both dates inclusive, from <= to.
+                                                       // No `to` = open-ended (v2.7), and `seen` is then required
   windows: [window],
   verified_no_hh: bool, checked: "YYYY-MM-DD", disagreements: [str], notes: str }
 window: {
@@ -222,7 +222,9 @@ window: {
   deals: [ { type: "food"|"drink", desc: str, price: str|null } ],   // may be []
   sources: [url] (non-empty), last_verified: "YYYY-MM-DD"|null,
   corroborated: bool, confidence: "high"|"med"|"low", notes: str,
-  research_notes?: str }                               // optional (v1.12); see Semantics
+  research_notes?: str,                                // optional (v1.12); see Semantics
+  verify_reason?: str,                                 // optional (v2.7); the "Verify" line, reader text
+  posted_week?: { from: "YYYY-MM-DD", to: "YYYY-MM-DD" } }  // optional (v2.7); a week-specific post
 ```
 
 What changed from v1 (the validator, `validateVenues` in `logic.js`, enforces exactly this):
@@ -311,7 +313,9 @@ YYYY-MM-DD`. (In v1 the hours always came from inKind; inKind stopped publishing
   are not live, not starting soon, not on the map's live dots and not in either Surprise me
   pool, and its Day Grid row for such a date shows a plain "Closed (temporary)" label instead
   of bands and blocks. A grid weekday stands for its next date (today or later). The windows
-  stay in the data. A range in the past never matches.
+  stay in the data. A range in the past never matches. With no posted reopening date (v2.7),
+  `to` is left out and the hours line reads "Temporarily closed", with no date. Since v2.7 the
+  grid note's count and the Where button leave a venue out on its closed dates.
 - **Outside posted hours** (v1.12, `outsideHoursDays`). A window interval on a day the venue
   IS open that is not wholly inside one of the merged open stretches `hoursStatus` uses
   (early start, a deal in a lunch–dinner gap, a close after the venue's) is never hidden.

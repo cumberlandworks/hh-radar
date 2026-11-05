@@ -33,7 +33,7 @@ KEY_ORDER = ['id', 'name', 'city', 'neighborhood', 'hood', 'zone', 'address', 'z
              'official_site', 'status', 'hours', 'hours_confidence', 'hours_source', 'hours_notes', 'windows',
              'verified_no_hh', 'checked', 'notes']
 WIN_KEYS = ['days', 'start', 'end', 'area', 'kind', 'deals', 'sources', 'last_verified', 'corroborated',
-            'confidence', 'notes', 'research_notes']
+            'confidence', 'notes', 'research_notes', 'posted_week', 'verify_reason']
 
 
 WEEK = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']

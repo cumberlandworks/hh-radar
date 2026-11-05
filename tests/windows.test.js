@@ -26,7 +26,7 @@ const {
   openBands, lintVenues,
   dealPriceLabel, formatDays, tempClosureOn, tempClosedFor, windowTempClosedNow, dateOfDay,
   outsideHoursDays, lintOutsideHours, gridAxisStart, gridBlockStarts, tipSectionHtml,
-  REFBAR_KEY, refBarDismissed, dismissRefBar, followRefBar,
+  REFBAR_KEY, refBarDismissed, dismissRefBar,
 } = require('../logic.js');
 const { countVerb } = require('../logic.js');
 const path = require('node:path');
@@ -888,8 +888,9 @@ test('dayCoverageCounts: measured SUN and TUE against venues.json', () => {
   // two venues move from "other days" to none (and off Tuesday).
   // v1.21 (2026-10-25n data): the 7 Blue Coast Burritos lost their only window (Tuesday family
   // night, a Little Rock post), so seven more move to none and off Tuesday.
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 40, otherDays: 34, none: 85, unchecked: 0 });
-  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 58, otherDays: 16, none: 85, unchecked: 0 });
+  // v2.7 (fix35 data): JoJo's posted happy hour names no days, so it runs on its open days, Sunday too.
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'SUN')), { onDay: 41, otherDays: 33, none: 85, unchecked: 0 });
+  assert.deepEqual(pick(dayCoverageCounts(venues, 'TUE')), { onDay: 59, otherDays: 15, none: 85, unchecked: 0 });
 });
 
 test('dayCoverageCounts: "none" is exactly the verified-no-HH empty roster, not a day artefact', () => {
@@ -1607,13 +1608,13 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 // v1.21 (2026-10-25n data): the 7 Blue Coast family nights take 12 priced deals, all shown (438 -> 426,
 // 361 -> 349); The Authentique's crepes now read "All crepes" + "50% off".
 // v1.24 data step: the Detroit Cowboy patio window (4 priced deals, all shown) is gone: 426/349 -> 422/345.
-test('dealPriceLabel: measured on venues.json — 422 priced deals, 345 still show a price', () => {
+test('dealPriceLabel: measured on venues.json — 424 priced deals (fix35: LinQ +3, JoJo\'s -1), 345 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 422);
+  assert.equal(priced, 424);
   assert.equal(shown, 345);
   const auth = REAL.find((v) => v.name === 'The Authentique').windows.find((w) => w.kind === 'special');
   assert.deepEqual(auth.deals.map((d) => [d.desc, dealPriceLabel(d)]), [['All crepes', '50% off']]);
@@ -1714,14 +1715,13 @@ test('outsideHoursDays: back-to-back ranges are one stretch, past-midnight close
 // (now inside posted hours); Present Tense moves SUN -> THU; Acme (low, Google and its
 // site disagree), LinQ, NoWhere Special and The Side Piece are new. 10 venues, 12 windows.
 // v1.24 data step (TJ ruling): Acme Monday hours, Detroit Cowboy patio window and ZuZu's times no longer warn.
-test('outside-hours lint: measured on venues.json — 7 venues, 9 windows (v1.14, v1.24 data)', () => {
+test('outside-hours lint: measured on venues.json — 6 venues, 8 windows (v1.14, v1.24, fix35 data)', () => {
   const lines = REAL.flatMap(lintOutsideHours);
   assert.deepEqual(lines, [
     '51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on WED',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on THU',
     'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU',
-    'LinQ Social Kitchen: happy_hour window 16:00–21:00 outside posted hours on FRI',
     'NoWhere Special: happy_hour window 16:00–19:00 outside posted hours on FRI',
     'Present Tense: happy_hour window 16:00–17:30 outside posted hours on THU',
     'The Side Piece Nashville: happy_hour window 15:00–18:00 outside posted hours on WED',
@@ -1852,41 +1852,18 @@ test('refBar (v1.14 C2): storage that throws or is missing reads as not dismisse
   assert.equal(refBarDismissed(undefined), false);
 });
 
-test('index.html (v1.14 C2/C3): the bar points at the referral card; the card has the button', () => {
+test('index.html (v2.7 B1/B2): the bar discloses the credit and opens the offer in place; the footer card says the same', () => {
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  assert.ok(html.includes('href="#referral" id="refbar-link"'));
-  assert.ok(html.includes('aria-label="Dismiss"'));
+  const bar = html.slice(html.indexOf('<div class="refbar"'), html.indexOf('<div class="refpanel"'));
+  assert.ok(bar.includes('New to inKind? $25 off your first $50+ meal · I get a credit too'));
+  assert.ok(bar.includes('aria-label="Dismiss"'));
+  assert.ok(!bar.includes('inkind.com'), 'the bar itself never links out: the disclosure is read first');
+  assert.ok(html.includes('$25 off your first $50+ meal · I get a credit too. Terms apply.'));
+  const link = '<a class="ref-btn" id="refpanel-btn" href="https://app.inkind.com/refer/XRI8MWHF" target="_blank" rel="noopener">Get $25 off</a>';
+  assert.ok(html.includes(link));
   assert.ok(html.includes('<a class="ref-btn" href="https://app.inkind.com/refer/XRI8MWHF" target="_blank" rel="noopener">Get $25 off</a>'));
-  assert.ok(html.includes('$25 off your first $50+ meal. I get a credit too. Terms apply.'));
-  // The bar itself never links to inKind: the disclosure in the card is seen first.
-  const bar = html.slice(html.indexOf('<div class="refbar"'), html.indexOf('<header>'));
-  assert.ok(bar.length > 0 && !bar.includes('inkind.com'));
-});
-
-// v1.15 C2 (TJ, 2026-10-25): tapping the bar's text also dismisses it.
-test('followRefBar (v1.15 C2): the tap path writes the key, hides the bar, then goes to the card', () => {
-  const s = memStorage();
-  const calls = [];
-  const saved = followRefBar(s, () => calls.push('hide'), () => calls.push('go'));
-  assert.equal(saved, true);
-  assert.ok(s.has('hhradar-refbar-dismissed'));
-  assert.equal(refBarDismissed(s), true);
-  assert.deepEqual(calls, ['hide', 'go']);
-});
-
-test('followRefBar (v1.15 C2): blocked storage still hides the bar and goes to the card, never throws', () => {
-  for (const st of [throwingStorage, null]) {
-    const calls = [];
-    assert.equal(followRefBar(st, () => calls.push('hide'), () => calls.push('go')), false);
-    assert.deepEqual(calls, ['hide', 'go']);
-  }
-});
-
-test('index.html (v1.15 C2): the bar text is wired through L.followRefBar; × still dismisses', () => {
-  const fs = require('node:fs');
-  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  assert.match(html, /getElementById\('refbar-link'\)\.addEventListener\('click'[\s\S]{0,120}L\.followRefBar\(store,/);
+  assert.ok(!html.includes('scrollIntoView({ behavior: still'), 'no fly-through');
   assert.match(html, /getElementById\('refbar-x'\)\.addEventListener\('click'[\s\S]{0,80}L\.dismissRefBar\(store\)/);
 });
 
@@ -2206,7 +2183,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.6';") && html.includes("venues.json?v=2.6") && html.includes('logic.js?v=2.6'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.7';") && html.includes("venues.json?v=2.7") && html.includes('logic.js?v=2.7'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2427,10 +2404,10 @@ test('NO_DEALS_TEXT (v1.22 C5): Present Tense\'s card and grid row say "Deals no
   const tb = L20.gridRowTimes(bf, 'MON', itemsOn(bf, 'MON'));
   assert.deepEqual([tb.times, tb.noDeals], ['4–6pm · Special 4–11pm', '4–6pm: deals not posted, ask at the bar']);
   assert.deepEqual(tb.parts, [{ tag: '', time: '4–6pm' }, { tag: 'Special', time: '4–11pm' }]);
-  // The five no-deal happy hours (D5).
+  // The no-deal happy hours (D5): five, and four since LinQ's post listed its deals (fix35).
   const bare = [];
   REAL.forEach((v) => v.windows.forEach((w) => { if (w.kind === 'happy_hour' && !w.deals.length) bare.push(v.name); }));
-  assert.equal(bare.length, 5);
+  assert.equal(bare.length, 4);
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.ok(!html.includes('No deal details published'));
@@ -2829,4 +2806,242 @@ test('grid note (v2.4, fix31): a count of 1 takes "has", any other count "have"'
   assert.ok(!/' have no happy hour at all/.test(html), 'the "no happy hour" count uses countVerb');
   assert.match(html, /L\.countVerb\(cov\.otherDays\) \+ ' them other days/);
   assert.match(html, /L\.countVerb\(cov\.none\) \+ ' no happy hour at all/);
+});
+
+// ==================== v2.7 (fix35) ====================
+const LV27 = require('../logic.js');
+const fsV27 = require('node:fs');
+const htmlV27 = () => fsV27.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+const realDataV27 = () => JSON.parse(fsV27.readFileSync(path.join(__dirname, '..', 'venues.json'), 'utf8'));
+const NOV4V27 = { year: 2026, month: 11, day: 4, hour: 12, minute: 0, dayOfWeek: 'WED' };
+const onV27 = (y, m, d, dow) => ({ year: y, month: m, day: d, hour: 12, minute: 0, dayOfWeek: dow || 'WED' });
+function vV27(extra) {
+  return Object.assign({ id: 'nv-x-1', name: 'X', inkind: false, official_site: 'https://x.test/', address: '1 A St', zip: '37203',
+    hood: 'The Gulch', zone: 'gulch', lat: 36.15, lon: -86.78, tz: 'America/Chicago', status: 'open',
+    hours: { MON: [['09:00', '23:00']], TUE: [['09:00', '23:00']], WED: [['09:00', '23:00']], THU: [['09:00', '23:00']], FRI: [['09:00', '23:00']], SAT: [['09:00', '23:00']], SUN: [['09:00', '23:00']] },
+    hours_confidence: 'high', hours_source: 'test', verified_no_hh: false, windows: [] }, extra);
+}
+function wV27(extra) {
+  return Object.assign({ days: ['WED'], start: '16:00', end: '18:00', kind: 'happy_hour', deals: [],
+    sources: [{ url: 'https://x.test/hh', kind: 'venue', seen: '2026-11-03', confirmed: null }],
+    last_verified: '2026-11-03', corroborated: false, confidence: 'med' }, extra);
+}
+const errsV27 = (mut) => {
+  const v = vV27({ windows: [wV27()] });
+  mut(v);
+  return LV27.validateVenues({ schema_version: 2, generated: '2026-11-04', venues: [v] });
+};
+
+test('validateVenues (v2.7 A2): every source, official_site and inkind_url must be http(s)', () => {
+  assert.deepEqual(errsV27(() => {}), []);
+  assert.ok(errsV27((v) => { v.windows[0].sources[0].url = 'Google result: a snippet'; }).some((e) => /http\(s\)|must be \{url/.test(e)));
+  assert.ok(errsV27((v) => { v.official_site = 'www.x.test'; }).some((e) => /official_site/.test(e)));
+  const ik = (mut) => {
+    const v = vV27({ id: 'ik-9', inkind_id: 9, inkind: true, inkind_url: 'https://x.inkind.com/', official_site: null,
+      windows: [wV27({ sources: ['https://x.test/hh'] })] });
+    mut(v);
+    return LV27.validateVenues({ schema_version: 2, generated: '2026-11-04', venues: [v] });
+  };
+  assert.deepEqual(ik(() => {}), [], 'a null official_site stays legal on an inKind venue');
+  assert.ok(ik((v) => { v.windows[0].sources[0] = 'Google result: LinQ Instagram post snippet'; }).some((e) => /must be an http\(s\) URL/.test(e)));
+  assert.ok(ik((v) => { v.inkind_url = 'mstreet.inkind.com'; }).some((e) => /inkind_url must be/.test(e)));
+  assert.ok(ik((v) => { v.windows[0].sources[0] = 'https://has a space.test/'; }).some((e) => /must be an http\(s\) URL/.test(e)));
+});
+
+test('nowListCut (v2.7 C1): first 20 in order, the rest behind "Show N more"; at or under 20 no button', () => {
+  const list = Array.from({ length: 183 }, (_, i) => i);
+  const cut = LV27.nowListCut(list, false);
+  assert.deepEqual(cut.shown, list.slice(0, 20));
+  assert.equal(cut.hidden, 163);
+  assert.equal(cut.more, 'Show 163 more');
+  assert.deepEqual(LV27.nowListCut(list, true), { shown: list, hidden: 0, more: '' });
+  assert.equal(LV27.nowListCut(list.slice(0, 20), false).more, '');
+  assert.equal(LV27.nowListCut(list.slice(0, 21), false).more, 'Show 1 more');
+  assert.deepEqual(LV27.nowListCut([], false).shown, []);
+});
+
+test('index.html (v2.7 C1): headings keep the full count; the cut covers lunch & specials; nothing is saved', () => {
+  const html = htmlV27();
+  assert.ok(html.includes("title + ' (' + list.length + ')</div>'"), 'heading is the whole list');
+  assert.ok(html.includes('L.nowListCut(hh.concat(other), state.nowShowAll[key])'), 'one 20 for a section, specials inside it');
+  assert.ok(!/ls(Set|Get)[^\n]*nowShowAll/.test(html), 'the expanded state is not saved');
+});
+
+test('verifyInfo (v2.7 C2): each cause gives its own line', () => {
+  const noBadge = LV27.verifyInfo(vV27(), wV27(), NOV4V27);
+  assert.deepEqual(noBadge, { badge: false, reason: '', posted: '', noteIsReason: false });
+  // stale
+  let i = LV27.verifyInfo(vV27(), wV27({ last_verified: '2026-06-23' }), NOV4V27);
+  assert.equal(i.badge, true); assert.equal(i.reason, 'Last checked Jun 23');
+  i = LV27.verifyInfo(vV27(), wV27({ last_verified: '2022-02-17' }), NOV4V27);
+  assert.equal(i.reason, 'Last checked Feb 17, 2022');
+  i = LV27.verifyInfo(vV27(), wV27({ last_verified: null }), NOV4V27);
+  assert.equal(i.reason, 'No recent check on record');
+  // guide only: the standard note is dropped, a note with more to say stays
+  const guide = { url: 'https://nashvilleguru.com/businesses/x', kind: 'guide', seen: '2026-11-03', confirmed: '2026-10-21' };
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', sources: [guide], notes: 'Deals as listed by Nashville Guru, confirmed 2026-10-21. Check with the venue.', research_notes: 'r' }), NOV4V27);
+  assert.equal(i.reason, 'From Nashville Guru, confirmed Oct 21'); assert.equal(i.noteIsReason, true);
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', sources: [guide], notes: 'Happy hour as listed by Nashville Guru, confirmed 2026-10-21, in the Living Room.', research_notes: 'r' }), NOV4V27);
+  assert.equal(i.reason, 'From Nashville Guru, confirmed Oct 21'); assert.equal(i.noteIsReason, false);
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', sources: [guide], notes: 'Deals as listed by Nashville Guru, confirmed 2026-10-21. Check with the venue. Dine-in only.', research_notes: 'r' }), NOV4V27);
+  assert.equal(i.noteIsReason, false); assert.equal(i.noteRest, 'Dine-in only.');
+  // low: the window's own reason
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', notes: 'Deals from a 2020 menu.', research_notes: 'r' }), NOV4V27);
+  assert.equal(i.reason, 'Deals from a 2020 menu.'); assert.equal(i.noteIsReason, true);
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', verify_reason: 'Only a 2022 article lists this.', notes: 'prose', last_verified: '2022-02-17' }), NOV4V27);
+  assert.equal(i.reason, 'Only a 2022 article lists this.');
+  // research prose in notes (no research_notes) is never shown as the reason
+  i = LV27.verifyInfo(vV27(), wV27({ confidence: 'low', notes: 'Fetched today, nothing there.' }), NOV4V27);
+  assert.equal(i.reason, 'Last checked Nov 3');
+  // hours caveat alone: badge, and the existing sentence does the talking
+  const closedWed = vV27(); delete closedWed.hours.WED;
+  i = LV27.verifyInfo(closedWed, wV27(), NOV4V27);
+  assert.equal(i.badge, true); assert.equal(i.reason, '');
+  assert.ok(LV27.hoursCaveat(closedWed, wV27()));
+});
+
+test('verifyInfo (v2.7 C2, TJ: "Drop badge for this week"): the posted_week date boundary', () => {
+  const w = wV27({ posted_week: { from: '2026-11-03', to: '2026-11-09' }, last_verified: '2026-11-03' });
+  const at = (m, d) => LV27.verifyInfo(vV27(), w, onV27(2026, m, d));
+  for (const d of [3, 4, 9]) {
+    assert.equal(at(11, d).badge, false, 'Nov ' + d);
+    assert.equal(at(11, d).posted, 'Posted for the week of Nov 3–9');
+    assert.equal(at(11, d).reason, '');
+  }
+  assert.equal(at(11, 10).badge, true);
+  assert.equal(at(11, 10).reason, 'Posted schedule was for Nov 3–9');
+  assert.equal(at(11, 10).posted, '');
+  assert.equal(at(11, 2).badge, true);
+  assert.equal(at(11, 2).reason, 'Posted schedule is for Nov 3–9');
+  assert.equal(LV27.postedRangeLabel({ from: '2026-11-30', to: '2026-12-06' }), 'Nov 30–Dec 6');
+});
+
+test('validateVenues (v2.7 C2): posted_week and verify_reason are checked', () => {
+  assert.deepEqual(errsV27((v) => { v.windows[0].posted_week = { from: '2026-11-03', to: '2026-11-09' }; }), []);
+  assert.ok(errsV27((v) => { v.windows[0].posted_week = { from: 'Nov 3', to: '2026-11-09' }; }).some((e) => /posted_week/.test(e)));
+  assert.ok(errsV27((v) => { v.windows[0].posted_week = { from: '2026-11-09', to: '2026-11-03' }; }).some((e) => /posted_week/.test(e)));
+  assert.ok(errsV27((v) => { v.windows[0].verify_reason = 'Not found on the site today'; }).some((e) => /verify_reason/.test(e)));
+});
+
+test('venues.json (v2.7 C2): every Verify badge has words on the card face, and none is research prose', () => {
+  for (const day of [NOV4V27, onV27(2026, 11, 10, 'TUE')]) {
+    for (const v of realDataV27().venues) {
+      for (const w of v.windows) {
+        const i = LV27.verifyInfo(v, w, day);
+        if (!i.badge) continue;
+        assert.ok(i.reason || LV27.hoursCaveat(v, w), v.name + ' has a badge with no reason');
+        assert.ok(!/\b(today|fetched|re-read)\b/i.test(i.reason), v.name + ': ' + i.reason);
+      }
+    }
+  }
+});
+
+test('venues.json (v2.7 C2): week-specific posts carry posted_week and went from low to med', () => {
+  const posted = [];
+  for (const v of realDataV27().venues) v.windows.forEach((w) => { if (w.posted_week) posted.push([v.id, w]); });
+  const count = (id) => posted.filter((p) => p[0] === id).length;
+  assert.equal(count('nv-nobles-kitchen-and-beer-hall-east-974'), 8);
+  assert.equal(count('nv-germantown-pub-708'), 2);
+  assert.equal(count('nv-streetcar-taps-and-garden-germantown-1325'), 1);
+  for (const p of posted) assert.equal(p[1].confidence, 'med');
+});
+
+test('gridEdgeLabel (v2.7 C3): names a start left of the axis, nothing on the axis', () => {
+  assert.equal(LV27.gridEdgeLabel(480, 600, '08:00'), '◂ 8am');
+  assert.equal(LV27.gridEdgeLabel(600, 600, '10:00'), '');
+  assert.equal(LV27.gridEdgeLabel(660, 600, '11:00'), '');
+});
+
+test('index.html (v2.7 C3): the phone row has an inKind mark, the key sits above the rows, a tapped row scrolls', () => {
+  const html = htmlV27();
+  assert.ok(html.includes('<span class="ik-mark" role="img" aria-label="inKind">K</span>'));
+  assert.ok(html.indexOf('id="grid-key"') < html.indexOf('id="grid-header"'), 'key above the rows');
+  assert.match(html, /<summary>Key <span aria-hidden="true">▾<\/span><\/summary>/);
+  assert.ok(html.includes("openCard.scrollIntoView({ block: 'nearest' })"));
+});
+
+test('mapTapSelection (v2.7 C4): from All, just that zone; otherwise it toggles as a chip does', () => {
+  const byZone = {};
+  ZONES.forEach((z) => { byZone[z.key] = z.hoods; });
+  const all = new Set(hoodKeys());
+  const hoods = (k) => ZONES.find((z) => z.key === k).hoods;
+  assert.deepEqual([...LV27.mapTapSelection(all, 'north', byZone)].sort(), hoods('north').slice().sort());
+  assert.equal(all.size, hoodKeys().length, 'the input is untouched');
+  // Second path: only north is on. Tapping east adds it; tapping north clears it.
+  const north = new Set(hoods('north'));
+  assert.deepEqual([...LV27.mapTapSelection(north, 'east', byZone)].sort(), hoods('north').concat(hoods('east')).sort());
+  assert.equal(LV27.mapTapSelection(north, 'north', byZone).size, 0);
+  // A zone with no hoods to read from isn't part of "every zone".
+  const withEmpty = Object.assign({}, byZone, { outer: [] });
+  const sel = new Set(hoodKeys().filter((h) => !hoods('outer').includes(h)));
+  assert.deepEqual([...LV27.mapTapSelection(sel, 'east', withEmpty)].sort(), hoods('east').slice().sort());
+});
+
+test('temp_closed (v2.7 C5): an open-ended range runs on; the card has no date; NOW, Surprise and counts drop it', () => {
+  const tc = { from: '2026-11-01', note: 'Renovation', source: 'https://x.test/n', seen: '2026-11-02' };
+  const v = vV27({ temp_closed: [tc], windows: [wV27()] });
+  assert.equal(tempClosureOn(v, '2026-10-31'), null);
+  assert.equal(tempClosureOn(v, '2026-11-01'), tc);
+  assert.equal(tempClosureOn(v, '2030-01-01'), tc);
+  const when = { year: 2026, month: 11, day: 4, hour: 17, minute: 0, dayOfWeek: 'WED' };
+  const st = hoursStatus(v, when);
+  assert.equal(st.state, 'temp-closed'); assert.equal(st.until, null); assert.equal(st.note, 'Renovation');
+  assert.deepEqual(LV27.nowEntries([v], when), { live: [], soon: [] });
+  assert.equal(surprisePools([v], when, {}).now.length, 0);
+  const counted = dayCoverageCounts([v], 'WED', when);
+  assert.equal(counted.onDay, 0); assert.equal(counted.closed, 1);
+  assert.equal(dayCoverageCounts([v], 'WED').onDay, 1, 'without a date nothing changes');
+  assert.ok(htmlV27().includes('<b>Temporarily closed</b>'));
+});
+
+test('validateVenues (v2.7 C5): no `to` needs a dated source; a dated range does not', () => {
+  const base = { from: '2026-11-01', note: '', source: 'https://x.test/n' };
+  assert.ok(errsV27((v) => { v.temp_closed = [base]; }).some((e) => /dated source/.test(e)));
+  assert.ok(errsV27((v) => { v.temp_closed = [Object.assign({ seen: 'soon' }, base)]; }).some((e) => /dated source/.test(e)));
+  assert.deepEqual(errsV27((v) => { v.temp_closed = [Object.assign({ seen: '2026-11-02' }, base)]; }), []);
+  assert.deepEqual(errsV27((v) => { v.temp_closed = [Object.assign({ to: '2026-11-05' }, base)]; }), []);
+});
+
+test('apply_corrections.py (v2.7 C5/C2): the temp_closed action and annotate keep the chain honest', (t) => {
+  const { spawnSync } = require('node:child_process');
+  const os = require('node:os');
+  if (spawnSync('python3', ['--version']).status !== 0) return t.skip('no python3');
+  const dir = fsV27.mkdtempSync(path.join(os.tmpdir(), 'hhr-corr-'));
+  const data = { schema_version: 2, generated: '2026-11-01', venues: [vV27({ checked: '2026-11-01', windows: [wV27({ last_verified: '2026-11-01' })] })] };
+  fsV27.writeFileSync(path.join(dir, 'in.json'), JSON.stringify(data));
+  const script = path.join(__dirname, '..', 'data-src', 'refresh-20261102', 'apply_corrections.py');
+  const run = (corr) => {
+    fsV27.writeFileSync(path.join(dir, 'c.json'), JSON.stringify(corr));
+    return spawnSync('python3', [script, path.join(dir, 'in.json'), path.join(dir, 'c.json'), path.join(dir, 'out.json'), '--date', '2026-11-04'], { encoding: 'utf8' });
+  };
+  let r = run([{ id: 'nv-x-1', temp_closed: { from: '2026-11-02', note: 'Renovation', source: 'https://x.test/n', seen: '2026-11-03' } }]);
+  assert.equal(r.status, 0, r.stderr);
+  let out = JSON.parse(fsV27.readFileSync(path.join(dir, 'out.json'), 'utf8')).venues[0];
+  assert.deepEqual(out.temp_closed, [{ from: '2026-11-02', note: 'Renovation', source: 'https://x.test/n', seen: '2026-11-03' }]);
+  assert.equal(out.checked, '2026-11-04');
+  // Refused: an open-ended closure with no date on its source.
+  fsV27.rmSync(path.join(dir, 'out.json'));
+  r = run([{ id: 'nv-x-1', temp_closed: { from: '2026-11-02', note: '', source: 'https://x.test/n' } }]);
+  assert.notEqual(r.status, 0);
+  assert.ok(!fsV27.existsSync(path.join(dir, 'out.json')));
+  // annotate: no re-check happened, so the dates stay.
+  r = run([{ id: 'nv-x-1', window_index: 0, annotate: true, set: { posted_week: { from: '2026-11-03', to: '2026-11-09' }, confidence: 'med' } }]);
+  assert.equal(r.status, 0, r.stderr);
+  out = JSON.parse(fsV27.readFileSync(path.join(dir, 'out.json'), 'utf8')).venues[0];
+  assert.deepEqual(out.windows[0].posted_week, { from: '2026-11-03', to: '2026-11-09' });
+  assert.equal(out.windows[0].last_verified, '2026-11-01');
+  assert.equal(out.checked, '2026-11-01');
+  fsV27.rmSync(dir, { recursive: true, force: true });
+});
+
+test('index.html (v2.7 B3/D): preload matches the fetch; the Now list draws first; the polish lines', () => {
+  const html = htmlV27();
+  const fetched = /fetch\('(venues\.json\?v=[^']+)'\)/.exec(html)[1];
+  assert.ok(html.includes('<link rel="preload" href="' + fetched + '" as="fetch" crossorigin>'));
+  assert.ok(html.indexOf('rel="preload"') < html.indexOf('<style'), 'in the head, before the styles');
+  assert.match(html, /renderNow\(\);\s*setTimeout\(function \(\) \{\s*renderReferralQr/);
+  assert.ok(html.includes('inKind: pay through the app, get bonus credit back.'));
+  assert.ok(html.includes('data-tip="Food deals listed first on each card."'));
+  assert.ok(html.includes(".disabled = showN === 0"));
+  assert.ok(html.includes('happy hours that fit your filters'));
 });

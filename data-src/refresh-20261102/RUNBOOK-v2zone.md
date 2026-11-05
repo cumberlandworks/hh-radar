@@ -3,6 +3,20 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix35 (2026-11-04)
+- **Week-specific posts (TJ: "Drop badge for this week"; replaces the `low` in BRIEF step 14 for them):** the window
+  gets `"posted_week": {"from", "to"}` and `"confidence": "med"`. No badge inside the week, and the card says "Posted for
+  the week of <from>–<to>". After `to`, the badge returns with "Posted schedule was for <from>–<to>". They stay on
+  `refresh-watchlist.md`. A pre-2026 venue menu stays `low`.
+- **Every Verify badge has a reason on the card:** a `low` window's reason is its reader `notes` (when it has
+  `research_notes`), the guide line, or `verify_reason`, a short line that never says "today". A window whose `notes`
+  are still research prose needs a `verify_reason`, or it falls back to "Last checked <date>".
+- **`apply_corrections.py`:** `annotate: true` for edits that aren't a re-check (dates stay); `venue_set` for venue
+  fields; `remove_window`; `temp_closed`. `sources`, `last_verified`, `corroborated`, `posted_week` and `verify_reason`
+  are settable on a window.
+- **Links:** `validate.js` now refuses any source, `official_site` or `inkind_url` that isn't http(s).
+- **Chain:** the data step is `venues-v2-07-franklin-corr2.json`, from `research/franklin/corrections-franklin-corr2.json`.
+
 ## From fix32, made lasting in fix33 (2026-11-04)
 - **Versions:** fix33 is v2.6 (P2's previous file was `venues-v2-06-west-corr.json`). Franklin is the last of
   the 7 core zones; with it `coverage.v2_zones_done` holds all 7 and the coverage line drops "so far" (S7).
@@ -17,12 +31,13 @@ Each zone run reads this file next to the block. Newest first.
       used: `[{"from", "to", "note", "source"}]`. Dates are YYYY-MM-DD, both ends inclusive; `source` must be a URL.
       `to` is the day before it reopens, since the card reads "Closed until <the day after `to`>". Put the venue on
       the watchlist too, so the range gets re-checked.
-    - **What the range does (tested 2026-11-04):** the NOW card is hidden, at any time of day. The Day Grid row stays,
-      with a plain "Closed (temporary)" label, and the grid note's "venues with happy hours" count still includes it.
-    - **`to` is required:** the validator has no open-ended range, so a closure with no posted reopening date still
-      needs an end date. That convention is not settled yet.
-    - **Tooling gap:** `apply_corrections.py` can't set `temp_closed` (it edits windows and removes venues). For now
-      it is a manual edit of venues.json, noted in the CHANGELOG.
+    - **What the range does (tested 2026-11-04, count changed in fix35):** the NOW card and Surprise me pick are hidden,
+      at any time of day. The Day Grid row stays, with a plain "Closed (temporary)" label, and the grid note's
+      "venues with happy hours" count and the Where button leave it out for that date.
+    - **No posted reopening date (TJ, fix33 follow-up; built in fix35):** leave `to` out. The card says "Temporarily
+      closed" with no date. The validator then requires `seen`, the YYYY-MM-DD date on the source.
+    - **Tooling (fix35):** `apply_corrections.py` has a `temp_closed` action, so this is no longer a manual edit:
+      `{"id": ..., "temp_closed": {"from", "to"?, "note", "source", "seen"?}, "why"}`.
   - An "unclear" venue with no Google listing of its own is still named in the report, and stays.
   - The same text is in `BRIEF-closure-check.md`, section "How the executor uses the result".
 - **Removals reach the zone's not-added file (tooling):** `apply_corrections.py` appends every `remove` to

@@ -60,12 +60,13 @@ Tools: WebSearch and WebFetch only. Today's date is given in your task; use it f
    the deals list stays empty and `notes` says "Deals not posted."
    A window whose venue posts days and times but no deals (and no 2026-confirmed guide fills in) is still
    added, with an empty deals list (TJ, 2026-11-03: the card shows "Deals not posted, ask at the bar").
-14. Dated or stale sources (TJ, 2026-11-03, fix30): a window taken from a week-specific post (e.g. "week of
-   Nov 3-9", "this week's specials"), or whose deals come only from a venue menu dated before 2026 (e.g. a
-   "Spring 2025" PDF the site still links), gets `"confidence": "low"` (the app shows "Verify before you go"),
-   and `notes` names the post's week or the menu's date (e.g. "Schedule as posted for the week of Nov 3-9."
-   or "Deals from the venue's Spring 2025 menu, still linked from its site."). This holds even when the source
-   is the venue's own.
+14. Dated or stale sources (TJ, 2026-11-03, fix30; week posts changed 2026-11-04, fix35): a window taken from a
+   week-specific post (e.g. "week of Nov 3-9", "this week's specials") gets `"confidence": "med"` and
+   `"posted_week": {"from": "2026-11-03", "to": "2026-11-09"}`; the app says "Posted for the week of Nov 3–9" and asks
+   the reader to verify once the week is over. A window whose deals come only from a venue menu dated before 2026
+   (e.g. a "Spring 2025" PDF the site still links) gets `"confidence": "low"` (the app shows "Verify before you go"),
+   and `notes` names the menu's date (e.g. "Deals from the venue's Spring 2025 menu, still linked from its site.").
+   This holds even when the source is the venue's own.
 15. Return JSON only, and no prose outside `notes` / `research_notes`.
 
 ## Output: one JSON object
@@ -113,9 +114,9 @@ Rules for the fields:
 - `kind`: `happy_hour`, `special` or `lunch`. A venue goes in `added` only with at least one `happy_hour` window.
 - `deals[].type` is `food` or `drink`; `desc` is short and as posted ("$5 draft beers", "Half-price oysters");
   `price` is a number when the deal is one plain price, else null.
-- `confidence`: high = the venue's own page or menu this year; med = its social post, or a venue page with no
-  date; low = the 2026-confirmed guide case, a week-specific post, or deals only from a pre-2026 venue menu
-  (step 14).
+- `confidence`: high = the venue's own page or menu this year; med = its social post, a venue page with no
+  date, or a week-specific post with `posted_week`; low = the 2026-confirmed guide case, or deals only from a pre-2026
+  venue menu (step 14).
 - If two of your sources disagree on days or times, use the venue's own, and say so in `research_notes`.
 
 ## not_added reasons (use these exact strings)

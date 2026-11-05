@@ -9,6 +9,9 @@
      entries outright. Bump logic.js?v= whenever APP_VERSION changes, and venues.json?v=
      whenever the data does (the fix24 C3 data step changed it, so ?v=1.24). -->
 <meta http-equiv="Cache-Control" content="no-cache">
+<!-- v2.7 B3: start the data as soon as the head is parsed. Same URL and ?v= as the fetch at the
+     end of this file; bump them together. -->
+<link rel="preload" href="venues.json?v=2.7" as="fetch" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -244,12 +247,14 @@
   .suburb-row .suburb-name .count { font-weight: 700; color: var(--text); opacity: 0.8; margin-left: 3px; }
   .section-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 16px 2px 8px; }
   /* v1.24 C1: a thin label inside a section, over its lunch and specials. No count. */
+  .now-more { display: block; width: 100%; min-height: 44px; margin: 4px 0 8px; }
   .section-sub { font-size: 11px; font-weight: 600; color: var(--text-dim); margin: 12px 2px 6px; padding-top: 8px; border-top: 1px solid var(--border); }
   .section-heading:first-child { margin-top: 0; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; }
   .card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
   .card-title { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; flex: 1 1 140px; min-width: 0; }
-  .card-name { font-weight: 700; font-size: 15px; }
+  /* v2.7 D: the name takes its own line, so the buttons sit in the same place on every card. */
+  .card-name { font-weight: 700; font-size: 15px; flex: 1 1 100%; }
   .card-actions { display: flex; gap: 6px; flex-shrink: 0; }
   .icon-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; padding: 4px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--drink); font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
   .icon-btn:active { background: var(--drink-bg); }
@@ -270,6 +275,11 @@
     left: 0; top: calc(100% + 4px); z-index: 6; max-width: min(280px, 100%); padding: 6px 8px; border-radius: 8px;
     background: var(--text); color: var(--panel); font-size: 12px; font-weight: 500; line-height: 1.35;
     text-transform: none; letter-spacing: 0; white-space: normal; pointer-events: none; }
+  .scope-note { flex: 1 0 100%; margin: 0; font-size: 12px; color: var(--text-dim); }
+  #food-toggle { position: relative; }
+  #food-toggle .pill[data-tip]:hover::after, #food-toggle .pill[data-tip]:focus::after { content: attr(data-tip); position: absolute;
+    left: 0; top: calc(100% + 4px); z-index: 6; width: max-content; max-width: 240px; padding: 6px 8px; border-radius: 8px;
+    background: var(--text); color: var(--panel); font-size: 12px; font-weight: 500; line-height: 1.35; white-space: normal; pointer-events: none; }
   .badge-key { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
   .badge-key .bk { display: inline-flex; align-items: center; gap: 5px; }
   .badge.special { color: var(--amber-strong); border-color: var(--amber); }
@@ -277,6 +287,8 @@
   .badge.inkind { color: var(--amber-strong); border-color: var(--amber); }
   /* v1.24 C2 (TJ 14:14): no red badges. An hours problem is "Verify before you go" plus one
      plain sentence on the card (L.hoursCaveat), in the body ink. */
+  .verify-reason { margin-top: 6px; font-size: 12.5px; line-height: 1.4; color: var(--text); }
+  .verify-reason.posted { color: var(--text-dim); }
   .hours-caveat { margin-top: 6px; font-size: 12.5px; line-height: 1.4; color: var(--text); }
   /* v1.22 C2 (TJ 13:30, "The one place is greyed out"): a card is never dimmed for missing the
      chosen deal type; it says so. Drink blue / amber, the grid's own colours for the two types. */
@@ -377,6 +389,17 @@
   .grid-row-group:last-child .grid-row { border-bottom: none; }
   .grid-rowlabel { width: 34%; min-width: 34%; max-width: 34%; flex-shrink: 0; background: var(--panel); display: flex; align-items: center; padding: 0 0 0 8px; font-size: 11.5px; font-weight: 600; border-right: 1px solid var(--border); gap: 2px; overflow: hidden; cursor: pointer; }
   .grid-rowlabel:active { background: var(--amber-bg); }
+  .rl-nameline { display: flex; align-items: center; gap: 4px; min-width: 0; }
+  .ik-mark { flex: none; display: none; width: 14px; height: 14px; line-height: 12px; text-align: center; font-size: 9px; font-weight: 700;
+    border-radius: 4px; border: 1px solid var(--amber); color: var(--amber-strong); }
+  .grid-legend .ik-mark { display: inline-block; }
+  .grid-key { display: none; padding: 2px 16px 6px; font-size: 12px; color: var(--text-dim); }
+  .grid-key summary { min-height: 32px; line-height: 32px; font-weight: 600; cursor: pointer; list-style: none; }
+  .grid-key summary::-webkit-details-marker { display: none; }
+  .grid-key[open] summary span { display: inline-block; transform: rotate(180deg); }
+  .grid-edge { position: absolute; left: 2px; top: 1px; font-size: 10px; line-height: 1.2; font-weight: 600; color: var(--text); pointer-events: none;
+    background: var(--panel); border-radius: 3px; padding: 0 2px; z-index: 2; }
+  .grid-expanded { scroll-margin-top: calc(var(--header-h) + var(--gridsticky-h) + 28px); }
   /* v1.22 C4 (TJ 13:09): the name, then that day's times under it (they replace the labels
      inside the blocks, which hid on most blocks and had no am/pm). */
   .grid-rowlabel .rl-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center;
@@ -468,11 +491,11 @@
     scroll-margin-top: calc(var(--header-h) + 12px);
     transition: box-shadow 0.4s ease; }
   #referral p { color: var(--text); }
-  #referral .ref-btn { display: inline-flex; align-items: center; justify-content: center;
+  .ref-btn { display: inline-flex; align-items: center; justify-content: center;
     margin-top: 10px; min-height: 44px; padding: 0 16px; border-radius: 10px;
     background: var(--amber); color: #1a1200; font-size: 15px; font-weight: 700;
     text-decoration: none; touch-action: manipulation; }
-  #referral .ref-btn:focus-visible { outline: 2px solid var(--amber-strong); outline-offset: 2px; }
+  .ref-btn:focus-visible { outline: 2px solid var(--amber-strong); outline-offset: 2px; }
   /* The landing highlight after a tap on the bar: a ring that fades out. */
   #referral.ref-flash { box-shadow: 0 0 0 3px var(--amber-strong); }
 
@@ -485,9 +508,15 @@
     transition: opacity 0.2s ease; }
   .refbar[hidden] { display: none; }
   .refbar.fading { opacity: 0; }
-  .refbar-link { flex: 1 1 auto; min-width: 0; min-height: 44px; display: flex; align-items: center;
+  .refbar-link { flex: 1 1 auto; min-width: 0; min-height: 44px; display: block; text-align: left;
+    margin: 0; border: 0; background: transparent; font: inherit; cursor: pointer;
     padding: 4px 0 4px 16px; color: var(--text); font-weight: 600; text-decoration: none;
     touch-action: manipulation; }
+  .refbar-link[aria-expanded="true"] b { display: inline-block; transform: rotate(180deg); }
+  .refpanel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 8px 16px 10px;
+    background: var(--amber-bg); border-bottom: 1px solid var(--amber); font-size: 12px; color: var(--text-dim); }
+  .refpanel[hidden] { display: none; }
+  .refpanel .ref-btn { margin: 0; }
   .refbar-link b { color: var(--amber-strong); }
   .refbar-x { flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; border: 0;
     background: transparent; color: var(--text-dim); font: inherit; font-size: 22px; line-height: 1;
@@ -774,6 +803,9 @@
        links. The label keeps its 55% (the track is as wide as v1.22) and the name and times
        get the 88px the two columns took: the name on one line, the times on at most two. */
     .grid-rowlabel a.rowlink { display: none; }
+    .ik-mark { display: inline-block; }
+    .grid-key { display: block; }
+    #grid-legend .lg-row { display: none; }
     .grid-rowlabel .rl-text { padding-right: 6px; }
     .grid-rowlabel .rl-times { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
       line-clamp: 2; overflow: hidden; }
@@ -810,6 +842,9 @@
     .grid-row { min-height: 45px; }
     /* v1.23 C2: same as the portrait phone: no i / K columns, the row tap opens the card. */
     .grid-rowlabel a.rowlink { display: none; }
+    .ik-mark { display: inline-block; }
+    .grid-key { display: block; }
+    #grid-legend .lg-row { display: none; }
     .grid-rowlabel .rl-text { padding-right: 6px; }
     .grid-rowlabel .rl-times { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
       line-clamp: 2; overflow: hidden; }
@@ -826,8 +861,13 @@
 </div>
 
 <div class="refbar" id="refbar" hidden>
-  <a class="refbar-link" href="#referral" id="refbar-link">New to inKind? $25 off your first $50+ meal&nbsp;<b aria-hidden="true">→</b></a>
+  <button type="button" class="refbar-link" id="refbar-link" aria-expanded="false" aria-controls="refpanel">New to inKind? $25 off your first $50+ meal · I get a credit too&nbsp;<b aria-hidden="true">▾</b></button>
   <button type="button" class="refbar-x" id="refbar-x" aria-label="Dismiss">×</button>
+</div>
+<!-- v2.7 B2: the offer opens here, so the page doesn't move. -->
+<div class="refpanel" id="refpanel" hidden>
+  <a class="ref-btn" id="refpanel-btn" href="https://app.inkind.com/refer/XRI8MWHF" target="_blank" rel="noopener">Get $25 off</a>
+  <span class="refpanel-terms">Terms apply. inKind's referral link, opens in a new tab.</span>
 </div>
 
 <header>
@@ -845,8 +885,8 @@
 <div class="controls">
 <div class="toolbar">
   <div class="toggle" id="food-toggle" role="group" aria-label="Food or drink first">
-    <button type="button" class="pill on" id="btn-food">🍽 Food-first</button>
-    <button type="button" class="pill" id="btn-drink">🍹 Drink-first</button>
+    <button type="button" class="pill on" id="btn-food" data-tip="Food deals listed first on each card.">🍽 Food-first</button>
+    <button type="button" class="pill" id="btn-drink" data-tip="Drink deals listed first on each card.">🍹 Drink-first</button>
   </div>
   <!-- v2.0 B1: which venues every view shows. Default All; saved per browser (hhradar-scope). -->
   <div class="toggle" id="scope-toggle" role="group" aria-label="Show every happy hour or inKind restaurants only">
@@ -858,6 +898,7 @@
     <button type="button" class="pill" id="btn-walk">🚶 Walk</button>
   </div>
   <button type="button" class="pill action" id="btn-surprise" aria-label="Surprise me — pick one at random">🎲 Surprise me</button>
+  <p class="scope-note">inKind: pay through the app, get bonus credit back.</p>
 </div>
 
 <div class="zone-toolbar" id="zone-toolbar">
@@ -883,6 +924,8 @@
         <div class="sort-select" id="sort-select"></div>
         <div class="note" id="grid-sort-note"></div>
       </div>
+      <!-- v2.7 C3: the phone's key, above the rows; closed to one line, opens in place. -->
+      <details class="grid-key" id="grid-key"><summary>Key <span aria-hidden="true">▾</span></summary><div class="grid-legend" id="grid-key-body"></div></details>
       <div class="grid-header" id="grid-header"></div>
       <div id="grid-wrap">
         <div class="grid-inner" id="grid-inner"></div>
@@ -921,7 +964,7 @@
   <section class="referral" id="referral" aria-labelledby="ref-h">
     <div class="ref-text">
       <h2 id="ref-h">New to inKind?</h2>
-      <p>$25 off your first $50+ meal. I get a credit too. Terms apply.</p>
+      <p>$25 off your first $50+ meal · I get a credit too. Terms apply.</p>
       <a class="ref-btn" href="https://app.inkind.com/refer/XRI8MWHF" target="_blank" rel="noopener">Get $25 off</a>
     </div>
   </section>
@@ -981,12 +1024,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=2.6"></script>
+<script src="logic.js?v=2.7"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v2.6';
+  var APP_VERSION = 'v2.7';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1080,6 +1123,7 @@
     hoodsOpen: lsGet('hhradar-hoods-open', '0') === '1',
     currentTab: 'now', // 'now' | 'grid' — tracked for the map's live-dot styling
     surprise: null, // v1.7 C1: {mode:'now'|'later', pick, poolSize, canRoll}, or null when dismissed
+    nowShowAll: { live: false, soon: false }, // v2.7 C1: never saved
     lastExpanded: null, // v1.5 C1: last card the user opened — goes in the feedback context
     fbNotes: [], // v1.5 C1: pending feedback notes, mirrored to localStorage
     fbSent: [], // notes inside the 3-second undo window after a send
@@ -1166,7 +1210,7 @@
     // v1.24 C2 (TJ 14:14): the four red hours badges (hours conflict, outside posted hours,
     // no hours on file, close time assumed) are gone. Those windows get this one badge,
     // once, and the card says what is wrong in a sentence (hoursCaveatHtml).
-    if (L.isUnverified(win) || L.isStale(win.last_verified, state.now) || L.hasHoursCaveat(venue, win)) {
+    if (L.verifyInfo(venue, win, state.now).badge) {
       out.push(badgeHtml('verify', 'Verify before you go', BADGE_TIPS.verify));
     }
     return out.join('');
@@ -1212,9 +1256,14 @@
     return '<details class="src-notes" onclick="event.stopPropagation()"><summary>Source notes</summary>' +
       L.sourceNoteLines(venue, win).map(function (b) { return '<p>' + escapeHtml(b) + '</p>'; }).join('') + '</details>';
   }
-  function readerNoteHtml(win) {
-    if (typeof win.research_notes !== 'string' || !win.notes) return '';
-    return '<div class="win-note">' + escapeHtml(win.notes) + '</div>';
+  // v2.7 C2: the one line saying why the badge fired, or that a week's post still holds.
+  function verifyLineHtml(info) {
+    if (info.posted) return '<div class="verify-reason posted">' + escapeHtml(info.posted) + '</div>';
+    return info.reason ? '<div class="verify-reason">' + escapeHtml(info.reason) + '</div>' : '';
+  }
+  function readerNoteHtml(win, info) {
+    if (typeof win.research_notes !== 'string' || !win.notes || (info && info.noteIsReason)) return '';
+    return '<div class="win-note">' + escapeHtml((info && info.noteRest) || win.notes) + '</div>';
   }
 
   // C1: the two per-window action buttons (Deal info + inKind), shown in every card
@@ -1255,6 +1304,9 @@
       return '<div class="hours-line day' + (ds.closed ? ' closed' : (ds.none ? ' none' : '')) + '"><b>' + escapeHtml(ds.text) + '</b></div>';
     }
     var st = L.hoursStatus(venue, state.now), text;
+    if (st.state === 'temp-closed' && !st.until) { // v2.7 C5: no posted reopening date
+      return '<div class="hours-line closed"><b>Temporarily closed</b>' + (st.note ? ' · ' + escapeHtml(st.note) : '') + '</div>';
+    }
     if (st.state === 'temp-closed') {
       return '<div class="hours-line closed"><b>Closed until ' + escapeHtml(fmtShortDate(st.until)) + '</b>' +
         (st.note ? ' · ' + escapeHtml(st.note) : '') + '</div>';
@@ -1378,6 +1430,7 @@
     // v1.8 C2: a venue the reader cannot reach before last call is dimmed, not removed
     // — it is still a real happy hour, and the reader may know a faster road than we do.
     var unreachable = travel && travel.verdict === 'miss';
+    var verify = L.verifyInfo(venue, win, state.now);
     return '' +
       '<div class="card' + (unreachable ? ' unreachable' : '') + (expanded ? ' expanded' : '') + '" data-card-key="' + escapeHtml(key) + '" role="button" tabindex="0" aria-expanded="' + (expanded ? 'true' : 'false') + '">' +
         '<div class="card-top">' +
@@ -1393,10 +1446,11 @@
         addressLinkHtml(venue, 'card-addr') +
         '<div class="badges">' + (venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) : '') +
           (only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '') + renderBadges(venue, win) + '</div>' +
+        verifyLineHtml(verify) +
         hoursCaveatHtml(venue, win) +
         windowLineHtml(venue, win) +
         '<div class="deals">' + dealsInner + '</div>' +
-        readerNoteHtml(win) +
+        readerNoteHtml(win, verify) +
         extrasHtml +
       '</div>';
   }
@@ -1466,14 +1520,21 @@
 
   // One section: its heading and count, its happy hours, then a thin "Lunch & specials" label
   // (no count of its own) over the rest when the section has both.
-  function nowSectionHtml(title, list) {
+  // v2.7 C1: the heading keeps the full count; the first 20 draw, lunch and specials among
+  // them, and a button draws the rest in place. Held in memory only, so a reload starts at 20.
+  function nowSectionHtml(title, list, key) {
     if (!list.length) return '';
     var html = '<div class="section-heading">' + title + ' (' + list.length + ')</div>';
     var hh = list.filter(function (e) { return L.nowKindRank(e.window) === 0; });
     var other = list.filter(function (e) { return L.nowKindRank(e.window) !== 0; });
-    html += hh.map(nowEntryCardHtml).join('');
-    if (other.length && hh.length) html += '<div class="section-sub">Lunch &amp; specials</div>';
-    return html + other.map(nowEntryCardHtml).join('');
+    var cut = L.nowListCut(hh.concat(other), state.nowShowAll[key]);
+    var shownHh = cut.shown.filter(function (e) { return L.nowKindRank(e.window) === 0; });
+    var shownOther = cut.shown.filter(function (e) { return L.nowKindRank(e.window) !== 0; });
+    html += shownHh.map(nowEntryCardHtml).join('');
+    if (shownOther.length && hh.length) html += '<div class="section-sub">Lunch &amp; specials</div>';
+    html += shownOther.map(nowEntryCardHtml).join('');
+    if (cut.hidden) html += '<button type="button" class="fb-btn now-more" data-now-more="' + key + '">' + cut.more + '</button>';
+    return html;
   }
 
   function renderNow() {
@@ -1507,7 +1568,7 @@
       return;
     }
     var html = surpriseHtml('now') + geoNoteHtml();
-    html += nowSectionHtml('Live now', sections.live) + nowSectionHtml('Starting soon', sections.soon);
+    html += nowSectionHtml('Live now', sections.live, 'live') + nowSectionHtml('Starting soon', sections.soon, 'soon');
     el.innerHTML = html + badgeKeyHtml();
   }
 
@@ -1723,10 +1784,11 @@
       return '<div class="grid-row-group" data-venue-id="' + escapeHtml(venue.id) + '">' +
         '<div class="grid-row">' +
           '<div class="grid-rowlabel" title="' + escapeHtml(venue.name) + '"><span class="rl-text">' +
-            '<span class="name">' + escapeHtml(venue.name) + '</span>' + rowTimesHtml(venue, day, items, r.closed) + '</span>' +
+            '<span class="rl-nameline"><span class="name">' + escapeHtml(venue.name) + '</span>' + (venue.inkind ? IK_MARK : '') + '</span>' +
+            rowTimesHtml(venue, day, items, r.closed) + '</span>' +
             rowLinksHtml(venue, items[0].win) + '</div>' +
           '<div class="grid-track" style="background-size:' + hourPct + '% 100%">' +
-            bands + blocks +
+            bands + blocks + edgeLabelHtml(r, dayBase) +
             (showNowLine ? '<div class="nowline" style="left:' + ((nowPos - GRID_START) / GRID_SPAN * 100) + '%"></div>' : '') +
           '</div>' +
         '</div>' + expandedHtml +
@@ -1742,11 +1804,26 @@
     // single "N venues have nothing on DAY" that an outside reader read as "this
     // app never has anything" — it folded the 67 venues with NO happy hour on any
     // day into the same number as the ones that simply have theirs on other days.
-    document.getElementById('grid-note').innerHTML = gridCoverageHtml(visibleVenues, day, candidates.length);
+    document.getElementById('grid-note').innerHTML = gridCoverageHtml(visibleVenues, day, candidates.filter(function (r) { return !r.closed; }).length);
     document.getElementById('grid-sort-note').innerHTML = state.geoPrompt ? locPromptHtml() : '';
     document.getElementById('grid-legend').innerHTML = gridLegendHtml() + badgeKeyHtml();
+    document.getElementById('grid-key-body').innerHTML = gridLegendHtml();
 
     updateStickyOffsets();
+  }
+
+  // v2.7 C3: the inKind mark the phone's row label carries (the K column is hidden there).
+  var IK_MARK = '<span class="ik-mark" role="img" aria-label="inKind">K</span>';
+  // v2.7 C3: "◂ 8am" at the left edge for a window drawn from before the axis starts.
+  function edgeLabelHtml(r, dayBase) {
+    if (r.closed) return '';
+    var early = null;
+    r.items.forEach(function (it) {
+      var s = it.startAbs - dayBase;
+      if (s >= 0 && (early === null || s < early.s)) early = { s: s, start: it.win.start };
+    });
+    var text = early ? L.gridEdgeLabel(early.s, GRID_START, early.start) : '';
+    return text ? '<div class="grid-edge">' + escapeHtml(text) + '</div>' : '';
   }
 
   // v1.22 C4 (TJ 13:09): that day's times under the name, "close" resolved, plus C5's
@@ -1776,7 +1853,8 @@
       lg('<span class="block lunch"></span>', 'Lunch') +
       lg('<span class="sw"></span>', 'Open hours') +
       lg('<span class="sw low"></span>', 'Hours not confirmed') +
-      lg('<span class="sw-now"></span>', 'Now') + '</div>';
+      lg('<span class="sw-now"></span>', 'Now') +
+      lg(IK_MARK, 'inKind') + '</div>';
   }
 
   // v2.0 B4: while some core zones have no non-inKind research yet, say which are done.
@@ -1787,7 +1865,7 @@
     return text ? '<span class="v2-note" id="v2-note"> ' + escapeHtml(text) + '</span>' : '';
   }
   function gridCoverageHtml(visibleVenues, day, rowsDrawn) {
-    var cov = L.dayCoverageCounts(visibleVenues, day);
+    var cov = L.dayCoverageCounts(visibleVenues, day, state.now);
     // The grid draws a row for exactly the onDay group; if these ever disagree the
     // footer is lying about what is on screen, so say so rather than print a number.
     var mismatch = cov.onDay !== rowsDrawn ? ' <span class="badge">count/rows mismatch</span>' : '';
@@ -2223,7 +2301,11 @@
     var zoneEl = e.target.closest('[data-zone]');
     if (!zoneEl) return;
     e.preventDefault();
-    toggleZone(zoneEl.getAttribute('data-zone'));
+    // v2.7 C4: from All, a map tap shows just that zone; otherwise it toggles as a chip does.
+    var byZone = {};
+    L.ZONES.forEach(function (z) { byZone[z.key] = stateHoodsOf(z); });
+    state.hoodSelected = L.mapTapSelection(state.hoodSelected, zoneEl.getAttribute('data-zone'), byZone);
+    onHoodSelectionChanged();
   }
   document.getElementById('map-panel').addEventListener('click', handleMapActivate);
   document.getElementById('map-panel').addEventListener('keydown', function (e) {
@@ -2243,6 +2325,17 @@
   }
 
   document.getElementById('view-now').addEventListener('click', function (e) {
+    var more = e.target.closest('[data-now-more]');
+    if (more) {
+      // Focus lands on the first card it drew, so the list carries on from where the button was.
+      var moreKey = more.getAttribute('data-now-more');
+      var nextIndex = [].indexOf.call(document.querySelectorAll('#view-now .card'), more.previousElementSibling) + 1;
+      state.nowShowAll[moreKey] = true;
+      renderNow();
+      var nextCard = document.querySelectorAll('#view-now .card')[nextIndex];
+      if (nextCard) nextCard.focus({ preventScroll: true });
+      return;
+    }
     var cardEl = e.target.closest('.card');
     if (!cardEl) return;
     state.lastExpanded = cardEl.getAttribute('data-card-key');
@@ -2267,6 +2360,14 @@
     state.lastExpanded = vid + '#row';
     toggleSetMember(state.gridRowOpen, vid);
     renderGrid();
+    // v2.7 C3: a row low on the screen opened its card below the fold, so the tap seemed to do nothing.
+    if (state.gridRowOpen.has(vid)) {
+      var opened = [].filter.call(document.querySelectorAll('#grid-inner .grid-row-group'), function (g) {
+        return g.getAttribute('data-venue-id') === vid;
+      })[0];
+      var openCard = opened && opened.querySelector('.grid-expanded');
+      if (openCard) openCard.scrollIntoView({ block: 'nearest' });
+    }
   }
   document.getElementById('grid-inner').addEventListener('click', toggleGridRow);
   document.getElementById('grid-inner').addEventListener('keydown', function (e) {
@@ -2680,7 +2781,7 @@
     // "one of N" is the honesty that makes the switch legible. At N = 1 the actions
     // row says it instead, in place of a button that could not do anything.
     var sub = s.poolSize > 1
-      ? '<div class="surprise-sub">one of ' + s.poolSize + ' candidates</div>' : '';
+      ? '<div class="surprise-sub">from ' + s.poolSize + ' happy hours that fit your filters</div>' : '';
     var roll = s.canRoll
       ? '<button type="button" class="fb-btn surprise-roll">Roll again</button>'
       : '<span class="surprise-only">That’s the only option in this pool.</span>';
@@ -2746,7 +2847,7 @@
   var whereExpanded = new Set();
   var whereHist = L.sheetHistory(window.history, hideWhere);
   function whereCount() {
-    if (state.currentTab === 'grid') return L.dayCoverageCounts(filteredVenues(), state.day).onDay;
+    if (state.currentTab === 'grid') return L.dayCoverageCounts(filteredVenues(), state.day, state.now).onDay;
     return L.nowEntries(filteredVenues(), state.now).live.length; // v1.24 C1: = "Live now (N)"
   }
   function whereCheckHtml(cls, st, name, count, data, ariaName) {
@@ -2787,7 +2888,9 @@
       }
       return html;
     }).join('');
-    document.getElementById('where-show').textContent = L.whereFooterLabel(state.currentTab, whereCount(), state.day);
+    var showN = whereCount();
+    document.getElementById('where-show').textContent = L.whereFooterLabel(state.currentTab, showN, state.day);
+    document.getElementById('where-show').disabled = showN === 0; // v2.7 D
     if (focusKey) {
       var again = [].filter.call(list.querySelectorAll('[data-ws-key]'), function (b) { return b.getAttribute('data-ws-key') === focusKey; })[0];
       if (again) again.focus();
@@ -3271,30 +3374,23 @@
     try { store = window.localStorage; } catch (e) { store = null; }
     if (!card || L.refBarDismissed(store)) { bar.hidden = true; return; }
     bar.hidden = false;
-    // The ring stays 1.6s after the scroll settles, not after the tap: on a busy NOW
-    // list the smooth scroll alone took ~1.5s (measured), which left the ring ~0.3s.
-    var flashTimer = null, flashRun = 0;
-    function flashCard() {
-      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      card.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
-      card.classList.add('ref-flash');
-      clearTimeout(flashTimer);
-      var run = ++flashRun, lastY = -1, stillFrames = 0, started = Date.now();
-      (function waitForStill() {
-        if (run !== flashRun) return;
-        var y = window.scrollY;
-        stillFrames = y === lastY ? stillFrames + 1 : 0;
-        lastY = y;
-        if (stillFrames < 6 && Date.now() - started < 4000) { requestAnimationFrame(waitForStill); return; }
-        flashTimer = setTimeout(function () { card.classList.remove('ref-flash'); }, 1600);
-      })();
-    }
-    document.getElementById('refbar-link').addEventListener('click', function (ev) {
-      ev.preventDefault();
-      L.followRefBar(store, function () { bar.hidden = true; updateStickyOffsets(); }, flashCard);
+    // v2.7 B2 (QA fix34 #6): the tap opens the offer in place; it used to fly 70,000px down
+    // a busy list to the footer card. × still dismisses, and so does taking the offer.
+    var panel = document.getElementById('refpanel'), link = document.getElementById('refbar-link');
+    link.addEventListener('click', function () {
+      panel.hidden = !panel.hidden;
+      link.setAttribute('aria-expanded', panel.hidden ? 'false' : 'true');
+      updateStickyOffsets();
+    });
+    document.getElementById('refpanel-btn').addEventListener('click', function () {
+      L.dismissRefBar(store);
+      bar.hidden = true;
+      panel.hidden = true;
+      updateStickyOffsets();
     });
     document.getElementById('refbar-x').addEventListener('click', function () {
       L.dismissRefBar(store);
+      panel.hidden = true;
       bar.classList.add('fading');
       setTimeout(function () { bar.hidden = true; updateStickyOffsets(); }, 200);
     });
@@ -3337,7 +3433,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=2.6').then(function (r) {
+  fetch('venues.json?v=2.7').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
@@ -3361,9 +3457,6 @@
       '<span class="foot-line">Built by TJ White · ' +
         '<a href="https://www.linkedin.com/in/tjwhite19" target="_blank" rel="noopener">LinkedIn</a> · ' +
         '<a href="https://github.com/cumberlandworks/hh-radar" target="_blank" rel="noopener">Source on GitHub</a></span>';
-    renderReferralQr();
-    renderTip();
-
     computeHoodTotals();
     renderZoneSummary();
     wireFeedback();
@@ -3373,11 +3466,16 @@
     renderNavAppSetting();
     renderDaySelect();
     renderSortSelect();
+    // v2.7 B3: the Now list first; the rest waits until it has had a chance to paint.
     renderNow();
-    renderGrid();
-    renderHoodChips();
-    renderMap();
-    requestGeo();
+    setTimeout(function () {
+      renderReferralQr();
+      renderTip();
+      renderGrid();
+      renderHoodChips();
+      renderMap();
+      requestGeo();
+    }, 0);
   }).catch(function (e) {
     fatal(e.message);
   });
