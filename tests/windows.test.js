@@ -2183,7 +2183,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.7.2';") && html.includes("venues.json?v=2.7.2") && html.includes('logic.js?v=2.7.2'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.8';") && html.includes("venues.json?v=2.7.2") && html.includes('logic.js?v=2.8'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2789,7 +2789,7 @@ test('index.html (v2.0 B1): the scope toggle, one scoping function, and every vi
   assert.ok(html.includes("state.scope = L.normalizeScope(lsGet(L.SCOPE_KEY, 'all'));"));
   assert.ok(html.includes("bits.push(state.scope === 'inkind' ? 'inKind only' : 'All');"), 'feedback context');
   assert.ok(html.includes("(venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) : '')"), 'badge only on inKind');
-  assert.ok(html.includes('<title>Nashville Happy Hour Radar</title>'));
+  assert.ok(html.includes('<title>Nashville Happy Hour Radar: live happy hours near you</title>'));
   const manifest = JSON.parse(require('node:fs').readFileSync(path.join(__dirname, '..', 'manifest.json'), 'utf8'));
   assert.equal(manifest.name, 'Nashville Happy Hour Radar');
   assert.equal(manifest.short_name, 'HH Radar');
@@ -3121,4 +3121,40 @@ test('venues.json (v2.7.1, v2.7.2): every Brugada window uses Google\'s times, m
 test('versionDiffers (v2.7.1): a three-part version counts', () => {
   assert.equal(L271.versionDiffers('v2.7.1\n', 'v2.7'), true);
   assert.equal(L271.versionDiffers('v2.7.1\n', 'v2.7.1'), false);
+});
+
+// v2.8 (fix36): what search engines read.
+test('search (v2.8): sitemap lastmod follows the data, so a data run cannot forget it', () => {
+  const fs = require('node:fs');
+  const root = path.join(__dirname, '..');
+  const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
+  const venues = JSON.parse(fs.readFileSync(path.join(root, 'venues.json'), 'utf8'));
+  assert.equal(/<lastmod>([^<]+)<\/lastmod>/.exec(sitemap)[1], venues.generated);
+  assert.ok(sitemap.includes('<loc>https://cumberlandworks.github.io/hh-radar/</loc>'));
+});
+
+test('search (v2.8): page basics are in the static markup', () => {
+  const fs = require('node:fs');
+  const root = path.join(__dirname, '..');
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(html.includes('<link rel="canonical" href="https://cumberlandworks.github.io/hh-radar/">'));
+  const desc = /<meta name="description" content="([^"]+)">/.exec(html)[1];
+  assert.ok(desc.length >= 150 && desc.length <= 160, 'description is ' + desc.length + ' characters');
+  assert.equal(/<meta property="og:description" content="([^"]+)">/.exec(html)[1], desc);
+  assert.equal(/<meta property="og:title" content="([^"]+)">/.exec(html)[1], /<title>([^<]+)<\/title>/.exec(html)[1]);
+  const ld = JSON.parse(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/.exec(html)[1]);
+  assert.equal(ld['@type'], 'WebApplication');
+  assert.equal(ld.description, desc);
+  assert.ok(html.indexOf('<section class="about"') < html.indexOf('<footer id="footer">'), 'About sits above the footer');
+  // The description's "300+" is a floor; below it, the wording has to change.
+  const venues = JSON.parse(fs.readFileSync(path.join(root, 'venues.json'), 'utf8'));
+  assert.ok(venues.venues.length >= 300, 'the description says 300+');
+});
+
+test('search (v2.8): the IndexNow key file holds its own name', () => {
+  const fs = require('node:fs');
+  const root = path.join(__dirname, '..');
+  const keys = fs.readdirSync(root).filter((f) => /^[0-9a-f]{32}\.txt$/.test(f));
+  assert.equal(keys.length, 1);
+  assert.equal(fs.readFileSync(path.join(root, keys[0]), 'utf8').trim(), keys[0].replace('.txt', ''));
 });

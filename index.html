@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>Nashville Happy Hour Radar</title>
+<title>Nashville Happy Hour Radar: live happy hours near you</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- v1.5 C2: iOS holds on to a home-screen app's index.html for days. Pages serves
      it with max-age=600, but the standalone web-app shell re-uses whatever it has
@@ -19,13 +19,14 @@
 <meta name="apple-mobile-web-app-title" content="HH Radar">
 <meta name="theme-color" content="#0f1420">
 <!-- v1.10 C7: the link preview LinkedIn (and everything else that reads Open Graph)
-     draws. No venue count in any of this text: it would rot on the next refresh.
+     draws. The only count in this text is the "300+" floor in the description (v2.8, fix36): a test
+     fails if the data drops below it, so it can't rot unnoticed.
      og-preview.png is a real screenshot of the NOW view, 1200x627 (re-taken in v1.21 at
      ?now=2026-10-27T17:30, the v1.11 minute and framing; see CHANGELOG v1.21). -->
-<meta name="description" content="Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.">
+<meta name="description" content="Live happy hours across Nashville right now: 300+ bars and restaurants by neighborhood, with deals, times and inKind restaurants marked. Free, no sign-up.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nashville Happy Hour Radar">
-<meta property="og:description" content="Live happy hours across Nashville. inKind restaurants are marked: they give you bonus credit.">
+<meta property="og:title" content="Nashville Happy Hour Radar: live happy hours near you">
+<meta property="og:description" content="Live happy hours across Nashville right now: 300+ bars and restaurants by neighborhood, with deals, times and inKind restaurants marked. Free, no sign-up.">
 <meta property="og:url" content="https://cumberlandworks.github.io/hh-radar/">
 <meta property="og:image" content="https://cumberlandworks.github.io/hh-radar/og-preview.png">
 <meta property="og:image:type" content="image/png">
@@ -33,6 +34,23 @@
 <meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="The radar's Now view: a list of Nashville restaurants and bars with a happy hour live right now, food deals first.">
 <meta name="twitter:card" content="summary_large_image">
+<!-- v2.8 C1: search basics. The canonical and this JSON-LD say what the page is without running the app. -->
+<link rel="canonical" href="https://cumberlandworks.github.io/hh-radar/">
+<meta name="google-site-verification" content="KBJlVk4lRNZVNhSEG6QB1phklrW0lgkVU7uxYDAaMTI">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Nashville Happy Hour Radar",
+  "url": "https://cumberlandworks.github.io/hh-radar/",
+  "description": "Live happy hours across Nashville right now: 300+ bars and restaurants by neighborhood, with deals, times and inKind restaurants marked. Free, no sign-up.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "areaServed": { "@type": "City", "name": "Nashville, TN" },
+  "author": { "@type": "Person", "name": "TJ White", "url": "https://www.linkedin.com/in/tjwhite19/" }
+}
+</script>
 <style>
   :root {
     --bg: #f6f5f2;
@@ -464,6 +482,9 @@
 
   /* v1.6 C3: 11.5px type and a 48x14 README link — both measured too small in the
      mobile pass. 12px is the floor for anything a reader has to read. */
+  .about { max-width: 640px; margin: 0 auto; padding: 16px 16px 0; color: var(--text-dim); font-size: 13px; }
+  .about h2 { margin: 0 0 4px; font-size: 13px; font-weight: 700; color: var(--text); }
+  .about p { margin: 0; }
   footer { text-align: center; font-size: 12px; color: var(--text-dim); padding: 24px 16px 10px; }
   footer a { color: var(--text-dim); display: inline-flex; align-items: center;
     justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; }
@@ -1001,6 +1022,16 @@
   </details>
 </div>
 
+<!-- v2.8 C1: static on purpose, so crawlers can read it without running the app. -->
+<section class="about" id="about" aria-labelledby="about-h">
+  <h2 id="about-h">About the radar</h2>
+  <p>Nashville Happy Hour Radar shows which happy hours are on right now, and what's coming up later today or any other
+    day of the week. It covers Downtown, Gulch &amp; Midtown, Germantown &amp; North, East, South, West, and Franklin &amp;
+    Brentwood, plus a few places in the outer suburbs. Each listing gives the times and deals. They come from the venue's
+    own posts, menus and listings, and they're checked monthly. inKind restaurants are marked, so you can see where your
+    credit works. It's free, and there's no sign-up.</p>
+</section>
+
 <footer id="footer"></footer>
 
 <!-- v1.22 C1 (TJ 13:30): the phone Where sheet. Opened from the Where line; it changes the same
@@ -1025,12 +1056,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=2.7.2"></script>
+<script src="logic.js?v=2.8"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v2.7.2';
+  var APP_VERSION = 'v2.8';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';

@@ -3,6 +3,16 @@
 The block is md5-pinned, so lasting changes to how a zone run works live here and in the tooling it names.
 Each zone run reads this file next to the block. Newest first.
 
+## From fix36 (2026-11-05)
+- **Sitemap:** a data run sets `<lastmod>` in the repo's `sitemap.xml` to the new `generated` date of `venues.json`.
+  `node --test` fails until it does.
+- **IndexNow:** after each data release is live on Pages, ping once. One curl, also in README "Search":
+  `curl -s -o /dev/null -w '%{http_code}\n' 'https://api.indexnow.org/indexnow?url=https://cumberlandworks.github.io/hh-radar/&key=ce1611832e744a62c9a730ca663c9e3b&keyLocation=https://cumberlandworks.github.io/hh-radar/ce1611832e744a62c9a730ca663c9e3b.txt'`
+- **REPO paths:** in the repo, `v2zone_helper.js` and `build_leads.js` find the repo from their own folder
+  (`path.resolve(__dirname, '..', '..')`). The thread's working copies sit at a different depth, so they keep the
+  `process.env.HOME` form and still work there. When mirroring the thread's folder to `data-src/`, don't overwrite
+  these two files: `node --test` in a copy outside `~/Documents`, with `HOME` set elsewhere, catches a slip.
+
 ## From fix35 (2026-11-04)
 - **Week-specific posts (TJ: "Drop badge for this week"; replaces the `low` in BRIEF step 14 for them):** the window
   gets `"posted_week": {"from", "to"}` and `"confidence": "med"`. No badge inside the week, and the card says "Posted for

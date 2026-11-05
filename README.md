@@ -124,6 +124,7 @@ and not-added file sit beside them. The hood rules they share live in `data-src/
 - `validate.js` — Node schema/semantic validator (`node validate.js venues.json`).
 - `tests/windows.test.js` — `node --test` suite for the window-resolution logic.
 - `manifest.json`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — PWA install.
+- `sitemap.xml`, `<key>.txt` — for search engines (see *Search*).
 - `og-preview.png` — the 1200x627 link-preview image (Open Graph / LinkedIn), a real
   screenshot of the NOW view taken with `?now=2026-10-27T17:30` (re-taken in v1.20 for the new subtitle and card
   lines, and in v1.21 for the Blue Coast removal: light theme, storage cleared, referral bar dismissed, the v1.12 framing;
@@ -132,6 +133,19 @@ and not-added file sit beside them. The hood rules they share live in `data-src/
 - `data-src/` — provenance: per-batch research JSON and the generator scripts. The raw inKind
   pulls are not published (removed 2026-10-29), so the scripts that read them need a fresh pull to re-run. Read-only history, not used at runtime. `data-src/refresh-20261023/`
   is the worked example of a full refresh (see *Refresh runbook*).
+
+## Search (v2.8)
+
+- **Property:** Google Search Console and Bing Webmaster Tools, URL prefix `https://cumberlandworks.github.io/hh-radar/`.
+  The verification tag in `index.html` has to stay, or Google drops the verification.
+- **Sitemap:** `sitemap.xml`, one URL, `<lastmod>` = `generated` in `venues.json`. A test fails if they differ.
+- **robots.txt:** a project site can't have one, so it's in the separate repo `cumberlandworks/cumberlandworks.github.io`,
+  which also redirects the bare domain here.
+- **Each data release:** after it's live, send one IndexNow ping (the key file is at the repo root):
+
+  ```bash
+  curl -s -o /dev/null -w '%{http_code}\n' 'https://api.indexnow.org/indexnow?url=https://cumberlandworks.github.io/hh-radar/&key=ce1611832e744a62c9a730ca663c9e3b&keyLocation=https://cumberlandworks.github.io/hh-radar/ce1611832e744a62c9a730ca663c9e3b.txt'
+  ```
 
 ## Tip link (v1.10, set in v1.13)
 

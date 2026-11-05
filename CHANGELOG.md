@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-11-05 — BLOCK-hh-radar-fix36: v2.8, getting found on Google and Bing
+
+**TJ, verbatim:** "also how do i get this found on seaarches" and "create a code block to help with the Google/bing searches".
+
+- **C1, page basics:** canonical link; new title and a 154-character description, with `og:title` and `og:description` in step;
+  `WebApplication` JSON-LD; a static About section above the footer, in the markup so crawlers read it without running the
+  app. The on-page subtitle is unchanged. The `<h1>` was already a real one, so it's unchanged too. The description's "300+"
+  is a floor, and a test fails if the data drops below it.
+- **C2, sitemap:** `sitemap.xml` with `<lastmod>` = `generated`, a test that holds them together, and a runbook step.
+- **C3, root site:** new public repo `cumberlandworks/cumberlandworks.github.io` with `robots.txt` and a redirect to
+  `/hh-radar/`, so the bare domain stops returning 404.
+- **C4, Google Search Console:** URL-prefix property, HTML-tag verification in `index.html`.
+- **C5, Bing Webmaster Tools:** set up in the same Chrome session. Status is in the thread's fix36 report.
+- **C6, IndexNow:** key file at the repo root; one ping per data release (the curl is in README "Search").
+- **C7, housekeeping:** `v2zone_helper.js` and `build_leads.js` find the repo from their own folder, so `node --test` passes
+  with the repo anywhere. The thread now has `venues-v2-07-franklin-corr2/3/4.json`.
+- **C8:** `APP_VERSION`, `logic.js?v=` and `version.txt` are v2.8. `venues.json?v=` stays 2.7.2: no data changed.
+
 ## 2026-11-04 — v2.7.2: Brugada's other days follow Google
 
 TJ, on v2.7.1's open question ("Should Brugada's Tue–Thu and Monday follow Google too?"): "Yes, change them".

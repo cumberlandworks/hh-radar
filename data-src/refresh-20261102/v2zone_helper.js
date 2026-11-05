@@ -11,7 +11,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const REPO = path.join(process.env.HOME, 'Documents', 'hh-radar');
+const REPO = path.resolve(__dirname, '..', '..');
 const L = require(path.join(REPO, 'logic.js'));
 const { hoodFromText } = require(path.join(REPO, 'data-src', 'hood_zone.js'));
 
