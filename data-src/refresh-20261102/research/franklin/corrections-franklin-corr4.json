@@ -1,0 +1,28 @@
+[
+ {
+  "id": "ik-9475",
+  "window_index": 0,
+  "set": {
+   "days": [
+    "MON",
+    "TUE",
+    "WED",
+    "THU"
+   ],
+   "start": "16:00",
+   "end": "18:00",
+   "kind": "happy_hour",
+   "deals": [],
+   "sources": [
+    "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
+   ],
+   "confidence": "med",
+   "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+   "research_notes": "v2.7.2 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor days and deals. The venue's site gives Mon-Thu hours from 4:30pm (the venue's hours on file) while Google's panel gives 4-10PM, so the card's hours caveat stays. The site and its Nashville Guru page show no happy hour.",
+   "area": null,
+   "corroborated": false,
+   "verify_reason": null
+  },
+  "why": "TJ: Tue-Thu and Monday follow Google too"
+ }
+]

@@ -15,7 +15,7 @@ Each zone run reads this file next to the block. Newest first.
   fields; `remove_window`; `temp_closed`. `sources`, `last_verified`, `corroborated`, `posted_week` and `verify_reason`
   are settable on a window.
 - **Links:** `validate.js` now refuses any source, `official_site` or `inkind_url` that isn't http(s).
-- **Chain:** the data steps are `venues-v2-07-franklin-corr2.json` and `-corr3.json` (v2.7.1), from `research/franklin/corrections-franklin-corr2.json` and `-corr3.json`.
+- **Chain:** the data steps are `venues-v2-07-franklin-corr2.json`, `-corr3.json` (v2.7.1) and `-corr4.json` (v2.7.2), from `research/franklin/corrections-franklin-corr2.json`, `-corr3.json` and `-corr4.json`.
 
 ## From fix32, made lasting in fix33 (2026-11-04)
 - **Versions:** fix33 is v2.6 (P2's previous file was `venues-v2-06-west-corr.json`). Franklin is the last of

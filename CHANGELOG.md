@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-04 — v2.7.2: Brugada's other days follow Google
+
+TJ, on v2.7.1's open question ("Should Brugada's Tue–Thu and Monday follow Google too?"): "Yes, change them".
+
+- **Brugada:** Tue-Thu 4-6pm with Tripadvisor prices is now Mon-Thu 4-6pm from Google's listing, med, no deals, matching
+  v2.7.1's Fri-Sat and Sun windows. No Tripadvisor source is left. The Mon-Thu card keeps its Verify badge and hours sentence:
+  the hours on file open at 4:30pm Mon-Thu, after the 4pm start, while Google's panel opens at 4pm. Those hours aren't changed.
+  `venues-v2-07-franklin-corr4.json`, from `research/franklin/corrections-franklin-corr4.json`.
+
 ## 2026-11-04 — v2.7.1: TJ's calls on the fix35 report
 
 **TJ's calls, verbatim:** "Brugada, use Google's current times (Fri-Sat 3-5pm, Sun 4-6pm) instead of the undated Tripadvisor

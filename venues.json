@@ -5222,6 +5222,7 @@
    "windows": [
     {
      "days": [
+      "MON",
       "TUE",
       "WED",
       "THU"
@@ -5229,36 +5230,15 @@
      "start": "16:00",
      "end": "18:00",
      "kind": "happy_hour",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "select appetizers",
-       "price": "$10"
-      },
-      {
-       "type": "drink",
-       "desc": "select cocktails",
-       "price": "$8"
-      },
-      {
-       "type": "drink",
-       "desc": "select wines",
-       "price": "$6"
-      },
-      {
-       "type": "drink",
-       "desc": "domestic beers",
-       "price": "$5"
-      }
-     ],
+     "deals": [],
      "sources": [
-      "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
+      "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
      ],
      "last_verified": "2026-11-04",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "Official site (fetched today) mentions no happy hour. Only the undated Tripadvisor/aggregator claim remains. Tue-Thu opens 4:30pm per the site, so a 4-6pm window would not start at 4:00 as recorded.",
-     "verify_reason": "Times match Google's listing; the venue's site doesn't mention a happy hour. Prices from an undated Tripadvisor listing.",
+     "confidence": "med",
+     "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+     "research_notes": "v2.7.2 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor days and deals. The venue's site gives Mon-Thu hours from 4:30pm (the venue's hours on file) while Google's panel gives 4-10PM, so the card's hours caveat stays. The site and its Nashville Guru page show no happy hour.",
      "area": null
     },
     {

@@ -1608,14 +1608,14 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 // v1.21 (2026-10-25n data): the 7 Blue Coast family nights take 12 priced deals, all shown (438 -> 426,
 // 361 -> 349); The Authentique's crepes now read "All crepes" + "50% off".
 // v1.24 data step: the Detroit Cowboy patio window (4 priced deals, all shown) is gone: 426/349 -> 422/345.
-test('dealPriceLabel: measured on venues.json — 420 priced deals (fix35: LinQ +3, JoJo\'s -1; v2.7.1: Brugada -4), 341 still show a price', () => {
+test('dealPriceLabel: measured on venues.json — 416 priced deals (fix35: LinQ +3, JoJo\'s -1; v2.7.1 and v2.7.2: Brugada -4 each), 337 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 420);
-  assert.equal(shown, 341);
+  assert.equal(priced, 416);
+  assert.equal(shown, 337);
   const auth = REAL.find((v) => v.name === 'The Authentique').windows.find((w) => w.kind === 'special');
   assert.deepEqual(auth.deals.map((d) => [d.desc, dealPriceLabel(d)]), [['All crepes', '50% off']]);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
@@ -1721,7 +1721,7 @@ test('outside-hours lint: measured on venues.json — 6 venues, 8 windows (v1.14
     '51 North Taproom: happy_hour window 11:00–23:00 outside posted hours on MON',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on WED',
     '51 North Taproom: special window 11:00–23:00 outside posted hours on THU',
-    'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on TUE/WED/THU',
+    'Brugada Kitchen & Bar: happy_hour window 16:00–18:00 outside posted hours on MON/TUE/WED/THU',
     'NoWhere Special: happy_hour window 16:00–19:00 outside posted hours on FRI',
     'Present Tense: happy_hour window 16:00–17:30 outside posted hours on THU',
     'The Side Piece Nashville: happy_hour window 15:00–18:00 outside posted hours on WED',
@@ -2183,7 +2183,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.7.1';") && html.includes("venues.json?v=2.7.1") && html.includes('logic.js?v=2.7.1'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.7.2';") && html.includes("venues.json?v=2.7.2") && html.includes('logic.js?v=2.7.2'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2404,10 +2404,10 @@ test('NO_DEALS_TEXT (v1.22 C5): Present Tense\'s card and grid row say "Deals no
   const tb = L20.gridRowTimes(bf, 'MON', itemsOn(bf, 'MON'));
   assert.deepEqual([tb.times, tb.noDeals], ['4–6pm · Special 4–11pm', '4–6pm: deals not posted, ask at the bar']);
   assert.deepEqual(tb.parts, [{ tag: '', time: '4–6pm' }, { tag: 'Special', time: '4–11pm' }]);
-  // The no-deal happy hours (D5): five, four since LinQ's post listed its deals (fix35), six with Brugada's two (v2.7.1).
+  // The no-deal happy hours (D5): five, four since LinQ's post listed its deals (fix35), seven with Brugada's three (v2.7.1, v2.7.2).
   const bare = [];
   REAL.forEach((v) => v.windows.forEach((w) => { if (w.kind === 'happy_hour' && !w.deals.length) bare.push(v.name); }));
-  assert.equal(bare.length, 6);
+  assert.equal(bare.length, 7);
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.ok(!html.includes('No deal details published'));
@@ -3096,17 +3096,26 @@ test('validateVenues (v2.7.1): inkind_app_only is true, on inKind venues only', 
   assert.ok(run(no).some((e) => /inkind_app_only/.test(e)));
 });
 
-test('venues.json (v2.7.1): Brugada uses Google\'s times, med, deals not posted, the source noted', () => {
+test('venues.json (v2.7.1, v2.7.2): every Brugada window uses Google\'s times, med, deals not posted, the source noted', () => {
   const b = real271().find((v) => v.id === 'ik-9475');
-  const fs = b.windows.filter((w) => w.sources[0].includes('google.com'));
-  assert.deepEqual(fs.map((w) => [w.days.join(), w.start, w.end]).sort(), [['FRI,SAT', '15:00', '17:00'], ['SUN', '16:00', '18:00']]);
-  for (const w of fs) {
+  assert.deepEqual(b.windows.map((w) => [w.days.join(), w.start, w.end]), [
+    ['MON,TUE,WED,THU', '16:00', '18:00'], ['FRI,SAT', '15:00', '17:00'], ['SUN', '16:00', '18:00'],
+  ]);
+  for (const w of b.windows) {
+    assert.ok(w.sources[0].includes('google.com'));
+    assert.equal(w.sources.length, 1, 'no Tripadvisor left');
     assert.equal(w.confidence, 'med');
     assert.deepEqual(w.deals, []);
     assert.equal(w.verify_reason, undefined);
     assert.match(w.notes, /Google's listing/);
-    assert.equal(L271.verifyInfo(b, w, { year: 2026, month: 11, day: 6, hour: 16, minute: 0, dayOfWeek: 'FRI' }).badge, false);
   }
+  const fri = { year: 2026, month: 11, day: 6, hour: 16, minute: 0, dayOfWeek: 'FRI' };
+  assert.equal(L271.verifyInfo(b, b.windows[1], fri).badge, false);
+  assert.equal(L271.verifyInfo(b, b.windows[2], fri).badge, false);
+  // Mon-Thu: the venue's posted 4:30 opening is after the 4:00 start, so the hours caveat keeps its badge.
+  assert.equal(L271.verifyInfo(b, b.windows[0], fri).badge, true);
+  assert.equal(L271.verifyInfo(b, b.windows[0], fri).reason, '');
+  assert.match(L271.hoursCaveat(b, b.windows[0]), /Mon–Thu are 4:30–9pm/);
 });
 
 test('versionDiffers (v2.7.1): a three-part version counts', () => {

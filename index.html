@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <!-- v2.7 B3: start the data as soon as the head is parsed. Same URL and ?v= as the fetch at the
      end of this file; bump them together. -->
-<link rel="preload" href="venues.json?v=2.7.1" as="fetch" crossorigin>
+<link rel="preload" href="venues.json?v=2.7.2" as="fetch" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1025,12 +1025,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=2.7.1"></script>
+<script src="logic.js?v=2.7.2"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v2.7.1';
+  var APP_VERSION = 'v2.7.2';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -3443,7 +3443,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=2.7.1').then(function (r) {
+  fetch('venues.json?v=2.7.2').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {
