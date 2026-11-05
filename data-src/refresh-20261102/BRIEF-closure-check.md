@@ -53,7 +53,13 @@ Never mark a venue closed on an aggregator tag alone. Never guess: if you can't 
   listed as a doubt in the report beyond the count.
 - **A venue is removed (or not added) only on:** a dated closure source (`closed`, or `moved` / `closing` with
   a date that has passed), or the Google listing's "Permanently closed" or "Relocated" banner.
-- "Temporarily closed" on Google, or `temporarily_closed` here, is not a removal: list it in the report and on
-  `refresh-watchlist.md`.
+- **Temporarily closed** (Google's "Temporarily closed" banner, or `temporarily_closed` here; TJ, 2026-11-04) is never
+  a removal, and what happens depends on whether the venue is already listed:
+  - **Found while researching a new venue:** it is not added. It goes in `not-added-<zone>.md` and on
+    `refresh-watchlist.md` with the date seen, and it is researched again once it reopens.
+  - **Already on the radar:** keep the venue and its windows, and set its `temp_closed` range:
+    `[{"from": "YYYY-MM-DD", "to": "YYYY-MM-DD", "note": "...", "source": "https://..."}]`, both ends inclusive.
+    `to` is the day before it reopens, since the card reads "Closed until <the day after `to`>". While the range holds,
+    its NOW card is hidden, and its Day Grid row stays with a plain "Closed (temporary)" label.
 - `unclear` with no Google listing found at all is listed in the report by name (as Ramone's and Antler Bar
   were in fix32), and stays.

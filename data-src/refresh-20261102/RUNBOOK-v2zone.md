@@ -10,7 +10,19 @@ Each zone run reads this file next to the block. Newest first.
   - "unclear" (no closure source, no dated 2026 activity) **plus a Google listing that shows open with no
     banner passes**. It stays added and is counted, not listed, in the report.
   - **Remove (or don't add) only on a dated closure source, or Google "Permanently closed" or "Relocated".**
-  - Google "Temporarily closed" is not a removal: report it and put it on `refresh-watchlist.md`.
+  - **Temporarily closed (TJ, 2026-11-04)** (Google's banner, or a `temporarily_closed` result) is never a removal:
+    - **Found while researching a new venue:** not added. It goes in `not-added-<zone>.md` and on
+      `refresh-watchlist.md` with the date seen, and is researched again once it reopens.
+    - **Already on the radar:** keep the venue and its windows, and set its `temp_closed` range, the field Punk Wok
+      used: `[{"from", "to", "note", "source"}]`. Dates are YYYY-MM-DD, both ends inclusive; `source` must be a URL.
+      `to` is the day before it reopens, since the card reads "Closed until <the day after `to`>". Put the venue on
+      the watchlist too, so the range gets re-checked.
+    - **What the range does (tested 2026-11-04):** the NOW card is hidden, at any time of day. The Day Grid row stays,
+      with a plain "Closed (temporary)" label, and the grid note's "venues with happy hours" count still includes it.
+    - **`to` is required:** the validator has no open-ended range, so a closure with no posted reopening date still
+      needs an end date. That convention is not settled yet.
+    - **Tooling gap:** `apply_corrections.py` can't set `temp_closed` (it edits windows and removes venues). For now
+      it is a manual edit of venues.json, noted in the CHANGELOG.
   - An "unclear" venue with no Google listing of its own is still named in the report, and stays.
   - The same text is in `BRIEF-closure-check.md`, section "How the executor uses the result".
 - **Removals reach the zone's not-added file (tooling):** `apply_corrections.py` appends every `remove` to
