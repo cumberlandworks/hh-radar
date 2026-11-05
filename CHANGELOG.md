@@ -13,7 +13,7 @@
   `/hh-radar/`, so the bare domain stops returning 404.
 - **C4, Google Search Console:** URL-prefix property, HTML-tag verification in `index.html`. The page now has literal
   `<html>`, `<head>` and `<body>` tags: Search Console said the tag wasn't in the head while the head was only implied.
-- **C5, Bing Webmaster Tools:** set up in the same Chrome session. Status is in the thread's fix36 report.
+- **C5, Bing Webmaster Tools:** not done yet. Bing was signed out, so the import is left for TJ (clicks in the thread's fix36 report).
 - **C6, IndexNow:** key file at the repo root; one ping per data release (the curl is in README "Search").
 - **C7, housekeeping:** `v2zone_helper.js` and `build_leads.js` find the repo from their own folder, so `node --test` passes
   with the repo anywhere. The thread now has `venues-v2-07-franklin-corr2/3/4.json`.

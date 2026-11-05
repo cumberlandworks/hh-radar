@@ -136,7 +136,8 @@ and not-added file sit beside them. The hood rules they share live in `data-src/
 
 ## Search (v2.8)
 
-- **Property:** Google Search Console and Bing Webmaster Tools, URL prefix `https://cumberlandworks.github.io/hh-radar/`.
+- **Property:** Google Search Console, URL prefix `https://cumberlandworks.github.io/hh-radar/`. Bing Webmaster Tools imports
+  it from there; that step needs TJ's sign-in (see the fix36 report in the thread folder).
   The verification tag in `index.html` has to stay, or Google drops the verification.
 - **Sitemap:** `sitemap.xml`, one URL, `<lastmod>` = `generated` in `venues.json`. A test fails if they differ.
 - **robots.txt:** a project site can't have one, so it's in the separate repo `cumberlandworks/cumberlandworks.github.io`,
