@@ -1,0 +1,82 @@
+[
+ {
+  "id": "ik-9475",
+  "window_index": 1,
+  "set": {
+   "kind": "happy_hour",
+   "deals": [],
+   "sources": [
+    "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
+   ],
+   "confidence": "med",
+   "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+   "research_notes": "v2.7.1 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor times and deals. The venue's own site and its Nashville Guru page show no happy hour.",
+   "area": null,
+   "corroborated": false,
+   "days": [
+    "FRI",
+    "SAT"
+   ],
+   "start": "15:00",
+   "end": "17:00",
+   "verify_reason": null
+  },
+  "why": "TJ: Google's current times, med, deals not posted, source noted"
+ },
+ {
+  "id": "ik-9475",
+  "add_window": {
+   "kind": "happy_hour",
+   "deals": [],
+   "sources": [
+    "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
+   ],
+   "confidence": "med",
+   "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+   "research_notes": "v2.7.1 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor times and deals. The venue's own site and its Nashville Guru page show no happy hour.",
+   "area": null,
+   "corroborated": false,
+   "days": [
+    "SUN"
+   ],
+   "start": "16:00",
+   "end": "18:00"
+  },
+  "why": "TJ: Google's current times, med, deals not posted, source noted"
+ },
+ {
+  "id": "ik-9315",
+  "venue_set": {
+   "inkind_app_only": true
+  },
+  "why": "TJ: on the roster, but its inKind link has no venue page. Badge stays, button goes."
+ },
+ {
+  "id": "ik-9316",
+  "venue_set": {
+   "inkind_app_only": true
+  },
+  "why": "TJ: on the roster, but its inKind link has no venue page. Badge stays, button goes."
+ },
+ {
+  "id": "ik-9314",
+  "venue_set": {
+   "inkind_app_only": true
+  },
+  "why": "TJ: on the roster, but its inKind link has no venue page. Badge stays, button goes."
+ },
+ {
+  "id": "ik-9318",
+  "venue_set": {
+   "inkind_app_only": true
+  },
+  "why": "TJ: on the roster, but its inKind link has no venue page. Badge stays, button goes."
+ },
+ {
+  "id": "ik-9475",
+  "venue_set": {
+   "inkind_app_only": true
+  },
+  "why": "TJ: on the roster, but its inKind link has no venue page. Badge stays, button goes."
+ }
+]

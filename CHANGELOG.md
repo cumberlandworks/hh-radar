@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-11-04 — v2.7.1: TJ's calls on the fix35 report
+
+**TJ's calls, verbatim:** "Brugada, use Google's current times (Fri-Sat 3-5pm, Sun 4-6pm) instead of the undated Tripadvisor
+ones, confidence med, deals not posted, the source noted. LinQ: keep your 5-10pm fix. "Cuts it close": use your proposed
+wording ("you'd get about N min (ends 6pm)") with a test. For the five hidden inKind buttons, keep the inKind badge and add a
+line to their card: "Pay with inKind in the app.""
+
+- **Brugada:** Fri-Sun 2:30-4pm is now Fri-Sat 3-5pm and Sun 4-6pm, from Google's listing, med, no deals. Tue-Thu 4-6pm wasn't
+  named, so it keeps its window and Tripadvisor prices, and Google's Monday isn't added. `venues-v2-07-franklin-corr3.json`,
+  from `research/franklin/corrections-franklin-corr3.json`.
+- **LinQ:** kept at 5-10pm.
+- **Arrival wording:** "cuts it close" is now "you'd get about N min (ends 6pm)" (`L.verdictWords`, `L.arrivalMinutesLeft`).
+  The 20-minute line is unchanged.
+- **Kayne Prime, Moto, Saint Anejo, Virago, Brugada:** new `inkind_app_only`. No inKind button, the badge stays, and the card and
+  Surprise me say "Pay with inKind in the app." The desktop Day Grid keeps its K, unlinked. `inkind_url` stays in the data.
+- **Images:** `og-preview.png` and the LinkedIn shots not re-taken: none of these changes is in their framing.
+
 ## 2026-11-04 — BLOCK-hh-radar-fix35: v2.7, the fresh-eyes fixes
 
 From the fix34 QA report. **TJ's calls, verbatim:** Now list: "Top 20, then Show more". Map tap: "Show just that zone".

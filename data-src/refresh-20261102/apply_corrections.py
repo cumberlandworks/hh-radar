@@ -35,7 +35,7 @@ from merge_v2zone import norm_window, helper  # noqa: E402
 
 SETTABLE = {'deals', 'notes', 'research_notes', 'confidence', 'days', 'start', 'end', 'area', 'kind', 'sources',
             'last_verified', 'corroborated', 'posted_week', 'verify_reason'}
-VENUE_SETTABLE = {'official_site', 'inkind_url', 'notes', 'hours', 'hours_source', 'hours_confidence', 'hours_notes'}
+VENUE_SETTABLE = {'official_site', 'inkind_url', 'inkind_app_only', 'notes', 'hours', 'hours_source', 'hours_confidence', 'hours_notes'}
 import re  # noqa: E402
 
 

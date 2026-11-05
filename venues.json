@@ -5264,43 +5264,38 @@
     {
      "days": [
       "FRI",
-      "SAT",
-      "SUN"
+      "SAT"
      ],
-     "start": "14:30",
-     "end": "16:00",
+     "start": "15:00",
+     "end": "17:00",
      "kind": "happy_hour",
-     "deals": [
-      {
-       "type": "food",
-       "desc": "select appetizers",
-       "price": "$10"
-      },
-      {
-       "type": "drink",
-       "desc": "select cocktails",
-       "price": "$8"
-      },
-      {
-       "type": "drink",
-       "desc": "select wines",
-       "price": "$6"
-      },
-      {
-       "type": "drink",
-       "desc": "domestic beers",
-       "price": "$5"
-      }
-     ],
+     "deals": [],
      "sources": [
-      "https://www.tripadvisor.com/Restaurant_Review-g55229-d6541785-Reviews-Brugada_Kitchen_Bar-Nashville_Davidson_County_Tennessee.html"
+      "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
      ],
      "last_verified": "2026-11-04",
      "corroborated": false,
-     "confidence": "low",
-     "notes": "Official site mentions no happy hour; Fri-Sun opens at 10am so 2:30-4pm is plausible but only aggregator-sourced.",
-     "verify_reason": "Google's listing shows Fri–Sat 3–5pm and Sun 4–6pm, not these times. Call ahead.",
+     "confidence": "med",
+     "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+     "research_notes": "v2.7.1 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor times and deals. The venue's own site and its Nashville Guru page show no happy hour.",
      "area": null
+    },
+    {
+     "days": [
+      "SUN"
+     ],
+     "start": "16:00",
+     "end": "18:00",
+     "kind": "happy_hour",
+     "deals": [],
+     "sources": [
+      "https://www.google.com/search?q=Brugada+Kitchen+%26+Bar+204+Commerce+St+Nashville"
+     ],
+     "last_verified": "2026-11-04",
+     "corroborated": false,
+     "confidence": "med",
+     "notes": "Times from Google's listing, read Nov 4. The venue's site doesn't mention a happy hour.",
+     "research_notes": "v2.7.1 (TJ): Google's listing, read in Chrome 2026-11-04, has happy-hour sub-hours Mon-Thu and Sun 4-6PM, Fri-Sat 3-5PM, no prices. These replace the undated Tripadvisor times and deals. The venue's own site and its Nashville Guru page show no happy hour."
     }
    ],
    "verified_no_hh": false,
@@ -5311,7 +5306,8 @@
    "notes": "Open. HH remains unverified at low confidence. No lunch special (site shows brunch and dinner only). First-visit question: Still aggregator-only. Official site, Nashville Guru and OpenTable search results show no happy hour text. Keep as low-confidence or drop; a call to the venue is the only way to settle it.",
    "hours_confidence": "high",
    "hours_notes": "Official site now lists Monday (4:30-9pm) and Tue-Thu opening at 4:30pm; 2026-09-05 inKind data had no Monday and Tue-Thu at 4pm.",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "inkind_app_only": true
   },
   {
    "id": "ik-19204",
@@ -18289,13 +18285,14 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Dinner-only steakhouse, no lunch. Social Hour exists in the earlier record but could not be re-read this pass.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "hours_notes": "Sunday now 4pm-9pm on the official site (inKind data had 5pm-10pm).",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "inkind_app_only": true
   },
   {
    "id": "ik-13852",
@@ -21678,14 +21675,15 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [
     "Guru also carries a second line, 'Happy hour from 5:00pm to 10:00pm', with no deals attached. The 5-6pm line has the deals and matches the earlier official reading."
    ],
    "notes": "Happy hour could not be re-confirmed from the official site today. Dinner only, so no lunch. First-visit question: Not settled. Moto is closed Sun-Mon and opens at 5pm Tue-Thu, so a Monday happy hour cannot exist and no source lists Tuesday. The site no longer shows happy hour text at all today, and Guru gives times but no days. Tuesday is unsupported; keep Wed-Fri and have TJ call (615) 736-5305 if it matters.",
    "hours_confidence": "high",
    "hours_notes": "Closed Sunday and Monday.",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "inkind_app_only": true
   },
   {
    "id": "ik-16870",
@@ -28201,13 +28199,14 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [],
    "notes": "Lunch/dinner menu is one PDF; no lunch special found. Brunch menu exists (not a lunch special).",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
    "hours_notes": "Saturday opens 10:00 per the official site (inKind had 11:00).",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "inkind_app_only": true
   },
   {
    "id": "ik-17392",
@@ -37686,14 +37685,15 @@
     }
    ],
    "verified_no_hh": false,
-   "checked": "2026-10-23",
+   "checked": "2026-11-04",
    "disagreements": [
     "Daily 5-7pm $6 happy hour (do615 and totalhappyhour, both apparently old) vs Nashville Guru, confirmed 10/14/26, which lists only Maki Sake Monday. The do615 listing itself says 'Every Fri', not daily. The 2026-09-05 pass also saw happyhournearmenow.com giving Mon-Thu 5-6:30pm at $8/$7/$6."
    ],
    "notes": "Maki-Sake Monday is solid. The daily 5-7pm happy hour is probably outdated; consider dropping it unless TJ can confirm with the venue.",
    "neighborhood_source": "centroid",
    "hours_confidence": "high",
-   "lunch_checked": true
+   "lunch_checked": true,
+   "inkind_app_only": true
   },
   {
    "id": "nv-von-elrods-beer-hall-and-kitchen-1004",

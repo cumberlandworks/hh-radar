@@ -205,6 +205,8 @@ venue: {
   id: "ik-<int>", inkind_id: int, name: str, city: str, neighborhood: str, address: str, zip: str,
   lat: number, lon: number, tz: "America/Chicago",
   inkind: true, inkind_url: url, official_site: url|null, status: "open",
+  inkind_app_only?: true,                              // optional (v2.7.1); roster link has no venue page: no button,
+                                                       // the card says "Pay with inKind in the app."
   hours: { MON..SUN?: [[ "HH:MM","HH:MM" ], ...] },   // days absent = closed that day; {} = none on file
   hours_source: str,                                   // where the hours came from, and when (see below)
   hours_confidence?: "high"|"med"|"low",               // optional (v2); "low" shows as "unconfirmed"

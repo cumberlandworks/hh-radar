@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <!-- v2.7 B3: start the data as soon as the head is parsed. Same URL and ?v= as the fetch at the
      end of this file; bump them together. -->
-<link rel="preload" href="venues.json?v=2.7" as="fetch" crossorigin>
+<link rel="preload" href="venues.json?v=2.7.1" as="fetch" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -417,6 +417,7 @@
     font-size: 12px; font-weight: 700; border-left: 1px solid var(--border); }
   .grid-rowlabel a.rowlink:active { background: var(--drink-bg); }
   .grid-rowlabel a.rowlink.ink { color: var(--amber-strong); }
+  .grid-rowlabel a.rowlink.nolink { cursor: pointer; }
   /* Below 600px the label needs more room to hold two 36px targets + a readable name. */
   @media (max-width: 599px) { .grid-rowlabel { width: 46%; min-width: 46%; max-width: 46%; } }
   .grid-track { position: relative; flex: 1; min-width: 0; background: linear-gradient(to right, var(--border) 0, var(--border) 1px, transparent 1px); background-size: 6.66667% 100%; cursor: pointer; }
@@ -1024,12 +1025,12 @@
      so a stale cached logic.js next to a fresh index.html is a hard crash, not just a
      stale-looking page. GitHub Pages serves both with the same max-age=600 (measured), so
      bump this query string every time APP_VERSION below changes. -->
-<script src="logic.js?v=2.7"></script>
+<script src="logic.js?v=2.7.1"></script>
 <script>
 (function () {
   'use strict';
   var L = window.hhRadarLogic;
-  var APP_VERSION = 'v2.7';
+  var APP_VERSION = 'v2.7.1';
   // v1.10 C5 / v1.13 C1: the tip link (TJ's Venmo, see README "Tip link"). Empty =
   // nothing renders and nothing is in the DOM (L.tipSectionHtml).
   var TIP_URL = 'https://venmo.com/u/Tjwhite-';
@@ -1256,6 +1257,9 @@
     return '<details class="src-notes" onclick="event.stopPropagation()"><summary>Source notes</summary>' +
       L.sourceNoteLines(venue, win).map(function (b) { return '<p>' + escapeHtml(b) + '</p>'; }).join('') + '</details>';
   }
+  function inkindAppLineHtml(venue) {
+    return venue.inkind_app_only ? '<div class="verify-reason">' + escapeHtml(L.INKIND_APP_LINE) + '</div>' : '';
+  }
   // v2.7 C2: the one line saying why the badge fired, or that a week's post still holds.
   function verifyLineHtml(info) {
     if (info.posted) return '<div class="verify-reason posted">' + escapeHtml(info.posted) + '</div>';
@@ -1273,7 +1277,8 @@
     var source = L.bestSourceUrl(venue, win);
     var out = '<div class="card-actions">';
     if (source) out += '<a class="icon-btn" href="' + escapeHtml(source) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">Deal info ↗</a>';
-    if (venue.inkind_url) out += '<a class="icon-btn" href="' + escapeHtml(venue.inkind_url) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">inKind ↗</a>';
+    var ik = L.inkindLink(venue);
+    if (ik) out += '<a class="icon-btn" href="' + escapeHtml(ik) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">inKind ↗</a>';
     return out + '</div>';
   }
 
@@ -1361,6 +1366,7 @@
       miles: miles, eta: eta, interval: interval,
       verdict: L.arrivalVerdict(nowAbs, lead, interval),
       arriveAbs: nowAbs + lead,
+      minutesLeft: interval ? L.arrivalMinutesLeft(nowAbs, lead, interval) : null,
     };
   }
 
@@ -1384,8 +1390,7 @@
       tail = 'you’d arrive ' + fmtAbsClock(t.arriveAbs) + ', starts ' + fmtAbsClock(t.interval.startAbs);
     } else {
       var ends = 'ends ' + fmtAbsClock(t.interval.endAbs);
-      tail = (t.verdict === 'make' ? 'you’d make it' :
-              t.verdict === 'close' ? 'cuts it close' : 'you’d miss it') + ' (' + ends + ')';
+      tail = L.verdictWords(t.verdict, t.minutesLeft) + ' (' + ends + ')';
     }
     var tip = state.travelMode === 'walk' ? 'Straight-line estimate — select the address for a real ETA' :
       'Straight-line estimate of drive time; your maps app knows the traffic. Arrival times add ' + L.PARK_MIN + ' min to park.';
@@ -1446,6 +1451,7 @@
         addressLinkHtml(venue, 'card-addr') +
         '<div class="badges">' + (venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind) : '') +
           (only ? badgeHtml(only, ONLY_LABEL[only], BADGE_TIPS[only]) : '') + renderBadges(venue, win) + '</div>' +
+        inkindAppLineHtml(venue) +
         verifyLineHtml(verify) +
         hoursCaveatHtml(venue, win) +
         windowLineHtml(venue, win) +
@@ -1695,8 +1701,12 @@
         ' title="Deal info — ' + escapeHtml(venue.name) + '" aria-label="Deal info for ' + escapeHtml(venue.name) + '"' +
         ' onclick="event.stopPropagation()">\u2139\uFE0E</a>';
     }
-    if (venue.inkind_url) {
-      out += '<a class="rowlink ink" href="' + escapeHtml(venue.inkind_url) + '" target="_blank" rel="noopener"' +
+    var ik = L.inkindLink(venue);
+    if (venue.inkind_app_only) {
+      // v2.7.1: still marked K, but no link; a tap opens the row like the rest of the label.
+      out += '<a class="rowlink ink nolink" title="' + escapeHtml(L.INKIND_APP_LINE) + '" aria-label="inKind: ' + escapeHtml(L.INKIND_APP_LINE) + '">K</a>';
+    } else if (ik) {
+      out += '<a class="rowlink ink" href="' + escapeHtml(ik) + '" target="_blank" rel="noopener"' +
         ' title="inKind listing — ' + escapeHtml(venue.name) + '" aria-label="inKind listing for ' + escapeHtml(venue.name) + '"' +
         ' onclick="event.stopPropagation()">K</a>';
     } else {
@@ -2791,7 +2801,7 @@
     // link is on both, because the directions are just as good tomorrow.
     var verdict = s.mode === 'now' ? verdictLineHtml(travelInfoFor(v, w)) : '';
     return '<div class="surprise">' + head + sw +
-      '<div class="surprise-line">' + line + '</div>' + sub + verdict +
+      '<div class="surprise-line">' + line + '</div>' + sub + inkindAppLineHtml(v) + verdict +
       addressLinkHtml(v, 'surprise-addr') +
       '<div class="surprise-actions">' + cardActionsHtml(v, w) + roll + '</div>' +
       '</div>';
@@ -3433,7 +3443,7 @@
     el.innerHTML = '<b>Could not load happy hour data.</b><br>' + escapeHtml(msg);
   }
 
-  fetch('venues.json?v=2.7').then(function (r) {
+  fetch('venues.json?v=2.7.1').then(function (r) {
     if (!r.ok) throw new Error('venues.json HTTP ' + r.status);
     return r.json();
   }).then(function (data) {

@@ -2091,6 +2091,7 @@
       if (v.status !== 'open') fail(p + ': status must be "open"');
       if (v.official_site !== undefined && v.official_site !== null && !isHttpUrl(v.official_site)) fail(p + ': official_site must be an http(s) URL');
       if (v.inkind_url !== undefined && !isHttpUrl(v.inkind_url)) fail(p + ': inkind_url must be an http(s) URL');
+      if (v.inkind_app_only !== undefined && (v.inkind_app_only !== true || v.inkind !== true)) fail(p + ': inkind_app_only is true, on inKind venues only');
       if (!Array.isArray(v.windows)) { fail(p + ': windows must be an array'); continue; }
       if (typeof v.verified_no_hh !== 'boolean') fail(p + ': verified_no_hh must be boolean');
       // v2.0 A1: the non-inKind venue shape.
@@ -2311,9 +2312,7 @@
   // absolute minutes since MON 00:00, so endAbs can sit past 10080 on a window that
   // crosses the week boundary. The arrival is matched to the interval the way
   // inIntervalWrapped() matches "now": try it a week either side, keep the nearest.
-  function arrivalVerdict(nowAbs, etaMin, interval) {
-    if (!interval || typeof interval.endAbs !== 'number') return null;
-    if (etaMin === null || etaMin === undefined || isNaN(etaMin)) return null;
+  function matchedArrival(nowAbs, etaMin, interval) {
     var arrival = nowAbs + etaMin;
     var mid = (interval.startAbs + interval.endAbs) / 2;
     var best = arrival;
@@ -2321,11 +2320,33 @@
     for (var i = 0; i < candidates.length; i++) {
       if (Math.abs(candidates[i] - mid) < Math.abs(best - mid)) best = candidates[i];
     }
+    return best;
+  }
+  function arrivalVerdict(nowAbs, etaMin, interval) {
+    if (!interval || typeof interval.endAbs !== 'number') return null;
+    if (etaMin === null || etaMin === undefined || isNaN(etaMin)) return null;
+    var best = matchedArrival(nowAbs, etaMin, interval);
     if (best < interval.startAbs) return 'early';
     var remaining = interval.endAbs - best;
     if (remaining >= MAKE_MARGIN_MIN) return 'make';
     if (remaining > 0) return 'close';
     return 'miss';
+  }
+  // v2.7.1 (TJ): minutes left on arrival, and the words the card uses. The 20-minute line is
+  // unchanged; "close" now names the number instead of saying "cuts it close".
+  function arrivalMinutesLeft(nowAbs, etaMin, interval) {
+    return interval.endAbs - matchedArrival(nowAbs, etaMin, interval);
+  }
+  function verdictWords(verdict, minutesLeft) {
+    if (verdict === 'make') return 'you’d make it';
+    if (verdict === 'close') return 'you’d get about ' + Math.round(minutesLeft) + ' min';
+    return 'you’d miss it';
+  }
+  // v2.7.1 (TJ): an inKind venue whose roster link has no venue page: it keeps the badge,
+  // loses the button, and the card says to pay in the app. inkind_url stays in the data.
+  var INKIND_APP_LINE = 'Pay with inKind in the app.';
+  function inkindLink(venue) {
+    return venue && venue.inkind_url && venue.inkind_app_only !== true ? venue.inkind_url : null;
   }
 
   // ---- navigation links ----
@@ -2691,6 +2712,10 @@
     navUrl: navUrl,
     defaultNavApp: defaultNavApp,
     verifyInfo: verifyInfo,
+    arrivalMinutesLeft: arrivalMinutesLeft,
+    verdictWords: verdictWords,
+    INKIND_APP_LINE: INKIND_APP_LINE,
+    inkindLink: inkindLink,
     postedRangeLabel: postedRangeLabel,
     nowListCut: nowListCut,
     NOW_LIST_LIMIT: NOW_LIST_LIMIT,

@@ -58,6 +58,12 @@ itself calls an everyday menu "all day"). Re-check the opening time and the happ
 | answer. | west | nv-answer-132 | 0 | MON–SAT 16:15–18:00, bar top | MON–SAT 16:30–22:00 (dinner hours) |
 | Miel Restaurant | west | nv-miel-restaurant-343 | 0 | TUE–FRI 16:30–18:00 | TUE–THU 17:30–21:00, FRI–SAT 17:30–22:00 |
 
+## inKind link has no venue page (v2.7.1, TJ 2026-11-04)
+
+Kayne Prime (`ik-9315`), Moto (`ik-9316`), Saint Anejo (`ik-9314`), Virago (`ik-9318`) and Brugada (`ik-9475`) are on the roster,
+Open and selling, but `mstreet.inkind.com` and `brugadakitchenandbar.inkind.com` land on inKind's generic download page. They
+carry `inkind_app_only`. At each roster pull, open the link; once it shows the venue's page, take the flag off.
+
 ## Near misses (not low, but worth a look)
 
 - Grandpa Bar (North, inKind, `ik-11135`): its menus page shows the happy hour only as an image; days, times and

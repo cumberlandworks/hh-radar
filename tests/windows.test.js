@@ -1608,14 +1608,14 @@ test('dealPriceLabel: otherwise the price, with a leading minus read as "off"', 
 // v1.21 (2026-10-25n data): the 7 Blue Coast family nights take 12 priced deals, all shown (438 -> 426,
 // 361 -> 349); The Authentique's crepes now read "All crepes" + "50% off".
 // v1.24 data step: the Detroit Cowboy patio window (4 priced deals, all shown) is gone: 426/349 -> 422/345.
-test('dealPriceLabel: measured on venues.json — 424 priced deals (fix35: LinQ +3, JoJo\'s -1), 345 still show a price', () => {
+test('dealPriceLabel: measured on venues.json — 420 priced deals (fix35: LinQ +3, JoJo\'s -1; v2.7.1: Brugada -4), 341 still show a price', () => {
   let priced = 0, shown = 0;
   REAL.forEach((v) => v.windows.forEach((w) => w.deals.forEach((d) => {
     if (d.price) priced++;
     if (dealPriceLabel(d) !== null) shown++;
   })));
-  assert.equal(priced, 424);
-  assert.equal(shown, 345);
+  assert.equal(priced, 420);
+  assert.equal(shown, 341);
   const auth = REAL.find((v) => v.name === 'The Authentique').windows.find((w) => w.kind === 'special');
   assert.deepEqual(auth.deals.map((d) => [d.desc, dealPriceLabel(d)]), [['All crepes', '50% off']]);
   const dog = REAL.find((v) => v.name === 'Dog Haus - East Nashville (Biergarten)');
@@ -2183,7 +2183,7 @@ test('index.html (v1.20 C1/C7/C9/C11): subtitle, location controls, one verify b
   assert.ok(html.includes("var dayWord = function (d) { return d === state.now.dayOfWeek ? 'today' : DAY_FULL[d]; };"));
   assert.ok(html.includes('See the Day Grid'));
   // v1.22: no data change, so venues.json keeps ?v=1.21 (C7).
-  assert.ok(html.includes("var APP_VERSION = 'v2.7';") && html.includes("venues.json?v=2.7") && html.includes('logic.js?v=2.7'));
+  assert.ok(html.includes("var APP_VERSION = 'v2.7.1';") && html.includes("venues.json?v=2.7.1") && html.includes('logic.js?v=2.7.1'));
 });
 
 // ---- v1.21 C2 (fix20 review): the dead-hour line names the next HAPPY HOUR ----
@@ -2404,10 +2404,10 @@ test('NO_DEALS_TEXT (v1.22 C5): Present Tense\'s card and grid row say "Deals no
   const tb = L20.gridRowTimes(bf, 'MON', itemsOn(bf, 'MON'));
   assert.deepEqual([tb.times, tb.noDeals], ['4–6pm · Special 4–11pm', '4–6pm: deals not posted, ask at the bar']);
   assert.deepEqual(tb.parts, [{ tag: '', time: '4–6pm' }, { tag: 'Special', time: '4–11pm' }]);
-  // The no-deal happy hours (D5): five, and four since LinQ's post listed its deals (fix35).
+  // The no-deal happy hours (D5): five, four since LinQ's post listed its deals (fix35), six with Brugada's two (v2.7.1).
   const bare = [];
   REAL.forEach((v) => v.windows.forEach((w) => { if (w.kind === 'happy_hour' && !w.deals.length) bare.push(v.name); }));
-  assert.equal(bare.length, 4);
+  assert.equal(bare.length, 6);
   const fs = require('node:fs');
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.ok(!html.includes('No deal details published'));
@@ -3044,4 +3044,72 @@ test('index.html (v2.7 B3/D): preload matches the fetch; the Now list draws firs
   assert.ok(html.includes('data-tip="Food deals listed first on each card."'));
   assert.ok(html.includes(".disabled = showN === 0"));
   assert.ok(html.includes('happy hours that fit your filters'));
+});
+
+// ==================== v2.7.1 ====================
+const L271 = require('../logic.js');
+const fs271 = require('node:fs');
+const html271 = () => fs271.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+const real271 = () => JSON.parse(fs271.readFileSync(path.join(__dirname, '..', 'venues.json'), 'utf8')).venues;
+
+test('verdict words (v2.7.1): "close" names the minutes; the 20-minute line and the other verdicts are unchanged', () => {
+  // A 10-minute drive at 5:30 for a 6pm end: 5 min to park, here at 5:45, 15 minutes left.
+  const iv = { startAbs: 900, endAbs: 1080 }; // 3-6pm on MON
+  const lead = L271.arrivalLeadMin(10, 'drive');
+  const now = 1050;
+  assert.equal(L271.arrivalVerdict(now, lead, iv), 'close');
+  assert.equal(L271.arrivalMinutesLeft(now, lead, iv), 15);
+  assert.equal(L271.verdictWords('close', 15), 'you’d get about 15 min');
+  assert.equal(L271.verdictWords('close', 1), 'you’d get about 1 min');
+  assert.equal(L271.verdictWords('make', 45), 'you’d make it');
+  assert.equal(L271.verdictWords('miss', -3), 'you’d miss it');
+  assert.equal(L271.arrivalVerdict(now - 5, lead, iv), 'make', 'exactly 20 left is still "make"');
+  assert.equal(L271.arrivalVerdict(now - 4, lead, iv), 'close', '19 left is "close"');
+  // Across the week boundary: Sunday night into Monday, the same arrival matching as the verdict.
+  const wrap = { startAbs: 10000, endAbs: 10090 };
+  assert.equal(L271.arrivalVerdict(0, 5, wrap), 'close');
+  assert.equal(L271.arrivalMinutesLeft(0, 5, wrap), 5);
+  const html = html271();
+  assert.ok(html.includes("L.verdictWords(t.verdict, t.minutesLeft) + ' (' + ends + ')'"));
+  assert.ok(!html.includes('cuts it close'));
+});
+
+test('inkind_app_only (v2.7.1): no button, the badge and the line stay, the URL stays in the data', () => {
+  assert.equal(L271.inkindLink({ inkind_url: 'https://x.inkind.com/' }), 'https://x.inkind.com/');
+  assert.equal(L271.inkindLink({ inkind_url: 'https://x.inkind.com/', inkind_app_only: true }), null);
+  assert.equal(L271.inkindLink({ inkind: false }), null);
+  assert.equal(L271.INKIND_APP_LINE, 'Pay with inKind in the app.');
+  const flagged = real271().filter((v) => v.inkind_app_only);
+  assert.deepEqual(flagged.map((v) => v.name).sort(), ['Brugada Kitchen & Bar', 'Kayne Prime', 'Moto', 'Saint Anejo', 'Virago']);
+  for (const v of flagged) { assert.equal(v.inkind, true); assert.ok(L271.isHttpUrl(v.inkind_url)); }
+  const html = html271();
+  assert.ok(!/venue\.inkind_url\) out \+=/.test(html), 'the card button reads L.inkindLink');
+  assert.ok(html.includes("venue.inkind ? badgeHtml('inkind', 'inKind', BADGE_TIPS.inkind)"), 'the badge still reads venue.inkind');
+  assert.ok(html.includes('inkindAppLineHtml(venue) +') && html.includes('inkindAppLineHtml(v) +'));
+});
+
+test('validateVenues (v2.7.1): inkind_app_only is true, on inKind venues only', () => {
+  const base = () => JSON.parse(JSON.stringify(real271().find((v) => v.id === 'ik-9316')));
+  const run = (v) => L271.validateVenues({ schema_version: 2, generated: '2026-11-04', venues: [v] });
+  assert.deepEqual(run(base()), []);
+  const no = base(); no.inkind_app_only = false;
+  assert.ok(run(no).some((e) => /inkind_app_only/.test(e)));
+});
+
+test('venues.json (v2.7.1): Brugada uses Google\'s times, med, deals not posted, the source noted', () => {
+  const b = real271().find((v) => v.id === 'ik-9475');
+  const fs = b.windows.filter((w) => w.sources[0].includes('google.com'));
+  assert.deepEqual(fs.map((w) => [w.days.join(), w.start, w.end]).sort(), [['FRI,SAT', '15:00', '17:00'], ['SUN', '16:00', '18:00']]);
+  for (const w of fs) {
+    assert.equal(w.confidence, 'med');
+    assert.deepEqual(w.deals, []);
+    assert.equal(w.verify_reason, undefined);
+    assert.match(w.notes, /Google's listing/);
+    assert.equal(L271.verifyInfo(b, w, { year: 2026, month: 11, day: 6, hour: 16, minute: 0, dayOfWeek: 'FRI' }).badge, false);
+  }
+});
+
+test('versionDiffers (v2.7.1): a three-part version counts', () => {
+  assert.equal(L271.versionDiffers('v2.7.1\n', 'v2.7'), true);
+  assert.equal(L271.versionDiffers('v2.7.1\n', 'v2.7.1'), false);
 });
