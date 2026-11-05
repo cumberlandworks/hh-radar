@@ -50,6 +50,8 @@ card buttons sit in the same place. "Cuts it close" unchanged.
 
 **Docs:** BRIEF step 14, the runbook, the watchlist and the README follow.
 
+**Images:** `og-preview.png` and the four LinkedIn shots re-taken from the live v2.7 site, same framing (bar dismissed; the new line and card layout changed them). Before copies are in the thread's `shots-fix35-20261104/promo/`. The post-03 retake taps Show more first, since Park Cafe is past the top 20.
+
 ## 2026-11-04 — BLOCK-hh-radar-fix33: franklin happy hours
 
 v2.6, the seventh and last zone run (BLOCK-hh-radar-v2zone-20261102, ZONE=franklin), with the fix32 notes made
